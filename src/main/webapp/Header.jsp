@@ -97,10 +97,10 @@ input{
        <header class="headheader">
          <ul class="headPageShift">
            <li class="headlogo"><a href="/ggulfac/css/GgulFacMainPageT1.jsp">로고</a></li>
-           <li class="headlist"><a href="../mainpage/HoneyTipMainPage.jsp">홈</a></li>
+           <li class="headlist"><a href="TeamProject/mainpage/HoneyTipMainPage.jsp">홈</a></li>
            <li class="headlist"><a href="#">인기</a></li>
-           <li class="headlist"><a href="../myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
-           <li class="headlist"><a href="../mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
+           <li class="headlist"><a href="TeamProject/myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
+           <li class="headlist"><a href="TeamProject/mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
          </ul>
           
         <div class="rightOption">
