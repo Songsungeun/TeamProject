@@ -2,3 +2,5 @@
 /ignoretest
 /.classpath
 /.project
+/.gradle/
+/.settings/
