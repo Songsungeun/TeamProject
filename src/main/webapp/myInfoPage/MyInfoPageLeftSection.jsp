@@ -89,7 +89,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 <body>
 <div class=leftSection>
   <div class= leftSection id= myInfo>
-    <img id = "userPhoto" alt="userInfo" src="/TeamProject/images/userPhoto.png" width="70" height="83px">
+    <img id = "userPhoto" alt="userInfo" src="../images/userPhoto.png" width="70" height="83px">
     <div id="userID"><a href="#">
       사용자 ID
     </a></div>
@@ -107,9 +107,9 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   <div class="recommandTip">
     <h1 id="recommandTipBanner">추천 꿀팁 저장소</h1>
     <li class="refresh"><a href="#">새로고침</a></li>
-    <div class="recommandpicture1"><img alt="추천1" src="/TeamProject/images/userPhoto.png"></div>
+    <div class="recommandpicture1"><img alt="추천1" src="../images/userPhoto.png"></div>
     <li class="recommandpicture1_userName">원지선과 난쟁이들</li>
-    <div class="recommandpicture2"><img alt="추천2" src="/TeamProject/images/userPhoto.png"></div>
+    <div class="recommandpicture2"><img alt="추천2" src="../images/userPhoto.png"></div>
     <div class="recommandpicture2_userName">류세현과 외동들</div>
   </div>
   <hr color="black" width=99% >

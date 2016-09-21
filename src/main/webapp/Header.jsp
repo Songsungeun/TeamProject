@@ -96,17 +96,17 @@ input{
      <nav class="headnav">
        <header class="headheader">
          <ul class="headPageShift">
-           <li class="headlogo"><a href="/TeamProject/mainpage/HoneyTipMainPage.jsp">로고</a></li>
+           <li class="headlogo"><a href="../mainpage/HoneyTipMainPage.jsp">로고</a></li>
            <li class="headlist"><a href="/TeamProject/mainpage/HoneyTipMainPage.jsp">홈</a></li>
            <li class="headlist"><a href="#">인기</a></li>
-           <li class="headlist"><a href="/TeamProject/myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
-           <li class="headlist"><a href="/TeamProject/mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
+           <li class="headlist"><a href="../myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
+           <li class="headlist"><a href="../mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
          </ul>
           
         <div class="rightOption">
           <div class="seachBar"><input name=search type=text placeholder="검색어 입력">
             <div class="searchdropdown">
-              <a class="searchimg" href="#"><img src="/TeamProject/images/searchbutton.png" width="25"/>
+              <a class="searchimg" href="#"><img src="../images/searchbutton.png" width="25"/>
                 <div class="searchOption">
                   <div class="op1"><a href="#">전체</a></div>
                   <div class="op1"><a href="#">내게시물</a></div>
@@ -118,7 +118,7 @@ input{
               </a>
             </div>
           </div>
-          <a class="userStatus" href="/TeamProject/mainpage/HoneyTipMainPage2.jsp">
+          <a class="userStatus" href="../mainpage/HoneyTipMainPage2.jsp">
             <div class="userStatusMargin">
               <div class="statusBar" id="topBar"></div>
               <div class="statusBar" id="midBar"></div>
