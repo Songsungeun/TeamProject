@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,7 +20,7 @@ a{text-decoration:none; color:inherit;}
 a:hover, a:focus{text-decoration:underline;}
 fieldset{margin:0; padding:0; border:none;} 
 caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
-img{vertical-align:middle;}
+img{vertical-align:middle;} 
 table{display: table;}
 caption{display: table-caption;}
 colgroup{display: table-column-group;}
@@ -96,17 +96,17 @@ input{
      <nav class="headnav">
        <header class="headheader">
          <ul class="headPageShift">
-           <li class="headlogo"><a href="/ggulfac/css/GgulFacMainPageT1.jsp">로고</a></li>
-           <li class="headlist"><a href="TeamProject/mainpage/HoneyTipMainPage.jsp">홈</a></li>
+           <li class="headlogo"><a href="/TeamProject/mainpage/HoneyTipMainPage.jsp">로고</a></li>
+           <li class="headlist"><a href="/TeamProject/mainpage/HoneyTipMainPage.jsp">홈</a></li>
            <li class="headlist"><a href="#">인기</a></li>
-           <li class="headlist"><a href="TeamProject/myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
-           <li class="headlist"><a href="TeamProject/mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
+           <li class="headlist"><a href="/TeamProject/myInfoPage/myInfo.jsp">내 커뮤니티</a></li>
+           <li class="headlist"><a href="/TeamProject/mainpage/HoneyCloudMainPage.jsp">cloud</a></li>
          </ul>
           
         <div class="rightOption">
           <div class="seachBar"><input name=search type=text placeholder="검색어 입력">
             <div class="searchdropdown">
-              <a class="searchimg" href="#"><img src="/HoneyTip/images/searchbutton.png" width="25"/>
+              <a class="searchimg" href="#"><img src="/TeamProject/images/searchbutton.png" width="25"/>
                 <div class="searchOption">
                   <div class="op1"><a href="#">전체</a></div>
                   <div class="op1"><a href="#">내게시물</a></div>
@@ -118,7 +118,7 @@ input{
               </a>
             </div>
           </div>
-          <a class="userStatus" href="#">
+          <a class="userStatus" href="/TeamProject/mainpage/HoneyTipMainPage2.jsp">
             <div class="userStatusMargin">
               <div class="statusBar" id="topBar"></div>
               <div class="statusBar" id="midBar"></div>

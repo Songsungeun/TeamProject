@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 <style>
 body {width: 100%; height: 100%; margin: 0; padding: 0;}
-.login_background {width: 1180px; height: 100%; margin:0 auto;}
+.login_background {width: 1180px; height: 780px; margin:0 auto;}
 .login_background .background_opacity {
-  width: 880px; height: 100%; margin:0 auto; padding: 100px 0 100px 0; float: left;
+  width: 880px; height: 780px; margin:0 auto; padding: 0; float: left;
   background-color: gray; opacity: .30; position: absolute;
 }
 .rightSection {
-  position: absolute; width: 300px; height: 100%; background-color: #E89922;
+  position: absolute; width: 300px; height: 780px; background-color: #E89922;
   margin: 0px 0px 0px 880px; padding: 0;
 }
 .loginInfo {width: 200px; margin: 50px 50px; position: absolute;}

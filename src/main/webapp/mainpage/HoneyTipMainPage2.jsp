@@ -35,7 +35,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
 .mainsector {
   width:1278px;
-  height: 500px;
+  height: 0;
   margin: 0 auto;
 }
 .adform {
@@ -143,31 +143,8 @@ font-size: 25px;
     <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji3.jpg"></div>
     <div class="thumbtext"><a href="#"> 썸네일 </a></div>
   </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji1.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji2.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji3.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji1.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji2.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
-  <div class="thumbbound">
-    <div class="thumbimg"><img class="imgsize" src="/TeamProject/images/suji3.jpg"></div>
-    <div class="thumbtext"><a href="#"> 썸네일 </a></div>
-  </div>
 </section>
+<jsp:include page="/loginpage/LoginPage.jsp"></jsp:include>
 </head>
 <footer id="footer">
   <jsp:include page="/Footer.jsp"></jsp:include>
