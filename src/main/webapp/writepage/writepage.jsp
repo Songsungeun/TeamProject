@@ -54,6 +54,10 @@
   .write_top #category {
     font-size: 15px;
   }
+  
+  .write_wrap .write_area {
+    margin-top: 10px;
+  }
 </style>
 </head>
 <body>
@@ -81,8 +85,20 @@
         <li><label>제목</label><input type="text" size="80" id="title">
       </ul>
     </fieldset>
-    <div>
-      <img src="images/editor.PNG" width= "1000">
+    
+    <div class="write_area">
+      <script type="text/javascript" src="../lib/se2/js/HuskyEZCreator.js" charset="utf-8"></script>  
+      <textarea name="content" id="content" rows="10" cols="300" style='width:100%;'>글내용</textarea>
+      <script type="text/javascript">
+        var oEditors = [];
+        nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "content",
+        sSkinURI: "../lib/se2/SmartEditor2Skin.html",
+        fCreator: "createSEditor2"
+        });
+      </script> 
+
     </div>
   </form>
 </div>
