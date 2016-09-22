@@ -37,37 +37,68 @@ body {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
   width: 1280px;
   margin:0 auto;
 }
-.mainpage_wrap .mainpage_topcontainer {
+.mainpage_wrap .mainpage_Topcontainer {
   height: 290px;
   margin-top: 25px;
-  border: 1px solid black;
 }
-.mainpage_wrap .mainpage_midcontainer {
+.mainpage_wrap .mainpage_Midcontainer {
   heigth: 500px;
-  border: 1px solid black;
 }
-.mainpage_wrap .mainpage_botcontainer {
+.mainpage_wrap .mainpage_Botcontainer {
   heigth: 500px;
   margin-top: 25px;
-  border: 1px solid black;
 }
-.mainpage_wrap .mainpage_topcontainer .banner {
-  width: 581px;
+.mainpage_wrap .mainpage_Topcontainer .banner {
+  width: 583px;
   height: 232px;
   margin: 19px 9px 19px 29px;
   padding: 9px;
-  border: 1px solid black;
   float: left;
   background-color: black;
   border-radius: 10px;
 }
-.mainpage_wrap .mainpage_topcontainer .pop_list {
+.mainpage_wrap .mainpage_Topcontainer .pop_list {
   width: 599px;
   height: 250px;
   margin: 19px 29px 19px 9px;
-  border: 1px solid black;
   float: right;
+  border: 1px solid black;
 }
+.mainpage_wrap .mainpage_Botcontainer .Botcontainer_list {
+  margin: 0; padding: 0;
+  border: 1px solid black;
+  overflow: hidden;
+}
+.Botcontainer_list li {
+  width: 25%;
+  float: left;
+}
+li .inner {
+  margin: 6px 6px 8px 6px;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.inner a:hover{
+  text-decoration: none;
+}
+.inner .img {
+  overflow:hidden;
+}
+.img img {
+  width:100%;
+  height: 200px;
+}
+.inner .in {
+  font-size: 14px;
+  border: 1px solid #e6e7e8;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  border-top: none;
+  text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -75,15 +106,121 @@ body {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
 
   </header>
   <section class="mainpage_wrap">
-    <div class="mainpage_topcontainer">
+    <div class="mainpage_Topcontainer">
       <video class="banner"
              src="/TeamProject/mainpage/mainpage_images/mamamoo-newyorkMV.mp4"
              controls></video>
       <div class="pop_list">pop_list</div>
     </div>
-    <div class="mainpage_midcontainer">midcontainer
+    <div class="mainpage_Midcontainer">midcontainer
     </div>
-    <div class="mainpage_botcontainer">botcontainer
+    <div class="mainpage_Botcontainer">
+      <ul class="Botcontainer_list">
+        <li>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
+              </div>
+              <span class="in">테스트 수지1<br>테스트 수지1
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
+              </div>
+              <span class="in">테스트 수지2<br>테스트 수지2
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
+              </div>
+              <span class="in">테스트 수지3<br>테스트 수지3
+              </span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
+              </div>
+              <span class="in">테스트 수지2<br>테스트 수지2
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
+              </div>
+              <span class="in">테스트 수지1<br>테스트 수지1
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
+              </div>
+              <span class="in">테스트 수지3<br>테스트 수지3
+              </span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지2테스트 수지2">
+              </div>
+              <span class="in">테스트 수지2<br>테스트 수지2
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
+              </div>
+              <span class="in">테스트 수지1<br>테스트 수지1
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
+              </div>
+              <span class="in">테스트 수지2<br>테스트 수지2
+              </span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
+              </div>
+              <span class="in">테스트 수지3<br>테스트 수지3
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
+              </div>
+              <span class="in">테스트 수지2<br>테스트 수지2
+              </span>
+            </a>
+          </div>
+          <div class="inner">
+            <a href="#">
+              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
+              </div>
+              <span class="in">테스트 수지1<br>테스트 수지1
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
   <footer>
