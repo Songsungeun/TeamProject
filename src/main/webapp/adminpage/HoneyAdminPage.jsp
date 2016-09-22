@@ -4,8 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Selectable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <style>
+
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#selectable" ).selectable();
+  } );
+  </script>
+
 @charset "utf-8";
 /*reset*/
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -55,7 +72,7 @@ body {
   width: 150px;
   height: 400px;
   top: 51px;
-  left: 150px;
+  left: 135px;
   border: 1px blue solid;
 }
 
@@ -64,11 +81,6 @@ body {
   font-size: 13px;
 }
 
-#Left_Menu > .l1 > li > #boldid  {
-  text-align: center;
-  font-size: 15px;
-  font: bold;
-}
 
 #Left_Menu > .l2 > li {
   text-align: center;
@@ -102,19 +114,20 @@ body {
     <section id = "HoneyAdmin_Wrap">
       <div id = "Center_Menu">
         <div id = "Left_Menu">
-           <ul class = l1>
+           <ol class = l1>
            
-           <img src="../adminpage/images/photo01.jpeg" width="100%"><br>
-           <li id = boldid>ID</li>
-           <li>보관소 관리</li> 
-           <li>팁 관리</li> 
-          </ul>
-          <br>
-           <ul class = l2>
-            <li>메뉴1</li>
-            <li>메뉴1</li>
-            <li>메뉴1</li>
-           </ul>
+           <p><img src="../adminpage/images/photo01.jpeg" width="100%"></p>
+           <li class="ui-widget-content">ID</li>
+           <li class="ui-widget-content">보관소 관리</li> 
+           <li class="ui-widget-content">팁 관리</li> 
+          </ol>
+          
+          <ol class = l2>
+            <li class="ui-widget-content">메뉴1</li>
+            <li class="ui-widget-content">메뉴1</li>
+            <li class="ui-widget-content">메뉴1</li>
+          </ol>
+          
         </div>
           <div id = admin_detail> 
                   
