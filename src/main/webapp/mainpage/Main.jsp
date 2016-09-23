@@ -32,7 +32,7 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
-body {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
+section {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
 .mainpage_wrap {
   width: 1280px;
   margin:0 auto;
@@ -41,11 +41,7 @@ body {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
   height: 290px;
   margin-top: 25px;
 }
-.mainpage_wrap .mainpage_Midcontainer {
-  heigth: 500px;
-}
 .mainpage_wrap .mainpage_Botcontainer {
-  heigth: 500px;
   margin-top: 25px;
 }
 .mainpage_wrap .mainpage_Topcontainer .banner {
@@ -66,7 +62,6 @@ body {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
 }
 .mainpage_wrap .mainpage_Botcontainer .Botcontainer_list {
   margin: 0; padding: 0;
-  border: 1px solid black;
   overflow: hidden;
 }
 .Botcontainer_list li {
@@ -98,23 +93,42 @@ li .inner {
   border-top: none;
   text-align: center;
 }
-
+.category .category_list {
+  width: 800px;
+  margin: 0 auto;
+}
+.category_list .category_inner {
+  width: 260px;
+  float: left;
+  background-color: white;
+  margin: 0 3.1px;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  font-size: 20px;
+}
+.category {
+  margin: 0 0 10px 0;
+  height: 43px;
+}
 </style>
 </head>
 <body>
-  <header>
-
-  </header>
-  <section class="mainpage_wrap">
+<section>
+  <div class="mainpage_wrap">
     <div class="mainpage_Topcontainer">
       <video class="banner"
              src="/TeamProject/mainpage/mainpage_images/mamamoo-newyorkMV.mp4"
              controls></video>
       <div class="pop_list">pop_list</div>
     </div>
-    <div class="mainpage_Midcontainer">midcontainer
-    </div>
     <div class="mainpage_Botcontainer">
+      <div class="category" >
+        <div class="category_list">
+              <a class="category_inner" id="category_honeyTip" href="#">TIP</a>
+              <a class="category_inner" id="category_cloud" href="#">CLOUD</a>
+              <a class="category_inner" id="category_history" href="#">HISTORY</a>
+        </div>
+      </div>  
       <ul class="Botcontainer_list">
         <li>
           <div class="inner">
@@ -222,9 +236,7 @@ li .inner {
         </li>
       </ul>
     </div>
-  </section>
-  <footer>
-
-  </footer>
+  </div>
+</section>
 </body>
 </html>
