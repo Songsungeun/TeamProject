@@ -1,27 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Selectable - Default functionality</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-<style>
 
-  #feedback { font-size: 1.4em; }
-  #selectable .ui-selecting { background: #FECA40; }
-  #selectable .ui-selected { background: #F39814; color: white; }
-  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#selectable" ).selectable();
-  } );
-  </script>
+  
+  
+  
+<style>
 
 @charset "utf-8";
 /*reset*/
@@ -55,7 +55,6 @@ body {
   padding:0; 
   background-color: #f1f1f1; 
   padding-top: 50px;
-  border: 1px red solid;
  }
 
  #HoneyAdmin_Wrap {
@@ -64,31 +63,28 @@ body {
   height : 824px;
   left : 150px;
   margin : 0 auto;
-  border : 1px black solid; 
 }
 
 #Left_Menu {
   position: fixed;
   width: 150px;
   height: 400px;
-  top: 51px;
-  left: 135px;
-  border: 1px blue solid;
+  top: 50px;
+  left: 150px;
 }
 
-#Left_Menu > .l1 > li  {
-  text-align: center;
-  font-size: 13px;
+#l1 {
+  position: fixed; 
+  width: 100px;
+  height: 100px;
 }
 
-
-#Left_Menu > .l2 > li {
+#Left_Menu > #l2  {
   text-align: center;
   font-size: 12px;
 }
 
  #Center_Menu{
-  border: 1px yellow solid;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -97,41 +93,59 @@ body {
  #admin_detail{
   position: fixed;
   width: 1127px;
-  height: 823px;
+  height: 820px;
   left : 303px;
-  background-color: white;
-  border: 2px orange solid;
+}
+
+ #headeradress {
+  top: 50px;
+  height: 100px;
+  width:  100px;
+ }
+
+.btn btn-default {
+ max-width:200px; 
+ max-height:200px;
+}
+
+#amBtn1 {
+ padding: 5px 43px 5px 43px; 
+}
+
+#amBtn2 {
+ padding: 5px 20px 5px 20px; 
+}
+
+#amBtn3 {
+ padding: 5px 30px 5px 30px; 
 }
 
 </style>
 </head>
   
 <body>
-    <header>
+  <header>
+  <div id = "includedContent"></div>
+  </header>
     
-    </header>
-    
-    <section id = "HoneyAdmin_Wrap">
-      <div id = "Center_Menu">
-        <div id = "Left_Menu">
-           <ol class = l1>
+  <section id = "HoneyAdmin_Wrap">
+    <div id = "Center_Menu">
+      <div id = "Left_Menu">
+         <p><ol id = l1>
+           <p> <img src="../adminpage/images/photo01.jpeg" width="100%"></p>
            
-           <p><img src="../adminpage/images/photo01.jpeg" width="100%"></p>
-           <li class="ui-widget-content">ID</li>
-           <li class="ui-widget-content">보관소 관리</li> 
-           <li class="ui-widget-content">팁 관리</li> 
-          </ol>
-          
-          <ol class = l2>
-            <li class="ui-widget-content">메뉴1</li>
-            <li class="ui-widget-content">메뉴1</li>
-            <li class="ui-widget-content">메뉴1</li>
-          </ol>
-          
+           <br><button type="button" id="amBtn1" class="btn btn-default">ID</button>
+           <button type="button" id="amBtn2" class="btn btn-default">보관소관리</button>
+           <button type="button" id="amBtn3" class="btn btn-default">팁 관리</button>
+          </ol> 
         </div>
-          <div id = admin_detail> 
-                  
+        
+          <div id="admin_detail"> 
+            <ul>
+            
+            </ul>
          </div>
+         
       </div>
         
     </section>
@@ -140,6 +154,21 @@ body {
 
     </footer>
   
+  
+  <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("../Header.jsp"); 
+    });
+   </script>
+  
+   <script src="jquery.js"></script> 
+    <script> 
+    document.querySelector("#amBtn1").onclick = (function(){
+      $("#admin_detail").load("UserTipAdminPage.jsp"); 
+    });
+   </script>
+
 </body>
 </html>
 
