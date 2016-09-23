@@ -5,23 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Selectable - Default functionality</title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-<style>
 
-  #feedback { font-size: 1.4em; }
-  #selectable .ui-selecting { background: #FECA40; }
-  #selectable .ui-selected { background: #F39814; color: white; }
-  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#selectable" ).selectable();
-  } );
-  </script>
+
+<style>
 
 @charset "utf-8";
 /*reset*/
@@ -50,95 +41,45 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
-body {
+
+#DetailPage_Wrap {
   margin:0; 
   padding:0; 
-  background-color: #f1f1f1; 
-  padding-top: 50px;
-  border: 1px red solid;
- }
-
- #HoneyAdmin_Wrap {
-  position : fixed;
-  width  : 1280px;
-  height : 824px;
-  left : 150px;
-  margin : 0 auto;
-  border : 1px black solid; 
 }
-
-#Left_Menu {
-  position: fixed;
-  width: 150px;
-  height: 400px;
-  top: 51px;
-  left: 135px;
-  border: 1px blue solid;
-}
-
-#Left_Menu > .l1 > li  {
-  text-align: center;
-  font-size: 13px;
-}
-
-
-#Left_Menu > .l2 > li {
-  text-align: center;
-  font-size: 12px;
-}
-
- #Center_Menu{
-  border: 1px yellow solid;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-}
-
- #admin_detail{
+ #DetailPage_main{
   position: fixed;
   width: 1127px;
-  height: 823px;
-  left : 303px;
-  background-color: white;
-  border: 2px orange solid;
-}
+  height: 820px;
+  left : 250px;
+  }
 
 </style>
 </head>
   
 <body>
-    <header>
+    <section id = "DetailPage_Wrap">
+      <div id="DetailPage_main">
+      <ul>
+               <li><a href="#tabs-1">보관소 관리</a></li>
+               <li><a href="#tabs-2">팁 관리</a></li>
+      </ul>
+               
+             <div id="tabs-1">
+              <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+             </div>
+             
+             <div id="tabs-2">
+              <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+             </div>
     
-    </header>
-    
-    <section id = "HoneyAdmin_Wrap">
-      <div id = "Center_Menu">
-        <div id = "Left_Menu">
-           <ol class = l1>
-           
-           <p><img src="../adminpage/images/photo01.jpeg" width="100%"></p>
-           <li class="ui-widget-content">ID</li>
-           <li class="ui-widget-content">보관소 관리</li> 
-           <li class="ui-widget-content">팁 관리</li> 
-          </ol>
-          
-          <ol class = l2>
-            <li class="ui-widget-content">메뉴1</li>
-            <li class="ui-widget-content">메뉴1</li>
-            <li class="ui-widget-content">메뉴1</li>
-          </ol>
-          
         </div>
-          <div id = admin_detail> 
-                  
-         </div>
-      </div>
-        
     </section>
      
-    <footer>
-
-    </footer>
+  <script>
+    $( function() {
+      $( "#DetailPage_Wrap" ).tabs();
+   } );
+  </script>
   
 </body>
 </html>
