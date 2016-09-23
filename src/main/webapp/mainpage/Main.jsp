@@ -32,16 +32,17 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
-section {margin:0; padding:0; background-color: #f1f1f1; padding-top: 50px;}
+.main_section {margin: 0; padding: 0; background-color: #f1f1f1; padding:50px;}
 .mainpage_wrap {
   width: 1280px;
   margin:0 auto;
+  
 }
-.mainpage_wrap .mainpage_Topcontainer {
+.mainpage_Topcontainer {
   height: 290px;
   margin-top: 25px;
 }
-.mainpage_wrap .mainpage_Botcontainer {
+.mainpage_Botcontainer {
   margin-top: 25px;
 }
 .mainpage_wrap .mainpage_Topcontainer .banner {
@@ -113,7 +114,8 @@ li .inner {
 </style>
 </head>
 <body>
-<section>
+<jsp:include page="../header.html"></jsp:include>
+<div class="main_section">
   <div class="mainpage_wrap">
     <div class="mainpage_Topcontainer">
       <video class="banner"
@@ -237,6 +239,6 @@ li .inner {
       </ul>
     </div>
   </div>
-</section>
+</div>
 </body>
 </html>
