@@ -37,13 +37,23 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .header_main {
   width: 100%;padding: 0; height: 50px; margin: 0 auto; background-color: red}
 .header_nav {
-  margin: 0 auto; padding: 0; background-color: #f1f1f2;
-  height: 48px; position: fixed; width: 100%;
+  margin: 0 auto; 
+  padding: 0; 
+  background-color: #f1f1f2;
+  height: 48px; 
+  position: fixed; 
+  width: 100%;
 }
-.headPageShift {margin: 0.5px 0px 0px 0px; list-style: none; float: left;}
+.headPageShift {
+  margin: 0.5px 0px 0px 0px; 
+  list-style: none; 
+  float: left;}
 .headlogo {
-  margin: 8px 10px 10px 20px; padding: 0; float: left;
-  font-size: 25px; font-weight: bold;
+  margin: 8px 10px 10px 20px; 
+  padding: 0; 
+  float: left;
+  font-size: 25px; 
+  font-weight: bold;
   }
 .headlogo a:hover {text-decoration: none;}
 .headlist {margin:13px 13px 13px 25px; float: left; font-size: 15px; font-weight: bold;}
@@ -62,7 +72,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .searchdropdown {position: relative; display: inline-block;}
 .searchOption {
   display: none; position: absolute; background-color:
-  #F6C171;width: 283px;height: 70px; right: 0;
+  #f1f1f2;width: 283px;height: 70px; right: 0;
 }
  
 .searchOption div {
@@ -79,7 +89,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   float: left; text-align: center; font-size: 16px;
 }
 .searchOption a:hover {text-decoration: none;}
-.searchOption > div:hover {background-color: #E69F34;}
+.searchOption > div:hover {background-color: #f1f1f2;}
 .searchdropdown:hover .searchOption {display: inline;}
 
 .newWright {
@@ -171,11 +181,18 @@ input{
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
-
-
-
-
 </style>
+<!-- jqueryui.com 참고 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+  <style>
+  #toggle {
+    margin : 50px 0px 0px 0px;
+    float : right;
+  }
+  </style>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 </head>
 <body>
 <head>
@@ -224,10 +241,17 @@ input{
           
         </div>
         
+
        </header>
      </nav>
    </main>
-   
+
 </head>
+<div id="toggle"><jsp:include page="LoginPage.jsp"></jsp:include></div>
+<script>
+$("#nav-icon1").click(function() {
+$( "#toggle" ).toggle( "right" );
+});
+</script>
 </body>
 </html>
