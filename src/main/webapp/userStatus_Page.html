@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.userStatus_Page_Wrap {
+  position: absolute;
+  top: 50px;
+  left: 0px%;
+  right: 0px;
+  bottom : 0px;
+  float: right;
+  background-color: rgba(166, 166, 166, 0.6);
+  width : 300px;
+  z-index: 100;
+}
+
+.loginInfo {
+  width: 200px; 
+  margin: 50px 50px; 
+  position: absolute;
+}
+.loginInfo_IdPw {
+  width: 173px; 
+  margin: 5px auto;
+  }
+.loginInfo_IdPw input{
+  width: 173px; 
+  margin: 5px auto;
+  }
+.login_Button {
+  width: 118px; 
+  margin:5px 40px 5px 40px;
+  padding: 0; 
+  height: 30px; 
+  color: white; 
+  background-color: black;
+  cursor: pointer; 
+  display: inline-block; 
+  border:1px solid black; 
+  border-radius: 6px;
+  font-size: 15px; 
+  font-weight: 900;
+}
+
+#facebook_login {
+  border:1px solid #3385F7; 
+  border-radius: 6px; 
+  background-color: #3385F7; 
+  width: 178px;
+  height: 40px; 
+  text-align: center; 
+  color: white;
+  font-size: 16px; 
+  font-weight : bold;
+  padding: 0px;
+  margin: 5px 10px 5px 10px; 
+  cursor: pointer;
+}
+
+#kakao_login {
+  border:1px solid #ffcc00; 
+  border-radius: 6px; 
+  background-color: #ffcc00; 
+  width: 178px;
+  height: 40px; 
+  text-align: center; 
+  color: black; 
+  font-size: 16px;
+  font-weight : bold; 
+  padding: 0px;
+  margin: 5px 10px 5px 10px; 
+  cursor: pointer;
+}
+
+#sign_up {
+  text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px auto;
+}
+</style>
+</head>
+<body>
+  <div class = "userStatus_Page_Wrap">
+      <div class=login_page>
+      <div class="loginInfo">
+        <div class="loginInfo_IdPw" id="input_id">
+          <input name=id type=text placeholder="아이디">
+        </div>
+        <div class="loginInfo_IdPw" id="input_pw">
+          <input name=password type=password placeholder="비밀번호">
+        </div>
+        <button class="login_Button" href="#">로 그 인</button>
+        <button id="facebook_login" href="#">페이스북으로 로그인</button>
+        <button id="kakao_login" href="#">카카오계정으로 로그인</button>
+        <p id="sign_up"><a href="#">회원가입</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

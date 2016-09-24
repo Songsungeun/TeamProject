@@ -31,23 +31,40 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
+.header_Main_Background {
+  margin: 0px; 
+  padding: 0; 
+  background-color: red;
+  height: 50px; 
+  position: fixed; 
+  width: 100%;
+}
 
-.header_main {
-  width: 100%;padding: 0; height: 50px; margin: 0 auto; background-color: red}
-.header_nav {
+#header_Background {
   margin: 0 auto; 
   padding: 0; 
   background-color: #f1f1f2;
   height: 48px; 
-  position: fixed; 
   width: 100%;
+  overflow: hidden;
 }
+.header_leftSection {
+width: 49%;
+position: absolute;
+height: 40px;
+overflow: hidden;
+}
+
 .headPageShift {
   margin: 0.5px 0px 0px 0px; 
   list-style: none; 
-  float: left;}
+  float: left;
+  position : absolute;
+  overflow: hidden;
+  }
+  
 .headlogo {
-  margin: 8px 10px 10px 20px; 
+  margin: 5px 10px 0px 20px; 
   padding: 0; 
   float: left;
   font-size: 25px; 
@@ -58,64 +75,64 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .headlist > a:hover {color: white;}
 .headlist > a {text-decoration: none;}
 
-.rightOption {
-  margin: 10px;
-  float: right; 
-  width : 50%;
-  position: relative;
-  }
-
-.seachBar {margin: 5px; float: left;}
-.searchimg {cursor: pointer;}
-.searchdropdown {position: relative; display: inline-block;}
-.searchOption {
-  display: none; position: absolute; background-color:
-  #f1f1f2;width: 283px;height: 70px; right: 0;
-}
- 
-.searchOption div {
-  color: black; padding: 0; margin: 3px; text-decoration: none;
+.headerRightSection {
+  margin : 10px 0px 0px 0px;
+  width: 50%;
+  height : 32px;
+  position : absolute;
+  left : 50%;
+  overflow: hidden;
 }
 
-.op1 {
-  margin: 0; padding: 0; width: 133px; height: 28px; border: 1px solid black;
-  float: left; text-align: center; font-size: 20px;
-}
-
-.op2 {
-  margin: 0; padding: 0; width: 62.5px; height: 24px; border: 1px solid black;
-  float: left; text-align: center; font-size: 16px;
-}
-.searchOption a:hover {text-decoration: none;}
-.searchOption > div:hover {background-color: #f1f1f2;}
-.searchdropdown:hover .searchOption {display: inline;}
-
-.newWright {
-  float: left;
-  margin: 5px 0px 0px 50px; 
-  font-weight: bold;
-}
-.newWright a:hover {text-decoration: none;}
-
-.confirmLogin{
-  float: left;
-  margin: 7px 0px 0px 200px;
-}
-.userStatus {
-  padding: 0px 0px 0px 30px;
-  float: right;
-  margin: 0px;
+.seachBar {
+  position : absolute;
+  hight : 16px;
+  width : 180px;
+  margin: 3px 0px 0px 0px;
+  overflow: hidden;
+  float : left;
   }
   
-input{
-  font-size: 120%; background-color: #FAE0D4; color: black; width: 250px;
+.search {
+  position : absolute;
+  margin : 0px;
 }
 
+.searchButton {
+  cursor: pointer;
+  position: absolute;
+  margin : 0px 0px 0px 3px
+}
+
+#newWright {
+  float: left;
+  position : absolute;
+  margin: 7px 0px 0px 300px; 
+  font-weight: bold;
+  overflow: hidden;
+  height: 16px;
+}
+
+#newWright a:hover {text-decoration: none;}
+
+#confirmLogin{
+  position : absolute;
+  float: left;
+  height: 16px;
+  margin: 7px 0px 7px 500px;
+  overflow: hidden;
+}
+
+.headerHamburgerBtn {
+  background-color : #f1f1f2;
+  overflow: hidden;
+  position : absolute;
+  margin : 5px 20px 0px 0px;
+}
 #nav-icon1 {
   width: 27px;
   height: 20px;
   position: relative;
-  margin: 5px 13px 0px 0px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -125,7 +142,7 @@ input{
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-  float: right;
+  float : right;
 }
 
 #nav-icon1 span {
@@ -180,6 +197,7 @@ input{
   transform: rotate(-135deg);
 }
 </style>
+
 <!-- jqueryui.com 참고 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
   <style>
@@ -193,67 +211,52 @@ input{
   <script src="jquery.js"></script> 
     <script> 
     $(function(){
-      $("#includedContent").load("loginPage.html"); 
+      $("#includedContent").load("userStatus_Page.html"); 
     });
     </script> 
 </head>
 <body>
-<head>
-   <main class="header_main">
-     <nav class="header_nav">
-       <header class="headheader">
-         <ul class="headPageShift">
-           <li class="headlogo"><a href="#">로고</a></li>
-           <li class="headlist"><a href="#">내 커뮤니티</a></li>
-         </ul>
-          
-        <div class="rightOption">
-        
-          <div class="seachBar"><input name=search type=text placeholder="검색어 입력">
-            <div class="searchdropdown">
-              <a class="searchimg" href="#"><img src="../images/searchbutton.png" width="25"/>
-                <div class="searchOption">
-                  <div class="op1"><a href="#">전체</a></div>
-                  <div class="op1"><a href="#">내게시물</a></div>
-                  <div class="op2"><a href="#">꿀팁인</a></div>
-                  <div class="op2"><a href="#">제목</a></div>
-                  <div class="op2"><a href="#">내용</a></div>
-                  <div class="op2"><a href="#">테그</a></div>
-                </div>
-              </a>
-            </div> 
-          </div>
-          
-          <div class= "newWright">
-            <a href="#"><ul><li>새 게시물</li></ul></a>
-          </div>
-          
-          <div class="confirmLogin">
-            <ul>
-              <li>로그인 하세요</li>
-            </ul>
-          </div>
-          
-          
-          <div id="nav-icon1">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          
+  <div class = header_Main_Background>
+    <div id = header_Background>
+    
+    <div class = header_leftSection>
+      <ul class="headPageShift">
+        <li class="headlogo"><a href="#">로고</a></li>
+        <li class="headlist"><a href="#">내 커뮤니티</a></li>
+      </ul>
+    </div>
+    
+      <div class = headerRightSection>
+        <div id= "newWright">
+          <a href="#"><ul><li>새 게시물</li></ul></a>
         </div>
         
+          <div class="seachBar">
+            <input name=search type=text placeholder="검색어를 입력하세요">
+              <a class="searchButton" href="#"><img src="searchbutton.png" width="25"/>
+              </a>
+          </div> 
+        <div id="confirmLogin">
+          <ul>
+            <li>로그인 하세요</li>
+          </ul>
+        </div>
         
-       </header>
-     </nav>
-   </main>
-
-</head>
-<div id="toggle"><div id="includedContent"></div></div>
-<script>
+        <div class = headerHamburgerBtn id="nav-icon1">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  <div id="toggle"><div id="includedContent"></div></div>
+  <script>
 $("#nav-icon1").click(function() {
 $( "#toggle" ).toggle( "right" );
 });
 </script>
 </body>
+
 </html>
