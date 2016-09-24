@@ -11,15 +11,20 @@
   right: 0px;
   bottom : 0px;
   float: right;
-  background-color: rgba(166, 166, 166, 0.6);
-  width : 300px;
   z-index: 100;
+  width : 300px;
+
 }
 
+.login_Page{
+  width : 300px;
+  height: 100%;
+  background-color: rgba(166, 166, 166, 0.6);
+  position : fixed;
+}
 .loginInfo {
   width: 200px; 
   margin: 50px 50px; 
-  position: absolute;
 }
 .loginInfo_IdPw {
   width: 173px; 
@@ -81,10 +86,10 @@
 </head>
 <body>
   <div class = "userStatus_Page_Wrap">
-      <div class=login_page>
+      <div class="login_Page">
       <div class="loginInfo">
         <div class="loginInfo_IdPw" id="input_id">
-          <input name=id type=text placeholder="아이디">
+          <input name=id type=text placeholder="test@gmail.com">
         </div>
         <div class="loginInfo_IdPw" id="input_pw">
           <input name=password type=password placeholder="비밀번호">
@@ -92,7 +97,7 @@
         <button class="login_Button" href="#">로 그 인</button>
         <button id="facebook_login" href="#">페이스북으로 로그인</button>
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
-        <p id="sign_up"><a href="#">회원가입</a></p>
+        <p id="sign_up"><a href="./membership/membership.html">회원가입</a></p>
       </div>
     </div>
   </div>

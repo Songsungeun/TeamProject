@@ -206,15 +206,13 @@ overflow: hidden;
     float : right;
   }
   </style>
-  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script src="jquery.js"></script> 
     <script> 
     $(function(){
-      $("#includedContent").load("userStatus_Page.html"); 
+      $("#userInfo_sideMenu").load("/TeamProject/userStatus_Page.html"); 
     });
     </script> 
 </head>
+
 <body>
   <div class = header_Main_Background>
     <div id = header_Background>
@@ -233,7 +231,7 @@ overflow: hidden;
         
           <div class="seachBar">
             <input name=search type=text placeholder="검색어를 입력하세요">
-              <a class="searchButton" href="#"><img src="searchbutton.png" width="25"/>
+              <a class="searchButton" href="#"><img src="/TeamProject/searchbutton.png" width="25"/>
               </a>
           </div> 
         <div id="confirmLogin">
@@ -251,7 +249,7 @@ overflow: hidden;
     
     </div>
   </div>
-  <div id="toggle"><div id="includedContent"></div></div>
+  <div id="toggle"><div id="userInfo_sideMenu"></div></div>
   <script>
 $("#nav-icon1").click(function() {
 $( "#toggle" ).toggle( "right" );
