@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>꿀팁 팩토리</title>
+<style>
+  @charset "utf-8";
+/*reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+input,textarea,select,button,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
+ul,ol,li{list-style:none;}
+a{text-decoration:none; color:inherit;}
+a:hover, a:focus{text-decoration:underline;}
+fieldset{margin:0; padding:0; border:none;} 
+caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
+table{display: table;}
+caption{display: table-caption;}
+colgroup{display: table-column-group;}
+col{display: table-column;}
+thead{display: table-header-group;}
+tbody{display: table-row-group;}
+tfoot{display: table-footer-group;}
+tr{display: table-row;}
+td, th{display: table-cell;}
+ul:after{content:" ";display:block;clear:both;}
+body{ font-family:"arial", sans-serif; font-size:12px;}
+<!-- Bootstrap core CSS -->
+    <link href="../lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../lib/bootstrap-3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../lib/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../lib/bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../lib/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+</script>
+
+
+  body {
+    background-color: #f1f1f2;
+  }
+  #write_header {
+    border: 1px solid #cccccc;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: white;
+  }
+  #body_wrap {
+    border: 1px solid #ededed;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+    height: 600px;
+  }
+  
+  .write_wrap .write_area{
+    margin-top: 10px;
+  }
+  
+  .write_dropdown {
+    float: left;
+  }
+    
+  .placeholder_box {position:relative; margin:15px 10px;}
+  .placeholder_box label {color:#999; position:absolute; top:13px; left:15px; font-size:12px; cursor:text;}
+  .placeholder_box input[type="text"] {border:1px solid #ededed; height:40px; width:500px; padding:13px 15px; box-sizing:border-box;}
+/* dev css */
+  .tag_list_lyr._hide {display:none;}
+  .tag_list_lyr li a {cursor:pointer;}
+  .tag_list_lyr ._selected {font-weight:bold;}
+  
+  .category_popup_layer {
+  position:absolute; 
+  border:double; 
+  top:100px; 
+  left:100px; 
+  width:100px; 
+  height:100px; 
+  z-index:1; 
+  visibility:hidden; 
+  background-color:white; 
+  }
+  .write_wrap .write_title {
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+<header id="write_header">
+<iframe src="../header.html" width="100%"></iframe>
+</header>
+
+<div class="container theme-showcase" role="main" id="body_wrap">
+  <form class="write_wrap">
+  <p class="write_title"><b><i>팁을 작성하세요.</i></b></p>
+    <fieldset class="write_top">
+      <div class="placeholder_box">
+      <label for="placeholder">Link URL</label>
+      <input type="text" id="placeholder" name="placeholdername"/>
+    </div>
+    <div class="placeholder_box">
+      <label for="placeholder2">Title</label>
+      <input type="text" id="placeholder2" name="placeholderage"/>
+    </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script> 
+  jQuery(document).ready(function() {
+	  var placeholderTarget = $(".placeholder_box input[type=text]");
+	  
+	  placeholderTarget.focus(function() {
+		  $(this).siblings("label").fadeOut("fast");
+	  });
+	  
+	  placeholderTarget.focusout(function(){
+		  if($(this).val() == "") {
+			  $(this).siblings("label").fadeIn("fast");
+		  }
+	  });
+  });
+  </script>   
+    </fieldset>
+    <!-- 
+    <div class="page-header">
+      </div>
+      <div class="write_dropdown">
+        <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 카테고리 <span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <select id="category">
+            <option value="life">라이프</option>
+            <option value="sports">스포츠</option>
+            <option value="car">차</option>
+            <option value="game">게임</option>
+            <option value="entertaiment">TV/연예</option>
+            <option value="music">음악</option>
+            <option value="movie">영화</option>
+            <option value="int">지식/교양</option>
+            <option value="couple">연애</option>
+            <option value="etc">기타</option>
+          </select>
+        </ul>
+      </div>
+       -->
+    
+    <div class="write_area">
+      <script type="text/javascript" src="../lib/se2/js/HuskyEZCreator.js" charset="utf-8"></script>  
+      
+      <textarea name="content" id="content" rows="10" cols="800" style='width:100%;'></textarea>
+      <script type="text/javascript">
+      var oEditors = [];
+      nhn.husky.EZCreator.createInIFrame({
+      oAppRef: oEditors,
+      elPlaceHolder: "content",
+      sSkinURI: "../lib/se2/SmartEditor2Skin.html",
+      fCreator: "createSEditor2"
+      });
+      </script> 
+    </div>
+
+    <ul class="post" id="writeInfoArea">
+    <li id="directoryArea" class="write_atheroma">
+          <label><Strong>주제분류</Strong> <a href="#" target="_blank" class="_openHelpDirectoryWin _returnFalse"><img src="http://blogimgs.naver.net/nblog/mylog/post/btn_help2.gif" width="14" height="15" alt="도움말" class="help02"></a></label>
+    </li>
+    <li id="tagArea" class="tag_area">
+      <label for="tagList"><Strong>태그달기</Strong></label>
+      <div>
+        
+        <textarea id="tagList" name="post.tag.names" rows="1" cols="60" class="box_input" placeholder="태그와 태그는 쉼표로 구분하며, 10개까지 입력하실 수 있습니다." maxlength="6000" style="overflow: hidden; line-height: 14px; height: 16px; resize: none;"></textarea>
+        <span>
+          <a style= margin-top:0px; href="#" class="showTag _returnFalse"><img id="sp_tag_list_btn" src="http://blogimgs.naver.net/nblog/mylog/post/btn_mytag_s2.gif" width="70" height="22" alt="나의 태그" class="mytag"></a>
+        </span>
+      </div>
+
+    </li>
+    <li id="settingArea" class="setting">
+      <div>
+        <p class="first-child">
+        
+        <input type="radio" id="set_open" class="chk openType" value="2" name="openType"><label for="set_open">전체공개</label>
+        <input type="radio" id="set_solo" class="chk openType" value="1" name="openType"><label for="set_solo">팔로워공개</label>
+        <input type="radio" id="set_close" class="chk openType" value="0" name="openType"><label for="set_close">비공개</label>
+        </p>
+        
+        <input type="checkbox" id="set_comment" class="chk setInfo"><label for="set_comment">댓글허용</label>
+        <input type="checkbox" id="set_search" class="chk setInfo"><label for="set_search">검색허용</label>
+      </div>
+
+      <!-- SNS 설정 -->
+      <div class="set_sns">
+        <p class="sel_sns">
+                    <input type="checkbox" id="set_facebook" class="chk setInfo"><label for="set_facebook"><span class="ic_fb"></span>페이스북</label>
+                    <input type="checkbox" id="set_twitter" class="chk setInfo"><label for="set_twitter"><span class="ic_tw"></span>트위터</label>
+                    <span class="mr_tx">에 함께 등록
+                        <a href="#" class="_snsHelpLayer _returnFalse"><img src="http://blogimgs.naver.net/nblog/mylog/post/btn_help2.gif" width="14" height="15" alt="도움말" class="help03"></a>
+                    </span>
+        </p>
+      </div>
+            <!-- //SNS 설정 -->
+      
+    </li>
+
+    
+    <li>
+      <div class="chk_user_default"><input type="checkbox" class="chk" id="isContinueSaved" value="" name=""><label for="isContinueSaved">이 설정을 기본값으로 유지</label></div>
+    </li>
+    
+
+  </ul>
+  </form>
+</div>
+</body>
+</html>

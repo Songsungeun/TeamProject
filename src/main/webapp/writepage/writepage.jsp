@@ -62,7 +62,7 @@
 </head>
 <body>
 <header id="write_header">
-  헤더 영역
+<jsp:include page="/Header.jsp"></jsp:include>
 </header>
 
 <div id="body_wrap">
