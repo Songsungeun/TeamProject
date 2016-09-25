@@ -251,10 +251,21 @@ overflow: hidden;
   </div>
   <div id="toggle"><div id="userInfo_sideMenu"></div></div>
   <script>
+  var sideMenu = document.getElementById('userInfo_sideMenu');
+
+  if(sideMenu.style.display != 'none') {
+	  sideMenu.style.display = 'none';
+	}
+
 $("#nav-icon1").click(function() {
-$( "#toggle" ).toggle( "right" );
+	if(sideMenu.style.display == 'none') {
+	    sideMenu.style.display = '';
+	} else {
+		$( "#toggle" ).toggle( "right" );
+	}
 });
 </script>
+
 </body>
 
 </html>
