@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,24 +95,34 @@ li .inner {
 .category .category_list {
   width: 800px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .category_list .category_inner {
-  width: 260px;
+  padding: 10px 0 10px 0;
+  width: 256px;
   float: left;
-  background-color: white;
   margin: 0 3.1px;
   text-align: center;
-  padding: 10px 0 10px 0;
-  font-size: 20px;
+  font-size: 30px;
+  border: 2px solid #919292;
+  border-radius: 10px;
+  text-decoration: none;
 }
 .category {
   margin: 0 0 10px 0;
   height: 43px;
+  overflow: hidden;
 }
 </style>
+<script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+<script> 
+    $(function(){
+      $("#includedContent").load("../header.html"); 
+    });
+    </script> 
 </head>
 <body>
-<jsp:include page="../header.html"></jsp:include>
+<div id="includedContent"></div>
 <div class="main_section">
   <div class="mainpage_wrap">
     <div class="mainpage_Topcontainer">
