@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -47,164 +46,79 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
-body {
+
+#DetailPage_Wrap {
   margin:0; 
   padding:0; 
-  background-color: #f1f1f1; 
-  padding-top: 50px;
- }
-
- #HoneyAdmin_Wrap {
-  position : fixed;
-  width  : 1024px;
-  height : 768x;
-  left : 150px;
-  margin : 0 auto;
 }
 
-#Left_Menu {
-  position: fixed;
-  width: 150px;
-  height: 400px;
-  top: 50px;
-  left: 150px;
-}
-
-#l1 {
-  position: fixed; 
-  width: 100px;
-  height: 100px;
-}
-
-#Left_Menu > #l2  {
-  text-align: center;
-  font-size: 12px;
-}
-
- #Center_Menu{
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-}
-
- #admin_detail{
-  position: fixed;
-  width: 1127px;
-  height: 820px;
-  left : 303px;
-}
-
- #headeradress {
-  top: 50px;
-  height: 100px;
-  width:  100px;
- }
-
-#amBtn1 {
- position : fixed;
- padding: 5px 14px 5px 14px;
-  left : 153px;
-  
-}
-
-#amBtn2 {
-position : fixed;
- padding: 5px 14px 5px 14px; 
- left : 153px;
- top: 267px;
-}
-
-#amBtn3 {
-position : fixed;
- padding: 5px 20px 5px 20px;
-  left : 153px;
- top:300px; 
-}
-
-#adminProfilePhoto {
- position : fixed;
- width : 100px;
- height : 20px;
- text-align: center;
-}
-
-#detail_inner{
+#tabstest1 {
   position: fixed;
   width: 800px;
-  height: 768px;
-  left: 252px;
-  top : 50px;
-}
-
-#adminUserIdInfo {
-  position: fixed;
-  width: 100px;
-  height: 20px;
-  left : 150px;
-  text-align: center;
-  font-size: 14px;
+  height: 768px; 
 }
 
 </style>
 </head>
   
 <body>
-  <header>
-   <div id = "includedContent"></div>
-  </header>
-    
-  <section id = "HoneyAdmin_Wrap">
-    <div id = "Center_Menu">
-      <div id = "Left_Menu">
-         <p><ol id = l1>
-           <p> <img src="../adminpage/images/photo01.jpeg" width="100%"></p>
-           <a id = adminUserIdInfo>USER ID</a><br>
-           
-           <br><button type="button" id="amBtn1" class="btn btn-default">프로필 편집</button>
-           <button type="button" id="amBtn2" class="btn btn-default">보관소 관리</button>
-           <button type="button" id="amBtn3" class="btn btn-default">알림 관리</button>
-          </ol> 
-        </div>
-        
-          <div id="admin_detail"> 
-            <ul id="detail_inner">
-            
-            </ul>
-         </div>
-         
+    <section id = "DetailPage_Wrap">
+      <div id="DetailPage_main">
+	      <ul>
+	          <li><a href="#tabs-1">클라우드 관리</a></li>
+	          <li><a href="#tabs-2">꿀팁 관리</a></li>
+	      </ul>
+	         <div id="tabs-1">
+	         
+	         </div>
+	         
+	         <div id="tabs-2">
+	         
+	         </div>
+	         
       </div>
-        
     </section>
      
-    <footer>
-
-    </footer>
-  
+	  <script>
+	    $( function() {
+	      $( "#DetailPage_Wrap" ).tabs();
+	   } );
+	  </script>
   
    <script> 
-    $(function(){
-      $("#includedContent").load("../header.html"); 
-    });
-    </script>
-  
-    <script> 
-    document.querySelector("#amBtn1").onclick = (function(){
-      $("#admin_detail > ul").load("UserProfileAdminPage.html"); 
-    });
-   </script>
-   
-    <script> 
-    document.querySelector("#amBtn2").onclick = (function(){
-      $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
-    });
-   </script>
-   
-     <script> 
-    document.querySelector("#amBtn3").onclick = (function(){
-      $("#admin_detail > ul").load("UserNoticeAdminPage.html"); 
+    document.querySelector("#tabstest1").onclick = (function(){
+      $("#DetailPage_main > #tabs-2").load("index.html"); 
     });
    </script>
 
+	<script type="text/javascript">
+		document.querySelector("#tabs-2").onclick = function(event) {
+		  var xhr = new XMLHttpRequest();
+		  xhr.onreadystatechange = function(result) {
+		    if (xhr.readyState != 4)
+		      return;
+		    
+		    if (xhr.status != 200) {
+		      alert("서버에 잘못 요청했습니다.")
+		      return;
+		    }
+		    
+		    var arr = JSON.parse(xhr.responseText)
+		    
+		    var ulTag = document.querySelector("#contents > ul")
+		    var li;
+		    for (var i in arr) {
+		      li = document.createElement("li") // 태그 객체 생성
+		      li.innerHTML = arr[i]             // 태그 객체에 콘텐츠 저장
+		      ulTag.appendChild(li)             // li 태그 객체를 ul의 자식 태그로 붙인다.
+		    }
+		    
+		  }
+		  xhr.open("GET", "../file-browser/index.html", true)
+		  xhr.send() 
+		}
+	</script>
+  
 </body>
 </html>
 
