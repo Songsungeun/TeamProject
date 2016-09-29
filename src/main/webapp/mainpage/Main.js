@@ -40,6 +40,16 @@ $(document).ready(function(){
 		$("#includedContent").load("/TeamProject/header.html");
 	});
 	
+	// pop_list
+	$(function () {
+		//$("#tabs").tabs();
+		$("#pop_tabs >ul >li >a").click(function(){
+			$("#pop_tabs >ul >li >a").removeClass("on1");
+			$("#pop_tabs .pop_cont_in").css({"display":"none"});
+			$(this).addClass("on1");
+			$("#pop_tabs #pop_tabs-"+($("#pop_tabs >ul >li >a").index(this)+1)).css({"display":"block"});
+		});
+	});
 
 	
 	
