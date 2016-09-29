@@ -186,12 +186,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 .tabs-1-contents {
   padding-top: 5px;
 }
-.tabs-2-contents {
-  padding-top: 5px;
-}
-.tabs-3-contents {
-  padding-top: 5px;
-}
 .tabs-1-contents li {
   background-color: green;
   width: 25%;
@@ -211,7 +205,9 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   text-align: center;
   padding: 10px;
 }
-
+.tabs-2-contents {
+  padding-top: 5px;
+}
 .tabs-2-contents li {
   background-color: green;
   width: 25%;
@@ -222,16 +218,18 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   width: 240px;
   heigth: 200px;
   background-color: orange;
-  margin: 0 8px;
+  margin: 0 7.75px;
 }
 .tabs-2-contents li a p {
-  width: 240px;
+  width: 220px;
   margin: 0 auto;
   background-color: skyblue;
   text-align: center;
   padding: 10px;
 }
-
+.tabs-3-contents {
+  padding-top: 5px;
+}
 .tabs-3-contents li {
   background-color: green;
   width: 25%;
@@ -242,10 +240,10 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   width: 240px;
   heigth: 200px;
   background-color: #ff00ff;
-  margin: 0 8px;
+  margin: 0 7.75px;
 }
 .tabs-3-contents li a p {
-  width: 240px;
+  width: 220px;
   margin: 0 auto;
   background-color: skyblue;
   text-align: center;

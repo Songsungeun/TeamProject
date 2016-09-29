@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 프론트 컨트롤러에서는 오직 페이지 컨트롤러와 웹 관련 객체만 관리한다 -->
-    <context:component-scan base-package="example.controller.json"/>     
+    <context:component-scan base-package="honey.controller.json"/>     
     
     <mvc:annotation-driven/>
     

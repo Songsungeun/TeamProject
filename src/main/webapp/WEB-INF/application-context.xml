@@ -9,8 +9,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-<!-- 
-    <context:component-scan base-package="example">     
+    <context:component-scan base-package="honey">     
       <context:exclude-filter type="annotation"
         expression="org.springframework.stereotype.Controller"/>
     </context:component-scan> 
@@ -28,11 +27,10 @@
     <property name="dataSource" ref="dataSource" />
     <property name="mapperLocations" 
               value="classpath*:sql/*Mapper.xml" />
-    <property name="typeAliasesPackage" value="example.vo" />
+    <property name="typeAliasesPackage" value="honey.vo" />
   </bean>
           
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    <property name="basePackage" value="example.dao" />
+    <property name="basePackage" value="honey.dao" />
   </bean>  
-   -->      
 </beans>
