@@ -5,11 +5,11 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1"
   metadata-complete="false">
-  
+
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/application-context.xml</param-value>
-    <!-- <param-value>classpath:conf/application-context.xml</param-value> -->
+    <!-- <param-value>classpasth:conf/application-context.xml</param-value> -->
   </context-param>
   
   <listener>
@@ -19,47 +19,51 @@
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
+    <init-param> 
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
   
-   
   <filter-mapping>
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>*</url-pattern>
   </filter-mapping>
   
-  <!--  *.do 요청을 처리할 프런트 컨트롤러 등록 -->
-   <servlet>
+  <!-- *.do 요청을 처리할 프런트 컨트롤러 등록 -->
+  <servlet>
     <servlet-name>dispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
-    </init-param>
-     -->
+    <!-- 만약 DispatcherServlet이 사용할 설정파일을 다음 규칙에 따라 만든다면,  
+         init-param로 지정할 필요가 없다.
+         규칙: /WEB-INF/서블릿별명-servlet.xml  -->
+    <!--  
+    <init-param> 
+      <param-name>contextConfigLocation</param-name> 
+      <param-value>/WEB-INF/dispatcher-servlet.xml</param-value> 
+    </init-param> 
+    -->
     <load-on-startup>1</load-on-startup>
   </servlet>
+
   <servlet-mapping>
-      <servlet-name>dispatcher</servlet-name>
-      <url-pattern>*.do</url-pattern>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
-  <!--  *.json 요청을 처리할 프런트 컨트롤러 등록 -->
+    <!-- *.json 요청을 처리할 프런트 컨트롤러 등록 -->
   <servlet>
     <servlet-name>json</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>2</load-on-startup>
   </servlet>
-  
+
   <servlet-mapping>
-      <servlet-name>json</servlet-name>
-      <url-pattern>*.json</url-pattern>
+    <servlet-name>json</servlet-name>
+    <url-pattern>*.json</url-pattern>
   </servlet-mapping>
   
+
 </web-app>
 
 

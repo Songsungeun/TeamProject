@@ -120,8 +120,10 @@ li .inner {
       $("#includedContent").load("../header.html"); 
     });
     </script> 
+    
+    
 </head>
-<body>
+<body onload ="ajaxBoardList();">
 <div id="includedContent"></div>
 <div class="main_section">
   <div class="mainpage_wrap">
@@ -141,101 +143,7 @@ li .inner {
       </div>  
       <ul class="Botcontainer_list">
         <li>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
-              </div>
-              <span class="in">테스트 수지1<br>테스트 수지1
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
-              </div>
-              <span class="in">테스트 수지2<br>테스트 수지2
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
-              </div>
-              <span class="in">테스트 수지3<br>테스트 수지3
-              </span>
-            </a>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
-              </div>
-              <span class="in">테스트 수지2<br>테스트 수지2
-              </span>
-            </a>
-          </div> 
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
-              </div>
-              <span class="in">테스트 수지1<br>테스트 수지1
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
-              </div>
-              <span class="in">테스트 수지3<br>테스트 수지3
-              </span>
-            </a>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지2테스트 수지2">
-              </div>
-              <span class="in">테스트 수지2<br>테스트 수지2
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
-              </div>
-              <span class="in">테스트 수지1<br>테스트 수지1
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
-              </div>
-              <span class="in">테스트 수지2<br>테스트 수지2
-              </span>
-            </a>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg" alt="테스트 수지3테스트 수지3">
-              </div>
-              <span class="in">테스트 수지3<br>테스트 수지3
-              </span>
-            </a>
-          </div>
-          <div class="inner">
-            <a href="#">
-              <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="테스트 수지2테스트 수지2">
-              </div>
-              <span class="in">테스트 수지2<br>테스트 수지2
-              </span>
-            </a>
-          </div>
-          <div class="inner">
+        <div class="inner">
             <a href="#">
               <div class="img"><img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="테스트 수지1테스트 수지1">
               </div>
@@ -244,9 +152,61 @@ li .inner {
             </a>
           </div>
         </li>
+                  <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>조회수</th>
+              </tr>
+              </thead>
+              <tbody></tbody>
       </ul>
     </div>
   </div>
 </div>
+
+<script>
+ajaxBoardList() // 게시물 목록 가져오기
+		
+function ajaxBoardList() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4)
+      return;
+    
+    if (xhr.status != 200) {
+      alert("서버에 잘못 요청했습니다.")
+      return;
+    }
+    
+    var result = JSON.parse(xhr.responseText)
+    
+    if (result.state != "success") {
+      alert("서버에서 데이터를 가져오는데 실패하였습니다.")
+      return
+    }
+    
+    var contents = ""
+    var arr = result.data
+    for (var i in arr) {
+    	contents += "<tr>" + "<td>" + arr[i].boardNo + "</td>" +                      
+					      	"<td>"  + arr[i].memberNo + "</td>" +
+					        "<td>"  + arr[i].categoryNo + "</td>" +
+					        "<td>" + arr[i].title + "</td>" +
+					        "<td>" + arr[i].URL+ "</td>" +
+									"<td>" + arr[i].createdDate + "</td>" +
+									"<td>" + arr[i].likeCount + "</td>" + 
+									"<td>" + arr[i].viewCount + "</td>" + 
+									"</tr>"
+    }
+    document.querySelectorAll("tbody").textContent = contents;
+  }  
+  xhr.open("GET", "../honey/list.json", true)
+  xhr.send() 
+}
+
+</script>
+
 </body>
 </html>

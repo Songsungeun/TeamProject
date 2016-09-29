@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="honey.dao.HoneyBoardDao">
+  <resultMap type="HoneyBoard" id="boardMap">
+    <id column="BD_NO"       property="boardNo"/> 
+    <result column="MB_NO"   property="memberNo"/>
+    <result column="CT_NO"   property="categoryNo"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="BD_CRE"  property="createdDate"/>
+  </resultMap>
+  
+  <select id="selectList" resultMap="boardMap" parameterType="map">
+    select BD_NO, MB_NO, CT_NO, BD_TITL, URL, BD_CONTS, 
+           BD_CRE, BD_LIKE, VIEW_CT
+    from honey_boards
+  </select>
+ 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
