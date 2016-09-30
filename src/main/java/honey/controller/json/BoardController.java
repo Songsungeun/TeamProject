@@ -25,7 +25,7 @@ public class BoardController {
   @ResponseBody
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int length) throws Exception {
+      @RequestParam(defaultValue="4") int length) throws Exception {
     
     HashMap<String,Object> result = new HashMap<>();
     try {
