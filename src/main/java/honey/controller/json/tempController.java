@@ -19,7 +19,7 @@ import honey.dao.tempDao;
 import honey.vo.honey_boards;
 
 @Controller
-@RequestMapping("/honey/")
+@RequestMapping("/mainpage/")
 public class tempController {
   @Autowired tempDao tempdao;
   

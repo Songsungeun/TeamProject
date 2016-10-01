@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneyMembersDao">
-  <resultMap type="HoneyBoards" id="memberMap">
+  <resultMap type="HoneyMembers" id="memberMap">
     <id column="MB_NO" property="memberNo"/> 
     <result column="EMAIL" property="email"/>
     <result column="MB_NICK" property="nickname"/>
@@ -13,7 +13,7 @@
     <result column="PWD" property="password"/>
   </resultMap>
   
-  <insert id="insert" parameterType="HoneyBoards">
+  <insert id="insert" parameterType="HoneyMembers">
     insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
     values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
   </insert>
