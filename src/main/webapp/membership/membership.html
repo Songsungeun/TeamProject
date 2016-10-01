@@ -111,8 +111,6 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	-webkit-padding-end: 20px;
 	-webkit-padding-start: 2px;
 	-webkit-user-select: none;
-	background-image: url(images/select-arrow.png),
-		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
 	background-position: center right;
 	background-repeat: no-repeat;
 	border: 0px solid #FFF;
@@ -156,13 +154,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	background-color: #2a78f6;
 }
 </style>
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
-  <script> 
-  $(function(){
-    $("#includedContent").load("../header.html"); 
-  });
-  </script> 
+
 
 </head>
 <body>
@@ -182,22 +174,22 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 					<label for="email">Email</label>
 				</p>
 				<input id="email" name="email" placeholder="example@domain.com"
-					required="" type="email">
+					required="" tabindex="2" type="email">
 
 				<p class="contact">
 					<label for="username">Create a username</label>
 				</p>
-				<input id="username" name="username" placeholder="username"
-					required="" tabindex="2" type="text">
+				<input id="nickname" name="username" placeholder="nickname"
+					required="" tabindex="3" type="text">
 
 				<p class="contact">
 					<label for="password">Create a password</label>
 				</p>
-				<input type="password" id="password" name="password" required="">
+				<input type="password" id="password" name="password" required="" tabindex="4">
 				<p class="contact">
 					<label for="repassword">Confirm your password</label>
 				</p>
-				<input type="password" id="repassword" name="repassword" required="">
+				<input type="password" id="repassword" name="repassword" required="" tabindex="5">
 
 				<fieldset>
 					<label>Birthday</label> <label class="month"> <select
@@ -214,30 +206,35 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 							<option value="09">September</option>
 							<option value="10">October</option>
 							<option value="11">November</option>
-							<option value="12">December</option></label> </select> <label>Day<input
-						class="birthday" maxlength="2" name="BirthDay" placeholder="Day"
-						required=""></label> <label>Year <input class="birthyear"
-						maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
+							<option value="12">December</option></label> </select> 
+							<label>Day<input class="birthday" maxlength="2" name="BirthDay" placeholder="Day"
+						required="" tabindex="6"></label> 
+						<label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required="" tabindex="7"></label>
 				</fieldset>
 
-				<select class="select-style gender" name="gender">
-					<option value="select">i am..</option>
-					<option value="m">Male</option>
-					<option value="f">Female</option>
-					<option value="others">Other</option>
-				</select><br>
 				<br>
 
 				<p class="contact">
 					<label for="phone">Mobile phone</label>
 				</p>
-				<input id="phone" name="phone" placeholder="phone number"
-					required="" type="text"> <br> <input class="buttom"
-					name="submit" id="submit" tabindex="5" value="Sign me up!"
+				<input id="phone" name="phone" placeholder="phone number" required="" tabindex="8" type="text"> <br> <input class="buttom"
+					name="submit" id="submitMember" tabindex="8" value="Sign me up!"
 					type="submit">
 			</form>
 		</div>
 	</div>
 </div>
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
+<script src="membership.js"></script> 
+
+  <script> 
+  $(function(){
+    $("#includedContent").load("../header.html"); 
+  });
+  </script> 
+  
+  
 </body>
 </html>
