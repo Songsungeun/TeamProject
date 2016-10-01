@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyMembersDao">
+  <resultMap type="HoneyBoards" id="memberMap">
+    <id column="MB_NO" property="memberNo"/> 
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NICK" property="nickname"/>
+    <result column="MB_NM" property="userName"/>
+    <result column="TEL" property="phone"/>
+    <result column="BIRTH" property="userBirthDay"/>
+    <result column="PWD" property="password"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="HoneyBoards">
+    insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
+    values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
+  </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
