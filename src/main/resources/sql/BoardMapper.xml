@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.tempDao">
+
+<!--   <resultMap type="honey_boards" id="hn_boardMap"> -->
+<!--     <id column="BD_NO" property="no"/>  -->
+<!--     <result column="BD_TITL" property="title"/> -->
+<!--     <result column="BD_CONTS" property="contents"/> -->
+<!--     <result column="BD_CRE" property="createdDate"/> -->
+<!--     <result column="BD_LIKE" property="like"/> -->
+<!--     <result column="VIEW_CT" property="viewCount"/> -->
+<!--   </resultMap> -->
+  
+<!--   <select id="selectList" resultMap="hn_boardMap" parameterType="map"> -->
+<!--     select * -->
+<!--     from honey_boards -->
+<!--     <where> -->
+<!--       <if test="title != null">title like concat('%', #{title}, '%')</if> -->
+<!--     </where> -->
+<!--     order by  -->
+<!--     <choose> -->
+<!--       <when test="titleOrder == 'asc'">title asc</when> -->
+<!--       <when test="titleOrder == 'desc'">title desc</when> -->
+<!--       <when test="noOrder == 'asc'">no asc</when> -->
+<!--       <otherwise>no desc</otherwise> -->
+<!--     </choose> -->
+<!--     limit #{startIndex}, #{length} -->
+<!--   </select> -->
+  
+<!--   <select id="selectOne" resultMap="hn_boardMap" parameterType="int"> -->
+<!--     select no,title,url,contents,like,videwCount -->
+<!--     from honey_boards -->
+<!--     where no = #{value} -->
+<!--   </select> -->
+  
+<!--   <insert id="insert" parameterType="honey_boards"> -->
+<!--     insert into boards(bd_no, bd_titl,url,bd_conts, bd_cre, bd_like, view_ct) -->
+<!--     values(#{no}, #{title}, #{url} #{contents}, now(), #{like}, #{viewCount}) -->
+<!--   </insert> -->
+  
+<!--   <update id="update" parameterType="honey_boards"> -->
+<!--     update boards set  -->
+<!--       bd_titl=#{title}, -->
+<!--       url=#{url}, -->
+<!--       bd_conts=#{contents}  -->
+<!--     where bd_titl=#{title} -->
+<!--   </update> -->
+  
+<!--   <delete id="delete" parameterType="int"> -->
+<!--     delete from boards  -->
+<!--     where no=#{value} -->
+<!--   </delete> -->
+
+  <resultMap type="honey_boards" id="boardMap">
+    <id column="BD_NO" property="no"/> 
+    <result column="BD_TITL" property="title"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="URL" property="url"/>
+  </resultMap>
+  
+  <select id="selectList" resultMap="boardMap" parameterType="map">
+    select BD_NO,BD_TITL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT,URL
+    from honey_boards
+  </select>
+</mapper>
