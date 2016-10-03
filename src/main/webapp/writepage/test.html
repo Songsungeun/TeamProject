@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 <title>Insert title here</title>
 <style>
 body {
@@ -80,9 +78,9 @@ $(document).ready(function(){
 	<div id="write_container">
 
 		<form id="writeArea">
-			<input type="text" class="form-control" placeholder="URL"> <input
-				type="text" class="form-control" placeholder="제목">
-			<textarea class="form-control" rows="10" placeholder="내용을 입력하세요."></textarea>
+			<input type="text" id="url" class="form-control" placeholder="URL"> 
+			<input type="text" id="title" class="form-control" placeholder="제목">
+			<textarea class="form-control" id= "contents" rows="10" placeholder="내용을 입력하세요."></textarea>
 			<div class="form-group">
 				<label for="exampleInputFile">File input</label> <input type="file"
 					id="exampleInputFile">
@@ -116,7 +114,8 @@ $(document).ready(function(){
 	<script>
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="writepage.js"></script>

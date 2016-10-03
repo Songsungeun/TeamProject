@@ -63,6 +63,11 @@
     <result column="URL" property="url"/>
   </resultMap>
   
+  <insert id="insert" parameterType="honey_boards">
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
+    values(1, 1, #{title}, #{contents}, #{url}, "2016-10-03 23:59:59")
+  </insert>
+  
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select BD_NO,BD_TITL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT,URL
     from honey_boards
