@@ -1,7 +1,8 @@
 package honey.controller.json;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,7 +16,7 @@ import honey.dao.HoneyMembersDao;
 import honey.vo.HoneyMembers;
 
 @Controller
-@RequestMapping("/membership/")
+@RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
 public class HoneymembersController {
   @Autowired HoneyMembersDao hMembersDao;
   
@@ -36,6 +37,21 @@ public class HoneymembersController {
     }
     
 //    return "redirect:/mainpage/";
+    return new Gson().toJson(result);
+  }
+  
+  @RequestMapping(path="unregister", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String unregister(HttpSession session) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    HoneyMembers member = (HoneyMembers)session.getAttribute("HoneyMembers");
+    try {
+      HashMap<String,Object> paramMap = new HashMap<>();
+      paramMap.put("no", member.getMemberNo());
+    } catch (Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+    }
     return new Gson().toJson(result);
   }
 }

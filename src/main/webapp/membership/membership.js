@@ -22,7 +22,6 @@ function ajaxAddMember(user) {
 		dataType: "json",
 		data: user,
 		success: function (result) {
-			console.log("@@@@@@@@@@@@@@@@@@0")
 			if (result.state != "success") {
 				alert("you fail!")
 				return
@@ -31,10 +30,22 @@ function ajaxAddMember(user) {
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(result) {
-			console.log("@!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@0")
 			console.log(result.state)
 		}
 	})
 	console.log("byebye~")
-	
+}
+
+
+function ajaxDeleteBoard(no, password) {
+	$.getJSON("unregister.json", {
+		no: no,
+	}, function(result) {
+		if (result.state != "success") {
+			alert("회원탈퇴 실패입니다.")
+			return
+		}
+		alert("회원탈퇴 성공입니다.")
+		location.href = "../mainpage/Main.html"
+	})
 }
