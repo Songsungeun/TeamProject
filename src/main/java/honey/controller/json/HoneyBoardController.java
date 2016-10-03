@@ -14,11 +14,11 @@ import honey.dao.tempDao;
 import honey.vo.honey_boards;
 
 @Controller
-@RequestMapping("/writepage/")
+@RequestMapping({"/mainpage/", "/writepage/"})
 public class HoneyBoardController {
   @Autowired tempDao boardDao;
   
-  @RequestMapping(path="add", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="writeadd", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String add(honey_boards board) throws Exception {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.

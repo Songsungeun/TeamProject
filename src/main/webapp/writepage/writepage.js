@@ -12,7 +12,7 @@ $("#submitBoard").click(function(event) {
 });
 
 function ajaxAddBoard(board) {
-	$.post("add.json", board, function(result) {
+	$.post("writeadd.json", board, function(result) {
 		if (result.state != "success") {
 	    	 alert("등록 실패입니다.")
 	    	 return
