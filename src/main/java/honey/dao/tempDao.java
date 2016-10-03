@@ -5,8 +5,6 @@ import java.util.Map;
 
 import honey.vo.honey_boards;
 
-
-
 public interface tempDao {
   List<honey_boards> selectList(Map<String, Object> paramMap) throws Exception;
   

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
@@ -124,7 +124,7 @@ body {
 <body>
 
 
-<h1>게시물 목록조회</h1>
+<h1>꿀팁 리스트</h1>
 <p><button type="button" class="btn btn-primary btn-sm" 
            onclick="location.href='boardForm.html'">새 글</button></p>
 
@@ -191,7 +191,7 @@ function ajaxBoardList() {
  
   }
   
-  xhr.open("GET", "../honey/list.json", true)
+  xhr.open("GET", "../admin/list.json", true)
   xhr.send()
 }
 </script>
