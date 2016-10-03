@@ -18,12 +18,14 @@
 
 .login_Page{
   width : 300px;
+  z-index:1;
   height: 100%;
   background-color: rgba(166, 166, 166, 0.6);
   position : fixed;
 }
 .loginInfo {
   width: 200px; 
+  z-index:2;
   margin: 50px 50px; 
 }
 .loginInfo_IdPw {
@@ -84,8 +86,9 @@
 }
 
 .userStatus{
-
+z-index:2;
 }
+
 #userPhoto {
   margin: 15%;
 }
@@ -96,6 +99,10 @@
   font-size: 25px; 
   font-weight: bold;
   text-align: center;
+}
+
+#logoutBtn {
+  margin: 15%;
 }
 
 </style>
@@ -115,15 +122,20 @@
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
         <p id="sign_up"><a href="../membership/membership.html">회원가입</a></p>
       </div>
-    </div>
-    
-    <div class="userStatus">
+      
+      <div class="userStatus">
       <div id="userPhoto_wrap">
         <img id="userPhoto" width="200px" height="150px" src="../userPhoto.png">
         <span id="userEmail"></span>
-        <a id="logoutBtn" href='#'>로그아웃</a>
+        <br>
+        <br>
+        <a id="logoutBtn" href='#' margin=15%>로그아웃</a>
       </div>
     </div>
+      
+    </div>
+    
+    
     
     
   </div>

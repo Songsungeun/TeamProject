@@ -11,6 +11,11 @@ $("#login_Button").click(function(event) {
   ajaxLogin(user)
 });
 
+$("#logoutBtn").click(function(event) {
+	location.href = "../mainpage/Main.html"
+	ajaxLogout()
+});
+
 function ajaxLogin(user) {
 	$.ajax({
 		url: "login.json",
@@ -39,8 +44,16 @@ function ajaxLoginUser() {
 			return
 		}
 		$('.loginInfo').css("display", "none")
+		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.email);
 	})
+}
+
+function ajaxLogout(user) {
+	$.getJSON("logout.json", function(result) {
+		if (result.state != "success")
+	        console.log("로그아웃 실패입니다.")
+    })
 }
 
 

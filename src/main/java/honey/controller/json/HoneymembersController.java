@@ -1,5 +1,6 @@
 package honey.controller.json;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,14 @@ public class HoneymembersController {
     try {
       hMembersDao.insert(board);
       result.put("state", "success");
+      System.out.println(result);
     } catch (Exception e) {
       e.printStackTrace();
       result.put("state", "fail");
       result.put("data", e.getMessage());
     }
     
+//    return "redirect:/mainpage/";
     return new Gson().toJson(result);
   }
 }

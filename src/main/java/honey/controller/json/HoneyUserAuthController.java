@@ -92,4 +92,19 @@ public class HoneyUserAuthController {
     }
     return new Gson().toJson(result);  
   }
+  
+  @RequestMapping(path="logout", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String logout(HttpSession session, SessionStatus sessionStatus) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+      sessionStatus.setComplete();
+      session.invalidate();
+      result.put("state", "success");
+    } catch (Exception e) {
+      result.put("state", "error");
+      result.put("data", e.getMessage());
+    }
+    return new Gson().toJson(result);   
+  }
 }

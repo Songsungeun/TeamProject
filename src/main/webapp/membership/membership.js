@@ -4,7 +4,7 @@
 $("#submitMember").click(function(event) {
 	var board = {
 			userName: $("#name").val(),
-			email: $("#userEmail").val(),
+			email: $("#user_Email").val(),
 			nickname: $("#nickname").val(),
 			phone: $("#phone").val(),
 			password: $("#userPassword").val()
@@ -22,6 +22,7 @@ function ajaxAddMember(user) {
 		dataType: "json",
 		data: user,
 		success: function (result) {
+			console.log("@@@@@@@@@@@@@@@@@@0")
 			if (result.state != "success") {
 				alert("you fail!")
 				return
@@ -30,6 +31,7 @@ function ajaxAddMember(user) {
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(result) {
+			console.log("@!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@0")
 			console.log(result.state)
 		}
 	})
