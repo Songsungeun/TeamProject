@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 <style>
 
 @charset "utf-8";
 /*reset*/
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
 b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
@@ -64,11 +51,9 @@ body {
 
 #Left_Menu {
   position: fixed;
-  width: 150px;
-  height: 400px;
-  top: 50px;
-  left: 150px;
-}
+  left:250px;
+  top:50px;
+} 
 
 #l1 {
   position: fixed; 
@@ -82,17 +67,20 @@ body {
 }
 
  #Center_Menu{
-  width: 100%;
+  position: fixed; 
+  left: 300px;
+  top : 50px;
+  width: 1024px;
   height: 100%;
   margin: 0 auto;
 }
 
  #admin_detail{
-  position: fixed;
-  width: 1127px;
-  height: 820px;
-  left : 303px;
-}
+  position: absolute;
+  width: 1024px;
+  top:-1px;
+  right:-55px;
+} 
 
  #headeradress {
   top: 50px;
@@ -101,23 +89,19 @@ body {
  }
 
 #amBtn1 {
- position : fixed;
  padding: 5px 14px 5px 14px;
-  left : 153px;
-  
+ left : 153px;
 }
 
 #amBtn2 {
-position : fixed;
  padding: 5px 14px 5px 14px; 
  left : 153px;
  top: 267px;
 }
 
 #amBtn3 {
-position : fixed;
  padding: 5px 20px 5px 20px;
-  left : 153px;
+ left : 153px;
  top:300px; 
 }
 
@@ -128,26 +112,18 @@ position : fixed;
  text-align: center;
 }
 
-#detail_inner{
-  position: fixed;
-  width: 800px;
-  height: 768px;
-  left: 252px;
-  top : 50px;
-}
-
-#adminUserIdInfo {
+ #adminUserIdInfo {
   position: fixed;
   width: 100px;
   height: 20px;
-  left : 150px;
+  left : 250px;
   text-align: center;
   font-size: 14px;
-}
+} 
 
 </style>
 </head>
-  
+
 <body>
   <header>
    <div id = "includedContent"></div>
@@ -155,22 +131,21 @@ position : fixed;
     
   <section id = "HoneyAdmin_Wrap">
     <div id = "Center_Menu">
-      <div id = "Left_Menu">
+     <div id = "Left_Menu">
          <p><ol id = l1>
            <p> <img src="../adminpage/images/photo01.jpeg" width="100%"></p>
            <a id = adminUserIdInfo>USER ID</a><br>
            
-           <br><button type="button" id="amBtn1" class="btn btn-default">프로필 편집</button>
-           <button type="button" id="amBtn2" class="btn btn-default">보관소 관리</button>
+           <br><button type="button" id="amBtn1" class="btn btn-default">보관소 관리</button>
+           <button type="button" id="amBtn2" class="btn btn-default">프로필 편집</button>
            <button type="button" id="amBtn3" class="btn btn-default">알림 관리</button>
           </ol> 
         </div>
-        
-          <div id="admin_detail"> 
+         <label><div id="admin_detail"> 
             <ul id="detail_inner">
             
             </ul>
-         </div>
+         </div></label>
          
       </div>
         
@@ -180,7 +155,9 @@ position : fixed;
 
     </footer>
   
-  
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
    <script> 
     $(function(){
       $("#includedContent").load("../header.html"); 
@@ -189,19 +166,19 @@ position : fixed;
     
      <script> 
     $(function(){
-        $("#admin_detail > ul").load("UserProfileAdminPage.html"); 
+        $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
     });
     </script>
-  
+   
     <script> 
     document.querySelector("#amBtn1").onclick = (function(){
-      $("#admin_detail > ul").load("UserProfileAdminPage.html"); 
+        $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
     });
    </script>
    
     <script> 
     document.querySelector("#amBtn2").onclick = (function(){
-      $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
+      $("#admin_detail > ul").load("UserProfileAdminPage.html"); 
     });
    </script>
    
@@ -210,6 +187,8 @@ position : fixed;
       $("#admin_detail > ul").load("UserNoticeAdminPage.html"); 
     });
    </script>
+
+ 
 
 </body>
 </html>

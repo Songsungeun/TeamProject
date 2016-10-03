@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<style>
+/*reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer,
+	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+input, textarea, select, button, table {
+	font-size: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	-webkit-text-size-adjust: none;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+caption, legend {
+	position: absolute;
+	top: -5000px;
+	text-indent: -5000px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+}
+
+img {
+	vertical-align: middle;
+}
+
+table {
+	display: table;
+}
+
+caption {
+	display: table-caption;
+}
+
+colgroup {
+	display: table-column-group;
+}
+
+col {
+	display: table-column;
+}
+
+thead {
+	display: table-header-group;
+}
+
+tbody {
+	display: table-row-group;
+}
+
+tfoot {
+	display: table-footer-group;
+}
+
+tr {
+	display: table-row;
+}
+
+td, th {
+	display: table-cell;
+}
+
+ul:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+body {
+	font-family: "arial", sans-serif;
+	font-size: 12px;
+}
+/*reset*/
+
+
+
+
+</style>
+
+</head>
+<body>
+
+
+<h1>게시물 목록조회</h1>
+<p><button type="button" class="btn btn-primary btn-sm" 
+           onclick="location.href='boardForm.html'">새 글</button></p>
+
+<table id="boardTable" class="table table-hover">
+<thead>
+<tr>
+  <th>번호</th>
+  <th>제목</th>
+  <th>등록일</th>
+  <th>조회수</th>
+  <th>좋아요</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+      
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script> 
+ajaxBoardList()
+
+function ajaxBoardList() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4)
+      return;
+    
+    if (xhr.status != 200) {
+      alert("서버에 잘못 요청했습니다.")
+      return;
+    }
+    var result = JSON.parse(xhr.responseText)
+    
+    if (result.state != "success") {
+      alert("서버에서 데이터를 가져오는데 실패하였습니다.")
+      return
+    }
+    
+    
+    var contents = "";
+    var arr = result.data
+    for (var i in arr) {
+    	  contents += "<tr>" +
+          "<td>" + arr[i].boardNo + "</td>" + 
+          "<td>" + arr[i].title + "</td>" +
+          "<td>" + arr[i].createdDate + "</td>" +
+          "<td>" + arr[i].likeCount + "</td>" + 
+          "<td>" + arr[i].viewCount + "</td>" +
+          "</tr>"
+    }
+    
+    document.querySelector("#boardTable tbody").innerHTML = contents;
+  
+    /*  document.querySelector("#tabs-1 ul").innerHTML = contents;
+    var aTags = document.querySelectorAll(".titleLink")
+    for (var i = 0; i < aTags.length; i++) {
+      aTags[i].onclick = function(event) {
+        //alert(this.getAttribute("data-no"))
+        window.location.href = "BoardDetail.html?no=" + this.getAttribute("data-no")
+      }
+    } */
+ 
+  }
+  
+  xhr.open("GET", "../honey/list.json", true)
+  xhr.send()
+}
+</script>
+
+</body>
+</html>

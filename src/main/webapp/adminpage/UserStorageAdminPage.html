@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,8 +11,6 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 
 @charset "utf-8";
@@ -64,70 +58,46 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 <body>
     <section id = "DetailPage_Wrap">
       <div id="DetailPage_main">
-	      <ul>
-	          <li><a href="#tabs-1">클라우드 관리</a></li>
-	          <li><a href="#tabs-2">꿀팁 관리</a></li>
-	      </ul>
-	         <div id="tabs-1">
-	         
-	         </div>
-	         
-	         <div id="tabs-2">
-	         
-	         </div>
-	         
+        <ul>
+            <li><a href="#tabs-1">꿀팁 관리</a></li>
+            <li><a href="#tabs-2">클라우드 관리</a></li>
+        </ul>
+           <div id="stabs-1">
+           
+           </div>
+           
+           <div id="stabs-2">
+           
+           </div>
+           
       </div>
     </section>
-     
-	  <script>
-	    $( function() {
-	      $( "#DetailPage_Wrap" ).tabs();
-	   } );
-	  </script>
-  
-   <script> 
-    document.querySelector("#tabstest1").onclick = (function(){
-      $("#DetailPage_main > #tabs-2").load("index.html"); 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+   <script>
+      $( function() {
+        $( "#DetailPage_Wrap" ).tabs();
+     } );
+    </script>
+
+   <script>
+      $(function() {
+        $("#stabs-1").load("UserStorageAdminDetailPage1.html");
+      });
+    </script> 
+    
+    
+    <script> 
+      $("#upBtn1").click(function(event)){
+        $("#stabs-1").load("UserStorageAdminDetailPage1.html"); 
+      });
+    </script>
+   
+    <script> 
+    document.querySelector("#upBtn2").onclick = (function(){
+      $("#stabs-2").load("UserStorageAdminDetailPage2.html"); 
     });
    </script>
-
-	<script type="text/javascript">
-		document.querySelector("#tabs-2").onclick = function(event) {
-		  var xhr = new XMLHttpRequest();
-		  xhr.onreadystatechange = function(result) {
-		    if (xhr.readyState != 4)
-		      return;
-		    
-		    if (xhr.status != 200) {
-		      alert("서버에 잘못 요청했습니다.")
-		      return;
-		    }
-		    
-		    var arr = JSON.parse(xhr.responseText)
-		    
-		    var ulTag = document.querySelector("#contents > ul")
-		    var li;
-		    for (var i in arr) {
-		      li = document.createElement("li") // 태그 객체 생성
-		      li.innerHTML = arr[i]             // 태그 객체에 콘텐츠 저장
-		      ulTag.appendChild(li)             // li 태그 객체를 ul의 자식 태그로 붙인다.
-		    }
-		    
-		  }
-		  xhr.open("GET", "../file-browser/index.html", true)
-		  xhr.send() 
-		}
-	</script>
   
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
