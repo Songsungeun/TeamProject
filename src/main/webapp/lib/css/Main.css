@@ -187,70 +187,71 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   padding-top: 5px;
 }
 .tabs-1-contents li {
-  background-color: green;
-  width: 25%;
+  width: 240px;
   float: left;
-  margin-bottom: 10px;
+  margin: 0 8px 10px 8px;
+  
 }
 .tabs-1-contents li a img {
   width: 240px;
   heigth: 200px;
-  background-color: yellow;
-  margin: 0 8px;
 }
 .tabs-1-contents li a p {
   width: 240px;
   margin: 0 auto;
-  background-color: skyblue;
   text-align: center;
   padding: 10px;
+  border: 1px solid black;
 }
 .tabs-2-contents {
   padding-top: 5px;
 }
 .tabs-2-contents li {
-  background-color: green;
-  width: 25%;
+  width: 240px;
   float: left;
-  margin-bottom: 10px;
+  margin: 0 8px 10px 8px;
 }
 .tabs-2-contents li a img {
   width: 240px;
   heigth: 200px;
   background-color: orange;
-  margin: 0 7.75px;
 }
 .tabs-2-contents li a p {
-  width: 220px;
+  width: 240px;
   margin: 0 auto;
-  background-color: skyblue;
   text-align: center;
+  background-color: skyblue;
   padding: 10px;
+  border: 1px solid black;
 }
 .tabs-3-contents {
   padding-top: 5px;
 }
 .tabs-3-contents li {
   background-color: green;
-  width: 25%;
+  width: 240px;
   float: left;
-  margin-bottom: 10px;
+  margin: 0 8px 10px 8px;
 }
 .tabs-3-contents li a img {
   width: 240px;
   heigth: 200px;
   background-color: #ff00ff;
-  margin: 0 7.75px;
 }
 .tabs-3-contents li a p {
-  width: 220px;
+  width: 240px;
   margin: 0 auto;
-  background-color: skyblue;
   text-align: center;
   padding: 10px;
+  border: 1px solid black;
 }
-
-
+#new-post1 {
+  float: left;
+  position: absolute;
+  width: 50px;
+  heigth: 50px;
+  background-color: green;
+}
 /* 탭 css */
 
 #tabs >ul >li >a.on{

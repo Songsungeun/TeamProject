@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-public class honey_boards implements Serializable{
+public class HoneyMain implements Serializable{
   private static final long serialVersionUID = 1L;
 
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
