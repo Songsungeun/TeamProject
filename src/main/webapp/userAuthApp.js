@@ -41,6 +41,8 @@ function ajaxLoginUser() {
 	$.getJSON("loginUser.json", function(result) {
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
+			$('#newWright').css("display", "none")
+			$('.headlist').css("display", "none")
 			return
 		}
 		$('.loginInfo').css("display", "none")
@@ -54,6 +56,7 @@ function ajaxLogout(user) {
 		if (result.state != "success")
 	        console.log("로그아웃 실패입니다.")
     })
+    alert("메인 페이지로 이동합니다.")
 }
 
 

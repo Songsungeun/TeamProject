@@ -20,7 +20,8 @@ import honey.dao.HoneyMembersDao;
 import honey.vo.HoneyMembers;
 
 @Controller
-@RequestMapping("/mainpage/")         // 혹시나 몰라 나중에 이부분 유심히 볼것
+
+@RequestMapping({"/mainpage/", "/writepage/", "/adminpage/"})  // 맵핑정보를 배열형태로 담을수 도 있다!!! 
 @SessionAttributes({"HoneyMembers"})  // vo 객체를 맵핑시키나? 뭔지 확실히는 모르겠는데 vo객체 이름 주니까 된다.
 public class HoneyUserAuthController {
 
