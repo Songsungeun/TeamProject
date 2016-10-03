@@ -31,16 +31,16 @@ function ajaxLogin(user) {
 }
 
 function ajaxLoginUser() {
-	$.getJSON("loginUser.json"), function(result) {
+	console.log("hi? i'm ajaxLoginUser() nice to meet you")
+	
+	$.getJSON("loginUser.json", function(result) {
 		if (result.state != "success") {
-			$('.loginInfo').css("display", "none")
+			$('.userStatus').css("display", "none")
 			return
 		}
-		
-		$('.userStatus').css("display", "none")
-		
-		$("#userEmail").text(result.data.email)
-	}
+		$('.loginInfo').css("display", "none")
+		$("#userEmail").text(result.data.email);
+	})
 }
 
 
