@@ -35,4 +35,27 @@ public class HoneyBoardController {
     
     return new Gson().toJson(result);
   }
+  
+  @RequestMapping(path="detail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String detail(int no) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    
+    try {
+      honey_boards board = boardDao.selectOne(no);
+      
+      if (board == null) 
+        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
+      
+      result.put("state", "success");
+      result.put("data", board);
+      
+    } catch (Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+    }
+    
+    return new Gson().toJson(result);
+  }
+  
 }

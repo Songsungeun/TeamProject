@@ -72,4 +72,10 @@
     select BD_NO,BD_TITL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT,URL
     from honey_boards
   </select>
+  
+  <select id="selectOne" resultMap="boardMap" parameterType="int">
+    select BD_NO,BD_TITL,BD_CRE,BD_CONTS
+    from honey_boards
+    where BD_NO = #{value}
+  </select>
 </mapper>

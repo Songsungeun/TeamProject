@@ -126,7 +126,7 @@ body {
 
 <h1>꿀팁 리스트</h1>
 <p><button type="button" class="btn btn-primary btn-sm" 
-           onclick="location.href='boardForm.html'">새 글</button></p>
+           onclick="location.href='../writepage/writepage.html'">새 글</button></p>
 
 <table id="boardTable" class="table table-hover">
 <thead>
@@ -170,24 +170,28 @@ function ajaxBoardList() {
     var arr = result.data
     for (var i in arr) {
     	  contents += "<tr>" +
-          "<td>" + arr[i].boardNo + "</td>" + 
-          "<td>" + arr[i].title + "</td>" +
-          "<td>" + arr[i].createdDate + "</td>" +
+          "<td>" + arr[i].no + "</td>" + 
+          "<td><a class='titleLink' href='#' data-no='" + arr[i].no + "'>" + arr[i].title + "</a></td>" +
+          "<td>" + arr[i].createdDate2 + "</td>" +
           "<td>" + arr[i].likeCount + "</td>" + 
           "<td>" + arr[i].viewCount + "</td>" +
           "</tr>"
     }
     
-    document.querySelector("#boardTable tbody").innerHTML = contents;
+    //document.querySelector("#boardTable tbody").innerHTML = contents;
   
-    /*  document.querySelector("#tabs-1 ul").innerHTML = contents;
-    var aTags = document.querySelectorAll(".titleLink")
+    //document.querySelector("#tabs-1 ul").innerHTML = contents;
+    /*var aTags = document.querySelectorAll(".titleLink")
     for (var i = 0; i < aTags.length; i++) {
       aTags[i].onclick = function(event) {
-        //alert(this.getAttribute("data-no"))
-        window.location.href = "BoardDetail.html?no=" + this.getAttribute("data-no")
+        alert(this.getAttribute("data-no"))
+        window.location.href = "../writepage/writepage.html?no=" + this.getAttribute("data-no")
       }
-    } */
+    }*/
+    $("#boardTable tbody").html(contents)
+    $(".titleLink").click(function(event) {
+	    window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no")
+    })
  
   }
   
