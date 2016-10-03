@@ -74,7 +74,7 @@
   </select>
   
   <select id="selectOne" resultMap="boardMap" parameterType="int">
-    select BD_NO,BD_TITL,BD_CRE,BD_CONTS
+    select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL
     from honey_boards
     where BD_NO = #{value}
   </select>
