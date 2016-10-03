@@ -13,6 +13,11 @@ $("#submitMember").click(function(event) {
 	ajaxAddMember(board)
 });
 
+$("#unregisterBtn").click(function(event) {
+	var memberNumber = $("#memberNumber").val();
+	ajaxUnregister(memberNumber);
+	location.href = "../mainpage/Main.html"
+});
 
 function ajaxAddMember(user) {
 	console.log("hi?")
@@ -36,16 +41,18 @@ function ajaxAddMember(user) {
 	console.log("byebye~")
 }
 
-
-function ajaxDeleteBoard(no, password) {
-	$.getJSON("unregister.json", {
-		no: no,
+function ajaxUnregister(memberNo) {
+	$.getJSON("unregisteMember.json", {
+		memberNo: memberNo
 	}, function(result) {
-		if (result.state != "success") {
-			alert("회원탈퇴 실패입니다.")
-			return
-		}
+		console.log(result)
 		alert("회원탈퇴 성공입니다.")
+		console.log("히히히")
 		location.href = "../mainpage/Main.html"
 	})
+	if (result == "fail") {
+	alert("헤헿 실패 ^^")
+	location.href = "../mainpage/Main.html";
+	}
+	
 }

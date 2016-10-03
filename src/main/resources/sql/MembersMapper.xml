@@ -23,6 +23,11 @@
     from honey_membs 
     where EMAIL=#{email} and PWD=password(#{password})
   </select>
+  
+  <delete id="unregisteMember" parameterType="int">
+  delete from honey_membs
+  where MB_NO=#{value}
+  </delete>
 </mapper>
 
 

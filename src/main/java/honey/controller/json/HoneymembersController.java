@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.google.gson.Gson;
 
@@ -40,18 +41,24 @@ public class HoneymembersController {
     return new Gson().toJson(result);
   }
   
-  @RequestMapping(path="unregister", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="unregisteMember", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
-  public String unregister(HttpSession session) throws Exception {
+  public String unregister(int memberNo, HttpSession session, SessionStatus sessionStatus) throws Exception {
     HashMap<String,Object> result = new HashMap<>();
-    HoneyMembers member = (HoneyMembers)session.getAttribute("HoneyMembers");
+    System.out.println("hi 나 왔땅!!!!");
+    System.out.println(memberNo);
+    sessionStatus.setComplete();
+    session.invalidate();
+    
     try {
-      HashMap<String,Object> paramMap = new HashMap<>();
-      paramMap.put("no", member.getMemberNo());
+      hMembersDao.unregisteMember(memberNo);
+      System.out.println("지웠땅 히히");
+      result.put("state", "success");
     } catch (Exception e) {
       result.put("state", "fail");
       result.put("data", e.getMessage());
     }
+    System.out.println(result);
     return new Gson().toJson(result);
   }
 }

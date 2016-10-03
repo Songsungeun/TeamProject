@@ -48,6 +48,7 @@ function ajaxLoginUser() {
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.email);
+		$("#memberNumber").val(result.data.memberNo);
 	})
 }
 
