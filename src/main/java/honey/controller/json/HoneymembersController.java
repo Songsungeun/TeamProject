@@ -27,7 +27,6 @@ public class HoneymembersController {
     try {
       hMembersDao.insert(board);
       result.put("state", "success");
-      
     } catch (Exception e) {
       e.printStackTrace();
       result.put("state", "fail");

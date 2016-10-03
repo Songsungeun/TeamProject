@@ -82,6 +82,17 @@
 #sign_up {
   text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px auto;
 }
+
+#userPhoto {
+  margin: 15%;
+}
+
+.userEmail {
+  font-size: 25px; 
+  font-weight: bold;
+  text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -89,17 +100,34 @@
       <div class="login_Page">
       <div class="loginInfo">
         <div class="loginInfo_IdPw" id="input_id">
-          <input name=id type=text placeholder="test@gmail.com">
+          <input id="email" name=id type=text placeholder="test@gmail.com">
         </div>
+        
         <div class="loginInfo_IdPw" id="input_pw">
-          <input name=password type=password placeholder="비밀번호">
+          <input id="password" name=password type=password placeholder="비밀번호">
         </div>
-        <button class="login_Button" href="#">로 그 인</button>
+        
+        <button id ="login_Button" class="login_Button" href="#">로 그 인</button>
         <button id="facebook_login" href="#">페이스북으로 로그인</button>
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
         <p id="sign_up"><a href="../membership/membership.html">회원가입</a></p>
       </div>
     </div>
   </div>
+  
+  
+    <div class="userStatus">
+      <div id="userPhoto">
+        <img width="200px" height="150px" src="userPhoto.png">
+        <ul class="userEmail_wrap">
+          <li id="userEmail"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script type="text/javascript" src="../userAuthApp.js"></script>
+  <script type="text/javascript" src="../userStatus.js"></script>
 </body>
 </html>

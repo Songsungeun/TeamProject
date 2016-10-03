@@ -17,6 +17,12 @@
     insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
     values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
   </insert>
+  
+  <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
+    select MB_NO, PWD, EMAIL 
+    from honey_membs 
+    where EMAIL=#{email} and PWD=password(#{password})
+  </select>
 </mapper>
 
 
