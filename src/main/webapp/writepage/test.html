@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<title>Insert title here</title>
+<style>
+body {
+	background-color: #f1f1f2;
+}
+
+/* 
+form {
+	background: #f1f1f1;
+	width: 800px;
+	padding-left: 50px;
+	padding-top: 20px;
+}*/
+
+#write_container {
+	border: 1px solid #ededed;
+	max-width: 1024px;
+	margin: 0 auto;
+	padding-top: 80px;
+	background-color: white;
+	height: 600px;
+}
+
+#category_select {
+      border: 0;
+    }
+    label {
+      display: block;
+      margin: 30px 0 0 0;
+    }
+    .overflow {
+      height: 200px;
+    }
+    
+  #submitBoard {
+  	position: relative;
+  	left: 45%;
+  }
+  
+  #cancelwrite {
+  	position: relative;
+  	left: 45%;
+  }
+</style>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<script>
+$(document).ready(function(){ 
+	  $.get("../header.html", function(data) {
+	    $("#headerInclude").html(data);
+	  });
+	}); 
+</script>
+<script>
+  $( function() {
+    $( "#category" ).selectmenu();
+  });
+  </script>
+</head>
+<body>
+	<div id="headerInclude"></div>
+
+	<div id="write_container">
+
+		<form id="writeArea">
+			<input type="text" class="form-control" placeholder="URL"> <input
+				type="text" class="form-control" placeholder="제목">
+			<textarea class="form-control" rows="10" placeholder="내용을 입력하세요."></textarea>
+			<div class="form-group">
+				<label for="exampleInputFile">File input</label> <input type="file"
+					id="exampleInputFile">
+				<p class="help-block">파일을 등록하세요</p>
+			</div>
+			<fieldset id="category_select">
+				<label for="category">Category</label> <select name="category"
+					id="category"class="form-control">
+					<option selected="selected">라이프</option>
+					<option>스포츠</option>
+					<option>차/테크</option>
+					<option>패션/뷰티</option>
+					<option>게임</option>
+					<option>TV/연예</option>
+					<option>뮤직</option>
+					<option>영화</option>
+					<option>책/문화</option>
+					<option>지식/교양</option>
+				</select>
+			</fieldset>
+			<input class="btn btn-default"
+					name="submit" id="submitBoard" tabindex="8" value="등록"
+					type="submit">
+			<input class="btn btn-default"
+					name="cancel" id="cancelwrite" tabindex="8" value="취소"
+					type="submit">
+		</form>
+	</div>
+	<!-- div: #write_container -->
+
+	<script>
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="writepage.js"></script>
+
+</body>
+</html>
