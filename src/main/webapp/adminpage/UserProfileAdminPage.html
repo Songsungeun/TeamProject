@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <link rel="stylesheet" href="/resources/demos/style.css">
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 
 @charset "utf-8";
@@ -58,6 +52,15 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   height: 768px; 
 }
 
+fieldset {
+  text-align: center;
+}
+
+ul > li {
+  padding: 5px;
+}
+                  
+
 </style>
 </head>
   
@@ -65,46 +68,69 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
     <section id = "DetailPage_Wrap">
       <div id="DetailPage_main">
         <ul >
-            <li><a id="upBtn1" href="#tabs-1">프로필</a></li>
-            <li><a id="upBtn2" href="#tabs-2">비밀번호</a></li>
+            <li><a href="#tabs-1">프로필</a></li>
+            <li><a href="#tabs-2">비밀번호</a></li>
         </ul>
-           <div id="tabs-1">
-           
-           </div>
-           
+				      <div id="tabs-1">
+				        <header><h1>회원 정보</h1></header><br>
+							  <article>
+							      <fieldset>
+							      
+							         <div id = oldinfo>
+							          <h1>기존 회원 정보</h1><br>
+							                
+							        <ul>
+							          <li><label>  이메일 <input type="text"></label></li>
+							          <li><label>  닉네임 <input type="text"></label></li>
+							          <li><label>   이  름 <input type="text"></label></li>
+							          <li><label> 전화번호 <input type="text"></label></li>
+							          <li><label> 생년월일 <input type="text"></label></li>
+							        </ul>
+							     </div><br>
+							     
+							     <div id = basicsection>
+							          <h1>새로운 회원 정보</h1> <br>
+							        <ul>
+							          <li><label>  이메일 <input type="text"></label></li>
+							          <li><label>  닉네임 <input type="text"></label></li>
+							          <li><label>   이  름 <input type="text"></label></li>
+							          <li><label> 전화번호 <input type="text"></label></li>
+							          <li><label> 생년월일 <input type="text"></label></li>
+							        </ul>
+							     </div>
+							     
+							     <div id = pwdsection> 
+							  
+							      </div>
+							      
+							    </fieldset>
+							    <fieldset id="sending">
+							      <label><input type="submit" value="수정"></label>
+							      <label><input type="reset" value="취소"></label>
+							    </fieldset>
+							 
+							  </article>
+	           </div>
+	           
            <div id="tabs-2">
-           
-           </div>
-           
-      </div>
-    </section>
-     
-    <script>
-      $( function() {
-        $( "#DetailPage_Wrap" ).tabs();
-     } );
-    </script>
+                <ul>
+                     <li><label>기존 비밀번호 <input type="text"></label></li>
+                     <li><label>새로운 비밀번호 <input type="text"></label></li>
+                     <li><label>새로운 비밀번호 다시 입력 <input type="text"></label></li>
+               </ul>
+                   <fieldset id="sending">
+			               <label><input type="submit" value="수정"></label>
+			               <label><input type="reset" value="취소"></label>
+                   </fieldset>
+            </div>
+	           
+	      </div>
+	    </section>
   
-		<script>
-		  $(function() {
-		    $("#tabs-1").load("UserProfileAdminDetailPage1.html");
-		  });
-		</script>
-		
-		<script> 
-    document.querySelector("#upBtn1").onclick = (function(){
-      $("#tabs-1").load("UserProfileAdminDetailPage1.html"); 
-    });
-   </script>
-		
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="admin.js"></script>
    
-    <script> 
-    document.querySelector("#upBtn2").onclick = (function(){
-      $("#tabs-2").load("UserProfileAdminDetailPage2.html"); 
-    });
-   </script>
-
-  
 </body>
 </html>
 

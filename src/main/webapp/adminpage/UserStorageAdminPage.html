@@ -52,6 +52,11 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   height: 768px; 
 }
 
+#btn-primary btn-sm {
+  position: absolute;
+  right: 10px;  
+}
+
 </style>
 </head>
   
@@ -62,42 +67,40 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
             <li><a href="#tabs-1">꿀팁 관리</a></li>
             <li><a href="#tabs-2">클라우드 관리</a></li>
         </ul>
-           <div id="stabs-1">
-           
+           <div id="tabs-1">
+          <h1>꿀팁 리스트</h1>
+					
+						<p><button type="button" class="btn btn-primary btn-sm" 
+						           onclick="location.href='boardForm.html'">새 글</button></p>
+						
+						<table id="boardTable" class="table table-hover">
+						<thead>
+						<tr>
+						  <th>번호</th>
+						  <th>제목</th>
+						  <th>등록일</th>
+						  <th>조회수</th>
+						  <th>좋아요</th>
+						</tr>
+						</thead>
+						<tbody></tbody>
+						</table>
            </div>
            
-           <div id="stabs-2">
-           
+           <div id="tabs-2">
+              추후 예정
            </div>
            
       </div>
-    </section>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    
-   <script>
-      $( function() {
-        $( "#DetailPage_Wrap" ).tabs();
-     } );
-    </script>
+   </section>
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script type="text/javascript" src="admin.js"></script>
 
-   <script>
-      $(function() {
-        $("#stabs-1").load("UserStorageAdminDetailPage1.html");
-      });
-    </script> 
-    
-    
-    <script> 
-      $("#upBtn1").click(function(event)){
-        $("#stabs-1").load("UserStorageAdminDetailPage1.html"); 
-      });
-    </script>
-   
-    <script> 
-    document.querySelector("#upBtn2").onclick = (function(){
-      $("#stabs-2").load("UserStorageAdminDetailPage2.html"); 
-    });
-   </script>
+  <script>
+    ajaxBoardList()
+  </script>
+
   
 </body>
 </html>
