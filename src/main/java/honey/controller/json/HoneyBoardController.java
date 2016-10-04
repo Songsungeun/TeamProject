@@ -59,4 +59,45 @@ public class HoneyBoardController {
     return new Gson().toJson(result);
   }
   
+  @RequestMapping(path="write_update", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String update(honey_boards board) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+      HashMap<String,Object> paramMap = new HashMap<>();
+      paramMap.put("no", board.getNo());
+      
+      if (boardDao.selectOne(board.getNo()) == null) {
+        throw new Exception("해당 게시물이 없습니다.");
+      }
+      boardDao.update(board);
+      result.put("state", "success");
+      
+    } catch (Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+    }
+    
+    return new Gson().toJson(result);
+  }
+  
+  @RequestMapping(path="write_delete", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String delete(int no) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+      HashMap<String,Object> paramMap = new HashMap<>();
+      paramMap.put("no", no);
+      
+      if (boardDao.selectOne(no) == null) {
+        throw new Exception("해당 게시물이 없습니다.");
+      }
+      boardDao.delete(no);
+      result.put("state", "success");
+    } catch (Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+    }
+    return new Gson().toJson(result);
+  }
 }

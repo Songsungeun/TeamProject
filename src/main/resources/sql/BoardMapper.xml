@@ -82,7 +82,15 @@
   </select>
 
   <delete id="delete" parameterType="int">
-    delete honey_boards
-    where no=#{value}
+    delete from honey_boards
+    where BD_NO=#{value}
   </delete>
+  
+  <update id="update" parameterType="honey_boards">
+    update honey_boards set 
+      BD_TITL=#{title}, 
+      BD_CONTS=#{contents}, 
+      URL=#{url}
+      where BD_NO=#{no}
+  </update>
 </mapper>

@@ -39,6 +39,21 @@ $("#submitBoard").click(function(event) {
 	ajaxAddBoard(board)
 });
 
+$("#updateBoard").click(function(event) {
+	var board = {
+			url: $("#url").val(),
+			title: $('#title').val(),
+			contents: $("#contents").val(),
+			password: $("#password").val(),
+			no: $("#no").val()
+	}
+	ajaxUpdateBoard(board);
+})
+
+$("#deleteBoard").click(function(event) {
+  ajaxDeleteBoard($("#no").val())
+});
+
 function ajaxAddBoard(board) {
 	$.post("writeadd.json", board, function(result) {
 		if (result.state != "success") {
@@ -58,5 +73,29 @@ function ajaxLoadBoard(no) {
 		$("#url").val(result.data.url);
 		$("#title").val(result.data.title);
 		$("#contents").val(result.data.contents);
+		$("#no").val(result.data.no);
+	})
+}
+
+function ajaxUpdateBoard(board) {
+	$.post("write_update.json", board, function(result) {
+		if (result.state != "success") {
+			alert("변경 실패입니다.")
+			return
+		}
+		window.location.href = "../mainpage/Main.html"
+	}, "json")
+}
+
+function ajaxDeleteBoard(no) {
+	$.getJSON("write_delete.json", {
+		no: no
+	}, function(result) {
+		if (result.state != "success") {
+			alert("삭제 실패입니다.")
+			return
+		}
+		alert("삭제되었습니다.")
+		location.href = "../mainpage/Main.html"
 	})
 }

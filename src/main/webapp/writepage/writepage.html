@@ -52,7 +52,7 @@ form {
   */
   .btn-default {
     position: relative;
-  	left: 45%;
+  	left: 30%;
   }
 </style>
 
@@ -107,7 +107,7 @@ $(document).ready(function(){
 					<option>지식/교양</option>
 				</select>
 			</fieldset>
-			<input class="btn btn-default mynew"
+			<input class="btn btn-default my-new"
 					name="submit" id="submitBoard" tabindex="8" value="등록">
 			<input class="btn btn-default my-view"
 					name="submit" id="updateBoard" tabindex="8" value="변경">
@@ -116,7 +116,9 @@ $(document).ready(function(){
 			<input class="btn btn-default"
 					name="cancel" id="cancelwrite" tabindex="8" value="취소"
 					onclick="location.href='../mainpage/Main.html'">
+			<input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
 		</form>
+		
 	</div>
 	<!-- div: #write_container -->
 
