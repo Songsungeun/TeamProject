@@ -22,7 +22,7 @@ public class HoneyAdminController {
   
   @Autowired tempDao tempdao;
   
-  @RequestMapping(path="list", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="adminlist", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
