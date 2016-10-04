@@ -34,6 +34,15 @@
     from honey_membs
     where MB_NO=#{userNo}
   </select>
+  <update id="userInfoUpdate">
+    update honey_membs
+      EMAIL=#{email},
+      MB_NICK=#{nickname},
+      MB_NM=#{userName},
+      TEL=#{phone},
+      PWD=#{password},
+    where MB_NO=#{memberNo}
+  </update>
 </mapper>
 
 

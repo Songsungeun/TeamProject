@@ -21,7 +21,7 @@ import honey.vo.HoneyMembers;
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
 public class HoneymembersController {
   @Autowired HoneyMembersDao hMembersDao;
-  
+
   @RequestMapping(path="joinMember", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String joinMember(HoneyMembers board) throws Exception {
@@ -37,11 +37,11 @@ public class HoneymembersController {
       result.put("state", "fail");
       result.put("data", e.getMessage());
     }
-    
-//    return "redirect:/mainpage/";
+
+    //    return "redirect:/mainpage/";
     return new Gson().toJson(result);
   }
-  
+
   @RequestMapping(path="unregisteMember", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String unregister(int memberNo, HttpSession session, SessionStatus sessionStatus) throws Exception {
@@ -50,7 +50,7 @@ public class HoneymembersController {
     System.out.println(memberNo);
     sessionStatus.setComplete();
     session.invalidate();
-    
+
     try {
       hMembersDao.unregisteMember(memberNo);
       System.out.println("지웠땅 히히");
@@ -62,24 +62,43 @@ public class HoneymembersController {
     System.out.println(result);
     return new Gson().toJson(result);
   }
-  
-  
+
+
   @RequestMapping(path="userInfoDetail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
-  public String userInfoDetail (int no, Model model) throws Exception {
+  public String userInfoDetail (int memberNo) throws Exception {
     HashMap<String,Object> result = new HashMap<>();
     try {
-    HoneyMembers hMembers = hMembersDao.selectUserInfo(no);
-    
-    if (hMembers == null)
-        throw new Exception ("해당 회원 정보가 없습니다.");
-    
-    result.put("state", "success");
-    result.put("data", hMembers);
+      HoneyMembers hMembers = hMembersDao.selectUserInfo(memberNo);
+
+      if(hMembers == null) {
+        System.out.println("해당 회원 정보가 없습니다.");
+      }
+      result.put("state", "success");
+      result.put("data", hMembers);
     } catch (Exception e) {
       result.put("state", "fail");
       result.put("data", e.getMessage());
     }
+    System.out.println("히히 성공!!");
+    System.out.println(result.get("data"));
     return new Gson().toJson(result);
   }
+  
+  @RequestMapping(path="userStatusUpdate", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String userStatusUpdate(HoneyMembers hmember) throws Exception {
+    System.out.println(hmember);
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+      hMembersDao.userInfoUpdate(hmember);
+      result.put("state", "success");
+    } catch(Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+      e.printStackTrace();
+    }
+    return new Gson().toJson(result);
+  }
+  
 }

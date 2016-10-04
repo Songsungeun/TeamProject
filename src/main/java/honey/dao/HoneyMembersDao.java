@@ -9,6 +9,7 @@ public interface HoneyMembersDao {
   int unregisteMember(int no) throws Exception;
   HoneyMembers selectOneByEmailAndPassword(Map<String, Object> paramMap);
   HoneyMembers selectUserInfo(int no);
+  int userInfoUpdate(HoneyMembers hmember);
   
   
 }
