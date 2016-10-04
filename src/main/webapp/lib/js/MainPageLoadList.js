@@ -39,6 +39,6 @@ function ajaxBoardList() {
 		}
 	}
 	
-	xhr.open("GET", "list.json", true)
+	xhr.open("GET", "postlist.json", true)
 	xhr.send()
 }

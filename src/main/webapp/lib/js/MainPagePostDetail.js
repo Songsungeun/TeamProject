@@ -1,5 +1,5 @@
 function ajaxLoadBoard(no) {
-	$.getJSON("detail.json?no=" + no, function(result) {
+	$.getJSON("postdetail.json?no=" + no, function(result) {
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return

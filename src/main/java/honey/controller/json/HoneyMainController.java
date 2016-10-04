@@ -23,7 +23,7 @@ import honey.vo.HoneyMain;
 public class HoneyMainController {
   @Autowired HoneyMainDao mianDao;
   
-  @RequestMapping(path="list",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="postlist",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
@@ -44,7 +44,7 @@ public class HoneyMainController {
     }
     return new Gson().toJson(result);
   }
-  @RequestMapping("list2")
+  @RequestMapping("postlist2")
   public ResponseEntity<String> list2(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="20") int length) throws Exception {
@@ -62,25 +62,7 @@ public class HoneyMainController {
         HttpStatus.OK);
   }
   
-  @RequestMapping(path="add", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String add(HoneyMain honeyMain) throws Exception {
-    // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
-    HashMap<String,Object> result = new HashMap<>();
-    
-    try {
-      mianDao.insert(honeyMain);
-      result.put("state", "success");
-      
-    } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
-    }
-    
-    return new Gson().toJson(result);
-  }
-  
-  @RequestMapping(path="detail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="postdetail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String detail(int no) throws Exception {
     HashMap<String,Object> result = new HashMap<>();
@@ -101,35 +83,6 @@ public class HoneyMainController {
     
     return new Gson().toJson(result);
   }
+}
   
-  @RequestMapping(path="update", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String update(HoneyMain honeyMain) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
-    try {
-      HashMap<String, Object> paramMap = new HashMap<>();
-      paramMap.put("no", honeyMain.getNo());
-      mianDao.update(honeyMain);
-      result.put("state", "success");
-    } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
-    }
-    return new Gson().toJson(result);
-  }
   
-  @RequestMapping("delete")
-  public String delete(int no) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
-    try {
-      if (mianDao.delete(no) == 0) {
-        throw new Exception("해당 게시물이 없거나 삭제 실패입니다.");
-      }
-      result.put("state", "success");
-    } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
-    }
-    return new Gson().toJson(result);
-  }
-} 
