@@ -13,7 +13,7 @@
     <result column="PWD" property="password"/>
   </resultMap>
   
-  <insert id="insert" parameterType="HoneyMembers">
+  <insert id="joinMember" parameterType="HoneyMembers">
     insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
     values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
   </insert>

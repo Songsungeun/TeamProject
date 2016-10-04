@@ -22,7 +22,7 @@ $("#unregisterBtn").click(function(event) {
 function ajaxAddMember(user) {
 	console.log("hi?")
 	$.ajax({
-		url: "add.json",
+		url: "joinMember.json",
 		type: "POST",
 		dataType: "json",
 		data: user,
