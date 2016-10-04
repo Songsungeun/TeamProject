@@ -59,12 +59,14 @@ public class honey_boards implements Serializable{
   }
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+    this.createdDate2 = format.format(createdDate);
   }
   public String getCreatedDate2() {
     return createdDate2;
   }
-  public void setCreatedDate2(String createdDate2) {
-    this.createdDate2 = createdDate2;
+  public void setCreatedDate2(String str) {
+    this.createdDate = Date.valueOf(str);
+    this.createdDate2 = str;
   }
   public int getLike() {
     return like;
