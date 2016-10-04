@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
@@ -59,6 +60,26 @@ public class HoneymembersController {
       result.put("data", e.getMessage());
     }
     System.out.println(result);
+    return new Gson().toJson(result);
+  }
+  
+  
+  @RequestMapping(path="userInfoDetail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String userInfoDetail (int no, Model model) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+    HoneyMembers hMembers = hMembersDao.selectUserInfo(no);
+    
+    if (hMembers == null)
+        throw new Exception ("해당 회원 정보가 없습니다.");
+    
+    result.put("state", "success");
+    result.put("data", hMembers);
+    } catch (Exception e) {
+      result.put("state", "fail");
+      result.put("data", e.getMessage());
+    }
     return new Gson().toJson(result);
   }
 }
