@@ -80,4 +80,9 @@
     from honey_boards
     where BD_NO = #{value}
   </select>
+
+  <delete id="delete" parameterType="int">
+    delete honey_boards
+    where no=#{value}
+  </delete>
 </mapper>

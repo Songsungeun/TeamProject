@@ -1,7 +1,5 @@
 function ajaxBoardList() {
-	$.getJSON("adminlist.json")
-  
-    
+	$.getJSON("../admin/adminlist.json", function(result) {
     if (result.state != "success") {
       alert("서버에서 데이터를 가져오는데 실패하였습니다.")
       return
@@ -19,11 +17,11 @@ function ajaxBoardList() {
           "</tr>"
     }
     
-    $("#boardTable tbody").html = contents;
+    $("#boardTable tbody").html(contents);
     $(".titleLink").click(function(event) {
     	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
     })
-   
+  })
 }
 
 
