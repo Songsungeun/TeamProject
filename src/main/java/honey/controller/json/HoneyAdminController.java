@@ -45,5 +45,20 @@ public class HoneyAdminController {
     return new Gson().toJson(result);
   }
 
+  @RequestMapping(path="delete", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseBody
+  public String delete(int no) throws Exception {
+    HashMap<String,Object> result = new HashMap<>();
+    try {
+    if (tempdao.delete(no) == 0) {
+      throw new Exception("해당 게시물이 없거나 삭제 실패입니다.");
+    }
+    result.put("state", "success");
+   } catch (Exception e) {
+    result.put("state", "fail");
+    result.put("data", e.getMessage());
+   }
+    return new Gson().toJson(result);
+  }
 }
 
