@@ -207,11 +207,7 @@ overflow: hidden;
     float : right;
   }
   </style>
-    <script> 
-    $(function(){
-      $("#userInfo_sideMenu").load("/TeamProject/userStatus.html"); 
-    });
-    </script> 
+    
 </head>
 
 <body>
@@ -220,14 +216,14 @@ overflow: hidden;
     
     <div class = header_leftSection>
       <ul class="headPageShift">
-        <li class="headlogo"><a href="/TeamProject/mainpage/Main.html">로고</a></li>
-        <li class="headlist"><a href="/TeamProject/adminpage/HoneyAdminPage.html">내 커뮤니티</a></li>
+        <li class="headlogo"><a href="#">로고</a></li>
+        <li class="headlist"><a href="#">내 커뮤니티</a></li>
       </ul>
     </div>
     
       <div class = headerRightSection>
         <div id= "newWright">
-          <a href="/TeamProject/writepage/writepage.html"><ul><li>새 게시물</li></ul></a>
+          <a href="#"><ul><li>새 게시물</li></ul></a>
         </div>
         
           <div class="seachBar">
@@ -266,6 +262,26 @@ $("#nav-icon1").click(function() {
 	}
 });
 </script>
+
+<script>
+$(".headlogo").click(function(){
+	location.href ="/TeamProject/mainpage/Main.html"
+})
+
+$(".headlist").click(function(){
+  location.href ="/TeamProject/adminpage/HoneyAdminPage.html"
+})
+
+$("#newWright").click(function(){
+  location.href ="/TeamProject/writepage/writepage.html"
+})
+</script>
+<script> 
+    $(function(){
+      $("#userInfo_sideMenu").load("/TeamProject/userStatus.html"); 
+    });
+    </script> 
+
 </body>
 
 </html>

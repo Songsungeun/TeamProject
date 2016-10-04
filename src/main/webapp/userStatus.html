@@ -81,7 +81,7 @@
   cursor: pointer;
 }
 
-#sign_up {
+#sign_upBtn {
   text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px auto;
 }
 
@@ -121,7 +121,7 @@ z-index:2;
         <button id ="login_Button" class="login_Button" href="#">로 그 인</button>
         <button id="facebook_login" href="#">페이스북으로 로그인</button>
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
-        <p id="sign_up"><a href="../membership/membership.html">회원가입</a></p>
+        <p id="sign_upBtn"><a href="#">회원가입</a></p>
       </div>
       
       <div class="userStatus">
@@ -144,7 +144,11 @@ z-index:2;
   </div>
   
   
-    
+  <script>
+  $("#sign_upBtn").click(function(){
+	  location.href="../membership/membership.html"
+  })
+  </script>
   
   
   <script type="text/javascript" src="../userAuthApp.js"></script>
