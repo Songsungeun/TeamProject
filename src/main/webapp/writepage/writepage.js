@@ -2,10 +2,38 @@
  * 
  */
 $("#submitBoard").click(function(event) {
+	var categoryNo = $("#category").val()
+	switch (categoryNo) {
+	case "라이프" : categoryNo = 2
+		break;
+	case "스포츠" : categoryNo = 3
+	break;
+	case "차/테크" : categoryNo = 4
+	break;
+	case "패션/뷰티" : categoryNo = 5
+	break;
+	case "게임" : categoryNo = 6
+	break;
+	case "TV/연예" : categoryNo = 7
+	break;
+	case "뮤직" : categoryNo = 8
+	break;
+	case "영화" : categoryNo = 9
+	break;
+	case "책/문화" : categoryNo = 10
+	break;
+	case "지식/교양" : categoryNo = 11
+	break;
+	default : categoryNo = 1
+	break;
+	}
+	
 	var board = {
 	  url: $("#url").val(),
 	  title: $("#title").val(),
-	  contents: $("#contents").val()
+	  contents: $("#contents").val(),
+	  userNo:$("#memberNumber").val(),
+	  categoryNo
 	}
 	console.log(board)
 	ajaxAddBoard(board)

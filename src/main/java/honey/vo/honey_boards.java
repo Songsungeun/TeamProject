@@ -9,6 +9,8 @@ public class honey_boards implements Serializable{
 
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
   protected int no;
+  protected int userNo;
+  protected int categoryNo;
   protected String title;
   protected String url;
   protected String contents;
@@ -16,13 +18,23 @@ public class honey_boards implements Serializable{
   protected String createdDate2;  //birth
   protected int like;
   protected int viewCount;
-  
-  
+  public static SimpleDateFormat getFormat() {
+    return format;
+  }
+  public static void setFormat(SimpleDateFormat format) {
+    honey_boards.format = format;
+  }
   public int getNo() {
     return no;
   }
   public void setNo(int no) {
     this.no = no;
+  }
+  public int getUserNo() {
+    return userNo;
+  }
+  public void setUserNo(int userNo) {
+    this.userNo = userNo;
   }
   public String getTitle() {
     return title;
@@ -47,14 +59,12 @@ public class honey_boards implements Serializable{
   }
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
-    this.createdDate2 = format.format(createdDate);
   }
   public String getCreatedDate2() {
     return createdDate2;
   }
-  public void setCreatedDate2(String str) {
-    this.createdDate = Date.valueOf(str);
-    this.createdDate2 = str;
+  public void setCreatedDate2(String createdDate2) {
+    this.createdDate2 = createdDate2;
   }
   public int getLike() {
     return like;
@@ -71,5 +81,12 @@ public class honey_boards implements Serializable{
   public static long getSerialversionuid() {
     return serialVersionUID;
   }
+  public int getCategoryNo() {
+    return categoryNo;
+  }
+  public void setCategoryNo(int categoryNo) {
+    this.categoryNo = categoryNo;
+  }
+  
   
 }

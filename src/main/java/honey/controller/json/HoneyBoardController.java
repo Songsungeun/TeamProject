@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import honey.dao.tempDao;
+import honey.vo.HoneyMembers;
 import honey.vo.honey_boards;
 
 @Controller

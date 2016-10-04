@@ -55,6 +55,8 @@
 
   <resultMap type="honey_boards" id="boardMap">
     <id column="BD_NO" property="no"/> 
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
     <result column="BD_TITL" property="title"/>
     <result column="BD_CONTS" property="contents"/>
     <result column="BD_CRE" property="createdDate"/>
@@ -65,7 +67,7 @@
   
   <insert id="insert" parameterType="honey_boards">
     insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
-    values(1, 1, #{title}, #{contents}, #{url}, "2016-10-03 23:59:59")
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
   </insert>
   
   <select id="selectList" resultMap="boardMap" parameterType="map">
