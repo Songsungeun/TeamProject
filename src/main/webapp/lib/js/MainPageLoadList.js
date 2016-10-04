@@ -40,5 +40,5 @@ function ajaxBoardList() {
 	}
 	
 	xhr.open("GET", "postlist.json", true)
-	xhr.send()
+	xhr.send() 
 }
