@@ -9,7 +9,7 @@ public interface tempDao {
   List<honey_boards> selectList(Map<String, Object> paramMap) throws Exception;
   
   int insert(honey_boards board) throws Exception;
-  
+  honey_boards selectOne(int no) throws Exception;
   int update(honey_boards board) throws Exception;
   
   int delete(int no) throws Exception;
