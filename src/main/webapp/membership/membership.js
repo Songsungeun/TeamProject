@@ -20,18 +20,18 @@ $("#unregisterBtn").click(function(event) {
 });
 
 function ajaxAddMember(user) {
-	console.log("hi?")
 	$.ajax({
 		url: "joinMember.json",
 		type: "POST",
 		dataType: "json",
 		data: user,
-		success: function (result) {
+		success: function (obj) {
+			console.log(obj.jsonResult)
+			var result = obj.jsonResult
 			if (result.state != "success") {
 				alert("you fail!")
 				return
 			}
-			console.log("nihao?")
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(result) {
@@ -44,15 +44,14 @@ function ajaxAddMember(user) {
 function ajaxUnregister(memberNo) {
 	$.getJSON("unregisteMember.json", {
 		memberNo: memberNo
-	}, function(result) {
-		console.log(result)
+	}, function(obj) {
+		console.log(obj.jsonResult)
+		var result = obj.jsonResult
 		alert("회원탈퇴 성공입니다.")
-		console.log("히히히")
 		location.href = "../mainpage/Main.html"
+			if (result == "fail") {
+				alert("헤헿 실패 ^^")
+				location.href = "../mainpage/Main.html";
+			}
 	})
-	if (result == "fail") {
-	alert("헤헿 실패 ^^")
-	location.href = "../mainpage/Main.html";
-	}
-	
 }

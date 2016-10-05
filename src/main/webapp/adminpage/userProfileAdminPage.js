@@ -5,7 +5,8 @@
 
 function ajaxUserProfileLoder(memberNumber) {
 	$.getJSON("userInfoDetail.json", {memberNo:memberNumber
-		}, function(result) {
+		}, function(obj) {
+			var result=obj.jsonResult
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -18,6 +19,12 @@ function ajaxUserProfileLoder(memberNumber) {
 	 })
 }
 
-function ajaxUserStatusUpdate() {
-	
+function ajaxUserStatusUpdate(userStatusRenewalInfo) {
+	$.post("userStatusUpdate.json", userStatusRenewalInfo, function(result) {
+		if (result.state !="success") {
+			alert("조회 실패입니다.")
+			return
+		}
+		location.href="/TeamProject/adminpage/HoneyAdminPage.html"
+			},"json")
 }

@@ -22,12 +22,13 @@ function ajaxLogin(user) {
 		method: "POST",
 		dataType: "json",
 		data: user,
-		success: function(result) {
+		success: function(obj) {
+			var result = obj.jsonResult
 		    if (result.state != "success") {
 	            alert("로그인 실패입니다.\n이메일 또는 암호를 확인하세요.")
 	            return
 	        }
-	        window.location.href = "../mainpage/Main.html"	//테스트용이다. 작동 확인하고 페이지 바꿀것
+	        window.location.href = "../mainpage/Main.html"
 		},
 		error: function(msg) {
 			alert(msg)
@@ -36,9 +37,9 @@ function ajaxLogin(user) {
 }
 
 function ajaxLoginUser() {
-	console.log("hi? i'm ajaxLoginUser() nice to meet you")
 	
-	$.getJSON("loginUser.json", function(result) {
+	$.getJSON("loginUser.json", function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
 			$('#newWright').css("display", "none")
@@ -53,7 +54,8 @@ function ajaxLoginUser() {
 }
 
 function ajaxLogout(user) {
-	$.getJSON("logout.json", function(result) {
+	$.getJSON("logout.json", function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success")
 	        console.log("로그아웃 실패입니다.")
     })
