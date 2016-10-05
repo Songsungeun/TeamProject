@@ -9,7 +9,6 @@ $("#submitMember").click(function(event) {
 			phone: $("#phone").val(),
 			password: $("#userPassword").val()
 	}
-	console.log(board)
 	ajaxAddMember(board)
 });
 
@@ -21,7 +20,7 @@ $("#unregisterBtn").click(function(event) {
 
 function ajaxAddMember(user) {
 	$.ajax({
-		url: "joinMember.json",
+		url:serverAddr + "/membership/joinMember.json",
 		type: "POST",
 		dataType: "json",
 		data: user,
@@ -42,7 +41,7 @@ function ajaxAddMember(user) {
 }
 
 function ajaxUnregister(memberNo) {
-	$.getJSON("unregisteMember.json", {
+	$.getJSON(serverAddr + "/mainpage/unregisteMember.json", {
 		memberNo: memberNo
 	}, function(obj) {
 		console.log(obj.jsonResult)

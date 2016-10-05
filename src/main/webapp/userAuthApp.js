@@ -18,7 +18,7 @@ $("#logoutBtn").click(function(event) {
 
 function ajaxLogin(user) {
 	$.ajax({
-		url: "login.json",
+		url: serverAddr + "/mainpage/login.json",
 		method: "POST",
 		dataType: "json",
 		data: user,
@@ -38,7 +38,7 @@ function ajaxLogin(user) {
 
 function ajaxLoginUser() {
 	
-	$.getJSON("loginUser.json", function(obj) {
+	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
@@ -54,7 +54,7 @@ function ajaxLoginUser() {
 }
 
 function ajaxLogout(user) {
-	$.getJSON("logout.json", function(obj) {
+	$.getJSON(serverAddr + "/mainpage/logout.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success")
 	        console.log("로그아웃 실패입니다.")

@@ -41,7 +41,6 @@ public class HoneymembersController {
 
     try {
       hMembersDao.unregisteMember(memberNo);
-      System.out.println("지웠땅 히히");
       return JsonResult.success();
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());
