@@ -56,10 +56,9 @@ fieldset {
   left :100px;
 }
 
-#sending {
-  position: absolute;
-  left : 280px;
-  top: 420px;
+label > .btn-default {
+  position: relative;
+  left: 170px;
 }
 
 h1 {
@@ -140,11 +139,10 @@ h1 {
                 타입에 서브밋이 있고 센딩이 있으면 우리가 잘 모르는
                 Html방식으로 해서 값을 컨트롤러로 날림
                 따라서 저렇게 하면 충돌나서 에이젝스 요청이 안감
-                
            -->
            <fieldset>
-            <label><input id="changeUserStatusInfo" value="수정"></label>
-            <label><input id="notChangeInfo" value="취소"></label>
+            <label><button type="button" id="changeUserStatusInfo" class="btn btn-default">수정</button></label>
+            <label><button type="button" id="notChangeInfo" class="btn btn-default">취소</button></label>
            </fieldset>
 		   </form>
 		    </div>
