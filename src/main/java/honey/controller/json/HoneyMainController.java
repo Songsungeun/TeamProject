@@ -17,71 +17,43 @@ import com.google.gson.Gson;
 
 import honey.dao.HoneyMainDao;
 import honey.vo.HoneyMain;
+import honey.vo.JsonResult;
 
 @Controller
 @RequestMapping("/mainpage/")
 public class HoneyMainController {
-  @Autowired HoneyMainDao mianDao;
+  @Autowired HoneyMainDao mainDao;
   
-  @RequestMapping(path="postlist",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String list(
+  @RequestMapping(path="postlist")
+  public Object list(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="20") int length) throws Exception {
     
-    HashMap<String,Object> result = new HashMap<>();
     try {
       HashMap<String,Object> map = new HashMap<>();
       map.put("startIndex", (pageNo - 1) * length);
       map.put("length", length);
       
-      List<HoneyMain> list = mianDao.selectList(map);
-      result.put("state", "success");
-      result.put("data", list);
+      return JsonResult.success(mainDao.selectList(map));
+      
     } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
-    return new Gson().toJson(result);
-  }
-  @RequestMapping("postlist2")
-  public ResponseEntity<String> list2(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="20") int length) throws Exception {
-    
-    HashMap<String,Object> map = new HashMap<>();
-    map.put("startIndex", (pageNo - 1) * length);
-    map.put("length", length);
-    
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("Content-Type", "text/plain;charset=UTF-8");
-    
-    return new ResponseEntity<>(
-        "클라이언트에게 보낼 내용", 
-        headers,
-        HttpStatus.OK);
   }
   
-  @RequestMapping(path="postdetail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String detail(int no) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
-    
+  @RequestMapping(path="postdetail")
+  public Object detail(int no) throws Exception {
     try {
-      HoneyMain board = mianDao.selectOne(no);
+      HoneyMain honeyMain = mainDao.selectOne(no);
       
-      if (board == null) 
+      if (honeyMain == null) 
         throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
       
-      result.put("state", "success");
-      result.put("data", board);
+      return JsonResult.success(honeyMain);
       
     } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
-    
-    return new Gson().toJson(result);
   }
 }
   

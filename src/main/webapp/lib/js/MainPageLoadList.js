@@ -34,8 +34,7 @@ function ajaxBoardList() {
 				$("#myModal").css({"display":"block"});
 				$(".modal-content p").html('<iframe width="1024" height="700" src="MainPagePostIframe.html?no='+ this.getAttribute("data-no") +'"frameborder="0"></iframe>');
 				//window.location.href = "MainPagePostDetail.html?no=" + this.getAttribute("data-no")
-				
-			}
+ale			}
 		}
 	}
 	

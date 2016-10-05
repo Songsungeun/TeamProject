@@ -242,9 +242,45 @@
 
   <!-- Modal content -->
         <div id="myModal" class="modal" style="display: none;">
-          <div class="modal-content">
+          <div class="modal-content" >
             <span class="close">x</span>
-            <p class="modal-ptag"></p>
+            <div class="post_title" id="title"></div>
+              <div class="post_scroll">
+              <div class="post_info">
+                <div class="post_wt_pack" id="post_info_pack">
+                  <label class="post_wt">게시자</label>
+                  <p id="writerNick"></p>
+                </div>
+                <div class="post_cd_pack" id="post_info_pack">
+                  <label class="post_cd">등록일</label>
+                  <p id="createdDate"></p>
+                </div>
+              </div>
+              <div class="post_conts">
+                <div class="post_conts_inner">
+                <label class="post_url">URL</label>
+                <div id="url"></div>
+                </div>
+                <div class="post_conts_inner">
+                <label class="post_url"></label>
+                <p id="url_location"></p>
+                </div>
+                <div class="post_conts_inner">
+                <label class="post_contents">Contents</label>
+                <div id="contents123"></div>
+                </div>
+              </div>
+              <div class="post_info">
+                <div class="post_lk_pack" id="post_info_pack">
+                  <label class="post_lk">좋아요</label>
+                  <p id="like"></p>
+                </div>
+                <div class="post_vc_pack" id="post_info_pack">
+                  <label class="post_vc">조회수</label>
+                  <p id="viewCount"></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- modal end -->
@@ -254,23 +290,22 @@
     </div>
   </div>
 </body>
+<script type='text/javascript' src="../lib/js/common.js"></script>
 <script type='text/javascript' src="../lib/js/Main.js"></script>
-<script type='text/javascript' src="../lib/js/MainPageLoadList.js"></script>
 <script>
   ajaxBoardList()
-  
-  var modal = document.getElementById('myModal');
-  var span = document.getElementsByClassName("close")[0];
+//   var modal = document.getElementById('myModal');
+//   var span = document.getElementsByClassName("close")[0];
 
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+//   span.onclick = function() {
+//     modal.style.display = "none";
+//   }
+//   // When the user clicks anywhere outside of the modal, close it
+//   window.onclick = function(event) {
+//     if (event.target == modal) {
+//       modal.style.display = "none";
+//     }
+//   }
   
 </script>
 
