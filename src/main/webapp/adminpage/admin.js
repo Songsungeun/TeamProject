@@ -23,23 +23,12 @@ function ajaxBoardList() {
     	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
     })
     
-//    $('.btn-danger').confirmAction({
-//  title: {
-//    text: 'Confirm Dialog'
-//  },
-//  message: {
-//    text: 'Are you sure?'
-//  }
-//    });
-    
-    
     $(".btn-danger").click(function(event){
     	 var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
          if(result) {
-            //yes
-             location.replace('index.php');
+        	 ajaxDeleteBoard(arr[i].no)
          } else {
-             //no
+            
          }
     });
     
@@ -49,3 +38,17 @@ function ajaxBoardList() {
 $( function() {
    $( "#DetailPage_Wrap" ).tabs();
 } );
+
+
+function ajaxDeleteBoard(no) {
+	$.getJSON("../admin/admindelete.json", {
+		no: no
+	}, function(result) {
+		if (result.state != "success") {
+			alert("삭제 실패입니다.")
+			return
+		}
+		alert("삭제되었습니다.")
+		location.href = "HoneyAdminPage.html"
+	})
+}

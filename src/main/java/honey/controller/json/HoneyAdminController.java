@@ -45,7 +45,7 @@ public class HoneyAdminController {
     return new Gson().toJson(result);
   }
 
-  @RequestMapping(path="delete", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(path="admindelete", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
   @ResponseBody
   public String delete(int no) throws Exception {
     HashMap<String,Object> result = new HashMap<>();
