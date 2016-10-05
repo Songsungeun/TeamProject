@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <style>
 
 @charset "utf-8";
@@ -155,13 +156,17 @@ body {
 
     </footer>
   
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script type="text/javascript" src="/TeamProject/lib/js/common.js"></script>
+    <script type="text/javascript" src="userProfileAdminPage.js"></script>
     <script type="text/javascript" src="admin.js"></script>
     
+  
    <script> 
     $(function(){
-      $("#includedContent").load("../header.html"); 
+      $("#includedContent").load("/TeamProject/header.html"); 
     });
    </script>
     
@@ -191,8 +196,6 @@ body {
     });
    </script>
 
-
-<script type="text/javascript" src="userProfileAdminPage.js"></script>
 </body>
 </html>
 

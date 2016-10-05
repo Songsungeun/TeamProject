@@ -1,5 +1,6 @@
 function ajaxBoardList() {
-	$.getJSON("../admin/adminlist.json", function(result) {
+	$.getJSON(serverAddr + "/admin/adminlist.json", function(obj) {
+	var result = obj.jsonResult
     if (result.state != "success") {
       alert("서버에서 데이터를 가져오는데 실패하였습니다.")
       return
@@ -25,25 +26,21 @@ function ajaxBoardList() {
     
     $(".btn-danger").click(function(event){
     	 var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
-         if(result) {
-        	 ajaxDeleteBoard(arr[i].no)
-         } else {
-            
-         }
+         if(result) 
+           ajaxDeleteBoard(arr[i].no)
     });
-    
   })
 }
 
-$( function() {
-   $( "#DetailPage_Wrap" ).tabs();
-} );
+$(function() {
+	    $( "#DetailPage_Wrap" ).tabs();
+	 } );
 
 
 function ajaxDeleteBoard(no) {
-	$.getJSON("../admin/admindelete.json", {
-		no: no
-	}, function(result) {
+	$.getJSON(serverAddr + "/admin/admindelete.json", {
+		no: no}, function(result) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("삭제 실패입니다.")
 			return
@@ -52,3 +49,5 @@ function ajaxDeleteBoard(no) {
 		location.href = "HoneyAdminPage.html"
 	})
 }
+
+
