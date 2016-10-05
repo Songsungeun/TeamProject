@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import honey.dao.tempDao;
-import honey.vo.HoneyMembers;
+import honey.vo.JsonResult;
 import honey.vo.honey_boards;
 
 @Controller
@@ -19,28 +19,21 @@ import honey.vo.honey_boards;
 public class HoneyBoardController {
   @Autowired tempDao boardDao;
   
-  @RequestMapping(path="writeadd", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String add(honey_boards board) throws Exception {
+  @RequestMapping(path="writeadd")
+  public Object add(honey_boards board) throws Exception {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
-    HashMap<String,Object> result = new HashMap<>();
-    System.out.println("hi i received request");
+    System.out.println("요청 받음");
     try {
       boardDao.insert(board);
-      result.put("state", "success");
+      return JsonResult.success();
+
     } catch (Exception e) {
-      e.printStackTrace();
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
-    
-    return new Gson().toJson(result);
   }
   
-  @RequestMapping(path="detail", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String detail(int no) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
+  @RequestMapping(path="detail")
+  public Object detail(int no) throws Exception {
     
     try {
       honey_boards board = boardDao.selectOne(no);
@@ -48,21 +41,16 @@ public class HoneyBoardController {
       if (board == null) 
         throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
       
-      result.put("state", "success");
-      result.put("data", board);
+      return JsonResult.success(board);
       
     } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
     
-    return new Gson().toJson(result);
   }
   
-  @RequestMapping(path="write_update", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String update(honey_boards board) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
+  @RequestMapping(path="write_update")
+  public Object update(honey_boards board) throws Exception {
     try {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", board.getNo());
@@ -71,20 +59,16 @@ public class HoneyBoardController {
         throw new Exception("해당 게시물이 없습니다.");
       }
       boardDao.update(board);
-      result.put("state", "success");
+      return JsonResult.success();
       
     } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
     
-    return new Gson().toJson(result);
   }
   
-  @RequestMapping(path="write_delete", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-  @ResponseBody
-  public String delete(int no) throws Exception {
-    HashMap<String,Object> result = new HashMap<>();
+  @RequestMapping(path="write_delete")
+  public Object delete(int no) throws Exception {
     try {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", no);
@@ -93,11 +77,9 @@ public class HoneyBoardController {
         throw new Exception("해당 게시물이 없습니다.");
       }
       boardDao.delete(no);
-      result.put("state", "success");
+      return JsonResult.success();
     } catch (Exception e) {
-      result.put("state", "fail");
-      result.put("data", e.getMessage());
+      return JsonResult.fail(e.getMessage());
     }
-    return new Gson().toJson(result);
   }
 }
