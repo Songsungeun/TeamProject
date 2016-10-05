@@ -134,12 +134,6 @@ h1 {
             </div>
            </div> 
           <br><br>
-          <!-- 이부분 바꿔주길 바람 
-                인풋테그를 타입을 주면 이벤트가 일어나면 그에대한 발생을 하는데
-                타입에 서브밋이 있고 센딩이 있으면 우리가 잘 모르는
-                Html방식으로 해서 값을 컨트롤러로 날림
-                따라서 저렇게 하면 충돌나서 에이젝스 요청이 안감
-           -->
            <fieldset>
             <label><button type="button" id="changeUserStatusInfo" class="btn btn-default">수정</button></label>
             <label><button type="button" id="notChangeInfo" class="btn btn-default">취소</button></label>
@@ -152,10 +146,11 @@ h1 {
   </div>
 </section>
   
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="admin.js"></script>
-<script>
+<script type="text/javascript" src="userProfileAdminPage.js"></script>
 
+<script>
+/*
 $("#changeUserStatusInfo").click(function(event) {
   var userStatusRenewalInfo ={
     userName: $("#userNameInfo").val(),
@@ -163,11 +158,14 @@ $("#changeUserStatusInfo").click(function(event) {
     nickname: $("#userNickNameInfo").val(),
     password: $("#renewalPassword").val(),
     phone: $("#userTelInfo").val(),
-  }
-  console.log(userStatusRenewalInfo)
-  ajaxRenewalUserStatus(userStatusRenewalInfo)
+  };
+  console.log(userStatusRenewalInfo);
+  ajaxRenewalUserStatus(userStatusRenewalInfo);
 })
+*/
+$('#changeUserStatusInfo').click(function() {console.log('hi');});
 </script>
+
    
 </body>
 </html>
