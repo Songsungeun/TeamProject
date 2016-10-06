@@ -55,7 +55,8 @@ $("#deleteBoard").click(function(event) {
 });
 
 function ajaxAddBoard(board) {
-	$.post(serverAddr + "/writepage/writeadd.json", board, function(result) {
+	$.post(serverAddr + "/writepage/writeadd.json", board, function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 	    	 alert("등록 실패입니다.")
 	    	 return
@@ -65,7 +66,8 @@ function ajaxAddBoard(board) {
 }
 
 function ajaxLoadBoard(no) {
-	$.getJSON(serverAddr + "/writepage/detail.json?no=" + no, function(result) {
+	$.getJSON(serverAddr + "/writepage/detail.json?no=" + no, function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -78,7 +80,8 @@ function ajaxLoadBoard(no) {
 }
 
 function ajaxUpdateBoard(board) {
-	$.post(serverAddr + "/writepage/write_update.json", board, function(result) {
+	$.post(serverAddr + "/writepage/write_update.json", board, function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("변경 실패입니다.")
 			return
@@ -90,7 +93,8 @@ function ajaxUpdateBoard(board) {
 function ajaxDeleteBoard(no) {
 	$.getJSON(serverAddr + "/writepage/write_delete.json", {
 		no: no
-	}, function(result) {
+	}, function(obj) {
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("삭제 실패입니다.")
 			return
