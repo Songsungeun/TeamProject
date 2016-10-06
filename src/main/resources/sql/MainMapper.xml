@@ -61,12 +61,18 @@
     <result column="BD_LIKE" property="like"/>
     <result column="VIEW_CT" property="viewCount"/>
     <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
   </resultMap>
   
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select BD_NO,BD_TITL,BD_CRE,BD_LIKE,VIEW_CT
     from honey_boards
   </select>
+<!--   <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
+<!--     select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->
+<!--     from honey_boards -->
+<!--     where BD_NO = #{value} -->
+<!--   </select> -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK
     from honey_membs HM

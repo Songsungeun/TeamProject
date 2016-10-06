@@ -126,12 +126,12 @@ function ajaxLoadBoard(no) {
 		
 		
 }
-window.onclick = function(event) {
+window.onclick(function(event) {
 var htmlTag = document.getElementById('super_HTML');
 var modal = document.getElementById('myModal');
   if (event.target == modal) {
     modal.style.display = "none";
     htmlTag.style.overflow = "auto";
   }
-}
+})
 

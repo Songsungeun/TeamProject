@@ -11,6 +11,7 @@ public class HoneyMain implements Serializable{
   protected int no;
   protected String title;
   protected String url;
+  protected String writerNick;
   protected String contents;
   protected Date createdDate;     // 이제 java.sql.Date 타입으로 날짜 정보를 제대로 다뤄보자!
   protected String createdDate2;  //birth
@@ -18,6 +19,12 @@ public class HoneyMain implements Serializable{
   protected int viewCount;
   
   
+  public String getWriterNick() {
+    return writerNick;
+  }
+  public void setWriterNick(String writerNick) {
+    this.writerNick = writerNick;
+  }
   public int getNo() {
     return no;
   }
