@@ -68,8 +68,9 @@
     from honey_boards
   </select>
   <select id="selectOne" resultMap="boardMap" parameterType="int">
-    select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT
-    from honey_boards
+    select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK
+    from honey_membs HM
+    left join honey_boards HB on HB.MB_NO = HM.MB_NO
     where BD_NO = #{value}
   </select>
 </mapper>
