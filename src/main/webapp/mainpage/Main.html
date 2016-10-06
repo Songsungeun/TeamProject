@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="super_HTML">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
-<link rel="stylesheet" type="text/css" href="../lib/css/MainPageModal.css">
+<!-- <link rel="stylesheet" type="text/css" href="../lib/css/MainPageModal.css"> -->
 
 <title>HoneyTip TestPage</title>
 </head>
@@ -242,10 +242,9 @@
 
   <!-- Modal content -->
         <div id="myModal" class="modal" style="display: none;">
+            <span class="close" id="close-Btn">x</span>
           <div class="modal-content" >
-            <span class="close">x</span>
             <div class="post_title" id="title"></div>
-              <div class="post_scroll">
               <div class="post_info">
                 <div class="post_wt_pack" id="post_info_pack">
                   <label class="post_wt">게시자</label>
@@ -257,17 +256,17 @@
                 </div>
               </div>
               <div class="post_conts">
-                <div class="post_conts_inner">
+                <div class="post_conts_inner1">
                 <label class="post_url">URL</label>
-                <div id="url"></div>
+                <div class="url" id="url"></div>
                 </div>
-                <div class="post_conts_inner">
+                <div class="post_conts_inner2">
                 <label class="post_url"></label>
-                <p id="url_location"></p>
+                <textarea id="url_location"></textarea>
                 </div>
-                <div class="post_conts_inner">
+                <div class="post_conts_inner3">
                 <label class="post_contents">Contents</label>
-                <div id="contents123"></div>
+                <div id="contents"></div>
                 </div>
               </div>
               <div class="post_info">
@@ -279,7 +278,9 @@
                   <label class="post_vc">조회수</label>
                   <p id="viewCount"></p>
                 </div>
-              </div>
+            </div>
+            <div class="Btn-wrap">
+              <button id="lkBtn">좋아요</button>
             </div>
           </div>
         </div>

@@ -45,17 +45,21 @@ $(document).ready(function(){
 		});
 	});
 	
-    var modal = document.getElementById('myModal');
-	var span = document.getElementsByClassName("close")[0];
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	}
+//	var span = document.getElementsByClassName("close")[0];
+//	span.onclick = function() {
+//	  modal.style.display = "none";
+//	}
+//	// When the user clicks anywhere outside of the modal, close it
+//    var modal = document.getElementById('myModal');
+//	window.onclick = function(event) {
+//	  if (event.target == modal) {
+//	    modal.style.display = "none";
+//	  }
+//	}
+
+	
+
+	
 });
 
 function ajaxBoardList() {
@@ -80,12 +84,25 @@ function ajaxBoardList() {
 		$("#tabs-1 ul").html(contents);
 		$(".titleLink").click(function(event){
 			$("#myModal").css({"display":"block"});
-			$("html, body").css({"overflow":"hidden"});
-			
+			$("html").css({"overflow":"hidden"});
 			var no = $(this).attr("data-no")
 			console.log(no)
 			ajaxLoadBoard(no)
+	    
 		})
+		$("#close-Btn").click(function() {
+			$("#myModal").css({"display":"none"});
+			$("#super_HTML").css({"overflow":"auto"});
+		})
+//		click(function() {
+//		    if(click.target != $(".modal-content")) {
+//		    	$("#myModal").css({"display":"none"});
+//				$("#super_HTML").css({"overflow":"auto"});
+//		    }
+//		})
+//		
+		
+		
 	})
 }
 
@@ -105,7 +122,16 @@ function ajaxLoadBoard(no) {
 		$("#like").text(result.data.like);
 		$("#viewCount").text(result.data.viewCount);
 		$("#writerNick").text(result.data.writerNick);
-	})
+	})	
+		
+		
 }
-
+window.onclick = function(event) {
+var htmlTag = document.getElementById('super_HTML');
+var modal = document.getElementById('myModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+    htmlTag.style.overflow = "auto";
+  }
+}
 
