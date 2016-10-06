@@ -72,7 +72,9 @@
   
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select BD_NO,BD_TITL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT,URL
-    from honey_boards
+       from honey_boards
+      order by BD_NO desc
+    limit #{startIndex}, #{length}
   </select>
   
   <select id="selectOne" resultMap="boardMap" parameterType="int">
