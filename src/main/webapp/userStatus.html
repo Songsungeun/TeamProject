@@ -82,29 +82,34 @@
 }
 
 #sign_upBtn {
-  text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px auto;
+  text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px 30%;
 }
 
 .userStatus{
-z-index:2;
+margin: 20px 20px 20px 20px;
+z-index:5;
 }
 
 #userPhoto {
-  margin: 15%;
+  margin: 10px 0px 0px 10%;
 }
-
 
 #userEmail {
-  margin: 15%;
-  font-size: 18px; 
+  position: relative;
+  top: 10px;
+  margin: 0px 0px 0px 10px;
+  font-size: 15px; 
   font-weight: bold;
-  text-align: center;
 }
-
+#userProfileAdmin {
+  position: relative;
+  top: 9px;
+  margin: 10spx 0px 0px 10px;
+}
 #logoutBtn {
-  margin: 15%;
+  float: right;
+  magin: 25px;
 }
-
 </style>
 </head>
 <body>
@@ -126,13 +131,15 @@ z-index:2;
       
       <div class="userStatus">
       <div id="userPhoto_wrap">
-        <img id="userPhoto" width="200px" height="150px" src="../userPhoto.png">
+        <a href='#'><img id="userPhoto" width="30px" height="30px" src="../defaultUserImg.svg"></a>
         <span id="userEmail"></span>
+        <a href='#'><img id="userProfileAdmin" width = "20px" height= "20px" src="../gear.svg"></a>
         <br>
         <br>
-        <a id="logoutBtn" href='#' margin=15%>로그아웃</a>
         
-        <a id="unregisterBtn" href='#' margin=15%>회원탈퇴</a>
+        <div id= "logoutBtn_wrap">
+          <a id="logoutBtn" href='#' margin=15%>로그아웃</a>
+        </div>
       </div>
     </div>
       
@@ -157,6 +164,11 @@ z-index:2;
   <script>
   console.log(serverAddr)
   ajaxLoginUser() 
+  </script>
+  <script>
+  $("#userProfileAdmin").click(function(){
+	location.href= serverAddr +"/membership/userProfileAdminPage.html"}	  
+  )
   </script>
 </body>
 </html>
