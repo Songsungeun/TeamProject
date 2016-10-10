@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import org.jsoup.select.Elements;
+
 public class honey_boards implements Serializable{
   private static final long serialVersionUID = 1L;
 
@@ -12,6 +14,7 @@ public class honey_boards implements Serializable{
   protected int userNo;
   protected int categoryNo;
   protected String title;
+  protected String linkTitle;
   protected String url;
   protected String contents;
   protected Date createdDate;     // 이제 java.sql.Date 타입으로 날짜 정보를 제대로 다뤄보자!
@@ -90,5 +93,10 @@ public class honey_boards implements Serializable{
     this.categoryNo = categoryNo;
   }
   
-  
+  public String getLinkTitle() {
+		return linkTitle;
+	}
+	public void setLinkTitle(String linkTitle) {
+		this.linkTitle = linkTitle;
+	}
 }

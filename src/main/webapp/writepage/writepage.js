@@ -68,14 +68,17 @@ function ajaxAddBoard(board) {
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/writepage/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
+		console.log("헤헤");
+		console.log(result);
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
 		}
 		$("#url").val(result.data.url);
 		$("#title").val(result.data.title);
-		$("#contents").val(result.data.contents);
+		$("#contents").val(result.data.linkTitle);
 		$("#no").val(result.data.no);
+		console.log(result.data.linkTitle);
 	})
 }
 

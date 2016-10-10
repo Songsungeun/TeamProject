@@ -2,13 +2,10 @@ package honey.controller.json;
 
 import java.util.HashMap;
 
+import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.Gson;
 
 import honey.dao.tempDao;
 import honey.vo.JsonResult;
@@ -34,18 +31,24 @@ public class HoneyBoardController {
   
   @RequestMapping(path="detail")
   public Object detail(int no) throws Exception {
-    
-    try {
-      honey_boards board = boardDao.selectOne(no);
-      
-      if (board == null) 
-        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
-      
-      return JsonResult.success(board);
-      
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+      System.out.println("detail 메서드 실");
+	  try {
+	      honey_boards board = boardDao.selectOne(no);
+	      System.out.println("board 객체 받아옴");
+	      if (board == null) 
+	        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
+	      
+	      System.out.println("scrap 객체 생성준비");
+	      Scrapper scrap = new Scrapper(board.getUrl());
+	      
+	      board.setLinkTitle(scrap.returnInfo());
+	      System.out.println(board.getLinkTitle());
+	      return JsonResult.success(board);
+	      
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	      return JsonResult.fail(e.getMessage());
+	    }
     
   }
   
