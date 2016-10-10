@@ -114,7 +114,6 @@ z-index:5;
 </head>
 <body>
   <div class = "userStatus_Page_Wrap">
-  <input type="hidden" id="memberNumber">
       <div class="login_Page">
       <div class="loginInfo">
         <div class="loginInfo_IdPw" id="input_id">
@@ -144,16 +143,16 @@ z-index:5;
     </div>
       
     </div>
-    
-    
-    
-    
   </div>
-  
   
   <script>
   $("#sign_upBtn").click(function(){
 	  location.href="../membership/membership.html"
+  })
+  </script>
+  <script>
+  $("#userProfileAdmin").click(function(){
+	  location.href="../membership/userProfileAdminPage.html"
   })
   </script>
   
@@ -161,14 +160,10 @@ z-index:5;
   <script type="text/javascript" src="../userAuthApp.js"></script>
   <script type="text/javascript" src="../membership/membership.js"></script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
+  <script type="text/javascript" src="/TeamProject/membership/userProfileAdminPage.js"></script>
   <script>
   console.log(serverAddr)
   ajaxLoginUser() 
-  </script>
-  <script>
-  $("#userProfileAdmin").click(function(){
-	location.href= serverAddr +"/membership/userProfileAdminPage.html"}	  
-  )
   </script>
 </body>
 </html>

@@ -40,6 +40,9 @@ function ajaxLoginUser() {
 	
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
 		var result = obj.jsonResult
+		
+		console.log("ajaxLoginUser Result : "+result);
+		
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
 			$('#newWright').css("display", "none")

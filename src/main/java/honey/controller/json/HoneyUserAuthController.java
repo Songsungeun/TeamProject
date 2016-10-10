@@ -27,7 +27,6 @@ public class HoneyUserAuthController {
   @RequestMapping(path="login")
   public Object login(
       HttpSession session,
-      HttpServletResponse response,
       String email,
       String password,
       Model model,
@@ -43,7 +42,7 @@ public class HoneyUserAuthController {
         sessionStatus.setComplete();
         return JsonResult.fail();
       } else {
-        model.addAttribute("HoneyMembers", member);
+        session.setAttribute("member", member);
         // 세선 만들어서 따로 관리하려던 객체 여기서 써먹는다.
         return JsonResult.success();
       }
@@ -57,7 +56,9 @@ public class HoneyUserAuthController {
   @RequestMapping(path="loginUser")
   public Object loginUser(HttpSession session) throws Exception {
     try {
-      HoneyMembers member = (HoneyMembers)session.getAttribute("HoneyMembers");
+      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      System.out.println(member);
+      
       // 위에서 만든 세선 객체를 여기서 꽂는다
       if (member == null) {
         throw new Exception("로그인이 되지 않았습니다.");
