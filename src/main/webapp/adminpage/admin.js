@@ -1,3 +1,4 @@
+
 function ajaxBoardList() {
 	$.getJSON(serverAddr + "/admin/adminlist.json", function(obj) {
 	var result = obj.jsonResult
@@ -8,27 +9,25 @@ function ajaxBoardList() {
     
     var contents = "";
     var arr = result.data
+    var template = Handlebars.compile($('#trTemplateText').html())
     for (var i in arr) {
-    	  contents += "<tr>" +
-          "<td>" + arr[i].no + "</td>" + 
-          "<td><a class='titleLink' href='#' data-no='" + arr[i].no + "'>" + arr[i].title + "</a></td>" +
-          "<td>" + arr[i].createdDate2 + "</td>" +
-          "<td>" + arr[i].like + "</td>" + 
-          "<td>" + arr[i].viewCount + "</td>" +
-          "<td>" + "<button type='button' id='boardDelete' class='btn btn-danger'>삭제</button>" + "</td>"
-          "</tr>"
+    	contents += template(arr[i])
     }
-    
     $("#boardTable tbody").html(contents);
     $(".titleLink").click(function(event) {
     	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
     })
     
-    $(".btn-danger").click(function(event){
-    	 var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
-         if(result) 
-           ajaxDeleteBoard(arr[i].no)
+    $(".btn-danger").click( function(event){
+    	var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
+    	if(result) {
+    		// 확인 버튼 누를시 
+    		ajaxDeleteBoard(arr[i].no)
+    	} else {
+    		//취소 버튼 누를시 
+    	}
     });
+    
   })
 }
 
@@ -36,18 +35,20 @@ $(function() {
 	    $( "#DetailPage_Wrap" ).tabs();
 	 } );
 
-
 function ajaxDeleteBoard(no) {
 	$.getJSON(serverAddr + "/admin/admindelete.json", {
 		no: no}, function(result) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("삭제 실패입니다.")
+		      location.href = "HoneyAdminPage.html"
 			return
 		}
 		alert("삭제되었습니다.")
 		location.href = "HoneyAdminPage.html"
 	})
 }
+
+
 
 

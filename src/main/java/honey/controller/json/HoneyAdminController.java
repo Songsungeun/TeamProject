@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import honey.dao.HoneyMembersDao;
 import honey.dao.tempDao;
 import honey.vo.JsonResult;
 
@@ -15,6 +16,7 @@ import honey.vo.JsonResult;
 public class HoneyAdminController {
 
   @Autowired tempDao tempdao;
+  @Autowired HoneyMembersDao membesDao;
 
   @RequestMapping(path = "adminlist")
   public Object list(

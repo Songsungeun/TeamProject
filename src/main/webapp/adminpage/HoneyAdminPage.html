@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
@@ -12,11 +11,11 @@
 /*reset*/
 html, body, div, span, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
-b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
-input,textarea,select,button,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
+input,textarea,select,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
 ul,ol,li{list-style:none;}
 a{text-decoration:none; color:inherit;}
 a:hover, a:focus{text-decoration:underline;}
@@ -49,7 +48,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   margin : 0 auto;
 }
 
-#l1 {
+#Left_Menu {
   position: fixed; 
   width: 100px;
   height: 100%;
@@ -69,12 +68,6 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 }
 
 #amBtn2 {
- padding: 5px 14px 5px 14px; 
- left : 155px;
- top: 267px;
-}
-
-#amBtn3 {
  padding: 5px 20px 5px 20px;
  left : 155px;
  top:300px; 
@@ -100,21 +93,19 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   <div id = "AdminSection">
     <div id = "Center_Menu">
      <div id = "Left_Menu">
-         <ol id = l1>
-           <img src="../adminpage/images/photo01.jpeg" width="100px">
-           <a id = adminUserIdInfo>USER ID</a><br>
-           
-           <button type="button" id="amBtn1" class="btn btn-default">보관소 관리</button>
-           <button type="button" id="amBtn2" class="btn btn-default">프로필 편집</button>
-           <button type="button" id="amBtn3" class="btn btn-default">알림 관리</button>
-        </ol> 
+       <img src="../adminpage/images/photo01.jpeg" width="100px">
+           <a id = adminUserIdInfo>USER ID</a><br> 
+           <div>
+           <button type="button" id="amBtn1" class="btn btn-default">보관소 관리</button><br>
+           <button type="button" id="amBtn2" class="btn btn-default">알림 관리</button>
+           </div>
      </div>
-         <label>
-	          <div id="admin_detail"> 
-	            <ul id="detail_inner">
-	            </ul>
-	         </div>
-         </label>
+         <div id="admin_detail">
+          <ol>
+            <li>
+            </li>
+          </ol>
+         </div>
     </div>
   </div>
         
@@ -123,9 +114,10 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
     <footer>
 
     </footer>
-  
-	  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script type="text/javascript" src="/TeamProject/lib/js/common.js"></script>
     <script type="text/javascript" src="userProfileAdminPage.js"></script>
@@ -138,29 +130,23 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
     });
    </script>
     
-   <script> 
+  <script> 
     $(function(){
-        $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
+        $("#admin_detail > ol > li").load("UserStorageAdminPage.html"); 
+        var memberNumber = $("#memberNumber").val();
+        ajaxUserProfileLoder(memberNumber);
     });
    </script>
    
    <script> 
    $("#amBtn1").click(function(event) {
-        $("#admin_detail > ul").load("UserStorageAdminPage.html"); 
+        $("#admin_detail > ol > li").load("UserStorageAdminPage.html"); 
     });
    </script>
    
     <script> 
-   $("#amBtn2").click(function(event) {
-      $("#admin_detail > ul").load("UserProfileAdminPage.html"); 
-      var memberNumber = $("#memberNumber").val();
-      ajaxUserProfileLoder(memberNumber);
-    });
-   </script>
-   
-    <script> 
-    $("#amBtn3").click(function(event) {
-      $("#admin_detail > ul").load("UserNoticeAdminPage.html"); 
+    $("#amBtn2").click(function(event) {
+      $("#admin_detail > ol > li").load("UserNoticeAdminPage.html"); 
     });
    </script>
 
