@@ -1,0 +1,202 @@
+  <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style>
+@charset "utf-8";
+/*reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+input,textarea,select,button,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
+ul,ol,li{list-style:none;}
+a{text-decoration:none; color:inherit;}
+a:hover, a:focus{text-decoration:underline;}
+fieldset{margin:0; padding:0; border:none;} 
+caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
+img{vertical-align:middle;} 
+table{display: table;}
+caption{display: table-caption;}
+colgroup{display: table-column-group;}
+col{display: table-column;}
+thead{display: table-header-group;}
+tbody{display: table-row-group;}
+tfoot{display: table-footer-group;}
+tr{display: table-row;}
+td, th{display: table-cell;}
+ul:after{content:" ";display:block;clear:both;}
+body{ font-family:"arial", sans-serif; font-size:12px;}
+
+.userProfileAdmin_topSection{
+  position: relative;
+  top: 100px;
+  max-width: 1024px;
+  margin: 0 auto;
+  border: 1px solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-color: #C9C9C9;
+  padding-top: 80px;
+  background-color: #f3f4f5;
+  padding-bottom: 20px;
+}
+
+.userProfileAdmin_mainSection {
+  position: relative;
+  top: 130px;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 50px;
+}
+.profile {
+color: #e00000;
+font-weight: bold;
+font-size : 15px;
+background-color: inherit !important;
+}
+#unregisterBtn {
+float: right;
+}
+.col-sm-2 {
+  margin: 25px 0px 0px 0px;
+}
+.col-sm-10 {
+  margin: 15px 0px 0px 0px;
+}
+.col-xs-2{
+  padding-left: 0px;
+}
+#changeUserStatusInfo {
+  padding-top: 3px; 
+  height:30px;
+  width: 150px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #e00000;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-top: 300px;
+  border-radius: 4px; 
+  text-align: center; 
+}
+  </style>
+</head>
+<body style="background-color: #f3f4f5;">
+<div id="includeHeader"></div>
+<div class="userProfileAdmin_topSection">
+  <div class="profile">
+   <span class="profile"><a href="#">프로필</a></span>
+   <span class="profile" id="unregisterBtn"><a href="#">회원탈퇴</a></span>
+  </div>
+</div>
+
+<div class="userProfileAdmin_mainSection">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="userEmailInfo" placeholder="Email " style="width:300px;">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">닉네임</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="userNickNameInfo" placeholder="nickname" style="width:300px;">
+    </div>
+  </div>
+          
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">이름</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="userNameInfo" placeholder="name" style="width:300px;">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">생일</label>
+    <div class="col-sm-10">
+    <div class="col-xs-3" style="width: 130px; padding: 0px"  >
+      <label class="month">
+        <select name="BirthMonth" class="form-control" >
+              <option value="">Month</option>
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select> 
+          </label>
+        </div>
+        <div class="col-xs-2" style="margin-left: 0px">
+          <input type="text" class="form-control" placeholder="day">
+        </div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="year">
+        </div>
+    </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">전화번호</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="userTelInfo" placeholder="Tel" style="width:300px;">
+    </div>
+  </div>
+</div>  
+  
+  
+   <div id="changeUserStatusInfo">
+    <span>변경사항 저장</span>
+  </div>
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="userProfileAdminPage.js"></script>
+<script type="text/javascript" src="../lib/js/common.js"></script>
+<script type="text/javascript" src="../membership/membership.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>
+  $(function(){
+    $("#includeHeader").load("../header.html"); 
+    ajaxUserProfileLoder();
+  });
+</script>
+<script>
+ $("#changeUserStatusInfo").click(function(event){
+	  var userStatusChangeInfo = {
+			  userName: $("#userNameInfo").val(),
+			  email: $("#userEmailInfo").val(),
+			  nickname: $("#userNickNameInfo").val(),
+			  phone: $("#userTelInfo").val()
+	  }
+	  ajaxUserStatusUpdate(userStatusChangeInfo) 
+ })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

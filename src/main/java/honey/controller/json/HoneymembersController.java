@@ -35,12 +35,12 @@ public class HoneymembersController {
   }
 
   @RequestMapping(path="unregisteMember")
-  public Object unregister(int memberNo, HttpSession session, SessionStatus sessionStatus) throws Exception {
-    sessionStatus.setComplete();
+  public Object unregister(HttpSession session) throws Exception {
     session.invalidate();
-
+    
     try {
-      hMembersDao.unregisteMember(memberNo);
+      HoneyMembers hmember= (HoneyMembers)session.getAttribute("member");
+      hMembersDao.unregisteMember(hmember.getMemberNo());
       return JsonResult.success();
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());
@@ -49,10 +49,10 @@ public class HoneymembersController {
 
 
   @RequestMapping(path="userInfoDetail")
-  public Object userInfoDetail (int memberNo) throws Exception {
+  public Object userInfoDetail (HttpSession session) throws Exception {
     HashMap<String,Object> result = new HashMap<>();
     try {
-      HoneyMembers hMembers = hMembersDao.selectUserInfo(memberNo);
+      HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
 
       if(hMembers == null) {
         System.out.println("해당 회원 정보가 없습니다.");
@@ -64,11 +64,16 @@ public class HoneymembersController {
   }
   
   @RequestMapping(path="userStatusUpdate")
-  public Object userStatusUpdate(HoneyMembers hmember) throws Exception {
+  public Object userStatusUpdate(HoneyMembers hmember, HttpSession session) throws Exception {
     try {
+      HoneyMembers hmembers =(HoneyMembers)session.getAttribute("member");
+      hmember.setMemberNo(hmembers.getMemberNo());
       hMembersDao.userInfoUpdate(hmember);
+      hmember.setPassword(hmembers.getPassword());
+      session.setAttribute("member", hmember);
       return JsonResult.success();
     } catch(Exception e) {
+      e.printStackTrace();
       return JsonResult.fail(e.getMessage());
     }
   }

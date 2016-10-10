@@ -19,9 +19,9 @@
   </insert>
   
   <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
-    select MB_NO, PWD, EMAIL 
+    select MB_NO, PWD, EMAIL,  MB_NICK, TEL, MB_NM
     from honey_membs 
-    where EMAIL=#{email} and PWD=password(#{password})
+    where EMAIL=#{email} and PWD=password(#{password}) 
   </select>
   
   <delete id="unregisteMember" parameterType="int">
@@ -35,12 +35,11 @@
     where MB_NO=#{userNo}
   </select>
   <update id="userInfoUpdate">
-    update honey_membs
+    update honey_membs set
       EMAIL=#{email},
       MB_NICK=#{nickname},
       MB_NM=#{userName},
-      TEL=#{phone},
-      PWD=#{password},
+      TEL=#{phone}
     where MB_NO=#{memberNo}
   </update>
 </mapper>
