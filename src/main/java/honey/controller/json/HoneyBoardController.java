@@ -2,12 +2,14 @@ package honey.controller.json;
 
 import java.util.HashMap;
 
-import org.jsoup.nodes.Element;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import honey.dao.tempDao;
+import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.honey_boards;
 
@@ -17,10 +19,12 @@ public class HoneyBoardController {
   @Autowired tempDao boardDao;
   
   @RequestMapping(path="writeadd")
-  public Object add(honey_boards board) throws Exception {
+  public Object add(honey_boards board, HttpSession session) throws Exception {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
     System.out.println("요청 받음");
     try {
+      HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
+      board.setUserNo(hMember.getMemberNo());
       boardDao.insert(board);
       return JsonResult.success();
 
