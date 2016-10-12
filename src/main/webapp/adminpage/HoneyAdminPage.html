@@ -73,11 +73,9 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
  top:300px; 
 }
 
- #adminUserIdInfo {
-  text-align: center;
-  font-size: 14px;
-  position: relative;
-  left: 20px;
+ #userNickNameInfo {
+ text-align: center;
+ font-size: 15px;
 }  
 
 </style>
@@ -94,8 +92,8 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
     <div id = "Center_Menu">
      <div id = "Left_Menu">
        <img src="../adminpage/images/photo01.jpeg" width="100px">
-           <a id = adminUserIdInfo>USER ID</a><br> 
-           <div>
+        <div id ="userNickNameInfo"></div>
+        <div>
            <button type="button" id="amBtn1" class="btn btn-default">보관소 관리</button><br>
            <button type="button" id="amBtn2" class="btn btn-default">알림 관리</button>
            </div>
@@ -115,26 +113,28 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
     </footer>
     
+    <script type="text/javascript" src="HoneyAdminpage.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script type="text/javascript" src="/TeamProject/lib/js/common.js"></script>
-    <script type="text/javascript" src="userProfileAdminPage.js"></script>
-    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="../membership/userProfileAdminPage.js"></script>
     
+  <script >
+  ajaxloadNickName()
+  </script>
+  
   
    <script> 
     $(function(){
-      $("#includedContent").load("/TeamProject/header.html"); 
+      $("#includedContent").load("/TeamProject/header.html");
     });
    </script>
     
   <script> 
     $(function(){
         $("#admin_detail > ol > li").load("UserStorageAdminPage.html"); 
-        var memberNumber = $("#memberNumber").val();
-        ajaxUserProfileLoder(memberNumber);
     });
    </script>
    
@@ -149,7 +149,8 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
       $("#admin_detail > ol > li").load("UserNoticeAdminPage.html"); 
     });
    </script>
-
+   
+ 
 </body>
 </html>
 

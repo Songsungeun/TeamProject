@@ -70,16 +70,17 @@
     values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
   </insert>
   
-  <select id="selectList" resultMap="boardMap" parameterType="map">
-    select BD_NO,BD_TITL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT,URL
-       from honey_boards
-      order by BD_NO desc
+  <select id="selectList" resultMap="boardMap" parameterType="map"> 
+   select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL
+       from honey_boards 
+   where MB_NO = #{userNo}
+   order by BD_NO desc 
     limit #{startIndex}, #{length}
   </select>
   
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL
-    from honey_boards
+    from honey_boards 
     where BD_NO = #{value}
   </select>
 

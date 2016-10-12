@@ -2,13 +2,15 @@ package honey.controller.json;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import honey.dao.HoneyMembersDao;
 import honey.dao.tempDao;
+import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 
 @Controller
@@ -16,21 +18,25 @@ import honey.vo.JsonResult;
 public class HoneyAdminController {
 
   @Autowired tempDao tempdao;
-  @Autowired HoneyMembersDao membesDao;
-
+  
+  
   @RequestMapping(path = "adminlist")
   public Object list(
+      HttpSession session,
       @RequestParam(defaultValue = "1") int pageNo,
-      @RequestParam(defaultValue = "10") int length) throws Exception {
+      @RequestParam(defaultValue = "5") int length) throws Exception {
     
     try {
+      HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
       HashMap<String, Object> map = new HashMap<>();
       map.put("startIndex", (pageNo - 1) * length);
       map.put("length", length);
-
+      map.put("userNo",hMember.getMemberNo());
       return JsonResult.success(tempdao.selectList(map));
-   
+
+
     } catch (Exception e) {
+      e.printStackTrace();
       return JsonResult.fail(e.getMessage());
     }
   }
@@ -47,4 +53,5 @@ public class HoneyAdminController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  
 }
