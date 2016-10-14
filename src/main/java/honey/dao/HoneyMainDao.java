@@ -9,6 +9,7 @@ import honey.vo.HoneyMain;
 
 public interface HoneyMainDao {
   List<HoneyMain> selectList(Map<String, Object> paramMap) throws Exception;
+  List<HoneyMain> popularList(Map<String, Object> paramMap) throws Exception;
   
   HoneyMain selectOne(int no) throws Exception;
   
@@ -16,7 +17,11 @@ public interface HoneyMainDao {
   
   int insert(HoneyMain honeyMain) throws Exception;
   
-  int update(HoneyMain honeyMain) throws Exception;
+  int increaseViewCount(int no) throws Exception;
+  
+  int increase_Like(int no) throws Exception;
+  
+  int decrease_Like(int no) throws Exception;
   
   int delete(int no) throws Exception;
   

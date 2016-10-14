@@ -54,29 +54,62 @@
 <!--   </delete> -->
 
   <resultMap type="HoneyMain" id="boardMap">
-    <id column="BD_NO" property="no"/> 
-    <result column="BD_TITL" property="title"/>
-    <result column="BD_CONTS" property="contents"/>
-    <result column="BD_CRE" property="createdDate"/>
-    <result column="BD_LIKE" property="like"/>
-    <result column="VIEW_CT" property="viewCount"/>
-    <result column="URL" property="url"/>
-    <result column="MB_NICK" property="writerNick"/>
+    <id column="BD_NO" property="no" />
+    <result column="BD_TITL" property="title" />
+    <result column="BD_CONTS" property="contents" />
+    <result column="BD_CRE" property="createdDate" />
+    <result column="BD_LIKE" property="like" />
+    <result column="VIEW_CT" property="viewCount" />
+    <result column="URL" property="url" />
+    <result column="MB_NICK" property="writerNick" />
   </resultMap>
-  
+
+  <select id="popularList" resultMap="boardMap" parameterType="map">
+    select view_ct, BD_TITL, BD_NO
+    from honey_boards
+    <where>
+      <if test="title != null">title like concat('%', #{title}, '%')</if>
+    </where>
+    order by
+    <choose>
+<!--      <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
+<otherwise>view_ct desc</otherwise>
+    </choose>
+  </select>
+
+
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select BD_NO,BD_TITL,BD_CRE,BD_LIKE,VIEW_CT
     from honey_boards
   </select>
-<!--   <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
-<!--     select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->
-<!--     from honey_boards -->
-<!--     where BD_NO = #{value} -->
-<!--   </select> -->
+  <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
+  <!-- select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->
+  <!-- from honey_boards -->
+  <!-- where BD_NO = #{value} -->
+  <!-- </select> -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
-    select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK
+    select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS,
+    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK
     from honey_membs HM
     left join honey_boards HB on HB.MB_NO = HM.MB_NO
     where BD_NO = #{value}
   </select>
+
+  <update id="increaseViewCount" parameterType="HoneyMain">
+    update honey_boards
+    set VIEW_CT = VIEW_CT + 1
+    where BD_NO=#{value}
+  </update>
+
+  <update id="increaseLike" parameterType="HoneyMain">
+    update honey_boards
+    set BD_LIKE = BD_LIKE + 1
+    where BD_NO = #{value}
+  </update>
+
+  <update id="decreaseLike" parameterType="HoneyMain">
+    update honey_boards
+    set BD_LIKE = BD_LIKE - 1
+    where BD_NO = #{value}
+  </update>
 </mapper>

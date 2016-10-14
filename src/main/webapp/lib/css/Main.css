@@ -43,7 +43,7 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 }
 
 .mainpage_Topcontainer {
-  height: 290px;
+  height: 330px;
   margin-top: 25px;
 }
 
@@ -69,11 +69,11 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 }
 .carousel-inner {
   width: 650px;
-  height: 232px;
+  height: 272px;
 }
 .carousel-inner > .item > a > img {
   width: 650px;
-  height: 232px;
+  height: 272px;
 }
 .carousel-indicators {
   bottom: -20px;
@@ -94,7 +94,7 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 /* pop_tabs */
 .mainpage_wrap .mainpage_Topcontainer .pop_container {
   width: 350px;
-  height: 232px;
+  height: 272px;
   margin: 30px 0 0 22px;
   padding: 0px;
   float: left;
@@ -125,13 +125,28 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 .pop_tabs-1-conts > .pop_list {
   cursor: pointer;
 }
+.pop_tabs-1-conts {
+  height: 230px;
+  overflow: hidden;
+}
 #pop_tabs #pop_tabs-1{
   display: block;
 }
 .pop_list {
-  font-size: 16px;
-  margin: 3px 0;
+  text-overflow: ellipsis; 
+  margin: 5px 0;
   padding: 0 5px;
+}
+.popNo {
+  font-size: 18px;
+  color: #3E6EFF;
+  font-weight: 900;
+  padding-right: 10px;
+}
+.popConts {
+  
+  font-size: 16px;
+  color: black;
 }
 .pop_list:hover {
   background-color: #DEDEDE;
@@ -164,6 +179,7 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   width: 630px;
   margin: 0 197px;
 }
+
 .category_list .category_inner {
   width: 200px;
   margin: 0 5px;
@@ -404,3 +420,4 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
     text-decoration: none;
     cursor: pointer;
 }
+

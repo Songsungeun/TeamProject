@@ -17,8 +17,14 @@ public class HoneyMain implements Serializable{
   protected String createdDate2;  //birth
   protected int like;
   protected int viewCount;
+  protected String linkTitle;
   
-  
+  public String getLinkTitle() {
+    return linkTitle;
+  }
+  public void setLinkTitle(String linkTitle) {
+    this.linkTitle = linkTitle;
+  }
   public String getWriterNick() {
     return writerNick;
   }
