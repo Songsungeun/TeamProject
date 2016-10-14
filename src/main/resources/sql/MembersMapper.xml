@@ -34,6 +34,7 @@
     from honey_membs
     where MB_NO=#{userNo}
   </select>
+  
   <update id="userInfoUpdate">
     update honey_membs set
       EMAIL=#{email},
@@ -42,6 +43,13 @@
       TEL=#{phone}
     where MB_NO=#{memberNo}
   </update>
+  
+  <update id="changePassword">
+    update honey_membs set
+      PWD=password(#{password})
+    where MB_NO=#{memberNo}
+  </update>
+  
 </mapper>
 
 

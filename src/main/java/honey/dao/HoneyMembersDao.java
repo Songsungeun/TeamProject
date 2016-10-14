@@ -10,6 +10,6 @@ public interface HoneyMembersDao {
   HoneyMembers selectOneByEmailAndPassword(Map<String, Object> paramMap);
   HoneyMembers selectUserInfo(int no);
   int userInfoUpdate(HoneyMembers hmember);
-  
+  int changePassword(HoneyMembers hmember);
   
 }

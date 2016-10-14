@@ -30,3 +30,19 @@ function ajaxUserStatusUpdate(userStatusChangeInfo) {
 		location.href="/TeamProject/mainpage/Main.html"
 			},"json")
 }
+
+
+function ajaxPasswordChange(newPassword) {
+	console.log(newPassword);
+	$.post("changePassword.json", newPassword, function(obj) {
+		var result=obj.jsonResult;
+		if(result.state !="success") {
+			console.log(result.state)
+			alert("변경 실패입니다.")
+			return
+		}
+		alert("변경 완료! 메인 페이지로 이동합니다.")
+		location.href="/TeamProject/mainpage/Main.html"
+	},"json")
+}
+

@@ -55,10 +55,13 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   padding: 50px;
 }
 .profile {
-color: #e00000;
 font-weight: bold;
 font-size : 15px;
+margin-right: 20px;
 background-color: inherit !important;
+}
+#changeProfile {
+color:#e00000;
 }
 #unregisterBtn {
 float: right;
@@ -72,7 +75,7 @@ float: right;
 .col-xs-2{
   padding-left: 0px;
 }
-#changeUserStatusInfo {
+.userStatusInfo {
   padding-top: 3px; 
   height:30px;
   width: 150px;
@@ -82,9 +85,16 @@ float: right;
   background-color: #e00000;
   border: 1px solid;
   margin: 0 auto;
-  margin-top: 300px;
+  margin-top: 400px;
   border-radius: 4px; 
   text-align: center; 
+}
+
+#passwordInfoPage {
+  display: none;
+}
+#changPassword {
+  display: none;
 }
   </style>
 </head>
@@ -92,12 +102,13 @@ float: right;
 <div id="includeHeader"></div>
 <div class="userProfileAdmin_topSection">
   <div class="profile">
-   <span class="profile"><a href="#">프로필</a></span>
+   <span class="profile" id="changeProfile"><a href="#">프로필</a></span>
+   <span class="profile" id="changePassword"><a href="#">비밀번호 변경</a></span>
    <span class="profile" id="unregisterBtn"><a href="#">회원탈퇴</a></span>
   </div>
 </div>
 
-<div class="userProfileAdmin_mainSection">
+<div class="userProfileAdmin_mainSection" id="profileInfoPage">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
@@ -154,12 +165,29 @@ float: right;
     </div>
   </div>
 </div>  
-  
-  
-   <div id="changeUserStatusInfo">
-    <span>변경사항 저장</span>
+</div>
+<div class="userProfileAdmin_mainSection" id="passwordInfoPage">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">새 비밀번호</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="changeNewPassword" placeholder="New Password " style="width:300px;">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">비밀번호 확인</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="newPasswordConfirm" placeholder="Re Password" style="width:300px;">
+    </div>
   </div>
 </div>
+  
+   <div class="userStatusInfo" id="changeUserStatusInfo">
+    <span><a href="#">변경사항 저장</a></span>
+  </div>
+  
+  <div class="userStatusInfo" id="changPassword">
+    <span><a href="#">비밀번호 변경</a></span>
+  </div>
 
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -188,6 +216,48 @@ float: right;
 	  ajaxUserStatusUpdate(userStatusChangeInfo) 
  })
 </script>
+
+<script>
+$("#changPassword").click(function(event){
+	console.log($("#changeNewPassword").val())
+	console.log($("#newPasswordConfirm").val())
+	if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
+		alert("비밀번호가 일치하지 않습니다.")
+		return
+	} else {
+		var newPassword ={password: $("#changeNewPassword").val()}
+		var result = confirm("Are you sure?")
+		console.log(result)
+		if(result != true) {
+			return
+		} else {
+			ajaxPasswordChange(newPassword)
+		}
+	}
+	
+})
+
+</script>
+
+<script>
+$("#changePassword").click(function(event){
+	$("#changePassword").css("color", "#e00000");
+	$("#changeProfile").css("color", "black");
+	$("#profileInfoPage").css("display", "none");
+	$("#changeUserStatusInfo").css("display", "none");
+	$("#passwordInfoPage").css("display", "inherit");
+	$("#changPassword").css("display", "inherit");
+})
+$("#changeProfile").click(function(event){
+	$("#changeProfile").css("color", "#e00000")
+  $("#changePassword").css("color", "black");
+	$("#profileInfoPage").css("display", "inherit");
+	$("#passwordInfoPage").css("display", "none");
+	$("#changeUserStatusInfo").css("display", "inherit");
+	$("#changPassword").css("display", "none");
+})
+</script>
+
 </body>
 </html>
 
