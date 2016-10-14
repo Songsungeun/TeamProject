@@ -65,7 +65,6 @@ function ajaxBoardList() {
 	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
 	    }
-		ajaxBoardPopularList()
 		var template1 = Handlebars.compile($('#liTemplateText').html())
 		$("#tabs-1 > .tabs-1-contents").html(template1(result));
 		$(".titleLink").click(function(event){
@@ -114,18 +113,30 @@ function ajaxBoardPopList() {
 	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
 	    }
-		
+		console.log("PopList 실행")
 		var contents = ""
 	    var arr = result.data
 	    for (var i in arr) {
 	    	contents += "<li class='pop_list'>" +
-	    	"<a class='titleLink' href='#' data-no='" + arr[i].no + "'>" +
+	    	"<a class='pop_list_Link' href='#' data-no='" + arr[i].no + "'>" +
 	    	"<span class='popNo'>"+ (parseInt(i)+1) +"</span>" +
 	    	"<span class='popConts'>" + arr[i].title +"</span>" +
 	    	"</a>" +
 	    	"</li>"
 	    }
 	    $("#pop_tabs-1 > .pop_tabs-1-conts").html(contents)
+	    $(".pop_list_Link").click(function(event){
+			$("#myModal").css({"display":"block"});
+			$("html").css({"overflow":"hidden"});
+			var no = $(this).attr("data-no")
+			console.log(no)
+			ajaxLoadBoard(no)
+		})
+		
+		$("#close-Btn").click(function() {
+			$("#myModal").css({"display":"none"});
+			$("#super_HTML").css({"overflow":"auto"});
+		})
     })
 }
 
