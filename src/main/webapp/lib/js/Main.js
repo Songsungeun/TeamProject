@@ -33,7 +33,7 @@ $(document).ready(function(){
 		});
 	});
 	$(function() {
-		$("#includedContent").load("/TestProject/header.html");
+		$("#includedContent").load("/TeamProject/header.html");
 	});
 	// pop_list
 	$(function () {
