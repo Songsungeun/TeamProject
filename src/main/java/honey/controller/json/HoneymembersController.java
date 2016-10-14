@@ -17,7 +17,7 @@ import honey.vo.JsonResult;
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
 public class HoneymembersController {
 	@Autowired HoneyMembersDao hMembersDao;
-	@Autowired MemberService memberService;
+	//@Autowired MemberService memberService;
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers board) throws Exception {
