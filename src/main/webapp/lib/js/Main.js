@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	// Activate Carousel
     $("#myCarousel").carousel();
@@ -32,7 +33,7 @@ $(document).ready(function(){
 		});
 	});
 	$(function() {
-		$("#includedContent").load("/TeamProject/header.html");
+		$("#includedContent").load("/TestProject/header.html");
 	});
 	// pop_list
 	$(function () {
@@ -44,8 +45,19 @@ $(document).ready(function(){
 			$("#pop_tabs #pop_tabs-"+($("#pop_tabs >ul >li >a").index(this)+1)).css({"display":"block"});
 		});
 	});
+	
+//	var span = document.getElementsByClassName("close")[0];
+//	span.onclick = function() {
+//	  modal.style.display = "none";
+//	}
+//	// When the user clicks anywhere outside of the modal, close it
+//    var modal = document.getElementById('myModal');
+//	window.onclick = function(event) {
+//	  if (event.target == modal) {
+//	    modal.style.display = "none";
+//	  }
+//	}
 });
-
 function ajaxBoardList() {
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult
@@ -53,17 +65,9 @@ function ajaxBoardList() {
 	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
 	    }
-		var contents = "";
-		var arr = result.data
-		for (var i in arr) {
-			contents += "<li>" +
-            "<a class='titleLink' href='#' data-no='" + arr[i].no + "'>" +
-            "<img src='/TeamProject/mainpage/mainpage_images/suji_1.jpg' alt='Image File'>" +
-            "<p>" + arr[i].title + "</p>" +
-            "</a>" +
-            "</li>"
-		}
-		$("#tabs-1 ul").html(contents);
+		ajaxBoardPopularList()
+		var template1 = Handlebars.compile($('#liTemplateText').html())
+		$("#tabs-1 > .tabs-1-contents").html(template1(result));
 		$(".titleLink").click(function(event){
 			$("#myModal").css({"display":"block"});
 			$("html").css({"overflow":"hidden"});
@@ -75,8 +79,33 @@ function ajaxBoardList() {
 			$("#myModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
 		})
+		
 	})
 }
+
+//function ajaxBoardPopularList() {
+//	$.getJSON(serverAddr + "/mainpage/mostPost.json", function(obj) {
+//		var result = obj.jsonResult
+//		if (result.state != "success") {
+//	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
+//	    	 return
+//	    }
+//		var template2 = Handlebars.compile($('#popLiTemplateText').html())
+//		$("#pop_tabs-1 > .pop_tabs-1-conts").html(template2(result));
+//		
+//		$(".titleLink").click(function(event){
+//			$("#myModal").css({"display":"block"});
+//			$("html").css({"overflow":"hidden"});
+//			var no = $(this).attr("data-no")
+//			console.log(no)
+//			ajaxLoadBoard(no)
+//		})
+//		$("#close-Btn").click(function() {
+//			$("#myModal").css({"display":"none"});
+//			$("#super_HTML").css({"overflow":"auto"});
+//		})
+//	})
+//}
 
 function ajaxBoardPopList() {
 	$.getJSON(serverAddr + "/mainpage/mostPost.json", function(obj) {
@@ -97,19 +126,9 @@ function ajaxBoardPopList() {
 	    	"</li>"
 	    }
 	    $("#pop_tabs-1 > .pop_tabs-1-conts").html(contents)
-	    $(".titleLink").click(function(event){
-			$("#myModal").css({"display":"block"});
-			$("html").css({"overflow":"hidden"});
-			var no = $(this).attr("data-no")
-			console.log(no)
-			ajaxLoadBoard(no)
-		})
-		$("#close-Btn").click(function() {
-			$("#myModal").css({"display":"none"});
-			$("#super_HTML").css({"overflow":"auto"});
-		})
     })
 }
+
 
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
@@ -123,12 +142,22 @@ function ajaxLoadBoard(no) {
 		$("#url").text(result.data.url);
 		$("#contents").text(result.data.contents);
 		$("#createdDate").text(result.data.createdDate2);
-		$("#like").text(result.data.like);
-		$("#viewCount").text(result.data.viewCount);
 		$("#writerNick").text(result.data.writerNick);
+		$("#url_location").html(result.data.linkTitle);
+		$("#viewCount").text(result.data.viewCount);
+		$("#like").text(result.data.like);
+		
+		$("#lkBtn").click(function(){
+			if (!$("#lk"))
+				
+			$("#lkBtn").removeClass("lk");
+			$("#lkBtn").css({"display":"none"});
+			$(this).addClass("lk");
+			$("#pop_tabs #pop_tabs-"+($("#pop_tabs >ul >li >a").index(this)+1)).css({"display":"block"});
+		})
+		
 	})	
 }
-
 window.onclick = function(event) {
 var htmlTag = document.getElementById('super_HTML');
 var modal = document.getElementById('myModal');
@@ -136,5 +165,5 @@ var modal = document.getElementById('myModal');
     modal.style.display = "none";
     htmlTag.style.overflow = "auto";
   }
-} 
+}
 
