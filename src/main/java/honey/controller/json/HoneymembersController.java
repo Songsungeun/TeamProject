@@ -5,16 +5,11 @@ import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
-
-import com.google.gson.Gson;
 
 import honey.dao.HoneyMembersDao;
+import honey.service.MemberService;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 
@@ -22,12 +17,12 @@ import honey.vo.JsonResult;
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
 public class HoneymembersController {
 	@Autowired HoneyMembersDao hMembersDao;
+	@Autowired MemberService memberService;
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers board) throws Exception {
-		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
-		System.out.println(board);
 		try {
+			//memberService.signUpMember(board)
 			hMembersDao.joinMember(board);
 			return JsonResult.success();
 		} catch (Exception e) {
@@ -42,6 +37,7 @@ public class HoneymembersController {
 
 		try {
 			HoneyMembers hMembers= (HoneyMembers)session.getAttribute("member");
+			//memberService.unregisteMember(hMembers.getMemberNo());
 			hMembersDao.unregisteMember(hMembers.getMemberNo());
 			return JsonResult.success();
 		} catch (Exception e) {
@@ -52,10 +48,9 @@ public class HoneymembersController {
 
 	@RequestMapping(path="userInfoDetail")
 	public Object userInfoDetail (HttpSession session) throws Exception {
-		HashMap<String,Object> result = new HashMap<>();
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
-
+			
 			if(hMembers == null) {
 				System.out.println("해당 회원 정보가 없습니다.");
 			}
@@ -88,6 +83,12 @@ public class HoneymembersController {
 			HoneyMembers honeyMemebers = (HoneyMembers)session.getAttribute("member");
 			hMember.setMemberNo(honeyMemebers.getMemberNo());
 			hMembersDao.changePassword(hMember);
+			hMember.setEmail(honeyMemebers.getEmail());
+			hMember.setMemberNo(honeyMemebers.getMemberNo());
+			hMember.setNickname(honeyMemebers.getNickname());
+			hMember.setPhone(honeyMemebers.getPhone());
+			hMember.setUserBirthDay(honeyMemebers.getUserBirthDay());
+			hMember.setUserName(honeyMemebers.getUserName());
 			session.setAttribute("member", hMember);
 			return JsonResult.success();
 		} catch(Exception e) {
