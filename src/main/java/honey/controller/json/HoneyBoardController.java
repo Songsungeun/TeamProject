@@ -15,6 +15,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import honey.dao.tempDao;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
+import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
 @Controller
@@ -34,35 +36,6 @@ public class HoneyBoardController {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
     System.out.println("요청 받음");
     try {
-      // 가져올 HTTP 주소 세팅
-      HttpPost http = new HttpPost(board.getUrl());
-      // 가져오기를 실행할 클라이언트 객체 생성
-      HttpClient httpClient = HttpClientBuilder.create().build();
-      // 실행 및 실행 데이터를 Response 객체에 담음
-      HttpResponse response = httpClient.execute(http);
-      // Response 받은 데이터중, DOM 데이터를 가져와 Entity에 담음
-      HttpEntity entity = response.getEntity();
-      //Charset을 알아내기 위해 DOM의 컨텐트 아입을 가져와 담고 Charset을 가져옴
-      ContentType contentType = ContentType.getOrDefault(entity);
-      Charset charset = contentType.getCharset();
-      // DOM 데이터를 한 줄씩 읽기 위해 Reader에 담음
-      BufferedReader br = new BufferedReader(new InputStreamReader(entity.getContent(), charset));
-      // 가져온 DOM 데이터를 담기 위한 그릇
-      StringBuffer sb = new StringBuffer();
-      // DOM 데이터 가져오기
-      String line = "";
-      while((line=br.readLine()) != null) {
-        sb.append(line+"\n");
-      }
-      // 가져온 DOM을 보자
-      System.out.println(sb.toString());
-      
-      // Jsoup으로 파싱해보자.
-      Document doc = Jsoup.parse(sb.toString());
-      
-      // Jsoup에서 제공하는 Connect 처리
-      Document doc2 = Jsoup.connect(board.getUrl()).get();
-      System.out.println(doc2.data());
       
       HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
       board.setUserNo(hMember.getMemberNo());
@@ -84,10 +57,35 @@ public class HoneyBoardController {
 	        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
 	      
 	      System.out.println("scrap 객체 생성준비");
-	      Scrapper scrap = new Scrapper(board.getUrl());
 	      
-	      board.setLinkTitle(scrap.returnInfo());
-	      System.out.println(board.getLinkTitle());
+	   // 가져올 HTTP 주소 세팅
+	      HttpPost http = new HttpPost(board.getUrl());
+	      // 가져오기를 실행할 클라이언트 객체 생성
+	      HttpClient httpClient = HttpClientBuilder.create().build();
+	      // 실행 및 실행 데이터를 Response 객체에 담음
+	      HttpResponse response = httpClient.execute(http);
+	      // Response 받은 데이터중, DOM 데이터를 가져와 Entity에 담음
+	      HttpEntity entity = response.getEntity();
+	      //Charset을 알아내기 위해 DOM의 컨텐트 아입을 가져와 담고 Charset을 가져옴
+	      ContentType contentType = ContentType.getOrDefault(entity);
+	      Charset charset = contentType.getCharset();
+	      // DOM 데이터를 한 줄씩 읽기 위해 Reader에 담음
+	      BufferedReader br = new BufferedReader(new InputStreamReader(entity.getContent(), charset));
+	      // 가져온 DOM 데이터를 담기 위한 그릇
+	      StringBuffer sb = new StringBuffer();
+	      // DOM 데이터 가져오기
+	      String line = "";
+	      while((line=br.readLine()) != null) {
+	        sb.append(line+"\n");
+	      }
+	      
+	      // Jsoup으로 파싱해보자.
+	      Document doc = Jsoup.parse(sb.toString());
+	      
+	      // Jsoup에서 제공하는 Connect 처리
+	      Document doc2 = Jsoup.connect(board.getUrl()).get();
+	      System.out.println(doc2.data());
+	      board.setUrlInfo(doc2.data().toString());
 	      return JsonResult.success(board);
 	      
 	    } catch (Exception e) {
@@ -130,4 +128,31 @@ public class HoneyBoardController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  /*
+  @RequestMapping(path="preview")
+  public Object preview(String url, HttpSession session, SessionStatus sessionStatus) throws Exception {
+	  try {
+		  if (url ==  null) {
+			  sessionStatus.setComplete();
+			  System.out.println("서버에 전송된 url: " + url);
+			  return JsonResult.fail();
+		  } else {
+			  session.setAttribute("url", url);
+		  }
+		  return JsonResult.success();
+	  } catch (Exception e) {
+		  return JsonResult.error(e.getMessage());
+	  }
+  }
+  */
+  @RequestMapping(path="previewlist")
+  public Object previewlist(String urlinfo) throws Exception {
+	  try {
+		  UrlInfo url = Scrapper.parsePageHeaderInfo(urlinfo);
+		  return JsonResult.success(url);
+	  } catch (Exception e) {
+		  return JsonResult.error(e.getMessage());
+	  }
+  }
+
 }

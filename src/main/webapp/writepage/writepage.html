@@ -38,7 +38,45 @@ form {
     .overflow {
       height: 200px;
     }
-   
+
+.modal-dialog {
+  padding-top: 30px;
+  height: 800px;
+  border: 1px solid black;
+}
+ 
+ .modal-content {
+  height: 700px;
+ }
+ 
+ .modal-body {
+  height: 600px;
+ }
+ 
+ #write_form {
+  height: 550px;
+ }
+ 
+ .form-group1 {
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px;
+ }
+ 
+ .form-group2 {
+  height: 350px;
+  width: 550x;
+  border: 1px solid red;
+  margin: 20px;
+ }
+ 
+ .previewbox {
+  border: 1px solid black;
+  height: 200px;
+  width: 476px;
+  
+ }
+
    /*
   #submitBoard {
   	position: relative;
@@ -53,6 +91,10 @@ form {
   .btn-default {
     position: relative;
   	left: 30%;
+  }
+  
+  .btn-primary {
+    float: right;
   }
 </style>
 
@@ -110,17 +152,62 @@ $(document).ready(function(){
 			<input class="btn btn-default"
 					name="cancel" id="cancelwrite" tabindex="8" value="취소"
 					onclick="location.href='../mainpage/Main.html'">
+			<input class="btn btn-default my-new" data-toggle="modal" name="preview" 
+               id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" 
+               data-whatever="@kmdo">
+<!-- 			<input class="btn btn-default my-new" -->
+<!-- 					name="preview" id="preview" tabindex="8" value="미리보기"> -->
 			<input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
 		</form>
+		
+		
+	<!-- Modal Start -->
+	<div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+    <form id="write_form">
+      <div class="form-group2">
+        <label for="recipient-name" class="control-label">Linked URL</label>
+        <div class="previewbox" id="linkedURL"></div>
+      </div>
+      <div class="form-group1">
+        <label for="message-text" class="control-label">Contents</label>
+        <div class="previewbox" id="message-text">
+<!--         <img src='http://t1.daumcdn.net/news/201610/12/fnnewsi/20161012180503718fxlv.jpg' align='left' hspace='12' vspace='12' width='150px'><br> -->
+<!--         파운드, 추락 거듭.. "더이상 안전통화 아니다" -->
+        </div>
+      </div>
+    </form>
+        </div>
+        <div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+<!-- <div class="modal-footer"> -->
+<!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+<!--         </div> -->
+
+
+
+<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+
 		
 	</div>
 	<!-- div: #write_container -->
 
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <<script type="text/javascript" src="../lib/js/common.js"></script>
-    <script type="text/javascript" src="writepage.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="../lib/js/common.js"></script>
+  <script type="text/javascript" src="writepage.js"></script>
 
 <script>
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
@@ -132,6 +219,7 @@ if (location.search.startsWith("?")) { // 예) ?no=xxx
 } else {
 	  $(".my-view").css("display", "none")
 }
+
 
 
 </script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>미리보기</title>
+<style>
+#preiframe {
+	width: 100%;
+    height: 800px;
+    margin-top: 80px;
+    border: 1px solid black;
+}
+</style>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+<div id="headerInclude"></div>
+
+<textarea  id="preiframe">
+
+</textarea>
+
+<script>
+
+</script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="../lib/js/common.js"></script>
+<script type="text/javascript" src="writepage.js"></script>
+<script>
+
+$(document).ready(function(){ 
+	  $.get("../header.html", function(data) {
+	    $("#headerInclude").html(data);
+	  });
+	});
+
+//ajaxViewBoard();
+</script>
+</body>
+</html>

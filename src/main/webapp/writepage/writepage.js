@@ -1,6 +1,14 @@
 /**
  * 
  */
+
+
+$("#preview").click(function(evnet) {
+	var urlinfo = $("#url").val()
+	console.log("과연?= " + urlinfo);
+	ajaxViewBoard(urlinfo);
+})
+
 $("#submitBoard").click(function(event) {
 	var categoryNo = $("#category").val()
 	switch (categoryNo) {
@@ -66,6 +74,7 @@ function ajaxAddBoard(board) {
 }
 
 function ajaxLoadBoard(no) {
+
 	$.getJSON(serverAddr + "/writepage/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		console.log("헤헤");
@@ -76,9 +85,8 @@ function ajaxLoadBoard(no) {
 		}
 		$("#url").val(result.data.url);
 		$("#title").val(result.data.title);
-		$("#contents").val(result.data.linkTitle);
+		$("#contents").val(result.data.contents);
 		$("#no").val(result.data.no);
-		console.log(result.data.linkTitle);
 	})
 }
 
@@ -104,5 +112,57 @@ function ajaxDeleteBoard(no) {
 		}
 		alert("삭제되었습니다.")
 		location.href = "../mainpage/Main.html"
-	})
+	},"json")
 }
+
+
+
+function writeCookie() {
+	cookievalue = $("#url").val();
+	document.cookie= "linkURL=!" + (cookievalue);
+	//window.location.href="/TeamProject/writepage/writepreview.html";
+}
+
+function readCookie() {
+	var splitURL = new Array();
+	splitURL = document.cookie.split('!');
+	var linkURL = splitURL[1];
+	return linkURL;
+}
+
+function ajaxViewBoard(urlinfo) {
+	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
+			{urlinfo: urlinfo},
+			function(textStatus) {
+				var result = textStatus.jsonResult
+				console.log(result.data);
+				console.log(result.state);
+				if (result.state != "success") {
+					alert("미리보기가 안되요")
+					return;
+				} else {
+					console.log("title= " + result.data.title);
+					console.log("image= " + result.data.image);
+					console.log("desc= " + result.data.description);
+					console.log("URL= " + result.data.detailUrl);
+					console.log("SimpleURL = " + result.data.urlAddr);
+				}
+			},"json")
+}
+/*
+function ajaxViewBoard2() {
+	var urlinfo = readCookie()
+	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
+			{urlinfo: urlinfo},
+			function(textStatus) {
+				var result = textStatus.jsonResult
+				console.log(result.data);
+				if (result.state != "success") {
+					alert("미리보기가 안되요")
+					return;
+				} else {
+					$("#preiframe").text(result.data);
+				}
+			},"json")
+}
+*/
