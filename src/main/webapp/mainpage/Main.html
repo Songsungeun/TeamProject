@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
 
-<!-- <link rel="stylesheet" -->
-<!--   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="../lib/css/MainPageModal.css"> -->
-
 <title>HoneyTip TestPage</title>
 </head>
 <body>
@@ -116,79 +112,32 @@
   <!-- Modal content -->
         <div id="myModal" class="modal" style="display: none;">
             <span class="close" id="close-Btn">x</span>
-          <div class="modal-content" >
-            <div class="post_title" id="title"></div>
-              <div class="post_info">
-                <div class="post_wt_pack" id="post_info_pack">
-                  <label class="post_wt">게시자</label>
-                  <p id="writerNick"></p>
-                </div>
-                <div class="post_cd_pack" id="post_info_pack">
-                  <label class="post_cd">등록일</label>
-                  <p id="createdDate"></p>
-                </div>
-              </div>
-              <div class="post_conts">
-                <div class="post_conts_inner1">
-                <label class="post_url">URL</label>
-                <div class="url" id="url"></div>
-                </div>
-                <div class="post_conts_inner2">
-                <label class="post_url"></label>
-                <div id="url_location" src="/TeamProject/mainpage/temp.html"></div>
-                </div>
-                <div class="post_conts_inner3">
-                <label class="post_contents">Contents</label>
+            <div class="modal-content">
+              <div class="post_conts" id="postdetail-rt-section">
+                <div class="post_title" id="title"></div>
+                <p id="createdDate"></p>
+                <p class="post_url">URL<a class="url" id="url" href="#"></a></p>
+                <div id="url_location"></div>
+                <p class="post_contents">Contents</p>
                 <div id="contents"></div>
+              </div>
+              <div class="post_info" id="postdetail-lt-section">
+                <p class="post_wt">게시자<span id="writerNick"></span></p>
+                <button class="user-subscribeBtn">구독하기</button>
+                <p class="post_vc">조회수<span id="viewCount"></span></p>
+                <p class="post_lk">좋아요<span id="like"></span></p>
+                <div class="Btn-wrap">
+                  <button id="lkBtn" class="lk">좋아요</button>
+                  <button id="lkBtn">안좋아요</button>
                 </div>
               </div>
-              <div class="post_info">
-                <div class="post_lk_pack" id="post_info_pack">
-                  <label class="post_lk">좋아요</label>
-                  <p id="like"></p>
-                </div>
-                <div class="post_vc_pack" id="post_info_pack">
-                  <label class="post_vc">조회수</label>
-                  <p id="viewCount"></p>
-                </div>
-            </div>
-            <div class="Btn-wrap">
-              <button id="lkBtn" class= "lk">좋아요</button>
-<!--               <button id="lkBtn">안좋아요</button> -->
             </div>
           </div>
-        </div>
         <!-- modal end -->
         </div>
       </div>
     </div>
   </div>
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">1. {{title}}</a> -->
-<!-- </li> -->
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">2. {{title}}</a> -->
-<!-- </li> -->
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">3. {{title}}</a> -->
-<!-- </li> -->
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">4. {{title}}</a> -->
-<!-- </li> -->
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">5. {{title}}</a> -->
-<!-- </li> -->
-<!-- <li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">6. {{title}}</a> -->
-<!-- </li><li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">7. {{title}}</a> -->
-<!-- </li><li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">8. {{title}}</a> -->
-<!-- </li><li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">9. {{title}}</a> -->
-<!-- </li><li class="pop_list"> -->
-<!--   <a class="titleLink" href="#" data-no="{{no}}">10. {{title}}</a> -->
-<!-- </li> -->
 <script id="liTemplateText" type="text/x-handlebars-template">
 {{#each data}}
 <li>
@@ -199,9 +148,6 @@
 </li>
 {{/each}}
 </script>
-<!-- <script type='text/javascript' src="http://code.jquery.com/jquery-1.4.4.js"></script> -->
-<!-- <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-<!-- <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -209,9 +155,7 @@
 <script type='text/javascript' src="../lib/js/Main.js"></script>
 <script>
   ajaxBoardList()
-//   ajaxBoardPopularList()
   ajaxBoardPopList()
-//   ajaxLoadBoard()
 </script>
 
 </body>

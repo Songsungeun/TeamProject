@@ -1,91 +1,60 @@
 package honey.controller.json;
 
-import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import honey.dao.HoneyMainDao;
+import honey.service.HoneyMainService;
 import honey.vo.HoneyMain;
 import honey.vo.JsonResult;
 
 @Controller
 @RequestMapping("/mainpage/")
 public class HoneyMainController {
+  @Autowired ServletContext sc;
+  @Autowired HoneyMainService mainService;
   
-  @Autowired HoneyMainDao mainDao;
-  
-  @RequestMapping(path="postlist")
+  @RequestMapping("postlist")
   public Object list(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="20") int length) throws Exception {
-    try {
-      System.out.println("postList");
-      HashMap<String,Object> map = new HashMap<>();
-      map.put("startIndex", (pageNo - 1) * length);
-      map.put("length", length);
-      
-      return JsonResult.success(mainDao.selectList(map));
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+      @RequestParam(defaultValue="20") int length,
+      Model model) throws Exception {
+    List<HoneyMain> list = mainService.getMainList(pageNo, length);
+    model.addAttribute("postlist", list);
+    return JsonResult.success(list);
   }
-  
-  @RequestMapping(path="mostPost")
+  @RequestMapping("mostPost")
   public Object poplist(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int length) throws Exception {
-    try {
-      System.out.println("mostPost");
-      HashMap<String,Object> map = new HashMap<>();
-      map.put("startIndex", (pageNo - 1) * length);
-      map.put("length", length);
-      
-      return JsonResult.success(mainDao.popularList(map));
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+      @RequestParam(defaultValue="10") int length,
+      Model model) throws Exception {
+    List<HoneyMain> list = mainService.getPopList(pageNo, length);
+    model.addAttribute("mostPost", list);
+    return JsonResult.success(list);
   }
-  
-  @RequestMapping(path="postdetail")
-  public Object detail(int no) throws Exception {
-    try {
-      mainDao.increaseViewCount(no);
-      HoneyMain honeyMain = mainDao.selectOne(no);
-      if (honeyMain == null) 
-        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
-      
-      return JsonResult.success(honeyMain);
-      
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+  @RequestMapping("postdetail")
+  public Object detail(int no, Model model) throws Exception {
+    mainService.getIncreaseViewCount(no);
+    HoneyMain honeyMain = mainService.getPost(no);
+    model.addAttribute("honeyMain", honeyMain);
+    return JsonResult.success(honeyMain);
   }
-  
-  
-  @RequestMapping(path="increaseLike")
+  @RequestMapping("increaseLike")
   public Object increase_Like(int no) throws Exception {
-    try {
-      mainDao.increase_Like(no);
-      return JsonResult.success(increase_Like(no));
-      
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+    mainService.increase_Like(no);
+    return JsonResult.success(increase_Like(no));
   }
-  @RequestMapping(path="decreaseLike")
+  @RequestMapping("decreaseLike")
   public Object decrease_Like(int no) throws Exception {
-    try {
-      mainDao.decrease_Like(no);
-      return JsonResult.success(decrease_Like(no));
-      
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
+    mainService.decrease_Like(no);
+    return JsonResult.success(decrease_Like(no));
   }
-  
 }
   
   

@@ -27,7 +27,6 @@ tr {display: table-row;}
 td, th {display: table-cell;}
 ul:after {content: " "; display: block; clear: both;}
 body {font-family: "arial", sans-serif; font-size: 12px;}
-
 /*reset*/
 .main_section {
   margin: 0;
@@ -35,13 +34,11 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   background-color: #f1f1f1;
   padding-top: 50px;
 }
-
 .mainpage_wrap {
   width: 1024px;
   height: 100%;
   margin: 0 auto;
 }
-
 .mainpage_Topcontainer {
   height: 330px;
   margin-top: 25px;
@@ -50,7 +47,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 .mainpage_Botcontainer {
   margin-top: 25px;
 }
-
 .mainpage_wrap .mainpage_Topcontainer .banner {
   width: 583px;
   height: 232px;
@@ -84,13 +80,11 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 .carousel-indicators > .active{
   background-color: #646464;
 }
-
 /* .carousel-inner > .item > img, */
 /*   .carousel-inner > .item > a > img { */
 /*       width: 583px;; */
 /*       margin: auto; */
 /*   } */
-
 /* pop_tabs */
 .mainpage_wrap .mainpage_Topcontainer .pop_container {
   width: 350px;
@@ -100,7 +94,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   float: left;
   border: 1px solid black;
 }
-
 .pop_category {
   width: 348px;
   background-color: #84F2F6;
@@ -144,7 +137,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   padding-right: 10px;
 }
 .popConts {
-  
   font-size: 16px;
   color: black;
 }
@@ -155,17 +147,14 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   text-decoration: none;
 }
 /* body-tab */
-
 .category_inner {
   vertical-align: middle;
 }
-
 #tabs {
   width: 100%;
   background-color: #f1f1f1;
   position: relative;
 }
-
 .conts_inner .tip_inner {
   width: 287.39px;
   height: 200px;
@@ -179,7 +168,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   width: 630px;
   margin: 0 197px;
 }
-
 .category_list .category_inner {
   width: 200px;
   margin: 0 5px;
@@ -269,7 +257,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   background-color: green;
 }
 /* 탭 css */
-
 #tabs >ul >li >a.on{
   font-weight:bold;
 }
@@ -280,95 +267,67 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 #tabs #tabs-1{
   display: block;
 }
-
-
-
 /* Modal */
-
-.detail_section {
-  margin: 0;
-  padding: 0;
-  background-color: #f1f1f1;
-  width: 1024px;
-  height: 700px;
-}
-
-.detailpage_wrap {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 30px 60px;
-}
-#url-boxing {
-  border: 1px solid black;
+.post_conts {
+  float: left;
+  width: 700px;
+  height: 775px;
+  padding: 15px;
+  background-color: #FFFAE4;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .post_info {
-  width: 100%;
-}
-.post_conts {
-  width: 1005px;
-  padding-top: 40px;
-}
-.post_conts .post_conts_inner1 #contents {
-  width: 100%;
-}
-.post_conts > .post_conts_inner1 {
-  height: 100%;
-}
-.post_conts .post_conts_inner1 > label {
   float: left;
-  font-size: 25px;
-  padding: 0 38px 0 30px;
+  width: 322px;
+  height: 775px;
+  background-color: #7D8EFF;.
+  overflow: scroll;
 }
 .post_title {
-  width: 904px;
+  width: 100%;
   max-height: 156px;
-  white-space: normal;
   font-size: 55px;
+  white-space: normal;
   word-break: keep-all;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin: 30px auto 20px auto;
+/*   font-family: '돋움',Dotum,sans-serif; */
 }
-#post_info_pack {
-  width: 50%;
-  float: left;
-}
-#post_info_pack > label {
-  padding: 0 30px 0 15px;
+.post_conts > p {
   font-size: 25px;
+  padding: 10px 0 0 0;
 }
-#post_info_pack > p {
-  font-size: 22px;
-  padding: 2px 0;
+.post_conts > #createdDate {
+  padding: 5px 0 5px 450px;
+  letter-spacing: 5px;
 }
-#post_info_pack > label, p {
-  float: left;
+.url {
+  width: 500px;
+  margin-left: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
 }
 #url_location {
   border: 1px solid black;
-  width: 950px;
-  height: 300px;
-  max-height: 500px;
-  margin: 15px 30px;
-  overflow: scroll;
-}
-.post_conts_inner1 > .url {
-  float: left;
-  font-size: 23px;
-  padding: 1.5px 0px;
-}
-  
-.post_conts_inner3 > .post_contents {
   width: 100%;
-  font-size: 25px;
-  padding: 0 0 0 15px;
+  height: 100%;
+  max-height: 300px;
+  margin: 5px 0 5px 0;
+  overflow: hidden;
 }
-.post_conts_inner3 > #contents {
+.post_conts > #contents {
   border: 1px solid black;
-  width: 950px;
-  height:300px;
-  margin: 15px 30px;  
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  margin: 5px 0 5px 0;
+  overflow: hidden;
+}
+.post_info > .user-subscribeBtn {
+  color:
 }
 .Btn-wrap {
   width: 222px;
@@ -376,8 +335,8 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   margin: 100px auto;
 }
 #lkBtn {
-  font-size: 30px;
-  width: 220px;
+  font-size: 10px;
+  width: 100px;
 }
 /* The Modal (background) */
 .modal {
@@ -387,22 +346,18 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
     top: 0;
     width: 100%; /* Full width */
     height: 775px; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     overflow: hidden;
 }
-
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: 60px auto; /* 15% from the top and centered */
     border: 1px solid #888;
     width: 1024px;
-    height: 700px;
-    overflow: scroll;
+    height: 775px;
 }
-
 /* The Close Button */
 .close {
     color: white;
@@ -414,10 +369,12 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
     top: 55px;
     opacity: 1.0;
 }
- 
 .close:hover, .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
-
+/* 게시물 스크롤바 숨기기 */
+.post_conts::-webkit-scrollbar { width: 0 !important }
+.post_conts { -ms-overflow-style: none; }
+.post_conts { overflow: -moz-scrollbars-none; }
