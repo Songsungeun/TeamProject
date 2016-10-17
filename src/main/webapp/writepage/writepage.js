@@ -142,7 +142,9 @@ function ajaxViewBoard(urlinfo) {
 					return;
 				} else {
 					console.log("title= " + result.data.title);
+					$("#urlTitle").html(result.data.title);
 					console.log("image= " + result.data.image);
+					$("#urlImage").html(result.data.image);
 					console.log("desc= " + result.data.description);
 					console.log("URL= " + result.data.detailUrl);
 					console.log("SimpleURL = " + result.data.urlAddr);

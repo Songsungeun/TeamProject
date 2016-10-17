@@ -72,7 +72,6 @@ public class Scrapper {
 				
 			}
 			
-			
 			/*if (urlAddr.split(".")[0].equals("www")) {
 				urlAddr = urlAddr.substring(4);
 			}*/
@@ -85,8 +84,8 @@ public class Scrapper {
 		
 		System.out.println("URL Parsing End");
 		
-		urlInfo.setTitle(title);
-		urlInfo.setImage(image);
+		urlInfo.setTitle("<h2>" + title + "</h2>");
+		urlInfo.setImage("<image src='" + image + "' align='left' hspace='12' vspace='12' height='249px width='476px'>");
 		urlInfo.setDescription(description);
 		urlInfo.setUrlAddr(urlAddr);
 		

@@ -56,36 +56,7 @@ public class HoneyBoardController {
 	      if (board == null) 
 	        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
 	      
-	      System.out.println("scrap 객체 생성준비");
-	      
-	   // 가져올 HTTP 주소 세팅
-	      HttpPost http = new HttpPost(board.getUrl());
-	      // 가져오기를 실행할 클라이언트 객체 생성
-	      HttpClient httpClient = HttpClientBuilder.create().build();
-	      // 실행 및 실행 데이터를 Response 객체에 담음
-	      HttpResponse response = httpClient.execute(http);
-	      // Response 받은 데이터중, DOM 데이터를 가져와 Entity에 담음
-	      HttpEntity entity = response.getEntity();
-	      //Charset을 알아내기 위해 DOM의 컨텐트 아입을 가져와 담고 Charset을 가져옴
-	      ContentType contentType = ContentType.getOrDefault(entity);
-	      Charset charset = contentType.getCharset();
-	      // DOM 데이터를 한 줄씩 읽기 위해 Reader에 담음
-	      BufferedReader br = new BufferedReader(new InputStreamReader(entity.getContent(), charset));
-	      // 가져온 DOM 데이터를 담기 위한 그릇
-	      StringBuffer sb = new StringBuffer();
-	      // DOM 데이터 가져오기
-	      String line = "";
-	      while((line=br.readLine()) != null) {
-	        sb.append(line+"\n");
-	      }
-	      
-	      // Jsoup으로 파싱해보자.
-	      Document doc = Jsoup.parse(sb.toString());
-	      
-	      // Jsoup에서 제공하는 Connect 처리
-	      Document doc2 = Jsoup.connect(board.getUrl()).get();
-	      System.out.println(doc2.data());
-	      board.setUrlInfo(doc2.data().toString());
+	     
 	      return JsonResult.success(board);
 	      
 	    } catch (Exception e) {
