@@ -13,17 +13,14 @@ import honey.vo.honey_boards;
 public class DefaultHoneyBoardService implements HoneyBoardService {
 	@Autowired tempDao boardDao;
 	
-	@Override
 	public void insertBoard(honey_boards board) throws Exception {
 		boardDao.insert(board);
 	}
 
-	@Override
 	public honey_boards getBoard(int no) throws Exception {
 		return boardDao.selectOne(no);
 	}
 
-	@Override
 	public void updateBoard(honey_boards board) throws Exception {
 		
 		HashMap<String,Object> paramMap = new HashMap<>();
@@ -35,14 +32,8 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	      boardDao.update(board);
 	}
 
-	@Override
 	public void deleteBoard(int no) throws Exception {
-		HashMap<String,Object> paramMap = new HashMap<>();
-	      paramMap.put("no", no);
-	      
-	      if (boardDao.selectOne(no) == null) {
-	        throw new Exception("해당 게시물이 없습니다.");
-	      }
+		
 	      boardDao.delete(no);
 	}
 	
