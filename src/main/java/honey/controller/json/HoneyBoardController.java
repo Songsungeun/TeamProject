@@ -15,11 +15,12 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import honey.service.impl.DefaultHoneyBoardService;
+import honey.dao.tempDao;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
@@ -28,7 +29,7 @@ import honey.vo.honey_boards;
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/"})
 public class HoneyBoardController {
-  @Autowired DefaultHoneyBoardService boardService;
+  @Autowired tempDao boardDao;
   
   @RequestMapping(path="writeadd")
   public Object add(honey_boards board, HttpSession session) throws Exception {
@@ -38,7 +39,7 @@ public class HoneyBoardController {
       
       HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
       board.setUserNo(hMember.getMemberNo());
-      boardService.insertBoard(board);
+      boardDao.insert(board);
       return JsonResult.success();
 
     } catch (Exception e) {
@@ -50,7 +51,7 @@ public class HoneyBoardController {
   public Object detail(int no) throws Exception {
       System.out.println("detail 메서드 실");
 	  try {
-	      honey_boards board = boardService.getBoard(no);
+	      honey_boards board = boardDao.selectOne(no);
 	      System.out.println("board 객체 받아옴");
 	      if (board == null) 
 	        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
@@ -100,10 +101,10 @@ public class HoneyBoardController {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", board.getNo());
       
-      if (boardService.getBoard(board.getNo()) == null) {
+      if (boardDao.selectOne(board.getNo()) == null) {
         throw new Exception("해당 게시물이 없습니다.");
       }
-      boardService.updateBoard(board);
+      boardDao.update(board);
       return JsonResult.success();
       
     } catch (Exception e) {
@@ -118,10 +119,10 @@ public class HoneyBoardController {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", no);
       
-      if (boardService.getBoard(no) == null) {
+      if (boardDao.selectOne(no) == null) {
         throw new Exception("해당 게시물이 없습니다.");
       }
-      boardService.deleteBoard(no);
+      boardDao.delete(no);
       return JsonResult.success();
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());

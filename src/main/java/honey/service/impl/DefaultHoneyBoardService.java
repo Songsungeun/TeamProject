@@ -1,5 +1,7 @@
 package honey.service.impl;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,8 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	@Autowired tempDao boardDao;
 	
 	@Override
-	public int insertBoard(honey_boards board) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public void insertBoard(honey_boards board) throws Exception {
+		boardDao.insert(board);
 	}
 
 	@Override
@@ -23,14 +24,26 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	}
 
 	@Override
-	public int updateBoard(honey_boards board) throws Exception {
-		return boardDao.update(board);
+	public void updateBoard(honey_boards board) throws Exception {
+		
+		HashMap<String,Object> paramMap = new HashMap<>();
+	      paramMap.put("no", board.getNo());
+	      
+	      if (boardDao.selectOne(board.getNo()) == null) {
+	        throw new Exception("해당 게시물이 없습니다.");
+	      }
+	      boardDao.update(board);
 	}
 
 	@Override
-	public int deleteBoard(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteBoard(int no) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<>();
+	      paramMap.put("no", no);
+	      
+	      if (boardDao.selectOne(no) == null) {
+	        throw new Exception("해당 게시물이 없습니다.");
+	      }
+	      boardDao.delete(no);
 	}
 	
 }
