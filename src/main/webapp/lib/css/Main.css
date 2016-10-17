@@ -43,7 +43,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   height: 330px;
   margin-top: 25px;
 }
-
 .mainpage_Botcontainer {
   margin-top: 25px;
 }
@@ -114,6 +113,7 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 #pop_tabs .pop_cont_in{
   display: none;
   position: relative;
+  background-color: white;
 }
 .pop_tabs-1-conts > .pop_list {
   cursor: pointer;
@@ -277,13 +277,6 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.post_info {
-  float: left;
-  width: 322px;
-  height: 775px;
-  background-color: #7D8EFF;.
-  overflow: scroll;
-}
 .post_title {
   width: 100%;
   max-height: 156px;
@@ -326,8 +319,37 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   margin: 5px 0 5px 0;
   overflow: hidden;
 }
-.post_info > .user-subscribeBtn {
-  color:
+.post_info {
+  float: left;
+  width: 322px;
+  height: 775px;
+  background-color: #7D8EFF;.
+  overflow: scroll;
+  padding: 25px 15px 0 25px;
+}
+.post_wt .user-subscribeBtn {
+  color: blue;
+  background-color: #7D8EFF;
+  letter-spacing: 2px;
+  float: right;
+  margin: 10px 80px 0 50px;
+  width: 150px;
+  border: 2px solid blue;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+.post_wt .user-subscribeBtn:HOVER {
+  cursor: pointer;
+  color: #7D8EFF;
+  background-color: blue;
+}
+.post_info > p {
+  margin: 10px 0;
+}
+#writerNick {
+  font-size: 18px;
 }
 .Btn-wrap {
   width: 222px;
@@ -337,6 +359,30 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 #lkBtn {
   font-size: 10px;
   width: 100px;
+}
+.post_info .post_wt {
+  height: 65px;
+  margin-bottom: 25px;
+}
+.post_wt > span {
+  float: left;
+}
+.post_vc #viewCount {
+  margin-left: 10px;
+}
+.post_lk #like {
+  margin-left: 10px;
+}
+.post_info #post_user_id {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+/* coments */
+.post_cmt {
+  width: 282px;
+  height: 500px;
+  background-color: white;
+  overflow: scroll;
 }
 /* The Modal (background) */
 .modal {
@@ -375,6 +421,9 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
     cursor: pointer;
 }
 /* 게시물 스크롤바 숨기기 */
-.post_conts::-webkit-scrollbar { width: 0 !important }
+/* .post_conts::-webkit-scrollbar { width: 0 !important } */
+.post_conts::-webkit-scrollbar {
+  display: none;
+}
 .post_conts { -ms-overflow-style: none; }
 .post_conts { overflow: -moz-scrollbars-none; }
