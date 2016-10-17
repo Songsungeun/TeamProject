@@ -250,6 +250,7 @@ overflow: hidden;
     </div>
   </div>
   <div id="toggle"><div id="userInfo_sideMenu"></div></div>
+  <script type="text/javascript" src="../resultOfSearch/resultOfSearch.js"></script>
   <script>
   var sideMenu = document.getElementById('userInfo_sideMenu');
 
@@ -280,7 +281,9 @@ $("#newWright").click(function(){
 })
 
 $(".searchButton").click(function(){
-	var searcValue = $("#inputSearchKey").val()
+	var searchValue = $("#inputSearchKey").val()
+  console.log(searchValue)
+	ajaxSearchValue(searchValue)
   location.href ="/TeamProject/resultOfSearch/resultOfSearchPage.html"
 })
 

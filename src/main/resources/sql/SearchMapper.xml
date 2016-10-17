@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.searchDao">
+
+  <resultMap type="honey_boards" id="boardMap">
+    <id column="BD_NO" property="no"/> 
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="URL" property="url"/>
+  </resultMap>
+  
+  
+  <select id="selectList" resultMap="boardMap" parameterType="map"> 
+   select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL
+       from honey_boards 
+   where 
+   <if test= " searchTitle != null || searchTitle == '' " >
+   BD_TITL LIKE '%${searchTitle}%'
+   </if>
+   
+   <if test=" searchContent != null || searchContent == ''" >
+    BD_CONT LIKE '%${searchContent}%'
+   </if>
+   order by BD_NO desc 
+    limit #{startIndex}, #{length}
+  </select>
+  
+  <select id="selectOne" resultMap="boardMap" parameterType="int">
+    select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL
+    from honey_boards 
+    where BD_NO = #{value}
+  </select>
+
+
+</mapper>

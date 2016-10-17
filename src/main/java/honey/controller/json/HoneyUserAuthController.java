@@ -29,7 +29,6 @@ public class HoneyUserAuthController {
       HttpSession session,
       String email,
       String password,
-      Model model,
       SessionStatus sessionStatus) throws Exception {
     
     try {
@@ -47,6 +46,7 @@ public class HoneyUserAuthController {
         return JsonResult.success();
       }
     } catch (Exception e) {
+    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }

@@ -15,7 +15,7 @@ import honey.vo.JsonResult;
 // 디비에 직접적으로 접속해서 crud 기능을 하는 것은 서비스 부분이 담당하고, 그외의 세션이나 쿠키등의 생성과 스크립트와 값을 주고
 // 받는 부분에 대해서는 컨트롤러가 담당한다고 생각하고 작업을 진행한다.
 @Controller
-@RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
+@RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
 public class HoneymembersController {
 	@Autowired HoneymembersService hMembersService;
 
