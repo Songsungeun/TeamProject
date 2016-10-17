@@ -57,7 +57,6 @@ public class HoneyUserAuthController {
   public Object loginUser(HttpSession session) throws Exception {
     try {
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
-      System.out.println(member);
       
       // 위에서 만든 세선 객체를 여기서 꽂는다
       if (member == null) {

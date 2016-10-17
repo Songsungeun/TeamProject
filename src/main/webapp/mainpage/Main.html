@@ -120,15 +120,28 @@
                 <div id="url_location"></div>
                 <p class="post_contents">Contents</p>
                 <div id="contents"></div>
-              </div>
-              <div class="post_info" id="postdetail-lt-section">
-                <p class="post_wt">게시자<span id="writerNick"></span></p>
-                <button class="user-subscribeBtn">구독하기</button>
-                <p class="post_vc">조회수<span id="viewCount"></span></p>
-                <p class="post_lk">좋아요<span id="like"></span></p>
                 <div class="Btn-wrap">
                   <button id="lkBtn" class="lk">좋아요</button>
                   <button id="lkBtn">안좋아요</button>
+                </div>
+              </div>
+              <div class="post_info" id="postdetail-lt-section">
+                <div class="post_wt">
+                  <div class="post_wt_wrap">
+                    <span id="writerNick"></span>
+                    <span id="post_user_id"></span>
+                  </div>
+                  <div class="user-subscribeBtn">구독하기</div>
+                </div>
+                <p class="post_vc">조회수<span id="viewCount" id="post_info_sub"></span></p>
+                <p class="post_lk">좋아요<span id="like" id="post_info_sub"></span></p>
+                <div class="post_cmt">
+                  <div class="post_cmt_inner">댓글<textarea placeholder="로그인 후 사용하세요."></textarea>
+                  </div>
+                  <form>
+                  <div class="cmts_list">
+                  </div>
+                  </form>
                 </div>
               </div>
             </div>

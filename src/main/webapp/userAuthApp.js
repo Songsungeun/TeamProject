@@ -7,7 +7,6 @@ $("#login_Button").click(function(event) {
     email: $("#email").val(),
     password: $("#password").val(),
   }
-  console.log(user)
   ajaxLogin(user)
 });
 
@@ -41,8 +40,6 @@ function ajaxLoginUser() {
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
 		var result = obj.jsonResult
 		
-		console.log("ajaxLoginUser Result : "+result);
-		
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
 			$('#newWright').css("display", "none")
@@ -60,7 +57,7 @@ function ajaxLogout(user) {
 	$.getJSON(serverAddr + "/mainpage/logout.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success")
-	        console.log("로그아웃 실패입니다.")
+	       alert("로그아웃 실패입니다.")
     })
     alert("메인 페이지로 이동합니다.")
 }

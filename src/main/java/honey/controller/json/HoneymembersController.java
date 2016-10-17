@@ -1,7 +1,5 @@
 package honey.controller.json;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +7,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import honey.dao.HoneyMembersDao;
-import honey.service.MemberService;
+import honey.service.HoneymembersService;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 
+// 시작하기 전에 우선 나는 컨트롤러와 서비스의 역할에 대해 생각한게 
+// 디비에 직접적으로 접속해서 crud 기능을 하는 것은 서비스 부분이 담당하고, 그외의 세션이나 쿠키등의 생성과 스크립트와 값을 주고
+// 받는 부분에 대해서는 컨트롤러가 담당한다고 생각하고 작업을 진행한다.
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})
 public class HoneymembersController {
-	@Autowired HoneyMembersDao hMembersDao;
-	//@Autowired MemberService memberService;
+	@Autowired HoneymembersService hMembersService;
 
 	@RequestMapping(path="joinMember")
-	public Object joinMember(HoneyMembers board) throws Exception {
+	public Object joinMember(HoneyMembers members) throws Exception {
 		try {
-			//memberService.signUpMember(board)
-			hMembersDao.joinMember(board);
+			// 서비스에 있는 메서드를 호출했다.
+			hMembersService.singUpMembers(members);
 			return JsonResult.success();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,14 +33,19 @@ public class HoneymembersController {
 
 	@RequestMapping(path="unregisteMember")
 	public Object unregister(HttpSession session) throws Exception {
-		session.invalidate();
+		//session.invalidate();
+		// 지금 세션을 무효화 시키면 어떻하지?
+		// 기존에 서비스 구현 전에는 어떻게 이게 동작을 했지??
+		// 회원탈퇴가 된 후에 세션을 무효화시키는게 맞는거 아닌가??
+		// 회원탈퇴 완료 후 세션을 무효화 시키니 정상동작한다.
 
 		try {
 			HoneyMembers hMembers= (HoneyMembers)session.getAttribute("member");
-			//memberService.unregisteMember(hMembers.getMemberNo());
-			hMembersDao.unregisteMember(hMembers.getMemberNo());
+			hMembersService.unregister(hMembers.getMemberNo());
+			session.invalidate();
 			return JsonResult.success();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
 	}
@@ -48,6 +53,7 @@ public class HoneymembersController {
 
 	@RequestMapping(path="userInfoDetail")
 	public Object userInfoDetail (HttpSession session) throws Exception {
+		// 이 메서드는 DB에서 작업할 일이 없어서 service 클래스에서 따로 구현할 필요가 없을 것 같다.
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
 			
@@ -62,11 +68,14 @@ public class HoneymembersController {
 
 	@RequestMapping(path="userStatusUpdate")
 	public Object userStatusUpdate(HoneyMembers hmember, HttpSession session) throws Exception {
-		System.out.println("hiyo" + hmember);
 		try {
+			// 파라미터값으로 브라우저에서 입력했던 값인 hmember 객체를 받아서 이 hmember 객체에 회원번호를 셋팅하기 위해
+			// 세션도 파라미터로 받았다
+			// 세션에 담긴 회원 번호를 얻기 위해 새로 vo 객체를 하나 생성해서 세션에 있는 모든 값을 담은 후
+			// 그 중 회원번호만을 hmember 객체에 셋팅했다.
 			HoneyMembers honeymembers =(HoneyMembers)session.getAttribute("member");
 			hmember.setMemberNo(honeymembers.getMemberNo());
-			hMembersDao.userInfoUpdate(hmember);
+			hMembersService.memberInfoUpdate(hmember);
 			hmember.setPassword(honeymembers.getPassword());
 			session.setAttribute("member", hmember);
 			return JsonResult.success();
@@ -78,11 +87,10 @@ public class HoneymembersController {
 
 	@RequestMapping(path="changePassword")
 	public Object changePassword(HoneyMembers hMember, HttpSession session) throws Exception {
-		System.out.println("hi i m hMember" + hMember);
 		try {
 			HoneyMembers honeyMemebers = (HoneyMembers)session.getAttribute("member");
 			hMember.setMemberNo(honeyMemebers.getMemberNo());
-			hMembersDao.changePassword(hMember);
+			hMembersService.modifyPassword(hMember);
 			hMember.setEmail(honeyMemebers.getEmail());
 			hMember.setMemberNo(honeyMemebers.getMemberNo());
 			hMember.setNickname(honeyMemebers.getNickname());

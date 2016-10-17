@@ -230,7 +230,7 @@ overflow: hidden;
         </div>
         
           <div class="seachBar">
-            <input name=search type=text placeholder="검색어를 입력하세요">
+            <input id="inputSearchKey" name=search type=text placeholder="검색어를 입력하세요">
               <a class="searchButton" href="#"><img src="/TeamProject/searchbutton.png" width="25"/>
               </a>
           </div> 
@@ -278,6 +278,12 @@ $(".headlist").click(function(){
 $("#newWright").click(function(){
   location.href ="/TeamProject/writepage/writepage.html"
 })
+
+$(".searchButton").click(function(){
+	var searcValue = $("#inputSearchKey").val()
+  location.href ="/TeamProject/resultOfSearch/resultOfSearchPage.html"
+})
+
 </script>
 
 <script> 
