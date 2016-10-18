@@ -16,6 +16,10 @@ public class JsonResult {
     return new JsonResult(SUCCESS, data);
   }
   
+  public static JsonResult success(Object data1, Object data2) {
+	    return new JsonResult(SUCCESS, data1, data2);
+	  }
+  
   public static JsonResult fail() {
     return new JsonResult(FAIL);
   }
@@ -41,7 +45,11 @@ public class JsonResult {
     this.data = data;
   }
   
-  public String getState() {
+  public JsonResult(String success2, Object data1, Object data2) {
+	// TODO Auto-generated constructor stub
+}
+
+public String getState() {
     return state;
   }
   public void setState(String state) {
