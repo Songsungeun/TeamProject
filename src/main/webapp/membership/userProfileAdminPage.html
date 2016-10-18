@@ -96,6 +96,12 @@ float: right;
 #changPassword {
   display: none;
 }
+
+#userProfilePhoto {
+border:1px solid;
+width: 150px;
+height: 180px;
+}
   </style>
 </head>
 <body style="background-color: #f3f4f5;">
@@ -108,7 +114,13 @@ float: right;
   </div>
 </div>
 
-<div class="userProfileAdmin_mainSection" id="profileInfoPage">
+<div class="form-group">
+  <label for="inputEmail3" class="col-sm-2 control-label">프로필 사진</label>
+  <div class="userProfileAdmin_mainSection" id="profileInfoPage" class="form-control">
+    <div id = userProfilePhoto class="form-control">
+    </div>
+  </div>
+</div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">

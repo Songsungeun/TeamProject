@@ -16,11 +16,11 @@
   <select id="selectFromBoard" resultMap="searchMap" parameterType="map">
     select BD_TITL,BD_CONTS,URL
     from honey_boards
-    where bd_titl=#{value} or bd_conts=#{value}
+    where bd_titl like'%'#{value}'%' or bd_conts like'%'#{value}'%'
   </select>
   <select id="selectFromMembers" resultMap="searchMap" parameterType="map">
     select EMAIL,MB_NICK,MB_NM
     from honey_membs
-    where EMAIL=#{value} or MB_NICK=#{value}
+    where EMAIL like'%'#{value}'%' or MB_NICK like'%'#{value}'%'
   </select>
 </mapper>

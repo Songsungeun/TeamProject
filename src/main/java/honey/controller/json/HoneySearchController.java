@@ -55,11 +55,15 @@ public class HoneySearchController {
 @RequestMapping("searcher")
   public Object searchResult(@CookieValue(name="searchInfo")String searchInfo) throws Exception {
 	  String searchfucker = URLDecoder.decode(searchInfo,"UTF-8");
+	  //url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
 	  System.out.println(searchfucker);
+	  
+	  // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 	  List searchBoardResult = searcherDao.selectFromBoard(searchfucker);
 	  System.out.println(searchBoardResult);
 	  List searchMemberResult = searcherDao.selectFromMembers(searchfucker);
 	  System.out.println(searchMemberResult);
+	  
 	  try {
 		  if (searchMemberResult.isEmpty() == true) {
 		  return JsonResult.success(searchBoardResult);
