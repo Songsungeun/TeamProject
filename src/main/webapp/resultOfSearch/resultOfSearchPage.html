@@ -3,190 +3,244 @@
 <head>
 <title>Demo Beautiful Registration Form with HTML5 and CSS3</title>
 <meta http-equiv="X-UA-Compatible"
-	content="IE=EmulateIE7; IE=EmulateIE9">
+  content="IE=EmulateIE7; IE=EmulateIE9">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 <style>
 /*reset*/
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
-	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
-	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
-	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
-	th, td, article, aside, canvas, details, figcaption, figure, footer,
-	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
+html, body, div, span, object, iframe, h1, h2, h5, h6, p,
+  blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+  q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+  th, td, article, aside, canvas, details, figcaption, figure, footer,
+  header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
-	menu, nav, section {
-	display: block;
+  menu, nav, section {
+  display: block;
 }
 
 input, textarea, select, button, table {
-	font-size: inherit;
-	font-family: inherit;
-	font-size: 100%;
-	-webkit-text-size-adjust: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  -webkit-text-size-adjust: none;
 }
 
 ul, ol, li {
-	list-style: none;
+  list-style: none;
 }
 
 a {
-	text-decoration: none;
-	color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 a:hover, a:focus {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 fieldset {
-	margin: 0;
-	padding: 0;
-	border: none;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 caption, legend {
-	position: absolute;
-	top: -5000px;
-	text-indent: -5000px;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-	font-size: 0;
-	line-height: 0;
+  position: absolute;
+  top: -5000px;
+  text-indent: -5000px;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
 }
 
 img {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 table {
-	display: table;
+  display: table;
 }
 
 caption {
-	display: table-caption;
+  display: table-caption;
 }
 
 colgroup {
-	display: table-column-group;
+  display: table-column-group;
 }
 
 col {
-	display: table-column;
+  display: table-column;
 }
 
 thead {
-	display: table-header-group;
+  display: table-header-group;
 }
 
 tbody {
-	display: table-row-group;
+  display: table-row-group;
 }
 
 tfoot {
-	display: table-footer-group;
+  display: table-footer-group;
 }
 
 tr {
-	display: table-row;
+  display: table-row;
 }
 
 td, th {
-	display: table-cell;
+  display: table-cell;
 }
 
 ul:after {
-	content: " ";
-	display: block;
-	clear: both;
+  content: " ";
+  display: block;
+  clear: both;
 }
 
 body {
-	font-family: "arial", sans-serif;
-	font-size: 12px;
+  font-family: "arial", sans-serif;
+  font-size: 12px;
 }
 /*reset*/
 .userProfileAdmin_topSection {
-	position: relative;
-	top: 30px;
-	max-width: 1024px;
-	margin: 0 auto;
-	border: 1px solid;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-	border-bottom-color: #C9C9C9;
-	padding-top: 80px;
-	background-color: #f3f4f5;
-	padding-bottom: 20px;
+  position: relative;
+  top: 30px;
+  max-width: 1024px;
+  margin: 0 auto;
+  border: 1px solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-color: #C9C9C9;
+  padding-top: 80px;
+  background-color: #f3f4f5;
+  padding-bottom: 20px;
 }
 
 #ContentSearchResult {
-position: relative;
-  padding-top: 80px;
-  top: 20px;
-	left: 200px;
+  position: relative;
+  top: 350px;
+  right: 430px;
+  margin: 0 auto;
+  max-width: 1024px;
 }
 
-#NameSearchResult {
-position: relative;
-  padding-top: 80px;
-  top: 50px;
-  left: 200px;
+.media-left{
+  float: left;
 }
+
+.media-body {
+   padding-left: 100px;
+   padding-bottom: 35px;
+   padding-right: 35px;
+   padding-top: 33px;
+}
+
+.NameSearchResult {
+   position: relative;
+   top: -100px;
+   max-width: 1024px;
+   margin: 0 auto; 
+}
+
+.media{
+  background-color:  white;
+  position: relative;
+  height: 90px;
+  border: 1px solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-color: #C9C9C9;
+}
+
+#moreviewarea{
+  position: relative;
+  top: -80px;
+  max-width: 1024px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+#morebtn {
+    position: relative;
+    float: right;
+    padding-right: 40px;
+}
+
 
 </style>
 </head>
 <body style="background-color: #f3f4f5;">
-	<div id="includeHeader"></div>
+  <div id="includeHeader"></div> 
 
-	<div class="userProfileAdmin_topSection">
-		검색결과 : <span id="searchState"></span>
-	</div>
+<section id= "searchwrap">
+  <div class="userProfileAdmin_topSection">
+    검색결과 : <span id="searchState">  test test test </span>
+  </div>
 
-
-	<table id="ContentSearchResult">
+  <table id="ContentSearchResult">
    <thead>
-	           <tr>   
+             <tr>   
               <th>검색결과</th>
             </tr>
    </thead>
-   <tbody></tbody>		
-	</table>
-	
-	<div id="NameSearchResult">
-	   <table class="table table-hover">
-			<div class="media">
-		  <div class="media-body"><h4 class="media-heading">Media heading</h4>
-		    asdf
-		  </div>
-		</table>
-		
-  </div>
-
+   <tbody></tbody>    
+  </table> <!-- Json handlebars print test Table -->
+  
+  <article id = "resultArea">
+  <div class="NameSearchResult">
+      <div class="media">
+          <div class="media-left"><a href="#"><img class="media-object" src="1.jpg" height="90px" width="90px"></a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">Media heading</h3>
+             asdfasdfasdfasdfasdfasdfasdfsfasdfasdfa
+        </div>
+    </div>
+    <div class="media">
+          <div class="media-left">
+              <a href="#"><img class="media-object" src="1.jpg" height="90px" width="90px"></a>
+           </div>
+           <div class="media-body">
+               <h3 class="media-heading">Media heading</h3>
+                asdfasdfasdfasdfasdfasdfasdfsfasdfasdfa
+           </div>
+    </div>
+    
+  </div> <!-- nameSearchResult end div -->
+      <div id="moreviewarea">
+        <a id="morebtn" href="#">더보기</a>
+       </div>
+  </article>
+  </section> 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script type="text/javascript" src="../lib/js/common.js"></script>
-	<script type="text/javascript" src="resultOfSearch.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script type="text/javascript" src="../lib/js/common.js"></script>
+  <script type="text/javascript" src="resultOfSearch.js"></script>
 
-	<script id="trTemplateText" type="text/x-handlebars-template">
+  <script id="trTemplateText" type="text/x-handlebars-template">
     <tr>
       <label>
-          <td></td>
+         <td>{"사진영역"}</td>
           <td>{{title}}</td>
           <td>{{writerNick}}</td>
           <td>{{url}}</td>
@@ -195,15 +249,25 @@ position: relative;
     </tr>
 </script>
 
-	<script>
-		$(function() {
-			$("#includeHeader").load("../header.html");
-		});
-	</script>
+<!--<div class="media">
+          <div class="media-left">
+              <a href="#"><img class="media-object" src= 사진경로 .jpg" height="90px" width="90px"></a>
+           </div>
+           <div class="media-body">
+               <h3 class="media-heading">제목 </h3>
+                내용
+           </div>
+    </div> --> 
 
-	<script>
-	ajaxSearchResultList()
-	</script>
+  <script>
+    $(function() {
+      $("#includeHeader").load("../header.html");
+    });
+  </script>
+
+  <script>
+  ajaxSearchResultList()
+  </script>
 
 </body>
 </html>
