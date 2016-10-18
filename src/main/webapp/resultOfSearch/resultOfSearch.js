@@ -5,7 +5,7 @@ function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	
-	var searchInfo = {search: searchValue}
+	var searchInfo = {searchValue: searchValue}
 	$.ajax({
 		url:serverAddr+"/" + locationPath[2] + "/searchInfo.json",
 		type: "GET",
