@@ -3,71 +3,209 @@
 <head>
 <title>Demo Beautiful Registration Form with HTML5 and CSS3</title>
 <meta http-equiv="X-UA-Compatible"
-  content="IE=EmulateIE7; IE=EmulateIE9">
+	content="IE=EmulateIE7; IE=EmulateIE9">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
-  content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 <style>
 /*reset*/
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
-b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
-input,textarea,select,button,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
-ul,ol,li{list-style:none;}
-a{text-decoration:none; color:inherit;}
-a:hover, a:focus{text-decoration:underline;}
-fieldset{margin:0; padding:0; border:none;} 
-caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
-img{vertical-align:middle;} 
-table{display: table;}
-caption{display: table-caption;}
-colgroup{display: table-column-group;}
-col{display: table-column;}
-thead{display: table-header-group;}
-tbody{display: table-row-group;}
-tfoot{display: table-footer-group;}
-tr{display: table-row;}
-td, th{display: table-cell;}
-ul:after{content:" ";display:block;clear:both;}
-body{ font-family:"arial", sans-serif; font-size:12px;}
-/*reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer,
+	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
 
-.userProfileAdmin_topSection{
-  position: relative;
-  top: 30px;
-  max-width: 1024px;
-  margin: 0 auto;
-  border: 1px solid;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom-color: #C9C9C9;
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+input, textarea, select, button, table {
+	font-size: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	-webkit-text-size-adjust: none;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+caption, legend {
+	position: absolute;
+	top: -5000px;
+	text-indent: -5000px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+}
+
+img {
+	vertical-align: middle;
+}
+
+table {
+	display: table;
+}
+
+caption {
+	display: table-caption;
+}
+
+colgroup {
+	display: table-column-group;
+}
+
+col {
+	display: table-column;
+}
+
+thead {
+	display: table-header-group;
+}
+
+tbody {
+	display: table-row-group;
+}
+
+tfoot {
+	display: table-footer-group;
+}
+
+tr {
+	display: table-row;
+}
+
+td, th {
+	display: table-cell;
+}
+
+ul:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+body {
+	font-family: "arial", sans-serif;
+	font-size: 12px;
+}
+/*reset*/
+.userProfileAdmin_topSection {
+	position: relative;
+	top: 30px;
+	max-width: 1024px;
+	margin: 0 auto;
+	border: 1px solid;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom-color: #C9C9C9;
+	padding-top: 80px;
+	background-color: #f3f4f5;
+	padding-bottom: 20px;
+}
+
+#ContentSearchResult {
+position: relative;
   padding-top: 80px;
-  background-color: #f3f4f5;
-  padding-bottom: 20px;
+  top: 20px;
+	left: 200px;
+}
+
+#NameSearchResult {
+position: relative;
+  padding-top: 80px;
+  top: 50px;
+  left: 200px;
 }
 
 </style>
 </head>
 <body style="background-color: #f3f4f5;">
-<div id="includeHeader"></div>
+	<div id="includeHeader"></div>
 
-  <div class="userProfileAdmin_topSection">
- </div>
-
-
-
+	<div class="userProfileAdmin_topSection">
+		검색결과 : <span id="searchState"></span>
+	</div>
 
 
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<table id="ContentSearchResult">
+   <thead>
+	           <tr>   
+              <th>검색결과</th>
+            </tr>
+   </thead>
+   <tbody></tbody>		
+	</table>
+	
+	<div id="NameSearchResult">
+	   <table class="table table-hover">
+			<div class="media">
+			  <div class="media-left"><a href="#"><img class="media-object" src="..." alt="..."></a>
+			</div>
+		  <div class="media-body"><h4 class="media-heading">Media heading</h4>
+		    asdf
+		  </div>
+		</table>
+		
+  </div>
 
-  <script> 
-  $(function(){
-    $("#includeHeader").load("../header.html"); 
-  });
-  </script> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../lib/js/common.js"></script>
+	<script type="text/javascript" src="resultOfSearch.js"></script>
+
+	<script id="trTemplateText" type="text/x-handlebars-template">
+    <tr>
+      <label>
+          <td></td>
+          <td>{{title}}</td>
+          <td>{{writerNick}}</td>
+          <td>{{url}}</td>
+          <td>{{createdDate2}}</td> 
+     </label>
+    </tr>
+</script>
+
+	<script>
+		$(function() {
+			$("#includeHeader").load("../header.html");
+		});
+	</script>
+
+	<script>
+		ajaxBoardList()
+	</script>
+
 </body>
 </html>
