@@ -2,12 +2,15 @@
  * 
  */
 function ajaxSearchValue(searchValue) {
-	console.log(searchValue)
+	var locationPathValue = $(location).attr('pathname');
+	var locationPath = locationPathValue.split('/');
+	
+	var searchInfo = {search: searchValue}
 	$.ajax({
-		url:serverAddr + "/resultOfSearch/searchInfo.json",
+		url:serverAddr+"/" + locationPath[2] + "/searchInfo.json",
 		type: "GET",
 		dataType: "json",
-		data: searchValue,
+		data: searchInfo,
 		success: function(obj) {
 			console.log(obj.jsonResult)
 			var result = obj.jsonResult
