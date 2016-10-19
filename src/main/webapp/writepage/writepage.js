@@ -5,9 +5,11 @@
 
 $("#preview").click(function(evnet) {
 	var urlinfo = $("#url").val()
-	var title = $("title").val();
-	var contents = $("contents").val();
+	var title = $("#write_title").val();
+	var contents = $("#write_contents").val();
 	console.log("과연?= " + urlinfo);
+	console.log("title click= " + title);
+	console.log("contents click= " + contents);
 	ajaxViewBoard(urlinfo, title, contents);
 })
 
@@ -133,6 +135,8 @@ function readCookie() {
 }
 
 function ajaxViewBoard(urlinfo, title, contents) {
+	console.log("title= " + title);
+	console.log("contents= " + contents);
 	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
 			{urlinfo: urlinfo},
 			function(textStatus) {
@@ -153,7 +157,7 @@ function ajaxViewBoard(urlinfo, title, contents) {
 					console.log("SimpleURL = " + result.data.urlAddr);
 					$("#urlAddr").html(result.data.urlAddr);
 					$("#previewTitle").text(title);
-					$("#preiviewContents").text(contents);
+					$("#previewTextBox").text(contents);
 				}
 			},"json")
 }
