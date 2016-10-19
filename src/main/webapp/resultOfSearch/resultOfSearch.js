@@ -27,6 +27,7 @@ function ajaxSearchValue(searchValue) {
 function ajaxSearchResultList() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
+	
 	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json", function(obj) {
 	  var result = obj.jsonResult
 	    if (result.state != "success") {
@@ -34,9 +35,10 @@ function ajaxSearchResultList() {
 	      		console.log(result.state)
 	      return
 	    }
-	  for(var i = 0; i <= result.data.length; i++) {
-		  console.log(result.data[i])
-	  }
+	    if (result.data=="") {
+	    	alert("검색 결과가 없습니다.")
+	    }
+	  
 	    var contents = "";
 	    var arr = result.data
 	    var template = Handlebars.compile($('#trTemplateText').html())
