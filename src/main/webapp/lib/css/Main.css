@@ -378,11 +378,43 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   margin-left: 10px;
 }
 /* coments */
-.post_cmt {
+.cmts_list {
+  max-height: 468px;
+  overflow: scroll;
+  margin-bottom: 2px;
+}
+.post_cmt_list {
   width: 282px;
   height: 500px;
-  background-color: white;
-  overflow: scroll;
+}
+.post_cmt_list .post_cmt_pt {
+  height: 30px;
+}
+.coment_wrap > div {
+  padding: 3px;
+}
+
+.coment_info {
+  width: 100%;
+  word-break:break-all;
+}
+.cmt_userNick {
+  width: 100%;
+  padding-right: 3px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.reply_cmt_userNick {
+  padding-right: 3px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.coment_replyArea {
+  padding-left: 30px;
+}
+.reply_wrap {
+  max-height: 120px;
+  overflow: hidden;
 }
 /* The Modal (background) */
 .modal {
@@ -427,3 +459,9 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
 }
 .post_conts { -ms-overflow-style: none; }
 .post_conts { overflow: -moz-scrollbars-none; }
+.cmts_list::-webkit-scrollbar {
+  display: none;
+}
+.cmts_list { -ms-overflow-style: none; }
+.cmts_list { overflow: -moz-scrollbars-none; }
+

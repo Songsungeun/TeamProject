@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyChildComentDao">
+
+  <resultMap type="HoneyMain" id="boardMap">
+    <id column="CMC_NO" property="chileComentNo"/>
+    <result column="CMP_NO" property="parentComentNo"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CMC_CONTS" property="childComent"/>
+    <result column="CMC_CRE" property="comentCreatedDate"/>
+    <result column="MB_NICK" property="writerNick"/>
+  </resultMap>
+
+  <select id="cComentsList" resultMap="boardMap" parameterType="map">
+    select hcc.CMC_NO, hcc.CMP_NO, hcc.MB_NO, hcc.CMC_CONTS,
+    hcc.CMC_CRE,hm.MB_NICK,hm.MB_NO
+    from honey_cmts_ch hcc
+    left join honey_membs hm on hcc.MB_NO = hm.MB_NO
+    where CMP_NO = #{postCNO}
+    limit #{startIndex}, #{length}
+  </select>
+
+</mapper>

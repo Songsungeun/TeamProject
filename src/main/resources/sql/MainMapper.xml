@@ -4,54 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneyMainDao">
 
-<!--   <resultMap type="honey_boards" id="hn_boardMap"> -->
-<!--     <id column="BD_NO" property="no"/>  -->
-<!--     <result column="BD_TITL" property="title"/> -->
-<!--     <result column="BD_CONTS" property="contents"/> -->
-<!--     <result column="BD_CRE" property="createdDate"/> -->
-<!--     <result column="BD_LIKE" property="like"/> -->
-<!--     <result column="VIEW_CT" property="viewCount"/> -->
-<!--   </resultMap> -->
-  
-<!--   <select id="selectList" resultMap="hn_boardMap" parameterType="map"> -->
-<!--     select * -->
-<!--     from honey_boards -->
-<!--     <where> -->
-<!--       <if test="title != null">title like concat('%', #{title}, '%')</if> -->
-<!--     </where> -->
-<!--     order by  -->
-<!--     <choose> -->
-<!--       <when test="titleOrder == 'asc'">title asc</when> -->
-<!--       <when test="titleOrder == 'desc'">title desc</when> -->
-<!--       <when test="noOrder == 'asc'">no asc</when> -->
-<!--       <otherwise>no desc</otherwise> -->
-<!--     </choose> -->
-<!--     limit #{startIndex}, #{length} -->
-<!--   </select> -->
-  
-<!--   <select id="selectOne" resultMap="hn_boardMap" parameterType="int"> -->
-<!--     select no,title,url,contents,like,videwCount -->
-<!--     from honey_boards -->
-<!--     where no = #{value} -->
-<!--   </select> -->
-  
-<!--   <insert id="insert" parameterType="honey_boards"> -->
-<!--     insert into boards(bd_no, bd_titl,url,bd_conts, bd_cre, bd_like, view_ct) -->
-<!--     values(#{no}, #{title}, #{url} #{contents}, now(), #{like}, #{viewCount}) -->
-<!--   </insert> -->
-  
-<!--   <update id="update" parameterType="honey_boards"> -->
-<!--     update boards set  -->
-<!--       bd_titl=#{title}, -->
-<!--       url=#{url}, -->
-<!--       bd_conts=#{contents}  -->
-<!--     where bd_titl=#{title} -->
-<!--   </update> -->
-  
-<!--   <delete id="delete" parameterType="int"> -->
-<!--     delete from boards  -->
-<!--     where no=#{value} -->
-<!--   </delete> -->
+  <!-- <resultMap type="honey_boards" id="hn_boardMap"> -->
+  <!-- <id column="BD_NO" property="no"/> -->
+  <!-- <result column="BD_TITL" property="title"/> -->
+  <!-- <result column="BD_CONTS" property="contents"/> -->
+  <!-- <result column="BD_CRE" property="createdDate"/> -->
+  <!-- <result column="BD_LIKE" property="like"/> -->
+  <!-- <result column="VIEW_CT" property="viewCount"/> -->
+  <!-- </resultMap> -->
+
+
+
+  <!-- <select id="selectOne" resultMap="hn_boardMap" parameterType="int"> -->
+  <!-- select no,title,url,contents,like,videwCount -->
+  <!-- from honey_boards -->
+  <!-- where no = #{value} -->
+  <!-- </select> -->
+
+  <!-- <insert id="insert" parameterType="honey_boards"> -->
+  <!-- insert into boards(bd_no, bd_titl,url,bd_conts, bd_cre, bd_like, view_ct) -->
+  <!-- values(#{no}, #{title}, #{url} #{contents}, now(), #{like}, #{viewCount}) -->
+  <!-- </insert> -->
+
+  <!-- <delete id="delete" parameterType="int"> -->
+  <!-- delete from boards -->
+  <!-- where no=#{value} -->
+  <!-- </delete> -->
 
   <resultMap type="HoneyMain" id="boardMap">
     <id column="BD_NO" property="no" />
@@ -62,6 +40,7 @@
     <result column="VIEW_CT" property="viewCount" />
     <result column="URL" property="url" />
     <result column="MB_NICK" property="writerNick" />
+    <result column="EMAIL" property="email" />
   </resultMap>
 
   <select id="popularList" resultMap="boardMap" parameterType="map">
@@ -72,8 +51,8 @@
     </where>
     order by
     <choose>
-<!--      <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
-<otherwise>view_ct desc</otherwise>
+      <!-- <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
+      <otherwise>view_ct desc</otherwise>
     </choose>
   </select>
 
@@ -89,10 +68,12 @@
   <!-- </select> -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS,
-    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK
-    from honey_membs HM
+    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK, HM.EMAIL
+    from
+    honey_membs HM
     left join honey_boards HB on HB.MB_NO = HM.MB_NO
-    where BD_NO = #{value}
+    where
+    BD_NO = #{value}
   </select>
 
   <update id="increaseViewCount" parameterType="HoneyMain">
@@ -103,13 +84,19 @@
 
   <update id="increaseLike" parameterType="HoneyMain">
     update honey_boards
-    set BD_LIKE = BD_LIKE + 1
+    set
+    BD_LIKE = BD_LIKE + 1
     where BD_NO = #{value}
   </update>
 
   <update id="decreaseLike" parameterType="HoneyMain">
     update honey_boards
-    set BD_LIKE = BD_LIKE - 1
+    set
+    BD_LIKE = BD_LIKE - 1
     where BD_NO = #{value}
   </update>
+
+  
+
+
 </mapper>
