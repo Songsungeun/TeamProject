@@ -119,7 +119,7 @@ body {
 /*reset*/
 .userProfileAdmin_topSection {
   position: relative;
-  top: 30px;
+  /* top: 30px; */
   max-width: 1024px;
   margin: 0 auto;
   border: 1px solid;
@@ -129,7 +129,7 @@ body {
   border-bottom-color: #C9C9C9;
   padding-top: 80px;
   background-color: #f3f4f5;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 #ContentSearchResult {
@@ -146,14 +146,14 @@ body {
 
 .media-body {
    padding-left: 100px;
-   padding-bottom: 35px;
+   padding-bottom: 26px;
    padding-right: 35px;
-   padding-top: 33px;
+   padding-top: 27px;
 }
 
 .NameSearchResult {
    position: relative;
-   top: -100px;
+   top: 35px;
    max-width: 1024px;
    margin: 0 auto; 
 }
@@ -161,17 +161,17 @@ body {
 .media{
   background-color:  white;
   position: relative;
-  height: 90px;
+  height: 80px;
   border: 1px solid;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom-color: #C9C9C9;
+  border-bottom-color: #C9C9C9; 
 }
 
 #moreviewarea{
   position: relative;
-  top: -80px;
+  top: 10px;
   max-width: 1024px;
   margin: 0 auto;
   font-size: 15px;
@@ -179,8 +179,8 @@ body {
 
 #morebtn {
     position: relative;
-    float: right;
-    padding-right: 40px;
+    float: right; 
+    padding-right: 20px;
 }
 
 
@@ -190,45 +190,20 @@ body {
   <div id="includeHeader"></div> 
 
 <section id= "searchwrap">
-  <div class="userProfileAdmin_topSection">
-    검색결과 : <span id="searchState">  test test test </span>
-  </div>
-
-  <table id="ContentSearchResult">
-   <thead>
-             <tr>   
-              <th>검색결과</th>
-            </tr>
-   </thead>
-   <tbody></tbody>    
-  </table> <!-- Json handlebars print test Table -->
-  
-  <article id = "resultArea">
-  <div class="NameSearchResult">
-      <div class="media">
-          <div class="media-left"><a href="#"><img class="media-object" src="1.jpg" height="90px" width="90px"></a>
-        </div>
-        <div class="media-body">
-            <h3 class="media-heading">Media heading</h3>
-             asdfasdfasdfasdfasdfasdfasdfsfasdfasdfa
-        </div>
+	  <div class="userProfileAdmin_topSection">
+		    검색결과 : <span id="searchState">  test test test </span>
+		</div>
+		  
+    <div id="moreviewarea">
+     <a id="morebtn" href="#">더보기</a>
     </div>
-    <div class="media">
-          <div class="media-left">
-              <a href="#"><img class="media-object" src="1.jpg" height="90px" width="90px"></a>
-           </div>
-           <div class="media-body">
-               <h3 class="media-heading">Media heading</h3>
-                asdfasdfasdfasdfasdfasdfasdfsfasdfasdfa
-           </div>
-    </div>
-    
-  </div> <!-- nameSearchResult end div -->
-      <div id="moreviewarea">
-        <a id="morebtn" href="#">더보기</a>
-       </div>
-  </article>
-  </section> 
+		  
+		<article id = "resultArea">
+			<div class="NameSearchResult">
+			  <!--  nameSearchResult end div -->
+			 </div>
+	  </article>
+ </section> 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -237,27 +212,28 @@ body {
   <script type="text/javascript" src="../lib/js/common.js"></script>
   <script type="text/javascript" src="resultOfSearch.js"></script>
 
-  <script id="trTemplateText" type="text/x-handlebars-template">
-    <tr>
-      <label>
-         <td>{"사진영역"}</td>
-          <td>{{title}}</td>
-          <td>{{writerNick}}</td>
-          <td>{{url}}</td>
-          <td>{{createdDate2}}</td> 
-     </label>
-    </tr>
-</script>
-
-<!--<div class="media">
+  <script id="NameSearchHadlebards" type="text/x-handlebars-template">
+  <div class="media">
           <div class="media-left">
-              <a href="#"><img class="media-object" src= 사진경로 .jpg" height="90px" width="90px"></a>
+              <a href="#"><img class="media-object" src= 1.jpg" height="80px" width="80px"></a>
            </div>
            <div class="media-body">
-               <h3 class="media-heading">제목 </h3>
-                내용
+               <h3 class="media-heading">{{email}}</h3>
+                {{nickname}}
+          </div> 
+    <div> 
+</script>
+
+
+<!--  <div class="media">
+          <div class="media-left">
+              <a href="#"><img class="media-object" src= 1.jpg" height="80px" width="80px"></a>
            </div>
-    </div> --> 
+           <div class="media-body">
+               <h3 class="media-heading">{{title}}</h3>
+                {{contents}}
+          </div> 
+    <div> -->
 
   <script>
     $(function() {

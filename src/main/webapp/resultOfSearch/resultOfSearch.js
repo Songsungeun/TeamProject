@@ -41,10 +41,10 @@ function ajaxSearchResultList() {
 	  
 	    var contents = "";
 	    var arr = result.data
-	    var template = Handlebars.compile($('#trTemplateText').html())
+	    var template = Handlebars.compile($('#NameSearchHadlebards').html())
 	        for (var i in arr) {
 	          contents += template(arr[i])
 	        }
-	    $("#ContentSearchResult").html(contents);
+	    $(".NameSearchResult").html(contents);
 	})
 }
