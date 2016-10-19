@@ -5,8 +5,10 @@
 
 $("#preview").click(function(evnet) {
 	var urlinfo = $("#url").val()
+	var title = $("title").val();
+	var contents = $("contents").val();
 	console.log("과연?= " + urlinfo);
-	ajaxViewBoard(urlinfo);
+	ajaxViewBoard(urlinfo, title, contents);
 })
 
 $("#submitBoard").click(function(event) {
@@ -130,7 +132,7 @@ function readCookie() {
 	return linkURL;
 }
 
-function ajaxViewBoard(urlinfo) {
+function ajaxViewBoard(urlinfo, title, contents) {
 	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
 			{urlinfo: urlinfo},
 			function(textStatus) {
@@ -146,25 +148,12 @@ function ajaxViewBoard(urlinfo) {
 					console.log("image= " + result.data.image);
 					$("#urlImage").html(result.data.image);
 					console.log("desc= " + result.data.description);
+					$("#urlDesc").html(result.data.description)
 					console.log("URL= " + result.data.detailUrl);
 					console.log("SimpleURL = " + result.data.urlAddr);
+					$("#urlAddr").html(result.data.urlAddr);
+					$("#previewTitle").text(title);
+					$("#preiviewContents").text(contents);
 				}
 			},"json")
 }
-/*
-function ajaxViewBoard2() {
-	var urlinfo = readCookie()
-	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
-			{urlinfo: urlinfo},
-			function(textStatus) {
-				var result = textStatus.jsonResult
-				console.log(result.data);
-				if (result.state != "success") {
-					alert("미리보기가 안되요")
-					return;
-				} else {
-					$("#preiframe").text(result.data);
-				}
-			},"json")
-}
-*/

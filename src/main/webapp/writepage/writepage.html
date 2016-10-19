@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript"
-	src="../node_modules/jquery/dist/jquery.min.js"></script>
+  src="../node_modules/jquery/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>Insert title here</title>
 <style>
 body {
-	background-color: #f1f1f2;
+  background-color: #f1f1f2;
 }
 
 /* 
 form {
-	background: #f1f1f1;
-	width: 800px;
-	padding-left: 50px;
-	padding-top: 20px;
+  background: #f1f1f1;
+  width: 800px;
+  padding-left: 50px;
+  padding-top: 20px;
 }*/
 
 #write_container {
-	border: 1px solid #ededed;
-	max-width: 1024px;
-	margin: 0 auto;
-	padding-top: 80px;
-	background-color: white;
-	height: 600px;
+  border: 1px solid #ededed;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-top: 80px;
+  background-color: white;
+  height: 600px;
 }
 
 #category_select {
@@ -59,38 +59,42 @@ form {
  
  .form-group1 {
   height: 200px;
-  border: 1px solid red;
   margin: 20px;
  }
  
  .form-group2 {
   height: 350px;
   width: 550x;
-  border: 1px solid red;
   margin: 20px;
  }
  
  .previewbox {
-  border: 1px solid black;
-  height: 200px;
+  border: 1px solid #C1CDCD;
+  height: 330px;
   width: 476px;
-  
+  margin: 0 auto;
  }
 
+#contBox {
+    width: 476px;
+    height: 170px;
+    border: 1px solid #C1CDCD;
+    margin: 0 auto;
+  }
    /*
   #submitBoard {
-  	position: relative;
-  	left: 45%;
+    position: relative;
+    left: 45%;
   }
   
   #cancelwrite {
-  	position: relative;
-  	left: 45%;
+    position: relative;
+    left: 45%;
   }
   */
   .btn-default {
     position: relative;
-  	left: 30%;
+    left: 30%;
   }
   
   .btn-primary {
@@ -99,8 +103,21 @@ form {
   
   #urlTitle {
     float: left;
-    
+    font-size: 17px;
+    font-style: bold;
+    margin: 2px 0px;
   }
+  
+  #urlDesc {
+    float: left;
+  }
+  
+  #urlAddr {
+    margin-top: 10px;
+    float: left;
+    color: #838B9B;
+  }
+  
 </style>
 
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -108,10 +125,10 @@ form {
 
 <script>
 $(document).ready(function(){ 
-	  $.get("../header.html", function(data) {
-	    $("#headerInclude").html(data);
-	  });
-	}); 
+    $.get("../header.html", function(data) {
+      $("#headerInclude").html(data);
+    });
+  }); 
 </script>
 <script>
   $( function() {
@@ -120,54 +137,54 @@ $(document).ready(function(){
   </script>
 </head>
 <body>
-	<div id="headerInclude"></div>
+  <div id="headerInclude"></div>
 
-	<div id="write_container">
+  <div id="write_container">
 
-		<form id="writeArea">
-			<input type="text" id="url" class="form-control" placeholder="URL"> 
-			<input type="text" id="title" class="form-control" placeholder="제목">
-			<textarea class="form-control" id= "contents" rows="20" placeholder="내용을 입력하세요."></textarea>
-			<div class="form-group">
-				<label for="exampleInputFile">File input</label> <input type="file"
-					id="exampleInputFile">
-				<p class="help-block">파일을 등록하세요</p>
-			</div>
-			<fieldset id="category_select">
-				<label for="category">Category</label> <select name="category"
-					id="category"class="form-control">
-					<option selected="selected">라이프</option>
-					<option>스포츠</option>
-					<option>차/테크</option>
-					<option>패션/뷰티</option>
-					<option>게임</option>
-					<option>TV/연예</option>
-					<option>뮤직</option>
-					<option>영화</option>
-					<option>책/문화</option>
-					<option>지식/교양</option>
-				</select>
-			</fieldset>
-			<input class="btn btn-default my-new"
-					name="submit" id="submitBoard" tabindex="8" value="등록">
-			<input class="btn btn-default my-view"
-					name="submit" id="updateBoard" tabindex="8" value="변경">
-			<input class="btn btn-default my-view"
-					name="submit" id="deleteBoard" tabindex="8" value="삭제">
-			<input class="btn btn-default"
-					name="cancel" id="cancelwrite" tabindex="8" value="취소"
-					onclick="location.href='../mainpage/Main.html'">
-			<input class="btn btn-default my-new" data-toggle="modal" name="preview" 
+    <form id="writeArea">
+      <input type="text" id="url" class="form-control" placeholder="URL"> 
+      <input type="text" id="title" class="form-control" placeholder="제목">
+      <textarea class="form-control" id= "contents" rows="20" placeholder="내용을 입력하세요."></textarea>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label> <input type="file"
+          id="exampleInputFile">
+        <p class="help-block">파일을 등록하세요</p>
+      </div>
+      <fieldset id="category_select">
+        <label for="category">Category</label> <select name="category"
+          id="category"class="form-control">
+          <option selected="selected">라이프</option>
+          <option>스포츠</option>
+          <option>차/테크</option>
+          <option>패션/뷰티</option>
+          <option>게임</option>
+          <option>TV/연예</option>
+          <option>뮤직</option>
+          <option>영화</option>
+          <option>책/문화</option>
+          <option>지식/교양</option>
+        </select>
+      </fieldset>
+      <input class="btn btn-default my-new"
+          name="submit" id="submitBoard" tabindex="8" value="등록">
+      <input class="btn btn-default my-view"
+          name="submit" id="updateBoard" tabindex="8" value="변경">
+      <input class="btn btn-default my-view"
+          name="submit" id="deleteBoard" tabindex="8" value="삭제">
+      <input class="btn btn-default"
+          name="cancel" id="cancelwrite" tabindex="8" value="취소"
+          onclick="location.href='../mainpage/Main.html'">
+      <input class="btn btn-default my-new" data-toggle="modal" name="preview" 
                id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" 
                data-whatever="@kmdo">
-<!-- 			<input class="btn btn-default my-new" -->
-<!-- 					name="preview" id="preview" tabindex="8" value="미리보기"> -->
-			<input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
-		</form>
-		
-		
-	<!-- Modal Start -->
-	<div>
+<!--      <input class="btn btn-default my-new" -->
+<!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
+      <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
+    </form>
+    
+    
+  <!-- Modal Start -->
+  <div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -176,17 +193,19 @@ $(document).ready(function(){
         <div class="modal-body">
     <form id="write_form">
       <div class="form-group2">
-        <label for="recipient-name" class="control-label">Linked URL</label>
+        <div class="control-label" id="previewTitle"></div>
         <div class="previewbox" id="linkedURL">
           <div id="urlImage"></div>
           <div id="urlTitle"></div>
+          <div id="urlDesc"></div>
+          <div id="urlAddr"></div>
         </div>
       </div>
       <div class="form-group1">
-        <label for="message-text" class="control-label">Contents</label>
-        <div class="previewbox" id="message-text">
-<!--         <img src='http://t1.daumcdn.net/news/201610/12/fnnewsi/20161012180503718fxlv.jpg' align='left' hspace='12' vspace='12' width='150px'><br> -->
-<!--         파운드, 추락 거듭.. "더이상 안전통화 아니다" -->
+        <div class="control-label" id="preiviewContents"></div>
+        <div id="contBox">
+        <div id="message-text">
+        </div>
         </div>
       </div>
     </form>
@@ -207,12 +226,12 @@ $(document).ready(function(){
 
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 
-		
-	</div>
-	<!-- div: #write_container -->
+    
+  </div>
+  <!-- div: #write_container -->
 
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
   <script type="text/javascript" src="writepage.js"></script>
@@ -220,12 +239,12 @@ $(document).ready(function(){
 <script>
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
 if (location.search.startsWith("?")) { // 예) ?no=xxx
-	  var no = location.search.split("=")[1];
-	  console.log("hi")
-	  ajaxLoadBoard(no)
-	  $(".my-new").css("display", "none")
+    var no = location.search.split("=")[1];
+    console.log("hi")
+    ajaxLoadBoard(no)
+    $(".my-new").css("display", "none")
 } else {
-	  $(".my-view").css("display", "none")
+    $(".my-view").css("display", "none")
 }
 
 
