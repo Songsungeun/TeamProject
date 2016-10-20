@@ -8,6 +8,7 @@ public class HoneyMain implements Serializable{
   private static final long serialVersionUID = 1L;
 
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+  
   protected int no;
   protected String title;
   protected String url;
@@ -18,7 +19,67 @@ public class HoneyMain implements Serializable{
   protected int like;
   protected int viewCount;
   protected String linkTitle;
+  protected String email;
+  protected String userNo;
+  protected int parentComentNo;
+  protected int chileComentNo;
+  protected String parentComnet;
+  protected String childComent;
+  protected Date comentCreatedDate;
+  protected String comentCreatedDate2;
   
+  
+  
+  public int getParentComentNo() {
+    return parentComentNo;
+  }
+  public void setParentComentNo(int parentComentNo) {
+    this.parentComentNo = parentComentNo;
+  }
+  public int getChileComentNo() {
+    return chileComentNo;
+  }
+  public void setChileComentNo(int chileComentNo) {
+    this.chileComentNo = chileComentNo;
+  }
+  public String getParentComnet() {
+    return parentComnet;
+  }
+  public void setParentComnet(String parentComnet) {
+    this.parentComnet = parentComnet;
+  }
+  public String getChildComent() {
+    return childComent;
+  }
+  public void setChildComent(String childComent) {
+    this.childComent = childComent;
+  }
+  public Date getComentCreatedDate() {
+    return comentCreatedDate;
+  }
+  public void setComentCreatedDate(Date comentCreatedDate) {
+    this.comentCreatedDate = comentCreatedDate;
+    this.comentCreatedDate2 = format.format(comentCreatedDate);
+  }
+  public String getComentCreatedDate2() {
+    return comentCreatedDate2;
+  }
+  public void setComentCreatedDate2(String str) {
+    this.comentCreatedDate = Date.valueOf(str);
+    this.comentCreatedDate2 = str;
+  }
+  public String getUserNo() {
+    return userNo;
+  }
+  public void setUserNo(String userNo) {
+    this.userNo = userNo;
+  }
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
+  }
   public String getLinkTitle() {
     return linkTitle;
   }
