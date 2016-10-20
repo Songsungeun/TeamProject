@@ -105,7 +105,10 @@ height:220px;
 .profileInfomer {
 position: relative;
 float: right;
-margin-right: 64%;
+margin-right: 60%;
+}
+#inputUserPhoto {
+  display:none;
 }
   </style>
 </head>
@@ -125,7 +128,10 @@ margin-right: 64%;
     <div class="col-sm-10">
       <div class="form-control" id="userPhotoInfo"></div>
       <div class="profileInfomer">
-      <a>gkgkgkgk</a>
+      <a id="changeUserPhotoOperator"class="btn btn-default btn-sm">프로필 사진 변경</a>
+      <form id="uploadForm" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
+        <input id="inputUserPhoto" type="file" name="userProfilePhoto"/>
+      </form>
       </div>
     </div>
   </div>
@@ -211,14 +217,17 @@ margin-right: 64%;
   </div>
 
 
+
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="userProfileAdminPage.js"></script>
 <script type="text/javascript" src="../lib/js/common.js"></script>
 <script type="text/javascript" src="../membership/membership.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../node_modules/jquery-form/jquery.form.js"></script>
 
 <script>
   $(function(){
@@ -236,12 +245,8 @@ margin-right: 64%;
     }
     ajaxUserStatusUpdate(userStatusChangeInfo) 
  })
-</script>
 
-<script>
-$("#changPassword").click(function(event){
-  console.log($("#changeNewPassword").val())
-  console.log($("#newPasswordConfirm").val())
+ $("#changPassword").click(function(event){
   if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
     alert("비밀번호가 일치하지 않습니다.")
     return
@@ -257,6 +262,49 @@ $("#changPassword").click(function(event){
   }
   
 })
+
+    $(document).ready(function() {
+        $('#uploadForm').fileupload({
+            url : serverAddr + "/membership/profileFileUpload.json", 
+            dataType: 'json',
+            //replaceFileInput: false,
+            add: function(e, data){
+                var uploadFile = data.files[0];
+                var isValid = true;
+                if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
+                    alert('png, jpg, gif 만 가능합니다');
+                    isValid = false;
+                } else if (uploadFile.size > 10000000) { // 5mb
+                    alert('파일 용량은 10메가를 초과할 수 없습니다.');
+                    isValid = false;
+                }
+                if (isValid) {
+                    data.submit();              
+                }
+            }, progressall: function(e,data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .bar').css(
+                    'width',
+                    progress + '%'
+                );
+            }, done: function (e, data) {
+                var code = data.result.code;
+                var msg = data.result.msg;
+                if(code == '1') {
+                    alert(msg);
+                } else {
+                    alert(code + ' : ' + msg);
+                } 
+            }, fail: function(e, data){
+                // data.errorThrown
+                // data.textStatus;
+                // data.jqXHR;
+                alert('서버와 통신 중 문제가 발생했습니다');
+                foo = data;
+            }
+        });
+    }); 
+
 </script>
 
 <script>
@@ -275,6 +323,10 @@ $("#changeProfile").click(function(event){
   $("#passwordInfoPage").css("display", "none");
   $("#changeUserStatusInfo").css("display", "inherit");
   $("#changPassword").css("display", "none");
+})
+
+$("#changeUserPhotoOperator").click(function(event){
+	$("#inputUserPhoto").click();
 })
 </script>
 

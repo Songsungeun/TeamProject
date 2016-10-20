@@ -1,15 +1,27 @@
 package honey.controller.json;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import honey.dao.HoneyMembersDao;
+import honey.dao.MemberFileDao;
 import honey.service.HoneymembersService;
+import honey.util.FileUploadUtil;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
+import honey.vo.MemberFile;
 
 // 시작하기 전에 우선 나는 컨트롤러와 서비스의 역할에 대해 생각한게 
 // 디비에 직접적으로 접속해서 crud 기능을 하는 것은 서비스 부분이 담당하고, 그외의 세션이나 쿠키등의 생성과 스크립트와 값을 주고
@@ -18,6 +30,8 @@ import honey.vo.JsonResult;
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
 public class HoneymembersController {
 	@Autowired HoneymembersService hMembersService;
+	@Autowired ServletContext sc;
+	@Autowired MemberFileDao memberFileDao;
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
@@ -56,7 +70,7 @@ public class HoneymembersController {
 		// 이 메서드는 DB에서 작업할 일이 없어서 service 클래스에서 따로 구현할 필요가 없을 것 같다.
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
-			
+
 			if(hMembers == null) {
 				System.out.println("해당 회원 정보가 없습니다.");
 			}
@@ -104,4 +118,40 @@ public class HoneymembersController {
 			return JsonResult.fail(e.getMessage());
 		}
 	}
+
+	@RequestMapping(value = "/profileFileUpload", method = RequestMethod.POST)
+	@ResponseBody
+	public String upload(MultipartHttpServletRequest req, 
+			HttpServletResponse res, HttpSession session) throws IOException {
+		System.out.println(req);
+		System.out.println(res);
+		String uploadDir = sc.getRealPath("/upload") + "/";
+		Iterator<String> itr =  req.getFileNames();
+		MultipartFile mpf = req.getFile(itr.next());
+		String originFileName = mpf.getOriginalFilename();
+		System.out.println(originFileName);
+
+		String newFilename = null;
+		if (mpf != null && ! mpf.isEmpty()) {
+			newFilename = FileUploadUtil.getNewFilename(originFileName);
+			mpf.transferTo(new File(uploadDir + newFilename));
+			MemberFile boardFile = new MemberFile();
+			boardFile.setFilename(newFilename);
+			HoneyMembers honeymembers =(HoneyMembers)session.getAttribute("member");
+			boardFile.setMemberNo(honeymembers.getMemberNo());
+
+			//boardFile.setBoardNo(10200); //트랜잭션 테스트 용 
+			memberFileDao.insert(boardFile);
+		}
+
+
+
+
+		return "{\"code\":\"1\", \"msg\":\"file upload success.\"}";
+	}
+
+
+
+
+
 }
