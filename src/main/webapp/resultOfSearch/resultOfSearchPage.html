@@ -145,17 +145,11 @@ body {
 }
 
 .media-body {
-   padding-left: 100px;
-   padding-bottom: 26px;
-   padding-right: 35px;
-   padding-top: 27px;
-}
-
-.NameSearchResult {
-   position: relative;
-   top: 35px;
-   max-width: 1024px;
-   margin: 0 auto; 
+    height: 55px;
+    padding-left: 100px;
+    padding-bottom: 1px;
+    padding-right: 35px;
+    padding-top: 25px;
 }
 
 .media{
@@ -169,20 +163,46 @@ body {
   border-bottom-color: #C9C9C9; 
 }
 
-#moreviewarea{
-  position: relative;
-  top: 10px;
-  max-width: 1024px;
-  margin: 0 auto;
-  font-size: 15px;
-}
-
 #morebtn {
     position: relative;
     float: right; 
     padding-right: 20px;
 }
 
+ .memberSearchResult{
+    position: relative;
+    margin: 0 auto;
+    float: left;
+    width: 1024px;
+}
+
+.contentsSearchResult {
+    position: relative;
+    margin: 0 auto;
+    float: left;
+    width: 1024px;
+}
+
+#memberSearchWrap{
+    width: 1024px;
+    left: 288px;
+    position: relative;
+    background-color: antiquewhite;
+}
+
+#moreViewBtn{
+    float: right;
+    font-size: 18px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+#contentsSearchWrap{
+    width: 1024px;
+    left: 288px;
+    position: relative;
+    background-color: antiquewhite;
+}
 
 </style>
 </head>
@@ -193,15 +213,27 @@ body {
 	  <div class="userProfileAdmin_topSection">
 		    검색결과 : <span id="searchState">  test test test </span>
 		</div>
-		  
-    <div id="moreviewarea">
-     <a id="morebtn" href="#">더보기</a>
-    </div>
-		  
-		<article id = "resultArea">
-			<div class="NameSearchResult">
-			  <!--  nameSearchResult end div -->
-			 </div>
+		
+		    <article id = "resultArea">
+		    
+		    <div id = memberSearchWrap>
+			   <div class="memberSearchResult">
+						<!-- member 출력영역 -->
+	       </div>
+	       <div>
+	         <a id="moreViewBtn" href="#">더보기</a>
+	        </div>
+      </div>
+	 
+	 <div id = contentsSearchWrap>
+			  <div class="contentsSearchResult">
+			   <!-- contents 출력영역 -->
+		      </div>
+		    <div>
+		        <a  id="moreViewBtn" href="#">더보기</a>
+		    </div>
+		  </div>
+		    
 	  </article>
  </section> 
 
@@ -212,28 +244,36 @@ body {
   <script type="text/javascript" src="../lib/js/common.js"></script>
   <script type="text/javascript" src="resultOfSearch.js"></script>
 
-  <script id="NameSearchHadlebards" type="text/x-handlebars-template">
+
+  <script id="searchMemberHandlebars" type="text/x-handlebars-template">
+ {{#each searchMemberResult}}
   <div class="media">
           <div class="media-left">
-              <a href="#"><img class="media-object" src= 1.jpg" height="80px" width="80px"></a>
+              <a href="#"><img class="media-object" src= "1.jpg" height="80px" width="80px"></a>
            </div>
            <div class="media-body">
-               <h3 class="media-heading">{{email}}</h3>
-                {{nickname}}
+               <h3 class="media-heading">{{nickname}}</h3>
+            {{userName}}
           </div> 
     <div> 
-</script>
+{{/each}}
+</script>   
 
-
-<!--  <div class="media">
+ <script id="searchBoardHandbars" type="text/x-handlebars-template">
+ {{#each searchBoardResult}}
+  <div class="media">
           <div class="media-left">
-              <a href="#"><img class="media-object" src= 1.jpg" height="80px" width="80px"></a>
+              <a href="#"><img class="media-object" src= "1.jpg" height="80px" width="80px"></a>
            </div>
            <div class="media-body">
                <h3 class="media-heading">{{title}}</h3>
                 {{contents}}
           </div> 
-    <div> -->
+    <div> 
+{{/each}}
+</script>
+
+
 
   <script>
     $(function() {
