@@ -44,12 +44,17 @@ function ajaxSearchResultList() {
 	    	alert("검색 결과가 없습니다.")
 	    }
 	  
-	    var contents = "";
-	    var arr = result.data
-	    var template = Handlebars.compile($('#NameSearchHadlebards').html())
-	        for (var i in arr) {
-	          contents += template(arr[i])
-	        }
-	    $(".NameSearchResult").html(contents);
+	    var nameSearch = "";
+	    var contentsSearch = "";
+	    var data = result.data
+	    var template1 = Handlebars.compile($('#searchBoardHandbars').html())
+	    var template2 = Handlebars.compile($('#searchMemberHandlebars').html())
+	        
+	        contentsSearch += template1(data)
+	        nameSearch += template2(data)
+	        
+	   $(".contentsSearchResult").html(contentsSearch);
+	   $(".memberSearchResult").html(nameSearch);
 	})
 }
+
