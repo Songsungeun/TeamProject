@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.crypto.BadPaddingException;
@@ -63,19 +64,15 @@ public class HoneySearchController {
 	  List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
 	  System.out.println(searcherDao.selectFromMembers(searchfucker));
 	  
+	  
 	  try {
 		  // 돌려받은 결과물에서 만약 회원정보 서칭결과가 없다면 보드검색결과를 보내고
 		  // 둘 다 있다면 둘 다 보내고  
 		  // 둘다 없다면??? 아 생각 못했다 썅 !!!!!
-		  if (searchMemberResult.isEmpty() == true) {
-		  return JsonResult.success(searchBoardResult);
-		  } else if (searchBoardResult.isEmpty() == true) {
-		  return JsonResult.success(searchMemberResult);
-		  } else if (searchBoardResult.isEmpty() == true && searchMemberResult.isEmpty() == true) {
-		  return JsonResult.success(); 
-		  } else {
-			  return JsonResult.success(searchBoardResult, searchMemberResult);
-		  }
+		  HashMap<String,Object> searchData = new HashMap();
+		  searchData.put("searchMemberResult", searchMemberResult);
+		  searchData.put("searchBoardResult", searchBoardResult);
+		  return JsonResult.success(searchData);
 	  } catch (Exception e) {
 		  e.printStackTrace();
 		  return JsonResult.fail(e.getMessage());
