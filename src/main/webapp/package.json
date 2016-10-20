@@ -9,9 +9,11 @@
   "license": "ISC",
   "dependencies": {
     "angular-ui-router": "^0.3.1",
+    "blueimp-file-upload": "^9.12.6",
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.5",
-    "jquery": "^1.12.4"
+    "jquery": "^1.12.4",
+    "jquery-form": "^3.50.0"
   },
   "devDependencies": {},
   "description": ""
