@@ -24,13 +24,15 @@ public class HoneyBoardController {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
     System.out.println("요청 받음");
     try {
-      
+      System.out.println("add start");
       HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
+      System.out.println(hMember.getMemberNo());
       board.setUserNo(hMember.getMemberNo());
       boardDao.insert(board);
       return JsonResult.success();
 
     } catch (Exception e) {
+      e.printStackTrace();
       return JsonResult.fail(e.getMessage());
     }
   }

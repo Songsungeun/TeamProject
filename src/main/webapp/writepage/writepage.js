@@ -42,8 +42,8 @@ $("#submitBoard").click(function(event) {
 	
 	var board = {
 	  url: $("#url").val(),
-	  title: $("#title").val(),
-	  contents: $("#contents").val(),
+	  title: $("#write_title").val(),
+	  contents: $("#write_contents").val(),
 	  userNo:$("#memberNumber").val(),
 	  categoryNo
 	}
