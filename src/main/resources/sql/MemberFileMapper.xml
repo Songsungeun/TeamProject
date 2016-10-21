@@ -14,11 +14,15 @@
     values(#{memberNo}, #{filename})
   </insert>
   
-  <select id="getprofileFileName" parameterType="int" resultType="MemberFile">
-    select mbp_path, mbp_no
+  <select id="getprofileFileName" parameterType="int" resultMap="MemberFile">
+    select mbp_path, mbp_no, mb_no
     from 
     honey_membs_photos
     where mb_no=#{memberNo}
+     order by
+    <choose>
+      <otherwise>mbp_no</otherwise>
+    </choose>
   </select>
 </mapper>
 
