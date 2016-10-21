@@ -5,6 +5,13 @@ function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	var searchInfo = {searchValue: searchValue}
+	console.log(searchInfo)
+	if (searchInfo.searchValue == "") {
+		alert("검색어를 입력하세요")
+		location.href ="/TeamProject/mainpage/Main.html"
+		return
+	} else {
+		location.href ="/TeamProject/resultOfSearch/resultOfSearchPage.html"
 	$.ajax({
 		url:serverAddr+"/" + locationPath[2] + "/searchInfo.json",
 		type: "GET",
@@ -21,7 +28,7 @@ function ajaxSearchValue(searchValue) {
 		error: function(result) {
 			console.log(result.state)
 		}
-	})
+	})}
 }
 
 
@@ -40,7 +47,7 @@ function ajaxSearchResultList() {
 	      		console.log(result.state)
 	      return
 	    }
-	    if (result.data=="") {
+	    if (result.data == "") {
 	    	alert("검색 결과가 없습니다.")
 	    }
 	  
