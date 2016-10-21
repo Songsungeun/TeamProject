@@ -2,13 +2,15 @@ package honey.controller.json;
 
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
-import honey.dao.tempDao;
+import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
@@ -17,18 +19,30 @@ import honey.vo.honey_boards;
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/"})
 public class HoneyBoardController {
-  @Autowired tempDao boardDao;
+  @Autowired DefaultHoneyBoardService boardService;
+  @Autowired ServletContext sc;
   
   @RequestMapping(path="writeadd")
-  public Object add(honey_boards board, HttpSession session) throws Exception {
+  public Object add(
+		  honey_boards board, 
+//		  MultipartFile file1,
+//		  MultipartFile file2,
+		  HttpSession session) throws Exception {
     // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
     System.out.println("요청 받음");
+    String uploadDir = sc.getRealPath("/upload") + "/";
     try {
       System.out.println("add start");
       HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
       System.out.println(hMember.getMemberNo());
+      // 보드 멤버 넘버 셋
       board.setUserNo(hMember.getMemberNo());
-      boardDao.insert(board);
+      UrlInfo url = Scrapper.parsePageHeaderInfo(board.getUrl());
+      url.setMb_No(hMember.getMemberNo());
+      
+      boardService.insertBoard(board, uploadDir);
+      boardService.insertUrl(url);
+      
       return JsonResult.success();
 
     } catch (Exception e) {
@@ -37,11 +51,12 @@ public class HoneyBoardController {
     }
   }
   
-  @RequestMapping(path="detail")
+
+@RequestMapping(path="detail")
   public Object detail(int no) throws Exception {
       System.out.println("detail 메서드 실");
 	  try {
-	      honey_boards board = boardDao.selectOne(no);
+	      honey_boards board = boardService.getBoard(no);
 	      System.out.println("board 객체 받아옴");
 	      if (board == null) 
 	        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
@@ -62,10 +77,10 @@ public class HoneyBoardController {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", board.getNo());
       
-      if (boardDao.selectOne(board.getNo()) == null) {
+      if (boardService.getBoard(board.getNo()) == null) {
         throw new Exception("해당 게시물이 없습니다.");
       }
-      boardDao.update(board);
+      boardService.updateBoard(board);
       return JsonResult.success();
       
     } catch (Exception e) {
@@ -80,10 +95,10 @@ public class HoneyBoardController {
       HashMap<String,Object> paramMap = new HashMap<>();
       paramMap.put("no", no);
       
-      if (boardDao.selectOne(no) == null) {
+      if (boardService.getBoard(no) == null) {
         throw new Exception("해당 게시물이 없습니다.");
       }
-      boardDao.delete(no);
+      boardService.deleteBoard(no);
       return JsonResult.success();
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());

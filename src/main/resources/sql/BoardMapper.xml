@@ -96,4 +96,9 @@
       URL=#{url}
       where BD_NO=#{no}
   </update>
+  
+  <insert id="insertUrl" parameterType="UrlInfo">
+    insert into board_link(URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl)
+    values(#{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl})
+  </insert>
 </mapper>

@@ -5,18 +5,46 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import honey.dao.HoneyBoardFileDao;
 import honey.dao.tempDao;
 import honey.service.HoneyBoardService;
+import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
-@Service
+@Service("HoneyBoardService")
 public class DefaultHoneyBoardService implements HoneyBoardService {
 	@Autowired tempDao boardDao;
+	@Autowired HoneyBoardFileDao boardFileDao;
 	
-	public void insertBoard(honey_boards board) throws Exception {
+	public void insertBoard(honey_boards board,
+//			MultipartFile file1,
+//			MultipartFile file2,
+			String uploadDir) throws Exception {
 		boardDao.insert(board);
+		//String newFilename = null;
+		/*
+		if (!file1.isEmpty()) {
+			newFilename = FileUploadUtil1.getNewFilename(file1.getOriginalFilename());
+			file1.transferTo(new File(uploadDir + newFilename));
+			HoneyBoardFile boardFile = new HoneyBoardFile();
+			boardFile.setBoardNo(board.getNo());
+			boardFile.setFileName(newFilename);
+			boardFileDao.insert(boardFile);
+		}
+		
+		if (!file2.isEmpty()) {
+			newFilename = FileUploadUtil1.getNewFilename(file1.getOriginalFilename());
+			file2.transferTo(new File(uploadDir + newFilename));
+			HoneyBoardFile boardFile = new HoneyBoardFile();
+			boardFile.setBoardNo(board.getNo());
+			boardFile.setFileName(newFilename);
+			boardFileDao.insert(boardFile);
+		}*/
 	}
-
+	public void insertUrl(UrlInfo urlInfo) throws Exception {
+		boardDao.insertUrl(urlInfo);
+	}
+	
 	public honey_boards getBoard(int no) throws Exception {
 		return boardDao.selectOne(no);
 	}

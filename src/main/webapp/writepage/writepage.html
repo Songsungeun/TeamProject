@@ -153,13 +153,16 @@ $(document).ready(function(){
 
   <div id="write_container">
 
-    <form id="writeArea">
+    <form id="writeArea" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
       <input type="text" id="url" class="form-control" placeholder="URL"> 
       <input type="text" id="write_title" class="form-control" placeholder="제목">
       <textarea class="form-control" id= "write_contents" rows="20" placeholder="내용을 입력하세요."></textarea>
       <div class="form-group">
-        <label for="exampleInputFile">File input</label> <input type="file"
-          id="exampleInputFile">
+        <label for="exampleInputFile">File input</label> 
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">파일을 등록하세요</p>
+        <label for="exampleInputFile">File input</label> 
+        <input type="file" id="exampleInputFile">
         <p class="help-block">파일을 등록하세요</p>
       </div>
       <fieldset id="category_select">
@@ -187,13 +190,12 @@ $(document).ready(function(){
           name="cancel" id="cancelwrite" tabindex="8" value="취소"
           onclick="location.href='../mainpage/Main.html'">
       <input class="btn btn-default my-new" data-toggle="modal" name="preview" 
-               id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" 
-               data-whatever="@kmdo">
+               id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" >
 <!--      <input class="btn btn-default my-new" -->
 <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
       <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
     </form>
-    
+    </div>
     
   <!-- Modal Start -->
   <div>
@@ -246,6 +248,8 @@ $(document).ready(function(){
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
   <script type="text/javascript" src="writepage.js"></script>
+  <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script src="../node_modules/jquery-form/jquery.form.js"></script>
 
 <script>
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
