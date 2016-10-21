@@ -3,6 +3,7 @@ package honey.controller.json;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -123,33 +124,43 @@ public class HoneymembersController {
 	@ResponseBody
 	public String upload(MultipartHttpServletRequest req, 
 			HttpServletResponse res, HttpSession session) throws IOException {
-		System.out.println(req);
-		System.out.println(res);
 		String uploadDir = sc.getRealPath("/upload") + "/";
 		Iterator<String> itr =  req.getFileNames();
+		/* Iterator : 모든 컬랙션으로부터 정보를 얻을 수 있는 인터페이스
+		 */
 		MultipartFile mpf = req.getFile(itr.next());
 		String originFileName = mpf.getOriginalFilename();
-		System.out.println(originFileName);
 
 		String newFilename = null;
 		if (mpf != null && ! mpf.isEmpty()) {
 			newFilename = FileUploadUtil.getNewFilename(originFileName);
 			mpf.transferTo(new File(uploadDir + newFilename));
-			MemberFile boardFile = new MemberFile();
-			boardFile.setFilename(newFilename);
+			MemberFile profileFile = new MemberFile();
+			profileFile.setFilename(newFilename);
 			HoneyMembers honeymembers =(HoneyMembers)session.getAttribute("member");
-			boardFile.setMemberNo(honeymembers.getMemberNo());
+			profileFile.setMemberNo(honeymembers.getMemberNo());
 
-			//boardFile.setBoardNo(10200); //트랜잭션 테스트 용 
-			memberFileDao.insert(boardFile);
+			memberFileDao.prifileFileinsert(profileFile);
 		}
-
-
-
 
 		return "{\"code\":\"1\", \"msg\":\"file upload success.\"}";
 	}
-
+ @RequestMapping(path="userProfileFileLoder")
+  public void profileFileLoder (HttpSession session) {
+	  HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
+	  MemberFile memberFile = new MemberFile();
+			  memberFile.setMemberNo(honeyMember.getMemberNo());
+			  System.out.println(memberFile.getMemberNo());
+	  try {
+		 
+		  List<MemberFile> list =  memberFileDao.getprofileFileName(memberFile.getMemberNo());
+		  
+		  System.out.println(list);
+	  } catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  
+  }
 
 
 

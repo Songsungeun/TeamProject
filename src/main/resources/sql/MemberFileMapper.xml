@@ -4,14 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.MemberFileDao">
   <resultMap type="MemberFile" id="boardFileMap">
-    <id column="no" property="no"/> 
+    <id column="mbp_no" property="no"/> 
     <result column="mb_no" property="memberNo"/>
     <result column="mbp_path" property="filename"/>
   </resultMap>
   
-  <insert id="insert" parameterType="MemberFile">
+  <insert id="prifileFileinsert" parameterType="MemberFile">
     insert into honey_membs_photos(mb_no, mbp_path)
     values(#{memberNo}, #{filename})
   </insert>
+  
+  <select id="getprofileFileName" parameterType="int" resultType="MemberFile">
+    select mbp_path, mbp_no
+    from 
+    honey_membs_photos
+    where mb_no=#{memberNo}
+  </select>
 </mapper>
 

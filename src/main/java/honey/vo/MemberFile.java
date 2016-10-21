@@ -27,6 +27,10 @@ public int getMemberNo() {
 public void setMemberNo(int memberNo) {
 	this.memberNo = memberNo;
 }
+@Override
+public String toString() {
+	return "MemberFile [no=" + no + ", memberNo=" + memberNo + ", filename=" + filename + "]";
+}
   
   
 }
