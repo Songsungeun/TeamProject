@@ -66,12 +66,10 @@ public class HoneySearchController {
 	  
 	  
 	  try {
-		  // 돌려받은 결과물에서 만약 회원정보 서칭결과가 없다면 보드검색결과를 보내고
-		  // 둘 다 있다면 둘 다 보내고  
-		  // 둘다 없다면??? 아 생각 못했다 썅 !!!!!
 		  HashMap<String,Object> searchData = new HashMap();
 		  searchData.put("searchMemberResult", searchMemberResult);
 		  searchData.put("searchBoardResult", searchBoardResult);
+		  searchData.put("searchValue", searchfucker);
 		  return JsonResult.success(searchData);
 	  } catch (Exception e) {
 		  e.printStackTrace();
