@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.MemberFileDao">
-  <resultMap type="MemberFile" id="boardFileMap">
+  <resultMap type="MemberFile" id="MemberFile">
     <id column="mbp_no" property="no"/> 
     <result column="mb_no" property="memberNo"/>
     <result column="mbp_path" property="filename"/>
