@@ -5,7 +5,7 @@ function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	var searchInfo = {searchValue: searchValue}
-	console.log(searchInfo)
+	
 	if (searchInfo.searchValue == "") {
 		alert("검색어를 입력하세요")
 		location.href ="/TeamProject/mainpage/Main.html"
@@ -31,7 +31,7 @@ function ajaxSearchValue(searchValue) {
 	})}
 }
 
-
+var searchValue;
 var searchMemberResult;
 var searchBoardResult;
 function ajaxSearchResultList() {
@@ -39,7 +39,7 @@ function ajaxSearchResultList() {
 	var locationPath = locationPathValue.split('/');
 	
 	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json", 
-			  {"searchMemberResult":searchMemberResult, "searchBoardResult":searchBoardResult},
+			  {"searchValue":searchValue,"searchMemberResult":searchMemberResult, "searchBoardResult":searchBoardResult},
 	  function(obj) {
 	  var result = obj.jsonResult
 	    if (result.state != "success") {
@@ -53,15 +53,21 @@ function ajaxSearchResultList() {
 	  
 	    var nameSearch = "";
 	    var contentsSearch = "";
+	    var contents =""
 	    var data = result.data
+	    
+	    for (var i in data) {
+	    	contents += "<span id = 'searchState'>" + "검색어" + ":"+data[i] + "</span>" 
+	    }
+	    console.log(contents)
 	    var template1 = Handlebars.compile($('#searchBoardHandbars').html())
 	    var template2 = Handlebars.compile($('#searchMemberHandlebars').html())
-	        
+	
 	        contentsSearch += template1(data)
 	        nameSearch += template2(data)
-	        
+	   $("#searchWord").text(data.searchValue);
 	   $(".contentsSearchResult").html(contentsSearch);
 	   $(".memberSearchResult").html(nameSearch);
+	   
 	})
 }
-

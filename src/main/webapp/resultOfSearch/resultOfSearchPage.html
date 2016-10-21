@@ -119,7 +119,6 @@ body {
 /*reset*/
 .userProfileAdmin_topSection {
   position: relative;
-  /* top: 30px; */
   max-width: 1024px;
   margin: 0 auto;
   border: 1px solid;
@@ -185,8 +184,8 @@ body {
 
 #memberSearchWrap{
     width: 1024px;
-    left: 288px;
     position: relative;
+        margin: 0 auto;
     background-color: antiquewhite;
 }
 
@@ -199,8 +198,8 @@ body {
 
 #contentsSearchWrap{
     width: 1024px;
-    left: 288px;
     position: relative;
+        margin: 0 auto;
     background-color: antiquewhite;
 }
 
@@ -211,12 +210,13 @@ body {
 
 <section id= "searchwrap">
 	  <div class="userProfileAdmin_topSection">
-		    검색결과 : <span id="searchState">  test test test </span>
+	   검색어 : <span id="searchWord"></span>
 		</div>
 		
 		    <article id = "resultArea">
 		    
 		    <div id = memberSearchWrap>
+		        <div id = searchResultName ></div>
 			   <div class="memberSearchResult">
 						<!-- member 출력영역 -->
 	       </div>
@@ -243,7 +243,7 @@ body {
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
   <script type="text/javascript" src="resultOfSearch.js"></script>
-
+  
 
   <script id="searchMemberHandlebars" type="text/x-handlebars-template">
  {{#each searchMemberResult}}

@@ -46,3 +46,15 @@ function ajaxPasswordChange(newPassword) {
 	},"json")
 }
 
+function ajaxUserProfileFileLoder() {
+	console.log("hi?")
+	$.getJSON(serverAddr + "/membership/userProfileFileLoder.json", function(obj) {
+		var result=obj.jsonResult
+	if (result.state != "success") {
+		alert("조회 실패입니다.")
+		return
+	};
+	$("#profilePhoto").attr('src',"/TeamProject/upload/"+result.data)
+ })
+}
+

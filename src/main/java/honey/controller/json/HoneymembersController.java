@@ -146,18 +146,23 @@ public class HoneymembersController {
 		return "{\"code\":\"1\", \"msg\":\"file upload success.\"}";
 	}
  @RequestMapping(path="userProfileFileLoder")
-  public void profileFileLoder (HttpSession session) {
+  public Object profileFileLoder (HttpSession session) {
 	  HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
 	  MemberFile memberFile = new MemberFile();
 			  memberFile.setMemberNo(honeyMember.getMemberNo());
 			  System.out.println(memberFile.getMemberNo());
 	  try {
-		 
 		  List<MemberFile> list =  memberFileDao.getprofileFileName(memberFile.getMemberNo());
-		  
-		  System.out.println(list);
+		  int i = 0;
+		  for (i = 0; i < list.size(); i++) {
+			  i = list.size();
+		  }
+		  System.out.println(i);
+		  memberFile = list.get(i-2);
+		  return JsonResult.success(memberFile.getFilename());
 	  } catch(Exception e) {
 		  e.printStackTrace();
+		  return JsonResult.fail(e.getMessage());
 	  }
 	  
   }
