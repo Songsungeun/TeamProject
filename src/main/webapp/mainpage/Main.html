@@ -3,16 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
 
 <title>HoneyTip TestPage</title>
 </head>
 <body>
- <div id="includedContent"></div>
+  <div id="includedContent"></div>
   <div class="main_section">
     <div class="mainpage_wrap">
       <div class="mainpage_Topcontainer">
@@ -26,7 +29,9 @@
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="item active">
-                <a href="#"> <img src="/TeamProject/mainpage/mainpage_images/hyoju.jpg" alt="slide0">
+                <a href="#"> <img
+                  src="/TeamProject/mainpage/mainpage_images/hyoju.jpg"
+                  alt="slide0">
                   <div class="carousel-caption">
                     <h3>Chania1</h3>
                     <p>The atmosphere in Chania has a touch of Florence and
@@ -35,7 +40,9 @@
                 </a>
               </div>
               <div class="item">
-                <a href="#"> <img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="slide1">
+                <a href="#"> <img
+                  src="/TeamProject/mainpage/mainpage_images/suji_1.jpg"
+                  alt="slide1">
                   <div class="carousel-caption">
                     <h3>Flowers</h3>
                     <p>Beatiful flowers in Kolymbari, Crete.</p>
@@ -43,15 +50,19 @@
                 </a>
               </div>
               <div class="item">
-                <a href="#"> <img src="/TeamProject/mainpage/mainpage_images/suji_2.jpg" alt="slide2">
+                <a href="#"> <img
+                  src="/TeamProject/mainpage/mainpage_images/suji_2.jpg"
+                  alt="slide2">
                   <div class="carousel-caption">
                     <h3>Chania</h3>
-                    <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    <p>The atmosphere in Chania has a touch of Florence and
+                      Venice.</p>
                   </div>
                 </a>
               </div>
               <div class="item">
-                <a href="#"> <img src="/TeamProject/mainpage/mainpage_images/suji_3.jpg">
+                <a href="#"> <img
+                  src="/TeamProject/mainpage/mainpage_images/suji_3.jpg">
                   <div class="carousel-caption">
                     <h3>Flowers</h3>
                     <p>Beatiful flowers in Kolymbari, Crete.</p>
@@ -64,7 +75,9 @@
             <a class="left carousel-control" href="#myCarousel" role="button">
               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
-            </a> <a class="right carousel-control" href="#myCarousel" role="button"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </a> <a class="right carousel-control" href="#myCarousel"
+              role="button"> <span
+              class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
           </div>
@@ -99,53 +112,78 @@
             </ul>
           </div>
           <!-- Modal content -->
-          <div id="myModal" class="modal" style="display: none;">
-            <span class="close" id="close-Btn">x</span>
-            <div class="modal-content">
-              <div class="post_conts" id="postdetail-rt-section">
-                <div class="post_title" id="title"></div>
-                <p id="createdDate"></p>
-                <p class="post_url">
-                  URL<a class="url" id="url" href="#"></a>
-                </p>
-                <div id="url_location"></div>
-                <p class="post_contents">Contents</p>
-                <div id="contents"></div>
-                <div class="Btn-wrap">
-                  <button id="lkBtn" class="lk">좋아요</button>
-                  <button id="lkBtn">안좋아요</button>
-                </div>
-              </div>
-              <div class="post_info" id="postdetail-lt-section">
-                <div class="post_wt">
-                  <div class="post_wt_wrap">
-                    <span id="writerNick"></span> <span id="post_user_id"></span>
+
+          <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="owner">
+                    <a href="#" class="button user_button">Follow</a> 
+                    <a href="#" class="button user_button">Like</a> 
+                    <a class="owner_img"
+                      href="#"> <img alt="jibon"
+                      src="/TeamProject/mainpage/mainpage_images/ProfileImage.jpg">
+                    </a>
+                    <p class="owner_name">
+                      <a href="#">UserName</a>
+                    </p>
+                    <p class="owner_when">등록일</p>
                   </div>
-                  <div class="user-subscribeBtn">구독하기</div>
-                </div>
-                <p class="post_vc">
-                  조회수<span id="viewCount" id="post_info_sub"></span>
-                </p>
-                <p class="post_lk">
-                  좋아요<span id="like" id="post_info_sub"></span>
-                </p>
-                  <div class="post_cmt_list">
-                    <div class="cmts_list">
-                    
+
+                  <div class="userWrite">
+                    <div class="comment" id="419">
+                      <h1 id="userTitle"
+                        style="font-size: 17px; font-weight: bold;">노래 한 번 할게요
+                        - 임창정</h1>
+                      <div id="userDesc">
+                        노래 한번 할게<br> 굉장히 좋은 노래~<br> 후렴이 듣기 좋아서, 마음 아려지는 그런
+                        노래<br> <br> 라라라라라<br> 한 여자가 주인공인 노래<br>
+                        이제는 듣는 사람이 없는 노래<br> <br> 이 노랠 부르면<br> 네가 내
+                        옆으로 와주니까<br> 어깨에 기대어 목소리 좋다고 말해주니까<br> <br> 또
+                        난 좋아서 이노래 번호를 눌러<br> 노래를 불러<br> 너를 불러<br>
+
                       </div>
-                      <div class="post_cmt_pt">댓글<input type="text" placeholder="로그인 후 사용하세요.">
-                        <button>입력</button>
-                      </div>
+                    </div>
                   </div>
+
+                  <div class="holder">
+                    <a class="image" href="#" title="SAM_3191.JPG"> <img
+                      alt="photo"
+                      src="/TeamProject/mainpage/mainpage_images/suji_2.jpg">
+                    </a>
+                  </div>
+
+                  <div class="linkText">
+                    <h1 class="title" style="font-size: 15px; font-weight: bold;">이화여대
+                      학생들, 86일만에 본관 점거농성 해지(속보)</h1>
+                    <p class="desc">&#039;최순실 딸 특혜 의혹&#039; 등과 관련해 최경희 이화여대
+                      총장이 사퇴의사를 밝힌 19일 오후 서울 서대문구 이화여자대학교 본관 앞에서 학생들이 행진하고 있다. ...</p>
+                    <p class="urlAddr">NEW.NAVER.COM</p>
+                  </div>
+
+                  <form class="userComment" method="post" action="#">
+                    <textarea placeholder="Add a comment..." maxlength="255"
+                      id="pcomment"></textarea>
+                    <button type="button" class="button"
+                      onclick="return submitCommentAjx()">Comment</button>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"
+                    data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
+
           </div>
+
           <!-- modal end -->
         </div>
       </div>
     </div>
-  <script id="liTemplateText" type="text/x-handlebars-template">
+    <script id="liTemplateText" type="text/x-handlebars-template">
 {{#each data}}
 <li>
   <a class="titleLink" href="#" data-no="{{no}}">
@@ -155,15 +193,15 @@
 </li>
 {{/each}}
 </script>
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script type='text/javascript' src="../lib/js/common.js"></script>
-  <script type='text/javascript' src="../lib/js/Main.js"></script>
-  <script>
-    ajaxBoardList()
-    ajaxBoardPopList()
-  </script>
-
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script type='text/javascript' src="../lib/js/common.js"></script>
+    <script type='text/javascript' src="../lib/js/TestMain.js"></script>
+    <script>
+      ajaxBoardList()
+      ajaxBoardPopList()
+    </script>
 </body>
 </html>

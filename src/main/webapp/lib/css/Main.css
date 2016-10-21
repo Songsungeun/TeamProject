@@ -416,46 +416,182 @@ body {font-family: "arial", sans-serif; font-size: 12px;}
   max-height: 120px;
   overflow: hidden;
 }
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    z-index: 200; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 775px; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+.modal-dialog {
+  padding-top: 30px;
+  height: 100%;
+  width: 660px;
+  border: 1px solid black;
+}
+ 
+ .modal-content {
+ }
+ 
+ .modal-body {
+  height: 100%;
+ }
+ 
+ .owner {
+    border-bottom: 1px solid #D1CDCD;
     overflow: hidden;
+    padding-bottom: 10px;
+    width: 610px;
+    height: 60px;
+ }
+ 
+ .user_button {
+    background-color: #D43638;
+    background-image: -webkit-linear-gradient(center top , #EB5367, #E04751 50%, #DE404A 50%, #D43638);
+    background-image: -moz-linear-gradient(center top , #EB5367, #E04751 50%, #DE404A 50%, #D43638);
+    background-image: linear-gradient(center top , #EB5367, #E04751 50%, #DE404A 50%, #D43638);
+    border-color: #910101;
+    color: #FCF9F9;
+    font-size: 13px;
+    padding: 7px 9px;
+    text-shadow: 0 -1px rgba(34, 25, 25, 0.5);
 }
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 60px auto; /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 1024px;
-    height: 775px;
-}
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-    position: absolute;
-    left: 1340px;
-    top: 55px;
-    opacity: 1.0;
-}
-.close:hover, .close:focus {
-    color: black;
-    text-decoration: none;
+
+.button {
+    background-color: #F0EDED;
+    background-image: -webkit-linear-gradient(center top , #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+    background-image: -moz-linear-gradient(center top , #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+    background-image: linear-gradient(center top , #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED);
+    border: 1px solid #BBBBBB;
+    border-radius: 6px 6px 6px 6px;
+    color: #524D4D;
     cursor: pointer;
+    display: block;
+    float: right;
+    font-weight: bold;
+    line-height: 1em;
+    margin: 0;
+    padding: 5px 9px;
+    text-align: center;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.9);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.owner_img {
+    float: left;
+    margin-right: 9px;
+    width: 50px;
+}
+
+.owner_img img {
+    display: block;
+    height: 50px;
+    width: 50px;
+}
+
+.owner_name {
+    font-size: 23px;
+    line-height: 1em;
+    margin-bottom: 2px;
+}
+
+.owner_when {
+    color: #8C7E7E;
+    display: block;
+    font-size: 13px;
+    margin: 5px 0 0;
+    padding-left: 60px;
 }
 /* 게시물 스크롤바 숨기기 */
 /* .post_conts::-webkit-scrollbar { width: 0 !important } */
 .post_conts::-webkit-scrollbar {
   display: none;
+}
+
+.holder {
+    position: relative;
+}
+
+.image img {
+	 margin: 0 auto;
+	 margin-top: 10px;
+	 margin-bottom: 10px;
+    display: block;
+    max-width: none;
+}
+
+.image img {
+    width:556px;
+    opacity: 1;
+}
+
+.linkText {
+  width: 556px;
+  height: 93px;
+  margin: 0 auto;
+  border-top: 1px solid #D1CDCD;
+  padding-top: 5px;
+  border-bottom: 1px solid #D1CDCD;
+	}
+.image {
+    cursor: pointer;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.desc {
+    margin: 10px 0 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.urlAddr {
+    float: left;
+    color: #838B9B;
+  }
+  
+.userWrite {
+    width: 556px;
+    margin: 5px auto;
+/*     overflow: hidden; */
+    border-bottom: 1px solid #D1CDCD;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+#userTitle {
+	margin-bottom: 10px;
+	
+}
+
+.userComment {
+	 width: 556px;
+    border-top: medium none;
+    box-shadow: none;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #F2F0F0;
+    border-top: 1px solid #D9D4D4;
+    box-shadow: 0 1px #FCFAFA inset;
+    overflow: hidden;
+    padding: 10px 15px;
+}
+
+.userComment textarea {
+    background-color: #FCF9F9;
+    border: 1px solid #CCCCCC;
+    color: #8C7E7E;
+    font-size: 11px;
+    height: 21px;
+    line-height: 1em;
+    margin-bottom: 6px;
+    padding: 4px 3px 3px;
+    resize: none;
+    width: 530px;
 }
 .post_conts { -ms-overflow-style: none; }
 .post_conts { overflow: -moz-scrollbars-none; }
