@@ -26,9 +26,9 @@ public class Scrapper {
 		System.out.println("Title Parsing End");
 		
 		System.out.println("image Parsing Start");
+		
+		
 		String image = null;
-		
-		
 		Elements metaOgImage = doc.select("meta[property=og:image]");
 		System.out.println(metaOgImage);
 		if (metaOgImage != null) {
@@ -59,7 +59,7 @@ public class Scrapper {
 			urlAddr = temp[2];
 			
 			// split 확인하려고 잠시 for 문 돌림
-			for (int i = 0; i < temp.length; i++) {
+			/*for (int i = 0; i < temp.length; i++) {
 				System.out.println(temp[i]);
 			}
 			
@@ -70,7 +70,7 @@ public class Scrapper {
 			for (int j = 0; j < tempUrl.length; j++) {
 				System.out.println(tempUrl[j]);
 				
-			}
+			}*/
 			
 			/*if (urlAddr.split(".")[0].equals("www")) {
 				urlAddr = urlAddr.substring(4);
@@ -125,5 +125,60 @@ public class Scrapper {
 	    }
 
 	    return sb.toString();*/       
+	}
+	
+	public static UrlInfo UrlForDB(String urlStr) throws Exception {
+		System.out.println("HTML parsing Start");
+		Connection con = Jsoup.connect(urlStr);
+		Document doc = con.get();
+		System.out.println("url 정보 얻어옴");
+		UrlInfo urlInfo = new UrlInfo();
+		
+		String title = null;
+		Elements metaOgTitle = doc.select("meta[property=og:title]");
+		if (metaOgTitle != null) {
+			title = metaOgTitle.attr("content");
+		}
+		
+		String image = null;
+		Elements metaOgImage = doc.select("meta[property=og:image]");
+		System.out.println(metaOgImage);
+		if (metaOgImage != null) {
+			image = metaOgImage.attr("content");
+		}
+		
+		String description = null;
+		Elements metaOgDesc = doc.select("meta[property=og:description]");
+		if (metaOgDesc != null) {
+			description = metaOgDesc.attr("content");
+		}
+		
+		String urlAddr = null;
+		Elements metaOgUrlAddr = doc.select("meta[property=og:url]");
+
+		if (metaOgUrlAddr != null) {
+			String transString = metaOgUrlAddr.attr("content");
+			System.out.println(transString);
+			
+			urlInfo.setDetailUrl(transString);
+			
+			String temp[]  = transString.split("/");
+			urlAddr = temp[2];
+			
+			urlAddr = urlAddr.toUpperCase();
+			System.out.println("어퍼서브: " + urlAddr);
+		} else {
+			System.out.println("og:url 이 읍어");
+		}
+		
+		urlInfo.setTitle(title);
+		urlInfo.setImage(image);
+		urlInfo.setDescription(description);
+		urlInfo.setUrlAddr(urlAddr);
+		urlInfo.setDetailUrl(urlStr);
+		
+		return urlInfo;
+		
+		
 	}
 }

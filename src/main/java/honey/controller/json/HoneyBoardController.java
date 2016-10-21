@@ -37,7 +37,7 @@ public class HoneyBoardController {
       System.out.println(hMember.getMemberNo());
       // 보드 멤버 넘버 셋
       board.setUserNo(hMember.getMemberNo());
-      UrlInfo url = Scrapper.parsePageHeaderInfo(board.getUrl());
+      UrlInfo url = Scrapper.UrlForDB(board.getUrl());
       url.setMb_No(hMember.getMemberNo());
       
       boardService.insertBoard(board, uploadDir);
