@@ -3,12 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-  href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
 
@@ -18,101 +15,13 @@
   <div id="includedContent"></div>
   <div class="main_section">
     <div class="mainpage_wrap">
-      <div class="mainpage_Topcontainer">
-        <div class="container">
-          <div id="myCarousel" class="carousel slide">
-            <ol class="carousel-indicators">
-              <li class="item1 active"></li>
-              <li class="item2"></li>
-              <li class="item3"></li>
-              <li class="item4"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <a href="#"> <img
-                  src="/TeamProject/mainpage/mainpage_images/hyoju.jpg"
-                  alt="slide0">
-                  <div class="carousel-caption">
-                    <h3>Chania1</h3>
-                    <p>The atmosphere in Chania has a touch of Florence and
-                      Venice.</p>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#"> <img
-                  src="/TeamProject/mainpage/mainpage_images/suji_1.jpg"
-                  alt="slide1">
-                  <div class="carousel-caption">
-                    <h3>Flowers</h3>
-                    <p>Beatiful flowers in Kolymbari, Crete.</p>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#"> <img
-                  src="/TeamProject/mainpage/mainpage_images/suji_2.jpg"
-                  alt="slide2">
-                  <div class="carousel-caption">
-                    <h3>Chania</h3>
-                    <p>The atmosphere in Chania has a touch of Florence and
-                      Venice.</p>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#"> <img
-                  src="/TeamProject/mainpage/mainpage_images/suji_3.jpg">
-                  <div class="carousel-caption">
-                    <h3>Flowers</h3>
-                    <p>Beatiful flowers in Kolymbari, Crete.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <!-- item active -->
-
-            <a class="left carousel-control" href="#myCarousel" role="button">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a> <a class="right carousel-control" href="#myCarousel"
-              role="button"> <span
-              class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <div class="pop_container">
-          <div id="pop_tabs">
-            <ul class="pop_category">
-              <li><a class="pop_inner on1" id="pop_conts"
-                href="#pop_tabs-1">인기 게시물</a></li>
-              <li><a class="pop_inner" id="pop_words" href="#pop_tabs-2">인기
-                  검색어</a></li>
+    
+      <div id="mainpage_postcontainer" class="mainpage_Botcontainer">
+        <div id="tabs" class="all_post_wrap">
+            <ul id="post_wrapper" class="tabs-1-contents">
+            
             </ul>
-            <div id="pop_tabs-1" class="pop_cont_in">
-              <ul class="pop_tabs-1-conts">
-              </ul>
-            </div>
-            <div id="pop_tabs-2" class="pop_cont_in">
-              <ul class="pop_tabs-2-conts">
-                <li class="pop_list"><a herf="#">1. 인기쟁이 배철한</a></li>
-                <li class="pop_list"><a herf="#">2. 멋있다 배철한</a></li>
-                <li class="pop_list"><a herf="#">3. 잘생겼다 배철한</a></li>
-                <li class="pop_list"><a herf="#">4. e에2승 배철한</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mainpage_Botcontainer">
-        <div id="tabs">
-          <div id="tabs-1" class="conts_inner">
-            <ul class="tabs-1-contents">
-            </ul>
-          </div>
-          <!-- Modal content -->
-
+        
           <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -178,30 +87,59 @@
             </div>
 
           </div>
-
-          <!-- modal end -->
+        
+        </div>
         </div>
       </div>
     </div>
-    <script id="liTemplateText" type="text/x-handlebars-template">
+  </div>
+  <script id="liTemplateText" type="text/x-handlebars-template">
 {{#each data}}
+<li id="each_post_wrap">
+  <div id="each_post">
+    <div id="user_Nick" data-no="{{userNo}}">
+      <img class="user_Nonepht" src="/TeamProject/mainpage/mainpage_images/Nopht_userIcon.svg" alt="userImg">
+      <span>{{writerNick}}</span>
+    </div>
+
+    <div class="post_photoWrap titleLink">
+      <a href="#" data-no="{{no}}">
+        <img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="Image File">
+      </a>
+    </div>
+  
+    <a class="post_contsWrap">
+      <span class="each_post_title titleLink">{{title}}</span>
+      <span class="each_post_contents titleLink"><p>{{contents}}</p></span>
+    </a>
+
+    <div class="post_ctgWrap">
+      <span>{{category}}</span>
+    </div>
+
+    <div class="post_BtnWrap">
+      <div class="post_leftBtn">
+        <img class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
+        <span>{{viewCount}}</span>
+      </div>
+      <div class="post_rightBtn">
+        <img class="like_Onclick" src="/TeamProject/mainpage/mainpage_images/likeOnClick.png" alt="like">
+        <span>{{like}}</span>
+      </div>
+    <div>
+  </div>
 <li>
-  <a class="titleLink" href="#" data-no="{{no}}">
-  <img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="Image File">
-  <p>{{title}}</p>
-  </a>
-</li>
 {{/each}}
 </script>
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script type='text/javascript' src="../lib/js/common.js"></script>
-    <script type='text/javascript' src="../lib/js/TestMain.js"></script>
-    <script>
-      ajaxBoardList()
-      ajaxBoardPopList()
-    </script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script type='text/javascript' src="../lib/js/common.js"></script>
+  <script type='text/javascript' src="../lib/js/Main.js"></script>
+  <script type='text/javascript' src="../lib/js/PostComent.js"></script>
+  <script>
+    ajaxBoardList()
+  </script>
+
 </body>
 </html>
