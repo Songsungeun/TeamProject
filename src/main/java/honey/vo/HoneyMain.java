@@ -18,55 +18,25 @@ public class HoneyMain implements Serializable{
   protected String createdDate2;  //birth
   protected int like;
   protected int viewCount;
-  protected String linkTitle;
   protected String email;
   protected String userNo;
-  protected int parentComentNo;
-  protected int chileComentNo;
-  protected String parentComnet;
-  protected String childComent;
-  protected Date comentCreatedDate;
-  protected String comentCreatedDate2;
+  protected int categoryNo;
+  protected String category;
   
   
   
-  public int getParentComentNo() {
-    return parentComentNo;
+  
+  public String getCategory() {
+    return category;
   }
-  public void setParentComentNo(int parentComentNo) {
-    this.parentComentNo = parentComentNo;
+  public void setCategory(String category) {
+    this.category = category;
   }
-  public int getChileComentNo() {
-    return chileComentNo;
+  public int getCategoryNo() {
+    return categoryNo;
   }
-  public void setChileComentNo(int chileComentNo) {
-    this.chileComentNo = chileComentNo;
-  }
-  public String getParentComnet() {
-    return parentComnet;
-  }
-  public void setParentComnet(String parentComnet) {
-    this.parentComnet = parentComnet;
-  }
-  public String getChildComent() {
-    return childComent;
-  }
-  public void setChildComent(String childComent) {
-    this.childComent = childComent;
-  }
-  public Date getComentCreatedDate() {
-    return comentCreatedDate;
-  }
-  public void setComentCreatedDate(Date comentCreatedDate) {
-    this.comentCreatedDate = comentCreatedDate;
-    this.comentCreatedDate2 = format.format(comentCreatedDate);
-  }
-  public String getComentCreatedDate2() {
-    return comentCreatedDate2;
-  }
-  public void setComentCreatedDate2(String str) {
-    this.comentCreatedDate = Date.valueOf(str);
-    this.comentCreatedDate2 = str;
+  public void setCategoryNo(int categoryNo) {
+    this.categoryNo = categoryNo;
   }
   public String getUserNo() {
     return userNo;
@@ -79,12 +49,6 @@ public class HoneyMain implements Serializable{
   }
   public void setEmail(String email) {
     this.email = email;
-  }
-  public String getLinkTitle() {
-    return linkTitle;
-  }
-  public void setLinkTitle(String linkTitle) {
-    this.linkTitle = linkTitle;
   }
   public String getWriterNick() {
     return writerNick;

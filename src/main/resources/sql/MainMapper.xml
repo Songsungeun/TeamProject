@@ -4,62 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneyMainDao">
 
-  <!-- <resultMap type="honey_boards" id="hn_boardMap"> -->
-  <!-- <id column="BD_NO" property="no"/> -->
-  <!-- <result column="BD_TITL" property="title"/> -->
-  <!-- <result column="BD_CONTS" property="contents"/> -->
-  <!-- <result column="BD_CRE" property="createdDate"/> -->
-  <!-- <result column="BD_LIKE" property="like"/> -->
-  <!-- <result column="VIEW_CT" property="viewCount"/> -->
-  <!-- </resultMap> -->
-
-
-
-  <!-- <select id="selectOne" resultMap="hn_boardMap" parameterType="int"> -->
-  <!-- select no,title,url,contents,like,videwCount -->
-  <!-- from honey_boards -->
-  <!-- where no = #{value} -->
-  <!-- </select> -->
-
-  <!-- <insert id="insert" parameterType="honey_boards"> -->
-  <!-- insert into boards(bd_no, bd_titl,url,bd_conts, bd_cre, bd_like, view_ct) -->
-  <!-- values(#{no}, #{title}, #{url} #{contents}, now(), #{like}, #{viewCount}) -->
-  <!-- </insert> -->
-
-  <!-- <delete id="delete" parameterType="int"> -->
-  <!-- delete from boards -->
-  <!-- where no=#{value} -->
-  <!-- </delete> -->
-
   <resultMap type="HoneyMain" id="boardMap">
-    <id column="BD_NO" property="no" />
-    <result column="BD_TITL" property="title" />
-    <result column="BD_CONTS" property="contents" />
-    <result column="BD_CRE" property="createdDate" />
-    <result column="BD_LIKE" property="like" />
-    <result column="VIEW_CT" property="viewCount" />
-    <result column="URL" property="url" />
-    <result column="MB_NICK" property="writerNick" />
-    <result column="EMAIL" property="email" />
+    <id column="BD_NO" property="no"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
   </resultMap>
 
-  <select id="popularList" resultMap="boardMap" parameterType="map">
-    select view_ct, BD_TITL, BD_NO
-    from honey_boards
-    <where>
-      <if test="title != null">title like concat('%', #{title}, '%')</if>
-    </where>
-    order by
-    <choose>
-      <!-- <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
-      <otherwise>view_ct desc</otherwise>
-    </choose>
-  </select>
+<!--   <select id="popularList" resultMap="boardMap" parameterType="map"> -->
+<!--     select view_ct, BD_TITL, BD_NO -->
+<!--     from honey_boards -->
+<!--     <where> -->
+<!--       <if test="title != null">title like concat('%', #{title}, '%')</if> -->
+<!--     </where> -->
+<!--     order by -->
+<!--     <choose> -->
+<!--       <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
+<!--       <otherwise>view_ct desc</otherwise> -->
+<!--     </choose> -->
+<!--   </select> -->
 
 
   <select id="selectList" resultMap="boardMap" parameterType="map">
-    select BD_NO,BD_TITL,BD_CRE,BD_LIKE,VIEW_CT
-    from honey_boards
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
   </select>
   <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
   <!-- select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->
