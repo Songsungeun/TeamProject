@@ -96,8 +96,8 @@
 <li id="each_post_wrap">
   <div id="each_post">
     <div id="user_Nick">
-      <img class="user_Nonepht" src="/TeamProject/mainpage/mainpage_images/Nopht_userIcon.svg" alt="userImg">
-      <span>{{writerNick}}</span>
+      <img class="user_Nonepht userInfoLink" src="/TeamProject/mainpage/mainpage_images/Nopht_userIcon.svg" alt="userImg" data-userNo="{{userNo}}">
+      <span class="userInfoLink" data-userNo="{{userNo}}">{{writerNick}}</span>
     </div>
 
     <div class="post_photoWrap titleLink" data-no="{{no}}">
@@ -112,7 +112,7 @@
     </a>
 
     <div class="post_ctgWrap">
-      <span>{{category}}</span>
+      <span class="categoryLink" data-ctgNo="{{categoryNo}}">{{category}}</span>
     </div>
 
     <div class="post_BtnWrap">

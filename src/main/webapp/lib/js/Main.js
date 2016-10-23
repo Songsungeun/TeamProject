@@ -21,9 +21,17 @@ function ajaxBoardList() {
 			ajaxLoadBoard(no)
 //			ajaxPostPTComentsList(no)
 		})
+		$(".userInfoLink").click(function(event){
+			var userNo =$(this).attr("data-userNo")
+			console.log(userNo)
+		})
 		$("#btn-primary-Btn").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
+		})
+		$(".categoryLink").click(function(event){
+			var ctgNo =$(this).attr("data-ctgNo")
+			console.log(ctgNo)
 		})
 //		$("#yourModal").click(function() {
 //			$("#yourModal").css({"display":"none"});

@@ -252,13 +252,16 @@ body {
 	padding: 5px 14px 3px 14px;
 }
 
-.post_ctgWrap>span {
+.post_ctgWrap > span {
 	border: 1px solid black;
 	border-radius: 3px;
 	padding: 2px;
 	font-size: 10px;
 }
-
+.categoryLink:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
 .like_Onclick {
 	width: 14px;
 	height: 14px;
