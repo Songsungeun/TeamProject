@@ -16,7 +16,7 @@ function ajaxBoardList() {
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
-			var no = $(this).attr("data-no")
+			var no = $(this).attr("data-no-boardNo")
 			console.log(no)
 			ajaxLoadBoard(no)
 			ajaxPostPTComentsList(no)
