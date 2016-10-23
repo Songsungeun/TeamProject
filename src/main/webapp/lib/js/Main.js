@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(function() {
-		$("#includedContent").load("/TestProject/header.html");
+		$("#includedContent").load("/TeamProject/header.html");
 	});
 });
 
