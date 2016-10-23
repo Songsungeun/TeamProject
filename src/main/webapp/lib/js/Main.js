@@ -16,10 +16,10 @@ function ajaxBoardList() {
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
-			var no = $(this).attr("data-no-boardNo")
+			var no = $(this).attr("data-no")
 			console.log(no)
 			ajaxLoadBoard(no)
-			ajaxPostPTComentsList(no)
+//			ajaxPostPTComentsList(no)
 		})
 		$("#btn-primary-Btn").click(function() {
 			$("#yourModal").css({"display":"none"});
@@ -49,7 +49,6 @@ function ajaxLoadBoard(no) {
 		$("#post_user_id").text(result.data.email);
 		$("#viewCount").text(result.data.viewCount);
 		$("#like").text(result.data.like);
-		console.log(result.data.email)
 //		$(".post_url > #url").click(function(event) {
 //				console.log("url 눌림");
 //				console.log(result.data.url);

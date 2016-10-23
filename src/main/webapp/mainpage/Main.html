@@ -95,20 +95,20 @@
 {{#each data}}
 <li id="each_post_wrap">
   <div id="each_post">
-    <div id="user_Nick" data-no="{{userNo}}">
+    <div id="user_Nick">
       <img class="user_Nonepht" src="/TeamProject/mainpage/mainpage_images/Nopht_userIcon.svg" alt="userImg">
       <span>{{writerNick}}</span>
     </div>
 
-    <div class="post_photoWrap titleLink">
-      <a href="#" data-no-boardNo="{{no}}">
+    <div class="post_photoWrap titleLink" data-no="{{no}}">
+      <a href="#">
         <img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="Image File">
       </a>
     </div>
   
     <a class="post_contsWrap">
-      <span class="each_post_title titleLink">{{title}}</span>
-      <span class="each_post_contents titleLink"><p>{{contents}}</p></span>
+      <span class="each_post_title titleLink" data-no="{{no}}">{{title}}</span>
+      <span class="each_post_contents titleLink" data-no="{{no}}"><p>{{contents}}</p></span>
     </a>
 
     <div class="post_ctgWrap">
@@ -134,7 +134,7 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script type='text/javascript' src="../lib/js/common.js"></script>
   <script type='text/javascript' src="../lib/js/Main.js"></script>
-  <script type='text/javascript' src="../lib/js/PostComent.js"></script>
+<!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
   <script>
     ajaxBoardList()
   </script>
