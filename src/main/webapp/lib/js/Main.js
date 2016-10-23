@@ -21,10 +21,14 @@ function ajaxBoardList() {
 			ajaxLoadBoard(no)
 			ajaxPostPTComentsList(no)
 		})
-		$("#close-Btn").click(function() {
+		$("#btn-primary-Btn").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
 		})
+//		$("#yourModal").click(function() {
+//			$("#yourModal").css({"display":"none"});
+//			$("#super_HTML").css({"overflow":"auto"});
+//		})
 	})
 }
 
@@ -157,7 +161,7 @@ function ajaxPostPTComentsList(no) {
 
 window.onclick = function(event) {
 var htmlTag = document.getElementById('super_HTML');
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('yourModal');
   if (event.target == modal) {
     modal.style.display = "none";
     htmlTag.style.overflow = "auto";
