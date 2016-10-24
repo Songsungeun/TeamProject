@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class UrlInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String title;
-	private String image;
-	private String description;
-	private String urlAddr;
-	private String detailUrl;
-	private int mb_No;
-	private int bd_No;
+	protected String title;
+	protected String image;
+	protected String description;
+	protected String urlAddr;
+	protected String detailUrl;
+	protected int mb_No;
+	protected int bd_No;
 	
 	public String getTitle() {
 		return title;

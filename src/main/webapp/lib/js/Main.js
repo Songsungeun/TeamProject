@@ -47,16 +47,20 @@ function ajaxLoadBoard(no) {
 			alert("조회 실패입니다.")
 			return
 		}
-		$("#no").val(result.data.no);
-		$("#userTitle").text(result.data.title);
-		$("#url").text(result.data.url);
-		$("#userDesc").text(result.data.contents);
-		$("#createdDate").text(result.data.createdDate2);
-		$("#writerNick").text(result.data.writerNick);
-		$("#url_location").html(result.data.linkTitle);
-		$("#post_user_id").text(result.data.email);
-		$("#viewCount").text(result.data.viewCount);
-		$("#like").text(result.data.like);
+		$("#no").val(result.data.board.no);
+		$("#userTitle").text(result.data.board.title);
+		$("#url").text(result.data.board.url);
+		$("#userDesc").text(result.data.board.contents);
+		$("#createdDate").text(result.data.board.createdDate2);
+		$("#writerNick").text(result.data.board.writerNick);
+		$("#url_location").html(result.data.board.linkTitle);
+		$("#post_user_id").text(result.data.board.email);
+		$("#viewCount").text(result.data.board.viewCount);
+		$("#like").text(result.data.board.like);
+		$("#linkTitle").text(result.data.urlInfo.title);
+		$("#linkDesc").text(result.data.urlInfo.description);
+		$("#linkURL").text(result.data.urlInfo.urlAddr);
+		$("#urlImage").html(result.data.urlInfo.image);
 //		$(".post_url > #url").click(function(event) {
 //				console.log("url 눌림");
 //				console.log(result.data.url);

@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import honey.dao.HoneyMainDao;
+import honey.dao.HoneyMainUrlDao;
 import honey.service.HoneyMainService;
 import honey.vo.HoneyMain;
+import honey.vo.UrlInfo;
 
 @Service
 public class DefaultHoneyMainService implements HoneyMainService {
   @Autowired HoneyMainDao mainDao;
+  @Autowired HoneyMainUrlDao urlDao;
   
   public List<HoneyMain> getMainList(int pageNo, int length) throws Exception {
     HashMap<String, Object> map = new HashMap<>();
@@ -29,9 +32,9 @@ public class DefaultHoneyMainService implements HoneyMainService {
   public HoneyMain getPost(int no) throws Exception {
     return mainDao.selectOne(no);
   }
-  public void getIncreaseViewCount(int no) throws Exception {
-    mainDao.increaseViewCount(no);
-  }
+//  public void getIncreaseViewCount(int no) throws Exception {
+//    mainDao.increaseViewCount(no);
+//  }
   public void increase_Like(int no) throws Exception {
     mainDao.increase_Like(no);
   }
@@ -40,6 +43,9 @@ public class DefaultHoneyMainService implements HoneyMainService {
     mainDao.decrease_Like(no);
   }
   
+  public UrlInfo getUrl(int no) throws Exception {
+	  return urlDao.selectOne(no);
+  }
 }
   
   

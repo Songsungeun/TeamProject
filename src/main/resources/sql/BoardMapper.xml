@@ -63,6 +63,7 @@
     <result column="BD_LIKE" property="like"/>
     <result column="VIEW_CT" property="viewCount"/>
     <result column="URL" property="url"/>
+    <result column="URL_Title" property="title"/>
   </resultMap>
   
   <insert id="insert" parameterType="honey_boards">
@@ -98,8 +99,8 @@
   </update>
   
   <insert id="insertUrl" parameterType="UrlInfo">
-    insert into board_link(URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl, bd_no) (select
-    #{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl},
+    insert into board_link(URL_Title,URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl, bd_no) (select
+    #{title}, #{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl},
     (select max(bd_no) from honey_boards)
     )
   </insert>

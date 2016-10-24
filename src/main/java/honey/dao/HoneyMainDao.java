@@ -17,7 +17,7 @@ public interface HoneyMainDao {
   
   int insert(HoneyMain honeyMain) throws Exception;
   
-  int increaseViewCount(int no) throws Exception;
+  //int increaseViewCount(int no) throws Exception;
   
   int increase_Like(int no) throws Exception;
   

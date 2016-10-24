@@ -1,5 +1,6 @@
 package honey.controller.json;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import honey.service.HoneyMainService;
 import honey.service.HoneyParentComentService;
 import honey.vo.HoneyMain;
 import honey.vo.JsonResult;
+import honey.vo.UrlInfo;
 
 @Controller
 @RequestMapping("/mainpage/")
@@ -44,11 +46,18 @@ public class HoneyMainController {
     return JsonResult.success(list);
   }
   @RequestMapping("postdetail")
-  public Object detail(int no, Model model) throws Exception {
-    mainService.getIncreaseViewCount(no);
+  public Object detail(int no) throws Exception {
+    //mainService.getIncreaseViewCount(no);
     HoneyMain honeyMain = mainService.getPost(no);
-    model.addAttribute("honeyMain", honeyMain);
-    return JsonResult.success(honeyMain);
+    UrlInfo urlInfo = mainService.getUrl(no);
+    String temp = urlInfo.getImage();
+    temp = "<img alt='photo' src='" + temp + "'>";
+    urlInfo.setImage(temp);
+    System.out.println(urlInfo.getImage());
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("board", honeyMain);
+    map.put("urlInfo", urlInfo);
+    return JsonResult.success(map);
   }
   @RequestMapping("increaseLike")
   public Object increase_Like(int no) throws Exception {

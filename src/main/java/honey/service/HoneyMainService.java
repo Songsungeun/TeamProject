@@ -3,6 +3,7 @@ package honey.service;
 import java.util.List;
 
 import honey.vo.HoneyMain;
+import honey.vo.UrlInfo;
 
 
 
@@ -13,10 +14,11 @@ public interface HoneyMainService {
   
   HoneyMain getPost(int no) throws Exception;
   
-  void getIncreaseViewCount(int no) throws Exception;
+  //void getIncreaseViewCount(int no) throws Exception;
   
   void increase_Like(int no) throws Exception;
   
   void decrease_Like(int no) throws Exception;
   
+  UrlInfo getUrl(int no) throws Exception;
 }
