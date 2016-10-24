@@ -11,6 +11,7 @@ public class UrlInfo implements Serializable {
 	private String urlAddr;
 	private String detailUrl;
 	private int mb_No;
+	private int bd_No;
 	
 	public String getTitle() {
 		return title;
@@ -50,6 +51,12 @@ public class UrlInfo implements Serializable {
 	}
 	public void setMb_No(int mb_No) {
 		this.mb_No = mb_No;
+	}
+	public int getBd_No() {
+		return bd_No;
+	}
+	public void setBd_No(int bd_No) {
+		this.bd_No = bd_No;
 	}
 	
 	

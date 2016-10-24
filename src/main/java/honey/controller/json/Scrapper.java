@@ -88,7 +88,7 @@ public class Scrapper {
 		urlInfo.setImage("<image src='" + image + "' align='left' hspace='12' vspace='12' style= 'height:249px; width:476px;''>");
 		urlInfo.setDescription(description);
 		urlInfo.setUrlAddr(urlAddr);
-		
+		System.out.println("Scrapper End");
 		return urlInfo;
 		
 		//Old 코드

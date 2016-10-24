@@ -98,7 +98,9 @@
   </update>
   
   <insert id="insertUrl" parameterType="UrlInfo">
-    insert into board_link(URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl)
-    values(#{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl})
+    insert into board_link(URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl, bd_no) (select
+    #{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl},
+    (select max(bd_no) from honey_boards)
+    )
   </insert>
 </mapper>

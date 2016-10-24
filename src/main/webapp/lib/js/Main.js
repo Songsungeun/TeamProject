@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(function() {
-		$("#includedContent").load("/TestProject/header.html");
+		$("#includedContent").load("/TeamProject/header.html");
 	});
 });
 
@@ -48,9 +48,9 @@ function ajaxLoadBoard(no) {
 			return
 		}
 		$("#no").val(result.data.no);
-		$("#title").text(result.data.title);
+		$("#userTitle").text(result.data.title);
 		$("#url").text(result.data.url);
-		$("#contents").text(result.data.contents);
+		$("#userDesc").text(result.data.contents);
 		$("#createdDate").text(result.data.createdDate2);
 		$("#writerNick").text(result.data.writerNick);
 		$("#url_location").html(result.data.linkTitle);

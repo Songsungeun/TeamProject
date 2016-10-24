@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.HoneyMembers;
@@ -37,10 +36,15 @@ public class HoneyBoardController {
       System.out.println(hMember.getMemberNo());
       // 보드 멤버 넘버 셋
       board.setUserNo(hMember.getMemberNo());
+     boardService.insertBoard(board);
+
       UrlInfo url = Scrapper.UrlForDB(board.getUrl());
+      System.out.println("멤버번호 셋 시작");
       url.setMb_No(hMember.getMemberNo());
-      
-      boardService.insertBoard(board, uploadDir);
+      System.out.println("멤버번호 셋 종료");
+      //url.setBd_No(bd_No);
+      //url.setBd_No(boardService.getBoardMax().getNo());
+      //System.out.println("no= " + boardService.getBoardMax().getNo());
       boardService.insertUrl(url);
       
       return JsonResult.success();

@@ -16,10 +16,10 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	@Autowired tempDao boardDao;
 	@Autowired HoneyBoardFileDao boardFileDao;
 	
-	public void insertBoard(honey_boards board,
+	public void insertBoard(honey_boards board
 //			MultipartFile file1,
 //			MultipartFile file2,
-			String uploadDir) throws Exception {
+			) throws Exception {
 		boardDao.insert(board);
 		//String newFilename = null;
 		/*
