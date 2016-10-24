@@ -83,7 +83,7 @@ public class HoneyMainController {
     mainService.decrease_Like(no);
     return JsonResult.success(decrease_Like(no));
   }
-  
+   
   @RequestMapping("parentCmtList")
   public Object parentCmtlist(
       int no,
