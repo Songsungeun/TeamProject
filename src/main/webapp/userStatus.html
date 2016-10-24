@@ -90,7 +90,7 @@ margin: 20px 20px 20px 20px;
 z-index:5;
 }
 
-#userPhoto {
+#profilePicture {
   margin: 10px 0px 0px 10%;
 }
 
@@ -117,7 +117,7 @@ z-index:5;
       <div class="login_Page">
       <div class="loginInfo">
         <div class="loginInfo_IdPw" id="input_id">
-          <input id="email" name=id type=text placeholder="test@gmail.com">
+          <input id="email" name=id type=text placeholder="test@mail.com">
         </div>
         <div class="loginInfo_IdPw" id="input_pw">
           <input id="password" name=password type=password placeholder="비밀번호">
@@ -130,7 +130,7 @@ z-index:5;
       
       <div class="userStatus">
       <div id="userPhoto_wrap">
-        <a href='#'><img id="userPhoto" width="30px" height="30px" src="../defaultUserImg.svg"></a>
+        <img id="profilePicture" src= "" >
         <span id="userEmail"></span>
         <a href='#'><img id="userProfileAdmin" width = "20px" height= "20px" src="../gear.svg"></a>
         <br>
@@ -156,14 +156,16 @@ z-index:5;
   })
   </script>
   
-  
   <script type="text/javascript" src="../userAuthApp.js"></script>
+  <script>console.log("1")</script>
   <script type="text/javascript" src="../membership/membership.js"></script>
+  <script>console.log("2")</script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script type="text/javascript" src="/TeamProject/membership/userProfileAdminPage.js"></script>
+  <script>console.log("3")</script>
   <script>
-  console.log(serverAddr)
-  ajaxLoginUser() 
+  console.log("hello?!")
+  ajaxLoginUser();
+  console.log("함수 호출 후");
   </script>
 </body>
 </html>

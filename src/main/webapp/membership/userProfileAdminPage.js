@@ -3,6 +3,35 @@
  */
 
 
+ $("#changeUserStatusInfo").click(function(event){
+    var userStatusChangeInfo = {
+        userName: $("#userNameInfo").val(),
+        email: $("#userEmailInfo").val(),
+        nickname: $("#userNickNameInfo").val(),
+        phone: $("#userTelInfo").val()
+    }
+    ajaxUserStatusUpdate(userStatusChangeInfo) 
+ })
+
+ $("#changPassword").click(function(event){
+  if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
+    alert("비밀번호가 일치하지 않습니다.")
+    return
+  } else {
+    var newPassword ={password: $("#changeNewPassword").val()}
+    var result = confirm("Are you sure?")
+    console.log(result)
+    if(result != true) {
+      return
+    } else {
+      ajaxPasswordChange(newPassword)
+    }
+  }
+  
+})
+
+
+
 function ajaxUserProfileLoder() {
 	
 	$.getJSON(serverAddr + "/membership/userInfoDetail.json", function(obj) {
@@ -47,8 +76,11 @@ function ajaxPasswordChange(newPassword) {
 }
 
 function ajaxUserProfileFileLoder() {
+	console.log("nihao")
+	var locationPathValue = $(location).attr('pathname');
+	var locationPath = locationPathValue.split('/');
 	console.log("hi?")
-	$.getJSON(serverAddr + "/membership/userProfileFileLoder.json", function(obj) {
+	$.getJSON(serverAddr+"/" + locationPath[2] + "/userProfileFileLoder.json", function(obj) {
 		var result=obj.jsonResult
 	if (result.state != "success") {
 		alert("조회 실패입니다.")
@@ -57,4 +89,6 @@ function ajaxUserProfileFileLoder() {
 	$("#profilePhoto").attr('src',"/TeamProject/upload/"+result.data)
  })
 }
+
+
 

@@ -7,4 +7,5 @@ public interface HoneymembersService {
 	public void unregister(int memberNo) throws Exception;
 	public void memberInfoUpdate(HoneyMembers members) throws Exception;
 	public void modifyPassword(HoneyMembers members) throws Exception;
+	public String getProfileFileName(int memberNo) throws Exception;
 }

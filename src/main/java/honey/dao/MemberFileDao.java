@@ -7,4 +7,5 @@ import honey.vo.MemberFile;
 public interface MemberFileDao {
   int prifileFileinsert (MemberFile profileFile);
   List<MemberFile> getprofileFileName(int memberNo);
+  int defaultProfilePhotoInsert(int memberNo);
 }

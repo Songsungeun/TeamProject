@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import honey.dao.HoneyMembersDao;
+import honey.service.HoneymembersService;
 import honey.vo.JsonResult;
+import honey.vo.MemberFile;
 import honey.vo.HoneyMembers;
 
 @Controller
@@ -21,7 +23,7 @@ import honey.vo.HoneyMembers;
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/"})  // 맵핑정보를 배열형태로 담을수 도 있다!!! 
 @SessionAttributes({"HoneyMembers", "HoneyMain"})  // vo 객체를 맵핑시키나? 뭔지 확실히는 모르겠는데 vo객체 이름 주니까 된다.
 public class HoneyUserAuthController {
-
+  @Autowired HoneymembersService hMembersService;
   @Autowired HoneyMembersDao hMemberDao;
 
   @RequestMapping(path="login")
@@ -57,13 +59,19 @@ public class HoneyUserAuthController {
   public Object loginUser(HttpSession session) throws Exception {
     try {
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      MemberFile memberFile = new MemberFile();
+      memberFile.setFilename(hMembersService.getProfileFileName(member.getMemberNo()));
       
-      // 위에서 만든 세선 객체를 여기서 꽂는다
-      if (member == null) {
+      HashMap<String,Object> resultMap = new HashMap<>();
+      resultMap.put("member", member);
+      resultMap.put("profilePhoto", memberFile.getFilename());
+      
+      if (resultMap.isEmpty()) {
         throw new Exception("로그인이 되지 않았습니다.");
       }
-      return JsonResult.success(member);
+      return JsonResult.success(resultMap);
     } catch (Exception e) {
+    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }

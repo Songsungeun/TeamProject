@@ -28,13 +28,13 @@ function ajaxLogin(user) {
 	            return
 	        }
 	        window.location.href = "../mainpage/Main.html"
+	       
 		},
 		error: function(msg) {
 			alert(msg)
 		}
 	})
 }
-
 function ajaxLoginUser() {
 	
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
@@ -48,7 +48,7 @@ function ajaxLoginUser() {
 		}
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
-		$("#userEmail").text(result.data.email);
+		$("#userEmail").text(result.data.member.email);
 		$("#memberNumber").val(result.data.memberNo);
 	})
 }

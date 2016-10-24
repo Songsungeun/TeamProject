@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -93,7 +93,6 @@ float: right;
 #changPassword {
   display: none;
 }
-
 #profilePhotoSection {
 margin-bottom: 20px;
 }
@@ -114,7 +113,6 @@ margin-right: 60%;
 #inputUserPhoto {
   display:none;
 }
-
 #profilePhoto {
  width: 167px;
  height: 218px;
@@ -257,7 +255,6 @@ margin-right: 60%;
     }
     ajaxUserStatusUpdate(userStatusChangeInfo) 
  })
-
  $("#changPassword").click(function(event){
   if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
     alert("비밀번호가 일치하지 않습니다.")
@@ -274,7 +271,6 @@ margin-right: 60%;
   }
   
 })
-
     $(document).ready(function() {
         $('#uploadForm').fileupload({
             url : serverAddr + "/membership/profileFileUpload.json", 
@@ -316,7 +312,6 @@ margin-right: 60%;
             }
         });
     }); 
-
 </script>
 
 <script>
@@ -336,11 +331,9 @@ $("#changeProfile").click(function(event){
   $("#changeUserStatusInfo").css("display", "inherit");
   $("#changPassword").css("display", "none");
 })
-
 $("#changeUserPhotoOperator").click(function(event){
-	$("#inputUserPhoto").click();
+  $("#inputUserPhoto").click();
 })
-
 ajaxUserProfileFileLoder()
 </script>
 

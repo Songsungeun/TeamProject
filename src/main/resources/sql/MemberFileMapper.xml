@@ -9,10 +9,16 @@
     <result column="mbp_path" property="filename"/>
   </resultMap>
   
+  <insert id="defaultProfilePhotoInsert" parameterType="int">
+    insert into honey_membs_photos(mb_no)
+    values(#{memberNo})
+  </insert>
+  
   <insert id="prifileFileinsert" parameterType="MemberFile">
     insert into honey_membs_photos(mb_no, mbp_path)
     values(#{memberNo}, #{filename})
   </insert>
+   
   
   <select id="getprofileFileName" parameterType="int" resultMap="MemberFile">
     select mbp_path, mbp_no, mb_no

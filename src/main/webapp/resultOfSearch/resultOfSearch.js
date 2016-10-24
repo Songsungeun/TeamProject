@@ -8,7 +8,7 @@ function ajaxSearchValue(searchValue) {
 	
 	if (searchInfo.searchValue == "") {
 		alert("검색어를 입력하세요")
-		location.href ="/TeamProject/mainpage/Main.html"
+		//location.href ="/TeamProject/mainpage/Main.html"
 		return
 	} else {
 		location.href ="/TeamProject/resultOfSearch/resultOfSearchPage.html"
