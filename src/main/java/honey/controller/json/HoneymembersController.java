@@ -143,7 +143,7 @@ public class HoneymembersController {
 			memberFileDao.prifileFileinsert(profileFile);
 		}
 
-		return "{\"code\":\"1\", \"msg\":\"file upload success.\"}";
+		return "{\"code\":\"1\", \"msg\":\"file upload success.\",\"data\":\""+newFilename+"\"}";
 	}
 	
 	@RequestMapping(path="userProfileFileLoder")

@@ -76,7 +76,6 @@ function ajaxPasswordChange(newPassword) {
 }
 
 function ajaxUserProfileFileLoder() {
-	console.log("nihao")
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	console.log("hi?")

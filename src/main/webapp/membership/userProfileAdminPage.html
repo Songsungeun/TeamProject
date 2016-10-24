@@ -300,6 +300,7 @@ margin-right: 60%;
                 var msg = data.result.msg;
                 if(code == '1') {
                     alert(msg);
+                    $("#profilePhoto").attr('src',"/TeamProject/upload/"+data.result.data)
                 } else {
                     alert(code + ' : ' + msg);
                 } 
