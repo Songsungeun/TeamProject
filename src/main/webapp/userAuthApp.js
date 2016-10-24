@@ -39,11 +39,12 @@ function ajaxLoginUser() {
 	
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
 		var result = obj.jsonResult
-		
+		console.log("안녕");
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
 			$('#newWright').css("display", "none")
 			$('.headlist').css("display", "none")
+			console.log("if문 안");
 			return
 		}
 		$('.loginInfo').css("display", "none")
