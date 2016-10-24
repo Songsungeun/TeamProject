@@ -50,7 +50,7 @@ function ajaxLoginUser() {
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.member.email);
-		$("#memberNumber").val(result.data.memberNo);
+		$("#profilePicture").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 	})
 }
 

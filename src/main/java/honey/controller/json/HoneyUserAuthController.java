@@ -66,7 +66,7 @@ public class HoneyUserAuthController {
       resultMap.put("member", member);
       resultMap.put("profilePhoto", memberFile.getFilename());
       
-      if (resultMap.isEmpty()) {
+      if (resultMap.isEmpty() == true) {
         throw new Exception("로그인이 되지 않았습니다.");
       }
       return JsonResult.success(resultMap);
