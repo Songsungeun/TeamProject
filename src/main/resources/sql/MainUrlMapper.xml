@@ -23,4 +23,8 @@
     where BD_NO = #{value}
   </select>
 
+  <select id="selectList" resultMap="urlInfo">
+    select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
+    from board_link 
+  </select>
 </mapper>

@@ -22,8 +22,12 @@ public class HoneyMain implements Serializable{
   protected String userNo;
   protected int categoryNo;
   protected String category;
-  
-  
+  protected String linkTitle;
+  protected String linkURL;
+  protected String linkDetailUrl;
+  protected String linkImage;
+  protected String linkDesc;
+  protected String userProfilePath;
   
   
   public String getCategory() {
@@ -109,5 +113,47 @@ public class HoneyMain implements Serializable{
   public static long getSerialversionuid() {
     return serialVersionUID;
   }
+public static SimpleDateFormat getFormat() {
+	return format;
+}
+public static void setFormat(SimpleDateFormat format) {
+	HoneyMain.format = format;
+}
+public String getLinkTitle() {
+	return linkTitle;
+}
+public void setLinkTitle(String linkTitle) {
+	this.linkTitle = linkTitle;
+}
+public String getLinkURL() {
+	return linkURL;
+}
+public void setLinkURL(String linkURL) {
+	this.linkURL = linkURL;
+}
+public String getLinkDetailUrl() {
+	return linkDetailUrl;
+}
+public void setLinkDetailUrl(String linkDetailUrl) {
+	this.linkDetailUrl = linkDetailUrl;
+}
+public String getLinkImage() {
+	return linkImage;
+}
+public void setLinkImage(String linkImage) {
+	this.linkImage = linkImage;
+}
+public String getLinkDesc() {
+	return linkDesc;
+}
+public void setLinkDesc(String linkDesc) {
+	this.linkDesc = linkDesc;
+}
+public String getUserProfilePath() {
+	return userProfilePath;
+}
+public void setUserProfilePath(String userProfilePath) {
+	this.userProfilePath = userProfilePath;
+}
   
 }

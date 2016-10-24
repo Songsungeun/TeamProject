@@ -30,10 +30,24 @@ public class HoneyMainController {
   public Object list(
       HttpSession session,
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="20") int length,
-      Model model) throws Exception {
+      @RequestParam(defaultValue="20") int length
+      ) throws Exception {
     List<HoneyMain> list = mainService.getMainList(pageNo, length);
-    model.addAttribute("postlist", list);
+    List<UrlInfo> urlList = mainService.getURLList();
+
+    for (int i = 0; i < list.size(); i++) {
+    	for (int j = 0; j < urlList.size(); j++) {
+    		if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
+    			list.get(i).setLinkTitle(urlList.get(j).getTitle());
+    			list.get(i).setLinkDesc(urlList.get(j).getDescription());
+    			list.get(i).setLinkImage(urlList.get(j).getImage());
+    			list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
+    			list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
+    		}
+    	    String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
+    	    list.get(i).setUserProfilePath(userPhoto);
+    	}
+    }
     return JsonResult.success(list);
   }
   @RequestMapping("mostPost")

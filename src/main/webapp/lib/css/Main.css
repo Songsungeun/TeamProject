@@ -166,6 +166,11 @@ body {
 	width: 28px;
 	height: 28px;
 	margin-right: 8px;
+	-moz-border-radius : 100px;
+ -webkit-border-radius : 100px;
+ -ms-border-radius :100px;
+ -khtml-border-radius : 100px;
+ -o-border-radius :100px;
 }
 
 #user_Nick>span:hover {
