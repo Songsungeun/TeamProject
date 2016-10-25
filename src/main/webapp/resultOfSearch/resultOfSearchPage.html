@@ -129,6 +129,7 @@ body {
   padding-top: 80px;
   background-color: #f3f4f5;
   padding-bottom: 10px;
+  font-size: 15px;
 }
 
 #ContentSearchResult {
@@ -171,6 +172,7 @@ body {
  .memberSearchResult{
     position: relative;
     margin: 0 auto;
+    padding-top: 20px;
     float: left;
     width: 1024px;
 }
@@ -178,6 +180,7 @@ body {
 .contentsSearchResult {
     position: relative;
     margin: 0 auto;
+    padding-top:20px;
     float: left;
     width: 1024px;
 }
@@ -192,7 +195,7 @@ body {
 #moreViewBtn{
     float: right;
     font-size: 18px;
-    padding-right: 15px;
+/*     padding-right: 15px; */
     padding-top: 10px;
 }
 
@@ -201,6 +204,28 @@ body {
     position: relative;
         margin: 0 auto;
     background-color: antiquewhite;
+}
+
+#postResult{
+    font-size: 17px;
+    border: 1px solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-color: #C9C9C9;
+    padding-bottom: 0px;
+    /* margin-bottom: 20px; */
+}
+
+#userResult{
+  font-size: 17px;
+    border: 1px solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-color: #C9C9C9;
+    padding-bottom: 0px;
+    /* margin-bottom: 20px; */
 }
 
 </style>
@@ -214,9 +239,9 @@ body {
 		</div>
 		
 		    <article id = "resultArea">
-		    
 		    <div id = memberSearchWrap>
 		        <div id = searchResultName ></div>
+		       
 			   <div class="memberSearchResult">
 						<!-- member 출력영역 -->
 	       </div>
@@ -224,7 +249,6 @@ body {
 	         <a id="moreViewBtn" href="#">더보기</a>
 	        </div>
       </div>
-	 
 	 <div id = contentsSearchWrap>
 			  <div class="contentsSearchResult">
 			   <!-- contents 출력영역 -->
@@ -246,6 +270,7 @@ body {
   
 
   <script id="searchMemberHandlebars" type="text/x-handlebars-template">
+<div id= "userResult">회원 검색</div>
  {{#each searchMemberResult}}
   <div class="media">
           <div class="media-left">
@@ -260,6 +285,7 @@ body {
 </script>   
 
  <script id="searchBoardHandbars" type="text/x-handlebars-template">
+<div id= "postResult">게시물 검색</div>
  {{#each searchBoardResult}}
   <div class="media">
           <div class="media-left">

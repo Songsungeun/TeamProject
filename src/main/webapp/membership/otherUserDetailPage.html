@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+.topSection{
+  position: absolute;
+  margin-top: 70px;
+  padding: 0px auto;
+  width: 1200px;
+  hight: 2000px;
+}
+.userInfocontainer {
+ width: 990px;
+ height: 155px;
+ margin: 0 auto;
+ padding-top: 15px;
+ padding-bottom: 15px;
+}
+.userProfilePhotosContainer{
+width:152px;
+height:152px;
+float: left;
+}
+#userProfilePhotos{
+border-radius: 10px;
+
+}
+.userNickNameContainer {
+margin-left: 170px;
+line-height: 40px;
+}
+
+#userNickName{
+font-size: 20px;
+font-weight: bold;
+color: #4c4c4c;
+}
+
+.userBoardInfoContainer{
+float: right;
+width: 138px;
+color: #999;
+height: 150px;
+
+}
+.received {
+font-family:"Spoqa Han Sans";
+font-size: 13px;
+line-height: 1.7;
+border-bottom: #ebebeb 1px solid;
+}
+.views {
+line-height: 35px;
+border-bottom: #ebebeb 1px solid;
+font-family:"Spoqa Han Sans";
+}
+.likes {
+line-height: 35px;
+border-bottom: #ebebeb 1px solid;
+font-family:"Spoqa Han Sans";
+}
+.followers {
+line-height: 35px;
+border-bottom: #ebebeb 1px solid;
+font-family:"Spoqa Han Sans";
+}
+.text {
+font-size:14px;
+}
+.numbering {
+float: right;
+font-size: 16px;
+font-family:"Spoqa Han Sans";
+}
+.etcSection {
+position: absolute;
+margin-top: 270px;
+width: 100%;
+border-bottom:red 1px solid;
+}
+.contentsSection {
+position: absolute;
+width: 100%;
+height: 2000px;
+background-color: #f1f1f1;
+margin-top: 271px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="includedContent"></div>
+<div class="topSection">
+  <div class="userInfocontainer">
+    <div class="userProfilePhotosContainer" >
+      <img id="userProfilePhotos" width="150px" height="150px" src="../135.jpg">
+    </div>
+    <div class="userBoardInfoContainer">
+      <div class="received">
+        <p>RECEIVED</p>
+      </div>
+      <div class="views">
+        <span class="text">View</span>
+        <span class="numbering">60,377,118</span>
+      </div>
+      <div class="likes">
+        <span class="text">Likes</span>
+        <span class="numbering">77,987</span>
+      </div>
+      <div class="followers">
+        <span class="text">followers</span>
+        <span class="numbering">76,000</span>
+      </div>
+    </div>
+    <div class="userNickNameContainer">
+      <hi id="userNickName"><span>CheolHan</span></hi>
+    </div>
+  </div>
+  
+</div>
+<div class="etcSection">
+</div>
+<div class="contentsSection">
+  </div>
+
+
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
+  <script> 
+  $(function(){
+    $("#includedContent").load("../header.html"); 
+  });
+  </script> 
+</body>
+</html>
