@@ -94,7 +94,7 @@ public class HoneyMainController {
   }
   @RequestMapping("postdetail")
   public Object detail(int no) throws Exception {
-    //mainService.getIncreaseViewCount(no);
+    mainService.getIncreaseViewCount(no);
     HoneyMain honeyMain = mainService.getPost(no);
     UrlInfo urlInfo = mainService.getUrl(no);
     String temp = urlInfo.getImage();
@@ -134,6 +134,11 @@ public class HoneyMainController {
       e.printStackTrace();
       return JsonResult.fail(e.getMessage());
     }
+  }
+  @RequestMapping("increaseViewCount")
+  public Object increaseViewCount(int no) throws Exception {
+    mainService.getIncreaseViewCount(no);
+    return JsonResult.success(increaseViewCount(no));
   }
   @RequestMapping("increaseLike")
   public Object increase_Like(int no) throws Exception {
