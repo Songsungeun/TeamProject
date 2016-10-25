@@ -48,7 +48,7 @@ public class HoneyUserAuthController {
         return JsonResult.success();
       }
     } catch (Exception e) {
-    	e.printStackTrace();
+//    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }

@@ -35,9 +35,9 @@ public class DefaultHoneyMainService implements HoneyMainService {
   public HoneyMain getPost(int no) throws Exception {
     return mainDao.selectOne(no);
   }
-//  public void getIncreaseViewCount(int no) throws Exception {
-//    mainDao.increaseViewCount(no);
-//  }
+  public void getIncreaseViewCount(int no) throws Exception {
+    mainDao.increaseViewCount(no);
+  }
   public void increase_Like(int no) throws Exception {
     mainDao.increase_Like(no);
   }
