@@ -8,14 +8,17 @@ import org.springframework.stereotype.Service;
 
 import honey.dao.HoneyMainDao;
 import honey.dao.HoneyMainUrlDao;
+import honey.dao.MemberFileDao;
 import honey.service.HoneyMainService;
 import honey.vo.HoneyMain;
+import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
 
 @Service
 public class DefaultHoneyMainService implements HoneyMainService {
   @Autowired HoneyMainDao mainDao;
   @Autowired HoneyMainUrlDao urlDao;
+  @Autowired MemberFileDao photoDao;
   
   public List<HoneyMain> getMainList(int pageNo, int length) throws Exception {
     HashMap<String, Object> map = new HashMap<>();
@@ -46,6 +49,28 @@ public class DefaultHoneyMainService implements HoneyMainService {
   public UrlInfo getUrl(int no) throws Exception {
 	  return urlDao.selectOne(no);
   }
+  
+  public List<UrlInfo> getURLList() throws Exception {
+	  return urlDao.selectList();
+  }
+  
+  public String getPhoto(int memberNo) throws Exception {
+	  try {
+			List<MemberFile> list =  photoDao.getprofileFileName(memberNo);
+			MemberFile memberFile = new MemberFile();
+			int i = 0;
+			for (i = 0; i < list.size(); i++) {
+				i = list.size();
+			}
+			System.out.println(i);
+			memberFile = list.get(i-2);
+			return memberFile.getFilename();
+			} catch (Exception e) {
+			 e.printStackTrace();
+			 return e.getMessage();
+			}
+  }
 }
+
   
   

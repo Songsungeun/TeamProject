@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import honey.service.HoneyChildComentService;
+import honey.service.HoneyComentService;
 import honey.service.HoneyMainService;
 import honey.service.HoneyParentComentService;
+import honey.vo.HoneyComent;
 import honey.vo.HoneyMain;
+import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
-
+ 
 @Controller
 @RequestMapping("/mainpage/")
 @SessionAttributes({"HoneyMain"})
@@ -26,15 +29,51 @@ public class HoneyMainController {
   @Autowired HoneyMainService mainService;
   @Autowired HoneyParentComentService parentCmtService;
   @Autowired HoneyChildComentService childCmtService;
+  @Autowired HoneyComentService comentService;
+  
   @RequestMapping("postlist")
   public Object list(
       HttpSession session,
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="20") int length,
-      Model model) throws Exception {
+      @RequestParam(defaultValue="20") int length
+      ) throws Exception {
     List<HoneyMain> list = mainService.getMainList(pageNo, length);
-    model.addAttribute("postlist", list);
+    List<UrlInfo> urlList = mainService.getURLList();
+
+    for (int i = 0; i < list.size(); i++) {
+    	for (int j = 0; j < urlList.size(); j++) {
+    		if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
+    			list.get(i).setLinkTitle(urlList.get(j).getTitle());
+    			list.get(i).setLinkDesc(urlList.get(j).getDescription());
+    			list.get(i).setLinkImage(urlList.get(j).getImage());
+    			list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
+    			list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
+    		}
+    	    String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
+    	    list.get(i).setUserProfilePath(userPhoto);
+    	}
+    }
     return JsonResult.success(list);
+  }
+  @RequestMapping("comentList")
+  public Object comentList(
+      HttpSession session,
+      int no,
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="100") int length) throws Exception {
+    try {
+      List<HoneyComent> list = comentService.getComent(no, pageNo, length);
+      
+      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("LoginInfo", member.getMemberNo());
+      System.out.println("memberNo= " + member.getMemberNo());
+      map.put("comentList", list);
+      return JsonResult.success(map);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.fail(e.getMessage());
+    }
   }
   @RequestMapping("mostPost")
   public Object poplist(
@@ -59,6 +98,34 @@ public class HoneyMainController {
     map.put("urlInfo", urlInfo);
     return JsonResult.success(map);
   }
+  @RequestMapping("insertComent")
+  public Object insertComent(HoneyComent honeyComent, HttpSession session) throws Exception {
+    try{
+      System.out.println("inserComent 실행");
+//        HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
+//        session.setAttribute("honeyCmt", honeyComent);
+//        honeyComent.setNo(honeyMain.getNo());
+//        System.out.println(honeyComent.getNo());
+      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+        honeyComent.setMemberNo(member.getMemberNo());
+        System.out.println(honeyComent.getMemberNo());
+        comentService.insertComent(honeyComent);
+      return JsonResult.success(honeyComent);
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  @RequestMapping("updateComment")
+  public Object updateComment(HoneyComent honeyComment, HttpSession session) throws Exception {
+    try{
+      System.out.println("updateComment 실행");
+      comentService.updateComent(honeyComment);
+      return JsonResult.success();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.fail(e.getMessage());
+    }
+  }
   @RequestMapping("increaseLike")
   public Object increase_Like(int no) throws Exception {
     mainService.increase_Like(no);
@@ -69,37 +136,7 @@ public class HoneyMainController {
     mainService.decrease_Like(no);
     return JsonResult.success(decrease_Like(no));
   }
-  
-  @RequestMapping("parentCmtList")
-  public Object parentCmtlist(
-      int no,
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="20") int length,
-      Model model) throws Exception {
-    try {
-      List<HoneyMain> list = parentCmtService.getParentComent(no, pageNo, length);
-      model.addAttribute("parentCmtList", list);
-      return JsonResult.success(list);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return JsonResult.fail(e.getMessage());
-    }
-  }
-  @RequestMapping("childCmtList")
-  public Object childCmtlist(
-      int no,
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="3") int length,
-      Model model) throws Exception {
-    try {
-      List<HoneyMain> list = childCmtService.getChildComent(no,pageNo, length);
-      model.addAttribute("childCmtList", list);
-      return JsonResult.success(list);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return JsonResult.fail(e.getMessage());
-    }
-  }
+   
 }
-
+ 
 

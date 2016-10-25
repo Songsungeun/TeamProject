@@ -3,6 +3,7 @@ package honey.service;
 import java.util.List;
 
 import honey.vo.HoneyMain;
+import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
 
 
@@ -21,4 +22,8 @@ public interface HoneyMainService {
   void decrease_Like(int no) throws Exception;
   
   UrlInfo getUrl(int no) throws Exception;
+  
+  List<UrlInfo> getURLList() throws Exception;
+  
+  String getPhoto(int memberNo) throws Exception;
 }
