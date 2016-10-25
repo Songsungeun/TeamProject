@@ -10,6 +10,7 @@ import honey.dao.MemberFileDao;
 import honey.service.HoneymembersService;
 import honey.vo.HoneyMembers;
 import honey.vo.MemberFile;
+import honey.vo.honey_boards;
 
 @Service
 public class HoneymembersServiceImpl implements HoneymembersService {
@@ -49,6 +50,29 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 		} catch (Exception e) {
 		 e.printStackTrace();
 		 return e.getMessage();
+		}
+	}
+
+	public HoneyMembers getUserNumber(String nickName) throws Exception {
+		try {
+			HoneyMembers hMember = new HoneyMembers();
+			hMember = hMembersDao.selectUserNumber(nickName);
+			System.out.println(hMember);
+			return hMember;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<honey_boards> getBoards(int memberNo) throws Exception {
+		try {
+			List<honey_boards> boards = hMembersDao.selectBoards(memberNo);
+			return boards;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

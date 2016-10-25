@@ -2,6 +2,7 @@ package honey.controller.json;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import honey.util.FileUploadUtil;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
+import honey.vo.honey_boards;
 
 // 시작하기 전에 우선 나는 컨트롤러와 서비스의 역할에 대해 생각한게 
 // 디비에 직접적으로 접속해서 crud 기능을 하는 것은 서비스 부분이 담당하고, 그외의 세션이나 쿠키등의 생성과 스크립트와 값을 주고
@@ -33,7 +35,7 @@ public class HoneymembersController {
 	@Autowired HoneymembersService hMembersService;
 	@Autowired ServletContext sc;
 	@Autowired MemberFileDao memberFileDao;
-	
+
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
 		try {
@@ -145,12 +147,12 @@ public class HoneymembersController {
 
 		return "{\"code\":\"1\", \"msg\":\"file upload success.\",\"data\":\""+newFilename+"\"}";
 	}
-	
+
 	@RequestMapping(path="userProfileFileLoder")
 	public Object profileFileLoder (HttpSession session) {
-		HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
-		MemberFile memberFile = new MemberFile();
 		try {
+			HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
+			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
 			System.out.println(memberFile.getFilename());
 			return JsonResult.success(memberFile.getFilename());
@@ -161,6 +163,29 @@ public class HoneymembersController {
 
 	}
 
+	@RequestMapping(path="otherUserInfoDetail")
+	public Object otherUserInfoLoder(HoneyMembers userInfo) {
+		try {
+			HoneyMembers honeyMember = hMembersService.getUserNumber(userInfo.getNickname());
+			MemberFile memberFile = new MemberFile();
+			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
+			System.out.println(memberFile.getFilename());
+			List<honey_boards> list = hMembersService.getBoards(honeyMember.getMemberNo());
+			
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println(list.get(i));
+			}
+			
+			
+			HashMap<String,Object> resultMap = new HashMap<>();
+			resultMap.put("profilePhoto", memberFile.getFilename());
+			resultMap.put("boardInfo", list);
+			return JsonResult.success(resultMap);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail();
+		}
+	}
 
 
 

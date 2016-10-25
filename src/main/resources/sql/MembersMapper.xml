@@ -12,6 +12,19 @@
     <result column="BIRTH" property="userBirthDay"/>
     <result column="PWD" property="password"/>
   </resultMap>
+  <resultMap type="honey_boards" id="boardMap">
+    <id column="BD_NO" property="no"/> 
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="URL" property="url"/>
+    <result column="URL_Title" property="title"/>
+  </resultMap>
+  
   
   <insert id="joinMember" parameterType="HoneyMembers" useGeneratedKeys="true" keyProperty="memberNo" keyColumn="MB_NO">
     insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
@@ -35,6 +48,13 @@
     where MB_NO=#{userNo}
   </select>
   
+  <select id = "selectUserNumber" resultMap="memberMap" parameterType="map">
+    select MB_NO
+    from honey_membs
+    where MB_NICK=#{nickName}
+  </select>
+  
+  
   <update id="userInfoUpdate">
     update honey_membs set
       EMAIL=#{email},
@@ -49,6 +69,14 @@
       PWD=password(#{password})
     where MB_NO=#{memberNo}
   </update>
+  
+  
+  <select id="selectBoards" parameterType="int" resultMap="boardMap">
+    select *
+    from 
+    honey_boards
+    where mb_no=#{memberNo}
+  </select>
   
 </mapper>
 
