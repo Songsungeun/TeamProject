@@ -40,7 +40,7 @@ function ajaxBoardList() {
 	})
 }
 
-var comentInfo;
+var comentInfo = 0;
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
@@ -49,7 +49,7 @@ function ajaxLoadBoard(no) {
 			return
 		}
 		$("#no").val(result.data.board.no);
-		comentInfo =result.data.no;
+		comentInfo =result.data.board.no;
 		$("#userTitle").text(result.data.board.title);
 		$("#url").text(result.data.board.url);
 		$("#userDesc").text(result.data.board.contents);
@@ -71,17 +71,16 @@ function ajaxLoadBoard(no) {
 //		})
 	})
 	$("#insertCmt").click(function(event){
-
 		var honeyComent = {
 				coment: $("#pcomment").val(),
-				no: comentInfo,
+				no: comentInfo
 		}
 		console.log(honeyComent);
 		ajaxAddComent(honeyComent);
 		console.log("addComentBtn 누름")
 	});
-
-
+	
+	
 	function ajaxAddComent(honeyComent) {
 		$.post(serverAddr + "/mainpage/insertComent.json", honeyComent, function(obj) {
 			var result = obj.jsonResult
@@ -92,7 +91,7 @@ function ajaxLoadBoard(no) {
 			}
 		}, "json")
 		location.reload(true);
-
+		
 	}
 }
 function ajaxPostPTComentsList(no) {
