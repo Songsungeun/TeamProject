@@ -73,15 +73,8 @@ public class HoneyMainController {
       List<HoneyComent> list = comentService.getComent(no, pageNo, length);
       HashMap<String, Object> map = new HashMap<>();
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
-      System.out.println("comentList - member =" + member);
-      Object membNo;
-      if( member == null) {
-        membNo = null;
-      } else {
-        membNo = member.getMemberNo(); 
-      }
-      map.put("LoginInfo", membNo);
-      System.out.println("CmtListMemberNo= " + membNo);
+      System.out.println("comentList - member = " + member);
+      map.put("LoginInfo", member);
       map.put("comentList", list);
       return JsonResult.success(map);
     } catch (Exception e) {
