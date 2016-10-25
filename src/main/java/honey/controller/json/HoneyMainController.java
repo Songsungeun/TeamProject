@@ -71,11 +71,17 @@ public class HoneyMainController {
       @RequestParam(defaultValue="100") int length) throws Exception {
     try {
       List<HoneyComent> list = comentService.getComent(no, pageNo, length);
-      
-      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
       HashMap<String, Object> map = new HashMap<>();
-      map.put("LoginInfo", member.getMemberNo());
-      System.out.println("CmtListMemberNo= " + member.getMemberNo());
+      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      System.out.println("comentList - member =" + member);
+      Object membNo;
+      if( member == null) {
+        membNo = null;
+      } else {
+        membNo = member.getMemberNo(); 
+      }
+      map.put("LoginInfo", membNo);
+      System.out.println("CmtListMemberNo= " + membNo);
       map.put("comentList", list);
       return JsonResult.success(map);
     } catch (Exception e) {

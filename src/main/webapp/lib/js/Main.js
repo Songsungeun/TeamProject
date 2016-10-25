@@ -8,9 +8,9 @@ function ajaxBoardList() {
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
-	    	 return
-	    }
+			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			return
+		}
 		var template1 = Handlebars.compile($('#liTemplateText').html())
 		$(".tabs-1-contents").html(template1(result));
 		$(".titleLink").click(function(event){
@@ -19,7 +19,7 @@ function ajaxBoardList() {
 			var no = $(this).attr("data-no")
 			console.log(no)
 			ajaxLoadBoard(no)
-			ajaxPostPTComentsList(no)
+			ajaxPostComentsList(no)
 		})
 		$("#btn-primary-Btn").click(function() {
 			$("#yourModal").css({"display":"none"});
@@ -30,11 +30,11 @@ function ajaxBoardList() {
 			console.log(ctgNo)
 		})
 		$(".userInfoLink").click(function(event) {
-	  window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
-  })
+			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
+		})
 //		$("#yourModal").click(function() {
-//			$("#yourModal").css({"display":"none"});
-//			$("#super_HTML").css({"overflow":"auto"});
+//		$("#yourModal").css({"display":"none"});
+//		$("#super_HTML").css({"overflow":"auto"});
 //		})
 	})
 }
@@ -63,10 +63,10 @@ function ajaxLoadBoard(no) {
 		$("#linkURL").text(result.data.urlInfo.urlAddr);
 		$("#urlImage").html(result.data.urlInfo.image);
 //		$(".post_url > #url").click(function(event) {
-//				console.log("url 눌림");
-//				console.log(result.data.url);
-//				location.href = result.data.url;
-//				window.open(result.data.url);
+//		console.log("url 눌림");
+//		console.log(result.data.url);
+//		location.href = result.data.url;
+//		window.open(result.data.url);
 //		})
 	})
 	$("#insertCmt").click(function(event){
@@ -78,8 +78,8 @@ function ajaxLoadBoard(no) {
 		ajaxAddComent(honeyComent);
 		console.log("addComentBtn 누름")
 	});
-	
-	
+
+
 	function ajaxAddComent(honeyComent) {
 		$.post(serverAddr + "/mainpage/insertComent.json", honeyComent, function(obj) {
 			var result = obj.jsonResult
@@ -90,10 +90,11 @@ function ajaxLoadBoard(no) {
 			}
 		}, "json")
 		location.reload(true);
-		
+
 	}
 }
-function ajaxPostPTComentsList(no) {
+
+function ajaxPostComentsList(no) {
 	$.getJSON(serverAddr + "/mainpage/comentList.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -119,7 +120,8 @@ function ajaxPostPTComentsList(no) {
 					"</div>" +
 					"</div>" +
 					"</div>"
-				} else {
+				} 
+				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == null){
 					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "'>" +
 					"<div class='coment_info'>" +
 					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
@@ -142,6 +144,7 @@ function ajaxPostPTComentsList(no) {
 	})
 }
 
+
 $(document.body).on("click",".cmt_update",function(event) {
 	var cno = $(this).attr("data-update")
 	ajaxComentDetail(cno)
@@ -158,10 +161,10 @@ function ajaxComentDetail(no) {
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".cmt_conts").html(
 			"<textarea type='text' class='update-contents reUpdateLimit'></textarea>");
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".cmt-btn-wrap").html(
-		               "<button type='button' class='bit-save-btn' data-no=" + no + ">저장</button>" +
-		         "<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
-		         
-		         $(".coment_wrap[data-cmtNo=" + no + "]").find(".update-contents").val(result.data.coment);
+					"<button type='button' class='bit-save-btn' data-no=" + no + ">저장</button>" +
+					"<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
+
+			$(".coment_wrap[data-cmtNo=" + no + "]").find(".update-contents").val(result.data.coment);
 
 		}
 	})   
@@ -193,12 +196,12 @@ function ajaxUpdateComent(honeyComent) {
 
 
 window.onclick = function(event) {
-var htmlTag = document.getElementById('super_HTML');
-var modal = document.getElementById('yourModal');
-  if (event.target == modal) {
-    modal.style.display = "none";
-    htmlTag.style.overflow = "auto";
-  }
-  
-  
+	var htmlTag = document.getElementById('super_HTML');
+	var modal = document.getElementById('yourModal');
+	if (event.target == modal) {
+		modal.style.display = "none";
+		htmlTag.style.overflow = "auto";
+	}
+
+
 }
