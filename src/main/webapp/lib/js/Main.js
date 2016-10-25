@@ -202,6 +202,6 @@ var modal = document.getElementById('yourModal');
   }
   
   $(".userInfoLink").click(function(event) {
-	    window.location.href = "otherUserDetailPage.html?nick=" + $("#userNickName").val();
+	    window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
   })
 }
