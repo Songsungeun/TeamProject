@@ -93,7 +93,7 @@ function ajaxLoadBoard(no) {
 		location.reload(true);
 		
 	}
-}
+} 
 function ajaxPostPTComentsList(no) {
 	$.getJSON(serverAddr + "/mainpage/comentList.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
