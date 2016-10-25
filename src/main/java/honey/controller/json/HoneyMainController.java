@@ -41,6 +41,7 @@ public class HoneyMainController {
     List<UrlInfo> urlList = mainService.getURLList();
 
     for (int i = 0; i < list.size(); i++) {
+    	list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
     	for (int j = 0; j < urlList.size(); j++) {
     		if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
     			list.get(i).setLinkTitle(urlList.get(j).getTitle());
@@ -48,7 +49,7 @@ public class HoneyMainController {
     			list.get(i).setLinkImage(urlList.get(j).getImage());
     			list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
     			list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
-    		}
+    		} 
     	    String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
     	    list.get(i).setUserProfilePath(userPhoto);
     	}
