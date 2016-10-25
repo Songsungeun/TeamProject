@@ -39,13 +39,13 @@ $("#submitBoard").click(function(event) {
 	default : categoryNo = 1
 	break;
 	}
-	
 	var board = {
-	  url: $("#url").val(),
-	  title: $("#write_title").val(),
-	  contents: $("#write_contents").val(),
-	  userNo:$("#memberNumber").val(),
-	  categoryNo
+				url: $("#url").val(),
+				title: $("#write_title").val(),
+				contents: $("#write_contents").val(),
+				userNo:$("#memberNumber").val(),
+				categoryNo
+	
 	}
 	console.log(board)
 	ajaxAddBoard(board)

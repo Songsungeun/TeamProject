@@ -36,17 +36,22 @@ public class HoneyBoardController {
       System.out.println(hMember.getMemberNo());
       // 보드 멤버 넘버 셋
       board.setUserNo(hMember.getMemberNo());
-     boardService.insertBoard(board);
-
-      UrlInfo url = Scrapper.UrlForDB(board.getUrl());
-      System.out.println("멤버번호 셋 시작");
-      url.setMb_No(hMember.getMemberNo());
-      System.out.println("멤버번호 셋 종료");
-      //url.setBd_No(bd_No);
-      //url.setBd_No(boardService.getBoardMax().getNo());
-      //System.out.println("no= " + boardService.getBoardMax().getNo());
-      boardService.insertUrl(url);
+      boardService.insertBoard(board);
+      System.out.println("board.getUrl: " + board.getUrl());
       
+      if (board.getUrl() != "") {
+    	  System.out.println("URL 있을경우 시작");
+    	  UrlInfo url = Scrapper.UrlForDB(board.getUrl());
+    	  System.out.println("멤버번호 셋 시작");
+    	  url.setMb_No(hMember.getMemberNo());
+    	  System.out.println("멤버번호 셋 종료");
+    	  //url.setBd_No(bd_No);
+    	  //url.setBd_No(boardService.getBoardMax().getNo());
+    	  //System.out.println("no= " + boardService.getBoardMax().getNo());
+    	  boardService.insertUrl(url);
+      }
+      
+     System.out.println("URL 없을 경");
       return JsonResult.success();
 
     } catch (Exception e) {
