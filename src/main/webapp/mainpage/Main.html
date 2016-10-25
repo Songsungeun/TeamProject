@@ -63,8 +63,9 @@
                   <form class="userComment" method="post" action="#">
                     <textarea placeholder="Add a comment..." maxlength="255"
                       id="pcomment"></textarea>
-                    <button type="button" class="button"
-                      onclick="return submitCommentAjx()">Comment</button>
+                    <button id="insertCmt" type="button" class="button"
+                      >Comment</button>
+                      <div class="cmts_list"></div>
                   </form>
 
                 </div>
@@ -85,13 +86,13 @@
 <li id="each_post_wrap">
   <div id="each_post">
     <div id="user_Nick">
-      <img class="user_Nonepht userInfoLink" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}">
+      <img class="user_Nonepht userInfoLink" src="/TeamProject/mainpage/mainpage_images/Nopht_userIcon.svg" alt="userImg" data-userNo="{{userNo}}">
       <span class="userInfoLink" data-userNo="{{userNo}}">{{writerNick}}</span>
     </div>
 
     <div class="post_photoWrap titleLink" data-no="{{no}}">
       <a href="#">
-        <img src="{{linkImage}}" alt="Image File">
+        <img src="/TeamProject/mainpage/mainpage_images/suji_1.jpg" alt="Image File">
       </a>
     </div>
   

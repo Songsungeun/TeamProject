@@ -47,7 +47,7 @@
   <!-- </select> -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS,
-    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT, HM.MB_NO, HM.MB_NICK, HM.EMAIL, HC.CT_NO, HC.CT_NM
+    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT,  HM.MB_NICK, HM.EMAIL, HC.CT_NM
     from
     honey_boards HB
     left join honey_membs HM on HB.MB_NO = HM.MB_NO
