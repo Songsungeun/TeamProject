@@ -200,4 +200,8 @@ var modal = document.getElementById('yourModal');
     modal.style.display = "none";
     htmlTag.style.overflow = "auto";
   }
+  
+  $(".userInfoLink").click(function(event) {
+	    window.location.href = "otherUserDetailPage.html?nick=" + $("#userNickName").val();
+  })
 }
