@@ -58,6 +58,11 @@
   
   <delete id="delete" parameterType="int">
     delete from honey_cmts 
-    where CM_NO = #{value} and CM_THRD = CM_NO
+    where CM_THRD = #{value}
+  </delete>
+  
+  <delete id="childdelete" parameterType="int">
+    delete from honey_cmts 
+    where CM_NO = #{value}
   </delete>
 </mapper>

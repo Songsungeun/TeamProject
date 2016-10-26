@@ -13,4 +13,5 @@ public interface HoneyComentService {
   void insertChildComent(HoneyComent honeyComent) throws Exception;
   void updateComent(HoneyComent honeyComent) throws Exception;
   void deleteComent(int cmtNo) throws Exception;
+  void childDeleteComent(int cmtNo) throws Exception;
 }

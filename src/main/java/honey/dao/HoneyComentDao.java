@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import honey.vo.HoneyComent;
-import honey.vo.HoneyMain;
 
 
 
@@ -15,4 +14,5 @@ public interface HoneyComentDao {
   int insertChildComent(HoneyComent honeyComent) throws Exception;
   int updateComment(HoneyComent honeyComent) throws Exception;
   int delete(int cmtNo) throws Exception;
+  int childdelete(int cmtNo) throws Exception;
 }

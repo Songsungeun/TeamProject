@@ -116,17 +116,18 @@ function ajaxPostComentsList(no) {
 					"<div class='replyArea'></div>" +
 					"<div class='cmt-btn-wrap'>" +
 					"<a class='cmt_update' type='button' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-					"<a class='cmt_delete' type='button' data-update='" + arr[i].cmtNo + "'>삭제</a>" +
+					"<a class='cmt_delete' type='button' data-Delete='" + arr[i].cmtNo + 
+					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
 					"</div>" +
 					"</div>" +
 					"</div>"
 				} 
 				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
-					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "'>" +
+					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
 					"<div class='coment_info'>" +
 					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
 					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" +
-//					"<textarea class='cmt_conts' id='cmt_area' data-cmtarea='"+ arr[i].cmtNo +"' style='display:none'>" + arr[i].coment + "</textarea>" +
+//					"<textarea class='cmt_conts' id='cmt_area' data-cmtarea='"+ arr[i].cmtNo +"'style='display:none'>" + arr[i].coment + "</textarea>" +
 					"</div>" +
 					"<div class='coment_ud'>" +
 					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
@@ -134,7 +135,8 @@ function ajaxPostComentsList(no) {
 					"<div class='replyArea'></div>" +
 					"<div class='cmt-btn-wrap'>" +
 					"<a class='cmt_update' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-					"<a class='cmt_delete' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>삭제</a>" +
+					"<a class='cmt_delete' type='button' style='display:none' data-Delete='" + arr[i].cmtNo +
+					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
 					"</div>" +
 					"</div>" +
 					"</div>"
@@ -142,15 +144,6 @@ function ajaxPostComentsList(no) {
 			}
 		$(".userComment > .cmts_list").html(contents);
 		console.log(result.data.LoginInfo)
-
-//		$(document.body).on("click",".cmt_reply",function(event) {
-//		var cmtNo = $(this).attr("data-no");
-//		$(".replyArea[data-cmtNo=" + cmtNo + "]").find(".replyArea").html(
-//		"<textarea type='text' id='ccoment' class='reply-contents reUpdateLimit'></textarea>" +
-//		"<button type='button' class='reply-save-btn' data-no=" + no + ">저장</button>" +
-//		"<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
-//		$(".coment_wrap[data-cmtNo=" + no + "]").find(".reply-contents").val(result.data.coment);
-//		});
 	})
 }
 var childcomentThread;
@@ -177,6 +170,7 @@ $(document.body).on("click", ".reply-save-btn", function(event){
 	ajaxComentReply(honeyComent);
 })
 function ajaxComentReply(honeyComent) {
+	console.log("ajaxComentReply")
 	console.log(honeyComent);
 	$.post(serverAddr + "/mainpage/insertChildComent.json", honeyComent, function(obj) {
 		var result = obj.jsonResult
@@ -188,10 +182,6 @@ function ajaxComentReply(honeyComent) {
 	location.reload(true);
 }
 
-$(document.body).on("click",".cmt_update",function(event) {
-	var cno = $(this).attr("data-update")
-	ajaxComentDetail(cno)
-});
 
 function ajaxComentDetail(no) {
 	$.getJSON(serverAddr + "/mainpage/comentDetail.json?no=" + no, function(obj) {
@@ -209,9 +199,14 @@ function ajaxComentDetail(no) {
 
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".update-contents").val(result.data.coment);
 
+			console.log("comentDepth" + result.data.comentDepth)
 		}
 	})   
 }
+$(document.body).on("click",".cmt_update",function(event) {
+	var cno = $(this).attr("data-update")
+	ajaxComentDetail(cno)
+});
 
 $(document.body).on("click",".bit-save-btn",function(event) {
 	var honeyComent = {
@@ -235,6 +230,52 @@ function ajaxUpdateComent(honeyComent) {
 		}
 		location.reload();
 	}, "json")
+}
+$(document.body).on("click",".cmt_delete",function(event) {
+	var depth = $(this).attr("data-depth")
+	console.log("depth")
+	console.log(depth)
+	var no = $(this).attr("data-Delete");
+	if(depth == 0) {
+		if (confirm("정말 삭제하시겠습니까1?") == true) {
+			ajaxDeleteComent(no)
+		} else {
+			return;
+		}
+	} 
+	if(depth == 1){
+		if (confirm("정말 삭제하시겠습니까2?") == true) {
+			ajaxDeleteChildComent(no)
+		} else {
+			return;
+		}
+	}
+});
+
+function ajaxDeleteComent(no) {
+	$.getJSON(serverAddr + "/mainpage/delete.json", {
+		no: no,
+	}, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("삭제 실패입니다.")
+			return
+		}
+		location.reload(true);
+	})
+}
+
+function ajaxDeleteChildComent(no) {
+	$.getJSON(serverAddr + "/mainpage/childdelete.json", {
+		no: no,
+	}, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("삭제 실패입니다.")
+			return
+		}
+		location.reload(true);
+	})
 }
 
 
