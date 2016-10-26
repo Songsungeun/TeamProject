@@ -95,15 +95,20 @@ public class HoneyMainController {
   public Object detail(int no) throws Exception {
     mainService.getIncreaseViewCount(no);
     HoneyMain honeyMain = mainService.getPost(no);
-    UrlInfo urlInfo = mainService.getUrl(no);
-    String temp = urlInfo.getImage();
-    temp = "<img alt='photo' src='" + temp + "'>";
-    urlInfo.setImage(temp);
-    System.out.println(urlInfo.getImage());
     HashMap<String, Object> map = new HashMap<>();
     map.put("board", honeyMain);
-    map.put("urlInfo", urlInfo);
-    return JsonResult.success(map);
+
+    UrlInfo urlInfo;
+    if (mainService.getUrl(no) != null) {
+    	urlInfo = mainService.getUrl(no);
+    	String temp = urlInfo.getImage();
+    	temp = "<img alt='photo' src='" + temp + "'>";
+    	urlInfo.setImage(temp);
+    	map.put("urlInfo", urlInfo);
+    	return JsonResult.success(map);
+    } else {
+    	return JsonResult.success2(map);
+    }
   }
   @RequestMapping("insertComent")
   public Object insertComent(HoneyComent honeyComent, HttpSession session) throws Exception {

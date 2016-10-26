@@ -205,8 +205,8 @@ body {
 }
 
 .post_photoWrap img {
-  width: 314px;
-  height: 314px;
+  width: 100%;
+  height: auto;
 }
 
 .each_post_title {

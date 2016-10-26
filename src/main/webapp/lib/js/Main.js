@@ -43,25 +43,38 @@ var comentInfo = 0;
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
-		if (result.state != "success") {
+		if (result.state == "fail" || result.state == "error") {
 			alert("조회 실패입니다.")
 			return
+		} else if (result.state == "success"){
+			$("#no").val(result.data.board.no);
+			comentInfo =result.data.board.no;
+			$("#userTitle").text(result.data.board.title);
+			$("#url").text(result.data.board.url);
+			$("#userDesc").text(result.data.board.contents);
+			$("#createdDate").text(result.data.board.createdDate2);
+			$("#writerNick").text(result.data.board.writerNick);
+			$("#url_location").html(result.data.board.linkTitle);
+			$("#post_user_id").text(result.data.board.email);
+			$("#viewCount").text(result.data.board.viewCount);
+			$("#like").text(result.data.board.like);
+			$("#linkTitle").text(result.data.urlInfo.title);
+			$("#linkDesc").text(result.data.urlInfo.description);
+			$("#linkURL").text(result.data.urlInfo.urlAddr);
+			$("#urlImage").html(result.data.urlInfo.image);
+		} else {
+			$("#no").val(result.data.board.no);
+			comentInfo =result.data.board.no;
+			$("#userTitle").text(result.data.board.title);
+			$("#url").text(result.data.board.url);
+			$("#userDesc").text(result.data.board.contents);
+			$("#createdDate").text(result.data.board.createdDate2);
+			$("#writerNick").text(result.data.board.writerNick);
+			$("#url_location").html(result.data.board.linkTitle);
+			$("#post_user_id").text(result.data.board.email);
+			$("#viewCount").text(result.data.board.viewCount);
+			$("#like").text(result.data.board.like);
 		}
-		$("#no").val(result.data.board.no);
-		comentInfo =result.data.board.no;
-		$("#userTitle").text(result.data.board.title);
-		$("#url").text(result.data.board.url);
-		$("#userDesc").text(result.data.board.contents);
-		$("#createdDate").text(result.data.board.createdDate2);
-		$("#writerNick").text(result.data.board.writerNick);
-		$("#url_location").html(result.data.board.linkTitle);
-		$("#post_user_id").text(result.data.board.email);
-		$("#viewCount").text(result.data.board.viewCount);
-		$("#like").text(result.data.board.like);
-		$("#linkTitle").text(result.data.urlInfo.title);
-		$("#linkDesc").text(result.data.urlInfo.description);
-		$("#linkURL").text(result.data.urlInfo.urlAddr);
-		$("#urlImage").html(result.data.urlInfo.image);
 //		$(".post_url > #url").click(function(event) {
 //		console.log("url 눌림");
 //		console.log(result.data.url);
