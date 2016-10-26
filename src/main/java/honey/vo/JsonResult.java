@@ -2,6 +2,7 @@ package honey.vo;
 
 public class JsonResult {
   public static final String SUCCESS = "success";
+  public static final String SUCCESS2 = "success2";
   public static final String FAIL = "fail";
   public static final String ERROR = "error";
   
@@ -19,6 +20,10 @@ public class JsonResult {
   public static JsonResult success(Object data1, Object data2) {
 	    return new JsonResult(SUCCESS, data1, data2);
 	  }
+  
+  public static JsonResult success2(Object data) {
+	  return new JsonResult(SUCCESS2, data);
+  }
   
   public static JsonResult fail() {
     return new JsonResult(FAIL);

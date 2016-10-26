@@ -7,13 +7,13 @@ $("#preview").click(function(evnet) {
 	var urlinfo = $("#url").val()
 	var title = $("#write_title").val();
 	var contents = $("#write_contents").val();
-	console.log("과연?= " + urlinfo);
-	console.log("title click= " + title);
-	console.log("contents click= " + contents);
 	ajaxViewBoard(urlinfo, title, contents);
 })
 
 $("#submitBoard").click(function(event) {
+	var saveCon = nicEditorInstance.saveContent;
+	console.log("hi" + saveCon)
+	console.log("log: " + $(".nicEdit-main").text())
 	var categoryNo = $("#category").val()
 	switch (categoryNo) {
 	case "라이프" : categoryNo = 2
@@ -42,7 +42,7 @@ $("#submitBoard").click(function(event) {
 	var board = {
 				url: $("#url").val(),
 				title: $("#write_title").val(),
-				contents: $("#write_contents").val(),
+				contents: $(".nicEdit-main").text(),
 				userNo:$("#memberNumber").val(),
 				categoryNo
 	

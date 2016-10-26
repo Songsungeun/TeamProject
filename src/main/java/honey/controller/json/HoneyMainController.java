@@ -48,18 +48,18 @@ public class HoneyMainController {
         String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
         list.get(i).setUserProfilePath(userPhoto);
       }
-    	list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
-    	for (int j = 0; j < urlList.size(); j++) {
-    		if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
-    			list.get(i).setLinkTitle(urlList.get(j).getTitle());
-    			list.get(i).setLinkDesc(urlList.get(j).getDescription());
-    			list.get(i).setLinkImage(urlList.get(j).getImage());
-    			list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
-    			list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
-    		} 
-    	    String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
-    	    list.get(i).setUserProfilePath(userPhoto);
-    	}
+      list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
+      for (int j = 0; j < urlList.size(); j++) {
+        if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
+          list.get(i).setLinkTitle(urlList.get(j).getTitle());
+          list.get(i).setLinkDesc(urlList.get(j).getDescription());
+          list.get(i).setLinkImage(urlList.get(j).getImage());
+          list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
+          list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
+        } 
+        String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
+        list.get(i).setUserProfilePath(userPhoto);
+      }
     }
     return JsonResult.success(list);
   }
@@ -101,15 +101,29 @@ public class HoneyMainController {
   public Object detail(int no) throws Exception {
     mainService.getIncreaseViewCount(no);
     HoneyMain honeyMain = mainService.getPost(no);
-    UrlInfo urlInfo = mainService.getUrl(no);
-    String temp = urlInfo.getImage();
-    temp = "<img alt='photo' src='" + temp + "'>";
-    urlInfo.setImage(temp);
-    System.out.println(urlInfo.getImage());
     HashMap<String, Object> map = new HashMap<>();
     map.put("board", honeyMain);
-    map.put("urlInfo", urlInfo);
-    return JsonResult.success(map);
+
+    UrlInfo urlInfo;
+    if (mainService.getUrl(no) != null) {
+    	urlInfo = mainService.getUrl(no);
+    	String temp = urlInfo.getImage();
+    	temp = "<img alt='photo' src='" + temp + "'>";
+    	urlInfo.setImage(temp);
+    	map.put("urlInfo", urlInfo);
+    	return JsonResult.success(map);
+    } else {
+    	return JsonResult.success2(map);
+    }
+  }
+  @RequestMapping("comentDetail")
+  public Object comentDetail(int no, HttpSession session) throws Exception {
+    try{
+      HoneyComent honeyComent = comentService.detailComent(no);
+      return JsonResult.success(honeyComent);
+    } catch(Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
   }
   @RequestMapping("insertComent")
   public Object insertComent(HoneyComent honeyComent, HttpSession session) throws Exception {
@@ -118,10 +132,10 @@ public class HoneyMainController {
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
       System.out.println("CmtInsertMemberNo= " + member.getMemberNo());
       honeyComent.setMemberNo(member.getMemberNo());
-//      HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
-//      session.setAttribute("honeyCmt", honeyComent);
-//      honeyComent.setNo(honeyMain.getNo());
-//      System.out.println(honeyComent.getNo());
+      //      HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
+      //      session.setAttribute("honeyCmt", honeyComent);
+      //      honeyComent.setNo(honeyMain.getNo());
+      //      System.out.println(honeyComent.getNo());
       comentService.insertComent(honeyComent);
       return JsonResult.success(honeyComent);
     } catch (Exception e) {
@@ -136,10 +150,10 @@ public class HoneyMainController {
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
       System.out.println("CmtInsertMemberNo= " + member.getMemberNo());
       honeyComent.setMemberNo(member.getMemberNo());
-//      HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
-//      session.setAttribute("honeyCmt", honeyComent);
-//      honeyComent.setNo(honeyMain.getNo());
-//      System.out.println(honeyComent.getNo());
+      //      HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
+      //      session.setAttribute("honeyCmt", honeyComent);
+      //      honeyComent.setNo(honeyMain.getNo());
+      //      System.out.println(honeyComent.getNo());
       comentService.insertChildComent(honeyComent);
       return JsonResult.success(honeyComent);
     } catch (Exception e) {
@@ -159,6 +173,7 @@ public class HoneyMainController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  
   @RequestMapping("increaseViewCount")
   public Object increaseViewCount(int no) throws Exception {
     mainService.getIncreaseViewCount(no);
@@ -173,6 +188,27 @@ public class HoneyMainController {
   public Object decrease_Like(int no) throws Exception {
     mainService.decrease_Like(no);
     return JsonResult.success(decrease_Like(no));
+  }
+  @RequestMapping("delete")
+  public Object delete(int no) throws Exception {
+    try {
+      comentService.deleteComent(no);
+      return JsonResult.success();
+      
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  @RequestMapping("childdelete")
+  public Object childdelete(int no) throws Exception {
+    try {
+      comentService.childDeleteComent(no);
+      return JsonResult.success();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.fail(e.getMessage());
+    }
   }
   
 }
