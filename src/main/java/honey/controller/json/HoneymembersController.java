@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -172,14 +173,16 @@ public class HoneymembersController {
 			System.out.println(memberFile.getFilename());
 			List<honey_boards> list = hMembersService.getBoards(honeyMember.getMemberNo());
 			
-			for (int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i));
+			int totalViewCount = 0;
+			for (honey_boards count : list) {
+				totalViewCount += count.getViewCount();
 			}
-			
+			System.out.println("total "+totalViewCount);
 			
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
 			resultMap.put("boardInfo", list);
+			resultMap.put("totalViewCount",totalViewCount);
 			return JsonResult.success(resultMap);
 		} catch(Exception e) {
 			e.printStackTrace();
