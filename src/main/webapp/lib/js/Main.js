@@ -1,3 +1,5 @@
+var tempUserNo = 0;
+
 $(document).ready(function(){
 	$(function() {
 		$("#includedContent").load("/TeamProject/header.html");
@@ -16,7 +18,8 @@ function ajaxBoardList() {
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
-			var no = $(this).attr("data-no")
+			 var no = $(this).attr("data-no")
+			
 			console.log(no)
 			ajaxLoadBoard(no)
 			ajaxPostComentsList(no)
@@ -38,9 +41,9 @@ function ajaxBoardList() {
 //		})
 	})
 }
-
 var comentInfo = 0;
-var tempUserNo;
+
+
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
@@ -98,6 +101,7 @@ function ajaxLoadBoard(no) {
 //		location.href = result.data.url;
 //		window.open(result.data.url);
 //		})
+		followLoderFunc(tempUserNo)
 	})
 }
 $("#insertCmt").click(function(event){
