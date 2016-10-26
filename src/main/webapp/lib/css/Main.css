@@ -111,6 +111,7 @@ body {
   padding: 0;
   background-color: #f1f1f1;
   padding-top: 100px;
+  min-height: 775px;
 }
 
 .mainpage_wrap {
@@ -646,10 +647,10 @@ modal fade>p {
   margin-top: 25px;
 }
 #depth0 {
-  margin: 3px 0;
+  margin: 20px 0;
 }
 #depth1 {
-  margin: 3px 0 3px 15px;
+  margin: 20px 0 20px 15px;
 }
 .cmt_userNick {
   margin-right: 8px;
@@ -668,7 +669,7 @@ modal fade>p {
   word-break: break-all;
 }
 .cmt-btn-wrap {
-  float: left;
+  float: none;
 }
 /* 게시물 스크롤바 숨기기 */
 /* .modal::-webkit-scrollbar { width: 0 !important } */

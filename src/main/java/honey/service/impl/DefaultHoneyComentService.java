@@ -24,15 +24,20 @@ public class DefaultHoneyComentService implements HoneyComentService {
   public void insertComent(HoneyComent honeyComent) throws Exception {
     comentDao.insertComent(honeyComent);
   }
+  public void insertChildComent(HoneyComent honeyComent) throws Exception {
+    comentDao.insertChildComent(honeyComent);
+  }
   public void updateComent(HoneyComent honeyComent) throws Exception {
     comentDao.updateComment(honeyComent);
+  }
+  public HoneyComent detailComent(int cmtNo) throws Exception {
+    return comentDao.comentDetail(cmtNo);
   }
   public void deleteComent(int cmtNo) throws Exception {
     comentDao.delete(cmtNo);
   }
-  @Override
-  public HoneyComent detailComent(int cmtNo) throws Exception {
-    return comentDao.comentDetail(cmtNo);
+  public void childDeleteComent(int cmtNo) throws Exception {
+    comentDao.childdelete(cmtNo);
   }
 }
   
