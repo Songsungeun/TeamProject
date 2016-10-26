@@ -4,12 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneyBoardFileDao">
   <resultMap type="HoneyBoardFile" id="boardFileMap">
-    <id column="no" property="no"/> 
+    <id column="Board_no" property="boardNo"/> 
+    <id column="Member_no" property="mb_no"/>
+    <id column="File_Name" property="fileName"/>
   </resultMap>
   
-  <insert id="insert" parameterType="HoneyBoardFile">
-    insert into board_files(Board_No, File_Name)
-    values(#{boardNo}, #{filename})
+  <insert id="boardPhotoInsert" parameterType="HoneyBoardFile">
+    insert into board_files(Board_No, File_Name, Member_No)
+    values(#{boardNo}, #{filename}, #{mb_no})
   </insert>
 </mapper>
 

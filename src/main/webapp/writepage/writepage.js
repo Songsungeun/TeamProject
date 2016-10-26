@@ -42,7 +42,7 @@ $("#submitBoard").click(function(event) {
 	var board = {
 				url: $("#url").val(),
 				title: $("#write_title").val(),
-				contents: $(".nicEdit-main").text(),
+				contents: $(".nicEdit-main").html(),
 				userNo:$("#memberNumber").val(),
 				categoryNo
 	

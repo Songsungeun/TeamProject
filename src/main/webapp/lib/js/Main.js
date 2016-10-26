@@ -55,7 +55,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
-			$("#userDesc").text(result.data.board.contents);
+			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);
 			$("#url_location").html(result.data.board.linkTitle);
@@ -71,7 +71,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
-			$("#userDesc").text(result.data.board.contents);
+			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);
 			$("#url_location").html(result.data.board.linkTitle);
@@ -79,22 +79,7 @@ function ajaxLoadBoard(no) {
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
 		}
-		tempUserNo = result.data.board.userNo;
-		$("#no").val(result.data.board.no);
-		comentInfo =result.data.board.no;
-		$("#userTitle").text(result.data.board.title);
-		$("#url").text(result.data.board.url);
-		$("#userDesc").text(result.data.board.contents);
-		$("#createdDate").text(result.data.board.createdDate2);
-		$("#writerNick").text(result.data.board.writerNick);
-		$("#url_location").html(result.data.board.linkTitle);
-		$("#post_user_id").text(result.data.board.email);
-		$("#viewCount").text(result.data.board.viewCount);
-		$("#like").text(result.data.board.like);
-		$("#linkTitle").text(result.data.urlInfo.title);
-		$("#linkDesc").text(result.data.urlInfo.description);
-		$("#linkURL").text(result.data.urlInfo.urlAddr);
-		$("#urlImage").html(result.data.urlInfo.image);
+		console.log(result.data.board.contents);
 //		$(".post_url > #url").click(function(event) {
 //		console.log("url 눌림");
 //		console.log(result.data.url);

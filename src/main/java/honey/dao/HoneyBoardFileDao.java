@@ -1,9 +1,12 @@
 package honey.dao;
 
+import java.util.List;
+
 import honey.vo.HoneyBoardFile;
 
 public interface HoneyBoardFileDao {
 
-	int prifileFileinsert (HoneyBoardFile boardFile);
-  int defaultboardPhotoInsert(int boardNo);
+	int boardPhotoInsert(HoneyBoardFile boardFile);
+	List<HoneyBoardFile> getBoardPhotoFile(int board_no);
+	
 }

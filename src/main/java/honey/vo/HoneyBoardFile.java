@@ -8,6 +8,8 @@ public class HoneyBoardFile implements Serializable {
 	protected int fileNo;
 	protected int boardNo;
 	protected String fileName;
+	protected int mb_no;
+	
 	public int getFileNo() {
 		return fileNo;
 	}
@@ -26,9 +28,14 @@ public class HoneyBoardFile implements Serializable {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getMb_no() {
+		return mb_no;
 	}
+	public void setMb_no(int mb_no) {
+		this.mb_no = mb_no;
+	}
+	
+	
 	
 	
 

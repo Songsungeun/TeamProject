@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import honey.dao.HoneyBoardFileDao;
 import honey.dao.tempDao;
 import honey.service.HoneyBoardService;
+import honey.vo.HoneyBoardFile;
 import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
@@ -63,6 +64,10 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	public void deleteBoard(int no) throws Exception {
 		
 	      boardDao.delete(no);
+	}
+	
+	public void insertBoardFile(HoneyBoardFile boardFile) throws Exception {
+		boardFileDao.boardPhotoInsert(boardFile);
 	}
 	
 }

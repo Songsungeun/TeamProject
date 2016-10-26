@@ -1442,6 +1442,7 @@ var nicUploadButton = nicEditorAdvancedButton.extend({
 	    xhr.onload = function() {
 	      try {
 	        var data = JSON.parse(xhr.responseText).data;
+	        console.log("data= " + xhr.responseText);
 	      } catch(e) {
 	        return this.onError();
 	      }
@@ -1458,6 +1459,49 @@ var nicUploadButton = nicEditorAdvancedButton.extend({
 	    xhr.send(fd);
 	  },
 
+//	    $('#uploadForm').fileupload({
+//            url : serverAddr + "/writepage/boardFileUpload.json", 
+//            dataType: 'json',
+//            //replaceFileInput: false,
+//            add: function(e, data){
+//                var uploadFile = data.files[0];
+//                var isValid = true;
+//                if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
+//                    alert('png, jpg, gif 만 가능합니다');
+//                    isValid = false;
+//                } else if (uploadFile.size > 10000000) { // 5mb
+//                    alert('파일 용량은 10메가를 초과할 수 없습니다.');
+//                    isValid = false;
+//                }
+//                if (isValid) {
+//                    data.submit();              
+//                }
+//            }, progressall: function(e,data) {
+//                var progress = parseInt(data.loaded / data.total * 100, 10);
+//                $('#progress .bar').css(
+//                    'width',
+//                    progress + '%'
+//                );
+//            }, done: function (e, data) {
+//                var code = data.result.code;
+//                var msg = data.result.msg;
+//                if(code == '1') {
+//                    alert(msg);
+//                    $("#profilePhoto").attr('src',"/TeamProject/upload/"+data.result.data)
+//                    $("#profilePicture").attr('src',"/TeamProject/upload/"+data.result.data)
+//                } else {
+//                    alert(code + ' : ' + msg);
+//                } 
+//            }, fail: function(e, data){
+//                // data.errorThrown
+//                // data.textStatus;
+//                // data.jqXHR;
+//                alert('서버와 통신 중 문제가 발생했습니다');
+//                foo = data;
+//            }
+//        });
+//	  },
+        
 	  setProgress : function(percent) {
 	    this.progress.setStyle({ display: 'block' });
 	    if(percent < .98) {
