@@ -73,8 +73,14 @@ public class HoneyMainController {
       List<HoneyComent> list = comentService.getComent(no, pageNo, length);
       HashMap<String, Object> map = new HashMap<>();
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
-      System.out.println("comentList - member = " + member);
-      map.put("LoginInfo", member);
+      Object membNo;
+      if(member == null) {
+        membNo = 0;
+      } else {
+        membNo = member.getMemberNo();
+      }
+      System.out.println("comentList - member = " + membNo);
+      map.put("LoginInfo", membNo);
       map.put("comentList", list);
       return JsonResult.success(map);
     } catch (Exception e) {
@@ -123,6 +129,25 @@ public class HoneyMainController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  @RequestMapping("insertChildComent")
+  public Object insertChildComent(HoneyComent honeyComent, HttpSession session) throws Exception {
+    try{
+      System.out.println("insertChildComent 실행");
+      HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      System.out.println("CmtInsertMemberNo= " + member.getMemberNo());
+      honeyComent.setMemberNo(member.getMemberNo());
+//      HoneyMain honeyMain = (HoneyMain)session.getAttribute("honeyMain");
+//      session.setAttribute("honeyCmt", honeyComent);
+//      honeyComent.setNo(honeyMain.getNo());
+//      System.out.println(honeyComent.getNo());
+      comentService.insertChildComent(honeyComent);
+      return JsonResult.success(honeyComent);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  
   @RequestMapping("updateComment")
   public Object updateComment(HoneyComent honeyComment, HttpSession session) throws Exception {
     try{

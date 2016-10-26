@@ -69,29 +69,28 @@ function ajaxLoadBoard(no) {
 //		window.open(result.data.url);
 //		})
 	})
-	$("#insertCmt").click(function(event){
-		var honeyComent = {
-				coment: $("#pcomment").val(),
-				no: comentInfo
-		}
-		console.log(honeyComent);
-		ajaxAddComent(honeyComent);
-		console.log("addComentBtn 누름")
-	});
-
-
-	function ajaxAddComent(honeyComent) {
-		$.post(serverAddr + "/mainpage/insertComent.json", honeyComent, function(obj) {
-			var result = obj.jsonResult
-			console.log(result);
-			if (result.state != "success") {
-				alert("등록 실패입니다.")
-				return
-			}
-		}, "json")
-		location.reload(true);
-
+}
+$("#insertCmt").click(function(event){
+	var honeyComent = {
+			coment: $("#pcomment").val(),
+			no: comentInfo
 	}
+	console.log(honeyComent);
+	ajaxAddComent(honeyComent);
+	console.log("addComentBtn 누름")
+});
+
+
+function ajaxAddComent(honeyComent) {
+	$.post(serverAddr + "/mainpage/insertComent.json", honeyComent, function(obj) {
+		var result = obj.jsonResult
+		console.log(result);
+		if (result.state != "success") {
+			alert("등록 실패입니다.")
+			return
+		}
+	}, "json")
+	location.reload(true);
 }
 
 function ajaxPostComentsList(no) {
@@ -114,6 +113,7 @@ function ajaxPostComentsList(no) {
 					"<div class='coment_ud'>" +
 					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
 					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
+					"<div class='replyArea'></div>" +
 					"<div class='cmt-btn-wrap'>" +
 					"<a class='cmt_update' type='button' data-update='" + arr[i].cmtNo + "'>수정</a>" +
 					"<a class='cmt_delete' type='button' data-update='" + arr[i].cmtNo + "'>삭제</a>" +
@@ -121,7 +121,7 @@ function ajaxPostComentsList(no) {
 					"</div>" +
 					"</div>"
 				} 
-				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == null){
+				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
 					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "'>" +
 					"<div class='coment_info'>" +
 					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
@@ -131,6 +131,7 @@ function ajaxPostComentsList(no) {
 					"<div class='coment_ud'>" +
 					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
 					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
+					"<div class='replyArea'></div>" +
 					"<div class='cmt-btn-wrap'>" +
 					"<a class='cmt_update' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
 					"<a class='cmt_delete' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>삭제</a>" +
@@ -141,9 +142,51 @@ function ajaxPostComentsList(no) {
 			}
 		$(".userComment > .cmts_list").html(contents);
 		console.log(result.data.LoginInfo)
+
+//		$(document.body).on("click",".cmt_reply",function(event) {
+//		var cmtNo = $(this).attr("data-no");
+//		$(".replyArea[data-cmtNo=" + cmtNo + "]").find(".replyArea").html(
+//		"<textarea type='text' id='ccoment' class='reply-contents reUpdateLimit'></textarea>" +
+//		"<button type='button' class='reply-save-btn' data-no=" + no + ">저장</button>" +
+//		"<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
+//		$(".coment_wrap[data-cmtNo=" + no + "]").find(".reply-contents").val(result.data.coment);
+//		});
 	})
 }
-
+var childcomentThread;
+$(document.body).on("click",".cmt_reply",function(event) {
+	console.log("cmt_reply버튼 클릭");
+	childcomentThread = $(this).attr("data-no");
+	console.log(childcomentThread);
+	$(".coment_wrap[data-cmtNo=" + childcomentThread + "]").find(".replyArea").html(
+			"<form class='userComment' method='post' action='#'>" +
+			"<textarea placeholder='Add a comment...' maxlength='255'" +
+			"id='ccomment'></textarea>" +
+			"<button type='button' class='reply-save-btn' >저장</button>" +
+			"<button type='button' class='bit-cancel-btn' >취소</button>"
+	);
+})
+$(document.body).on("click", ".reply-save-btn", function(event){
+	var honeyComent = {
+			cmtNo: childcomentThread,
+			coment: $("#ccomment").val(),
+			no: comentInfo
+	}
+	console.log("addChildComentBtn 누름")
+	console.log(honeyComent);
+	ajaxComentReply(honeyComent);
+})
+function ajaxComentReply(honeyComent) {
+	console.log(honeyComent);
+	$.post(serverAddr + "/mainpage/insertChildComent.json", honeyComent, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("등록 실패입니다.")
+			return
+		} 
+	}, "json")  
+	location.reload(true);
+}
 
 $(document.body).on("click",".cmt_update",function(event) {
 	var cno = $(this).attr("data-update")
