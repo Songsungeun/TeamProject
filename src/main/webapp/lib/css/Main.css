@@ -150,6 +150,7 @@ body {
   border: 1px solid #e3e3e3;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #c0c0c0;
+  position: relative;
 }
 
 #each_post>#user_Nick {
@@ -185,7 +186,7 @@ body {
 
 .post_photoWrap {
   width: 314px;
-  height: 260px;
+  max-height: 260px;
   margin: 0 0 8px 0;
   overflow: hidden;
   position: relative;
@@ -243,7 +244,9 @@ body {
 }
 
 .post_BtnWrap {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 314px;
   border-top: solid 1px #f2f2f2;
   background-color: #fafafa;
   height: 41px;
@@ -257,6 +260,8 @@ body {
 
 .post_ctgWrap {
   padding: 5px 14px 3px 14px;
+  position: absolute;
+  bottom: 43px;
 }
 
 .post_ctgWrap > span {
