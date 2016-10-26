@@ -40,6 +40,7 @@ function ajaxBoardList() {
 }
 
 var comentInfo = 0;
+var tempUserNo;
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
@@ -47,6 +48,7 @@ function ajaxLoadBoard(no) {
 			alert("조회 실패입니다.")
 			return
 		}
+		tempUserNo = result.data.board.userNo;
 		$("#no").val(result.data.board.no);
 		comentInfo =result.data.board.no;
 		$("#userTitle").text(result.data.board.title);
