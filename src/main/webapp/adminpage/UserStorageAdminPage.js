@@ -20,10 +20,11 @@ function ajaxBoardList() {
     })
     
     $(document.body).on('click', '.btn-danger',  function(event) {
+    	var rNumber = $(this).attr("data-no")
     	var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
     	if(result) {
     		// 확인 버튼 누를시 
-    		ajaxDeleteBoard(arr[i].no)
+    		ajaxDeleteBoard(rNumber)
     	} else {
     		//취소 버튼 누를시 
     	}

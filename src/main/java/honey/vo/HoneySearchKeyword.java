@@ -8,6 +8,7 @@ public class HoneySearchKeyword {
     protected String userName;
     protected String email;
     protected String nickname;
+    protected String filename;
     
     
 	public String getSearchValue() {
@@ -52,6 +53,12 @@ public class HoneySearchKeyword {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+  public String getFilename() {
+    return filename;
+  }
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
  
     
 }

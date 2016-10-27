@@ -77,21 +77,16 @@ public class HoneySearchController {
 		System.out.println(searcherDao.selectFromMembers(searchfucker));
 		
 		String[] temp = new String[searchMemberResult.size()];
-		MemberFile memberFile = new MemberFile();
-		
 		List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
-    List<MemberFile> memberPhotoExtract= new ArrayList<>();
 
 		try {
 			for (int i = 0; i < temp.length; i++) {
 				temp[i] = searchMemberResult.get(i).getEmail();
 				memberEmailExtract.add(photoDao.extractMemberNum(temp[i])); 
-				memberFile.setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
-				memberPhotoExtract.add(memberFile);
+				searchMemberResult.get(i).setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
 	   }
 			
 		 HashMap<String, Object> searchData = new HashMap<>();
-	    searchData.put("memberPhotoExtract", memberPhotoExtract);
 			searchData.put("searchMemberResult", searchMemberResult);
 			searchData.put("searchBoardResult", searchBoardResult);
 			searchData.put("searchValue", searchfucker);

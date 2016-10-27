@@ -234,31 +234,31 @@ body {
   <div id="includeHeader"></div> 
 
 <section id= "searchwrap">
-    <div class="userProfileAdmin_topSection">
-     검색어 : <span id="searchWord"></span>
-    </div>
-    
-        <article id = "resultArea">
-        <div id = memberSearchWrap>
-            <div id = searchResultName ></div>
-           
-         <div class="memberSearchResult">
-            <!-- member 출력영역 -->
-         </div>
-         <div>
-           <a id="moreViewBtn" href="#">더보기</a>
-          </div>
+	  <div class="userProfileAdmin_topSection">
+	   검색어 : <span id="searchWord"></span>
+		</div>
+		
+		    <article id = "resultArea">
+		    <div id = memberSearchWrap>
+		        <div id = searchResultName ></div>
+		       
+			   <div class="memberSearchResult">
+						<!-- member 출력영역 -->
+	       </div>
+	       <div>
+	         <a id="moreViewBtn" href="#">더보기</a>
+	        </div>
       </div>
-   <div id = contentsSearchWrap>
-        <div class="contentsSearchResult">
-         <!-- contents 출력영역 -->
-          </div>
-        <div>
-            <a  id="moreViewBtn" href="#">더보기</a>
-        </div>
-      </div>
-        
-    </article>
+	 <div id = contentsSearchWrap>
+			  <div class="contentsSearchResult">
+			   <!-- contents 출력영역 -->
+		      </div>
+		    <div>
+		        <a  id="moreViewBtn" href="#">더보기</a>
+		    </div>
+		  </div>
+		    
+	  </article>
  </section> 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -273,18 +273,16 @@ body {
 <div id= "userResult">회원 검색</div>
  {{#each searchMemberResult}}
   <div class="media">
-          <div class="media-left">
-              <a href="#"><img class="media-object" id="searchPhotoPrint"  src= "" height="80px" width="80px"></a>
-           </div>
+          <div class="media-left" >
+              <a href="#"><img class="media-object" src = "/TeamProject/upload/{{filename}}" height="80px" width="80px"></a>
+          </div>
            <div class="media-body">
                <h3 class="media-heading">{{nickname}}</h3>
             {{email}}
           </div> 
     <div> 
 {{/each}}
-
-
-</script>   
+</script>
 
  <script id="searchBoardHandbars" type="text/x-handlebars-template">
 <div id= "postResult">게시물 검색</div>
@@ -300,6 +298,8 @@ body {
     <div> 
 {{/each}}
 </script>
+
+
 
 
 

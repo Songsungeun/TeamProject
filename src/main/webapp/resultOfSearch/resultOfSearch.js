@@ -35,14 +35,14 @@ function ajaxSearchValue(searchValue) {
 var searchValue;
 var searchMemberResult;
 var searchBoardResult;
-var temp2;
+var memberPhotoExtract;
 function ajaxSearchResultList() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	
 	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json", 
 			  {"searchValue":searchValue,"searchMemberResult":searchMemberResult,
-   		       "searchBoardResult":searchBoardResult,"temp2":temp2},
+   		       "searchBoardResult":searchBoardResult,"memberPhotoExtract":memberPhotoExtract},
 	  function(obj) {
 	  var result = obj.jsonResult
 	    if (result.state != "success") {
@@ -56,7 +56,7 @@ function ajaxSearchResultList() {
 	  
 	    var nameSearch = "";
 	    var contentsSearch = "";
-	    var contents =""
+	    var photo =""
 	    var data = result.data
 
 	    var template1 = Handlebars.compile($('#searchBoardHandbars').html())
@@ -67,9 +67,7 @@ function ajaxSearchResultList() {
 	  
 	   $("#searchWord").text(data.searchValue);
 	   $(".memberSearchResult").html(nameSearch);
-	   for (var i  in data.temp2) {
-			  var aa = $("#searchPhotoPrint").attr('src',"/TeamProject/upload/" + data.temp2[i])
-		   }
+	   
 	   $(".contentsSearchResult").html(contentsSearch);
 	
 	   

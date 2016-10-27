@@ -26,10 +26,8 @@ public class HoneyAdminController {
   public Object list(
       HttpSession session,
       @RequestParam(defaultValue = "1") int pageNo,
-      @RequestParam(defaultValue = "5") int length,
-      Model model) throws Exception {
+      @RequestParam(defaultValue = "5") int length)throws Exception {
     List<honey_boards>list = honeyAdminService.adminBoardList(session, pageNo, length);
-    model.addAttribute("adminlist",list);
     return JsonResult.success(list);
   }
 
