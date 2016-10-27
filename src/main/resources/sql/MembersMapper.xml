@@ -63,6 +63,12 @@
     where MB_NICK=#{nickName}
   </select>
   
+  <select id = "selectFollowUser" resultMap="memberMap" parameterType="map">
+    select *
+    from honey_flw
+    where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
+  </select>  
+  
   
   <update id="userInfoUpdate">
     update honey_membs set

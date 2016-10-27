@@ -14,4 +14,5 @@ public interface HoneymembersService {
 	public HoneyMembers getUserNumber(String nickName) throws Exception;
 	public List<honey_boards> getBoards(int memberNo) throws Exception;
 	public int followMemberInsert(HoneyMembers follower) throws Exception;
+	public List<HoneyMembers> followChecker(HoneyMembers follower) throws Exception;
 }

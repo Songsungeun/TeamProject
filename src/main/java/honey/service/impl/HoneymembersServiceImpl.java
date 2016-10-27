@@ -80,4 +80,10 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public int followMemberInsert(HoneyMembers follower) throws Exception {
 		return hMembersDao.followInsert(follower);
 	}
+
+	@Override
+	public List<HoneyMembers> followChecker(HoneyMembers follower) throws Exception {
+		List<HoneyMembers> checker = hMembersDao.selectFollowUser(follower);
+		return checker;
+	}
 }

@@ -39,6 +39,7 @@ public class HoneymembersController {
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
+		System.out.println(members.getEmail());
 		try {
 			// 서비스에 있는 메서드를 호출했다.
 			hMembersService.singUpMembers(members);
@@ -200,8 +201,6 @@ public class HoneymembersController {
 			HoneyMembers follower = new HoneyMembers();
 			follower.setFollowMemberNo(loginUser.getMemberNo());
 			follower.setMemberNo(memberNo.getMemberNo());
-			System.out.println(follower.getFollowMemberNo());
-			System.out.println(follower.getMemberNo());
 			try {
 				followResult = hMembersService.followMemberInsert(follower);
 			}catch (Exception e) {
@@ -215,6 +214,40 @@ public class HoneymembersController {
 			return JsonResult.fail();
 		} 
 	}
+
+	@RequestMapping(path="checkingFollow")
+	public Object checkingFollow(HoneyMembers memberNo, HttpSession session) throws Exception {
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			if(loginUser.getEmail() == null) {
+				throw new RuntimeException();
+			}
+			HoneyMembers follower = new HoneyMembers();
+			follower.setFollowMemberNo(loginUser.getMemberNo());
+			follower.setMemberNo(memberNo.getMemberNo());
+			try {
+				List<HoneyMembers> checker = hMembersService.followChecker(follower);
+				System.out.println(checker);
+				System.out.println("size: " + checker.size());
+				if(checker.isEmpty()) {
+					int i = 0;
+					System.out.println("return: " + checker.isEmpty());
+					return JsonResult.fail(i);
+				} else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				return JsonResult.success();
+			}
+
+		} catch (RuntimeException e) {
+			return JsonResult.fail();
+		} 
+
+	}
+
+
+
 
 
 }

@@ -9,13 +9,14 @@ import honey.vo.honey_boards;
 public interface HoneyMembersDao {
   int joinMember(HoneyMembers honeyMembers) throws Exception;
   int unregisteMember(int no) throws Exception;
-  HoneyMembers selectOneByEmailAndPassword(Map<String, Object> paramMap);
-  HoneyMembers selectUserInfo(int no);
-  int userInfoUpdate(HoneyMembers hmember);
-  int changePassword(HoneyMembers hmember);
-  HoneyMembers selectUserNumber(String nickName);
-  List<honey_boards> selectBoards(int memberNo);
+  HoneyMembers selectOneByEmailAndPassword(Map<String, Object> paramMap) throws Exception;
+  HoneyMembers selectUserInfo(int no) throws Exception;
+  int userInfoUpdate(HoneyMembers hmember) throws Exception;
+  int changePassword(HoneyMembers hmember) throws Exception;
+  HoneyMembers selectUserNumber(String nickName) throws Exception;
+  List<honey_boards> selectBoards(int memberNo) throws Exception;
   HoneyMembers extractMemberNum(String value) throws Exception;
-  int followInsert(HoneyMembers follower);
+  int followInsert(HoneyMembers follower) throws Exception;
+  List<HoneyMembers> selectFollowUser(HoneyMembers follower) throws Exception;
 
 }
