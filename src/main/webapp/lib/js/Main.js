@@ -25,7 +25,7 @@ function ajaxBoardList() {
 			ajaxPostComentsList(no)
 			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
 		})
-		$("#btn-primary-Btn").click(function() {
+		$(".btn-primary").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
 			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
