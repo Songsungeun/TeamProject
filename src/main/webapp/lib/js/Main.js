@@ -43,6 +43,40 @@ function ajaxBoardList() {
 //		})
 	})
 }
+function ajaxDetailBoardList() {
+	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			return
+		}
+		var template2 = Handlebars.compile($('#liTemplateText2').html())
+		$(".tabs-1-contents").html(template2(result));
+		$(".titleLink").click(function(event){
+			$("#yourModal").modal();
+			$("html").css({"overflow":"hidden"});
+			var no = $(this).attr("data-no")
+			
+			console.log(no)
+			ajaxLoadBoard(no)
+			ajaxPostComentsList(no)
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
+		})
+		$(".btn-primary").click(function() {
+			$("#yourModal").css({"display":"none"});
+			$("#super_HTML").css({"overflow":"auto"});
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+		})
+		$(".categoryLink").click(function(event){
+			var ctgNo =$(this).attr("data-ctgNo")
+			console.log(ctgNo)
+		})
+		$(".userInfoLink").click(function(event) {
+			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
+		})
+	})
+	
+}
 var comentInfo = 0;
 
 
@@ -68,6 +102,7 @@ function ajaxLoadBoard(no) {
 			$("#linkDesc").text(result.data.urlInfo.description);
 			$("#linkURL").text(result.data.urlInfo.urlAddr);
 			$("#urlImage").html(result.data.urlInfo.image);
+			
 		} else {
 			$("#no").val(result.data.board.no);
 			comentInfo =result.data.board.no;
@@ -80,6 +115,7 @@ function ajaxLoadBoard(no) {
 			$("#post_user_id").text(result.data.board.email);
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
+			
 		}
 		// 이거 지우지마!!!! 회원번호 팔로우할때 쓸려고 넘기는 코드임!!!!
 		// 또지우면 사생결단이다!!
@@ -91,6 +127,46 @@ function ajaxLoadBoard(no) {
 //		location.href = result.data.url;
 //		window.open(result.data.url);
 //		})
+		followLoderFunc(tempUserNo)
+	})
+	
+	
+}
+function ajaxDetailLoadBoard(no) {
+	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
+		var result = obj.jsonResult
+		if (result.state == "fail" || result.state == "error") {
+			alert("조회 실패입니다.")
+			return
+		} else if (result.state == "success"){
+			$("#no2").val(result.data.board.no);
+			$("#userTitle2").text(result.data.board.title);
+			$("#url2").text(result.data.board.url);
+			$("#userDesc2").html(result.data.board.contents);
+			$("#createdDate2").text(result.data.board.createdDate2);
+			$("#writerNick2").text(result.data.board.writerNick);
+			$("#url_location2").html(result.data.board.linkTitle);
+			$("#post_user_id2").text(result.data.board.email);
+			$("#viewCount2").text(result.data.board.viewCount);
+			$("#like2").text(result.data.board.like);
+			$("#linkTitle2").text(result.data.urlInfo.title);
+			$("#linkDesc2").text(result.data.urlInfo.description);
+			$("#linkURL2").text(result.data.urlInfo.urlAddr);
+			$("#urlImage2").html(result.data.urlInfo.image);
+		} else {
+			
+			$("#no2").val(result.data.board.no);
+			$("#userTitle2").text(result.data.board.title);
+			$("#url2").text(result.data.board.url);
+			$("#userDesc2").html(result.data.board.contents);
+			$("#createdDate2").text(result.data.board.createdDate2);
+			$("#writerNick2").text(result.data.board.writerNick);
+			$("#url_location2").html(result.data.board.linkTitle);
+			$("#post_user_id2").text(result.data.board.email);
+			$("#viewCount2").text(result.data.board.viewCount);
+			$("#like2").text(result.data.board.like);
+		}
+		tempUserNo = result.data.board.userNo;
 		followLoderFunc(tempUserNo)
 	})
 }
@@ -131,9 +207,7 @@ function ajaxPostComentsList(no) {
 					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
 					"<div class='coment_info'>" +
 					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
-					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" +
-//					"<textarea class='cmt_conts' id='cmt_area' data-cmtarea='"+ arr[i].cmtNo +"'style='display:none'>" + arr[i].coment + "</textarea>" +
-					"</div>" +
+					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
 					"<div class='coment_ud'>" +
 					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
 					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
@@ -142,17 +216,13 @@ function ajaxPostComentsList(no) {
 					"<a class='cmt_update' type='button' data-update='" + arr[i].cmtNo + "'>수정</a>" +
 					"<a class='cmt_delete' type='button' data-Delete='" + arr[i].cmtNo + 
 					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
-					"</div>" +
-					"</div>" +
-					"</div>"
+					"</div>" + "</div>" + "</div>"
 				} 
 				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
 					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
 					"<div class='coment_info'>" +
 					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
-					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" +
-//					"<textarea class='cmt_conts' id='cmt_area' data-cmtarea='"+ arr[i].cmtNo +"'style='display:none'>" + arr[i].coment + "</textarea>" +
-					"</div>" +
+					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
 					"<div class='coment_ud'>" +
 					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
 					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
@@ -161,12 +231,55 @@ function ajaxPostComentsList(no) {
 					"<a class='cmt_update' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
 					"<a class='cmt_delete' type='button' style='display:none' data-Delete='" + arr[i].cmtNo +
 					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
-					"</div>" +
-					"</div>" +
-					"</div>"
+					"</div>" + "</div>" + "</div>"
 				}
 			}
 		$(".userComment > .cmts_list").html(contents);
+		console.log(result.data.LoginInfo)
+	})
+}
+function ajaxDetailPostComentsList(no) {
+	$.getJSON(serverAddr + "/mainpage/comentList.json?no=" + no, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			return
+		}
+		var contents = ""
+			var arr = result.data.comentList
+			for (var i=0; i < arr.length; i++) {
+				if(result.data.LoginInfo == arr[i].memberNo) {
+					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
+					"<div class='coment_info'>" +
+					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
+					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
+					"<div class='coment_ud'>" +
+					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
+					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
+					"<div class='replyArea'></div>" +
+					"<div class='cmt-btn-wrap'>" +
+					"<a class='cmt_update' type='button' data-update='" + arr[i].cmtNo + "'>수정</a>" +
+					"<a class='cmt_delete' type='button' data-Delete='" + arr[i].cmtNo + 
+					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
+					"</div>" + "</div>" + "</div>"
+				} 
+				if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
+					contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
+					"<div class='coment_info'>" +
+					"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
+					"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
+					"<div class='coment_ud'>" +
+					"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
+					"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
+					"<div class='replyArea'></div>" +
+					"<div class='cmt-btn-wrap'>" +
+					"<a class='cmt_update' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
+					"<a class='cmt_delete' type='button' style='display:none' data-Delete='" + arr[i].cmtNo +
+					"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
+					"</div>" + "</div>" + "</div>"
+				}
+			}
+		$(".userComment > .cmts_list2").html(contents);
 		console.log(result.data.LoginInfo)
 	})
 }
