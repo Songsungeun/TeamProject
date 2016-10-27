@@ -32,15 +32,9 @@ function ajaxBoardList() {
   })
 }
 
-
-$(function() {
-	    $( "#DetailPage_Wrap" ).tabs();
-	 } );
-
-
 function ajaxDeleteBoard(no) {
 	$.getJSON(serverAddr + "/admin/admindelete.json", {
-		no: no}, function(result) {
+		no: no}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("삭제 실패입니다.")
@@ -52,5 +46,9 @@ function ajaxDeleteBoard(no) {
 	})
 }
 
+
+$(function() {
+	    $( "#DetailPage_Wrap" ).tabs();
+	 } );
 
 
