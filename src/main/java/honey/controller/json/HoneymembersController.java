@@ -170,17 +170,20 @@ public class HoneymembersController {
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
 			List<honey_boards> list = hMembersService.getBoards(honeyMember.getMemberNo());
-
+			List<HoneyMembers> followCollector = hMembersService.getFollowers(honeyMember.getMemberNo());
 			int totalViewCount = 0;
+			int totalFollowers = 0;
 			for (honey_boards count : list) {
 				totalViewCount += count.getViewCount();
 			}
-			System.out.println("total "+totalViewCount);
+			
+			System.out.println("????" + followCollector.size());
 
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
 			resultMap.put("boardInfo", list);
 			resultMap.put("totalViewCount",totalViewCount);
+			resultMap.put("totalFollowers",followCollector.size());
 			return JsonResult.success(resultMap);
 		} catch(Exception e) {
 			e.printStackTrace();

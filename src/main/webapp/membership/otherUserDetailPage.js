@@ -40,6 +40,7 @@ function aJaxOtherUserProfileLoder(userInfo) {
 			}
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
+			$("#followers").text(result.data.totalFollowers)
 		},
 		error: function(result) {
 			console.log(result.state)

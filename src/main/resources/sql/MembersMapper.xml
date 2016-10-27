@@ -93,6 +93,14 @@
     where mb_no=#{memberNo}
   </select>
   
+  <select id="selectFollowCount" parameterType="int" resultMap="boardMap">
+    select *
+    from 
+    honey_flw
+    where mb_no=#{memberNo}
+  </select>
+  
+  
 </mapper>
 
 

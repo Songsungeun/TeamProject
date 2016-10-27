@@ -84,4 +84,11 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 		List<HoneyMembers> checker = hMembersDao.selectFollowUser(follower);
 		return checker;
 	}
+
+	@Override
+	public List<HoneyMembers> getFollowers(int memberNo) throws Exception {
+		
+		List<HoneyMembers> followCollector = hMembersDao.selectFollowCount(memberNo);
+		return followCollector;
+	}
 }
