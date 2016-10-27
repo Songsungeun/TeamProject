@@ -21,10 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import honey.dao.HoneyMembersDao;
 import honey.dao.HoneyPhotoDao;
 import honey.dao.HoneySearcherDao;
 import honey.service.HoneymembersService;
 import honey.vo.HoneyMemberPhoto;
+import honey.vo.HoneyMembers;
 import honey.vo.HoneySearchKeyword;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
@@ -36,73 +38,80 @@ import honey.vo.MemberFile;
 // 유지 보수에도 좋지 못할거 같다. 어떤 방법이 있을텐데...
 // 또한 이 객체 역시 디비에 직접적으로 접근할 필요가 없어 따로 서비스 클래스로 분리하지 않았다.
 public class HoneySearchController {
-  @Autowired   HoneySearcherDao searcherDao;
-  @Autowired   HoneyPhotoDao photoDao;
-  @Autowired   HoneymembersService honeymembersService;
+	@Autowired   HoneySearcherDao searcherDao;
+	@Autowired   HoneyPhotoDao photoDao;
+	@Autowired   HoneyMembersDao memberDao;
+	@Autowired   HoneymembersService honeymembersService;
+	
+	@RequestMapping("searchInfo")
+	public Object searchInfo(HoneySearchKeyword searchInfo, HttpServletResponse response)
+			throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException,
+			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+		String searchValue = URLEncoder.encode(searchInfo.getSearchValue(), "UTF-8");
+		// java에서 제공하는 url 인코더를 사용하여 문자열을 인코딩하여 쿠키에 저장한다.
+		
+		try {
+			Cookie searchInfoCookie = new Cookie("searchInfo", searchValue);
+			// 쿠키의 생명주기?? 살아있는 시간?? 설정하는부분
+			if (searchValue == null) {
+				searchInfoCookie.setMaxAge(0);
+			} else {
+				searchInfoCookie.setMaxAge(60 * 60 * 24 * 7);
+				// 모든 경로에서 접근 가능
+				searchInfoCookie.setPath("/");
+			}
+			response.addCookie(searchInfoCookie);
+			return JsonResult.success(searchInfoCookie);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.error(e.getMessage());
+		}
+	}
 
-  @RequestMapping("searchInfo")
-  public Object searchInfo(HoneySearchKeyword searchInfo, HttpServletResponse response)
-      throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException,
-      InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-    String searchValue = URLEncoder.encode(searchInfo.getSearchValue(), "UTF-8");
-    // java에서 제공하는 url 인코더를 사용하여 문자열을 인코딩하여 쿠키에 저장한다.
-    try {
-      Cookie searchInfoCookie = new Cookie("searchInfo", searchValue);
-      // 쿠키의 생명주기?? 살아있는 시간?? 설정하는부분
-      if (searchValue == null) {
-        searchInfoCookie.setMaxAge(0);
-      } else {
-        searchInfoCookie.setMaxAge(60 * 60 * 24 * 7);
-        // 모든 경로에서 접근 가능
-        searchInfoCookie.setPath("/");
-      }
-      response.addCookie(searchInfoCookie);
-      return JsonResult.success(searchInfoCookie);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return JsonResult.error(e.getMessage());
-    }
-  }
+	@RequestMapping("searcher")
+	public Object searchResult(@CookieValue(name = "searchInfo") String searchInfo) throws Exception {
+		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8");
+		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
 
-  @RequestMapping("searcher")
-  public Object searchResult(@CookieValue(name = "searchInfo") String searchInfo) throws Exception {
-    String searchfucker = URLDecoder.decode(searchInfo, "UTF-8");
-    // url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
+		// 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
+		List<HoneySearchKeyword> searchBoardResult = searcherDao.selectFromBoard(searchfucker);
+		System.out.println(searcherDao.selectFromBoard(searchfucker));
+		List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
+		System.out.println(searcherDao.selectFromMembers(searchfucker));
+		
+		String[] temp = new String[searchMemberResult.size()];
+		System.out.println("size= " + searchMemberResult.size());
+		System.out.println("arraysize= " + temp.length);
+		System.out.println("get(0)" + searchMemberResult.get(0));
+		System.out.println("get(1)" + searchMemberResult.get(1));
 
-    // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
-    List<HoneySearchKeyword> searchBoardResult = searcherDao.selectFromBoard(searchfucker);
-    System.out.println(searcherDao.selectFromBoard(searchfucker));
-    List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
-    System.out.println(searcherDao.selectFromMembers(searchfucker));
+		List<HoneyMembers> memberEmailExtract = new ArrayList<>();
+		List<HoneyMemberPhoto> memberNumberExtract = new ArrayList<>();
+		MemberFile memberFile = new MemberFile();
 
-    String[] temp = new String[searchMemberResult.size()];
-    List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
-    List<HoneyMemberPhoto> memberNumberExtract = new ArrayList<>();
-    MemberFile memberFile = new MemberFile();
-    
-    try {
-    for (int i = 0; i < temp.length; i++) {
-      temp[i] = searchMemberResult.get(i).getEmail();
-      System.out.println("temp: " + temp[i] + i);
+		try {
+			for (int i = 0; i < temp.length; i++) {
+				temp[i] = searchMemberResult.get(i).getEmail();
+				System.out.println("temp: " + temp[i] + i);
+				
+				memberEmailExtract.add(memberDao.extractMemberNum(temp[i])); 
+				System.out.println(memberEmailExtract +"a"+ i);
 
-      memberEmailExtract = photoDao.extractMemberNum((String)temp[i]); 
-      System.out.println(memberEmailExtract +"a"+ i);
-      
-      memberFile = new MemberFile();
-      memberFile.setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
-      System.out.println(memberFile);
-    }
-  
-        HashMap<String, Object> searchData = new HashMap<>();
-        searchData.put("memberFile", memberFile);
-        searchData.put("searchMemberResult", searchMemberResult);
-        searchData.put("searchBoardResult", searchBoardResult);
-        searchData.put("searchValue", searchfucker);
-        return JsonResult.success(searchData);
-      } catch (Exception e) {
-        e.printStackTrace();
-        return JsonResult.fail(e.getMessage());
-      }
-    }
+				memberFile = new MemberFile();
+				memberFile.setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
+				System.out.println(memberFile);
+			}
 
-  }
+			HashMap<String, Object> searchData = new HashMap<>();
+			searchData.put("memberFile", memberFile);
+			searchData.put("searchMemberResult", searchMemberResult);
+			searchData.put("searchBoardResult", searchBoardResult);
+			searchData.put("searchValue", searchfucker);
+			return JsonResult.success(searchData);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+	}
+
+}

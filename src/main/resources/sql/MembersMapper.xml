@@ -78,6 +78,10 @@
     where mb_no=#{memberNo}
   </select>
   
+  <select id="extractMemberNum" resultMap="memberMap" parameterType="String">
+select email, mb_no from honey_membs
+where email = #{email}
+  </select>
 </mapper>
 
 
