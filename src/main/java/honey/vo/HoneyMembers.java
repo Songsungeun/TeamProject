@@ -2,19 +2,31 @@ package honey.vo;
 
 public class HoneyMembers {
   protected int memberNo;
+  protected int followMemberNo;
   protected String userName;
   protected String email;
   protected String nickname;
   protected String password;
   protected String phone;
   protected String userBirthDay;
+  
   public int getMemberNo() {
     return memberNo;
   }
   public void setMemberNo(int memberNo) {
     this.memberNo = memberNo;
   }
-  public String getUserName() {
+  
+  
+  
+  
+  public int getFollowMemberNo() {
+	return followMemberNo;
+}
+public void setFollowMemberNo(int followMemberNo) {
+	this.followMemberNo = followMemberNo;
+}
+public String getUserName() {
     return userName;
   }
   public void setUserName(String userName) {

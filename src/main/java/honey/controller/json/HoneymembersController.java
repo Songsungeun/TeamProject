@@ -189,7 +189,28 @@ public class HoneymembersController {
 			return JsonResult.fail();
 		}
 	}
-
+	@RequestMapping(path="otherUserFollow")
+	public Object otherUserFollow(HoneyMembers memberNo, HttpSession session) {
+		int followResult = 0;
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			HoneyMembers follower = new HoneyMembers();
+			follower.setFollowMemberNo(loginUser.getMemberNo());
+			follower.setMemberNo(memberNo.getMemberNo());
+			System.out.println(follower.getFollowMemberNo());
+			System.out.println(follower.getMemberNo());
+			followResult = hMembersService.followMemberInsert(follower);
+			System.out.println(followResult);
+			// db 테이블 컬럼명이 mb_no, mb_no2 로 지어져 있는데
+			// mb_no를 게시글 작성자 번호로, mb_no2를 로그인한 회원 번호로 인서트 할 것이다.
+			return JsonResult.success();
+		} catch (Exception e) {
+			System.out.println(followResult);
+			e.printStackTrace();
+			return JsonResult.fail();
+		}
+		
+	}
 
 
 }

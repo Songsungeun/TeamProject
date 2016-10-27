@@ -81,6 +81,9 @@ function ajaxLoadBoard(no) {
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
 		}
+		// 이거 지우지마!!!! 회원번호 팔로우할때 쓸려고 넘기는 코드임!!!!
+		// 또지우면 사생결단이다!!
+		tempUserNo = result.data.board.userNo;
 		console.log(result.data.board.contents);
 //		$(".post_url > #url").click(function(event) {
 //		console.log("url 눌림");

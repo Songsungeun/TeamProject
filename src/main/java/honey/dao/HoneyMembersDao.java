@@ -16,5 +16,6 @@ public interface HoneyMembersDao {
   HoneyMembers selectUserNumber(String nickName);
   List<honey_boards> selectBoards(int memberNo);
   HoneyMembers extractMemberNum(String value) throws Exception;
+  int followInsert(HoneyMembers follower);
 
 }

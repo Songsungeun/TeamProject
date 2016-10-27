@@ -75,4 +75,9 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 			return null;
 		}
 	}
+
+	@Override
+	public int followMemberInsert(HoneyMembers follower) throws Exception {
+		return hMembersDao.followInsert(follower);
+	}
 }

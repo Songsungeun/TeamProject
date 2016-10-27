@@ -5,6 +5,7 @@
 <mapper namespace="honey.dao.HoneyMembersDao">
   <resultMap type="HoneyMembers" id="memberMap">
     <id column="MB_NO" property="memberNo"/> 
+    <id column="MB_NO2" property="followMemberNo"/>
     <result column="EMAIL" property="email"/>
     <result column="MB_NICK" property="nickname"/>
     <result column="MB_NM" property="userName"/>
@@ -12,6 +13,7 @@
     <result column="BIRTH" property="userBirthDay"/>
     <result column="PWD" property="password"/>
   </resultMap>
+  
   <resultMap type="honey_boards" id="boardMap">
     <id column="BD_NO" property="no"/> 
     <result column="MB_NO" property="userNo"/>
@@ -30,6 +32,13 @@
     insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
     values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
   </insert>
+  
+  <insert id="followInsert" parameterType="HoneyMembers" >
+    insert into honey_flw(mb_no, mb_no2)
+    values(#{memberNo}, #{followMemberNo})
+  </insert>
+  
+  
   
   <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
     select MB_NO, PWD, EMAIL,  MB_NICK, TEL, MB_NM
@@ -78,10 +87,6 @@
     where mb_no=#{memberNo}
   </select>
   
-  <select id="extractMemberNum" resultMap="memberMap" parameterType="String">
-select email, mb_no from honey_membs
-where email = #{email}
-  </select>
 </mapper>
 
 
