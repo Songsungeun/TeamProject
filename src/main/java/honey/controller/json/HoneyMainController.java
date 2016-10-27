@@ -169,16 +169,6 @@ public class HoneyMainController {
 		mainService.getIncreaseViewCount(no);
 		return JsonResult.success(increaseViewCount(no));
 	}
-	@RequestMapping("increaseLike")
-	public Object increase_Like(int no) throws Exception {
-		mainService.increase_Like(no);
-		return JsonResult.success(increase_Like(no));
-	}
-	@RequestMapping("decreaseLike")
-	public Object decrease_Like(int no) throws Exception {
-		mainService.decrease_Like(no);
-		return JsonResult.success(decrease_Like(no));
-	}
 	@RequestMapping("delete")
 	public Object delete(int no) throws Exception {
 		try {
