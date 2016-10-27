@@ -3,6 +3,7 @@ package honey.dao;
 import java.util.List;
 import java.util.Map;
 
+import honey.vo.HoneyMembers;
 import honey.vo.HoneySearchKeyword;
 
 public interface HoneySearcherDao {
