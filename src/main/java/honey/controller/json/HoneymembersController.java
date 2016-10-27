@@ -176,9 +176,6 @@ public class HoneymembersController {
 			for (honey_boards count : list) {
 				totalViewCount += count.getViewCount();
 			}
-			
-			System.out.println("????" + followCollector.size());
-
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
 			resultMap.put("boardInfo", list);
