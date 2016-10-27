@@ -186,7 +186,7 @@ body {
 
 .post_photoWrap {
   width: 314px;
-  max-height: 260px;
+  height: 260px;
   margin: 0 0 8px 0;
   overflow: hidden;
   position: relative;

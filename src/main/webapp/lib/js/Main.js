@@ -23,10 +23,12 @@ function ajaxBoardList() {
 			console.log(no)
 			ajaxLoadBoard(no)
 			ajaxPostComentsList(no)
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
 		})
 		$("#btn-primary-Btn").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
 			var ctgNo =$(this).attr("data-ctgNo")
@@ -304,6 +306,7 @@ window.onclick = function(event) {
 	if (event.target == modal) {
 		modal.style.display = "none";
 		htmlTag.style.overflow = "auto";
+		window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
 	}
 
 

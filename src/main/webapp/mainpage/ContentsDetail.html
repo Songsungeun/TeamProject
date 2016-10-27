@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html id="super_HTML">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
+
+<title>HoneyTip ContentDetail</title>
+</head>
+<body>
+  <div id="includedContent"></div>
+  <div class="main_section">
+    <div class="mainpage_wrap">
+    
+      <div id="mainpage_postcontainer" class="mainpage_Botcontainer">
+        <div id="tabs" class="all_post_wrap">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="owner">
+                    <a href="#" id="followBtn" class="button user_button">Follow</a> 
+                    <a href="#" class="button user_button">Like</a> 
+                    <a class="owner_img"
+                      href="#"> <img alt="jibon"
+                      src="/TeamProject/mainpage/mainpage_images/ProfileImage.jpg">
+                    </a>
+                    <p class="owner_name">
+                      <a href="#" id="writerNick">UserName</a>
+                    </p>
+                    <p class="owner_when" id="createdDate">등록일</p>
+                  </div>
+
+                  <div class="userWrite">
+                    <div class="comment" id="419">
+                      <h1 id="userTitle"
+                        style="font-size: 17px; font-weight: bold;"></h1>
+                      <div id="userDesc">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="holder">
+                    <a class="image" id="urlImage" href="#" title="SAM_3191.JPG"> 
+                    </a>
+                  </div>
+
+                  <div class="linkText">
+                    <h1 class="title" id="linkTitle" style="font-size: 15px; font-weight: bold;"></h1>
+                    <p class="desc" id="linkDesc"></p>
+                    <p class="urlAddr" id="linkURL"></p>
+                  </div>
+
+                  <form class="userComment" method="post" action="#">
+                    <textarea placeholder="Add a comment..." maxlength="255"
+                      id="pcomment"></textarea>
+                    <button id="insertCmt" type="button" class="button"
+                      >Comment</button>
+                      <div class="cmts_list"></div>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"
+                    data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script type='text/javascript' src="../lib/js/common.js"></script>
+  <script type='text/javascript' src="../lib/js/Main.js"></script>
+  <script type="text/javascript" src="../membership/followList.js"></script>
+<!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
+<script>
+if (location.search.startsWith("?")) { // 예) ?no=xxx
+    var no = location.search.split("=")[1];
+    ajaxLoadBoard(no)
+    ajaxPostComentsList(no)
+    $(".my-new").css("display", "none")
+} else {
+    $(".my-view").css("display", "none")
+}
+</script>
+</body>
+</html>
