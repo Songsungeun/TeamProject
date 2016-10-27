@@ -424,6 +424,10 @@ body {
   margin-left: 10px;
 }
 
+.post_contsWrap img {
+	display: none;
+}
+
 /* coments */
 
 /* .cmts_list { */
