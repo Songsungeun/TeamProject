@@ -18,5 +18,6 @@ public interface HoneyMembersDao {
   int followInsert(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowUser(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowCount(int memberNo) throws Exception;
+  int disconnector(HoneyMembers follower) throws Exception;
 
 }

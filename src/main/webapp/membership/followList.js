@@ -24,6 +24,24 @@ function checkingFollow(userNo) {
 		})
 	}
 
+function ajaxFollowDisconnect(userNo) {
+	$.ajax({
+		url:serverAddr +"/mainpage/followDisconnect.json",
+		type: "POST",
+		dataType:"json",
+		data: {memberNo:userNo},
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(obj) {
+			var result = obj.jsonResult
+			if (result.state == "success") {
+				$('#followBtn').css("color", "black")
+			} else {
+				$('#followBtn').css("color", "red")
+			}
+		}
+		})
+	}
+
 	function aJaxFollowUser(userNo) {
 		$.ajax({
 			url:serverAddr +"/mainpage/otherUserFollow.json",
@@ -34,11 +52,16 @@ function checkingFollow(userNo) {
 			success: function(obj) {
 				var result = obj.jsonResult
 				if (result.state != "success" && result.data == 0){
-					alert("이미 팔로우중인 회원입니다.")
+					 var confirmResult = confirm("follow를 취소하시겠습니까?")
+					 if (confirmResult == true) {
+						 ajaxFollowDisconnect(userNo);
+					 }
 					return
 				} else if (result.state != "success" && result.data == null){
 					alert("로그인후 이용해 주세요!")
 					return
+				} else {
+					$('#followBtn').css("color", "red")
 				}
 			},
 			error: function(result) {

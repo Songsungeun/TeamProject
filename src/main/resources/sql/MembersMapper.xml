@@ -46,6 +46,11 @@
     where EMAIL=#{email} and PWD=password(#{password}) 
   </select>
   
+  <delete id="disconnector" parameterType="int">
+  delete from honey_flw
+  where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
+  </delete>
+  
   <delete id="unregisteMember" parameterType="int">
   delete from honey_membs
   where MB_NO=#{value}

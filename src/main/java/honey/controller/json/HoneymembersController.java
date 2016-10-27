@@ -242,6 +242,22 @@ public class HoneymembersController {
 
 
 
+	@RequestMapping(path="followDisconnect")
+	public Object followDisconnect(HoneyMembers memberNo, HttpSession session) throws Exception {
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			HoneyMembers follower = new HoneyMembers();
+			follower.setFollowMemberNo(loginUser.getMemberNo());
+			follower.setMemberNo(memberNo.getMemberNo());
+			hMembersService.followDisconnector(follower);
+			return JsonResult.success();
+		} catch (RuntimeException e) {
+			return JsonResult.fail();
+		} 
+
+	}
+
+
 
 
 }

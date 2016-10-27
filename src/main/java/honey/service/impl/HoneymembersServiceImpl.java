@@ -91,4 +91,10 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 		List<HoneyMembers> followCollector = hMembersDao.selectFollowCount(memberNo);
 		return followCollector;
 	}
+
+	@Override
+	public void followDisconnector(HoneyMembers follower) throws Exception {
+		hMembersDao.disconnector(follower);
+		
+	}
 }
