@@ -62,7 +62,6 @@ public class DefaultHoneyMainService implements HoneyMainService {
 			for (i = 0; i < list.size(); i++) {
 				i = list.size();
 			}
-			System.out.println(i);
 			memberFile = list.get(i-2);
 			return memberFile.getFilename();
 			} catch (Exception e) {

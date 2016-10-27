@@ -37,7 +37,7 @@ public class HoneyMainController {
 		List<UrlInfo> urlList = mainService.getURLList();
 
 		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
+			
 			for (int j = 0; j < urlList.size(); j++) {
 				if (list.get(i).getNo() == urlList.get(j).getBd_No()) {
 					list.get(i).setLinkTitle(urlList.get(j).getTitle());
@@ -45,9 +45,29 @@ public class HoneyMainController {
 					list.get(i).setLinkImage(urlList.get(j).getImage());
 					list.get(i).setLinkURL(urlList.get(j).getUrlAddr());
 					list.get(i).setLinkDetailUrl(urlList.get(j).getDetailUrl());
+					System.out.println("link있는애: " + list.get(i).getLinkImage());
 				}
 				String userPhoto = mainService.getPhoto(Integer.parseInt(list.get(i).getUserNo()));
 				list.get(i).setUserProfilePath(userPhoto);
+			}
+			//String[] imageHref = list.get(i).getLinkDesc().split("\"");
+			System.out.println("번호: " + i + "getLinkImage: " + list.get(i).getLinkImage());
+			if (list.get(i).getLinkImage() == null) {
+				if (list.get(i).getContents() != null) {
+					boolean image = list.get(i).getContents().contains("img src");
+					System.out.println("boolean: " + image);
+					if (image) {
+						String[] temp = list.get(i).getContents().split("src=");
+						String[] temp1 = temp[1].split(" ");
+						String[] temp2 = temp1[0].split("\"");
+						list.get(i).setLinkImage(temp2[1]);
+						System.out.println("temp1[0] =" + temp1[0]);
+						System.out.println("temp1[0] =" + temp2[1]);
+						System.out.println("이거: " + list.get(i).getLinkImage());
+					} else {
+						list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
+					}
+				}
 			}
 			
 		}
