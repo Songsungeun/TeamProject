@@ -62,7 +62,6 @@ function ajaxUserStatusUpdate(userStatusChangeInfo) {
 
 
 function ajaxPasswordChange(newPassword) {
-	console.log(newPassword);
 	$.post("changePassword.json", newPassword, function(obj) {
 		var result=obj.jsonResult;
 		if(result.state !="success") {
@@ -78,7 +77,6 @@ function ajaxPasswordChange(newPassword) {
 function ajaxUserProfileFileLoder() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
-	console.log("hi?")
 	$.getJSON(serverAddr+"/" + locationPath[2] + "/userProfileFileLoder.json", function(obj) {
 		var result=obj.jsonResult
 	if (result.state != "success") {

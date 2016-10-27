@@ -39,7 +39,6 @@ public class HoneymembersController {
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
-		System.out.println(members.getEmail());
 		try {
 			// 서비스에 있는 메서드를 호출했다.
 			hMembersService.singUpMembers(members);
@@ -156,7 +155,6 @@ public class HoneymembersController {
 			HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
-			System.out.println(memberFile.getFilename());
 			return JsonResult.success(memberFile.getFilename());
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -171,7 +169,6 @@ public class HoneymembersController {
 			HoneyMembers honeyMember = hMembersService.getUserNumber(userInfo.getNickname());
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
-			System.out.println(memberFile.getFilename());
 			List<honey_boards> list = hMembersService.getBoards(honeyMember.getMemberNo());
 
 			int totalViewCount = 0;
@@ -192,7 +189,6 @@ public class HoneymembersController {
 	}
 	@RequestMapping(path="otherUserFollow")
 	public Object otherUserFollow(HoneyMembers memberNo, HttpSession session) throws Exception {
-		int followResult = 0;
 		try {
 			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
 			if(loginUser.getEmail() == null) {
@@ -202,7 +198,7 @@ public class HoneymembersController {
 			follower.setFollowMemberNo(loginUser.getMemberNo());
 			follower.setMemberNo(memberNo.getMemberNo());
 			try {
-				followResult = hMembersService.followMemberInsert(follower);
+				hMembersService.followMemberInsert(follower);
 			}catch (Exception e) {
 				int i = 0;
 				return JsonResult.fail(i);
@@ -227,8 +223,6 @@ public class HoneymembersController {
 			follower.setMemberNo(memberNo.getMemberNo());
 			try {
 				List<HoneyMembers> checker = hMembersService.followChecker(follower);
-				System.out.println(checker);
-				System.out.println("size: " + checker.size());
 				if(checker.isEmpty()) {
 					int i = 0;
 					System.out.println("return: " + checker.isEmpty());
