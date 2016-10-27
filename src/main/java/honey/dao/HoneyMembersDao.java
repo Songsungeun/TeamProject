@@ -15,7 +15,6 @@ public interface HoneyMembersDao {
   int changePassword(HoneyMembers hmember) throws Exception;
   HoneyMembers selectUserNumber(String nickName) throws Exception;
   List<honey_boards> selectBoards(int memberNo) throws Exception;
-  HoneyMembers extractMemberNum(String value) throws Exception;
   int followInsert(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowUser(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowCount(int memberNo) throws Exception;

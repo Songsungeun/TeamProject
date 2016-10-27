@@ -34,7 +34,12 @@ public class HoneyAdminController {
   }
 
   @RequestMapping(path = "admindelete")
-  public void delete(int no) throws Exception {
-    honeyAdminService.adminBoardDelete(no); 
+  public Object delete(int no) throws Exception {
+    try {
+    honeyAdminService.adminBoardDelete(no);
+    return JsonResult.success();
+  }  catch (Exception e) {
+    return JsonResult.fail(e.getMessage());
+  }
   }
 }

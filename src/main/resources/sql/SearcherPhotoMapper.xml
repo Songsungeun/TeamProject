@@ -15,4 +15,9 @@ select MB_NO, MBP_PATH from honey_membs_photos
 where mb_no = #{mb_no}
   </select>
 
+  <select id="extractMemberNum" resultMap="returnMap" parameterType="String">
+select email, mb_no from honey_membs
+where email = #{email}
+  </select>
+
 </mapper>

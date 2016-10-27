@@ -21,12 +21,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import honey.dao.HoneyMembersDao;
 import honey.dao.HoneyPhotoDao;
 import honey.dao.HoneySearcherDao;
 import honey.service.HoneymembersService;
 import honey.vo.HoneyMemberPhoto;
-import honey.vo.HoneyMembers;
 import honey.vo.HoneySearchKeyword;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
@@ -40,7 +38,6 @@ import honey.vo.MemberFile;
 public class HoneySearchController {
 	@Autowired   HoneySearcherDao searcherDao;
 	@Autowired   HoneyPhotoDao photoDao;
-	@Autowired   HoneyMembersDao memberDao;
 	@Autowired   HoneymembersService honeymembersService;
 	
 	@RequestMapping("searchInfo")
@@ -80,30 +77,21 @@ public class HoneySearchController {
 		System.out.println(searcherDao.selectFromMembers(searchfucker));
 		
 		String[] temp = new String[searchMemberResult.size()];
-		System.out.println("size= " + searchMemberResult.size());
-		System.out.println("arraysize= " + temp.length);
-		System.out.println("get(0)" + searchMemberResult.get(0));
-		System.out.println("get(1)" + searchMemberResult.get(1));
-
-		List<HoneyMembers> memberEmailExtract = new ArrayList<>();
-		List<HoneyMemberPhoto> memberNumberExtract = new ArrayList<>();
 		MemberFile memberFile = new MemberFile();
+		
+		List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
+    List<MemberFile> memberPhotoExtract= new ArrayList<>();
 
 		try {
 			for (int i = 0; i < temp.length; i++) {
 				temp[i] = searchMemberResult.get(i).getEmail();
-				System.out.println("temp: " + temp[i] + i);
-				
-				memberEmailExtract.add(memberDao.extractMemberNum(temp[i])); 
-				System.out.println(memberEmailExtract +"a"+ i);
-
-				memberFile = new MemberFile();
+				memberEmailExtract.add(photoDao.extractMemberNum(temp[i])); 
 				memberFile.setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
-				System.out.println(memberFile);
-			}
-
-			HashMap<String, Object> searchData = new HashMap<>();
-			searchData.put("memberFile", memberFile);
+				memberPhotoExtract.add(memberFile);
+	   }
+			
+		 HashMap<String, Object> searchData = new HashMap<>();
+	    searchData.put("memberPhotoExtract", memberPhotoExtract);
 			searchData.put("searchMemberResult", searchMemberResult);
 			searchData.put("searchBoardResult", searchBoardResult);
 			searchData.put("searchValue", searchfucker);

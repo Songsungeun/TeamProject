@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
@@ -16,7 +17,7 @@ function ajaxSearchValue(searchValue) {
 		url:serverAddr+"/" + locationPath[2] + "/searchInfo.json",
 		type: "GET",
 		dataType: "json",
-		data: searchInfo,
+		data: searchInfo, 
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		success: function(obj) {
 			var result = obj.jsonResult
@@ -34,12 +35,14 @@ function ajaxSearchValue(searchValue) {
 var searchValue;
 var searchMemberResult;
 var searchBoardResult;
+var temp2;
 function ajaxSearchResultList() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	
 	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json", 
-			  {"searchValue":searchValue,"searchMemberResult":searchMemberResult, "searchBoardResult":searchBoardResult},
+			  {"searchValue":searchValue,"searchMemberResult":searchMemberResult,
+   		       "searchBoardResult":searchBoardResult,"temp2":temp2},
 	  function(obj) {
 	  var result = obj.jsonResult
 	    if (result.state != "success") {
@@ -55,19 +58,21 @@ function ajaxSearchResultList() {
 	    var contentsSearch = "";
 	    var contents =""
 	    var data = result.data
-	    
-	    for (var i in data) {
-	    	contents += "<span id = 'searchState'>" + "검색어" + ":"+data[i] + "</span>" 
-	    }
-	    console.log(contents)
+
 	    var template1 = Handlebars.compile($('#searchBoardHandbars').html())
 	    var template2 = Handlebars.compile($('#searchMemberHandlebars').html())
 	
-	        contentsSearch += template1(data)
-	        nameSearch += template2(data)
+	    contentsSearch += template1(data)
+	    nameSearch += template2(data)
+	  
 	   $("#searchWord").text(data.searchValue);
-	   $(".contentsSearchResult").html(contentsSearch);
 	   $(".memberSearchResult").html(nameSearch);
+	   for (var i  in data.temp2) {
+			  var aa = $("#searchPhotoPrint").attr('src',"/TeamProject/upload/" + data.temp2[i])
+		   }
+	   $(".contentsSearchResult").html(contentsSearch);
+	
 	   
-	})
-}
+	})	   
+	
+}	
