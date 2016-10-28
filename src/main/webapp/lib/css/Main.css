@@ -484,14 +484,14 @@ body {
 /*   overflow: hidden; */
 /* } */
 
-.modal-dialog {
+#modalDialog {
   padding-top: 30px;
   height: 100%;
   width: 660px;
   border: 1px solid black;
 }
 
-.modal-body {
+#modalBody {
   height: 100%;
 }
 

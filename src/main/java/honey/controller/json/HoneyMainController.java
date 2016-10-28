@@ -38,6 +38,11 @@ public class HoneyMainController {
 
 		try {
 			List<HoneyMain> settingUrlBoard = SetImage.setImage(list, urlList);
+			for (int i = 0; i < settingUrlBoard.size(); i++) {
+				String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
+				list.get(i).setUserProfilePath(userPhoto);
+			}
+			
 			return JsonResult.success(settingUrlBoard);
 		} catch (Exception e) {
 			return JsonResult.fail();

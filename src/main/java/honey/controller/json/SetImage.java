@@ -6,6 +6,7 @@ import honey.vo.HoneyMain;
 import honey.vo.UrlInfo;
 
 public class SetImage {
+	
 	public static List<HoneyMain> setImage(List<HoneyMain> honeyMainList, List<UrlInfo> urlInfoList) {
 
 		for (int i = 0; i < honeyMainList.size(); i++) {
@@ -42,4 +43,5 @@ public class SetImage {
 		}
 		return honeyMainList;
 	}
+	
 }
