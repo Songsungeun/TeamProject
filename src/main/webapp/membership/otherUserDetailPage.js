@@ -1,6 +1,3 @@
-/**
- * 
- */
 var userInfo = getParams();
 var userNick = userInfo.nick
 $("#userNick").text(userNick);
@@ -24,7 +21,7 @@ function getParams() {
 aJaxOtherUserProfileLoder(userInfo);
 
 function aJaxOtherUserProfileLoder(userInfo) {
-	
+
 	$.ajax({
 		url:serverAddr+"/membership/otherUserInfoDetail.json",
 		type: "GET",
@@ -38,39 +35,25 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				alert("조회 실패!")
 				return
 			}
+			
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#followers").text(result.data.totalFollowers)
 			
-			var template1 = Handlebars.compile($('#liTemplateText').html())
-		$(".tabs-1-contents").html(template1(result));
-		$(".titleLink").click(function(event){
-			$("#yourModal").modal();
-			$("html").css({"overflow":"hidden"});
-			 var no = $(this).attr("data-no")
-			console.log(boardInfo.no)
-			ajaxLoadBoard(boardInfo.no);
-			ajaxPostComentsList(boardInfo.no)
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
-		})
-		$(".btn-primary").click(function() {
-			$("#yourModal").css({"display":"none"});
-			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
-		})
-		$(".categoryLink").click(function(event){
-			var ctgNo =$(this).attr("data-ctgNo")
-			console.log(ctgNo)
-		})
-		$(".userInfoLink").click(function(event) {
-			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
-		})
+			var source = $("#liTemplateText12").html();
+			var template3 = Handlebars.compile(source);
+			var data1 = result.data.boardInfo
+//			var boards = template2(data);
+			$("#post_wrapper").html(template3(data1));
+			console.log("fasdfasdf")
+				
 		},
 		error: function(result) {
 			console.log(result.state)
 		}
 	})
 }
+
 
 
 
