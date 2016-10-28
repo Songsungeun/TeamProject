@@ -204,6 +204,7 @@ body {
 .post_contsWrap {
   min-height: 80px;
   margin-bottom: 1px;
+  text-overflow: hidden;
 }
 
 .post_photoWrap img {
@@ -237,8 +238,13 @@ body {
   overflow: hidden;
   white-space: pre-line;
   cursor: pointer;
+  text-overflow: ellipsis;
 }
 
+.each_post_contents p, div, font {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .post_contsWrap:hover {
   text-decoration: none;
 }
@@ -484,7 +490,6 @@ body {
   padding-top: 30px;
   height: 100%;
   width: 660px;
-  border: 1px solid black;
 }
 
 .modal-content {
