@@ -34,79 +34,186 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
-#HoneyAdmin_Wrap {
-  margin:0; 
-  padding:0; 
-  padding-top: 50px;
-  height: 630px;
- }
 
- #AdminSection {
-  width  : 1024px;
-  height : 100%;
-  margin : 0 auto;
+.topSection {
+  position: absolute;
+  margin-top: 70px;
+  padding: 0px auto;
+  width: 1200px;
+  hight: 2000px;
 }
 
-#Left_Menu {
-  position: fixed; 
-  width: 100px;
-  height: 100%;
+.userInfocontainer {
+  width: 990px;
+  height: 155px;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.userProfilePhotosContainer {
+  width: 152px;
+  height: 152px;
+  float: left;
+}
+
+#userPhoto { 
+  border-radius: 10px;
+  border: #ebebeb 1px solid;
+}
+
+.userNickNameContainer {
+  margin-left: 170px;
+  line-height: 40px;
+}
+
+#userNickName {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #4c4c4c;
+}
+
+.userBoardInfoContainer {
+  float: right;
+  width: 138px;
+  color: #999;
+  height: 150px;
+}
+
+.received {
+  font-family: "Spoqa Han Sans";
+  font-size: 13px;
+  line-height: 1.7;
+  border-bottom: #ebebeb 1px solid;
+}
+
+.views {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.likes {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.followers {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.text {
+  font-size: 14px;
+}
+
+.numbering {
+  float: right;
+  font-size: 16px;
+  font-family: "Spoqa Han Sans";
+}
+
+.contentsSection {
+  position: absolute;
+  width: 100%;
+  height:1000px;
+  margin-top: 271px;
+  border-top: #f1f1f1 1px solid;
+  background-color: #f1f1f1;
+}
+
+#centerContents{
+    background-color: white;
+    margin: auto;
+    padding-top: 7px;
+}
+#centerContentsWrap{
+background: white;
+    height: 40px;
+    width: 1024px;
+    margin: auto;
+    }
+
+.rightBar{
+    width: 105px;
+    height: 29px;
+    left: 10px;
+    border-right: #ffdcdc 1px solid;
+    border-top-width: 8px;
+}
+
+.conterMenuBtn {
+    font-size: 16px;
+    font-family: "Spoqa Han Sans";
+    color: #999;
+    padding-top: 5px;
 }
 
  #admin_detail{
-  position: relative;
-  width: 900px;
-  height : 453px;
-  top:-1px;
-  left:103px;
+    position: relative;
+    width: 1280px;
+    margin:auto;
 }  
 
-#amBtn1 {
- padding: 5px 14px 5px 14px;
- left : 155px;
-}
-
-#amBtn2 {
- padding: 5px 20px 5px 20px;
- left : 155px;
- top:300px; 
-}
-
- #userNickNameInfo {
- text-align: center;
- font-size: 15px;
-}  
 
 </style>
 </head>
 
-<body style = "background-color: #f3f4f5;">
+<body>
   <header>
    <div id = "includedContent"></div>
   </header>
     
-  <section id = "HoneyAdmin_Wrap">
   
-  <div id = "AdminSection">
-    <div id = "Center_Menu">
-     <div id = "Left_Menu">
-       <img id= "userPhoto" src="" width="100px">
-        <div id ="userNickNameInfo"></div>
-        <div>
-           <button type="button" id="amBtn1" class="btn btn-default">보관소 관리</button><br>
-           <button type="button" id="amBtn2" class="btn btn-default">알림 관리</button>
-           </div>
-     </div>
-         <div id="admin_detail">
-          <ol>
-            <li>
-            </li>
-          </ol>
-         </div>
+    <div class="topSection">
+    <div class="userInfocontainer">
+      <div class="userProfilePhotosContainer">
+        <img id="userPhoto" width="150px" height="150px" src="">
+      </div>
+      <div class="userBoardInfoContainer">
+        <div class="received">
+          <p>RECEIVED</p>
+        </div>
+        <div class="views">
+          <span class="text">View</span> <span id="viewCount"
+            class="numbering"></span>
+        </div>
+        <div class="likes">
+          <span class="text">Likes</span> <span class="numbering"></span>
+        </div>
+        <div class="followers">
+          <span class="text">Following Users</span> <span id="followers"
+            class="numbering"></span>
+        </div>
+      </div>
+      <div class="userNickNameContainer">
+        <h1 id="userNickName">
+          <span id="userNickNameInfo"></span>
+        </h1>
+      </div>
     </div>
+
   </div>
+        <div class="contentsSection">
+           <div id = "centerContents">
+             <div id = "centerContentsWrap">
+	           <div class="rightBar"> 
+	              <div class = "conterMenuBtn"> <a>Storage  admin</a></div>
+	              </div>
+	           </div> 
+           </div>
+      <div id="admin_detail">
+             <ol>
+                 <li>
+                 </li>
+             </ol>
+       </div>
+   </div> 
         
-    </section>
+       
      
     <footer>
 
@@ -123,7 +230,6 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   <script >
   ajaxloadNickName()
   </script>
-  
   
    <script> 
     $(function(){
@@ -142,23 +248,8 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
         $("#admin_detail > ol > li").load("UserStorageAdminPage.html"); 
     });
    </script>
-   
-    <script> 
-    $("#amBtn2").click(function(event) {
-      $("#admin_detail > ol > li").load("UserNoticeAdminPage.html"); 
-    });
-   </script>
-   
  
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
