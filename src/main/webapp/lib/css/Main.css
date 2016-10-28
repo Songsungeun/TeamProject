@@ -480,7 +480,7 @@ body {
 /*   overflow: hidden; */
 /* } */
 
-.modal-dialog {
+#modal-dialog {
   padding-top: 30px;
   height: 100%;
   width: 660px;

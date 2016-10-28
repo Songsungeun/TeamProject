@@ -61,9 +61,6 @@ public class HoneyMainController {
 						String[] temp1 = temp[1].split(" ");
 						String[] temp2 = temp1[0].split("\"");
 						list.get(i).setLinkImage(temp2[1]);
-						System.out.println("temp1[0] =" + temp1[0]);
-						System.out.println("temp1[0] =" + temp2[1]);
-						System.out.println("이거: " + list.get(i).getLinkImage());
 					} else {
 						list.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 					}

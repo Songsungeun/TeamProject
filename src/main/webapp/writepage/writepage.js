@@ -16,27 +16,27 @@ $("#submitBoard").click(function(event) {
 	console.log("log: " + $(".nicEdit-main").text())
 	var categoryNo = $("#category").val()
 	switch (categoryNo) {
-	case "라이프" : categoryNo = 2
+	case "라이프" : categoryNo = 1
 		break;
-	case "스포츠" : categoryNo = 3
+	case "스포츠" : categoryNo = 2
 	break;
-	case "차/테크" : categoryNo = 4
+	case "차/테크" : categoryNo = 3
 	break;
-	case "패션/뷰티" : categoryNo = 5
+	case "패션/뷰티" : categoryNo = 4
 	break;
-	case "게임" : categoryNo = 6
+	case "게임" : categoryNo = 5
 	break;
-	case "TV/연예" : categoryNo = 7
+	case "TV/연예" : categoryNo = 6
 	break;
-	case "뮤직" : categoryNo = 8
+	case "뮤직" : categoryNo = 7
 	break;
-	case "영화" : categoryNo = 9
+	case "영화" : categoryNo = 8
 	break;
-	case "책/문화" : categoryNo = 10
+	case "책/문화" : categoryNo = 9
 	break;
-	case "지식/교양" : categoryNo = 11
+	case "지식/교양" : categoryNo = 10
 	break;
-	default : categoryNo = 1
+	default : categoryNo = 11
 	break;
 	}
 	var board = {

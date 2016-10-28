@@ -104,7 +104,7 @@ overflow: hidden;
   margin : 0px 0px 0px 3px
 }
 
-#newWright {
+#newWrite {
   padding: 0px;
   float: left;
   position : absolute;
@@ -114,7 +114,7 @@ overflow: hidden;
   height: 25px;
 }
 
-#newWright a:hover {text-decoration: none;}
+#newWrite a:hover {text-decoration: none;}
 
 #confirmLogin{
   position : absolute;
@@ -206,6 +206,13 @@ padding: 0px;
 margin-top: 3px;
 background-size: 20px;
 }
+
+#message_modalArea {
+  margin-top: 60px;
+  width: 512px;
+  height: 500px;
+  border: 1px solid red;
+}
 </style>
 
 <!-- jqueryui.com 참고 -->
@@ -231,8 +238,18 @@ background-size: 20px;
     </div>
     
       <div class = headerRightSection>
-        <div id= "newWright">
+        <div id= "newWrite">
           <a href='#'><img id="hi" width="23px" height="23px" src="../writeIcon_2.png"></a>
+          <a href='#' data-toggle="modal" data-target=".bs-example-modal-sm">
+              <img id="message" width="23px" height="23px" src="../messageIcon.png"></a>
+        </div>
+        
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content" id="message_modalArea">
+              ...
+            </div>
+          </div>
         </div>
         
           <div class="seachBar">
@@ -282,7 +299,7 @@ $(".headlist").click(function(){
   location.href ="/TeamProject/adminpage/HoneyAdminPage.html"
 })
 
-$("#newWright").click(function(){
+$("#hi").click(function(){
   location.href ="/TeamProject/writepage/writepage.html"
 })
 

@@ -41,8 +41,9 @@ function ajaxLoginUser() {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
-			$('#newWright').css("display", "none")
+			$('#newWrite').css("display", "none")
 			$('.headlist').css("display", "none")
+			$('#message').css("display", "none")
 			return
 		}
 		$('.loginInfo').css("display", "none")
