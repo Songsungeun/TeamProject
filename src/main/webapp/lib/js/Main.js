@@ -195,11 +195,11 @@ function ajaxAddComent(honeyComent) {
 		var result = obj.jsonResult
 		console.log(result);
 		if (result.state != "success") {
-			alert("등록 실패입니다.")
+			alert("로그인 후 사용해 주세요.")
 			return
 		}
+		location.reload(true);
 	}, "json")
-	location.reload(true);
 }
 
 function ajaxPostComentsList(no) {
@@ -321,11 +321,11 @@ function ajaxComentReply(honeyComent) {
 	$.post(serverAddr + "/mainpage/insertChildComent.json", honeyComent, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("등록 실패입니다.")
+			alert("로그인 후 사용해 주세요.")
 			return
 		} 
+		location.reload(true);
 	}, "json")  
-	location.reload(true);
 }
 
 
@@ -383,14 +383,14 @@ $(document.body).on("click",".cmt_delete",function(event) {
 	console.log(depth)
 	var no = $(this).attr("data-Delete");
 	if(depth == 0) {
-		if (confirm("정말 삭제하시겠습니까1?") == true) {
+		if (confirm("정말 삭제하시겠습니까?") == true) {
 			ajaxDeleteComent(no)
 		} else {
 			return;
 		}
 	} 
 	if(depth == 1){
-		if (confirm("정말 삭제하시겠습니까2?") == true) {
+		if (confirm("정말 삭제하시겠습니까?") == true) {
 			ajaxDeleteChildComent(no)
 		} else {
 			return;
