@@ -112,6 +112,8 @@ public class HoneyMainController {
 		mainService.getIncreaseViewCount(no);
 		HoneyMain honeyMain = mainService.getPost(no);
 		HashMap<String, Object> map = new HashMap<>();
+		String userPhoto = mainService.getPhoto(Integer.parseInt(honeyMain.getUserNo()));
+		honeyMain.setUserProfilePath(userPhoto);
 		map.put("board", honeyMain);
 
 		UrlInfo urlInfo;

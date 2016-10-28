@@ -19,9 +19,8 @@ function ajaxBoardList() {
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
 			 var no = $(this).attr("data-no")
-			
 			console.log(no)
-			ajaxLoadBoard(no)
+			ajaxLoadBoard(no);
 			ajaxPostComentsList(no)
 			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
 		})
@@ -91,6 +90,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
+			$("#userImage").attr("src", "/TeamProject/upload/" + result.data.board.userProfilePath);
 			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);
@@ -108,6 +108,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
+			$("#userImage").attr("src", "/TeamProject/upload/" + result.data.board.userProfilePath);
 			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);
@@ -117,6 +118,13 @@ function ajaxLoadBoard(no) {
 			$("#like").text(result.data.board.like);
 			
 		}
+		$("#writerNick").click(function(event) {
+			window.location.href = "../membership/otherUserDetailPage.html?nick=" + result.data.board.writerNick;
+		})
+		
+		$(".owner_img").click(function(event) {
+			window.location.href = "../membership/otherUserDetailPage.html?nick=" + result.data.board.writerNick;
+		})
 		// 이거 지우지마!!!! 회원번호 팔로우할때 쓸려고 넘기는 코드임!!!!
 		// 또지우면 사생결단이다!!
 		tempUserNo = result.data.board.userNo;
@@ -128,6 +136,7 @@ function ajaxLoadBoard(no) {
 //		window.open(result.data.url);
 //		})
 		followLoderFunc(tempUserNo)
+		
 	})
 	
 	

@@ -3,6 +3,7 @@ package honey.dao;
 import java.util.List;
 import java.util.Map;
 
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.honey_boards;
 
@@ -14,7 +15,7 @@ public interface HoneyMembersDao {
   int userInfoUpdate(HoneyMembers hmember) throws Exception;
   int changePassword(HoneyMembers hmember) throws Exception;
   HoneyMembers selectUserNumber(String nickName) throws Exception;
-  List<honey_boards> selectBoards(int memberNo) throws Exception;
+  List<HoneyMain> selectBoards(int memberNo) throws Exception;
   int followInsert(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowUser(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowCount(int memberNo) throws Exception;

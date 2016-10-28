@@ -14,17 +14,19 @@
     <result column="PWD" property="password"/>
   </resultMap>
   
-  <resultMap type="honey_boards" id="boardMap">
-    <id column="BD_NO" property="no"/> 
-    <result column="MB_NO" property="userNo"/>
-    <result column="CT_NO" property="categoryNo"/>
+<resultMap type="HoneyMain" id="boardMap">
+    <id column="BD_NO" property="no"/>
     <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
     <result column="BD_CONTS" property="contents"/>
     <result column="BD_CRE" property="createdDate"/>
     <result column="BD_LIKE" property="like"/>
     <result column="VIEW_CT" property="viewCount"/>
-    <result column="URL" property="url"/>
-    <result column="URL_Title" property="title"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
   </resultMap>
   
   
@@ -46,16 +48,6 @@
     where EMAIL=#{email} and PWD=password(#{password}) 
   </select>
   
-  <delete id="disconnector" parameterType="int">
-  delete from honey_flw
-  where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
-  </delete>
-  
-  <delete id="unregisteMember" parameterType="int">
-  delete from honey_membs
-  where MB_NO=#{value}
-  </delete>
-  
   <select id = "selectUserInfo" resultMap="memberMap" parameterType="map">
     select EMAIL, MB_NICK, MB_NM, TEL, PWD
     from honey_membs
@@ -74,6 +66,31 @@
     where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
   </select>  
   
+  <select id="selectBoards" parameterType="int" resultMap="boardMap">
+  select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    where hb.mb_no=#{memberNo}
+  </select>
+  
+  <select id="selectFollowCount" parameterType="int" resultMap="boardMap">
+    select *
+    from 
+    honey_flw
+    where mb_no=#{memberNo}
+  </select>
+  
+  <delete id="disconnector" parameterType="int">
+  delete from honey_flw
+  where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
+  </delete>
+  
+  <delete id="unregisteMember" parameterType="int">
+  delete from honey_membs
+  where MB_NO=#{value}
+  </delete>
   
   <update id="userInfoUpdate">
     update honey_membs set
@@ -91,19 +108,7 @@
   </update>
   
   
-  <select id="selectBoards" parameterType="int" resultMap="boardMap">
-    select *
-    from 
-    honey_boards
-    where mb_no=#{memberNo}
-  </select>
   
-  <select id="selectFollowCount" parameterType="int" resultMap="boardMap">
-    select *
-    from 
-    honey_flw
-    where mb_no=#{memberNo}
-  </select>
   
   
 </mapper>

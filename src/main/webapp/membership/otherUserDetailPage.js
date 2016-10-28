@@ -1,6 +1,3 @@
-/**
- * 
- */
 var userInfo = getParams();
 var userNick = userInfo.nick
 $("#userNick").text(userNick);
@@ -24,7 +21,7 @@ function getParams() {
 aJaxOtherUserProfileLoder(userInfo);
 
 function aJaxOtherUserProfileLoder(userInfo) {
-	
+
 	$.ajax({
 		url:serverAddr+"/membership/otherUserInfoDetail.json",
 		type: "GET",
@@ -38,15 +35,25 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				alert("조회 실패!")
 				return
 			}
+			
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#followers").text(result.data.totalFollowers)
+			
+			var source = $("#liTemplateText12").html();
+			var template3 = Handlebars.compile(source);
+			var data1 = result.data.boardInfo
+//			var boards = template2(data);
+			$("#post_wrapper").html(template3(data1));
+			console.log("fasdfasdf")
+				
 		},
 		error: function(result) {
 			console.log(result.state)
 		}
 	})
 }
+
 
 
 

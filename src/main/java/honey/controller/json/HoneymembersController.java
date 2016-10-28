@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import honey.dao.MemberFileDao;
 import honey.service.HoneymembersService;
 import honey.util.FileUploadUtil;
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
@@ -169,11 +170,11 @@ public class HoneymembersController {
 			HoneyMembers honeyMember = hMembersService.getUserNumber(userInfo.getNickname());
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
-			List<honey_boards> list = hMembersService.getBoards(honeyMember.getMemberNo());
+			List<HoneyMain> list = hMembersService.getBoards(honeyMember.getMemberNo());
 			List<HoneyMembers> followCollector = hMembersService.getFollowers(honeyMember.getMemberNo());
 			int totalViewCount = 0;
 			int totalFollowers = 0;
-			for (honey_boards count : list) {
+			for (HoneyMain count : list) {
 				totalViewCount += count.getViewCount();
 			}
 			HashMap<String,Object> resultMap = new HashMap<>();
