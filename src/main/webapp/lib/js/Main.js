@@ -149,6 +149,7 @@ function ajaxDetailLoadBoard(no) {
 			return
 		} else if (result.state == "success"){
 			$("#no2").val(result.data.board.no);
+			comentInfo =result.data.board.no;
 			$("#userTitle2").text(result.data.board.title);
 			$("#url2").text(result.data.board.url);
 			$("#userDesc2").html(result.data.board.contents);
@@ -165,6 +166,7 @@ function ajaxDetailLoadBoard(no) {
 		} else {
 			
 			$("#no2").val(result.data.board.no);
+			comentInfo =result.data.board.no;
 			$("#userTitle2").text(result.data.board.title);
 			$("#url2").text(result.data.board.url);
 			$("#userDesc2").html(result.data.board.contents);
@@ -182,6 +184,15 @@ function ajaxDetailLoadBoard(no) {
 $("#insertCmt").click(function(event){
 	var honeyComent = {
 			coment: $("#pcomment").val(),
+			no: comentInfo
+	}
+	console.log(honeyComent);
+	ajaxAddComent(honeyComent);
+	console.log("addComentBtn 누름")
+});
+$("#insertCmt2").click(function(event){
+	var honeyComent = {
+			coment: $("#pcomment2").val(),
 			no: comentInfo
 	}
 	console.log(honeyComent);
