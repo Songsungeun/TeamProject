@@ -553,6 +553,11 @@ body {
   display: block;
   height: 50px;
   width: 50px;
+  -moz-border-radius : 100px;
+  -webkit-border-radius : 100px;
+  -ms-border-radius :100px;
+  -khtml-border-radius : 100px;
+  -o-border-radius :100px;
 }
 
 .owner_name {
