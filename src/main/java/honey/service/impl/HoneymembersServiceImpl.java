@@ -5,19 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import honey.dao.HoneyMainUrlDao;
 import honey.dao.HoneyMembersDao;
 import honey.dao.MemberFileDao;
 import honey.service.HoneymembersService;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.MemberFile;
-import honey.vo.honey_boards;
+import honey.vo.UrlInfo;
 
 @Service
 public class HoneymembersServiceImpl implements HoneymembersService {
 	@Autowired HoneyMembersDao hMembersDao;
 	@Autowired MemberFileDao fileDao;
 	@Autowired MemberFileDao memberFileDao;
+	@Autowired HoneyMainUrlDao hUrnDao;
 	
 	public void singUpMembers(HoneyMembers members) throws Exception {
 		hMembersDao.joinMember(members);
@@ -97,5 +99,10 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public void followDisconnector(HoneyMembers follower) throws Exception {
 		hMembersDao.disconnector(follower);
 		
+	}
+
+	@Override
+	public List<UrlInfo> userUrlCollector(int memberNo) throws Exception {
+		return hUrnDao.selectUserUrlList(memberNo);
 	}
 }

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 var userInfo = getParams();
 var userNick = userInfo.nick
 $("#userNick").text(userNick);
@@ -35,25 +38,36 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				alert("조회 실패!")
 				return
 			}
-			
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#followers").text(result.data.totalFollowers)
 			
-			var source = $("#liTemplateText12").html();
-			var template3 = Handlebars.compile(source);
-			var data1 = result.data.boardInfo
-//			var boards = template2(data);
-			$("#post_wrapper").html(template3(data1));
-			console.log("fasdfasdf")
-				
+			var source = $('#liTemplateText').html();
+			var template = Handlebars.compile(source);
+			var data = result.data.boardInfo
+			data.stringify = JSON.stringify(data);
+			var boards = template(data);
+			$("#post_wrapper").append(boards);
+			
+			
+			$(".titleLink").click(function(event){
+				$("#yourModal").modal();
+				$("html").css({"overflow":"hidden"});
+				 var no = $(this).attr("data-no")
+				console.log(no)
+				ajaxDetailLoadBoard(no);
+				ajaxPostComentsList(no)
+			})
+			
+			
+			
 		},
 		error: function(result) {
 			console.log(result.state)
 		}
 	})
-}
 
+}
 
 
 

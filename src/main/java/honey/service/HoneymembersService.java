@@ -4,7 +4,7 @@ import java.util.List;
 
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
-import honey.vo.honey_boards;
+import honey.vo.UrlInfo;
 
 public interface HoneymembersService {
 	public void singUpMembers(HoneyMembers members) throws Exception;
@@ -18,5 +18,6 @@ public interface HoneymembersService {
 	public int followMemberInsert(HoneyMembers follower) throws Exception;
 	public List<HoneyMembers> followChecker(HoneyMembers follower) throws Exception;
 	public void followDisconnector(HoneyMembers follower) throws Exception;
+	public List<UrlInfo> userUrlCollector(int memberNo) throws Exception;
 	
 }

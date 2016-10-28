@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="super_HTML">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
+
 <title>Insert title here</title>
 <style>
 .topSection {
@@ -223,17 +224,18 @@
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script type="text/javascript" src="../lib/js/common.js"></script>
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type='text/javascript' src="../lib/js/Main.js"></script>
 	<script src="otherUserDetailPage.js"></script>
-	<!-- 	<script type='text/javascript' src="../lib/js/Main.js"></script> -->
 
-<script id="liTemplateText12" type="text/x-handlebars-template">
+<script id="liTemplateText" type="text/x-handlebars-template">
 
-{{#each data}}
+{{#each this}}
 <li id="each_post_wrap">
   <div id="each_post">
     <div id="user_Nick">
-      <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+      <img class="user_Nonepht userInfoLink" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
       <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
     </div>
  

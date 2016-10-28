@@ -9,4 +9,5 @@ public interface HoneyMainUrlDao {
 
 	UrlInfo selectOne(int no) throws Exception;
 	List<UrlInfo> selectList() throws Exception;
+	List<UrlInfo> selectUserUrlList(int memberNo) throws Exception;
 }

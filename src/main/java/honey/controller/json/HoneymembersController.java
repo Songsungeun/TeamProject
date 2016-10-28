@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +25,7 @@ import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
-import honey.vo.honey_boards;
+import honey.vo.UrlInfo;
 
 // 시작하기 전에 우선 나는 컨트롤러와 서비스의 역할에 대해 생각한게 
 // 디비에 직접적으로 접속해서 crud 기능을 하는 것은 서비스 부분이 담당하고, 그외의 세션이나 쿠키등의 생성과 스크립트와 값을 주고
@@ -172,6 +171,14 @@ public class HoneymembersController {
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
 			List<HoneyMain> list = hMembersService.getBoards(honeyMember.getMemberNo());
 			List<HoneyMembers> followCollector = hMembersService.getFollowers(honeyMember.getMemberNo());
+			List<UrlInfo> urlCollect = hMembersService.userUrlCollector(honeyMember.getMemberNo());
+			
+			for (int i = 0; i < list.size(); i++) {
+				list.get(i).setUserProfilePath(memberFile.getFilename());
+			}
+			
+			List<HoneyMain> OtherUserInfo = SetImage.setImage(list, urlCollect);
+			
 			int totalViewCount = 0;
 			int totalFollowers = 0;
 			for (HoneyMain count : list) {
@@ -179,7 +186,7 @@ public class HoneymembersController {
 			}
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
-			resultMap.put("boardInfo", list);
+			resultMap.put("boardInfo", OtherUserInfo);
 			resultMap.put("totalViewCount",totalViewCount);
 			resultMap.put("totalFollowers",followCollector.size());
 			return JsonResult.success(resultMap);
