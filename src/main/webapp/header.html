@@ -104,7 +104,7 @@ overflow: hidden;
   margin : 0px 0px 0px 3px
 }
 
-#newWright {
+#newWrite {
   padding: 0px;
   float: left;
   position : absolute;
@@ -114,13 +114,13 @@ overflow: hidden;
   height: 25px;
 }
 
-#newWright a:hover {text-decoration: none;}
+#newWrite a:hover {text-decoration: none;}
 
 #confirmLogin{
   position : absolute;
   float: left;
   height: 16px;
-  margin: 7px 0px 7px 500px;
+  margin: 7px 0px 7px 400px;
   overflow: hidden;
 }
 
@@ -206,6 +206,13 @@ padding: 0px;
 margin-top: 3px;
 background-size: 20px;
 }
+
+#message{
+padding: 0px;
+margin-top: 3px;
+background-size: 20px;
+margin-left: 5px;
+}
 </style>
 
 <!-- jqueryui.com 참고 -->
@@ -231,8 +238,9 @@ background-size: 20px;
     </div>
     
       <div class = headerRightSection>
-        <div id= "newWright">
+        <div id= "newWrite">
           <a href='#'><img id="hi" width="23px" height="23px" src="../writeIcon_2.png"></a>
+          <a href='#'><img id="message" width="23px" height="23px" src="../messageImage.png"></a>
         </div>
         
           <div class="seachBar">
@@ -282,7 +290,7 @@ $(".headlist").click(function(){
   location.href ="/TeamProject/adminpage/HoneyAdminPage.html"
 })
 
-$("#newWright").click(function(){
+$("#newWrite").click(function(){
   location.href ="/TeamProject/writepage/writepage.html"
 })
 
