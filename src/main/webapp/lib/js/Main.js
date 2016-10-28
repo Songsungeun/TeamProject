@@ -149,6 +149,7 @@ function ajaxDetailLoadBoard(no) {
 			return
 		} else if (result.state == "success"){
 			$("#no2").val(result.data.board.no);
+			comentInfo =result.data.board.no;
 			$("#userTitle2").text(result.data.board.title);
 			$("#url2").text(result.data.board.url);
 			$("#userDesc2").html(result.data.board.contents);
@@ -165,6 +166,7 @@ function ajaxDetailLoadBoard(no) {
 		} else {
 			
 			$("#no2").val(result.data.board.no);
+			comentInfo =result.data.board.no;
 			$("#userTitle2").text(result.data.board.title);
 			$("#url2").text(result.data.board.url);
 			$("#userDesc2").html(result.data.board.contents);
@@ -188,6 +190,15 @@ $("#insertCmt").click(function(event){
 	ajaxAddComent(honeyComent);
 	console.log("addComentBtn 누름")
 });
+$("#insertCmt2").click(function(event){
+	var honeyComent = {
+			coment: $("#pcomment2").val(),
+			no: comentInfo
+	}
+	console.log(honeyComent);
+	ajaxAddComent(honeyComent);
+	console.log("addComentBtn 누름")
+});
 
 
 function ajaxAddComent(honeyComent) {
@@ -195,11 +206,11 @@ function ajaxAddComent(honeyComent) {
 		var result = obj.jsonResult
 		console.log(result);
 		if (result.state != "success") {
-			alert("등록 실패입니다.")
+			alert("로그인 후 사용해 주세요.")
 			return
 		}
+		location.reload(true);
 	}, "json")
-	location.reload(true);
 }
 
 function ajaxPostComentsList(no) {
@@ -321,11 +332,11 @@ function ajaxComentReply(honeyComent) {
 	$.post(serverAddr + "/mainpage/insertChildComent.json", honeyComent, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("등록 실패입니다.")
+			alert("로그인 후 사용해 주세요.")
 			return
 		} 
+		location.reload(true);
 	}, "json")  
-	location.reload(true);
 }
 
 
@@ -383,14 +394,14 @@ $(document.body).on("click",".cmt_delete",function(event) {
 	console.log(depth)
 	var no = $(this).attr("data-Delete");
 	if(depth == 0) {
-		if (confirm("정말 삭제하시겠습니까1?") == true) {
+		if (confirm("정말 삭제하시겠습니까?") == true) {
 			ajaxDeleteComent(no)
 		} else {
 			return;
 		}
 	} 
 	if(depth == 1){
-		if (confirm("정말 삭제하시겠습니까2?") == true) {
+		if (confirm("정말 삭제하시겠습니까?") == true) {
 			ajaxDeleteChildComent(no)
 		} else {
 			return;

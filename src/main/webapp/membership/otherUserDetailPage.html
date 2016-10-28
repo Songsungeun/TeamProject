@@ -148,9 +148,13 @@
 
 
 	<div class="contentsSection">
+	
+	
+	
 		<div id="tabs" class="all_post_wrap">
 			<ul id="post_wrapper" class="tabs-1-contents">
-
+			
+			
 			</ul>
 
 			<div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
@@ -223,45 +227,47 @@
 	<script src="otherUserDetailPage.js"></script>
 	<!-- 	<script type='text/javascript' src="../lib/js/Main.js"></script> -->
 
-	<script id="liTemplateText" type="text/x-handlebars-template">
+<script id="liTemplateText12" type="text/x-handlebars-template">
+
 {{#each data}}
 <li id="each_post_wrap">
   <div id="each_post">
     <div id="user_Nick">
-      <img class="user_Nonepht userInfoLink" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+      <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
       <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
     </div>
  
-    <div class="post_photoWrap titleLink" data-no="{{no}}">
+    <div class="post_photoWrap titleLink" data-no="{{no}}" data-userNo="{{userNo}}">
       <a href="#">
         <img src="{{linkImage}}" alt="Image File">
       </a>
     </div>
   
     <a class="post_contsWrap">
-      <span class="each_post_title titleLink" data-no="{{boardInfo.no}}">{{boardInfo.title}}</span>
-      <span class="each_post_contents titleLink" data-no="{{boardInfo.no}}"><p>{{boardInfo.contents}}</p></span>
+      <span class="each_post_title titleLink" data-no="{{no}}" data-userNo="{{userNo}}">{{title}}</span>
+      <span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><p>{{{contents}}}</p></span>
     </a>
 
     <div class="post_ctgWrap">
-      <span class="categoryLink" data-ctgNo="{{boardInfo.categoryNo}}">{{boardInfo.category}}</span>
+      <span class="categoryLink" data-ctgNo="{{categoryNo}}">{{category}}</span>
     </div>
 
     <div class="post_BtnWrap">
       <div class="post_leftBtn">
         <img class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
-        <span>{{boardInfo.viewCount}}</span>
+        <span>{{viewCount}}</span>
       </div>
       <div class="post_rightBtn">
         <img class="like_Onclick" src="/TeamProject/mainpage/mainpage_images/likeOnClick.png" alt="like">
-        <span>{{boardInfo.like}}</span>
+        <span>{{like}}</span>
       </div>
     <div>
   </div>
-<li>
+</li>
 {{/each}}
-</script>
 
+
+</script>
 
 	<script> 
 	//ajaxLoadList()
