@@ -425,11 +425,11 @@ body {
 }
 
 .post_contsWrap img {
-	display: none;
+  display: none;
 }
 
 .each_post_title {
-	border-top: 1px solid #e8e8e8; 
+  border-top: 1px solid #e8e8e8; 
 }
 
 /* coments */

@@ -203,20 +203,6 @@ function ajaxAddComent(honeyComent) {
 }
 
 function ajaxPostComentsList(no) {
-	function ajaxAddComent(honeyComent) {
-		$.post(serverAddr + "/mainpage/insertComent.json", honeyComent, function(obj) {
-			var result = obj.jsonResult
-			console.log(result);
-			if (result.state != "success") {
-				alert("등록 실패입니다.")
-				return
-			}
-		}, "json")
-		location.reload(true);
-		
-	}
-} 
-function ajaxPostPTComentsList(no) {
 	$.getJSON(serverAddr + "/mainpage/comentList.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
