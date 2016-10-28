@@ -37,7 +37,7 @@
   </select>
 
 
-<insert id="insertComent" parameterType="HoneyComent" 
+<insert id="insertComent" parameterType="HoneyComent"  
           useGeneratedKeys="true" keyColumn="no" keyProperty="no">
     insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
     (select #{coment}, now(), 0,#{memberNo},#{no},
