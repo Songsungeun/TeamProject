@@ -216,7 +216,7 @@ body {
   max-height: 52px;
   padding: 4px 14px 0 14px;
   overflow: hidden;
-  white-space: pre-line;
+  `-space: pre-line;
   font-weight: bold;
   font-size: 17px;
   line-height: 24px;
@@ -434,6 +434,10 @@ body {
 
 .each_post_title {
   border-top: 1px solid #e8e8e8; 
+}
+
+#userDesc div, span {
+	white-space: pre-line;
 }
 
 /* coments */
