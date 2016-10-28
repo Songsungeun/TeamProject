@@ -39,6 +39,7 @@
     from honey_boards hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    order by bd_no desc
   </select>
   <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
   <!-- select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->

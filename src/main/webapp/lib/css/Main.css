@@ -239,6 +239,10 @@ body {
   cursor: pointer;
 }
 
+.each_post_contents  div, font, span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .post_contsWrap:hover {
   text-decoration: none;
 }
@@ -485,10 +489,6 @@ body {
   height: 100%;
   width: 660px;
   border: 1px solid black;
-}
-
-.modal-content {
-  
 }
 
 .modal-body {
