@@ -41,6 +41,30 @@ function aJaxOtherUserProfileLoder(userInfo) {
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#followers").text(result.data.totalFollowers)
+			
+			var template1 = Handlebars.compile($('#liTemplateText').html())
+		$(".tabs-1-contents").html(template1(result));
+		$(".titleLink").click(function(event){
+			$("#yourModal").modal();
+			$("html").css({"overflow":"hidden"});
+			 var no = $(this).attr("data-no")
+			console.log(boardInfo.no)
+			ajaxLoadBoard(boardInfo.no);
+			ajaxPostComentsList(boardInfo.no)
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
+		})
+		$(".btn-primary").click(function() {
+			$("#yourModal").css({"display":"none"});
+			$("#super_HTML").css({"overflow":"auto"});
+			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+		})
+		$(".categoryLink").click(function(event){
+			var ctgNo =$(this).attr("data-ctgNo")
+			console.log(ctgNo)
+		})
+		$(".userInfoLink").click(function(event) {
+			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
+		})
 		},
 		error: function(result) {
 			console.log(result.state)

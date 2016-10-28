@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import honey.dao.HoneyMembersDao;
 import honey.dao.MemberFileDao;
 import honey.service.HoneymembersService;
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.MemberFile;
 import honey.vo.honey_boards;
@@ -64,9 +65,9 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	}
 
 	@Override
-	public List<honey_boards> getBoards(int memberNo) throws Exception {
+	public List<HoneyMain> getBoards(int memberNo) throws Exception {
 		try {
-			List<honey_boards> boards = hMembersDao.selectBoards(memberNo);
+			List<HoneyMain> boards = hMembersDao.selectBoards(memberNo);
 			return boards;
 		} catch (Exception e) {
 			e.printStackTrace();

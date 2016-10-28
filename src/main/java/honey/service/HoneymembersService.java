@@ -2,6 +2,7 @@ package honey.service;
 
 import java.util.List;
 
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.honey_boards;
 
@@ -12,7 +13,7 @@ public interface HoneymembersService {
 	public void modifyPassword(HoneyMembers members) throws Exception;
 	public String getProfileFileName(int memberNo) throws Exception;
 	public HoneyMembers getUserNumber(String nickName) throws Exception;
-	public List<honey_boards> getBoards(int memberNo) throws Exception;
+	public List<HoneyMain> getBoards(int memberNo) throws Exception;
 	public List<HoneyMembers> getFollowers(int memberNo) throws Exception;
 	public int followMemberInsert(HoneyMembers follower) throws Exception;
 	public List<HoneyMembers> followChecker(HoneyMembers follower) throws Exception;

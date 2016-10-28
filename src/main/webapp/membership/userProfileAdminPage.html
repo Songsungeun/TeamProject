@@ -2,230 +2,270 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
 <style>
 @charset "utf-8";
-.userProfileAdmin_topSection{
-  position: relative;
-  top: 100px;
-  max-width: 1024px;
-  margin: 0 auto;
-  border: 1px solid;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom-color: #C9C9C9;
-  padding-top: 80px;
-  background-color: #f3f4f5;
-  padding-bottom: 20px;
+
+.userProfileAdmin_topSection {
+	position: relative;
+	top: 100px;
+	max-width: 1024px;
+	margin: 0 auto;
+	border: 1px solid;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom-color: #C9C9C9;
+	padding-top: 80px;
+	background-color: #f3f4f5;
+	padding-bottom: 20px;
 }
+
 .userProfileAdmin_mainSection {
-  position: relative;
-  top: 70px;
-  margin: 0 auto;
-  max-width: 1024px;
-  padding: 50px;
+	position: relative;
+	top: 70px;
+	margin: 0 auto;
+	max-width: 1024px;
+	padding: 50px;
 }
+
 .profile {
-font-weight: bold;
-font-size : 15px;
-margin-right: 20px;
-background-color: inherit !important;
-text-decoration: none;
+	font-weight: bold;
+	font-size: 15px;
+	margin-right: 20px;
+	background-color: inherit !important;
+	text-decoration: none;
 }
-.profile > span {
-text-decoration: none;
-display: inline-block;
+
+.profile>span {
+	text-decoration: none;
+	display: inline-block;
 }
+
 #changeProfile {
-color:#e00000;
+	color: #e00000;
 }
+
 #unregisterBtn {
-float: right;
+	float: right;
 }
+
 .col-sm-2 {
-  margin: 25px 0px 0px 0px;
+	margin: 25px 0px 0px 0px;
 }
+
 .col-sm-10 {
-  margin: 15px 0px 0px 0px;
+	margin: 15px 0px 0px 0px;
 }
-.col-xs-2{
-  padding-left: 0px;
+
+.col-xs-2 {
+	padding-left: 0px;
 }
+
 .userStatusInfo {
-  padding-top: 3px; 
-  height:30px;
-  width: 150px;
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  background-color: #e00000;
-  border: 1px solid;
-  margin: 0 auto;
-  margin-top: 560px;
-  border-radius: 4px; 
-  text-align: center; 
+	padding-top: 3px;
+	height: 30px;
+	width: 150px;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #e00000;
+	border: 1px solid;
+	margin: 0 auto;
+	margin-top: 560px;
+	border-radius: 4px;
+	text-align: center;
 }
+
 #passwordInfoPage {
-  display: none;
+	display: none;
 }
+
 #changPassword {
-  display: none;
+	display: none;
 }
+
 #profilePhotoSection {
-margin-bottom: 20px;
+	margin-bottom: 20px;
 }
+
 #userPhotoInfo {
- float: left;
- width: 154px;
- height: 220px;
- padding-top: 0px;
- padding-left: 0px;
- margin: auto;
+	float: left;
+	width: 154px;
+	height: 220px;
+	padding-top: 0px;
+	padding-left: 0px;
+	margin: auto;
 }
+
 .profileInfomer {
-padding:0px;
-position: relative;
-float: right;
-margin-right: 60%;
+	padding: 0px;
+	position: relative;
+	float: right;
+	margin-right: 60%;
 }
+
 #inputUserPhoto {
-  display:none;
+	display: none;
 }
+
 #profilePhoto {
- width: 167px;
- height: 218px;
- padding-right: 14px;
+	width: 167px;
+	height: 218px;
+	padding-right: 14px;
 }
-  </style>
+</style>
 </head>
 <body style="background-color: #f3f4f5;">
-<div id="includeHeader"></div>
-<div class="userProfileAdmin_topSection">
-  <div class="profile">
-   <span class="profile" id="changeProfile"><a href="#">프로필</a></span>
-   <span class="profile" id="changePassword"><a href="#">비밀번호 변경</a></span>
-   <span class="profile" id="unregisterBtn"><a href="#">회원탈퇴</a></span>
-  </div>
-</div>
+	<div id="includeHeader"></div>
+	<div class="userProfileAdmin_topSection">
+		<div class="profile">
+			<span class="profile" id="changeProfile"><a href="#">프로필</a></span> <span
+				class="profile" id="changePassword"><a href="#">비밀번호 변경</a></span> <span
+				class="profile" id="unregisterBtn"><a href="#">회원탈퇴</a></span>
+		</div>
+	</div>
 
-<div class="userProfileAdmin_mainSection" id="profileInfoPage">
-  <div class="form-group" id = profilePhotoSection>
-    <label for="inputEmail3" class="col-sm-2 control-label">프로필 사진</label>
-    <div class="col-sm-10">
-      <div class="form-control" id="userPhotoInfo">
-        <img id="profilePhoto" src= "" >
-      </div>
-      <div class="profileInfomer">
-      <a id="changeUserPhotoOperator"class="btn btn-default btn-sm">프로필 사진 변경</a>
-      <form id="uploadForm" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
-        <input id="inputUserPhoto" type="file" name="userProfilePhoto"/>
-      </form>
-      </div>
-    </div>
-  </div>
+	<div class="userProfileAdmin_mainSection" id="profileInfoPage">
+		<div class="form-group" id=profilePhotoSection>
+			<label for="inputEmail3" class="col-sm-2 control-label">프로필
+				사진</label>
+			<div class="col-sm-10">
+				<div class="form-control" id="userPhotoInfo">
+					<img id="profilePhoto" src="">
+				</div>
+				<div class="profileInfomer">
+					<a id="changeUserPhotoOperator" class="btn btn-default btn-sm">프로필
+						사진 변경</a>
+					<form id="uploadForm" action="#" name="uploadForm" method="post"
+						enctype="multipart/form-data">
+						<input id="inputUserPhoto" type="file" name="userProfilePhoto" />
+					</form>
+				</div>
 
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="userEmailInfo" placeholder="Email " style="width:300px;">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">닉네임</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="userNickNameInfo" placeholder="nickname" style="width:300px;">
-    </div>
-  </div>
-          
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">이름</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="userNameInfo" placeholder="name" style="width:300px;">
-    </div>
-  </div>
+				<div id="progress">
+					<div class="bar" style="width: 0%;"></div>
+				</div>
+			</div>
+		</div>
 
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">생일</label>
-    <div class="col-sm-10">
-    <div class="col-xs-3" style="width: 130px; padding: 0px"  >
-      <label class="month">
-        <select name="BirthMonth" class="form-control" >
-              <option value="">Month</option>
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select> 
-          </label>
-        </div>
-        <div class="col-xs-2" style="margin-left: 0px">
-          <input type="text" class="form-control" placeholder="day">
-        </div>
-        <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder="year">
-        </div>
-    </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">전화번호</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="userTelInfo" placeholder="Tel" style="width:300px;">
-    </div>
-  </div>
-</div>  
-</div>
-<div class="userProfileAdmin_mainSection" id="passwordInfoPage">
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">새 비밀번호</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="changeNewPassword" placeholder="New Password " style="width:300px;">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">비밀번호 확인</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="newPasswordConfirm" placeholder="Re Password" style="width:300px;">
-    </div>
-  </div>
-</div>
-  
-   <div class="userStatusInfo" id="changeUserStatusInfo">
-    <span><a href="#">변경사항 저장</a></span>
-  </div>
-  
-  <div class="userStatusInfo" id="changPassword">
-    <span><a href="#">비밀번호 변경</a></span>
-  </div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="userEmailInfo"
+					placeholder="Email " style="width: 300px;">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">닉네임</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userNickNameInfo"
+					placeholder="nickname" style="width: 300px;">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">이름</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userNameInfo"
+					placeholder="name" style="width: 300px;">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">생일</label>
+			<div class="col-sm-10">
+				<div class="col-xs-3" style="width: 130px; padding: 0px">
+					<label class="month"> <select name="BirthMonth"
+						class="form-control">
+							<option value="">Month</option>
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+					</select>
+					</label>
+				</div>
+				<div class="col-xs-2" style="margin-left: 0px">
+					<input type="text" class="form-control" placeholder="day">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" class="form-control" placeholder="year">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">전화번호</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="userTelInfo"
+						placeholder="Tel" style="width: 300px;">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="userProfileAdmin_mainSection" id="passwordInfoPage">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">새
+				비밀번호</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="changeNewPassword"
+					placeholder="New Password " style="width: 300px;">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">비밀번호
+				확인</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="newPasswordConfirm"
+					placeholder="Re Password" style="width: 300px;">
+			</div>
+		</div>
+	</div>
+
+	<div class="userStatusInfo" id="changeUserStatusInfo">
+		<span><a href="#">변경사항 저장</a></span>
+	</div>
+
+	<div class="userStatusInfo" id="changPassword">
+		<span><a href="#">비밀번호 변경</a></span>
+	</div>
 
 
 
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/jquery/dist/jquery.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="userProfileAdminPage.js"></script>
-<script type="text/javascript" src="../lib/js/common.js"></script>
-<script type="text/javascript" src="../membership/membership.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-<script src="../node_modules/jquery-form/jquery.form.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="userProfileAdminPage.js"></script>
+	<script type="text/javascript" src="../lib/js/common.js"></script>
+	<script type="text/javascript" src="../membership/membership.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<script
+		src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script src="../node_modules/jquery-form/jquery.form.js"></script>
 
-<script>
+	<script>
   $(function(){
     $("#includeHeader").load("../header.html"); 
     ajaxUserProfileLoder();
   });
 </script>
-<script>
+	<script>
  $("#changeUserStatusInfo").click(function(event){
     var userStatusChangeInfo = {
         userName: $("#userNameInfo").val(),
@@ -235,6 +275,7 @@ margin-right: 60%;
     }
     ajaxUserStatusUpdate(userStatusChangeInfo) 
  })
+ 
  $("#changPassword").click(function(event){
   if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
     alert("비밀번호가 일치하지 않습니다.")
@@ -255,7 +296,6 @@ margin-right: 60%;
         $('#uploadForm').fileupload({
             url : serverAddr + "/membership/profileFileUpload.json", 
             dataType: 'json',
-            //replaceFileInput: false,
             add: function(e, data){
                 var uploadFile = data.files[0];
                 var isValid = true;
@@ -269,12 +309,6 @@ margin-right: 60%;
                 if (isValid) {
                     data.submit();              
                 }
-            }, progressall: function(e,data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#progress .bar').css(
-                    'width',
-                    progress + '%'
-                );
             }, done: function (e, data) {
                 var code = data.result.code;
                 var msg = data.result.msg;
@@ -286,9 +320,6 @@ margin-right: 60%;
                     alert(code + ' : ' + msg);
                 } 
             }, fail: function(e, data){
-                // data.errorThrown
-                // data.textStatus;
-                // data.jqXHR;
                 alert('서버와 통신 중 문제가 발생했습니다');
                 foo = data;
             }
@@ -296,7 +327,7 @@ margin-right: 60%;
     }); 
 </script>
 
-<script>
+	<script>
 $("#changePassword").click(function(event){
   $("#changePassword").css("color", "#e00000");
   $("#changeProfile").css("color", "black");
