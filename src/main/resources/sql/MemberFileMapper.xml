@@ -3,24 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.MemberFileDao">
-  <resultMap type="MemberFile" id="MemberFile">
-    <id column="mbp_no" property="no"/> 
-    <result column="mb_no" property="memberNo"/>
-    <result column="mbp_path" property="filename"/>
-  </resultMap>
-  
-  <insert id="defaultProfilePhotoInsert" parameterType="int">
-    insert into honey_membs_photos(mb_no)
-    values(#{memberNo})
-  </insert>
-  
-  <insert id="prifileFileinsert" parameterType="MemberFile">
-    insert into honey_membs_photos(mb_no, mbp_path)
-    values(#{memberNo}, #{filename})
-  </insert>
-   
-  
-  <select id="getprofileFileName" parameterType="int" resultMap="MemberFile">
+	<resultMap type="MemberFile" id="MemberFile">
+		<id column="mbp_no" property="no" />
+		<result column="mb_no" property="memberNo" />
+		<result column="mbp_path" property="filename" />
+	</resultMap>
+
+	<insert id="defaultProfilePhotoInsert" parameterType="int">
+		insert into honey_membs_photos(mb_no)
+		values(#{memberNo})
+	</insert>
+
+	<insert id="prifileFileinsert" parameterType="MemberFile">
+		insert into honey_membs_photos(mb_no, mbp_path)
+		values(#{memberNo}, #{filename})
+	</insert>
+
+
+	<select id="getprofileFile" parameterType="int" resultMap="MemberFile">
+		select * from honey_membs_photos
+		where mb_no = #{memberNo} order by mbp_no desc limit 1;
+	</select>
+	
+	 <select id="getprofileFileName" parameterType="int" resultMap="MemberFile">
     select mbp_path, mbp_no, mb_no
     from 
     honey_membs_photos

@@ -47,7 +47,6 @@ public class HoneyUserAuthController {
         return JsonResult.fail();
       } else {
         session.setAttribute("member", member);
-        // 세선 만들어서 따로 관리하려던 객체 여기서 써먹는다.
         return JsonResult.success();
       }
     } catch (Exception e) {
