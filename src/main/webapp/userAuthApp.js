@@ -2,19 +2,6 @@
  * 
  */
 
-$("#login_Button").click(function(event) {
-	var user = {
-    email: $("#email").val(),
-    password: $("#password").val(),
-  }
-  ajaxLogin(user)
-});
-
-$("#logoutBtn").click(function(event) {
-	location.href = "../mainpage/Main.html"
-	ajaxLogout()
-});
-
 function ajaxLogin(user) {
 	$.ajax({
 		url: serverAddr + "/mainpage/login.json",
@@ -52,8 +39,27 @@ function ajaxLoginUser() {
 		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.member.email);
 		$("#profilePicture").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
+		
+		var source = $('#guiderInfoTemplate').html();
+		var template = Handlebars.compile(source);
+		var data = result.data.guiderInfo
+		data.stringify = JSON.stringify(data);
+		var boards = template(data);
+		$(".hi").append(boards);
+		
+		$(".userID").click(function(event) {
+			console.log("hello?")
+			location.href = "/TeamProject/membership/otherUserDetailPage.html?nick=" +  $(this).attr("data-nickName");
+		})
 	})
+
+	
 }
+
+
+
+
+
 
 function ajaxLogout(user) {
 	$.getJSON(serverAddr + "/mainpage/logout.json", function(obj) {
@@ -63,6 +69,21 @@ function ajaxLogout(user) {
     })
     alert("메인 페이지로 이동합니다.")
 }
+
+
+$("#login_Button").click(function(event) {
+	var user = {
+    email: $("#email").val(),
+    password: $("#password").val(),
+  }
+  ajaxLogin(user)
+});
+
+$("#logoutBtn").click(function(event) {
+	location.href = "../mainpage/Main.html"
+	ajaxLogout()
+});
+
 
 
 

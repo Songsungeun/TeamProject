@@ -15,10 +15,12 @@ public interface HoneyMembersDao {
   int userInfoUpdate(HoneyMembers hmember) throws Exception;
   int changePassword(HoneyMembers hmember) throws Exception;
   HoneyMembers selectUserNumber(String nickName) throws Exception;
+  HoneyMembers selectUserNickName(int memberNo) throws Exception;
   List<HoneyMain> selectBoards(int memberNo) throws Exception;
   int followInsert(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowUser(HoneyMembers follower) throws Exception;
   List<HoneyMembers> selectFollowCount(int memberNo) throws Exception;
+  List<HoneyMembers> selectGuider(int memberNo) throws Exception;
   int disconnector(HoneyMembers follower) throws Exception;
 
 }

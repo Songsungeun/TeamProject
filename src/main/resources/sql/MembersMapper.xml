@@ -60,6 +60,12 @@
     where MB_NICK=#{nickName}
   </select>
   
+    <select id = "selectUserNickName" resultMap="memberMap" parameterType="map">
+    select MB_NICK
+    from honey_membs
+    where MB_NO=#{memberNo}
+  </select>
+  
   <select id = "selectFollowUser" resultMap="memberMap" parameterType="map">
     select *
     from honey_flw
@@ -80,6 +86,13 @@
     from 
     honey_flw
     where mb_no=#{memberNo}
+  </select>
+  
+    <select id="selectGuider" parameterType="int" resultMap="memberMap">
+    select *
+    from 
+    honey_flw
+    where mb_no2=#{memberNo}
   </select>
   
   <delete id="disconnector" parameterType="int">

@@ -19,5 +19,6 @@ public interface HoneymembersService {
 	public List<HoneyMembers> followChecker(HoneyMembers follower) throws Exception;
 	public void followDisconnector(HoneyMembers follower) throws Exception;
 	public List<UrlInfo> userUrlCollector(int memberNo) throws Exception;
+	List<HoneyMembers> getGuider(int memberNo) throws Exception;
 	
 }

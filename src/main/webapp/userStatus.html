@@ -137,24 +137,25 @@
 }
 
 .sidebar-guideUsers-title-section {
-padding-top: 15px;
-padding-bottom: 15px;
-padding-left: 11%;
-border-bottom: #cccccc 1px solid;
-margin-bottom: 20px;
-}
-#sidebar-guideUsers-title {
-font-size: 15px;
-font-weight: bold;
-line-height: 30px;
-color: #404040;
-}
-.sidebar-guideUserCollection {
-overflow:hidden;
-text-overflow: ellipsis;
-padding-bottom : 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 11%;
+	border-bottom: #cccccc 1px solid;
+	margin-bottom: 20px;
 }
 
+#sidebar-guideUsers-title {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 30px;
+	color: #404040;
+}
+
+.sidebar-guideUserCollection {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-bottom: 20px;
+}
 </style>
 </head>
 <body>
@@ -178,55 +179,55 @@ padding-bottom : 20px;
 
 			<div class="userStatus">
 				<div id="userPhoto_wrap">
-					<a href="#"><img class="userProfilePicture" id="profilePicture" src=""></a> 
-					<a href="#"><span class="userID" id="userEmail"></span></a> 
-					<a href='#'><img class="optionBtn" id="userProfileAdmin" width="20px" height="20px" src="../gear.svg"></a>
+					<a href="#"><img class="userProfilePicture" id="profilePicture"
+						src=""></a> <a href="#"><span class="userID" id="userEmail"></span></a>
+					<a href='#'><img class="optionBtn" id="userProfileAdmin"
+						width="20px" height="20px" src="../gear.svg"></a>
 				</div>
-				
+
 				<div id="logoutBtn_wrap">
 					<a id="logoutBtn" href='#' margin=15%><span>로그아웃</span></a>
 				</div>
 			</div>
 			<div class="sidebar-guideUserCollection-wrap">
-			<div class = "sidebar-guideUsers-title-section">
-			 <h1 id = "sidebar-guideUsers-title">팔로잉중인 회원</h1>
+				<div class="sidebar-guideUsers-title-section">
+					<h1 id="sidebar-guideUsers-title">팔로잉 회원</h1>
+				</div>
+				<div class="hi">
+				</div>
 			</div>
-			<div class="sidebar-guideUserCollection">
-        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
-        <a href="#"><span class="userID" id="guiderNick">asdfasfasdf</span></a> 
-			</div>
-			 <div class="sidebar-guideUserCollection">
-        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
-        <a href="#"><span class="userID" id="guiderNick">sadfvz</span></a> 
-      </div>
-      <div class="sidebar-guideUserCollection">
-        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
-        <a href="#"><span class="userID" id="guiderNick">sadfvz</span></a> 
-      </div>
-			</div>
+
+
 
 		</div>
 
+		<script>
+			$("#sign_upBtn").click(function() {
+				location.href = "../membership/membership.html"
+			})
+		</script>
+		<script>
+			$("#userProfileAdmin").click(function() {
+				location.href = "../membership/userProfileAdminPage.html"
+			})
+		</script>
 
-
-	</div>
-
-	<script>
-  $("#sign_upBtn").click(function(){
-	  location.href="../membership/membership.html"
-  })
+		<script type="text/javascript" src="../userAuthApp.js"></script>
+		<script type="text/javascript" src="../membership/membership.js"></script>
+		<script type="text/javascript" src="../lib/js/common.js"></script>
+		<script id="guiderInfoTemplate" type="text/x-handlebars-template">
+{{#each this}}
+      <div class="sidebar-guideUserCollection">
+        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="/TeamProject/upload/{{profileFileName}}"></a> 
+        <a href="#"><span class="userID" data-nickName="{{nickname}}" >{{nickname}}</span></a> 
+      </div>
+{{/each}}
   </script>
-	<script>
-  $("#userProfileAdmin").click(function(){
-	  location.href="../membership/userProfileAdminPage.html"
-  })
-  </script>
 
-	<script type="text/javascript" src="../userAuthApp.js"></script>
-	<script type="text/javascript" src="../membership/membership.js"></script>
-	<script type="text/javascript" src="../lib/js/common.js"></script>
-	<script>
-  ajaxLoginUser();
-  </script>
+
+
+		<script>
+			ajaxLoginUser();
+		</script>
 </body>
 </html>
