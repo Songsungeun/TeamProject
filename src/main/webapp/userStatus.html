@@ -5,171 +5,227 @@
 <title>Insert title here</title>
 <style>
 .userStatus_Page_Wrap {
-  position: absolute;
-  top: 50px;
-  left: 0px%;
-  right: 0px;
-  bottom : 0px;
-  float: right;
-  z-index: 100;
-  width : 300px;
-
+	position: absolute;
+	top: 50px;
+	left: 0px%;
+	right: 0px;
+	bottom: 0px;
+	float: right;
+	z-index: 100;
+	width: 300px;
 }
 
-.login_Page{
-  width : 300px;
-  z-index:999900;
-  height: 100%;
-  background-color: rgba(245, 245, 245, 1.0);
-  box-shadow: 0px 0px 3px 1px #8c8c8c;
-  overflow: hidden;
-  position : fixed;
+.login_Page {
+	width: 300px;
+	z-index: 999900;
+	height: 100%;
+	background-color: rgba(245, 245, 245, 1.0);
+	box-shadow: 0px 0px 3px 1px #8c8c8c;
+	overflow: hidden;
+	position: fixed;
 }
+
 .loginInfo {
-  width: 200px; 
-  z-index:2;
-  margin: 50px 50px; 
+	width: 200px;
+	z-index: 2;
+	margin: 50px 50px;
 }
+
 .loginInfo_IdPw {
-  width: 173px; 
-  margin: 5px auto;
-  }
-.loginInfo_IdPw input{
-  width: 173px; 
-  margin: 5px auto;
-  }
+	width: 173px;
+	margin: 5px auto;
+}
+
+.loginInfo_IdPw input {
+	width: 173px;
+	margin: 5px auto;
+}
+
 .login_Button {
-  width: 118px; 
-  margin:5px 40px 5px 40px;
-  padding: 0; 
-  height: 30px; 
-  color: white; 
-  background-color: black;
-  cursor: pointer; 
-  display: inline-block; 
-  border:1px solid black; 
-  border-radius: 6px;
-  font-size: 15px; 
-  font-weight: 900;
+	width: 118px;
+	margin: 5px 40px 5px 40px;
+	padding: 0;
+	height: 30px;
+	color: white;
+	background-color: black;
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 6px;
+	font-size: 15px;
+	font-weight: 900;
 }
 
 #facebook_login {
-  border:1px solid #3385F7; 
-  border-radius: 6px; 
-  background-color: #3385F7; 
-  width: 178px;
-  height: 40px; 
-  text-align: center; 
-  color: white;
-  font-size: 16px; 
-  font-weight : bold;
-  padding: 0px;
-  margin: 5px 10px 5px 10px; 
-  cursor: pointer;
+	border: 1px solid #3385F7;
+	border-radius: 6px;
+	background-color: #3385F7;
+	width: 178px;
+	height: 40px;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 5px 10px 5px 10px;
+	cursor: pointer;
 }
 
 #kakao_login {
-  border:1px solid #ffcc00; 
-  border-radius: 6px; 
-  background-color: #ffcc00; 
-  width: 178px;
-  height: 40px; 
-  text-align: center; 
-  color: black; 
-  font-size: 16px;
-  font-weight : bold; 
-  padding: 0px;
-  margin: 5px 10px 5px 10px; 
-  cursor: pointer;
+	border: 1px solid #ffcc00;
+	border-radius: 6px;
+	background-color: #ffcc00;
+	width: 178px;
+	height: 40px;
+	text-align: center;
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 5px 10px 5px 10px;
+	cursor: pointer;
 }
 
 #sign_upBtn {
-  text-decoration: none; font-size: 13px; text-align: center; margin: 2px auto 0px 30%;
+	text-decoration: none;
+	font-size: 13px;
+	text-align: center;
+	margin: 2px auto 0px 30%;
 }
 
-.userStatus{
-margin: 0px 20px 20px 0px;
-padding-top: 20px;
-z-index:5;
-height: 120px;
-width: 300px;
-border-bottom: #cccccc 1px solid;
-background-color: white;
+.userStatus {
+	margin: 0px 20px 0px 0px;
+	padding-top: 20px;
+	z-index: 5;
+	height: 120px;
+	width: 300px;
+	border-bottom: #cccccc 1px solid;
+	background-color: white;
 }
 
-#profilePicture {
-  margin: 15px 0px 0px 11%;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: #e6e6e6 1px solid;
+.userProfilePicture {
+	margin: 15px 0px 0px 11%;
+	width: 38px;
+	height: 38px;
+	border-radius: 10px;
+	border: #e6e6e6 1px solid;
 }
 
-#userEmail {
-  position: relative;
-  top: 10px;
-  margin: 0px 0px 0px 10px;
-  font-size: 15px; 
-  font-weight: bold;
+.userID {
+	position: relative;
+	top: 10px;
+	margin: 0px 0px 0px 10px;
+	font-size: 15px;
+	font-weight: bold;
 }
-#userProfileAdmin {
-  position: relative;
-  top: 9px;
-  margin: 10spx 0px 0px 10px;
+
+.optionBtn {
+	position: relative;
+	top: 9px;
+	margin: 10spx 0px 0px 10px;
 }
+
 #logoutBtn {
-  float: right;
-  margin-top: 20px;
-  margin-right: 17px;
-  color: #8c8c8c;
+	float: right;
+	margin-top: 20px;
+	margin-right: 17px;
+	color: #8c8c8c;
 }
+
+.sidebar-guideUserCollection-wrap {
+	height: calc(100% - 94px - 65px);
+}
+
+.sidebar-guideUsers-title-section {
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 11%;
+border-bottom: #cccccc 1px solid;
+margin-bottom: 20px;
+}
+#sidebar-guideUsers-title {
+font-size: 15px;
+font-weight: bold;
+line-height: 30px;
+color: #404040;
+}
+.sidebar-guideUserCollection {
+overflow:hidden;
+text-overflow: ellipsis;
+padding-bottom : 20px;
+}
+
 </style>
 </head>
 <body>
-  <div class = "userStatus_Page_Wrap">
-      <div class="login_Page">
-      <div class="loginInfo">
-        <div class="loginInfo_IdPw" id="input_id">
-          <input id="email" name=id type=text placeholder="test@mail.com">
-        </div>
-        <div class="loginInfo_IdPw" id="input_pw">
-          <input id="password" name=password type=password placeholder="비밀번호">
-        </div>
-        <button id ="login_Button" class="login_Button" href="#">로 그 인</button>
-        <button id="facebook_login" href="#">페이스북으로 로그인</button>
-        <button id="kakao_login" href="#">카카오계정으로 로그인</button>
-        <p id="sign_upBtn"><a href="#">회원가입</a></p>
+	<div class="userStatus_Page_Wrap">
+		<div class="login_Page">
+			<div class="loginInfo">
+				<div class="loginInfo_IdPw" id="input_id">
+					<input id="email" name=id type=text placeholder="test@mail.com">
+				</div>
+				<div class="loginInfo_IdPw" id="input_pw">
+					<input id="password" name=password type=password placeholder="비밀번호">
+				</div>
+				<button id="login_Button" class="login_Button" href="#">로 그
+					인</button>
+				<button id="facebook_login" href="#">페이스북으로 로그인</button>
+				<button id="kakao_login" href="#">카카오계정으로 로그인</button>
+				<p id="sign_upBtn">
+					<a href="#">회원가입</a>
+				</p>
+			</div>
+
+			<div class="userStatus">
+				<div id="userPhoto_wrap">
+					<a href="#"><img class="userProfilePicture" id="profilePicture" src=""></a> 
+					<a href="#"><span class="userID" id="userEmail"></span></a> 
+					<a href='#'><img class="optionBtn" id="userProfileAdmin" width="20px" height="20px" src="../gear.svg"></a>
+				</div>
+				
+				<div id="logoutBtn_wrap">
+					<a id="logoutBtn" href='#' margin=15%><span>로그아웃</span></a>
+				</div>
+			</div>
+			<div class="sidebar-guideUserCollection-wrap">
+			<div class = "sidebar-guideUsers-title-section">
+			 <h1 id = "sidebar-guideUsers-title">팔로잉중인 회원</h1>
+			</div>
+			<div class="sidebar-guideUserCollection">
+        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
+        <a href="#"><span class="userID" id="guiderNick">asdfasfasdf</span></a> 
+			</div>
+			 <div class="sidebar-guideUserCollection">
+        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
+        <a href="#"><span class="userID" id="guiderNick">sadfvz</span></a> 
       </div>
-      
-      <div class="userStatus">
-       <div id="userPhoto_wrap">
-          <a href="#"><img id="profilePicture" src= "" ></a>
-          <a href="#"><span id="userEmail"></span></a>
-          <a href='#'><img id="userProfileAdmin" width = "20px" height= "20px" src="../gear.svg"></a>
-        </div>
-        <div id= "logoutBtn_wrap">
-          <a id="logoutBtn" href='#' margin=15%><span>로그아웃</span></a>
-        </div>
-    </div>
-      
-    </div>
-  </div>
-  
-  <script>
+      <div class="sidebar-guideUserCollection">
+        <a href="#"><img class="userProfilePicture" id="guiderPicture" src="../135.jpg"></a> 
+        <a href="#"><span class="userID" id="guiderNick">sadfvz</span></a> 
+      </div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+	<script>
   $("#sign_upBtn").click(function(){
 	  location.href="../membership/membership.html"
   })
   </script>
-  <script>
+	<script>
   $("#userProfileAdmin").click(function(){
 	  location.href="../membership/userProfileAdminPage.html"
   })
   </script>
-  
-  <script type="text/javascript" src="../userAuthApp.js"></script>
-  <script type="text/javascript" src="../membership/membership.js"></script>
-  <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script>
+
+	<script type="text/javascript" src="../userAuthApp.js"></script>
+	<script type="text/javascript" src="../membership/membership.js"></script>
+	<script type="text/javascript" src="../lib/js/common.js"></script>
+	<script>
   ajaxLoginUser();
   </script>
 </body>

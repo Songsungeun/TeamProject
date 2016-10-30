@@ -35,6 +35,7 @@ function ajaxLogin(user) {
 		}
 	})
 }
+var loginUserNickname;
 function ajaxLoginUser() {
 	
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
@@ -43,8 +44,10 @@ function ajaxLoginUser() {
 			$('.userStatus').css("display", "none")
 			$('#newWrite').css("display", "none")
 			$('.headlist').css("display", "none")
+			$('.sidebar-guideUserCollection-wrap').css("display", "none")
 			return
 		}
+		loginUserNickname = result.data.member.nickname
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.member.email);

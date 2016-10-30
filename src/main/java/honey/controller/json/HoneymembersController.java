@@ -205,6 +205,7 @@ public class HoneymembersController {
 			HoneyMembers follower = new HoneyMembers();
 			follower.setFollowMemberNo(loginUser.getMemberNo());
 			follower.setMemberNo(memberNo.getMemberNo());
+			follower.setNickname(loginUser.getNickname());
 			try {
 				hMembersService.followMemberInsert(follower);
 			}catch (Exception e) {
@@ -228,12 +229,12 @@ public class HoneymembersController {
 			}
 			HoneyMembers follower = new HoneyMembers();
 			follower.setFollowMemberNo(loginUser.getMemberNo());
+		    follower.setNickname(loginUser.getNickname());
 			follower.setMemberNo(memberNo.getMemberNo());
 			try {
 				List<HoneyMembers> checker = hMembersService.followChecker(follower);
 				if(checker.isEmpty()) {
 					int i = 0;
-					System.out.println("return: " + checker.isEmpty());
 					return JsonResult.fail(i);
 				} else {
 					throw new Exception();

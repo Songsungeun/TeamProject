@@ -43,6 +43,8 @@ function ajaxFollowDisconnect(userNo) {
 	}
 
 	function aJaxFollowUser(userNo) {
+		console.log(loginUserNickname)
+		console.log($("#writerNick").text())
 		$.ajax({
 			url:serverAddr +"/mainpage/otherUserFollow.json",
 			type: "POST",
@@ -51,7 +53,10 @@ function ajaxFollowDisconnect(userNo) {
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			success: function(obj) {
 				var result = obj.jsonResult
-				if (result.state != "success" && result.data == 0){
+				if ( $("#writerNick").text() == loginUserNickname){
+					alert("욕심쟁이 우후훗")
+					return
+				} else if (result.state != "success" && result.data == 0){
 					 var confirmResult = confirm("follow를 취소하시겠습니까?")
 					 if (confirmResult == true) {
 						 ajaxFollowDisconnect(userNo);
