@@ -439,7 +439,14 @@ body {
 #userDesc div, span {
 	white-space: pre-line;
 }
-
+#userDesc > img{
+	max-width: 556px;
+	height: auto;
+}
+#userDesc2 > img{
+  max-width: 556px;
+  height: auto;
+}
 /* coments */
 
 /* .cmts_list { */
@@ -590,8 +597,10 @@ body {
 }
 
 .image img {
-  width: 556px;
+  max-width: 556px;
   opacity: 1;
+  heigth: auto;
+  
 }
 
 .linkText {
