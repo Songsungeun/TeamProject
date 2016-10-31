@@ -447,6 +447,14 @@ body {
   max-width: 556px;
   height: auto;
 }
+#userDesc > div > img{
+	max-width: 556px;
+	height: auto;
+}
+#userDesc2 > div > img{
+  max-width: 556px;
+  height: auto;
+}
 /* coments */
 
 /* .cmts_list { */
