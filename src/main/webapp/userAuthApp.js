@@ -24,8 +24,8 @@ function ajaxLogin(user) {
 }
 var loginUserNickname;
 function ajaxLoginUser() {
-	
 	$.getJSON(serverAddr + "/mainpage/loginUser.json", function(obj) {
+		
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			$('.userStatus').css("display", "none")
@@ -34,6 +34,7 @@ function ajaxLoginUser() {
 			$('.sidebar-guideUserCollection-wrap').css("display", "none")
 			return
 		}
+		
 		loginUserNickname = result.data.member.nickname
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
@@ -45,12 +46,13 @@ function ajaxLoginUser() {
 		var data = result.data.guiderInfo
 		data.stringify = JSON.stringify(data);
 		var boards = template(data);
-		$(".hi").append(boards);
+		$(".insertGuiders").append(boards);
+		
 		
 		$(".userID").click(function(event) {
-			console.log("hello?")
 			location.href = "/TeamProject/membership/otherUserDetailPage.html?nick=" +  $(this).attr("data-nickName");
 		})
+		
 	})
 
 	
