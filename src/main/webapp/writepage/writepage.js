@@ -16,27 +16,27 @@ $("#submitBoard").click(function(event) {
 	console.log("log: " + $(".nicEdit-main").text())
 	var categoryNo = $("#category").val()
 	switch (categoryNo) {
-	case "라이프" : categoryNo = 2
+	case "라이프" : categoryNo = 1
 		break;
-	case "스포츠" : categoryNo = 3
+	case "스포츠" : categoryNo = 2
 	break;
-	case "차/테크" : categoryNo = 4
+	case "차/테크" : categoryNo = 3
 	break;
-	case "패션/뷰티" : categoryNo = 5
+	case "패션/뷰티" : categoryNo = 4
 	break;
-	case "게임" : categoryNo = 6
+	case "게임" : categoryNo = 5
 	break;
-	case "TV/연예" : categoryNo = 7
+	case "TV/연예" : categoryNo = 6
 	break;
-	case "뮤직" : categoryNo = 8
+	case "뮤직" : categoryNo = 7
 	break;
-	case "영화" : categoryNo = 9
+	case "영화" : categoryNo = 8
 	break;
-	case "책/문화" : categoryNo = 10
+	case "책/문화" : categoryNo = 9
 	break;
-	case "지식/교양" : categoryNo = 11
+	case "지식/교양" : categoryNo = 10
 	break;
-	default : categoryNo = 1
+	default : categoryNo = 0
 	break;
 	}
 	var board = {
@@ -138,34 +138,36 @@ function ajaxViewBoard(urlinfo, title, contents) {
 	console.log("title= " + title);
 	console.log("contents= " + contents);
 	console.log("urlInfo= " + urlinfo);
-	if (urlinfo != null || urlinfo != "" || urlInfo != undefined) {
-		$.getJSON(serverAddr + "/writepage/previewlist.json" , 
-				{urlinfo: urlinfo},
-				function(textStatus) {
-					var result = textStatus.jsonResult
-					console.log(result.data);
-					console.log(result.state);
-					if (result.state == "error") {
-						alert("미리보기가 안되요")
-						return;
-					} else if (result.state == "fail"){
-						$(".form-group2.css").css('display', none);
-					} else {
-						console.log("title= " + result.data.title);
-						$("#urlTitle").html(result.data.title);
-						console.log("image= " + result.data.image);
-						$("#urlImage").html(result.data.image);
-						console.log("desc= " + result.data.description);
-						$("#urlDesc").html(result.data.description)
-						console.log("URL= " + result.data.detailUrl);
-						console.log("SimpleURL = " + result.data.urlAddr);
-						$("#urlAddr").html(result.data.urlAddr);
-						$("#previewTitle").text(title);
-						$("#previewTextBox").html(contents);
-					}
-				},"json")
-	} else {
-		$("#previewTitle").text(title);
-		$("#previewTextBox").html(contents);
-	}
+		if (!urlinfo) {
+			//$(".previewbox").css('display', none);
+			$("#previewTitle").text(title);
+			$("#previewTextBox").html(contents);
+		} else {
+			$.getJSON(serverAddr + "/writepage/previewlist.json" , 
+					{urlinfo: urlinfo},
+					function(textStatus) {
+						var result = textStatus.jsonResult
+						console.log(result.data);
+						console.log(result.state);
+						console.log("type: " + typeof urlinfo);
+						if (result.state == "error") {
+							alert("미리보기가 안되요")
+							return;
+						} else if (result.state == "fail"){
+							$(".form-group2.css").css('display', none);
+						} else {
+							console.log("title= " + result.data.title);
+							$("#urlTitle").html(result.data.title);
+							console.log("image= " + result.data.image);
+							$("#urlImage").html(result.data.image);
+							console.log("desc= " + result.data.description);
+							$("#urlDesc").html(result.data.description)
+							console.log("URL= " + result.data.detailUrl);
+							console.log("SimpleURL = " + result.data.urlAddr);
+							$("#urlAddr").html(result.data.urlAddr);
+							$("#previewTitle").text(title);
+							$("#previewTextBox").html(contents);
+						}
+					},"json")
+		}
 }
