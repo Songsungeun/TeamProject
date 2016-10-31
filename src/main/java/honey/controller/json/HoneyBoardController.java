@@ -142,6 +142,9 @@ public class HoneyBoardController {
 	@RequestMapping(path="previewlist")
 	public Object previewlist(String urlinfo) throws Exception {
 		try {
+			if (urlinfo == null) {
+				return JsonResult.fail();
+			}
 			UrlInfo url = Scrapper.parsePageHeaderInfo(urlinfo);
 			return JsonResult.success(url);
 		} catch (Exception e) {

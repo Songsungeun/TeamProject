@@ -4,9 +4,9 @@
 
 
 $("#preview").click(function(evnet) {
-	var urlinfo = $("#url").val()
-	var title = $("#write_title").val();
-	var contents = $("#write_contents").val();
+		var urlinfo = $("#url").val()
+		var title = $("#write_title").val();
+		var contents = $(".nicEdit-main").html();
 	ajaxViewBoard(urlinfo, title, contents);
 })
 
@@ -137,27 +137,35 @@ function readCookie() {
 function ajaxViewBoard(urlinfo, title, contents) {
 	console.log("title= " + title);
 	console.log("contents= " + contents);
-	$.getJSON(serverAddr + "/writepage/previewlist.json" , 
-			{urlinfo: urlinfo},
-			function(textStatus) {
-				var result = textStatus.jsonResult
-				console.log(result.data);
-				console.log(result.state);
-				if (result.state != "success") {
-					alert("미리보기가 안되요")
-					return;
-				} else {
-					console.log("title= " + result.data.title);
-					$("#urlTitle").html(result.data.title);
-					console.log("image= " + result.data.image);
-					$("#urlImage").html(result.data.image);
-					console.log("desc= " + result.data.description);
-					$("#urlDesc").html(result.data.description)
-					console.log("URL= " + result.data.detailUrl);
-					console.log("SimpleURL = " + result.data.urlAddr);
-					$("#urlAddr").html(result.data.urlAddr);
-					$("#previewTitle").text(title);
-					$("#previewTextBox").text(contents);
-				}
-			},"json")
+	console.log("urlInfo= " + urlinfo);
+	if (urlinfo != null || urlinfo != "" || urlInfo != undefined) {
+		$.getJSON(serverAddr + "/writepage/previewlist.json" , 
+				{urlinfo: urlinfo},
+				function(textStatus) {
+					var result = textStatus.jsonResult
+					console.log(result.data);
+					console.log(result.state);
+					if (result.state == "error") {
+						alert("미리보기가 안되요")
+						return;
+					} else if (result.state == "fail"){
+						$(".form-group2.css").css('display', none);
+					} else {
+						console.log("title= " + result.data.title);
+						$("#urlTitle").html(result.data.title);
+						console.log("image= " + result.data.image);
+						$("#urlImage").html(result.data.image);
+						console.log("desc= " + result.data.description);
+						$("#urlDesc").html(result.data.description)
+						console.log("URL= " + result.data.detailUrl);
+						console.log("SimpleURL = " + result.data.urlAddr);
+						$("#urlAddr").html(result.data.urlAddr);
+						$("#previewTitle").text(title);
+						$("#previewTextBox").html(contents);
+					}
+				},"json")
+	} else {
+		$("#previewTitle").text(title);
+		$("#previewTextBox").html(contents);
+	}
 }
