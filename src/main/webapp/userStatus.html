@@ -118,7 +118,10 @@
 	font-size: 15px;
 	font-weight: bold;
 }
-
+#userNick{
+margin-left: 10px;
+color: #5f8b7e;
+}
 .optionBtn {
 	position: relative;
 	top: 9px;
@@ -156,6 +159,13 @@
 	text-overflow: ellipsis;
 	padding-bottom: 20px;
 }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 </style>
 </head>
 <body>
@@ -193,14 +203,14 @@
 				<div class="sidebar-guideUsers-title-section">
 					<h1 id="sidebar-guideUsers-title">팔로잉 회원</h1>
 				</div>
-				<div class="hi">
+				<div class="insertGuiders">
 				</div>
 			</div>
 
 
 
 		</div>
-
+</div>
 		<script>
 			$("#sign_upBtn").click(function() {
 				location.href = "../membership/membership.html"
@@ -219,7 +229,7 @@
 {{#each this}}
       <div class="sidebar-guideUserCollection">
         <a href="#"><img class="userProfilePicture" id="guiderPicture" src="/TeamProject/upload/{{profileFileName}}"></a> 
-        <a href="#"><span class="userID" data-nickName="{{nickname}}" >{{nickname}}</span></a> 
+        <a class="guiderNick" href="#"><span class="userID" id="userNick" data-nickName="{{nickname}}" >{{nickname}}</span></a> 
       </div>
 {{/each}}
   </script>

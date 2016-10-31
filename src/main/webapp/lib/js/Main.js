@@ -7,6 +7,8 @@ $(document).ready(function(){
 });
 
 function ajaxBoardList() {
+
+	
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {

@@ -2,6 +2,7 @@
  * 
  */
 $("#submitMember").click(function(event) {
+	
 	var board = {
 			userName: $("#name").val(),
 			email: $("#user_Email").val(),
@@ -10,7 +11,9 @@ $("#submitMember").click(function(event) {
 			password: $("#userPassword").val()
 	}
 	ajaxAddMember(board)
-});
+	event.stopImmediatePropagation();
+	}
+	);
 
 $("#unregisterBtn").click(function(event) {
 	var result = confirm("Are you sure?")

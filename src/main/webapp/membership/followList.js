@@ -6,6 +6,9 @@ function followLoderFunc (tempUserNo) {
 	checkingFollow(userNo)
 }
 
+
+
+
 function checkingFollow(userNo) {
 	$.ajax({
 		url:serverAddr +"/mainpage/checkingFollow.json",
@@ -43,7 +46,6 @@ function ajaxFollowDisconnect(userNo) {
 	}
 
 	function aJaxFollowUser(userNo) {
-		console.log(loginUserNickname)
 		console.log($("#writerNick").text())
 		$.ajax({
 			url:serverAddr +"/mainpage/otherUserFollow.json",
@@ -60,6 +62,7 @@ function ajaxFollowDisconnect(userNo) {
 					 var confirmResult = confirm("follow를 취소하시겠습니까?")
 					 if (confirmResult == true) {
 						 ajaxFollowDisconnect(userNo);
+						 event.stopImmediatePropagation();
 					 }
 					return
 				} else if (result.state != "success" && result.data == null){

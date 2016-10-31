@@ -10,7 +10,7 @@ function getParams() {
 	var url = decodeURIComponent(location.href);
 	url = decodeURIComponent(url);
 	var params = url.substring( url.indexOf('?')+1, url.length );
-	params = params.split("&");
+	params = params.split("#");
 	var size = params.length;
 	var key, value;
 	for(var i=0 ; i < size ; i++) {
@@ -54,8 +54,7 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				$("#yourModal").modal();
 				$("html").css({"overflow":"hidden"});
 				 var no = $(this).attr("data-no")
-				console.log(no)
-				ajaxDetailLoadBoard(no);
+				ajaxLoadBoard(no);
 				ajaxPostComentsList(no)
 			})
 			

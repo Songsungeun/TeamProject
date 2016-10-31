@@ -21,7 +21,7 @@ import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
 
 @Controller
-@RequestMapping("/mainpage/")
+@RequestMapping({"/mainpage/", "/membership/"})
 @SessionAttributes({"HoneyMain"})
 public class HoneyMainController {
 	@Autowired HoneyMainService mainService;
@@ -84,6 +84,8 @@ public class HoneyMainController {
 	}
 	@RequestMapping("postdetail")
 	public Object detail(int no) throws Exception {
+		System.out.println("no 받음 : " + no);
+		
 		mainService.getIncreaseViewCount(no);
 		HoneyMain honeyMain = mainService.getPost(no);
 		HashMap<String, Object> map = new HashMap<>();
