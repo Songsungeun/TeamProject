@@ -64,6 +64,8 @@
     <result column="VIEW_CT" property="viewCount"/>
     <result column="URL" property="url"/>
     <result column="URL_Title" property="title"/>
+    <result column="FILE_NAME" property="fileName"/>
+    <result column="FILE_STATUS" property="fileStatus"/>
   </resultMap>
   
     <resultMap type="HoneyMain" id="userListMap">
@@ -81,9 +83,9 @@
     <result column="CT_NM" property="category"/>
   </resultMap>
   
-  <insert id="insert" parameterType="honey_boards">
-    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
-    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
+   <insert id="insert" parameterType="honey_boards">
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_NAME, BD_CRE, FILE_STATUS)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileName}, now(), #(fileStatus))
   </insert>
   
    <select id="selectList" resultMap="boardMap" parameterType="map"> 

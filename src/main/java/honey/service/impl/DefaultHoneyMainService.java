@@ -10,6 +10,7 @@ import honey.dao.HoneyMainDao;
 import honey.dao.HoneyMainUrlDao;
 import honey.dao.MemberFileDao;
 import honey.service.HoneyMainService;
+import honey.vo.FileList;
 import honey.vo.HoneyMain;
 import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
@@ -78,6 +79,10 @@ public class DefaultHoneyMainService implements HoneyMainService {
 			 return e.getMessage();
 			}
   }
+  public List<FileList> getFileList(int no) throws Exception {
+		
+		return mainDao.fileList(no);
+	}
 }
 
   

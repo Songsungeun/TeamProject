@@ -47,6 +47,11 @@ public class HoneyBoardController {
 			board.setUserNo(hMember.getMemberNo());
 			System.out.println("title= " + board.getTitle());
 			System.out.println("contents= " + board.getContents());
+			 if (files.length != 0) {
+				 board.setFileStatus(1);
+			 } else {
+				 board.setFileStatus(0);
+			 }
 			boardService.insertBoard(board);
 			
 			if (!board.getUrl().equals("")) {

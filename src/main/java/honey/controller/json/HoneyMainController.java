@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import honey.service.HoneyComentService;
 import honey.service.HoneyMainService;
+import honey.vo.FileList;
 import honey.vo.HoneyComent;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
@@ -104,15 +105,22 @@ public class HoneyMainController {
 	}
 	@RequestMapping("postdetail")
 	public Object detail(int no) throws Exception {
-		System.out.println("no 받음 : " + no);
+System.out.println("no 받음 : " + no);
 		
 		mainService.getIncreaseViewCount(no);
 		HoneyMain honeyMain = mainService.getPost(no);
 		HashMap<String, Object> map = new HashMap<>();
 		String userPhoto = mainService.getPhoto(Integer.parseInt(honeyMain.getUserNo()));
 		honeyMain.setUserProfilePath(userPhoto);
+		System.out.println("fileStatus: " + honeyMain.getFileStatus());
+		
+		if (honeyMain.getFileStatus() == 1) {
+			System.out.println("honeyMainNo=" + honeyMain.getNo());
+			List<FileList> fileList = mainService.getFileList(honeyMain.getNo());
+			map.put("fileList", fileList);
+		}
 		map.put("board", honeyMain);
-
+	
 		UrlInfo urlInfo;
 		if (mainService.getUrl(no) != null) {
 			urlInfo = mainService.getUrl(no);
@@ -120,9 +128,12 @@ public class HoneyMainController {
 			temp = "<img alt='photo' src='" + temp + "'>";
 			urlInfo.setImage(temp);
 			map.put("urlInfo", urlInfo);
-			return JsonResult.success(map);
-		} else {
-			return JsonResult.success2(map);
+		} 
+		
+		switch (map.size()) {
+		default: return JsonResult.success(map);
+		case 2: return JsonResult.success2(map);
+		case 3: return JsonResult.success3(map);
 		}
 	}
 	@RequestMapping("comentDetail")

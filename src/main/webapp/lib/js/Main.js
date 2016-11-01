@@ -116,10 +116,6 @@ function ajaxLoadBoard(no) {
 			$("#post_user_id").text(result.data.board.email);
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
-			$("#linkTitle").text(result.data.urlInfo.title);
-			$("#linkDesc").text(result.data.urlInfo.description);
-			$("#linkURL").text(result.data.urlInfo.urlAddr);
-			$("#urlImage").html(result.data.urlInfo.image);
 			
 		} else {
 			$("#no").val(result.data.board.no);
@@ -134,6 +130,10 @@ function ajaxLoadBoard(no) {
 			$("#post_user_id").text(result.data.board.email);
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
+			$("#linkTitle").text(result.data.urlInfo.title);
+			$("#linkDesc").text(result.data.urlInfo.description);
+			$("#linkURL").text(result.data.urlInfo.urlAddr);
+			$("#urlImage").html(result.data.urlInfo.image);
 			
 		}
 		$("#writerNick").click(function(event) {

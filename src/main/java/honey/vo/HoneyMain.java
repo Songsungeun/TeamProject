@@ -28,6 +28,7 @@ public class HoneyMain implements Serializable{
   protected String linkImage;
   protected String linkDesc;
   protected String userProfilePath;
+  protected int fileStatus;
   
   
   public String getCategory() {
@@ -155,5 +156,13 @@ public String getUserProfilePath() {
 public void setUserProfilePath(String userProfilePath) {
 	this.userProfilePath = userProfilePath;
 }
+public int getFileStatus() {
+	return fileStatus;
+}
+public void setFileStatus(int fileStatus) {
+	this.fileStatus = fileStatus;
+}
   
+
+
 }

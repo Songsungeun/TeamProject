@@ -22,6 +22,7 @@ public class honey_boards implements Serializable{
   protected int like;
   protected int viewCount;
   protected String fileName;
+  protected int fileStatus;
   
   public static SimpleDateFormat getFormat() {
     return format;
@@ -105,6 +106,12 @@ public String getFileName() {
 }
 public void setFileName(String fileName) {
 	this.fileName = fileName;
+}
+public int getFileStatus() {
+	return fileStatus;
+}
+public void setFileStatus(int fileStatus) {
+	this.fileStatus = fileStatus;
 }
 @Override
 public String toString() {
