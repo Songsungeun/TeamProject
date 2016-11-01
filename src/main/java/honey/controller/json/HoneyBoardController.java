@@ -71,7 +71,7 @@ public class HoneyBoardController {
 					 boardFile.setMb_no(hMember.getMemberNo());
 					 files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
 					 boardService.insertBoardFile(boardFile);
-				 }
+				 } 
 			 }
 			return JsonResult.success();
 
