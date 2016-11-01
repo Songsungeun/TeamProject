@@ -66,17 +66,43 @@
     <result column="URL_Title" property="title"/>
   </resultMap>
   
+    <resultMap type="HoneyMain" id="userListMap">
+    <id column="BD_NO" property="no"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
+  </resultMap>
+  
+  
   <insert id="insert" parameterType="honey_boards">
     insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
     values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
   </insert>
   
-  <select id="selectList" resultMap="boardMap" parameterType="map"> 
+   <select id="selectList" resultMap="boardMap" parameterType="map"> 
    select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL
        from honey_boards 
    where MB_NO = #{userNo}
    order by BD_NO desc 
     limit #{startIndex}, #{length}
+  </select>
+  
+    <select id="selectList1" resultMap="userListMap" parameterType="map"> 
+   select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT, hb.MB_NO, hb.CT_NO, 
+   hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS     
+   from honey_boards hb    
+   left join honey_membs hm on hm.MB_NO = hb.MB_NO  
+   left join honey_ctg hc on hb.CT_NO = hc.CT_NO 
+   where hb.MB_NO = #{userNo}
+   order by hb.BD_NO desc; 
   </select>
   
   <select id="selectOne" resultMap="boardMap" parameterType="int">

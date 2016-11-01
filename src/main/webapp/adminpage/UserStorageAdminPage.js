@@ -1,20 +1,20 @@
 
 function ajaxBoardList() {
 	
-	$.getJSON(serverAddr + "/admin/adminlist.json", function(obj) {
+	$.getJSON(serverAddr + "/admin/adminPostlist.json", function(obj) {
 	var result = obj.jsonResult
     if (result.state != "success") {
       alert("서버에서 데이터를 가져오는데 실패하였습니다.")
       return
     }
 	
-    var contents = "";
-    var arr = result.data
-    var template = Handlebars.compile($('#trTemplateText').html())
-    		for (var i in arr) {
-    			contents += template(arr[i])
-    		}
-    $("#boardTable tbody").html(contents);
+	var data = result.data
+	var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
+    var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
+   			
+    $("#boardTable tbody").html(boardUiTemplate(data));			
+    $("#postsCard").html(cardUiTemplate(data));
+
     $(".titleLink").click(function(event) {
     	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
     })
