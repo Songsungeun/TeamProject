@@ -32,6 +32,15 @@ public class DefaultHoneyMainService implements HoneyMainService {
     map.put("length", length);
     return mainDao.popularList(map);
   }
+  
+  public List<HoneyMain> getselectListandCategory(int categoryNo,int pageNo, int length) throws Exception {
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("startIndex", (pageNo -1)* length);
+    map.put("length", length);
+    map.put("categoryNo", categoryNo);
+    return mainDao.selectListandCategory(map);
+  }
+  
   public HoneyMain getPost(int no) throws Exception {
     return mainDao.selectOne(no);
   }

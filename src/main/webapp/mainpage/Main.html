@@ -20,11 +20,106 @@
     <div class="mainpage_wrap">
 
       <div id="mainpage_postcontainer" class="mainpage_Botcontainer">
-        <div id="tabs" class="all_post_wrap">
-          <ul id="post_wrapper" class="tabs-1-contents">
-
+        <div id="category_tab_outside">
+          <ul id="category_tab" class="categoryWrap">
+            <li id="category-bar-0" class="tempClass category-active"
+              data-ctg="0"><img
+              src="/TeamProject/mainpage/mainpage_images/ALLIcon.png">
+              전체보기</li>
+            <li id="category-bar-1" class="tempClass" data-ctg="1"><img
+              src="/TeamProject/mainpage/mainpage_images/lifeIcon.png">
+              라이프</li>
+            <li id="category-bar-2" class="tempClass" data-ctg="2"><img
+              src="/TeamProject/mainpage/mainpage_images/sportIcon.png">
+              스포츠</li>
+            <li id="category-bar-3" class="tempClass" data-ctg="3"><img
+              src="/TeamProject/mainpage/mainpage_images/cartechIcon.png">
+              차/테크</li>
+            <li id="category-bar-4" class="tempClass" data-ctg="4"><img
+              src="/TeamProject/mainpage/mainpage_images/fashionbeauty.png">
+              패션/뷰티</li>
+            <li id="category-bar-5" class="tempClass" data-ctg="5"><img
+              src="/TeamProject/mainpage/mainpage_images/gameIcon.png">
+              게임</li>
+            <li id="category-bar-6" class="tempClass" data-ctg="6"><img
+              src="/TeamProject/mainpage/mainpage_images/tventertail.png">
+              TV/연예</li>
+            <li id="category-bar-7" class="tempClass" data-ctg="7"><img
+              src="/TeamProject/mainpage/mainpage_images/music.png"> 뮤직</li>
+            <li id="category-bar-8" class="tempClass" data-ctg="8"><img
+              src="/TeamProject/mainpage/mainpage_images/movie.png"> 영화</li>
+            <li id="category-bar-9" class="tempClass" data-ctg="9"><img
+              src="/TeamProject/mainpage/mainpage_images/bookculture.png">
+              책/문화</li>
+            <li id="category-bar-10" class="tempClass" data-ctg="10"><img
+              src="/TeamProject/mainpage/mainpage_images/knowledge.png">
+              지식/교양</li>
           </ul>
+        </div>
 
+        <div id="contents-tabs" class="all_post_wrap">
+
+          <div id="category_tab-0" class="tab-content">
+            <ul id="post_wrapper allConts" class="category_tab-0">
+
+            </ul>
+          </div>
+
+          <div id="category_tab-1" class="tab-content" style="display: none">
+            <ul id="post_wrapper lifeConts" class="category_tab-1">
+            </ul>
+          </div>
+
+          <div id="category_tab-2" class="tab-content" style="display: none">
+            <ul id="post_wrapper sportsCconts" class="category_tab-2">
+            </ul>
+          </div>
+
+          <div id="category_tab-3" class="tab-content" style="display: none">
+            <ul id="post_wrapper car_techConts" class="category_tab-3">
+            </ul>
+          </div>
+
+          <div id="category_tab-4" class="tab-content" style="display: none">
+            <ul id="post_wrapper fashion_beautyConts" class="category_tab-4">
+            </ul>
+          </div>
+
+          <div id="category_tab-5" class="tab-content" style="display: none">
+            <ul id="post_wrapper gameConts" class="category_tab-5">
+            </ul>
+          </div>
+
+          <div id="category_tab-6" class="tab-content" style="display: none">
+            <ul id="post_wrapper tv_entertainConts" class="category_tab-6">
+            </ul>
+          </div>
+
+          <div id="category_tab-7" class="tab-content" style="display: none">
+            <ul id="post_wrapper musicConts" class="category_tab-7">
+            </ul>
+          </div>
+
+          <div id="category_tab-8" class="tab-content" style="display: none">
+            <ul id="post_wrapper movieConts" class="category_tab-8">
+            </ul>
+          </div>
+
+          <div id="category_tab-9" class="tab-content" style="display: none">
+            <ul id="post_wrapper book_cultureConts" class="category_tab-9">
+            </ul>
+          </div>
+
+          <div id="category_tab-10" class="tab-content" style="display: none">
+            <ul id="post_wrapper knowledge_refinementConts"
+              class="category_tab-10">
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      
+      
           <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" id="modalDialog">
@@ -78,8 +173,6 @@
             </div>
 
           </div>
-        </div>
-      </div>
     </div>
   </div>
   <script id="liTemplateText" type="text/x-handlebars-template">
@@ -125,6 +218,7 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script type='text/javascript' src="../lib/js/common.js"></script>
   <script type='text/javascript' src="../lib/js/Main.js"></script>
+  <script type='text/javascript' src="../lib/js/category-tab.js"></script>
   <script type="text/javascript" src="../membership/followList.js"></script>
   <!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
   <script>

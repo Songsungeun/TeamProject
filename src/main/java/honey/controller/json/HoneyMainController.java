@@ -48,6 +48,26 @@ public class HoneyMainController {
 			return JsonResult.fail();
 		}
 	}
+	@RequestMapping("selectListandCategory")
+  public Object selectListandCategory(
+      HttpSession session,
+      int no,
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="100") int length) throws Exception {
+    List<HoneyMain> categorylist = mainService.getselectListandCategory(no, pageNo, length);
+    List<UrlInfo> urlList = mainService.getURLList();
+    try {
+      List<HoneyMain> settingUrlBoard = SetImage.setImage(categorylist, urlList);
+      for (int i = 0; i < settingUrlBoard.size(); i++) {
+        String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
+        categorylist.get(i).setUserProfilePath(userPhoto);
+      }
+      return JsonResult.success(categorylist);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.fail(e.getMessage());
+    }
+  }
 	@RequestMapping("comentList")
 	public Object comentList(
 			HttpSession session,

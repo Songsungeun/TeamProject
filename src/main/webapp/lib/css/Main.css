@@ -447,6 +447,40 @@ body {
   max-width: 556px;
   height: auto;
 }
+#category_tab > li {
+  float: left;
+  width:80px;
+  height:50px;
+  text-align: center;
+}
+#category_tab_outside {
+  background-color: white;
+  width: 880px;
+  margin: 0 auto 10px auto;
+}
+#category_tab > li:HOVER{
+  cursor: pointer;
+  text-decoration: none;
+  background: #a0a0a0; 
+   
+}
+#category_tab > li:FOCUS{
+  cursor: pointer;
+  text-decoration: none;
+}
+/* .categoryWrap { */
+/*  width: 880px; */
+/*  margin: 0 auto; */
+/*  margin-bottom: 10px; */
+/* } */
+#category_tab > li > img {
+  width: 40px;
+  height: 20px;
+  margin: 5px 20px;
+}
+.category-active {
+  background-color: gray;
+}
 /* #userDesc div img{ */
 /* 	max-width: 556px; */
 /* 	height: auto; */

@@ -10,6 +10,7 @@ import honey.vo.HoneyMain;
 public interface HoneyMainDao {
   List<HoneyMain> selectList(Map<String, Object> paramMap) throws Exception;
   List<HoneyMain> popularList(Map<String, Object> paramMap) throws Exception;
+  List<HoneyMain> selectListandCategory(Map<String, Object> paramMap) throws Exception;
   
   HoneyMain selectOne(int no) throws Exception;
   

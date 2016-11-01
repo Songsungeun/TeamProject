@@ -6,9 +6,17 @@ $(document).ready(function(){
 	});
 });
 
-function ajaxBoardList() {
+//function category() { 
+//console.log("카테고리2")
+//$("#category_tab > li > #category-bar").click(function(){
+//	$("#category_tab > li > a").removeClass("active");
+//	$("#contents-tabs .tab-content").css({"display":"none"});
+//	$(this).addClass("active");
+//	$("#category_tab-"+($(this).attr("data-ctg"))).css({"display":"block"});
+//});
+//}
 
-	
+function ajaxBoardList() {
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -16,7 +24,7 @@ function ajaxBoardList() {
 			return
 		}
 		var template1 = Handlebars.compile($('#liTemplateText').html())
-		$(".tabs-1-contents").html(template1(result));
+		$(".tab-content > .category_tab-0").html(template1(result));
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
@@ -32,8 +40,11 @@ function ajaxBoardList() {
 			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
-			var ctgNo =$(this).attr("data-ctgNo")
-			console.log(ctgNo)
+			event.stopImmediatePropagation();
+			var ctgNo =$(this).attr("data-ctg")
+			console.log("게시물 카테고리 누름: " + ctgNo)
+			console.log("ctgNo 보냄")
+			boardcategoryClick(ctgNo);
 		})
 		$(".userInfoLink").click(function(event) {
 			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
@@ -42,6 +53,7 @@ function ajaxBoardList() {
 //		$("#yourModal").css({"display":"none"});
 //		$("#super_HTML").css({"overflow":"auto"});
 //		})
+		category();
 	})
 }
 function ajaxDetailBoardList() {
@@ -51,8 +63,8 @@ function ajaxDetailBoardList() {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-		var template2 = Handlebars.compile($('#liTemplateText2').html())
-		$(".tabs-1-contents").html(template2(result));
+		var detailBoardTemplate2 = Handlebars.compile($('#detailliTemplateText').html())
+		$(".tab-content > .category_tab-0").html(detailBoardTemplate2(result));
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
@@ -69,12 +81,16 @@ function ajaxDetailBoardList() {
 			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
-			var ctgNo =$(this).attr("data-ctgNo")
-			console.log(ctgNo)
+			event.stopImmediatePropagation();
+			var ctgNo =$(this).attr("data-ctg")
+			console.log("게시물 카테고리 누름: " + ctgNo)
+			console.log("ctgNo 보냄")
+			detailboardcategoryClick(ctgNo);
 		})
 		$(".userInfoLink").click(function(event) {
 			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
 		})
+		categorydetailBoard();
 	})
 	
 }

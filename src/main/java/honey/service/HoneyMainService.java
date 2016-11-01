@@ -13,6 +13,8 @@ public interface HoneyMainService {
   
   List<HoneyMain> getPopList(int pageNo, int length) throws Exception;
   
+  List<HoneyMain> getselectListandCategory(int categoryNo, int pageNo, int length) throws Exception;
+  
   HoneyMain getPost(int no) throws Exception;
   
   void getIncreaseViewCount(int no) throws Exception;
