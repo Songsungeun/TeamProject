@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import honey.dao.HoneyMembersDao;
-import honey.dao.tempDao;
 import honey.service.HoneyAdminService;
 import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
@@ -28,8 +26,6 @@ public class HoneyAdminController {
     @Autowired HoneyAdminService honeyAdminService;
     @Autowired HoneymembersService hMembersService;
     @Autowired HoneyMainService mainService;
-    @Autowired tempDao tempdao;
-    @Autowired HoneyMembersDao hMemberDao;
     
     @RequestMapping(path = "adminPostlist")
     public Object postList(
@@ -39,6 +35,7 @@ public class HoneyAdminController {
       try {
         
       List<HoneyMain>list = honeyAdminService.adminBoardList(session, pageNo, length);
+      int totalPage = honeyAdminService.getTotalPage(session, length);
       List<UrlInfo> urlList = mainService.getURLList();
       List<HoneyMain> resultList = SetImage.setImage(list, urlList);
       
@@ -48,6 +45,7 @@ public class HoneyAdminController {
       }
       HashMap<String,Object> data = new HashMap<>();
       data.put("list", list);    
+      data.put("totalPage", totalPage);
       data.put("pageNo", pageNo);
       data.put("length", length);
       

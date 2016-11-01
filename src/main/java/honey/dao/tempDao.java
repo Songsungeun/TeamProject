@@ -17,4 +17,6 @@ public interface tempDao {
   int delete(int no) throws Exception;
   int insertUrl(UrlInfo urlInfo) throws Exception;
   
+  int countAll(int no) throws Exception;
+  
 }

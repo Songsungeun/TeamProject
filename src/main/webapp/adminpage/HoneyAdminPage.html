@@ -205,10 +205,10 @@ background: white;
         <div id = "centerContents">
 	          <div id = "centerContentsWrap">
 	               <span class = "conterMenuBtn"> <a href = "#"> Storage  admin </a></span>
-	             &nbsp; &nbsp;   |
-	               <span class = "conterMenuBtn"> <a href = "#"> &nbsp; &nbsp;  Like Posts </a></span>
-	              &nbsp; &nbsp;  |
-	               <span class = "conterMenuBtn"> <a href = "#">  &nbsp; &nbsp; Profile Edit </a></span>
+	             &nbsp; &nbsp;   | &nbsp; &nbsp;  
+	               <span class = "conterMenuBtn"> <a href = "#"> Like Posts </a></span>
+	              &nbsp; &nbsp;  | &nbsp; &nbsp;  
+	               <span class = "conterMenuBtn" id = "ProfileEditLink"> <a href = "#"> Profile Edit </a></span>
 	          </div> 
          </div> 
            
@@ -216,20 +216,17 @@ background: white;
           <iframe src="UserStorageAdminPage.html" width="100%"  scrolling="no" height="100%"></iframe>
          </div>
     </div>
-        
-       
      
     <footer>
 
     </footer>
     
-    <script type="text/javascript" src="HoneyAdminpage.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="/TeamProject/lib/js/common.js"></script>
-    <script type="text/javascript" src="../membership/userProfileAdminPage.js"></script>
+    <script type="text/javascript" src="HoneyAdminpage.js"></script>
     
   <script >
   ajaxloadNickName()
@@ -240,8 +237,13 @@ background: white;
       $("#includedContent").load("/TeamProject/header.html");
     });
    </script>
-    
-    
+ 
+ <script>
+  $("#ProfileEditLink").click(function () {
+	  window.location.href = "../membership/userProfileAdminPage.html"
+  });
+ </Script>
+ 
  
 </body>
 </html>

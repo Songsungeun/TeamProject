@@ -38,7 +38,8 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 /*reset*/
 
 #DetailPage_Wrap{
-    width: 1280px;
+    padding-top :10px;
+    width: 1000px;
     margin: auto;
     background-color: #f1f1f1;
  
@@ -50,7 +51,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   
 }
 
-#StorageTitle {
+ #StorageTitle {
   position: relative;
   top:-10px;
   text-align: left;
@@ -387,10 +388,27 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   border:none;
 }
 
-#boardTable{
+#tableWrap{
   background-color: white;
   display: none;
-  
+}
+
+#cardBtn{
+    position: relative;
+    width: 100px;
+    float: right;
+}
+
+#boardBtn{
+    position: relative;
+    width: 100px;
+    float: right;
+}
+
+.moreViewBtn{
+    font-size: 18px;
+    font-family: serif;
+    color: dimgray;
 }
 
 </style>
@@ -407,23 +425,33 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
        </div>
        
   <section id = "DetailPage_Wrap">
-          <div id = "postsCard">
-             
+   <div id = "cardWrap">
+        <div id = "postsCard">
+       </div>
+          <div id = "cardBtn">
+              <a  class="moreViewBtn" href="#">더보기</a>
          </div>
-         <table id="boardTable" class="table table-hover">
-	          <thead>
-	          <tr>
-	            <th>번호</th>
-	            <th>제목(상세보기)</th>
-	            <th>등록일</th>
-	            <th>좋아요</th>
-	            <th>조회수</th>
-	            <th>삭제하기</th>
-	          </tr>
-	          </thead>
-	          <tbody></tbody>
-        </table>
-          
+     </div>
+     
+     <div id = "tableWrap">
+       <table id="boardTable" class="table table-hover">
+         <thead>
+         <tr>
+           <th>번호</th>
+           <th>제목(상세보기)</th>
+           <th>등록일</th>
+           <th>좋아요</th>
+           <th>조회수</th>
+           <th>삭제하기</th>
+         </tr>
+         </thead>
+         <tbody></tbody>
+      </table>
+            <div id = "boardBtn">
+              <a  class="moreViewBtn" href="#">더보기</a>
+           </div>
+     </div>
+     
  </section>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -447,6 +475,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
      </label>
     </tr>
 {{/each}}
+
 </script> 
 
 
@@ -491,24 +520,9 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
     <script>
   ajaxBoardList()
-  </script>
-  
-  <script>
-    $(".conterDetailBtn1").click(function () {
-    	console.log("1")
-    		   if($("#boardTable").css("display") != "none"){   
-    		        $('#boardTable').hide();
-    		        $('#postsCard').show();  
-    }});
-    </script>
-    <script>
-    $(".conterDetailBtn2").click(function () {
-        console.log("2")
-            	 $('#postsCard').hide();  
-               $('#boardTable').show();  
-      });
-  </script>
-  
+</script>  
+
+
   
   
 </body>

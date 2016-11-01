@@ -64,7 +64,6 @@
     <result column="VIEW_CT" property="viewCount"/>
     <result column="URL" property="url"/>
     <result column="URL_Title" property="title"/>
-    <result column="FILE_NAME" property="fileName"/>
   </resultMap>
   
     <resultMap type="HoneyMain" id="userListMap">
@@ -82,10 +81,9 @@
     <result column="CT_NM" property="category"/>
   </resultMap>
   
-  
   <insert id="insert" parameterType="honey_boards">
-    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_NAME, BD_CRE)
-    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileName}, now())
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
   </insert>
   
    <select id="selectList" resultMap="boardMap" parameterType="map"> 
@@ -103,7 +101,14 @@
    left join honey_membs hm on hm.MB_NO = hb.MB_NO  
    left join honey_ctg hc on hb.CT_NO = hc.CT_NO 
    where hb.MB_NO = #{userNo}
-   order by hb.BD_NO desc; 
+   order by hb.BD_NO desc
+   limit #{startIndex}, #{length}
+  </select>
+  
+    <select id="countAll"  resultType="int"  parameterType="int">
+  select COUNT(*)
+  from honey_boards
+  where MB_NO = #{value}
   </select>
   
   <select id="selectOne" resultMap="boardMap" parameterType="int">
@@ -131,4 +136,6 @@
     (select max(bd_no) from honey_boards)
     )
   </insert>
+  
+  
 </mapper>

@@ -15,7 +15,8 @@ import honey.vo.HoneyMembers;
 
 @Service
 public class DefaultHoneyAdminService implements HoneyAdminService {
-
+  HttpSession session;
+  
   @Autowired tempDao tempdao;
   public List<HoneyMain> adminBoardList(HttpSession session,int pageNo, int length) throws Exception {
     HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
@@ -29,5 +30,12 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   
   public void  adminBoardDelete(int no) throws Exception {
      tempdao.delete(no);
+  }
+
+  @Override
+  public int getTotalPage(HttpSession session, int length) throws Exception {
+    HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
+    int count = tempdao.countAll(hMember.getMemberNo());
+    return count+=1;
   }  
 }

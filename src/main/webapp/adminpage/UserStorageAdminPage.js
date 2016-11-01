@@ -1,7 +1,19 @@
 
+
+   $(document.body).on('click', '.moreViewBtn', function(event){
+    pageLength += 6;
+    ajaxBoardList()
+})
+
+var pageNo = 1,
+	  pageLength = 6;
+
 function ajaxBoardList() {
 	
-	$.getJSON(serverAddr + "/admin/adminPostlist.json", function(obj) {
+	$.getJSON(serverAddr + "/admin/adminPostlist.json", {
+		"pageNo" : pageNo,
+		"length" : pageLength,
+	},  function(obj) {
 	var result = obj.jsonResult
     if (result.state != "success") {
       alert("서버에서 데이터를 가져오는데 실패하였습니다.")
@@ -9,6 +21,7 @@ function ajaxBoardList() {
     }
 	
 	var data = result.data
+	var totalsize = data.totalPage;
 	var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
     var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
    			
@@ -18,6 +31,9 @@ function ajaxBoardList() {
     $(".titleLink").click(function(event) {
     	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
     })
+        if (pageLength >  totalsize) {
+      	$('.moreViewBtn').css("display", "none")
+      } 
     
     $(document.body).on('click', '.btn-danger',  function(event) {
     	var rNumber = $(this).attr("data-no")
@@ -29,8 +45,10 @@ function ajaxBoardList() {
     		//취소 버튼 누를시 
     	}
     });
-    
+
   })
+  
+  
 }
 
 function ajaxDeleteBoard(no) {
@@ -39,17 +57,25 @@ function ajaxDeleteBoard(no) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("삭제 실패입니다.")
-		      location.href = "HoneyAdminPage.html"
+		    window.location.reload();
 			return
 		}
 		alert("삭제되었습니다.")
-		location.href = "HoneyAdminPage.html"
+		window.location.reload();
 	})
 }
 
 
-$(function() {
-	    $( "#DetailPage_Wrap" ).tabs();
-	 } );
+  $(".conterDetailBtn1").click(function () {
+  		   if($("#tableWrap").css("display") != "none"){   
+  		        $('#tableWrap').hide();
+  		        $('#cardWrap').show();  
+  }});
+  
+  $(".conterDetailBtn2").click(function () {
+          	 $('#cardWrap').hide();  
+             $('#tableWrap').show();  
+  });
+
 
 
