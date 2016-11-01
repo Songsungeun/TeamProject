@@ -67,6 +67,7 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	}
 	
 	public void insertBoardFile(HoneyBoardFile boardFile) throws Exception {
+		System.out.println("insert 시");
 		boardFileDao.boardPhotoInsert(boardFile);
 	}
 	

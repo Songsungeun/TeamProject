@@ -21,6 +21,9 @@ public class honey_boards implements Serializable{
   protected String createdDate2;  //birth
   protected int like;
   protected int viewCount;
+  protected String fileName;
+  protected String originFileName;
+  
   public static SimpleDateFormat getFormat() {
     return format;
   }
@@ -98,6 +101,19 @@ public String getUrlInfo() {
 public void setUrlInfo(String urlInfo) {
 	this.urlInfo = urlInfo;
 }
+public String getFileName() {
+	return fileName;
+}
+public void setFileName(String fileName) {
+	this.fileName = fileName;
+}
+public String getOriginFileName() {
+	return originFileName;
+}
+public void setOriginFileName(String originFileName) {
+	this.originFileName = originFileName;
+}
+
   
 	
 }

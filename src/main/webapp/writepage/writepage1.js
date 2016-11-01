@@ -10,6 +10,9 @@ $("#preview").click(function(evnet) {
 	ajaxViewBoard(urlinfo, title, contents);
 })
 
+$("#fileButton").click(function() {
+	$("#fileupload").click()
+});
 
 $("#submitBoard").click(function(event) {
 	var saveCon = nicEditorInstance.saveContent;
@@ -43,6 +46,8 @@ $("#submitBoard").click(function(event) {
 				title: $("#write_title").val(),
 				contents: $(".nicEdit-main").html(),
 				userNo:$("#memberNumber").val(),
+				fileName:$("#hiddenFileName").text(),
+				originFileName:$("#hiddenOriginFileName").text(),
 				categoryNo
 	
 	}
@@ -66,39 +71,60 @@ $("#deleteBoard").click(function(event) {
   ajaxDeleteBoard($("#no").val())
 });
 
-function temp() {
-	console.log('씨발;');
-    $('#inputFile').fileupload({
-    	url : serverAddr + "/writepage/boardFileUpload.json", 
+//$(function () {
+//	console.log("업로드를 시작하지");
+//    $('#uploadForm').fileupload({
+//    	url : serverAddr + "/writepage/boardFileUpload.json", 
+//        dataType: 'json',
+//        type: 'POST',
+//        add: function(e, data){
+//        	console.log("log");
+//            var uploadFile = data.files[0];
+//            var isValid = true;
+//            if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
+//                alert('png, jpg, gif 만 가능합니다');
+//                isValid = false;
+//            } else if (uploadFile.size > 10000000) { // 5mb
+//                alert('파일 용량은 10메가를 초과할 수 없습니다.');
+//                isValid = false;
+//            }
+//            if (isValid) {
+//                data.submit();              
+//            }
+//        }, done: function (e, data) {
+//            var code = data.result.code;
+//            var msg = data.result.msg;
+//            if(code == '1') {
+//                alert(msg);
+//                $("#hiddenFileName").text(data.result.fileName);
+//            } else {
+//                alert(code + ' : ' + msg);
+//            } 
+//        }, fail: function(e, data){
+//            alert('서버와 통신 중 문제가 발생했습니다');
+//            foo = data;
+//        }
+//    });
+//})
+
+$(document).ready(function() {
+    $('#fileupload').fileupload({
+        url : serverAddr + "/writepage/boardFileUpload.json", 
         dataType: 'json',
         add: function(e, data){
-        	console.log("log");
-            var uploadFile = data.files[0];
-            var isValid = true;
-            if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
-                alert('png, jpg, gif 만 가능합니다');
-                isValid = false;
-            } else if (uploadFile.size > 10000000) { // 5mb
-                alert('파일 용량은 10메가를 초과할 수 없습니다.');
-                isValid = false;
-            }
-            if (isValid) {
                 data.submit();              
-            }
         }, done: function (e, data) {
-            var code = data.result.code;
-            var msg = data.result.msg;
-            if(code == '1') {
-                alert(msg);
-            } else {
-                alert(code + ' : ' + msg);
-            } 
+        	console.log("obj.jsonResult.data= " + data.result.filename);
+        	$("#hiddenFileName").text(data.result.filename);
+        	$("#hiddenOriginFileName").text(data.result.originalFileName);
+        	$("#originFile").text(data.result.originalFileName);
         }, fail: function(e, data){
             alert('서버와 통신 중 문제가 발생했습니다');
-            foo = data;
         }
+        
+        
     });
-}
+}); 
 
 function ajaxAddBoard(board) {
 	console.log("add")
@@ -109,7 +135,7 @@ function ajaxAddBoard(board) {
 	    	 return
 	    }
 	}, "json")
-	temp();
+	
 	console.log("add end")
 }
 

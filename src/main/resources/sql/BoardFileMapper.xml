@@ -10,8 +10,9 @@
   </resultMap>
   
   <insert id="boardPhotoInsert" parameterType="HoneyBoardFile">
-    insert into board_files(Board_No, File_Name, Member_No)
-    values(#{boardNo}, #{filename}, #{mb_no})
+    insert into board_files(File_Name, Member_No, Board_no) (select
+    #{fileName}, #{mb_no},
+    (select max(bd_no) from honey_boards))
   </insert>
 </mapper>
 

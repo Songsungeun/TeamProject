@@ -64,11 +64,12 @@
     <result column="VIEW_CT" property="viewCount"/>
     <result column="URL" property="url"/>
     <result column="URL_Title" property="title"/>
+    <result column="FILE_NAME" property="fileName"/>
   </resultMap>
   
   <insert id="insert" parameterType="honey_boards">
-    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, BD_CRE)
-    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, now())
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_NAME,  BD_CRE)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileName}, now())
   </insert>
   
   <select id="selectList" resultMap="boardMap" parameterType="map"> 

@@ -75,11 +75,11 @@ form {
   margin: 0 auto;
  }
 
-#contBox {
+#uploadForm {
+margin-top: 100px;
     width: 476px;
     height: 170px;
     border: 1px solid #C1CDCD;
-    margin: 0 auto;
   }
    /*
   #submitBoard {
@@ -137,99 +137,56 @@ $(document).ready(function(){
   </script>
 </head>
 <body>
-  <div id="headerInclude"></div>
 
-  <div id="write_container">
 
-    <form id="writeArea">
-      <input type="text" id="url" class="form-control" placeholder="URL"> 
-      <input type="text" id="title" class="form-control" placeholder="제목">
-      <textarea class="form-control" id= "contents" rows="20" placeholder="내용을 입력하세요."></textarea>
-      <div class="form-group">
-        <label for="exampleInputFile">File input</label> <input type="file"
-          id="exampleInputFile">
-        <p class="help-block">파일을 등록하세요</p>
-      </div>
-      <fieldset id="category_select">
-        <label for="category">Category</label> <select name="category"
-          id="category"class="form-control">
-          <option selected="selected">라이프</option>
-          <option>스포츠</option>
-          <option>차/테크</option>
-          <option>패션/뷰티</option>
-          <option>게임</option>
-          <option>TV/연예</option>
-          <option>뮤직</option>
-          <option>영화</option>
-          <option>책/문화</option>
-          <option>지식/교양</option>
-        </select>
-      </fieldset>
-      <input class="btn btn-default my-new"
-          name="submit" id="submitBoard" tabindex="8" value="등록">
-      <input class="btn btn-default my-view"
-          name="submit" id="updateBoard" tabindex="8" value="변경">
-      <input class="btn btn-default my-view"
-          name="submit" id="deleteBoard" tabindex="8" value="삭제">
-      <input class="btn btn-default"
-          name="cancel" id="cancelwrite" tabindex="8" value="취소"
-          onclick="location.href='../mainpage/Main.html'">
-      <input class="btn btn-default my-new" data-toggle="modal" name="preview" 
-               id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" 
-               data-whatever="@kmdo">
-<!--      <input class="btn btn-default my-new" -->
-<!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
-      <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
-    </form>
+   <div class="profileInfomer">
+          <a id="changeUserPhotoOperator" class="btn btn-default btn-sm">프로필
+            사진 변경</a>
+          <form id="uploadForm" action="#" name="uploadForm" method="post"
+            enctype="multipart/form-data">
+            <input id="inputUserPhoto" type="file" name="userProfilePhoto" />
+          </form>
+        </div>
     
     
-  <!-- Modal Start -->
-  <div>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        
-        <div class="modal-body">
-    <form id="write_form">
-      <div class="form-group2">
-        <div class="control-label" id="previewTitle"></div>
-        <div class="previewbox" id="linkedURL">
-          <div id="urlImage"></div>
-          <div id="urlTitle"></div>
-          <div id="urlDesc"></div>
-          <div id="urlAddr"></div>
-        </div>
-      </div>
-      <div class="form-group1">
-        <div class="control-label" id="preiviewContents"></div>
-        <div id="contBox">
-        <div id="message-text">
-        </div>
-        </div>
-      </div>
-    </form>
-        </div>
-        <div class="modal-footer">
-    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-
-<!-- <div class="modal-footer"> -->
-<!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
-<!--         </div> -->
-
-
-
+  
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 
-    
-  </div>
-  <!-- div: #write_container -->
-
+<script>
+$(document).ready(function() {
+    $('#uploadForm').fileupload({
+        url : serverAddr + "/membership/profileFileUpload.json", 
+        dataType: 'json',
+        add: function(e, data){
+            var uploadFile = data.files[0];
+            var isValid = true;
+            if (!(/png|jpe?g|gif/i).test(uploadFile.name)) {
+                alert('png, jpg, gif 만 가능합니다');
+                isValid = false;
+            } else if (uploadFile.size > 10000000) { // 5mb
+                alert('파일 용량은 10메가를 초과할 수 없습니다.');
+                isValid = false;
+            }
+            if (isValid) {
+                data.submit();              
+            }
+        }, done: function (e, data) {
+            var code = data.result.code;
+            var msg = data.result.msg;
+            if(code == '1') {
+                alert(msg);
+                $("#profilePhoto").attr('src',"/TeamProject/upload/"+data.result.data)
+                $("#profilePicture").attr('src',"/TeamProject/upload/"+data.result.data)
+            } else {
+                alert(code + ' : ' + msg);
+            } 
+        }, fail: function(e, data){
+            alert('서버와 통신 중 문제가 발생했습니다');
+            foo = data;
+        }
+    });
+}); 
+</script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

@@ -87,6 +87,12 @@ form {
     float: right;
   }
   
+  #fileButton {
+    position: relative;
+    float: left;
+    left: 4.9%;
+  }
+  
   #urlTitle {
     float: left;
     font-size: 17px;
@@ -124,7 +130,17 @@ form {
     height: auto;
   }
   
+  #originFile {
+    position: relative;
+    float: left;
+    width: 400px;
+    left: 5%;
+    height: 29.53px;
+  }
   
+  .col-sm-10 {
+    margin-bottom: 10px;
+  }
 </style>
 
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -148,18 +164,11 @@ $(document).ready(function(){
 
   <div id="write_container">
 
-    <form id="writeArea" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
+    <form id="writeArea">
       <input type="text" id="url" class="form-control" placeholder="URL"> 
       <input type="text" id="write_title" class="form-control" placeholder="제목">
       <textarea class="form-control" id= "myNicEditor" rows="20" style="max-width:1024px;"></textarea>
-      <div class="form-group">
-        <label for="exampleInputFile">File input</label> 
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">파일을 등록하세요</p>
-        <label for="exampleInputFile">File input</label> 
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">파일을 등록하세요</p>
-      </div>
+      
       <fieldset id="category_select">
         <label for="category">Category</label> <select name="category"
           id="category"class="form-control">
@@ -175,7 +184,23 @@ $(document).ready(function(){
           <option>지식/교양</option>
         </select>
       </fieldset>
-      <input class="btn btn-default my-new"
+    </form>
+    <div class="col-sm-10">
+        <div class="profileInfomer">
+        <button class="ui-button ui-widget ui-corner-all" id="fileButton">파일첨부</button>
+        <p  id="originFile" class="form-control" ></p>
+            <input id="fileupload" type="file" style="display: none" name="userProfilePhoto" multiple/>
+          <p id="hiddenFileName" style="display: none"></p>
+          <p id="hiddenOriginFileName" style="display: none"></p>
+        </div>
+
+      </div>
+<!--     <div class="form-group"> -->
+<!--         <label for="exampleInputFile">File input</label>  -->
+<!--         <input type="file" id="exampleInputFile"> -->
+<!--         <p class="help-block">파일을 등록하세요</p> -->
+<!--       </div> -->
+     <input class="btn btn-default my-new submitBoard"
           name="submit" id="submitBoard" tabindex="8" value="등록">
       <input class="btn btn-default my-view"
           name="submit" id="updateBoard" tabindex="8" value="변경">
@@ -188,8 +213,7 @@ $(document).ready(function(){
                id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" >
 <!--      <input class="btn btn-default my-new" -->
 <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
-      <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
-    </form>
+      <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL">
     </div>
     
   <!-- Modal Start -->
@@ -246,7 +270,7 @@ $(document).ready(function(){
   <script src="../node_modules/jquery-form/jquery.form.js"></script>
   <script src="../lib/js/NicEdit-Korean/nicEdit.js" type="text/javascript"></script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script type="text/javascript" src="writepage.js"></script>
+  <script type="text/javascript" src="writepage1.js"></script>
   <script>
   /*
   bkLib.onDomLoaded(function(){
