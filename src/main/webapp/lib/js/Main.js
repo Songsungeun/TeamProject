@@ -100,23 +100,9 @@ var comentInfo = 0;
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
-		if (result.state == "fail" || result.state == "error") {
+		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
-		} else if (result.state == "success"){
-			$("#no").val(result.data.board.no);
-			comentInfo =result.data.board.no;
-			$("#userTitle").text(result.data.board.title);
-			$("#url").text(result.data.board.url);
-			$("#userImage").attr("src", "/TeamProject/upload/" + result.data.board.userProfilePath);
-			$("#userDesc").html(result.data.board.contents);
-			$("#createdDate").text(result.data.board.createdDate2);
-			$("#writerNick").text(result.data.board.writerNick);
-			$("#url_location").html(result.data.board.linkTitle);
-			$("#post_user_id").text(result.data.board.email);
-			$("#viewCount").text(result.data.board.viewCount);
-			$("#like").text(result.data.board.like);
-			
 		} else {
 			$("#no").val(result.data.board.no);
 			comentInfo =result.data.board.no;
@@ -130,12 +116,13 @@ function ajaxLoadBoard(no) {
 			$("#post_user_id").text(result.data.board.email);
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
-			$("#linkTitle").text(result.data.urlInfo.title);
-			$("#linkDesc").text(result.data.urlInfo.description);
-			$("#linkURL").text(result.data.urlInfo.urlAddr);
-			$("#urlImage").html(result.data.urlInfo.image);
-			
-		}
+			if (result.data.urlInfo.title != null) {
+				$("#linkTitle").text(result.data.urlInfo.title);
+				$("#linkDesc").text(result.data.urlInfo.description);
+				$("#linkURL").text(result.data.urlInfo.urlAddr);
+				$("#urlImage").html(result.data.urlInfo.image);
+			}
+		}	
 		$("#writerNick").click(function(event) {
 			window.location.href = "../membership/otherUserDetailPage.html?nick=" + result.data.board.writerNick;
 		})

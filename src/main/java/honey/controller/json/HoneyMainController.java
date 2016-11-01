@@ -1,5 +1,6 @@
 package honey.controller.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -114,27 +115,25 @@ System.out.println("no 받음 : " + no);
 		honeyMain.setUserProfilePath(userPhoto);
 		System.out.println("fileStatus: " + honeyMain.getFileStatus());
 		
+		List<FileList> fileList = new ArrayList<FileList>();
 		if (honeyMain.getFileStatus() == 1) {
 			System.out.println("honeyMainNo=" + honeyMain.getNo());
-			List<FileList> fileList = mainService.getFileList(honeyMain.getNo());
-			map.put("fileList", fileList);
+			fileList = mainService.getFileList(honeyMain.getNo());
 		}
-		map.put("board", honeyMain);
 	
-		UrlInfo urlInfo;
+		UrlInfo urlInfo = new UrlInfo();
 		if (mainService.getUrl(no) != null) {
 			urlInfo = mainService.getUrl(no);
 			String temp = urlInfo.getImage();
 			temp = "<img alt='photo' src='" + temp + "'>";
 			urlInfo.setImage(temp);
-			map.put("urlInfo", urlInfo);
 		} 
+
+		map.put("fileList", fileList);
+		map.put("board", honeyMain);
+		map.put("urlInfo", urlInfo);
 		
-		switch (map.size()) {
-		default: return JsonResult.success(map);
-		case 2: return JsonResult.success2(map);
-		case 3: return JsonResult.success3(map);
-		}
+		return JsonResult.success(map);
 	}
 	@RequestMapping("comentDetail")
 	public Object comentDetail(int no, HttpSession session) throws Exception {

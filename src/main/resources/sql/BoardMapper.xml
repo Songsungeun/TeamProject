@@ -84,8 +84,8 @@
   </resultMap>
   
    <insert id="insert" parameterType="honey_boards">
-    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_NAME, BD_CRE, FILE_STATUS)
-    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileName}, now(), #(fileStatus))
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS, BD_CRE)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileStatus}, now())
   </insert>
   
    <select id="selectList" resultMap="boardMap" parameterType="map"> 

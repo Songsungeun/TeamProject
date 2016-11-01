@@ -541,7 +541,6 @@ body {
   padding-top: 30px;
   height: 100%;
   width: 660px;
-  border: 1px solid black;
 }
 
 #modalBody {
@@ -654,6 +653,15 @@ body {
   border-bottom: 1px solid #D1CDCD;
 }
 
+.fileArea {
+	max-width: 556px;
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+#fileListArea {
+	width: 500px;
+}
 .image {
   cursor: pointer;
 }
