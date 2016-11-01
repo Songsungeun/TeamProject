@@ -153,26 +153,23 @@ $(document).ready(function(){
       <input type="text" id="write_title" class="form-control" placeholder="제목">
       <textarea class="form-control" id= "myNicEditor" rows="20" style="max-width:1024px;"></textarea>
       <div class="form-group">
-        <label for="exampleInputFile">File input</label> 
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">파일을 등록하세요</p>
-        <label for="exampleInputFile">File input</label> 
-        <input type="file" id="exampleInputFile">
+        <label for="InputFile">File input</label> 
+        <input type="file" id="InputFile" name="media" multiple/>
         <p class="help-block">파일을 등록하세요</p>
       </div>
       <fieldset id="category_select">
         <label for="category">Category</label> <select name="category"
           id="category"class="form-control">
-          <option selected="selected">라이프</option>
-          <option>스포츠</option>
-          <option>차/테크</option>
-          <option>패션/뷰티</option>
-          <option>게임</option>
-          <option>TV/연예</option>
-          <option>뮤직</option>
-          <option>영화</option>
-          <option>책/문화</option>
-          <option>지식/교양</option>
+          <option selected="selected" value=1>라이프</option>
+          <option value=2>스포츠</option>
+          <option value=3>차/테크</option>
+          <option value=4>패션/뷰티</option>
+          <option value=5>게임</option>
+          <option value=6>TV/연예</option>
+          <option value=7>뮤직</option>
+          <option value=8>영화</option>
+          <option value=9>책/문화</option>
+          <option value=10>지식/교양</option>
         </select>
       </fieldset>
       <input class="btn btn-default my-new"

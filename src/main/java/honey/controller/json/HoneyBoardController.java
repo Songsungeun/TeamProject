@@ -29,26 +29,27 @@ import honey.vo.honey_boards;
 public class HoneyBoardController {
 	@Autowired DefaultHoneyBoardService boardService;
 	@Autowired ServletContext sc;
-
+	honey_boards board = new honey_boards();
+	
 	@RequestMapping(path="writeadd")
 	public Object add(
-			honey_boards board, 
-			//		  MultipartFile file1,
-			//		  MultipartFile file2,
+			honey_boards board,
+			MultipartFile[] files,
 			HttpSession session) throws Exception {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
+		System.out.println("board= " + board);
 		System.out.println("요청 받음");
-		String uploadDir = sc.getRealPath("/upload") + "/";
 		try {
 			System.out.println("add start");
 			HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
 			System.out.println(hMember.getMemberNo());
 			// 보드 멤버 넘버 셋
 			board.setUserNo(hMember.getMemberNo());
+			System.out.println("title= " + board.getTitle());
+			System.out.println("contents= " + board.getContents());
 			boardService.insertBoard(board);
-			System.out.println("board.getUrl: " + board.getUrl());
-
-			if (board.getUrl() != "") {
+			
+			if (!board.getUrl().equals("")) {
 				System.out.println("URL 있을경우 시작");
 				UrlInfo url = Scrapper.UrlForDB(board.getUrl());
 				System.out.println("멤버번호 셋 시작");
@@ -59,8 +60,19 @@ public class HoneyBoardController {
 				//System.out.println("no= " + boardService.getBoardMax().getNo());
 				boardService.insertUrl(url);
 			}
-
-			System.out.println("URL 없을 경");
+			
+			String newFilename = null;
+			 if (files.length != 0) {
+				 for (int i = 0; i < files.length; i++) {
+					 HoneyBoardFile boardFile = new HoneyBoardFile();
+					 boardFile.setOriginFileName(files[i].getOriginalFilename());
+					 newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
+					 boardFile.setFileName(newFilename);
+					 boardFile.setMb_no(hMember.getMemberNo());
+					 files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+					 boardService.insertBoardFile(boardFile);
+				 }
+			 }
 			return JsonResult.success();
 
 		} catch (Exception e) {

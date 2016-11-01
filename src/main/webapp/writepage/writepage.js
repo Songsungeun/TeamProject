@@ -11,44 +11,23 @@ $("#preview").click(function(evnet) {
 })
 
 $("#submitBoard").click(function(event) {
-	var saveCon = nicEditorInstance.saveContent;
-	console.log("hi" + saveCon)
-	console.log("log: " + $(".nicEdit-main").text())
-	var categoryNo = $("#category").val()
-	switch (categoryNo) {
-	case "라이프" : categoryNo = 1
-		break;
-	case "스포츠" : categoryNo = 2
-	break;
-	case "차/테크" : categoryNo = 3
-	break;
-	case "패션/뷰티" : categoryNo = 4
-	break;
-	case "게임" : categoryNo = 5
-	break;
-	case "TV/연예" : categoryNo = 6
-	break;
-	case "뮤직" : categoryNo = 7
-	break;
-	case "영화" : categoryNo = 8
-	break;
-	case "책/문화" : categoryNo = 9
-	break;
-	case "지식/교양" : categoryNo = 10
-	break;
-	default : categoryNo = 0
-	break;
-	}
-	var board = {
-				url: $("#url").val(),
-				title: $("#write_title").val(),
-				contents: $(".nicEdit-main").html(),
-				userNo:$("#memberNumber").val(),
-				categoryNo
 	
-	}
-	console.log(board)
-	ajaxAddBoard(board)
+var formData = new FormData();
+	
+	formData.append("url", $("#url").val());
+	formData.append("title", $("#write_title").val())
+	formData.append("contents", $(".nicEdit-main").html());
+	formData.append("categoryNo", $("#category").val());
+	
+	$($("#InputFile")[0].files).each(function(index, file) {
+		formData.append("files", file)
+	});
+	console.log("함수 호출전: " + formData.get("url"));
+	console.log("함수 호출전: " + formData.get("title"));
+	console.log("함수 호출전: " + formData.get("contents"));
+	console.log("함수 호출전: " + formData.get("categoryNo"));
+	
+	ajaxAddBoard(formData);
 });
 
 $("#updateBoard").click(function(event) {
@@ -66,16 +45,29 @@ $("#deleteBoard").click(function(event) {
   ajaxDeleteBoard($("#no").val())
 });
 
-function ajaxAddBoard(board) {
-	$.post(serverAddr + "/writepage/writeadd.json", board, function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-	    	 alert("등록 실패입니다.")
-	    	 return
-	    }
-	    window.location.href = "../mainpage/Main.html"
-	}, "json")
-}
+function ajaxAddBoard(formData) {
+	
+	console.log("함수 호출후: " + formData.get("title"));
+	console.log("함수 호출후: " + formData.get("contents"));
+	console.log("함수 호출후: " + formData.get("categoryNo"));
+	
+	$.ajax({
+		url: "writeadd.json",
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: "POST",
+		 success : function(obj) {
+			   var result = obj.jsonResult
+			   if (result.state != "success") {
+			    console.log(result.data)
+			    alert("등 실패입니다.")
+			    return
+			   }
+			   window.location.reload(true)
+			  }
+	})
+};
 
 function ajaxLoadBoard(no) {
 
