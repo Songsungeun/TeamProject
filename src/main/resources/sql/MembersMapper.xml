@@ -121,6 +121,10 @@
     where MB_NO=#{memberNo}
   </update>
   
+  <select id="emailCheck" resultMap="memberMap" parameterType="String">
+    select EMAIL from honey_membs
+    where email= #{email}
+  </select>
   
   
   

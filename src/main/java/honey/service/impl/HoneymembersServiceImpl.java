@@ -107,4 +107,9 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public List<UrlInfo> userUrlCollector(int memberNo) throws Exception {
 		return hUrnDao.selectUserUrlList(memberNo);
 	}
+	
+	@Override
+	public HoneyMembers getEmailCheck(String member) throws Exception {
+		return hMembersDao.emailCheck(member);
+	}
 }

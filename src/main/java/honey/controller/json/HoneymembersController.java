@@ -247,4 +247,19 @@ public class HoneymembersController {
 		} 
 
 	}
+	
+	@RequestMapping(path="emailCheck")
+	public Object emailCheck(String email) throws Exception {
+		try {
+			if (hMembersService.getEmailCheck(email) == null) {
+				return JsonResult.success();
+			} else {
+				return JsonResult.fail();
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return JsonResult.error();
+		} 
+
+	}
 }
