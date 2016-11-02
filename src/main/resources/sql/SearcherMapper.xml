@@ -12,6 +12,7 @@
     <result column="MB_NICK" property="nickname"/>
     <result column="MB_NM" property="userName"/>
    
+    <result column="BD_NO" property="no"/>
     <result column="BD_TITL" property="title"/>
     <result column="URL" property="url"/>
     <result column="MB_NICK" property="writerNick"/>

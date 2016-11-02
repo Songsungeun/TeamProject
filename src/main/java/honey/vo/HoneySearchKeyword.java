@@ -17,6 +17,8 @@ public class HoneySearchKeyword {
     protected String nickname;
     protected String filename;
     
+    protected int no;
+
     protected String writerNick;
     protected Date createdDate;   
     protected String createdDate2;  
@@ -180,7 +182,12 @@ public class HoneySearchKeyword {
     this.createdDate = Date.valueOf(str);
     this.createdDate2 = str;
   }
-  
+  public int getNo() {
+    return no;
+  }
+  public void setNo(int no) {
+    this.no = no;
+  }
 }
 
 

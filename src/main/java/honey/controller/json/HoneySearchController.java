@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import honey.dao.HoneyPhotoDao;
 import honey.dao.HoneySearcherDao;
+import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMemberPhoto;
 import honey.vo.HoneySearchKeyword;
 import honey.vo.JsonResult;
-import honey.vo.MemberFile;
+import honey.vo.UrlInfo;
 
 // 이 컨트롤러의 목적은 어느 페이지든지 검색을 하면 이 컨트롤러는 검색어 키워드를 쿠키에 저장하는 역할을 한다. 
 @Controller
@@ -39,6 +41,7 @@ public class HoneySearchController {
 	@Autowired   HoneySearcherDao searcherDao;
 	@Autowired   HoneyPhotoDao photoDao;
 	@Autowired   HoneymembersService honeymembersService;
+	@Autowired   HoneyMainService mainService;
 	
 	@RequestMapping("searchInfo")
 	public Object searchInfo(HoneySearchKeyword searchInfo, HttpServletResponse response)
@@ -72,11 +75,15 @@ public class HoneySearchController {
 
 		// 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 		List<HoneySearchKeyword> searchBoardResult = searcherDao.selectFromBoard(searchfucker);
-		System.out.println(searcherDao.selectFromBoard(searchfucker));
+    List<UrlInfo> urlList = mainService.getURLList();
+    List<HoneySearchKeyword> resultList = SetImage.setImage2(searchBoardResult, urlList);
 		
+    for (int i = 0; i < resultList.size(); i++) {
+      String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
+      searchBoardResult.get(i).setUserProfilePath(userPhoto);
+    }
+    
 		List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
-		System.out.println(searcherDao.selectFromMembers(searchfucker));
-		
 		String[] temp2 = new String[searchMemberResult.size()];
 		List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
 
