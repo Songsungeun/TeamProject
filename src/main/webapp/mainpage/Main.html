@@ -158,8 +158,11 @@
                   </div>
   
                   <div class="fileArea">
-                  <span>첨부파일: </span>
-                  <input id="fileListArea"/>
+                  <div class="addFileTag">
+                    <div id="fileText">첨부파일:</div> 
+                    <div id="fileListArea"></div>
+                  </div>
+                  
                   
                   </div>
                   
@@ -230,6 +233,11 @@
   <script>
     ajaxBoardList()
   </script>
+  <script>
+function Download(url) {
+    document.getElementById('fileListArea1').src = url;
+};
+</script>
 
 </body>
 </html>

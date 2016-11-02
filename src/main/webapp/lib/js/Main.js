@@ -100,6 +100,7 @@ var comentInfo = 0;
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
+		var fileList = '';
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -116,11 +117,21 @@ function ajaxLoadBoard(no) {
 			$("#post_user_id").text(result.data.board.email);
 			$("#viewCount").text(result.data.board.viewCount);
 			$("#like").text(result.data.board.like);
+			$("#fileListArea").text(result.data.fileList.originalFileName);
 			if (result.data.urlInfo.title != null) {
 				$("#linkTitle").text(result.data.urlInfo.title);
 				$("#linkDesc").text(result.data.urlInfo.description);
 				$("#linkURL").text(result.data.urlInfo.urlAddr);
 				$("#urlImage").html(result.data.urlInfo.image);
+			}
+			if (result.data.fileList.length > 0) {
+				console.log("for문 시작");
+				for (var i = 0; i < result.data.fileList.length; i++) {
+					fileList += "<a id='fileListArea'" +"href='http://t2.java85.com:8080/TeamProject/upload/" 
+					+ result.data.fileList[i].fileName + "' download='" + result.data.fileList[i].originalFileName + "'>"
+					+ (i+1) + "." + result.data.fileList[i].originalFileName + "</div>"
+				}
+				$("#fileListArea").html(fileList);
 			}
 		}	
 		$("#writerNick").click(function(event) {

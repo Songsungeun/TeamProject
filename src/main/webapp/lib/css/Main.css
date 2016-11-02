@@ -659,9 +659,22 @@ body {
   margin: 0 auto;
   margin-top: 10px;
 }
-#fileListArea {
-	width: 500px;
+#fileText {
+	float: left;
+	height: auto;
 }
+.addFileTag {
+  width: 556px;
+	float: left;
+}
+
+#fileListArea {
+  width: 400px;
+  float: left;
+  margin-left: 10px;
+}
+
+
 .image {
   cursor: pointer;
 }
