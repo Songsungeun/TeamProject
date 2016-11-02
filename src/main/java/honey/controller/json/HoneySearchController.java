@@ -73,16 +73,17 @@ public class HoneySearchController {
 		// 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 		List<HoneySearchKeyword> searchBoardResult = searcherDao.selectFromBoard(searchfucker);
 		System.out.println(searcherDao.selectFromBoard(searchfucker));
+		
 		List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
 		System.out.println(searcherDao.selectFromMembers(searchfucker));
 		
-		String[] temp = new String[searchMemberResult.size()];
+		String[] temp2 = new String[searchMemberResult.size()];
 		List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
 
 		try {
-			for (int i = 0; i < temp.length; i++) {
-				temp[i] = searchMemberResult.get(i).getEmail();
-				memberEmailExtract.add(photoDao.extractMemberNum(temp[i])); 
+			for (int i = 0; i < temp2.length; i++) {
+				temp2[i] = searchMemberResult.get(i).getEmail();
+				memberEmailExtract.add(photoDao.extractMemberNum(temp2[i])); 
 				searchMemberResult.get(i).setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
 	   }
 			

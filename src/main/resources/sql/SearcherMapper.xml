@@ -11,13 +11,31 @@
     <result column="EMAIL" property="email"/>
     <result column="MB_NICK" property="nickname"/>
     <result column="MB_NM" property="userName"/>
+   
+    <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
+    <result column="FILE_STATUS"  property="fileStatus"/>
   </resultMap>
 
   <select id="selectFromBoard" resultMap="searchMap" parameterType="map">
-    select BD_TITL,BD_CONTS,URL
-    from honey_boards
-    where bd_titl like concat('%', #{value}, '%') or bd_conts like concat('%', #{value}, '%')
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like concat('%', #{value}, '%')
+    order by bd_no desc
   </select>
+  
   <select id="selectFromMembers" resultMap="searchMap" parameterType="map">
     select EMAIL,MB_NICK,MB_NM
     from honey_membs
