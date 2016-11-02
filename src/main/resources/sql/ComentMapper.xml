@@ -13,6 +13,7 @@
     <result column="CM_CRE" property="createdDate"/>
     <result column="CM_THRD" property="comentThread"/>
     <result column="CM_DEPTH" property="comentDepth"/>
+    <result column="NOT_USE_NO" property="not_use_no"/>
   </resultMap>
   
   <select id="comentList" resultMap="boardMap" parameterType="map">
@@ -41,7 +42,14 @@
           useGeneratedKeys="true" keyColumn="no" keyProperty="no">
     insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
     (select #{coment}, now(), 0,#{memberNo},#{no},
-    (select max(cm_no) from honey_cmts)+1)
+    (select max(save_no) from HONEY_CMTS_NUMSAVE))
+</insert>
+
+<insert id="saveCometNo" parameterType="HoneyComent"
+          useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into HONEY_CMTS_NUMSAVE(NOT_USE_NO)
+    value (0)
+    
 </insert>
 
 <insert id="insertChildComent" parameterType="HoneyComent" 

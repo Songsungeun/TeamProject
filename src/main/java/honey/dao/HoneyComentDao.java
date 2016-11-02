@@ -12,6 +12,7 @@ public interface HoneyComentDao {
   HoneyComent comentDetail(int no) throws Exception;
   int insertComent(HoneyComent honeyComent) throws Exception;
   int insertChildComent(HoneyComent honeyComent) throws Exception;
+  int saveCometNo(HoneyComent honeyComent) throws Exception;
   int updateComment(HoneyComent honeyComent) throws Exception;
   int delete(int cmtNo) throws Exception;
   int childdelete(int cmtNo) throws Exception;

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 public class HoneyComent implements Serializable{
   private static final long serialVersionUID = 1L;
-
+  
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
   protected int cmtNo;
   protected int comentThread;
@@ -18,6 +18,17 @@ public class HoneyComent implements Serializable{
   protected String createdDate2;  //birth
   protected int no;
   protected int memberNo;
+  protected int not_use_no;
+  
+  
+  
+  public int getNot_use_no() {
+    return not_use_no;
+  }
+  public void setNot_use_no(int not_use_no) {
+    this.not_use_no = not_use_no;
+  }
+  
   
   public int getNo() {
     return no;

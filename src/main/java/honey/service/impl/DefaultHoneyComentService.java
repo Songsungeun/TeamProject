@@ -27,6 +27,9 @@ public class DefaultHoneyComentService implements HoneyComentService {
   public void insertChildComent(HoneyComent honeyComent) throws Exception {
     comentDao.insertChildComent(honeyComent);
   }
+  public void saveCometNo(HoneyComent honeyComent) throws Exception {
+    comentDao.saveCometNo(honeyComent);
+  }
   public void updateComent(HoneyComent honeyComent) throws Exception {
     comentDao.updateComment(honeyComent);
   }

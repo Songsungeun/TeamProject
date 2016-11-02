@@ -156,6 +156,7 @@ System.out.println("no 받음 : " + no);
 			//      honeyComent.setNo(honeyMain.getNo());
 			//      System.out.println(honeyComent.getNo());
 			comentService.insertComent(honeyComent);
+			comentService.saveCometNo(honeyComent);
 			return JsonResult.success(honeyComent);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -174,6 +175,7 @@ System.out.println("no 받음 : " + no);
 			//      honeyComent.setNo(honeyMain.getNo());
 			//      System.out.println(honeyComent.getNo());
 			comentService.insertChildComent(honeyComent);
+			comentService.saveCometNo(honeyComent);
 			return JsonResult.success(honeyComent);
 		} catch (Exception e) {
 			e.printStackTrace();
