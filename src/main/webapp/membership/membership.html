@@ -153,6 +153,10 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .form input.buttom:hover {
 	background-color: #2a78f6;
 }
+
+#result_id_msg {
+  border: 1px solid red;
+}
 </style>
 
 
@@ -168,32 +172,33 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 					<label for="name">Name</label>
 				</p>
 				<input id="name" name="name" placeholder="First and last name"
-					required="" tabindex="1" type="text">
+					required tabindex="1" type="text">
 
 				<p class="contact">
 					<label for="email">Email</label>
 				</p>
 				<input id="user_Email" name="email" placeholder="example@domain.com"
-					required="" tabindex="2" type="email">
-
+					required tabindex="2" type="email">
+				<div><span id="result_id_msg"></span></div>
+        
 				<p class="contact">
 					<label for="username">Create a username</label>
 				</p>
 				<input id="nickname" name="username" placeholder="nickname"
-					required="" tabindex="3" type="text">
+					required tabindex="3" type="text">
 
 				<p class="contact">
 					<label for="password">Create a password</label>
 				</p>
-				<input type="password" id="userPassword" name="password" required="" tabindex="4">
+				<input type="password" id="userPassword" name="password" required tabindex="4">
 				<p class="contact">
 					<label for="repassword">Confirm your password</label>
 				</p>
-				<input type="password" id="repassword" name="repassword" required="" tabindex="5">
+				<input type="password" id="repassword" name="repassword" required tabindex="5">
 
 				<fieldset>
-					<label>Birthday</label> <label class="month"> <select
-						class="select-style" name="BirthMonth">
+					<label>Birthday</label> <label class="month"> 
+					<select class="select-style" name="BirthMonth">
 							<option value="">Month</option>
 							<option value="01">January</option>
 							<option value="02">February</option>
@@ -206,10 +211,11 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 							<option value="09">September</option>
 							<option value="10">October</option>
 							<option value="11">November</option>
-							<option value="12">December</option></label> </select> 
+							<option value="12">December</option>
+					</select> </label> 
 							<label>Day<input class="birthday" maxlength="2" name="BirthDay" placeholder="Day"
-						required="" tabindex="6"></label> 
-						<label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required="" tabindex="7"></label>
+						required tabindex="6"></label> 
+						<label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required tabindex="7"></label>
 				</fieldset>
 
 				<br>
@@ -217,7 +223,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 				<p class="contact">
 					<label for="phone">Mobile phone</label>
 				</p>
-				<input id="phone" name="phone" placeholder="phone number" required="" tabindex="8" type="text"> <br>
+				<input id="phone" name="phone" placeholder="phone number" required tabindex="8" type="text"> <br>
 				 <input class="buttom"
 					name="submit" id="submitMember" tabindex="8" value="Sign me up!"
 					>
@@ -227,6 +233,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 </div>
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
 <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
 <script src="membership.js"></script>
   <script> 
@@ -242,5 +249,34 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	  alert("비밀번호가 일치하지 않습니다.")
   }
   </script>
+  
+  <script type="text/javascript">
+$(document).ready(function(){
+    $('#user_Email').keyup(function(){
+        if ( $('#user_Email').val().length > 6) {
+            var email = $(this).val();
+            // ajax 실행
+            $.ajax({
+                type : 'POST',
+                url : serverAddr + "/membership/emailCheck.json",
+                data:
+                {
+                    email: email
+                },
+                success : function(obj) {
+                    //console.log(result);
+                    if (obj.jsonResult.state == "success") {
+                        $("#result_id_msg").html("사용 가능한 아이디 입니다.");
+                    } else {
+                        $("#result_id_msg").html("사용 불가능한 아이디 입니다.");
+                    }
+                }
+            }); // end ajax
+        } else {
+        	$("#result_id_msg").text("");
+        }
+    }); // end keyup
+});
+</script>
 </body>
 </html>
