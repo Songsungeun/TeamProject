@@ -152,8 +152,8 @@ function ajaxLoadBoard(no) {
 		// 이거 지우지마!!!! 회원번호 팔로우할때 쓸려고 넘기는 코드임!!!!
 		tempUserNo = result.data.board.userNo;
 //		followLoderFunc(tempUserNo)
-		$("#followBtn").on("click", function(){
 		$("#followBtn").unbind('click');
+		$("#followBtn").on("click", function(){
 		console.log("userNo= " + result.data.board.userNo);
 		aJaxFollowUser(result.data.board.userNo)
 		
