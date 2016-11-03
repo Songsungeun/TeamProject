@@ -76,7 +76,6 @@ function ajaxFollowDisconnect(userNo) {
 					var source = $('#guiderInfoTemplate').html();
 					var template1 = Handlebars.compile(source);
 					var data = result.data
-					console.log(data)
 					var boards = template1(data);
 					$(".insertGuiders").append(boards);
 				}

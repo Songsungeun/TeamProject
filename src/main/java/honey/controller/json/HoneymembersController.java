@@ -162,10 +162,10 @@ public class HoneymembersController {
 			
 			for (int i = 0; i < list.size(); i++) {
 				list.get(i).setUserProfilePath(memberFile.getFilename());
+				list.get(i).setLinkImage(list.get(i).getYoutubeURL());
 			}
 			
 			List<HoneyMain> OtherUserInfo = SetImage.setImage(list, urlCollect);
-			
 			int totalViewCount = 0;
 			for (HoneyMain count : list) {
 				totalViewCount += count.getViewCount();
