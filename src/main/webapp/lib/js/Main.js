@@ -78,6 +78,7 @@ function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		var fileList = '';
+		checkingFollow(result.data.board.userNo);
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -150,7 +151,13 @@ function ajaxLoadBoard(no) {
 		})
 		// 이거 지우지마!!!! 회원번호 팔로우할때 쓸려고 넘기는 코드임!!!!
 		tempUserNo = result.data.board.userNo;
-		followLoderFunc(tempUserNo)
+//		followLoderFunc(tempUserNo)
+		$("#followBtn").unbind('click');
+		$("#followBtn").on("click", function(){
+		console.log("userNo= " + result.data.board.userNo);
+		aJaxFollowUser(result.data.board.userNo)
+		
+	})
 	})
 }
 var comentInfo2 = 0;
@@ -1000,6 +1007,7 @@ $(document.body).on("click",".cmt_delete2",function(event) {
 	}
 });
 window.onclick = function(event) {
+	
 	var htmlTag = document.getElementById('super_HTML');
 	var modal = document.getElementById('yourModal');
 	if (event.target == modal) {
