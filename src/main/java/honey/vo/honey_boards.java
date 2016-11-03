@@ -23,6 +23,7 @@ public class honey_boards implements Serializable{
   protected int viewCount;
   protected String fileName;
   protected int fileStatus;
+  protected String youtubeURL;
   
   public static SimpleDateFormat getFormat() {
     return format;
@@ -112,6 +113,13 @@ public int getFileStatus() {
 }
 public void setFileStatus(int fileStatus) {
 	this.fileStatus = fileStatus;
+}
+
+public String getYoutubeURL() {
+	return youtubeURL;
+}
+public void setYoutubeURL(String youtubeURL) {
+	this.youtubeURL = youtubeURL;
 }
 @Override
 public String toString() {

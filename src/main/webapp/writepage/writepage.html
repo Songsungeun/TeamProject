@@ -104,8 +104,9 @@ form {
   }
   
  #previewTitle {
-    margin-left: 40px;
+    margin-left: 50px;
     font-size: 15px;
+    font-weight: bold;
   }
   
   #previewTextBox{
@@ -123,7 +124,9 @@ form {
     height: auto;
   }
   
-  
+  #youtubeUrl {
+   margin: 0 auto;
+  }
 </style>
 
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -213,10 +216,11 @@ $(document).ready(function(){
           <div id="urlTitle"></div>
           <div id="urlDesc"></div>
           <div id="urlAddr"></div>
+    <iframe id="youtubeUrl" width="475" height="270" src="" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
     </form>
-    <iframe width="475" height="270" src="https://www.youtube.com/embed/9GuGwdcuut8" frameborder="0" allowfullscreen></iframe>
+    
         </div>
         <div class="modal-footer">
     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

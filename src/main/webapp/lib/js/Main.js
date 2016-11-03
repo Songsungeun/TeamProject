@@ -133,6 +133,11 @@ function ajaxLoadBoard(no) {
 				}
 				$("#fileListArea").html(fileList);
 			}
+			
+			if (result.data.board.youtubeURL != null) {
+				$("#youtubeUrl").attr("src","https://www.youtube.com/embed/" + result.data.board.youtubeURL);
+			}
+			
 		}	
 		$("#writerNick").click(function(event) {
 			window.location.href = "../membership/otherUserDetailPage.html?nick=" + result.data.board.writerNick;

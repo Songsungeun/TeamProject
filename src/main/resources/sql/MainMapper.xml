@@ -18,6 +18,7 @@
     <result column="CT_NO" property="categoryNo"/>
     <result column="CT_NM" property="category"/>
     <result column="FILE_STATUS"  property="fileStatus"/>
+    <result column="YOUTUBE_URL"  property="youtubeURL"/>
   </resultMap>
   
   <resultMap type="FileList" id="fileMap">
@@ -44,7 +45,7 @@
 
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS, YOUTUBE_URL
     from honey_boards hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join honey_ctg hc on hb.CT_NO = hc.CT_NO
@@ -68,7 +69,7 @@
   <!-- </select> -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, FILE_STATUS,
-    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT,  HM.MB_NICK, HM.EMAIL, HC.CT_NM
+    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT,  HM.MB_NICK, HM.EMAIL, HC.CT_NM, YOUTUBE_URL
     from
     honey_boards HB
     left join honey_membs HM on HB.MB_NO = HM.MB_NO

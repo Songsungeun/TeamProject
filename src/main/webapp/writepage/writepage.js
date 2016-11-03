@@ -7,8 +7,8 @@ $("#preview").click(function(evnet) {
 		var urlinfo = $("#url").val()
 		var title = $("#write_title").val();
 		var contents = $(".nicEdit-main").html();
-		var urlLink = $("#write_youtube").val();
-	ajaxViewBoard(urlinfo, title, contents, urlLink);
+		var youtubeLink = $("#write_youtube").val();
+	ajaxViewBoard(urlinfo, title, contents, youtubeLink);
 })
 
 $("#submitBoard").click(function(event) {
@@ -23,6 +23,10 @@ var formData = new FormData();
 	$($("#InputFile")[0].files).each(function(index, file) {
 		formData.append("files", file)
 	});
+	
+	if ($("#write_youtube").val() != null) {
+		formData.append("youtubeURL", $("#write_youtube").val());
+	}
 	console.log("함수 호출전: " + formData.get("url"));
 	console.log("함수 호출전: " + formData.get("title"));
 	console.log("함수 호출전: " + formData.get("contents"));
@@ -127,12 +131,23 @@ function readCookie() {
 	return linkURL;
 }
 
-function ajaxViewBoard(urlinfo, title, contents, urlLink) {
+function ajaxViewBoard(urlinfo, title, contents, youtubeLink) {
 	console.log("title= " + title);
 	console.log("contents= " + contents);
 	console.log("urlInfo= " + urlinfo);
+	console.log("youtubeLink= " + youtubeLink);
+	if (youtubeLink) {
+		var youtubeurlArr = youtubeLink.split('/');
+	}
 		if (!urlinfo) {
 			//$(".previewbox").css('display', none);
+			$("#previewTitle").text(title);
+			$("#previewTextBox").html(contents);
+			
+			
+			console.log("arr[3]= " + youtubeurlArr[3]);
+			$("#youtubeUrl").attr("src","https://www.youtube.com/embed/" + youtubeurlArr[3]);
+		} else if (!urlinfo && !youtubeLink){
 			$("#previewTitle").text(title);
 			$("#previewTextBox").html(contents);
 		} else {
@@ -160,6 +175,7 @@ function ajaxViewBoard(urlinfo, title, contents, urlLink) {
 							$("#urlAddr").html(result.data.urlAddr);
 							$("#previewTitle").text(title);
 							$("#previewTextBox").html(contents);
+							$("#youtubeUrl").attr("src","https://www.youtube.com/embed/" + youtubeurlArr[3]);
 						}
 					},"json")
 		}

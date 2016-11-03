@@ -47,6 +47,14 @@ public class HoneyBoardController {
 			board.setUserNo(hMember.getMemberNo());
 			System.out.println("title= " + board.getTitle());
 			System.out.println("contents= " + board.getContents());
+			System.out.println("youtubeurl= " + board.getYoutubeURL());
+			
+			if (board.getYoutubeURL() != null) {
+				String[] arr = board.getYoutubeURL().split("/");
+				System.out.println("arr[3]= " + arr[3]);
+				board.setYoutubeURL(arr[3]);
+			}
+			
 			 if (files.length != 0) {
 				 board.setFileStatus(1);
 			 } else {

@@ -66,6 +66,7 @@
     <result column="URL_Title" property="title"/>
     <result column="FILE_NAME" property="fileName"/>
     <result column="FILE_STATUS" property="fileStatus"/>
+    <result column="YOUTUBE_URL" property="youtubeURL"/>
   </resultMap>
   
     <resultMap type="HoneyMain" id="userListMap">
@@ -84,12 +85,12 @@
   </resultMap>
   
    <insert id="insert" parameterType="honey_boards">
-    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS, BD_CRE)
-    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileStatus}, now())
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS, BD_CRE, YOUTUBE_URL)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileStatus}, now(), #{youtubeURL})
   </insert>
   
    <select id="selectList" resultMap="boardMap" parameterType="map"> 
-   select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL
+   select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL, YOUTUBE_URL
        from honey_boards 
    where MB_NO = #{userNo}
    order by BD_NO desc 
@@ -98,7 +99,7 @@
   
     <select id="selectList1" resultMap="userListMap" parameterType="map"> 
    select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT, hb.MB_NO, hb.CT_NO, 
-   hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS     
+   hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
    from honey_boards hb    
    left join honey_membs hm on hm.MB_NO = hb.MB_NO  
    left join honey_ctg hc on hb.CT_NO = hc.CT_NO 

@@ -29,6 +29,7 @@ public class HoneyMain implements Serializable{
   protected String linkDesc;
   protected String userProfilePath;
   protected int fileStatus;
+  protected String youtubeURL;
   
   
   public String getCategory() {
@@ -161,6 +162,12 @@ public int getFileStatus() {
 }
 public void setFileStatus(int fileStatus) {
 	this.fileStatus = fileStatus;
+}
+public String getYoutubeURL() {
+	return youtubeURL;
+}
+public void setYoutubeURL(String youtubeURL) {
+	this.youtubeURL = youtubeURL;
 }
   
 

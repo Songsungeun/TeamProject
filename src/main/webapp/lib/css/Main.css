@@ -814,3 +814,14 @@ div.best-area div.best-tit {
 .best-list li {
 	margin-top: 10px;
 }
+
+.youtubeArea {
+	 width: 475px;
+	 margin: 0 auto;
+	 
+  /*     overflow: hidden; */
+  border-bottom: 1px solid #D1CDCD;
+  padding-bottom: 10px;
+  padding-top: 20px;
+	
+}
