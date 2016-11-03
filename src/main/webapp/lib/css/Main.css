@@ -109,13 +109,13 @@ body {
 .main_section {
   margin: 0;
   padding: 0;
-  background-color: #f1f1f1;
+  background-color: white;
   padding-top: 100px;
   min-height: 775px;
 }
 
 .mainpage_wrap {
-  width: 1024px;
+  width: 1048px;
   height: 100%;
   margin: 0 auto;
 }
@@ -126,7 +126,7 @@ body {
 
 .all_post_wrap {
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: white;
   position: relative;
 }
 
@@ -137,16 +137,17 @@ body {
 }
 
 #each_post_wrap {
-  width: 330px;
+/*   width: 330px; */
+width:33.3%;
   height: 501px;
   float: left;
 }
 
 #each_post {
   width: 316px;
-  height: 489px;
-  margin: 0 auto 12px auto;
-  background-color: #fff;
+  height: 469px;
+  margin: 0 auto 32px auto;
+  background-color: white;
   border: 1px solid #e3e3e3;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #c0c0c0;
@@ -157,6 +158,7 @@ body {
   width: 314px;
   height: 52px;
   padding: 12px 14px;
+  background-color: #f1f1f1;
 }
 
 #user_Nick>span {
@@ -186,7 +188,7 @@ body {
 
 .post_photoWrap {
   width: 314px;
-  height: 260px;
+  height: 245px;
   margin: 0 0 8px 0;
   overflow: hidden;
   position: relative;
@@ -216,7 +218,7 @@ body {
   max-height: 52px;
   padding: 4px 14px 0 14px;
   overflow: hidden;
-  `-space: pre-line;
+  white-space: pre-line;
   font-weight: bold;
   font-size: 17px;
   line-height: 24px;
@@ -435,6 +437,11 @@ body {
 #userDesc div, span {
   white-space: pre-line;
 }
+
+#userDesc {
+  white-space: pre-line;
+}
+
 #userDesc img{
   max-width: 556px;
   height: auto;
@@ -669,10 +676,12 @@ modal fade>p {
   border-bottom: 1px solid #D1CDCD;
   padding-bottom: 10px;
   padding-top: 5px;
+  white-space: pre-line;
 }
 
 #userTitle {
   margin-bottom: 10px;
+  white-space: pre-line;
 }
 
 .userComment {
