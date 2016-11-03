@@ -118,6 +118,9 @@ function ajaxLoadBoard(no) {
 				$("#linkDesc").text(result.data.urlInfo.description);
 				$("#linkURL").text(result.data.urlInfo.urlAddr);
 				$("#urlImage").html(result.data.urlInfo.image);
+				$(".linkText").css('display','block');
+			} else {
+				$(".linkText").css('display','none');
 			}
 			if (result.data.fileList.length > 0) {
 				for (var i = 0; i < result.data.fileList.length; i++) {
@@ -126,10 +129,16 @@ function ajaxLoadBoard(no) {
 					+ (i+1) + "." + result.data.fileList[i].originalFileName + "</div>"
 				}
 				$("#fileListArea").html(fileList);
+				$(".fileArea").css('display','block');
+			} else {
+				$(".fileArea").css('display','none');
 			}
 			
 			if (result.data.board.youtubeURL != null) {
 				$("#youtubeUrl").attr("src","https://www.youtube.com/embed/" + result.data.board.youtubeURL);
+				$(".youtubeArea").css('display','block');
+			} else if (result.data.board.youtubeURL == null){
+				$(".youtubeArea").css('display','none');
 			}
 			
 		}	
