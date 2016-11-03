@@ -23,4 +23,5 @@ public interface HoneyMembersDao {
   List<HoneyMembers> selectGuider(int memberNo) throws Exception;
   int disconnector(HoneyMembers follower) throws Exception;
   HoneyMembers emailCheck(String email) throws Exception;
+  HoneyMembers selectOneByMemberNo(int memberNo);
 }

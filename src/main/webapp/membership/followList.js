@@ -2,6 +2,8 @@ function followLoderFunc (tempUserNo) {
 	var userNo = tempUserNo;
 	$("#followBtn").click(function(event) {
 		aJaxFollowUser(userNo)
+		
+		event.stopImmediatePropagation();
 	})
 	checkingFollow(userNo)
 }
@@ -70,6 +72,13 @@ function ajaxFollowDisconnect(userNo) {
 					return
 				} else {
 					$('#followBtn').css("color", "red")
+					
+					var source = $('#guiderInfoTemplate').html();
+					var template1 = Handlebars.compile(source);
+					var data = result.data
+					console.log(data)
+					var boards = template1(data);
+					$(".insertGuiders").append(boards);
 				}
 			},
 			error: function(result) {

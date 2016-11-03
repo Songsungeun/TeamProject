@@ -2,6 +2,7 @@ package honey.controller.json;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -192,15 +193,19 @@ public class HoneymembersController {
 			follower.setFollowMemberNo(loginUser.getMemberNo());
 			follower.setMemberNo(memberNo.getMemberNo());
 			follower.setNickname(loginUser.getNickname());
+			HoneyMembers member = new HoneyMembers();
+			List<HoneyMembers> memberInfo = new ArrayList<>();
 			try {
 				hMembersService.followMemberInsert(follower);
+				member = hMembersService.getUserInfo(memberNo.getMemberNo());
 			}catch (Exception e) {
 				int i = 0;
 				return JsonResult.fail(i);
 			}
 			// db 테이블 컬럼명이 mb_no, mb_no2 로 지어져 있는데
 			// mb_no를 게시글 작성자 번호로, mb_no2를 로그인한 회원 번호로 인서트 할 것이다.
-			return JsonResult.success();
+			memberInfo.add(member);
+			return JsonResult.success(memberInfo);
 		} catch (RuntimeException e) {
 			return JsonResult.fail();
 		} 
