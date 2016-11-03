@@ -82,6 +82,24 @@ function ajaxLoadBoard(no) {
 			alert("조회 실패입니다.")
 			return
 		} else {
+			// 기존 영역 초기화 시작
+			$("#no").val("");
+			comentInfo =result.data.board.no;
+			$("#userTitle").text("");
+			$("#url").text("");
+			$("#userDesc").html("");
+			$("#url_location").html("");
+			$("#fileListArea").text("");
+			$("#linkTitle").text("");
+			$("#linkDesc").text("");
+			$("#linkURL").text("");
+			$("#urlImage").html("");
+			$("#fileListArea").html("");
+			$("#youtubeUrl").attr("src","");
+			// 기존 영역 초기화 완료
+			
+			
+			
 			$("#no").val(result.data.board.no);
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
