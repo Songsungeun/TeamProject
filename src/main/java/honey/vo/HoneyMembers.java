@@ -10,6 +10,7 @@ public class HoneyMembers {
 	protected String phone;
 	protected String userBirthDay;
 	protected String profileFileName;
+	protected String introduce;
 
 	public int getMemberNo() {
 		return memberNo;
@@ -66,11 +67,18 @@ public class HoneyMembers {
 		this.profileFileName = profileFileName;
 	}
 
-
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
 	@Override
 	public String toString() {
 		return "HoneyMembers [memberNo=" + memberNo + ", followMemberNo=" + followMemberNo + ", userName=" + userName
 				+ ", email=" + email + ", nickname=" + nickname + ", password=" + password + ", phone=" + phone
-				+ ", userBirthDay=" + userBirthDay + ", profileFileName=" + profileFileName + "]";
+				+ ", userBirthDay=" + userBirthDay + ", profileFileName=" + profileFileName + ", introduce=" + introduce
+				+ "]";
 	}
+	
 }
