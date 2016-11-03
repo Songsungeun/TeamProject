@@ -5,6 +5,7 @@
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript"
   src="../node_modules/jquery/dist/jquery.min.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>Insert title here</title>
 <style>
@@ -20,7 +21,6 @@ form {
 }*/
 
 #write_container {
-  border: 1px solid #ededed;
   max-width: 1024px;
   margin: 0 auto;
   padding-top: 80px;
@@ -141,24 +141,27 @@ $(document).ready(function(){
     $( "#category" ).selectmenu();
   });
   </script>
+
 </head>
+
 <body>
   <div id="headerInclude"></div>
 
   <div id="write_container">
-
     <form id="writeArea" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
-      <input type="text" id="url" class="form-control" placeholder="URL"> 
+      <input type="text" id="url" class="form-control" placeholder="URL">
       <input type="text" id="write_title" class="form-control" placeholder="제목">
       <textarea class="form-control" id= "myNicEditor" rows="20" style="max-width:1024px;"></textarea>
+      <input type="text" id="write_youtube" class="form-control" placeholder="YoutubeURL">
+      
       <div class="form-group">
         <label for="InputFile">File input</label> 
         <input type="file" id="InputFile" name="media" multiple/>
         <p class="help-block">파일을 등록하세요</p>
       </div>
       <fieldset id="category_select">
-        <label for="category">Category</label> <select name="category"
-          id="category"class="form-control">
+        <label for="category">Category</label> 
+        <select name="category"  id="category"class="form-control">
           <option selected="selected" value=1>라이프</option>
           <option value=2>스포츠</option>
           <option value=3>차/테크</option>
@@ -213,6 +216,7 @@ $(document).ready(function(){
         </div>
       </div>
     </form>
+    <iframe width="475" height="270" src="https://www.youtube.com/embed/9GuGwdcuut8" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

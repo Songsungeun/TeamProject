@@ -7,7 +7,8 @@ $("#preview").click(function(evnet) {
 		var urlinfo = $("#url").val()
 		var title = $("#write_title").val();
 		var contents = $(".nicEdit-main").html();
-	ajaxViewBoard(urlinfo, title, contents);
+		var urlLink = $("#write_youtube").val();
+	ajaxViewBoard(urlinfo, title, contents, urlLink);
 })
 
 $("#submitBoard").click(function(event) {
@@ -126,7 +127,7 @@ function readCookie() {
 	return linkURL;
 }
 
-function ajaxViewBoard(urlinfo, title, contents) {
+function ajaxViewBoard(urlinfo, title, contents, urlLink) {
 	console.log("title= " + title);
 	console.log("contents= " + contents);
 	console.log("urlInfo= " + urlinfo);

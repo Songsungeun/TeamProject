@@ -461,5 +461,4 @@ window.onclick = function(event) {
 		window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
 	}
 
-
 }
