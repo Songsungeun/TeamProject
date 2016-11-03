@@ -274,10 +274,6 @@ body {
   padding: 2px;
   font-size: 10px;
 }
-.categoryLink:hover {
-  text-decoration: none;
-  cursor: pointer;
-}
 .like_Onclick {
   width: 14px;
   height: 14px;
@@ -428,46 +424,6 @@ body {
   margin-left: 10px;
 }
 
-.post_contsWrap img {
-  display: none;
-}
-
-.each_post_title {
-  border-top: 1px solid #e8e8e8; 
-}
-
-#userDesc div, span {
-	white-space: pre-line;
-}
-#userDesc img{
-	max-width: 556px;
-	height: auto;
-}
-#userDesc2 img{
-  max-width: 556px;
-  height: auto;
-}
-#category_tab > li {
-  float: left;
-  width:80px;
-  height:50px;
-  text-align: center;
-}
-#category_tab_outside {
-  background-color: white;
-  width: 880px;
-  margin: 0 auto 10px auto;
-}
-#category_tab > li:HOVER{
-  cursor: pointer;
-  text-decoration: none;
-  background: #a0a0a0; 
-   
-}
-#category_tab > li:FOCUS{
-  cursor: pointer;
-  text-decoration: none;
-}
 /* .categoryWrap { */
 /*  width: 880px; */
 /*  margin: 0 auto; */

@@ -1,0 +1,82 @@
+.categoryLink:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.categoryWrap {
+	position: relative;
+}
+/* #category_tab > li { */
+/* 	position: absolute; */
+/* } */
+/* #category_tab .hodstate0 { */
+/*   float: left; */
+/* /*   width: 350px; */ */
+/* /*   height:170px; */ */
+/*     width:70px; */
+/*   height:70px; */
+/*   text-align: center; */
+/*   border-radius: 35px; */
+/*   background-color: #D5FBFF; */
+/* /*   margin-right: 50px; */ */
+/* margin: 0 0 5px 10px; */
+/*   overflow: hidden; */
+/*   text-align: center; */
+/*   font-size: 10px; */
+/*   padding-top: 30px; */
+/* } */
+#category_tab .hodstate {
+	font-size: 10px;
+  padding-top: 30px;
+/*   text-align: center; */
+  float: left;
+  width:70px;
+  height:70px;
+/*   width:80px; */
+/*   height:80px; */
+  text-align: center;
+  border-radius: 35px;
+  background-color: #D5FBFF;
+  margin: 0 0 5px 20px;
+  overflow: hidden;
+}
+#category_tab .hodstate:hover {
+	transform: scale(1.4,1.4);
+}
+#category_tab_outside {
+/*   background-color: white; */
+  margin: 0 auto 0px auto;
+  padding: 0px 0 30px 0;
+/*   height: 200px; */
+heigth: 100px;
+/*   width: 880px; */
+width: 1024px;
+}
+#category_tab > li:HOVER{
+  cursor: pointer;
+  text-decoration: none;
+/*   background: #a0a0a0;  */
+}
+#category_tab > li:FOCUS{
+  cursor: pointer;
+  text-decoration: none;
+}
+#category_tab > li > .category-img {
+  width: 70px;
+  height: 70px;
+/*   width: 80px; */
+/*   height: 80px; */
+}
+#category_tab > li > .category-firstimg {
+	width: 70px;
+  height: 70px;
+/*   width: 350px; */
+/*   height: 170px; */
+}
+
+/* #category_tab > li > span { */
+/* 	position: relative; */
+/* } */
+
+.category-active {
+	border: 2px solid #3CFBFF;
+}
