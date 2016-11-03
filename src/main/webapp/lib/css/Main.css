@@ -424,22 +424,30 @@ body {
   margin-left: 10px;
 }
 
-/* .categoryWrap { */
-/*  width: 880px; */
-/*  margin: 0 auto; */
-/*  margin-bottom: 10px; */
-/* } */
-#category_tab > li > img {
-  width: 40px;
-  height: 20px;
-  margin: 5px 20px;
+.post_contsWrap img {
+  display: none;
 }
-.category-active {
-  background-color: gray;
+
+.each_post_title {
+  border-top: 1px solid #e8e8e8; 
 }
+
+#userDesc div, span {
+  white-space: pre-line;
+}
+#userDesc img{
+  max-width: 556px;
+  height: auto;
+}
+#userDesc2 img{
+  max-width: 556px;
+  height: auto;
+}
+
+
 /* #userDesc div img{ */
-/* 	max-width: 556px; */
-/* 	height: auto; */
+/*  max-width: 556px; */
+/*  height: auto; */
 /* } */
 /* #userDesc2 div img{ */
 /*   max-width: 556px; */
@@ -610,18 +618,18 @@ body {
 }
 
 .fileArea {
-	max-width: 556px;
+  max-width: 556px;
   height: 30px;
   margin: 0 auto;
   margin-top: 10px;
 }
 #fileText {
-	float: left;
-	height: auto;
+  float: left;
+  height: auto;
 }
 .addFileTag {
   width: 556px;
-	float: left;
+  float: left;
 }
 
 #fileListArea {
@@ -741,43 +749,43 @@ modal fade>p {
 }
 
 #testfix {
-	 position: fixed;
-	 z-index: 100;
-	 width: 250px;
-	 left: 30px;
-	 border: 1px solid red;
-	 top: 185px;
-	 box-sizing: border-box;
-	 border: 1px solid #e6e7e8;
-	 background: #fff;
-	 font-size: 12px;
-	 font-family: '돋움',Dotum,sans-serif;
-	 color: #777;
-	  background-color: #d9edf7;
+   position: fixed;
+   z-index: 100;
+   width: 250px;
+   left: 30px;
+   border: 1px solid red;
+   top: 185px;
+   box-sizing: border-box;
+   border: 1px solid #e6e7e8;
+   background: #fff;
+   font-size: 12px;
+   font-family: '돋움',Dotum,sans-serif;
+   color: #777;
+    background-color: #d9edf7;
 }
 
 div.best-area div.best-tit {
-	margin: 20px;
-	border-bottom: 1px solid #03a5dd;
-	padding-bottom: 8px;
-	overflow: hidden
+  margin: 20px;
+  border-bottom: 1px solid #03a5dd;
+  padding-bottom: 8px;
+  overflow: hidden
 }
 
 .best-list {
-	margin:  20px;
+  margin:  20px;
 }
 
 .best-list li {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .youtubeArea {
-	 width: 475px;
-	 margin: 0 auto;
-	 
+   width: 475px;
+   margin: 0 auto;
+   
   /*     overflow: hidden; */
   border-bottom: 1px solid #D1CDCD;
   padding-bottom: 10px;
   padding-top: 20px;
-	
+  
 }

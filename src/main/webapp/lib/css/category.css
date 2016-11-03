@@ -6,18 +6,24 @@
 	position: relative;
 }
 /* #category_tab > li { */
+/*   float: left; */
+/*   width:80px; */
+/*   height:50px; */
+/*   text-align: center; */
+/* } */
+/* #category_tab > li { */
 /* 	position: absolute; */
 /* } */
 /* #category_tab .hodstate0 { */
 /*   float: left; */
-/* /*   width: 350px; */ */
-/* /*   height:170px; */ */
+/*    width: 350px; */ 
+/*    height:170px; */ 
 /*     width:70px; */
 /*   height:70px; */
 /*   text-align: center; */
 /*   border-radius: 35px; */
 /*   background-color: #D5FBFF; */
-/* /*   margin-right: 50px; */ */
+/*   margin-right: 50px; */ 
 /* margin: 0 0 5px 10px; */
 /*   overflow: hidden; */
 /*   text-align: center; */
@@ -76,7 +82,29 @@ width: 1024px;
 /* #category_tab > li > span { */
 /* 	position: relative; */
 /* } */
-
+/* #category_tab_outside { */
+/*   background-color: white; */
+/*   width: 880px; */
+/*   margin: 0 auto 10px auto; */
+/* } */
+/* #category_tab > li:HOVER{ */
+/*   cursor: pointer; */
+/*   text-decoration: none; */
+/*   background: #a0a0a0;  */
+   
+/* } */
+/* #category_tab > li:FOCUS{ */
+/*   cursor: pointer; */
+/*   text-decoration: none; */
+/* } */
+/* #category_tab > li > img { */
+/*   width: 40px; */
+/*   height: 20px; */
+/*   margin: 5px 20px; */
+/* } */
+/* .category-active { */
+/*   background-color: gray; */
+/* } */
 .category-active {
 	border: 2px solid #3CFBFF;
 }
