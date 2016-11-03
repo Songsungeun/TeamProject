@@ -25,6 +25,8 @@ public class SetImage {
 			//String[] imageHref = honeyMainList.get(i).getLinkDesc().split("\"");
 			System.out.println("번호: " + i + "getLinkImage: " + honeyMainList.get(i).getLinkImage());
 			if (honeyMainList.get(i).getLinkImage() == null) {
+				System.out.println(i + "getcontents= " +honeyMainList.get(i).getContents());
+				
 				if (honeyMainList.get(i).getContents() != null) {
 					boolean image = honeyMainList.get(i).getContents().contains("img src");
 					System.out.println("boolean: " + image);

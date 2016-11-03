@@ -30,7 +30,7 @@ public class HoneyBoardController {
 	@Autowired DefaultHoneyBoardService boardService;
 	@Autowired ServletContext sc;
 	honey_boards board = new honey_boards();
-	
+
 	@RequestMapping(path="writeadd")
 	public Object add(
 			honey_boards board,
@@ -48,8 +48,8 @@ public class HoneyBoardController {
 			System.out.println("title= " + board.getTitle());
 			System.out.println("contents= " + board.getContents());
 			System.out.println("youtubeurl= " + board.getYoutubeURL());
-			
-			if (board.getYoutubeURL() != null) {
+
+			if (!board.getYoutubeURL().equals("")) {
 				String[] youtubeContents = board.getYoutubeURL().split("/");
 				System.out.println("arr[3]= " + youtubeContents[3]);
 				if (board.getYoutubeURL().contains("list")) {
@@ -59,15 +59,17 @@ public class HoneyBoardController {
 				} else {
 					board.setYoutubeURL(youtubeContents[3]);
 				}
+			} else {
+				board.setYoutubeURL(null);
 			}
-			
-			 if (files.length != 0) {
-				 board.setFileStatus(1);
-			 } else {
-				 board.setFileStatus(0);
-			 }
+
+			if (files.length != 0) {
+				board.setFileStatus(1);
+			} else {
+				board.setFileStatus(0);
+			}
 			boardService.insertBoard(board);
-			
+
 			if (!board.getUrl().equals("")) {
 				System.out.println("URL 있을경우 시작");
 				UrlInfo url = Scrapper.UrlForDB(board.getUrl());
@@ -79,19 +81,19 @@ public class HoneyBoardController {
 				//System.out.println("no= " + boardService.getBoardMax().getNo());
 				boardService.insertUrl(url);
 			}
-			
+
 			String newFilename = null;
-			 if (files.length != 0) {
-				 for (int i = 0; i < files.length; i++) {
-					 HoneyBoardFile boardFile = new HoneyBoardFile();
-					 boardFile.setOriginFileName(files[i].getOriginalFilename());
-					 newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
-					 boardFile.setFileName(newFilename);
-					 boardFile.setMb_no(hMember.getMemberNo());
-					 files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-					 boardService.insertBoardFile(boardFile);
-				 } 
-			 }
+			if (files.length != 0) {
+				for (int i = 0; i < files.length; i++) {
+					HoneyBoardFile boardFile = new HoneyBoardFile();
+					boardFile.setOriginFileName(files[i].getOriginalFilename());
+					newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
+					boardFile.setFileName(newFilename);
+					boardFile.setMb_no(hMember.getMemberNo());
+					files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+					boardService.insertBoardFile(boardFile);
+				} 
+			}
 			return JsonResult.success();
 
 		} catch (Exception e) {
@@ -206,11 +208,11 @@ public class HoneyBoardController {
 
 				boardService.insertBoardFile(boardFile);
 			}
-				return JsonResult.success();
+			return JsonResult.success();
 
-			} catch (Exception e) {
-				return JsonResult.fail(e.getStackTrace());
-			}
+		} catch (Exception e) {
+			return JsonResult.fail(e.getStackTrace());
 		}
 	}
+}
 
