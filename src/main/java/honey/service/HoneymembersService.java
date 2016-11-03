@@ -21,4 +21,5 @@ public interface HoneymembersService {
 	public List<UrlInfo> userUrlCollector(int memberNo) throws Exception;
 	List<HoneyMembers> getGuider(int memberNo) throws Exception;
 	public HoneyMembers getEmailCheck(String member) throws Exception;
+	public HoneyMembers getUserInfo(int memberNo);
 }

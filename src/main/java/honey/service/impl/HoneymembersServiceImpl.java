@@ -112,4 +112,12 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public HoneyMembers getEmailCheck(String member) throws Exception {
 		return hMembersDao.emailCheck(member);
 	}
+
+	@Override
+	public HoneyMembers getUserInfo(int memberNo) {
+		HoneyMembers memberInfo = hMembersDao.selectOneByMemberNo(memberNo);
+		MemberFile mf = memberFileDao.getprofileFile(memberNo);
+		memberInfo.setProfileFileName(mf.getFilename());
+		return memberInfo;
+	}
 }

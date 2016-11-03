@@ -25,6 +25,7 @@ $("#unregisterBtn").click(function(event) {
 	else {
 		return
 	}
+	event.stopImmediatePropagation();
 });
 
 function ajaxAddMember(user) {

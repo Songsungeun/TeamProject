@@ -48,6 +48,13 @@
     where EMAIL=#{email} and PWD=password(#{password}) 
   </select>
   
+  <select id = "selectOneByMemberNo" resultMap="memberMap" parameterType="map">
+    select EMAIL, MB_NICK, MB_NM, TEL, PWD
+    from honey_membs
+    where MB_NO=#{value}
+  </select>
+  
+  
   <select id = "selectUserInfo" resultMap="memberMap" parameterType="map">
     select EMAIL, MB_NICK, MB_NM, TEL, PWD
     from honey_membs

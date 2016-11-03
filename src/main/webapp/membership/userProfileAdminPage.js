@@ -3,39 +3,40 @@
  */
 
 
- $("#changeUserStatusInfo").click(function(event){
-    var userStatusChangeInfo = {
-        userName: $("#userNameInfo").val(),
-        email: $("#userEmailInfo").val(),
-        nickname: $("#userNickNameInfo").val(),
-        phone: $("#userTelInfo").val()
-    }
-    ajaxUserStatusUpdate(userStatusChangeInfo) 
- })
+$("#changeUserStatusInfo").click(function(event){
+	event.stopImmediatePropagation();
+	var userStatusChangeInfo = {
+			userName: $("#userNameInfo").val(),
+			email: $("#userEmailInfo").val(),
+			nickname: $("#userNickNameInfo").val(),
+			phone: $("#userTelInfo").val()
+	}
+	ajaxUserStatusUpdate(userStatusChangeInfo) 
 
- $("#changPassword").click(function(event){
-  if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
-    alert("비밀번호가 일치하지 않습니다.")
-    return
-  } else {
-    var newPassword ={password: $("#changeNewPassword").val()}
-    var result = confirm("Are you sure?")
-    console.log(result)
-    if(result != true) {
-      return
-    } else {
-      ajaxPasswordChange(newPassword)
-    }
-  }
-  
+})
+
+$("#changPassword").click(function(event){
+	if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
+		alert("비밀번호가 일치하지 않습니다.")
+		return
+	} else {
+		var newPassword ={password: $("#changeNewPassword").val()}
+		var result = confirm("Are you sure?")
+		if(result != true) {
+			return
+		} else {
+			ajaxPasswordChange(newPassword)
+		}
+	}
+	event.stopImmediatePropagation();
 })
 
 
 
 function ajaxUserProfileLoder() {
-	
+
 	$.getJSON(serverAddr + "/membership/userInfoDetail.json", function(obj) {
-			var result=obj.jsonResult
+		var result=obj.jsonResult
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -44,7 +45,7 @@ function ajaxUserProfileLoder() {
 		$("#userNickNameInfo").val(result.data.nickname);
 		$("#userNameInfo").val(result.data.userName);
 		$("#userTelInfo").val(result.data.phone);
-	 })
+	})
 }
 
 function ajaxUserStatusUpdate(userStatusChangeInfo) {
@@ -57,7 +58,7 @@ function ajaxUserStatusUpdate(userStatusChangeInfo) {
 		} 
 		alert("수정 완료! 메인페이지로 이동합니다.")
 		location.href="/TeamProject/mainpage/Main.html"
-			},"json")
+	},"json")
 }
 
 
@@ -79,12 +80,12 @@ function ajaxUserProfileFileLoder() {
 	var locationPath = locationPathValue.split('/');
 	$.getJSON(serverAddr+"/" + locationPath[2] + "/userProfileFileLoder.json", function(obj) {
 		var result=obj.jsonResult
-	if (result.state != "success") {
-		alert("조회 실패입니다.")
-		return
-	};
-	$("#profilePhoto").attr('src',"/TeamProject/upload/"+result.data)
- })
+		if (result.state != "success") {
+			alert("조회 실패입니다.")
+			return
+		};
+		$("#profilePhoto").attr('src',"/TeamProject/upload/"+result.data)
+	})
 }
 
 
