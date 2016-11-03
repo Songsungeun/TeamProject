@@ -12,6 +12,7 @@
     <result column="TEL" property="phone"/>
     <result column="BIRTH" property="userBirthDay"/>
     <result column="PWD" property="password"/>
+    <result column="INTRODUCE" property="introduce"/>
   </resultMap>
   
 <resultMap type="HoneyMain" id="boardMap">
@@ -51,7 +52,7 @@
   </select>
   
   <select id = "selectOneByMemberNo" resultMap="memberMap" parameterType="map">
-    select EMAIL, MB_NICK, MB_NM, TEL, PWD
+    select EMAIL, MB_NICK, MB_NM, TEL, PWD, INTRODUCE
     from honey_membs
     where MB_NO=#{value}
   </select>
@@ -120,7 +121,8 @@
       EMAIL=#{email},
       MB_NICK=#{nickname},
       MB_NM=#{userName},
-      TEL=#{phone}
+      TEL=#{phone},
+      INTRODUCE=#{introduce}
     where MB_NO=#{memberNo}
   </update>
   

@@ -78,6 +78,7 @@ public class HoneymembersController {
 
 	@RequestMapping(path="userStatusUpdate")
 	public Object userStatusUpdate(HoneyMembers hmember, HttpSession session) throws Exception {
+		
 		try {
 			HoneyMembers honeymembers =(HoneyMembers)session.getAttribute("member");
 			hmember.setMemberNo(honeymembers.getMemberNo());
@@ -154,6 +155,7 @@ public class HoneymembersController {
 	public Object otherUserInfoLoder(HoneyMembers userInfo) {
 		try {
 			HoneyMembers honeyMember = hMembersService.getUserNumber(userInfo.getNickname());
+			HoneyMembers member = hMembersService.getUserInfo(honeyMember.getMemberNo());
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
 			List<HoneyMain> list = hMembersService.getBoards(honeyMember.getMemberNo());
@@ -176,6 +178,7 @@ public class HoneymembersController {
 			
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
+			resultMap.put("userInfo", member.getIntroduce());
 			resultMap.put("boardInfo", OtherUserInfo);
 			resultMap.put("totalViewCount",totalViewCount);
 			resultMap.put("totalFollowers",followCollector.size());
