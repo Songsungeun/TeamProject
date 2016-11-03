@@ -133,10 +133,10 @@ body {
 }
 
 .header_leftSection {
-	width: 49%;
-	position: absolute;
+	width: 30%;
 	height: 40px;
 	overflow: hidden;
+	display: inline-block;
 }
 
 .headPageShift {
@@ -177,24 +177,23 @@ body {
 
 .headerRightSection {
 	margin: 10px 0px 0px 0px;
-	width: 50%;
+	width: 30%;
 	height: 32px;
-	position: absolute;
 	left: 50%;
 	overflow: hidden;
+	float:right;
 }
 
 .seachBar {
-	position: absolute;
 	hight: 16px;
 	width: 350px;
-	margin: 3px 0px 0px 0px;
 	overflow: hidden;
-	float: left;
+	display: inline-block;
+	margin-left: 100px;
 }
 
 .search {
-	position: absolute;
+	position: relative;
 	margin: 0px;
 }
 
@@ -212,7 +211,7 @@ body {
 	padding: 0px;
 	float: left;
 	position: absolute;
-	margin: 0px 0px 0px 350px;
+	margin: 0px 0px 0px 3px;
 	font-weight: bold;
 	overflow: hidden;
 	height: 25px;
@@ -346,18 +345,19 @@ body {
 				</ul>
 			</div>
 
-			<div class=headerRightSection>
-				<div id="newWrite">
-					<a href='#'><img id="writing" width="23px" height="23px"
-						src="../writeIcon_2.png"></a> <a href='/TeamProject/membership/message.html'><img id="message"
-						width="23px" height="23px" src="../messageImage.png"></a>
-				</div>
-
 				<div class="seachBar">
 					<input id="inputSearchKey" name=search type=text
 						placeholder="검색어를 입력하세요"> <a class="searchButton" href="#"><img
-						src="/TeamProject/searchbutton.png" width="25" /> </a>
+						src="../search-engine.png" width="25" /> </a>
 				</div>
+
+			<div class=headerRightSection>
+				<div id="newWrite">
+					<a href='#'><img id="writing" width="23px" height="23px"
+						src="../signing.png"></a> <a href='/TeamProject/membership/message.html'><img id="message"
+						width="23px" height="23px" src="../mailing-1.png"></a>
+				</div>
+
 				<div id="confirmLogin">
 					<ul>
 						<li>로그인 하세요</li>
