@@ -27,6 +27,8 @@
     <result column="MB_NO" property="userNo"/>
     <result column="CT_NO" property="categoryNo"/>
     <result column="CT_NM" property="category"/>
+    <result column="FILE_STATUS"  property="fileStatus"/>
+    <result column="YOUTUBE_URL"  property="youtubeURL"/>
   </resultMap>
   
   
@@ -80,8 +82,8 @@
   </select>  
   
   <select id="selectBoards" parameterType="int" resultMap="boardMap">
-  select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO, hb.YOUTUBE_URL,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS, YOUTUBE_URL
     from honey_boards hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join honey_ctg hc on hb.CT_NO = hc.CT_NO

@@ -37,7 +37,9 @@ public class SetImage {
 						System.out.println("temp1[0] =" + temp2[1]);
 						System.out.println("이거: " + honeyMainList.get(i).getLinkImage());
 					} else if (honeyMainList.get(i).getYoutubeURL() != null){
+						System.out.println("youtube 꽂는다.");
 						honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
+						System.out.println("꽂힌놈 바로 확인= " +honeyMainList.get(i).getLinkImage());
 					} else {
 						honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 					}
