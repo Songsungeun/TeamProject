@@ -50,9 +50,15 @@ public class HoneyBoardController {
 			System.out.println("youtubeurl= " + board.getYoutubeURL());
 			
 			if (board.getYoutubeURL() != null) {
-				String[] arr = board.getYoutubeURL().split("/");
-				System.out.println("arr[3]= " + arr[3]);
-				board.setYoutubeURL(arr[3]);
+				String[] youtubeContents = board.getYoutubeURL().split("/");
+				System.out.println("arr[3]= " + youtubeContents[3]);
+				if (board.getYoutubeURL().contains("list")) {
+					String[] youtubeList = youtubeContents[3].split("\\?");
+					System.out.println("youtubeList: " + youtubeList[0]);
+					board.setYoutubeURL(youtubeList[0]);
+				} else {
+					board.setYoutubeURL(youtubeContents[3]);
+				}
 			}
 			
 			 if (files.length != 0) {
