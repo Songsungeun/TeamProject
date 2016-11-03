@@ -1,12 +1,14 @@
-function followLoderFunc (tempUserNo) {
-	var userNo = tempUserNo;
-	$("#followBtn").click(function(event) {
-		aJaxFollowUser(userNo)
-		
-		event.stopImmediatePropagation();
-	})
-	checkingFollow(userNo)
-}
+//function followLoderFunc (tempUserNo) {
+//	var userNo = tempUserNo;
+//	
+//	$("#followBtn").click(function(event) {
+//		
+//		console.log("userNo= " + userNo);
+//		aJaxFollowUser(userNo)
+//		
+//	})
+//	checkingFollow(userNo)
+//}
 
 
 
@@ -49,6 +51,7 @@ function ajaxFollowDisconnect(userNo) {
 
 	function aJaxFollowUser(userNo) {
 		console.log($("#writerNick").text())
+		
 		$.ajax({
 			url:serverAddr +"/mainpage/otherUserFollow.json",
 			type: "POST",
@@ -64,7 +67,7 @@ function ajaxFollowDisconnect(userNo) {
 					 var confirmResult = confirm("follow를 취소하시겠습니까?")
 					 if (confirmResult == true) {
 						 ajaxFollowDisconnect(userNo);
-						 event.stopImmediatePropagation();
+						 
 					 }
 					return
 				} else if (result.state != "success" && result.data == null){
