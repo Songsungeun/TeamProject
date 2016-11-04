@@ -17,6 +17,7 @@ $("#submitMember").click(function(event) {
 
 $("#unregisterBtn").click(function(event) {
 	var result = confirm("Are you sure?")
+	
 	if (result) {
 	var memberNumber = $("#memberNumber").val();
 	ajaxUnregister(memberNumber);
