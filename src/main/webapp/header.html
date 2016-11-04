@@ -140,10 +140,11 @@ body {
 }
 
 .headPageShift {
-	margin: 0.5px 0px 0px 0px;
+/* 	margin: 0.5px 0px 0px 0px;
 	list-style: none;
 	float: left;
-	position: absolute;
+	position: absolute; */
+	position:fixed;
 	overflow: hidden;
 }
 
@@ -185,11 +186,17 @@ body {
 }
 
 .seachBar {
-	hight: 16px;
+/* 	hight: 16px;
 	width: 360px;
 	overflow: hidden;
 	display: inline-block;
-	margin-left: 100px;
+	margin-left: 100px; */
+	   width: 360px;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 80px;
+    position: fixed;
+    top: 15px;
 }
 
 .search {
@@ -226,13 +233,16 @@ body {
 
 #confirmLogin {
 	position: absolute;
-	float: left;
+	/* float: left; */
+	 float: right;
+	 right: 100px;
 	height: 16px;
 	margin: 4px 0px 7px 220px;
 	overflow: hidden;
   font-size: 13px;
   line-height: 22px;
   color: #666666;
+  
 }
 
 .headerHamburgerBtn {
@@ -352,9 +362,8 @@ body {
 			</div>
 
 				<div class="seachBar">
-					<input id="inputSearchKey" name=search type=text
-						placeholder="검색어를 입력하세요"> <a class="searchButton" href="#"><img
-						src="../search-engine.png" width="25" /> </a>
+					<input id="inputSearchKey" name=search type=text placeholder="검색어를 입력하세요"> 
+					<span> <a class="searchButton" href="#">	<img 	src="../search-engine.png" width="25" /> </a></span>
 				</div>
 
 			<div class=headerRightSection>
