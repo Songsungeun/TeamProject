@@ -9,6 +9,7 @@ function ajaxloadNickName() {
 		$("#userPhoto").attr("src", "/TeamProject/upload/" + result.data.profilePhoto);
 		$("#viewCount").text(result.data.totalViewCount);
 		$("#followers").text(result.data.followCollector);
+		$("#user-introduce").text(result.data.userInfo)
 		
 	})
 }

@@ -66,11 +66,13 @@ public class HoneymembersController {
 		// 이 메서드는 DB에서 작업할 일이 없어서 service 클래스에서 따로 구현할 필요가 없을 것 같다.
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
-
+			
 			if(hMembers == null) {
 				System.out.println("해당 회원 정보가 없습니다.");
 			}
-			return JsonResult.success(hMembers);
+			HoneyMembers user = hMembersService.getUserInfo(hMembers.getMemberNo());
+			System.out.println(user);
+			return JsonResult.success(user);
 		} catch (Exception e) {
 			return JsonResult.fail(e.getMessage());
 		}

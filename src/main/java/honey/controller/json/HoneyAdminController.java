@@ -66,7 +66,7 @@ public class HoneyAdminController {
         memberFile.setFilename(hMembersService.getProfileFileName(member.getMemberNo()));
         List<HoneyMain> list = hMembersService.getBoards(member.getMemberNo());
         List<HoneyMembers> followCollector = hMembersService.getFollowers(member.getMemberNo());
-        
+        HoneyMembers userInfo = hMembersService.getUserInfo(member.getMemberNo());
         int totalViewCount = 0;
         for (HoneyMain count : list) {
           totalViewCount += count.getViewCount();
@@ -76,6 +76,7 @@ public class HoneyAdminController {
         resultMap.put("followCollector",followCollector.size());
         resultMap.put("totalViewCount", totalViewCount);
         resultMap.put("member", member);
+        resultMap.put("userInfo", userInfo.getIntroduce());
         resultMap.put("profilePhoto", memberFile.getFilename());
         
         if (resultMap.isEmpty() == true) {

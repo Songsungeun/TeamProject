@@ -46,6 +46,7 @@ function ajaxUserProfileLoder() {
 		$("#userNickNameInfo").val(result.data.nickname);
 		$("#userNameInfo").val(result.data.userName);
 		$("#userTelInfo").val(result.data.phone);
+		$("#userIntroduce").text(result.data.introduce);
 	})
 }
 
