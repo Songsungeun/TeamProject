@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Beautiful Registration Form with HTML5 and CSS3</title>
+<meta http-equiv="X-UA-Compatible"
+  content="IE=EmulateIE7; IE=EmulateIE9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <style>
+  #allvoid{
+    position: relative;
+    height: 500px;
+    width: 1024px;
+    top: 100px;
+    margin: auto;
+  }
+  
+  #noSeachMessage{
+    text-align: center;
+    top: 10px;
+    position: relative;
+    font-family: aria;
+    font-size: 20px;
+  }
+  
+  #noSeachImage{
+    width: 50%;
+    top: 5px;
+  }
+  
+  </style>
+  
+  
+</head>
+<body>
+  <div id="includeHeader"></div> 
+  
+  
+  <div id = "allvoid">
+      <div id = "noSeachMessage"> 
+        검색결과가 없어요...
+          <div id = "noSeachImageArea">
+            <img id = "noSeachImage"src="/TeamProject/upload/MainDefault.jpg">
+          </div>
+         
+      </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/js/common.js"></script>
+  <script type="text/javascript" src="resultOfSearch.js"></script>
+
+  <script>
+    $(function() {
+      $("#includeHeader").load("../header.html");
+    });
+  </script>
+
+</body>
+</html>

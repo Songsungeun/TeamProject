@@ -2,6 +2,8 @@
  * 
  */
 
+
+
 function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
@@ -39,14 +41,17 @@ var searchValue;
 var searchMemberResult;
 var searchBoardResult;
 var memberPhotoExtract;
+var  boardLength = 6;
+var  memberLength = 4;
+
 function ajaxSearchResultList() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 	
-	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json", 
-			  {"searchValue":searchValue,"searchMemberResult":searchMemberResult,
-   		       "searchBoardResult":searchBoardResult,"memberPhotoExtract":memberPhotoExtract},
-	  function(obj) {
+	  $.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json",  {
+		  "boardLength" : boardLength,
+		  "memberLength":memberLength
+	  }, function(obj) {
 	  var result = obj.jsonResult
 	    if (result.state != "success") {
 	      alert("서버에서 데이터를 가져오는데 실패하였습니다.")
@@ -56,7 +61,12 @@ function ajaxSearchResultList() {
 	    if (result.data == "") {
 	    	alert("검색 결과가 없습니다.")
 	    }
-	  
+	    
+		var boardSearchLength = result.data.boardSearchLength //  게시물 총 페이지 수 
+		var memberSearchLength = result.data.memberSearchLength // 회원 페이지 수 
+		var boardDifference  =  boardSearchLength -  boardLength
+		var memberDifference = memberSearchLength -  memberLength
+	    
 	    var nameSearch = "";
 	    var contentsSearch = "";
 	    var photo =""
@@ -67,13 +77,42 @@ function ajaxSearchResultList() {
 	
 	    contentsSearch += template1(data)
 	    nameSearch += template2(data)
-	  
+	    
+	   if  (boardSearchLength == 0  &&  memberSearchLength == 0 ) {
+	    	location.href ="/TeamProject/resultOfSearch/searchResultNull.html"
+
+	   } else  if (memberSearchLength == 0) {
+	    	$("#memberSearchResultWrap").css("display", "none")
+	   } else  if (boardSearchLength == 0) {
+	    	$("#contentsSearchWrap").css("display", "none") 
+	    }
+	    
+	   if  (boardSearchLength > 0 &&  boardSearchLength < boardLength) {
+		 $("#moreViewBtn2").css("display", "none")
+	    } else if  (memberSearchLength > 0 &&  memberSearchLength < memberLength) {
+	    	 $("#moreViewBtn1").css("display", "none")
+	    }
+ 
 	   $("#searchWord").text(data.searchValue);
 	   $(".memberSearchResult").html(nameSearch);
-	   
 	   $(".contentsSearchResult").html(contentsSearch);
-	
+	   $("#uSearchLength").text(data.memberSearchLength);
+	   $("#pSearchLength").text(data.boardSearchLength);
 	   
-	})	   
-	
-}	
+	   $("#moreViewBtn1").click(function () {
+		   memberLength += Number(memberDifference);
+		   ajaxSearchResultList()
+		   if (memberLength ==  memberSearchLength )
+			   $("#moreViewBtn1").css("display", "none")
+	   })
+	   
+	   $("#moreViewBtn2").click(function () {
+		   boardLength += Number(boardDifference);
+		   ajaxSearchResultList()
+		   if (boardLength ==  boardSearchLength )
+		     $("#moreViewBtn2").css("display", "none")
+	   })
+	 
+	  })
+}
+	   

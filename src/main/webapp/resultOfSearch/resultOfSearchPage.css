@@ -168,7 +168,7 @@ body {
 .contentsSearchResult {
     position: relative;
     margin: 0 auto;
-    padding-top:20px;
+    padding-top:50px;
     float: left;
     width: 1024px;
 }
@@ -180,10 +180,17 @@ body {
     background-color: antiquewhite;
 }
 
-#moreViewBtn{
+#moreViewBtn1{
     float: right;
     font-size: 18px;
-/*     padding-right: 15px; */
+    padding-right: 40px;
+    padding-top: 30px;
+}
+
+#moreViewBtn2{
+    float: right;
+    font-size: 18px;
+    padding-right: 40px;
     padding-top: 10px;
 }
 
@@ -193,7 +200,6 @@ body {
         margin: 0 auto;
     background-color: antiquewhite;
 }
-
 
 #postResultWrap{
     font-size: 17px;
@@ -248,7 +254,7 @@ body {
 
 #each_post {
   width: 316px;
-  height: 489px;
+  height: 473px;
   margin: 0 auto 12px auto;
   background-color: #fff;
   border: 1px solid #e3e3e3;
@@ -259,7 +265,7 @@ body {
 
 #each_post>#user_Nick {
   /* width: 314px; */
-  height: 52px;
+/*   height: 52px; */
   padding: 12px 14px;
   background-color:  #f1f1f1;
 }
@@ -349,18 +355,18 @@ body {
 }
 
 .post_BtnWrap {
-  position: absolute;
-  bottom: 0;
-  width: 314px;
-  border-top: solid 1px #f2f2f2;
-  background-color: #fafafa;
-  height: 41px;
-  padding: 11px 14px 12px 14px;
-  font-size: 11px;
-  font-weight: normal;
-  line-height: 16px;
-  cursor: pointer;
-  border-radius: inherit;
+    position: absolute;
+    bottom: 0;
+    width: 287px;
+    border-top: solid 1px #f2f2f2;
+    background-color: #fafafa;
+    height: 19px;
+    padding: 11px 14px 12px 14px;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 16px;
+    cursor: pointer;
+    border-radius: inherit;
 }
 
 .post_ctgWrap {
@@ -537,19 +543,5 @@ body {
   border-top: 1px solid #e8e8e8; 
 
 }
-    
-    .post_BtnWrap {
-  position: absolute;
-  bottom: 0;
-  width: 289px;
-  border-top: solid 1px #f2f2f2;
-  background-color: #fafafa;
-  height: 41px;
-  padding: 11px 14px 12px 14px;
-  font-size: 11px;
-  font-weight: normal;
-  line-height: 16px;
-  cursor: pointer;
-  border-radius: inherit;
-}
+
     

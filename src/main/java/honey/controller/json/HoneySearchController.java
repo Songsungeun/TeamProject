@@ -86,11 +86,11 @@ public class HoneySearchController {
 		try {
 		 HashMap<String, Object> searchData = new HashMap<>();
 		  searchData.put("searchMemberResult", searchMemberResult);
-			searchData.put("searchMemberResultList", searchMemberResult.size());
+			searchData.put("memberLength", memberLength);
 			searchData.put("memberSearchLength", searchMemberResultListLength.size());
 			
 			searchData.put("searchBoardResult", searchBoardResult);
-			searchData.put("searchBoardResultList", searchBoardResult.size());
+			searchData.put("boardLength", boardLength);
       searchData.put("boardSearchLength", searchBoardResultListLength.size());
 	     
 			searchData.put("searchValue", searchfucker); //검색어 
