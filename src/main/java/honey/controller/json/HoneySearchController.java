@@ -20,10 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import honey.dao.HoneyPhotoDao;
 import honey.dao.HoneySearcherDao;
 import honey.service.HoneyMainService;
+import honey.service.HoneySearchService;
 import honey.service.HoneymembersService;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMemberPhoto;
@@ -38,10 +40,8 @@ import honey.vo.UrlInfo;
 // 유지 보수에도 좋지 못할거 같다. 어떤 방법이 있을텐데...
 // 또한 이 객체 역시 디비에 직접적으로 접근할 필요가 없어 따로 서비스 클래스로 분리하지 않았다.
 public class HoneySearchController {
-	@Autowired   HoneySearcherDao searcherDao;
-	@Autowired   HoneyPhotoDao photoDao;
-	@Autowired   HoneymembersService honeymembersService;
-	@Autowired   HoneyMainService mainService;
+	@Autowired HoneySearchService searchService;
+	@Autowired HoneySearcherDao searcherDao;
 	
 	@RequestMapping("searchInfo")
 	public Object searchInfo(HoneySearchKeyword searchInfo, HttpServletResponse response)
@@ -69,35 +69,32 @@ public class HoneySearchController {
 	}
 
 	@RequestMapping("searcher")
-	public Object searchResult(@CookieValue(name = "searchInfo") String searchInfo) throws Exception {
-		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8");
-		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
+	public Object searchResult(
+	    @CookieValue(name = "searchInfo") String searchInfo,
+	    @RequestParam(defaultValue = "4") int memberLength, 
+	    @RequestParam(defaultValue = "6") int boardLength) throws Exception {
+		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8"); 		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
 
-		// 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
-		List<HoneySearchKeyword> searchBoardResult = searcherDao.selectFromBoard(searchfucker);
-    List<UrlInfo> urlList = mainService.getURLList();
-    List<HoneySearchKeyword> resultList = SetImage.setImage2(searchBoardResult, urlList);
+		List<HoneySearchKeyword> searchBoardResult = searchService.searchServiceBoardResult(searchfucker, boardLength);
+		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchfucker, memberLength);
+    // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
+
+		List<HoneySearchKeyword> searchBoardResultListLength = searchService.boardResultTotalPage(searchfucker);
+		List<HoneySearchKeyword> searchMemberResultListLength = searchService.memberResultTotalPage(searchfucker);
+    // 페이징 작업을 위해 만든 전체검색결과 size()용 메소드		
 		
-    for (int i = 0; i < resultList.size(); i++) {
-      String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
-      searchBoardResult.get(i).setUserProfilePath(userPhoto);
-    }
-    
-		List<HoneySearchKeyword> searchMemberResult = searcherDao.selectFromMembers(searchfucker);
-		String[] temp2 = new String[searchMemberResult.size()];
-		List<HoneyMemberPhoto> memberEmailExtract = new ArrayList<>();
-
 		try {
-			for (int i = 0; i < temp2.length; i++) {
-				temp2[i] = searchMemberResult.get(i).getEmail();
-				memberEmailExtract.add(photoDao.extractMemberNum(temp2[i])); 
-				searchMemberResult.get(i).setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
-	   }
-			
 		 HashMap<String, Object> searchData = new HashMap<>();
-			searchData.put("searchMemberResult", searchMemberResult);
+		  searchData.put("searchMemberResult", searchMemberResult);
+			searchData.put("searchMemberResultList", searchMemberResult.size());
+			searchData.put("memberSearchLength", searchMemberResultListLength.size());
+			
 			searchData.put("searchBoardResult", searchBoardResult);
-			searchData.put("searchValue", searchfucker);
+			searchData.put("searchBoardResultList", searchBoardResult.size());
+      searchData.put("boardSearchLength", searchBoardResultListLength.size());
+	     
+			searchData.put("searchValue", searchfucker); //검색어 
+			
 			return JsonResult.success(searchData);
 		} catch (Exception e) {
 			e.printStackTrace();

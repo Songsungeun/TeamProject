@@ -33,14 +33,32 @@
     from honey_boards hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join honey_ctg hc on hb.CT_NO = hc.CT_NO
-    where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like concat('%', #{value}, '%')
+    where hb.BD_TITL like concat('%', #{searchValue}, '%') or hb.BD_CONTS like concat('%', #{searchValue}, '%')
     order by bd_no desc
+    limit #{boardLength}
   </select>
   
   <select id="selectFromMembers" resultMap="searchMap" parameterType="map">
     select EMAIL,MB_NICK,MB_NM
     from honey_membs
-    where EMAIL like concat('%', #{value}, '%') or MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%', #{value}, '%')
-    
+    where EMAIL like concat('%', #{searchValue}, '%') or MB_NICK like concat('%', #{searchValue}, '%') or MB_NM like concat('%', #{searchValue}, '%')
+    limit #{memberLength}
   </select>
+  
+  <select id="memberResultLengthList" resultMap="searchMap" parameterType="String">
+    select EMAIL,MB_NICK,MB_NM
+    from honey_membs
+    where EMAIL like concat('%', #{value}, '%') or MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%', #{value}, '%')
+   </select> 
+  
+  <select id="boardResultLengthList" resultMap="searchMap" parameterType="String">
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like concat('%', #{value}, '%')
+  </select>
+  
+  
 </mapper>

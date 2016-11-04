@@ -1,5 +1,6 @@
 package honey.controller.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import honey.service.HoneyAdminService;
 import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
+import honey.vo.FileList;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
@@ -85,6 +87,39 @@ public class HoneyAdminController {
       }
     }
     
+    @RequestMapping("postdetail")
+    public Object detail(int no) throws Exception {
+  System.out.println("no 받음 : " + no);
+      
+      mainService.getIncreaseViewCount(no);
+      HoneyMain honeyMain = mainService.getPost(no);
+      HashMap<String, Object> map = new HashMap<>();
+      String userPhoto = mainService.getPhoto(Integer.parseInt(honeyMain.getUserNo()));
+      honeyMain.setUserProfilePath(userPhoto);
+      System.out.println("fileStatus: " + honeyMain.getFileStatus());
+      
+      List<FileList> fileList = new ArrayList<FileList>();
+      if (honeyMain.getFileStatus() == 1) {
+        System.out.println("honeyMainNo=" + honeyMain.getNo());
+        fileList = mainService.getFileList(honeyMain.getNo());
+      }
+    
+      UrlInfo urlInfo = new UrlInfo();
+      if (mainService.getUrl(no) != null) {
+        urlInfo = mainService.getUrl(no);
+        String temp = urlInfo.getImage();
+        temp = "<img alt='photo' src='" + temp + "'>";
+        urlInfo.setImage(temp);
+      } 
+
+      map.put("fileList", fileList);
+      map.put("board", honeyMain);
+      map.put("urlInfo", urlInfo);
+      
+      return JsonResult.success(map);
+    }
+    
+    
     @RequestMapping(path = "admindelete")
     public Object delete(int no) throws Exception {
       try {
@@ -94,4 +129,8 @@ public class HoneyAdminController {
       return JsonResult.fail(e.getMessage());
       }
     }
+    
+    
+    
+    
 }

@@ -7,6 +7,8 @@ import honey.vo.HoneyMembers;
 import honey.vo.HoneySearchKeyword;
 
 public interface HoneySearcherDao {
-	List<HoneySearchKeyword> selectFromBoard(String value) throws Exception;
-	List<HoneySearchKeyword> selectFromMembers(String value) throws Exception;
+	List<HoneySearchKeyword> selectFromBoard(Map<String, Object> paramMap) throws Exception;
+	List<HoneySearchKeyword> selectFromMembers(Map<String, Object> paramMap) throws Exception;
+  List<HoneySearchKeyword> memberResultLengthList(String value) throws Exception;
+  List<HoneySearchKeyword> boardResultLengthList(String value) throws Exception;
 }

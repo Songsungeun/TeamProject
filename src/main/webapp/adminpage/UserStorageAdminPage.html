@@ -7,417 +7,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<style>
-
-@charset "utf-8";
-/*reset*/
-html, body, div, span, object, iframe, p, blockquote, pre,
-abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
-b, i, dl, dt, dd, ol, ul, li, fieldset, form,  legend, table, caption, tbody, tfoot, thead, 
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
-input,textarea,select,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
-ul,ol,li{list-style:none;}
-a{text-decoration:none; color:inherit;}
-a:hover, a:focus{text-decoration:underline;}
-fieldset{margin:0; padding:0; border:none;} 
-caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
-img{vertical-align:middle;}
-table{display: table;}
-caption{display: table-caption;}
-colgroup{display: table-column-group;}
-col{display: table-column;}
-thead{display: table-header-group;}
-tbody{display: table-row-group;}
-tfoot{display: table-footer-group;}
-tr{display: table-r ow;}
-td, th{display: table-cell;}
-ul:after{content:" ";display:block;clear:both;}
-body{ font-family:"arial", sans-serif; font-size:12px;}
-/*reset*/
-
-#DetailPage_Wrap{
-    padding-top :10px;
-    width: 1000px;
-    margin: auto;
-    background-color: #f1f1f1;
- 
-}
-
- #StorageTitle {
-  position: relative;
-  top:-10px;
-  text-align: left;
-}
-
-#each_post_wrap {
-  width: 330px;
-  height: 501px;
-  float: left;
-}
-
-#each_post {
-  width: 316px;
-  height: 489px;
-  margin: 0 auto 12px auto;
-  background-color: #fff;
-  border: 1px solid #e3e3e3;
-  border-radius: 3px;
-  box-shadow: 1px 1px 1px #c0c0c0;
-  position: relative;
-}
-
-#each_post>#user_Nick {
-  width: 314px;
-  height: 52px;
-  padding: 12px 14px;
-}
-
-#user_Nick>span {
-  font-size: 15px;
-  vertical-align: middle;
-}
-
-.user_Nonepht {
-  width: 28px;
-  height: 28px;
-  margin-right: 8px;
-  -moz-border-radius : 100px;
- -webkit-border-radius : 100px;
- -ms-border-radius :100px;
- -khtml-border-radius : 100px;
- -o-border-radius :100px;
-}
-
-#user_Nick>span:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.user_Nonepht:hover {
-  cursor: pointer;
-}
-
-.post_photoWrap {
-  width: 314px;
-  height: 260px;
-  margin: 0 0 8px 0;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-}
-
-
-.post_photoWrap a {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  cursor: pointer;
-}
-
-.post_contsWrap {
-  min-height: 80px;
-  margin-bottom: 1px;
-}
-
-.post_photoWrap img {
-  width: 100%;
-  height: auto;
-}
-
-.each_post_title {
-  display: block;
-  max-height: 52px;
-  padding: 4px 14px 0 14px;
-  overflow: hidden;
-  white-space: pre-line;
-  font-weight: bold;
-  font-size: 17px;
-  line-height: 24px;
-  cursor: pointer;
-}
-
-.each_post_title:hover {
-  text-decoration: underline;
-}
-
-.each_post_contents {
-  display: block;
-  font-size: 13px;
-  height: 48px;
-  line-height: 22px;
-  padding: 5px 14px 3px 14px;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: pre-line;
-  cursor: pointer;
-}
-
-.post_contsWrap:hover {
-  text-decoration: none;
-}
-
-.post_BtnWrap {
-  position: absolute;
-  bottom: 0;
-  width: 314px;
-  border-top: solid 1px #f2f2f2;
-  background-color: #fafafa;
-  height: 41px;
-  padding: 11px 14px 12px 14px;
-  font-size: 11px;
-  font-weight: normal;
-  line-height: 16px;
-  cursor: pointer;
-  border-radius: inherit;
-}
-
-.post_ctgWrap {
-  padding: 5px 14px 3px 14px;
-  position: absolute;
-  bottom: 43px;
-}
-
-.post_ctgWrap > span {
-  border: 1px solid black;
-  border-radius: 3px;
-  padding: 2px;
-  font-size: 10px;
-}
-.categoryLink:hover {
-  text-decoration: none;
-  cursor: pointer;
-}
-.like_Onclick {
-  width: 14px;
-  height: 14px;
-  margin-right: 5px;
-}
-
-.post_rightBtn {
-  float: right !important;
-  margin-right: 15px;
-}
-
-.post_leftBtn {
-  float: left !important;
-}
-
-.viewCount {
-  width: 16px;
-  height: 16px;
-  margin-right: 5px;
-}
-
-/* Modal */
-.post_conts {
-  float: left;
-  width: 700px;
-  height: 775px;
-  padding: 15px;
-  background-color: #FFFAE4;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.post_title {
-  width: 100%;
-  max-height: 156px;
-  font-size: 55px;
-  white-space: normal;
-  word-break: keep-all;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  /*   font-family: '돋움',Dotum,sans-serif; */
-}
-
-.post_conts>p {
-  font-size: 25px;
-  padding: 10px 0 0 0;
-}
-
-.post_conts>#createdDate {
-  padding: 5px 0 5px 450px;
-  letter-spacing: 5px;
-}
-
-.url {
-  width: 500px;
-  margin-left: 20px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-#url_location {
-  border: 1px solid black;
-  width: 100%;
-  height: 100%;
-  max-height: 300px;
-  margin: 5px 0 5px 0;
-  overflow: hidden;
-}
-
-.post_conts>#contents {
-  border: 1px solid black;
-  width: 100%;
-  height: 100%;
-  max-height: 300px;
-  margin: 5px 0 5px 0;
-  overflow: hidden;
-}
-
-.post_info {
-  float: left;
-  width: 322px;
-  height: 775px;
-  background-color: #7D8EFF; .
-  overflow: scroll;
-  padding: 25px 15px 0 25px;
-}
-
-.post_wt .user-subscribeBtn {
-  color: blue;
-  background-color: #7D8EFF;
-  letter-spacing: 2px;
-  float: right;
-  margin: 10px 80px 0 50px;
-  width: 150px;
-  border: 2px solid blue;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.post_wt .user-subscribeBtn:HOVER {
-  cursor: pointer;
-  color: #7D8EFF;
-  background-color: blue;
-}
-
-.post_info>p {
-  margin: 10px 0;
-}
-
-#writerNick {
-  font-size: 18px;
-}
-
-.Btn-wrap {
-  width: 222px;
-  height: 34px;
-  margin: 100px auto;
-}
-
-#lkBtn {
-  font-size: 10px;
-  width: 100px;
-}
-
-.post_info .post_wt {
-  height: 65px;
-  margin-bottom: 25px;
-}
-
-.post_wt>span {
-  float: left;
-}
-
-.post_vc #viewCount {
-  margin-left: 10px;
-}
-
-.post_lk #like {
-  margin-left: 10px;
-}
-
-.post_info #post_user_id {
-  margin-top: 5px;
-  margin-left: 10px;
-}
-
-.post_contsWrap img {
-  display: none;
-}
-
-.each_post_title {
-  border-top: 1px solid #e8e8e8; 
-  
-}
-
-#postsCard{
-  position: relative;
-  width: 1024px;
-  margin: auto;
-  background-color: #f1f1f1;
-}
-
-#centerContentDetail {
-    border-top: #ffdcdc 1px solid;
-    background-color: white;
-    margin: auto;
-    padding-top: 12px;
-    height: 45px;
-    text-align: center;
-   
-}
-
-.conterDetailBtn1{
-    font-size: 16px;
-    font-family: "Spoqa Han Sans";
-    color: #999;
-    padding-top: 5px;
-}
-
-.conterDetailBtn2{
-    font-size: 16px;
-    font-family: "Spoqa Han Sans";
-    color: #999;
-    padding-top: 5px;
-}
-
-.ui-widget.ui-widget-content{
-  border:none;
-}
-
-#tableWrap{
-  background-color: white;
-  display: none;
-}
-
-#cardBtn{
-    position: relative;
-    width: 100px;
-    float: right;
-}
-
-#boardBtn{
-    position: relative;
-    width: 100px;
-    float: right;
-}
-
-.moreViewBtn{
-    font-size: 18px;
-    font-family: serif;
-    color: dimgray;
-}
-
-</style>
+  <link rel="stylesheet" type="text/css" href="UserStorageAdminPage.css">
 </head>
   
 <body>
-
-     <div id = "centerContentDetail">
-         <div>
-             <span class = "conterDetailBtn1"> <a  href = "#" >Card Style</a></span> 
-             |
-             <span class = "conterDetailBtn2"> <a  href = "#">Board Style</a></span>
-         </div>
-       </div>
+ <div id = "centerContentDetail">  
+     <div id = "contentsDetailWrap">
+         <span class = "conterDetailBtn1"> <a  href = "#" >Card Style</a></span> 
+         |
+         <span class = "conterDetailBtn2"> <a  href = "#">Board Style</a></span>
+     </div>
+   </div>
        
   <section id = "DetailPage_Wrap">
    <div id = "cardWrap">
@@ -432,11 +32,12 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
        <table id="boardTable" class="table table-hover">
          <thead>
          <tr>
-           <th>번호</th>
+           <th>썸네일</th>
            <th>제목(상세보기)</th>
            <th>등록일</th>
            <th>좋아요</th>
            <th>조회수</th>
+           <th>수정하기</th>
            <th>삭제하기</th>
          </tr>
          </thead>
@@ -446,7 +47,67 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
               <a  class="moreViewBtn" href="#">더보기</a>
            </div>
      </div>
-     
+       <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" id="modalDialog">
+              <div class="modal-content">
+                <div class="modal-body" id="modalBody">
+                  <div class="owner">
+                    <a href="#" id="followBtn" class="button user_button">Follow</a>
+                    <a href="#" class="button user_button">Like</a> <a
+                      class="owner_img" href="#"> <img alt="jibon" id="userImage"
+                      src="">
+                    </a>
+                    <p class="owner_name">
+                      <a href="#" id="writerNick"></a>
+                    </p>
+                    <p class="owner_when" id="createdDate">등록일</p>
+                  </div>
+
+                  <div class="userWrite">
+                    <div class="comment" id="419">
+                      <h1 id="userTitle"
+                        style="font-size: 17px; font-weight: bold;"></h1>
+                      <div id="userDesc"></div>
+                    </div>
+                  </div>
+
+                  <div class="holder">
+                    <a class="image" id="urlImage" href="#" title="SAM_3191.JPG">
+                    </a>
+                  </div>
+
+                  <div class="linkText">
+                    <h1 class="title" id="linkTitle"
+                      style="font-size: 15px; font-weight: bold;"></h1>
+                    <p class="desc" id="linkDesc"></p>
+                    <p class="urlAddr" id="linkURL"></p>
+                  </div>
+  
+                  <div class="fileArea">
+                  <div class="addFileTag">
+                    <div id="fileText">첨부파일:</div> 
+                    <div id="fileListArea"></div>
+                  </div>
+                  
+                  </div>
+                  
+                  <form class="userComment" method="post" action="#">
+                    <textarea placeholder="Add a comment..." maxlength="255"
+                      id="pcomment"></textarea>
+                    <button id="insertCmt" type="button" class="button">Comment</button>
+                    <div class="cmts_list"></div>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"
+                    data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
  </section>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -461,11 +122,12 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 {{#each list}}
     <tr>
       <label>
-          <td>{{no}}</td>
+          <td> </td>
           <td><a class="titleLink" href="#" data-no="{{no}}">{{title}}</a></td>
           <td>{{createdDate2}}</td> 
           <td>{{like}}</td> 
           <td>{{viewCount}}</td>
+          <td><button  class="btn btn-primary" id="btn" data-no={{no}}>수정</button></td>
           <td><button  class="btn btn-danger" id="btn" data-no={{no}}>삭제</button></td>
      </label>
     </tr>
