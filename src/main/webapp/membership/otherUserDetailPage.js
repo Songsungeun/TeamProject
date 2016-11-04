@@ -41,6 +41,7 @@ function aJaxOtherUserProfileLoder(userInfo) {
 			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#followers").text(result.data.totalFollowers)
+			$("#user-introduce").text(result.data.userInfo)
 			
 			var source = $('#liTemplateText').html();
 			var template = Handlebars.compile(source);

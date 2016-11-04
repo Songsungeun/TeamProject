@@ -9,7 +9,8 @@ $("#changeUserStatusInfo").click(function(event){
 			userName: $("#userNameInfo").val(),
 			email: $("#userEmailInfo").val(),
 			nickname: $("#userNickNameInfo").val(),
-			phone: $("#userTelInfo").val()
+			phone: $("#userTelInfo").val(),
+			introduce: $("#userIntroduce").val()
 	}
 	ajaxUserStatusUpdate(userStatusChangeInfo) 
 
@@ -49,15 +50,17 @@ function ajaxUserProfileLoder() {
 }
 
 function ajaxUserStatusUpdate(userStatusChangeInfo) {
+	console.log(userStatusChangeInfo)
 	$.post("userStatusUpdate.json", userStatusChangeInfo, function(obj) {
 		var result=obj.jsonResult
 		if (result.state !="success") {
 			console.log(result.state)
 			alert("수정 실패입니다.")
 			return
-		} 
+		} else {
 		alert("수정 완료! 메인페이지로 이동합니다.")
 		location.href="/TeamProject/mainpage/Main.html"
+		}
 	},"json")
 }
 

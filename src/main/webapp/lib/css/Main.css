@@ -669,6 +669,10 @@ modal fade>p {
   color: #838B9B;
 }
 
+.comment {
+  white-space: pre-line;
+}
+
 .userWrite {
   width: 556px;
   margin: 5px auto;
