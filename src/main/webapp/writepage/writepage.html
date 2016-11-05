@@ -5,12 +5,33 @@
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript"
   src="../node_modules/jquery/dist/jquery.min.js"></script>
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>Insert title here</title>
 <style>
-body {
-  background-color: #f1f1f2;
+/* body { */
+/*  background-color: #f1f1f2; */
+/* } */
+#write_container_bkimg {
+  padding-top: 59px;
+  opacity: 0.5;
+  position:fixed;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+}
+
+#write_container_Wrap {
+  padding-top: 80px;
+}
+.nicEdit-panel {
+  margin-left: 8px !important;
+}
+#category-button {
+  width: 139.76px;
+  height: 25.97px;
+  padding: 3px !important;
 }
 /* 
 form {
@@ -19,54 +40,85 @@ form {
   padding-left: 50px;
   padding-top: 20px;
 }*/
-
 #write_container {
-  max-width: 1024px;
+/*  max-width: 1024px; */
+  width: 624px;
   margin: 0 auto;
-  padding-top: 120px;
-  background-color: white;
-  height: 600px;
+  height: 100%;
+/*   padding-top: 100px; */
+/*  padding-left: 200px; */
+/*  padding-right: 200px; */
+  background-color: transparent;
+}
+#writeArea {
+  padding: 0 0 30px 0;
+  height: 100%;
+}
+#category_select {
+  margin: 1.5px 0;
+  padding: 5px 12px;
+  border: 0;
 }
 
-#category_select {
-      border: 0;
-    }
-    label {
-      display: block;
-      margin: 30px 0 0 0;
-    }
-    .overflow {
-      height: 200px;
-    }
+label {
+  display: block;
+  margin: 30px 0 0 0;
+  width: 100%;
+  heigth: 100%;
+}
+
+.overflow {
+  height: 200px;
+}
 
 .modal-dialog {
   padding-top: 30px;
 }
- 
- #write_form {
- }
- 
- .form-group1 {
+
+#write_form {
+  
+}
+/* #writeArea > div { */
+/*   background-color: white; */
+/* } */
+.form-group {
+  margin: 1px 0 1px 0 !important;
+  padding: 4px 12px;
+}
+.writeWidth {
+  width: 622.76px !important;
+  height: 100% !important;
+  background-color: white;
+  border-radius: 4px;
+}
+.form-group1 {
   margin: 3 20 20 20;
- }
- 
- .form-group2 {
+}
+
+.form-group2 {
   width: 550x;
   margin: 20 20 0 20;
- }
- 
- .previewbox {
+}
+
+.previewbox {
   width: 476px;
   margin: 0 auto;
- }
+}
 
 #contBox {
-    width: 476px;
-    border: 1px solid #C1CDCD;
-    border-top: 1px dotted #C1CDCD;
-    margin: 0 auto;
-  }
-   /*
+  width: 476px;
+  border: 1px solid #C1CDCD;
+  border-top: 1px dotted #C1CDCD;
+  margin: 0 auto;
+}
+.nicEdit-main {
+  width: 100% !important;
+/*   margin: 4px auto !important; */
+  padding: 6px 12px !important;
+  margin: 0 !important;
+  background-color: white;
+}
+/*
   #submitBoard {
     position: relative;
     left: 45%;
@@ -77,62 +129,101 @@ form {
     left: 45%;
   }
   */
-  .btn-default {
-    position: relative;
-    margin-top: 50px;
-    margin-right: 7px;
-    left: 25%;
-  }
-  
-  .btn-primary {
-    float: right;
-  }
-  
-  #urlTitle {
-    float: left;
-    font-size: 17px;
-    font-style: bold;
-    margin: 2px 0px;
-  }
-  
-  #urlDesc {
-    float: left;
-  }
-  
-  #urlAddr {
-    margin-top: 10px;
-    float: left;
-    color: #838B9B;
-  }
-  
- #previewTitle {
-    margin-left: 50px;
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-  #previewTextBox{
-    width: 476px;
-    padding: 10px;
-  }
-  
-  #previewTextBox > div > img {
-    max-width: 456px;
-    height: auto;
-  }
-  
-  #previewTextBox > img {
-    max-width: 456px;
-    height: auto;
-  }
-  
-  #youtubeUrl {
-   margin: 0 auto;
-  }
+.btn-default {
+  width: 83px;
+  height: 30px;
+  position: relative;
+  margin-top: 10px;
+  left: 57%;
+}
+
+.btn-primary {
+  float: right;
+}
+#InputFile {
+  width: 100%;
+  margin: 3px 0;
+}
+#urlTitle {
+  float: left;
+  font-size: 17px;
+  font-style: bold;
+  margin: 2px 0px;
+}
+
+#urlDesc {
+  float: left;
+}
+
+#urlAddr {
+  margin-top: 10px;
+  float: left;
+  color: #838B9B;
+}
+
+#previewTitle {
+  margin-left: 50px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#previewTextBox {
+  width: 476px;
+  padding: 10px;
+}
+
+#previewTextBox>div>img {
+  max-width: 456px;
+  height: auto;
+}
+
+#previewTextBox>img {
+  max-width: 456px;
+  height: auto;
+}
+
+#youtubeUrl {
+  margin: 0 auto;
+}
+#resetBtn {
+  position: fixed;
+  bottom: 10%;
+  right: 30.3%;
+  width: 30px;
+  height: 30px;
+  background-color: #c8c8c8;
+  overflow: hidden;
+  border-radius: 10px;
+  opacity: 0.6;
+  border: 1px solid #a0a0a0;
+}
+#resetBtn > img {
+  width: 28px;
+  height: auto;
+}
+#topMoveBtn {
+  position: fixed;
+  bottom: 14%;
+  right: 30.3%;
+  width: 30px;
+  height: 30px;
+  background-color: #c8c8c8;
+  overflow: hidden;
+  border-radius: 10px;
+  opacity: 0.6;
+  border: 1px solid #a0a0a0;
+}
+#topMoveBtn > img {
+  width: 20px;
+  height: auto;
+  margin: 4px;
+}
 </style>
 
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 
 <script>
 $(document).ready(function(){ 
@@ -151,96 +242,106 @@ $(document).ready(function(){
 
 <body>
   <div id="headerInclude"></div>
-
+  <img id="write_container_bkimg" src="../mainpage/mainpage_images/wirtepage_background.jpg"></img>
+  <div id="write_container_Wrap">
   <div id="write_container">
-    <form id="writeArea" action="#" name="uploadForm" method="post" enctype="multipart/form-data">
-      <input type="text" id="url" class="form-control" placeholder="URL">
-      <input type="text" id="write_title" class="form-control" placeholder="제목">
-      <textarea class="form-control" id= "myNicEditor" rows="20" style="max-width:1024px;"></textarea>
-      <input type="text" id="write_youtube" class="form-control" placeholder="YoutubeURL">
-      
-      <div class="form-group">
-        <label for="InputFile">File input</label> 
-        <input type="file" id="InputFile" name="media" multiple/>
+    <form id="writeArea" action="#" name="uploadForm" method="post"
+      enctype="multipart/form-data">
+      <input type="text" id="url" class="form-control writeWidth" placeholder="URL">
+      <input type="text" id="write_title" class="form-control writeWidth"
+        placeholder="제목">
+      <textarea class="form-control" id="myNicEditor" rows="20"
+        style="max-width: 1024px;"></textarea>
+      <input type="text" id="write_youtube" class="form-control writeWidth"
+        placeholder="Youtube URL">
+
+      <div class="form-group writeWidth">
+        <label for="InputFile" style="margin-bottom: 3px;">File input
+        <input type="file"
+          id="InputFile" name="media" multiple />
+        </label>
         <p class="help-block">파일을 등록하세요</p>
       </div>
-      <fieldset id="category_select">
-        <label for="category">Category</label> 
-        <select name="category"  id="category"class="form-control">
-          <option selected="selected" value=1>라이프</option>
-          <option value=2>스포츠</option>
-          <option value=3>차/테크</option>
-          <option value=4>패션/뷰티</option>
-          <option value=5>게임</option>
-          <option value=6>TV/연예</option>
-          <option value=7>뮤직</option>
-          <option value=8>영화</option>
-          <option value=9>책/문화</option>
-          <option value=10>지식/교양</option>
+      <fieldset id="category_select" class="writeWidth">
+        <label for="category">Category
+        <select name="category" id="category" class="form-control">
+         <option selected="selected" value=1>HEALTH</option>
+          <option value=2>CAR</option>
+          <option value=3>BEAUTY/FASHION</option>
+          <option value=4>COOK</option>
+          <option value=5>TRAVEL</option>
+          <option value=6>LOVE</option>
+          <option value=7>ENTERTAINMENT</option>
+          <option value=8>NEWS</option>
+          <option value=9>IT</option>
+          <option value=10>PHOTO</option>
         </select>
+        </label>
       </fieldset>
-      <input class="btn btn-default my-new"
-          name="submit" id="submitBoard" tabindex="8" value="등록">
-      <input class="btn btn-default my-view"
-          name="submit" id="updateBoard" tabindex="8" value="변경">
-      <input class="btn btn-default my-view"
-          name="submit" id="deleteBoard" tabindex="8" value="삭제">
-      <input class="btn btn-default"
-          name="cancel" id="cancelwrite" tabindex="8" value="취소"
-          onclick="location.href='../mainpage/Main.html'">
-      <input class="btn btn-default my-new" data-toggle="modal" name="preview" 
-               id="preview" tabindex="8" value="미리보기" data-target="#exampleModal" >
-<!--      <input class="btn btn-default my-new" -->
-<!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
-      <input style= "display: none;" type="text" id="no" class="form-control" placeholder="URL"> 
+      <input class="btn btn-default my-new" name="submit" id="submitBoard"
+        tabindex="8" value="등록">
+      <input class="btn btn-default my-view" name="submit" id="updateBoard"
+        tabindex="8" value="변경">
+      <input class="btn btn-default my-view" name="submit" id="deleteBoard"
+        tabindex="8" value="삭제">
+      <input class="btn btn-default" name="cancel" id="cancelwrite" tabindex="8" value="취소"
+        onclick="location.href='../mainpage/Main.html'">
+      <input class="btn btn-default my-new" data-toggle="modal" name="preview"
+        id="preview" tabindex="8" value="미리보기" data-target="#exampleModal">
+      <!--      <input class="btn btn-default my-new" -->
+      <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
+      <input style="display: none;" type="text" id="no"
+        class="form-control" placeholder="URL">
     </form>
-    </div>
-    
+  </div>
+  <div id="resetBtn"><img src="images/reset.png"></div>
+  <div id="topMoveBtn"><img src="images/topMove.png"></div>
+
   <!-- Modal Start -->
   <div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        
-        <div class="modal-body">
-    <form id="write_form">
-      <div class="form-group2">
-        <div class="previewLine" id="previewTitle"></div>
-          <div id="contBox">
-          <div id="previewTextBox"> 
-          </div> 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <form id="write_form">
+              <div class="form-group2">
+                <div class="previewLine" id="previewTitle"></div>
+                <div id="contBox">
+                  <div id="previewTextBox"></div>
+                </div>
+              </div>
+              <div class="form-group1">
+                <div class="previewbox" id="linkedURL">
+                  <div id="urlImage"></div>
+                  <div id="urlTitle"></div>
+                  <div id="urlDesc"></div>
+                  <div id="urlAddr"></div>
+                  <iframe id="youtubeUrl" width="475" height="270" src=""
+                    frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </form>
+
           </div>
-      </div>
-      <div class="form-group1">
-        <div class="previewbox" id="linkedURL">
-          <div id="urlImage"></div>
-          <div id="urlTitle"></div>
-          <div id="urlDesc"></div>
-          <div id="urlAddr"></div>
-    <iframe id="youtubeUrl" width="475" height="270" src="" frameborder="0" allowfullscreen></iframe>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-    </form>
-    
-        </div>
-        <div class="modal-footer">
-    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+
     </div>
-    
+
+    <!-- <div class="modal-footer"> -->
+    <!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+    <!--         </div> -->
+
+
+
+    <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
   </div>
-
-<!-- <div class="modal-footer"> -->
-<!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
-<!--         </div> -->
-
-
-
-<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-
-    
   </div>
   <!-- div: #write_container -->
 
@@ -248,36 +349,48 @@ $(document).ready(function(){
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script
+    src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
   <script src="../node_modules/jquery-form/jquery.form.js"></script>
-  <script src="../lib/js/NicEdit-Korean/nicEdit.js" type="text/javascript"></script>
+  <script src="../lib/js/NicEdit-Korean/nicEdit.js"
+    type="text/javascript"></script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="writepage.js"></script>
   <script>
   /*
   bkLib.onDomLoaded(function(){
-	  new nicEditor({fullPanel : true, onSave : function(content, "myedit", instance) {
-	    alert('save button clicked for element '+"myedit"+' = '+content);
-	  } }).panelInstance('myArea2');
-	});
+    new nicEditor({fullPanel : true, onSave : function(content, "myedit", instance) {
+      alert('save button clicked for element '+"myedit"+' = '+content);
+    } }).panelInstance('myArea2');
+  });
   */
   </script>
   <script type="text/javascript">
      bkLib.onDomLoaded(nicEditors.allTextAreas); 
   </script>
-<script>
+  <script>
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
 if (location.search.startsWith("?")) { // 예) ?no=xxx
     var no = location.search.split("=")[1];
     console.log("hi")
     ajaxLoadBoard(no)
-    $(".my-new").css("display", "none")
+//     $(".my-new").css("display", "none")
 } else {
     $(".my-view").css("display", "none")
 }
 
-
-
+</script>
+<script>
+$(window).resize(function() {
+    console.log("실행중")
+      var height=window.innerHeight;
+      var topMoveBtn = document.getElementById('topMoveBtn');
+      
+      if(height >= 822) {
+        console.log("커켯쩡")
+        topMoveBtn.style.display = "block";
+      } 
+    })
 </script>
 </body>
 </html>

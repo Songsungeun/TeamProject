@@ -3,6 +3,7 @@
  */
 
 
+
 $("#preview").click(function(evnet) {
 		var urlinfo = $("#url").val()
 		var title = $("#write_title").val();
@@ -66,7 +67,7 @@ function ajaxAddBoard(formData) {
 			   var result = obj.jsonResult
 			   if (result.state != "success") {
 			    console.log(result.data)
-			    alert("등 실패입니다.")
+			    alert("등록 실패입니다.")
 			    return
 			   }
 			   window.location.reload(true)
@@ -180,3 +181,25 @@ function ajaxViewBoard(urlinfo, title, contents, youtubeLink) {
 					},"json")
 		}
 }
+
+$(document).ready(function(){
+	$("#category-button").click(function(event) {
+		event.preventDefault();
+		var position = $("#ui-id-10").offset();
+		$("html,body").animate({scrollTop : position.top}, 1500);
+	});
+	$(window).resize(function() {
+		console.log("실행중")
+		  var height=window.innerHeight;
+		  var topMoveBtn = document.getElementById('topMoveBtn');
+		  if(height >= 822) {
+			  console.log("커켯쩡")
+		    topMoveBtn.style.display = "block";
+		  } 
+		})
+});
+
+
+
+
+
