@@ -258,7 +258,9 @@ $(document).ready(function(){
             // ajax 실행
             $.ajax({
                 type : 'POST',
-                url : serverAddr + "/membership/emailCheck.json",
+                dataType:"jsonp",
+                url :"http://localhost:8000/TeamProject/membership/emailCheck.json",
+                crossDomain: true,
                 data:
                 {
                     email: email

@@ -181,7 +181,7 @@ body {
 	height: 32px;
 	left: 50%;
 	overflow: hidden;
-	float:right;
+	float: right;
 }
 
 .seachBar {
@@ -198,10 +198,10 @@ body {
 }
 
 #inputSearchKey {
-  width: 270px;
-  height: 27px;
-  border: none;
-  border-bottom: #e00000 1px solid;
+	width: 270px;
+	height: 27px;
+	border: none;
+	border-bottom: #e00000 1px solid;
 }
 
 .searchButton {
@@ -230,9 +230,9 @@ body {
 	height: 16px;
 	margin: 4px 0px 7px 220px;
 	overflow: hidden;
-  font-size: 13px;
-  line-height: 22px;
-  color: #666666;
+	font-size: 13px;
+	line-height: 22px;
+	color: #666666;
 }
 
 .headerHamburgerBtn {
@@ -325,6 +325,12 @@ body {
 	background-size: 20px;
 	margin-left: 25px;
 }
+
+#cloud {
+	padding: 0px;
+	background-size: 20px;
+	margin-left: 25px;
+}
 </style>
 
 <!-- jqueryui.com 참고 -->
@@ -351,17 +357,17 @@ body {
 				</ul>
 			</div>
 
-				<div class="seachBar">
-					<input id="inputSearchKey" name=search type=text
-						placeholder="검색어를 입력하세요"> <a class="searchButton" href="#"><img
-						src="../search-engine.png" width="25" /> </a>
-				</div>
+			<div class="seachBar">
+				<input id="inputSearchKey" name=search type=text
+					placeholder="검색어를 입력하세요"> <a class="searchButton" href="#"><img
+					src="../search-engine.png" width="25" /> </a>
+			</div>
 
 			<div class=headerRightSection>
 				<div id="newWrite">
-					<a href='#'><img id="writing" width="23px" height="23px"
-						src="../write.svg"></a> <a href='/TeamProject/membership/message.html'><img id="message"
-						width="23px" height="23px" src="../message.svg"></a>
+					<a href='#'><img id="writing" width="23px" height="23px" src="../write.svg"></a> 
+					<a href='#'><img id="message" width="23px" height="23px" src="../message.svg"></a> 
+					<a href='#'><img id="cloud" width="23px" height="23px" src="../cloud-computing.svg"></a>
 				</div>
 
 				<div id="confirmLogin">
@@ -409,6 +415,10 @@ $(".headlist").click(function(){
 
 $("#writing").click(function(){
   location.href ="/TeamProject/writepage/writepage.html"
+})
+
+$("#message").click(function(){
+  location.href ="/TeamProject/membership/message.html"
 })
 
 $(".searchButton").click(function(){
