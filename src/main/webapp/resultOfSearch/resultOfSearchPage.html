@@ -27,7 +27,7 @@
 								<!-- member 출력영역 -->
 			       </div>
 			       <div>
-			         <a id="moreViewBtn" href="#">더보기</a>
+			         <a id="moreViewBtn1" href="#">더보기</a>
 			        </div>
 		     </div>
 	        
@@ -37,7 +37,7 @@
 			   <!-- contents 출력영역 -->
 		      </div>
 		    <div>
-		        <a  id="moreViewBtn" href="#">더보기</a>
+		        <a  id="moreViewBtn2" href="#">더보기</a>
 		    </div>
 		  </div>
 		    
@@ -53,7 +53,8 @@
   
 
   <script id="searchMemberHandlebars" type="text/x-handlebars-template">
-<div id= "userResultWrap"> 회원 검색</div>
+<div id= "userResultWrap"> 회원 검색 결과 
+(<span id =  "uSearchLength"></span>건 검색되었습니다.)</div>
 <div id= "userResult">
  {{#each searchMemberResult}}
   <div class="media"><a href="../membership/otherUserDetailPage.html?nick={{nickname}}">
@@ -71,7 +72,8 @@
 </script>
 
  <script id="searchBoardHandbars" type="text/x-handlebars-template">
-<div id= "postResultWrap"> 게시물 검색
+<div id= "postResultWrap"> 게시물 검색 결과
+(<span id="pSearchLength"></span>건 검색되었습니다.)</div>
 <div id= "postResult">
  {{#each searchBoardResult}}
 <li id="each_post_wrap">
