@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyMainDao">
+
+  <resultMap type="HoneyMain" id="boardMap">
+    <id column="BD_NO" property="no"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
+    <result column="FILE_STATUS"  property="fileStatus"/>
+    <result column="YOUTUBE_URL"  property="youtubeURL"/>
+  </resultMap>
+  
+  <resultMap type="FileList" id="fileMap">
+    <id column="File_No" property="fileNo"/>
+    <result column="File_Name" property="fileName"/>
+    <result column="Board_No" property="boardNo"/>
+    <result column="ORI_FILENM" property="originalFileName"/>
+    <result column="Member_no" property="memberNo"/>
+  </resultMap>
+
+<!--   <select id="popularList" resultMap="boardMap" parameterType="map"> -->
+<!--     select view_ct, BD_TITL, BD_NO -->
+<!--     from honey_boards -->
+<!--     <where> -->
+<!--       <if test="title != null">title like concat('%', #{title}, '%')</if> -->
+<!--     </where> -->
+<!--     order by -->
+<!--     <choose> -->
+<!--       <when test="viewCountOrder == 'asc'">view_ct asc</when> -->
+<!--       <otherwise>view_ct desc</otherwise> -->
+<!--     </choose> -->
+<!--   </select> -->
+
+
+  <select id="selectList" resultMap="boardMap" parameterType="map">
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS, YOUTUBE_URL
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    order by bd_no desc
+  </select>
+  
+  <select id="selectListandCategory" resultMap="boardMap" parameterType="map">
+    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    where hb.CT_NO = #{categoryNo}
+    order by bd_no desc
+  </select>
+  
+  <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
+  <!-- select BD_NO,MB_NO,CT_NO,BD_TITL,URL,BD_CONTS,BD_CRE,BD_LIKE,VIEW_CT -->
+  <!-- from honey_boards -->
+  <!-- where BD_NO = #{value} -->
+  <!-- </select> -->
+  <select id="selectOne" resultMap="boardMap" parameterType="int">
+    select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, FILE_STATUS,
+    HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT,  HM.MB_NICK, HM.EMAIL, HC.CT_NM, YOUTUBE_URL
+    from
+    honey_boards HB
+    left join honey_membs HM on HB.MB_NO = HM.MB_NO
+    left join honey_ctg HC on HC.CT_NO = HB.CT_NO
+    where
+    BD_NO = #{value}
+  </select>
+
+  <update id="increaseViewCount" parameterType="HoneyMain">
+    update honey_boards
+    set VIEW_CT = VIEW_CT + 1
+    where BD_NO=#{value}
+  </update>
+
+  <update id="increaseLike" parameterType="HoneyMain">
+    update honey_boards
+    set
+    BD_LIKE = BD_LIKE + 1
+    where BD_NO = #{value}
+  </update>
+
+  <update id="decreaseLike" parameterType="HoneyMain">
+    update honey_boards
+    set
+    BD_LIKE = BD_LIKE - 1
+    where BD_NO = #{value}
+  </update>
+
+  <select id="fileList" resultMap="fileMap" parameterType="int">
+    select File_No, File_Name, Board_No, ORI_FILENM, Member_no
+    from board_files
+    where Board_No = #{value}
+  </select>
+
+
+</mapper>

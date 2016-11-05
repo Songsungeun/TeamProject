@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.tempDao">
+
+<!--   <resultMap type="honey_boards" id="hn_boardMap"> -->
+<!--     <id column="BD_NO" property="no"/>  -->
+<!--     <result column="BD_TITL" property="title"/> -->
+<!--     <result column="BD_CONTS" property="contents"/> -->
+<!--     <result column="BD_CRE" property="createdDate"/> -->
+<!--     <result column="BD_LIKE" property="like"/> -->
+<!--     <result column="VIEW_CT" property="viewCount"/> -->
+<!--   </resultMap> -->
+  
+<!--   <select id="selectList" resultMap="hn_boardMap" parameterType="map"> -->
+<!--     select * -->
+<!--     from honey_boards -->
+<!--     <where> -->
+<!--       <if test="title != null">title like concat('%', #{title}, '%')</if> -->
+<!--     </where> -->
+<!--     order by  -->
+<!--     <choose> -->
+<!--       <when test="titleOrder == 'asc'">title asc</when> -->
+<!--       <when test="titleOrder == 'desc'">title desc</when> -->
+<!--       <when test="noOrder == 'asc'">no asc</when> -->
+<!--       <otherwise>no desc</otherwise> -->
+<!--     </choose> -->
+<!--     limit #{startIndex}, #{length} -->
+<!--   </select> -->
+  
+<!--   <select id="selectOne" resultMap="hn_boardMap" parameterType="int"> -->
+<!--     select no,title,url,contents,like,videwCount -->
+<!--     from honey_boards -->
+<!--     where no = #{value} -->
+<!--   </select> -->
+  
+<!--   <insert id="insert" parameterType="honey_boards"> -->
+<!--     insert into boards(bd_no, bd_titl,url,bd_conts, bd_cre, bd_like, view_ct) -->
+<!--     values(#{no}, #{title}, #{url} #{contents}, now(), #{like}, #{viewCount}) -->
+<!--   </insert> -->
+  
+<!--   <update id="update" parameterType="honey_boards"> -->
+<!--     update boards set  -->
+<!--       bd_titl=#{title}, -->
+<!--       url=#{url}, -->
+<!--       bd_conts=#{contents}  -->
+<!--     where bd_titl=#{title} -->
+<!--   </update> -->
+  
+<!--   <delete id="delete" parameterType="int"> -->
+<!--     delete from boards  -->
+<!--     where no=#{value} -->
+<!--   </delete> -->
+
+  <resultMap type="honey_boards" id="boardMap">
+    <id column="BD_NO" property="no"/> 
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="URL" property="url"/>
+    <result column="URL_Title" property="title"/>
+    <result column="FILE_NAME" property="fileName"/>
+    <result column="FILE_STATUS" property="fileStatus"/>
+    <result column="YOUTUBE_URL" property="youtubeURL"/>
+  </resultMap>
+  
+    <resultMap type="HoneyMain" id="userListMap">
+    <id column="BD_NO" property="no"/>
+    <result column="BD_TITL" property="title"/>
+    <result column="URL" property="url"/>
+    <result column="MB_NICK" property="writerNick"/>
+    <result column="BD_CONTS" property="contents"/>
+    <result column="BD_CRE" property="createdDate"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="VIEW_CT" property="viewCount"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MB_NO" property="userNo"/>
+    <result column="CT_NO" property="categoryNo"/>
+    <result column="CT_NM" property="category"/>
+  </resultMap>
+  
+   <insert id="insert" parameterType="honey_boards">
+    insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS, BD_CRE, YOUTUBE_URL)
+    values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileStatus}, now(), #{youtubeURL})
+  </insert>
+  
+   <select id="selectList" resultMap="boardMap" parameterType="map"> 
+   select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL, YOUTUBE_URL
+       from honey_boards 
+   where MB_NO = #{userNo}
+   order by BD_NO desc 
+    limit #{startIndex}, #{length}
+  </select>
+  
+    <select id="selectList1" resultMap="userListMap" parameterType="map"> 
+   select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT, hb.MB_NO, hb.CT_NO, 
+   hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
+   from honey_boards hb    
+   left join honey_membs hm on hm.MB_NO = hb.MB_NO  
+   left join honey_ctg hc on hb.CT_NO = hc.CT_NO 
+   where hb.MB_NO = #{userNo}
+   order by hb.BD_NO desc
+   limit #{startIndex}, #{length}
+  </select>
+  
+    <select id="countAll"  resultType="int"  parameterType="int">
+  select COUNT(*)
+  from honey_boards
+  where MB_NO = #{value}
+  </select>
+  
+  <select id="selectOne" resultMap="boardMap" parameterType="int">
+    select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL
+    from honey_boards 
+    where BD_NO = #{value}
+  </select>
+
+  <delete id="delete" parameterType="int">
+    delete from honey_boards
+    where BD_NO=#{value}
+  </delete>
+  
+  <update id="update" parameterType="honey_boards">
+    update honey_boards set 
+      BD_TITL=#{title}, 
+      BD_CONTS=#{contents}, 
+      URL=#{url}
+      where BD_NO=#{no}
+  </update>
+  
+  <insert id="insertUrl" parameterType="UrlInfo">
+    insert into board_link(URL_Title,URL_Addr, URL_Desc, URL_Image, MB_No, DetailUrl, bd_no) (select
+    #{title}, #{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl},
+    (select max(bd_no) from honey_boards)
+    )
+  </insert>
+  
+  
+</mapper>

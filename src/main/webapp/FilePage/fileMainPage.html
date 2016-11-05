@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script language=javascript>
+var it=0;
+function initialize(){
+text=demo.innerText;
+typeit();
+}
+function typeit(){
+if(it<=text.length){
+demo.innerText=text.substring(0,it)
+it++;
+setTimeout("typeit()",200);
+}
+else {
+it=0;
+setTimeout("typeit()",1000);
+}
+}
+</script>
+<script>
+$(document).ready(function(){
+  $(function() {
+    $("#headerInclude").load("/TeamProject/header.html");
+  });
+});
+</script>
+<style>
+#fileBodyContainer {
+  margin-top: 100px;
+  border: 1px solid black;
+  float: left;
+  width: 100%;
+  
+}
+
+#rightSectionArea {
+  float: left;
+}
+
+#leftAsideArea {
+  width: 316px;
+  margin: 0 auto 32px auto;
+  float: left;
+}
+
+#userProfileArea {
+  background-color: white;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #c0c0c0;
+  position: relative;
+}
+
+.userInfocontainer {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #c0c0c0;
+  margin-top: 10px;
+}
+
+#rightSectionArea p {
+  font-size: 45px;
+  font-family: "arial", sans-serif;
+  font-family: Playfair Display ;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 65px;
+}
+
+.userProfilePhotosContainer {
+  width: 152px;
+  float: left;
+}
+
+#userPhoto { 
+  border-radius: 10px;
+  border: #ebebeb 1px solid;
+}
+
+.userBoardInfoContainer {
+  float: right;
+  width: 138px;
+  color: #999;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.received {
+  font-family: "Spoqa Han Sans";
+  font-size: 13px;
+  line-height: 1.7;
+  border-bottom: #ebebeb 1px solid;
+}
+
+.views {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.likes {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.followers {
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+}
+
+.text {
+  font-size: 14px;
+}
+
+.userNickNameContainer {
+  position: relative;
+  font-size: 20px;
+  font-family: "Spoqa Han Sans";
+}
+
+#userNickNameInfo {
+  margin: 10 auto;
+  display:table-cell;
+  vertical-align: middle;
+}
+
+#userIntroduce {
+width: 10%;
+margin: 10px 0 50px 10px;
+font-size: 14px;
+color: #808080;
+line-height: 18px;
+}
+
+#boardTable {
+  font-size: 15px;
+}
+
+.moreViewBtn{
+    font-size: 18px;
+    font-family: serif;
+    color: dimgray;
+}
+
+.fileAddBtn {
+/*   float: right; */
+  margin-right: 90px;
+  margin-bottom: 20px;
+}
+
+#fileTable {
+  width: 1024px;
+  margin: 10 auto;
+}
+
+</style>
+</head>
+
+<body onload=initialize();>
+<div id="headerInclude"></div>
+<div id="fileBodyContainer">
+
+
+<aside id="leftAsideArea">
+
+  <div class="userInfocontainer">
+      <div class="userProfilePhotosContainer">
+        <img id="userPhoto" width="150px" height="150px" src="/TeamProject/upload/1478074385277_1.jpeg">
+        <div class="userNickNameContainer">
+          <span id="userNickNameInfo">쏭성</span>
+      </div>
+      </div>
+      <div class="userBoardInfoContainer">
+        <div class="received">
+          <p>RECEIVED</p>
+        </div>
+        <div class="views">
+          <span class="text">View</span> <span id="viewCount" class="numbering">97</span>
+        </div>
+        <div class="likes">
+          <span class="text">Likes</span> <span class="numbering"></span>
+        </div>
+        <div class="followers">
+          <span class="text">followers</span> <span id="followers" class="numbering">1</span>
+        </div>
+      </div>
+      
+    </div>
+  
+  
+  
+</aside>
+
+
+
+<section id="rightSectionArea">
+<div id="introText">
+<p>당신의 파일을 보관하고,<br> 사람들과 파일을 <span id="demo">공유하세요!</span></p>
+</div>
+<div id = "fileTable">
+<button  class="btn btn-primary fileAddBtn" id="btn" data-no=1>파일등록</button>
+       <table id="boardTable" class="table table-hover">
+         <thead>
+         <tr>
+           <th>썸네일</th>
+           <th>제목</th>
+           <th>등록일</th>
+           <th>용량</th>
+           <th>삭제하기</th>
+         </tr>
+         </thead>
+         <tbody></tbody>
+      </table>
+            <div id = "boardBtn">
+              <a  class="moreViewBtn" href="#">더보기</a>
+           </div>
+     </div>
+</section>
+
+</div>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script type='text/javascript' src="../lib/js/common.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
+<script type="text/javascript" src="fileMainPage.js"></script>
+
+<script id = "boardUiTemplateText" type="text/x-handlebars-template">
+{{#each fileList}}
+    <tr>
+      <label>
+          <td></td>
+          <td>{{originFileName}}</td>
+          <td>등록</td>
+          <td>128kb</td>
+          <td><button  class="btn btn-danger" id="btn" data-no=2>삭제</button></td>
+     </label>
+    </tr>
+{{/each}}
+
+</script>
+
+<script>ajaxFileList()</script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 package honey.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,6 +69,10 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	
 	public void insertBoardFile(HoneyBoardFile boardFile) throws Exception {
 		boardFileDao.boardPhotoInsert(boardFile);
+	}
+
+	public List<HoneyBoardFile> getFileList(int memberNo) throws Exception {
+		return boardFileDao.fileList(memberNo);
 	}
 	
 }

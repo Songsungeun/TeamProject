@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyComentDao">
+
+  <resultMap type="HoneyComent" id="boardMap">
+    <id column="CM_NO" property="cmtNo"/>
+    <result column="BD_NO" property="no"/>
+    <result column="MB_NO" property="memberNo"/>
+    <result column="CM_CONTS" property="coment"/>
+    <result column="MB_NICK" property="writerNick" />
+    <result column="CM_CRE" property="createdDate"/>
+    <result column="CM_THRD" property="comentThread"/>
+    <result column="CM_DEPTH" property="comentDepth"/>
+    <result column="NOT_USE_NO" property="not_use_no"/>
+  </resultMap>
+  
+  <select id="comentList" resultMap="boardMap" parameterType="map">
+    select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
+    hc.BD_NO,hm.MB_NICK,hm.MB_NO
+    from honey_cmts hc
+    left join honey_membs hm on hc.MB_NO = hm.MB_NO 
+    where BD_NO = #{boardNo}
+    order by
+    <choose>
+    <otherwise>CM_THRD desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+ </select>
+
+<select id="comentDetail" resultMap="boardMap" parameterType="int">
+    select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
+    hc.BD_NO,hm.MB_NICK,hm.MB_NO
+    from honey_cmts hc
+    left join honey_membs hm on hc.MB_NO = hm.MB_NO 
+    where CM_NO = #{cmtNo}
+  </select>
+
+
+<insert id="insertComent" parameterType="HoneyComent"  
+          useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
+    (select #{coment}, now(), 0,#{memberNo},#{no},
+    (select max(save_no) from HONEY_CMTS_NUMSAVE))
+</insert>
+
+<insert id="saveCometNo" parameterType="HoneyComent"
+          useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into HONEY_CMTS_NUMSAVE(NOT_USE_NO)
+    value (0)
+    
+</insert>
+
+<insert id="insertChildComent" parameterType="HoneyComent" 
+          useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
+    value (#{coment}, now(), 1,#{memberNo},#{no},#{cmtNo})
+</insert>
+  
+  <update id="updateComment" parameterType="HoneyComent">
+      update honey_cmts set
+      CM_CONTS = #{coment}
+    where cm_no = #{cmtNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from honey_cmts 
+    where CM_THRD = #{value}
+  </delete>
+  
+  <delete id="childdelete" parameterType="int">
+    delete from honey_cmts 
+    where CM_NO = #{value}
+  </delete>
+</mapper>

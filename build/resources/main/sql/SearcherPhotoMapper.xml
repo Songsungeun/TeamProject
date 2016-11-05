@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyPhotoDao">
+
+  <resultMap type="HoneyMemberPhoto" id="returnMap">
+    <id column="email" property="email" />
+    <result column="mb_no" property="memberNo" />
+    <result column="MBP_PATH" property="photoName" />
+  </resultMap>
+
+    <select id="extractUserNum" resultMap="returnMap" parameterType="int">
+select MB_NO, MBP_PATH from honey_membs_photos
+where mb_no = #{mb_no}
+  </select>
+
+  <select id="extractMemberNum" resultMap="returnMap" parameterType="String">
+select email, mb_no from honey_membs
+where email = #{email}
+  </select>
+
+</mapper>

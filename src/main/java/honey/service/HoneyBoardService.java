@@ -1,5 +1,7 @@
 package honey.service;
 
+import java.util.List;
+
 import honey.vo.HoneyBoardFile;
 import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
@@ -11,4 +13,5 @@ public interface HoneyBoardService {
 	void deleteBoard(int no) throws Exception;
 	void insertUrl(UrlInfo url) throws Exception; 
 	void insertBoardFile(HoneyBoardFile boardFile) throws Exception;
+	List<HoneyBoardFile> getFileList(int memberNo) throws Exception;
 }

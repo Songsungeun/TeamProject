@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="honey.dao.HoneyMainUrlDao">
+
+  <resultMap type="UrlInfo" id="urlInfo">
+    <id column="URL_NO" property="no"/> 
+    <result column="URL_Addr" property="urlAddr"/>
+    <result column="URL_Desc" property="description"/>
+    <result column="URL_Image" property="image"/>
+    <result column="MB_No" property="mb_No"/>
+    <result column="BD_NO" property="bd_No"/>
+    <result column="BD_LIKE" property="like"/>
+    <result column="DetailUrl" property="detailUrl"/>
+    <result column="URL_Title" property="title"/>
+  </resultMap>
+  
+  
+  <select id="selectOne" resultMap="urlInfo" parameterType="int">
+    select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
+    from board_link 
+    where BD_NO = #{value}
+  </select>
+  
+    <select id="selectUserUrlList" resultMap="urlInfo" parameterType="int">
+    select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
+    from board_link 
+    where MB_NO = #{value}
+  </select>
+
+  <select id="selectList" resultMap="urlInfo">
+    select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
+    from board_link 
+  </select>
+</mapper>

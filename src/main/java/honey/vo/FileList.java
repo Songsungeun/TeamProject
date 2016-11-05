@@ -1,11 +1,12 @@
 package honey.vo;
 
 public class FileList {
-	int fileNo;
-	String fileName;
-	int boardNo;
-	String originalFileName;
-	int memberNo;
+	protected int fileNo;
+	protected String fileName;
+	protected int boardNo;
+	protected String originalFileName;
+	protected int memberNo;
+	protected String createdDate;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -36,6 +37,12 @@ public class FileList {
 	}
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
+	}
+	public String getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 	

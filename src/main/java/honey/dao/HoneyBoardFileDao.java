@@ -7,6 +7,5 @@ import honey.vo.HoneyBoardFile;
 public interface HoneyBoardFileDao {
 
 	int boardPhotoInsert(HoneyBoardFile boardFile);
-	List<HoneyBoardFile> getBoardPhotoFile(int board_no);
-	
+	List<HoneyBoardFile> fileList(int memberNo);
 }
