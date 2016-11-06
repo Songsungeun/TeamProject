@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body {
+	background-image: url("mainpage_images/loginBGP6.jpg");
+}
+
+#login-body {
+	width: 657.78px;
+	height: 400px;
+	margin: 180px auto 0 auto;
+}
+/* #background-img { */
+/*   z-index: -10; */
+/*   position: fixed; */
+/*   width: 1777.78px; */
+/*   height: auto; */
+/*   top: 0; */
+/*   left: 0; */
+/* } */
+#background-opacity {
+	z-index: -10; position : fixed;
+	width: 1777.78px;
+	height: 1111.11px;
+	top: 0;
+	left: 0;
+	opacity: 0.3;
+/* 	background-color: #FAF58C; */
+ 	background-color: #969696;
+	position: fixed;
+}
+
+#loginWords {
+	text-align: center;
+}
+
+#loginWords>.title {
+	font-size: 50px;
+	color: white;
+	font-weight: bolder;
+}
+#loginWords>.subtitle {
+  font-size: 18px;
+  margin-top: 10px;
+  color: white;
+  font-weight: 900;
+}
+
+
+#LoginInfoWraps {
+	width: 610px;
+	margin: 90px auto 0 auto;
+	opacity: 0.8;
+}
+#idWrite {
+  width: 370px;
+  height: 38px;
+  padding: 10px 10px 10px 20px;
+  font-size: 20px;
+}
+#passWrite {
+  width: 370px;
+  height: 38px;
+  padding: 10px 10px 10px 20px;
+  font-size: 20px;
+}
+#loginInfo {
+  width: 400px;
+  float: left;
+}
+#login_Button {
+  font-size: 40px;
+  width: 120px;
+  height: 120px;
+  background-color: #e00000;
+  color: white;
+  text-align: center;
+  float: left;
+}
+#login_Button:hover {
+  background-color: #8c8c8c;
+  color: black;
+}
+#whatthe {
+  margin: 0 auto;
+  width: 520px;
+  height: 123px;
+}
+#otherLogin {
+  width: 520px;
+  margin: 30px auto 0 auto;
+}
+#facebook_login {
+  width: 210px;
+  height: 40px;
+  font-size: 15px;
+  margin: 0 23.6px;
+  background-color: #32F1FF;
+  opacity: 0.7;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+#kakao_login {
+  width: 210px;
+  height: 40px;
+  font-size: 15px;
+  margin: 0 23.6px;
+  background-color: #FFE650;
+  opacity: 0.7;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+#otherLogin > #kakao_login:hover {
+  background-color: #FFDC3C;
+  opacity: 1;
+}
+#otherLogin > #facebook_login:hover {
+  background-color : #1EDDFF;
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+	<!-- <img id="background-img" src="mainpage_images/loginBGP10.jpg"></img> -->
+	<div id="background-opacity"></div>
+	<div id="login-body">
+		<div id="loginWords">
+			<div class="title loginword">Honey Factory</div>
+			<div class="subtitle loginword">나만알기 아쉬운 팁</div>
+		</div>
+		<div id='LoginInfoWraps'>
+		  <div id="whatthe">
+			  <div id="loginInfo">
+				  <input id="idWrite" class="ggg" id="email" name=id type="text" placeholder="ID: Bee@HoneyFactory.com"> 
+				  <input id="passWrite" class="ggg" name=password type="password" placeholder="Password">
+			  </div>
+				<div id="login_Button" class="login_Button" href="#">Log<br>In</div>
+			</div>
+			<div id="otherLogin">
+				<button id="facebook_login" href="#">페이스북으로 로그인</button>
+				<button id="kakao_login" href="#">카카오계정으로 로그인</button>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

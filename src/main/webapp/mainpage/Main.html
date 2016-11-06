@@ -9,7 +9,6 @@
   href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet"
   href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> -->
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/category.css">
 <title>HoneyTip TestPage</title>
@@ -22,85 +21,41 @@
       <div id="mainpage_postcontainer" class="mainpage_Botcontainer">
         <div id="category_tab_outside">
           <ul id="category_tab" class="categoryWrap">
-            <li  id="category-bar-0" class="hodstate tempClass category-active" data-ctg="0"
-            >
-<!--             style="background-color:" -->
-<!--               <img class="category-firstimg" src="/TeamProject/mainpage/mainpage_images/category_images/category_all.jpg"> -->
-<!--               전체보기 -->
-<div>ALL</div>
-              </li>
-            <li id="category-bar-1" class="hodstate tempClass" data-ctg="1"
-            >
-<!--              style="background-image:url('mainpage_images/category_images/category_health.jpg')" -->
-<!--               <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_health.jpg"> -->
-
-HEALTH
+            <li  id="category-bar-0" class="hodstate tempClass category-active" data-ctg="0">
+              ALL
             </li>
-            <li id="category-bar-2" class="hodstate tempClass" data-ctg="2"
-             >
-<!--              style="background-image:url('mainpage_images/category_images/category_car.jpg')" -->
-<!--               <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_car.jpg"> -->
-<!--             자동차 -->
-CAR
+            <li id="category-bar-1" class="hodstate tempClass" data-ctg="1">
+              HEALTH
             </li>
-            <li id="category-bar-3" class="hodstate0 tempClass" data-ctg="3"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_fashion.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_fashion.jpg"> -->
-<!--             패션/뷰티 -->
-BEAUTY /
-FASHION
+            <li id="category-bar-2" class="hodstate tempClass" data-ctg="2">
+              CAR
             </li>
-            <li id="category-bar-4" class="hodstate tempClass" data-ctg="4"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_cook.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_cook.jpg"> -->
-<!--               요리 -->
-COOK
-              </li>
-            <li id="category-bar-5" class="hodstate tempClass" data-ctg="5"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_travel.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_travel.jpg"> -->
-<!--               여행 -->
-TRAVEL
-              </li>
-            <li id="category-bar-6" class="hodstate tempClass" data-ctg="6"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_love.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_love.jpg"> -->
-<!--               연애 -->
-LOVE
-              </li>
-            <li id="category-bar-7" class="hodstate0 tempClass" data-ctg="7"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_entertain.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_entertain.jpg"> -->
-<!--               엔터테인 -->
-ENTER
-TAINMENT
-              </li>
-            <li id="category-bar-8" class="hodstate tempClass" data-ctg="8"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_news.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_news.jpg"> -->
-<!--               시사 -->
-NEWS
-              </li>
-            <li id="category-bar-9" class="hodstate tempClass" data-ctg="9"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_IT.jpg')" -->
-<!--             <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_IT.jpg"> -->
-<!--               IT -->
-IT
-              </li>
-            <li id="category-bar-10" class="hodstate tempClass" data-ctg="10"
-            >
-<!--             style="background-image:url('mainpage_images/category_images/category_photo.jpg')" -->
-<!--               <img class="category-img" src="/TeamProject/mainpage/mainpage_images/category_images/category_photo.jpg"> -->
-<!--               사진 -->
-PHOTO
-              </li>
+            <li id="category-bar-3" class="hodstate0 tempClass" data-ctg="3">
+							BEAUTY /
+							FASHION
+            </li>
+            <li id="category-bar-4" class="hodstate tempClass" data-ctg="4">
+              COOK
+            </li>
+            <li id="category-bar-5" class="hodstate tempClass" data-ctg="5">
+              TRAVEL
+            </li>
+            <li id="category-bar-6" class="hodstate tempClass" data-ctg="6">
+              LOVE
+            </li>
+            <li id="category-bar-7" class="hodstate0 tempClass" data-ctg="7">
+							ENTER
+							TAINMENT
+            </li>
+            <li id="category-bar-8" class="hodstate tempClass" data-ctg="8">
+              NEWS
+            </li>
+            <li id="category-bar-9" class="hodstate tempClass" data-ctg="9">
+              IT
+            </li>
+            <li id="category-bar-10" class="hodstate tempClass" data-ctg="10">
+              PHOTO
+            </li>
           </ul>
         </div>
 
@@ -327,7 +282,7 @@ PHOTO
 <!-- </ul> -->
 <!-- </div> -->
   
-  <script id="liTemplateText" type="text/x-handlebars-template">
+<script id="liTemplateText" type="text/x-handlebars-template">
 {{#each data}}
 <li id="each_post_wrap">
   <div id="each_post">
@@ -373,13 +328,13 @@ PHOTO
   <script type='text/javascript' src="../lib/js/category-tab.js"></script>
   <script type="text/javascript" src="../membership/followList.js"></script>
   <!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
-  <script>
-    ajaxBoardList()
-  </script>
-  <script>
+<script>
+  ajaxBoardList()
+</script>
+<script>
 function Download(url) {
-    document.getElementById('fileListArea1').src = url;
-};
+  document.getElementById('fileListArea1').src = url;
+}
 </script>
 
 </body>
