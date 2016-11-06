@@ -26,7 +26,10 @@
   padding-top: 80px;
 }
 .nicEdit-panel {
-  margin-left: 8px !important;
+  width: 600px;
+  height: 22px;
+  margin: 8px auto !important;
+  
 }
 #category-button {
   width: 139.76px;
@@ -87,6 +90,15 @@ label {
 }
 .writeWidth {
   width: 622.76px !important;
+  height: 43px !important;
+  background-color: white;
+  border-radius: 4px;
+}
+.nicEdit-panelContain {
+  height: 43px !important;
+}
+.fileAddWidth {
+  width: 622.76px !important;
   height: 100% !important;
   background-color: white;
   border-radius: 4px;
@@ -113,6 +125,7 @@ label {
 }
 .nicEdit-main {
   width: 100% !important;
+  min-height: 410px !important;
 /*   margin: 4px auto !important; */
   padding: 6px 12px !important;
   margin: 0 !important;
@@ -218,6 +231,12 @@ label {
   height: auto;
   margin: 4px;
 }
+#topMoveBtn:hover {
+  cursor: pointer;
+}
+#resetBtn:hover {
+  cursor: pointer;
+}
 </style>
 
 <link rel="stylesheet"
@@ -255,7 +274,7 @@ $(document).ready(function(){
       <input type="text" id="write_youtube" class="form-control writeWidth"
         placeholder="Youtube URL">
 
-      <div class="form-group writeWidth">
+      <div class="form-group fileAddWidth">
         <label for="InputFile" style="margin-bottom: 3px;">File input
         <input type="file"
           id="InputFile" name="media" multiple />
@@ -379,18 +398,6 @@ if (location.search.startsWith("?")) { // 예) ?no=xxx
     $(".my-view").css("display", "none")
 }
 
-</script>
-<script>
-$(window).resize(function() {
-    console.log("실행중")
-      var height=window.innerHeight;
-      var topMoveBtn = document.getElementById('topMoveBtn');
-      
-      if(height >= 822) {
-        console.log("커켯쩡")
-        topMoveBtn.style.display = "block";
-      } 
-    })
 </script>
 </body>
 </html>

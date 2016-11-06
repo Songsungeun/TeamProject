@@ -188,18 +188,20 @@ $(document).ready(function(){
 		var position = $("#ui-id-10").offset();
 		$("html,body").animate({scrollTop : position.top}, 1500);
 	});
-	$(window).resize(function() {
-		console.log("실행중")
-		  var height=window.innerHeight;
-		  var topMoveBtn = document.getElementById('topMoveBtn');
-		  if(height >= 822) {
-			  console.log("커켯쩡")
-		    topMoveBtn.style.display = "block";
-		  } 
-		})
 });
+$(document.body).on("click", "#topMoveBtn", function(event) {
+//	event.preventDefault();
+	console.log("무브무브123")
+	$( 'html, body' ).stop().animate( { scrollTop : '0' }, 1500);
+})
 
-
+$(document.body).on("click", "#resetBtn", function(event) {
+	console.log("글쓴거 초기화!!")
+	$("#url").val("");
+	$("#write_title").val("");
+	$(".nicEdit-main").html("");
+	$("#write_youtube").val("");
+})
 
 
 
