@@ -5,6 +5,7 @@
 <mapper namespace="honey.dao.HoneyBoardFileDao">
   <resultMap type="HoneyBoardFile" id="boardFileMap">
     <id column="Board_no" property="boardNo"/> 
+    <id column="File_No" property="fileNo"/> 
     <id column="Member_no" property="mb_no"/>
     <id column="File_Name" property="fileName"/>
     <id column="ORI_FILENM" property="OriginFileName"/>
@@ -15,6 +16,12 @@
     #{fileName}, #{OriginFileName}, #{mb_no},
     (select max(bd_no) from honey_boards))
   </insert>
+  
+  <select id="fileList" resultMap="boardFileMap" parameterType= "int">
+    select File_No, File_Name, Board_No, ORI_FILENM, Member_no
+       from board_files 
+   where Member_no = #{memberNo}
+  </select>
 </mapper>
 
 

@@ -7,6 +7,7 @@ public class FileList {
 	protected String originalFileName;
 	protected int memberNo;
 	protected String createdDate;
+	protected int fileSize;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -44,6 +45,13 @@ public class FileList {
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
+	public int getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(int fileSize) {
+		this.fileSize = fileSize;
+	}
+	
 	
 	
 }

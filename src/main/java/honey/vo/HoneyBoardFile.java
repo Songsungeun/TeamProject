@@ -10,6 +10,7 @@ public class HoneyBoardFile implements Serializable {
 	protected String fileName;
 	protected int mb_no;
 	protected String OriginFileName;
+	protected long fileSize;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -40,6 +41,12 @@ public class HoneyBoardFile implements Serializable {
 	}
 	public void setOriginFileName(String originFileName) {
 		OriginFileName = originFileName;
+	}
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
 	}
 	
 	

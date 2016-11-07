@@ -90,7 +90,9 @@ public class HoneyBoardController {
 					newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
 					boardFile.setFileName(newFilename);
 					boardFile.setMb_no(hMember.getMemberNo());
+					boardFile.setFileSize(files[i].getSize());
 					files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+					System.out.println("filesize: " + files[i].getSize());
 					boardService.insertBoardFile(boardFile);
 				} 
 			}
