@@ -9,11 +9,12 @@
     <id column="Member_no" property="mb_no"/>
     <id column="File_Name" property="fileName"/>
     <id column="ORI_FILENM" property="OriginFileName"/>
+    <id column="File_Size" property="fileSize"/>
   </resultMap>
   
   <insert id="boardPhotoInsert" parameterType="HoneyBoardFile">
-    insert into board_files(File_Name, ORI_FILENM, Member_No, Board_no) (select
-    #{fileName}, #{OriginFileName}, #{mb_no},
+    insert into board_files(File_Name, ORI_FILENM, Member_No, File_Size, Board_no) (select
+    #{fileName}, #{OriginFileName}, #{mb_no}, #{fileSize},
     (select max(bd_no) from honey_boards))
   </insert>
   
