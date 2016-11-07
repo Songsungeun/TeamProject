@@ -135,9 +135,13 @@ public class Scrapper {
 		UrlInfo urlInfo = new UrlInfo();
 		
 		String title = null;
-		Elements metaOgTitle = doc.select("meta[property=og:title]");
-		if (metaOgTitle != null) {
-			title = metaOgTitle.attr("content");
+		Elements metaOgTitle;
+		if (doc.select("meta[property=og:title]") != null || doc.select("meta[property=og:title]").equals("")) {
+			System.out.println("doc.select: " + doc.select("meta[property=og:title]"));
+			System.out.println("meta og:title 있음");
+//			metaOgTitle = doc.select("meta[property=og:title]");
+			title = doc.select("meta[property=og:title]").attr("content");
+			System.out.println("title= " + title);
 		}
 		
 		String image = null;
@@ -145,12 +149,14 @@ public class Scrapper {
 		System.out.println(metaOgImage);
 		if (metaOgImage != null) {
 			image = metaOgImage.attr("content");
+			System.out.println("image= " + image);
 		}
 		
 		String description = null;
 		Elements metaOgDesc = doc.select("meta[property=og:description]");
 		if (metaOgDesc != null) {
 			description = metaOgDesc.attr("content");
+			System.out.println("description= " + description);
 		}
 		
 		String urlAddr = null;
@@ -158,7 +164,7 @@ public class Scrapper {
 
 		if (metaOgUrlAddr != null) {
 			String transString = metaOgUrlAddr.attr("content");
-			System.out.println(transString);
+			System.out.println("description= " +transString);
 			
 			urlInfo.setDetailUrl(transString);
 			
