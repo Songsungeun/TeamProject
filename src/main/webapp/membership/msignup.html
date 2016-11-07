@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Beautiful Registration Form with HTML5 and CSS3</title>
+<meta http-equiv="X-UA-Compatible"
+	content="IE=EmulateIE7; IE=EmulateIE9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<style>
+/*reset*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var,
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+input,textarea,select,button,table{font-size:inherit;font-family:inherit; font-size: 100%; -webkit-text-size-adjust:none;}
+ul,ol,li{list-style:none;}
+a{text-decoration:none; color:inherit;}
+a:hover, a:focus{text-decoration:underline;}
+fieldset{margin:0; padding:0; border:none;} 
+caption,legend{position:absolute;top:-5000px;text-indent:-5000px;visibility:hidden;width:0;height:0;font-size:0;line-height:0;}
+img{vertical-align:middle;} 
+table{display: table;}
+caption{display: table-caption;}
+colgroup{display: table-column-group;}
+col{display: table-column;}
+thead{display: table-header-group;}
+tbody{display: table-row-group;}
+tfoot{display: table-footer-group;}
+tr{display: table-row;}
+td, th{display: table-cell;}
+ul:after{content:" ";display:block;clear:both;}
+body{ font-family:"arial", sans-serif; font-size:12px;}
+/*reset*/
+
+
+.form {
+    width: 315px;
+    /* margin: auto; */
+    margin-left: 125px;
+    margin-top: -50px;
+}
+
+.form fieldset {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.form p.contact {
+	font-size: 12px;
+	margin: 0px 0px 10px 0;
+	line-height: 14px;
+	font-family: Arial, Helvetica;
+}
+
+.form input[type="text"] {
+	width: 300px;
+}
+
+.form input[type="email"] {
+	width: 300px;
+}
+
+.form input[type="password"] {
+	width: 300px;
+}
+
+.form label {
+	color: #000;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Arial, Helvetica;
+}
+
+.form label.month {
+	width: 135px;
+}
+
+.form input, textarea {
+	background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #f0f0f0;
+	padding: 7px;
+	font-family: Keffeesatz, Arial;
+	color: #4b4b4b;
+	font-size: 14px;
+	margin-bottom: 20px;
+	margin-top: -10px;
+}
+
+.form input:focus, textarea:focus {
+	border: 1px solid #ff5400;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.form .select-style {
+	-webkit-appearance: button;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
+	background-position: center right;
+	background-repeat: no-repeat;
+	border: 0px solid #FFF;
+	color: #555;
+	font-size: inherit;
+	margin: 0;
+	overflow: hidden;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.form .gender {
+	width: 410px;
+}
+
+.form input.buttom {
+	background: #4b8df9;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fbf7f7;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	box-shadow: 0 1px 3px #999;
+	text-shadow: 0 -1px 1px #222;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.form input.buttom:hover {
+	background-color: #2a78f6;
+}
+
+#result_id_msg {
+border: 1px solid white;
+}
+
+#submitMember{
+     width: 418px;
+    text-align: center;
+    position: relative;
+    right: 120px;
+}
+
+#emailOverRap{
+    top: -15px;
+    position: relative;
+    color: black;
+}
+}
+
+#formTitle{
+    width: 317px;
+    height: 100px;
+    background-color: aliceblue;
+}
+
+.container{
+    border: 1px solid gray;
+    width: 451px;
+    height: 408px;
+}
+
+#formHeaderWrap{
+    background-color: rgba(241, 0, 0, 0.75);
+    height: 40px;
+
+}
+
+#formHeader{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    top: 10px;
+    position: relative;
+}
+
+#btn1{
+    width: 100px;
+    position: relative;
+    top: 38px;
+    left: 10px;
+}
+#btn2{
+    width: 100px;
+    position: relative;
+    top: 80px;
+    left: 10px;
+}
+#btn3{
+    width: 100px;
+    position: relative;
+    top: 106px;
+    left: 10px;
+}
+#btn4{
+    width: 100px;
+    position: relative;
+    top: 134px;
+    left: 10px;
+}
+#btn5{
+    width: 100px;
+    top: 161px;
+    left: 10px;
+    position: relative;
+}
+#btn6{
+    width: 100px;
+    top: 189px;
+    left: 10px;
+    font: bolder;
+    position: relative;
+}
+
+</style>
+<!--     width: 100px;
+    height: 100px;
+    top: 100px;
+    position: relative; -->
+</head>
+<body>
+
+
+	<div id="includedContent"></div>
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+	<!-- Modal -->
+	  <div style="padding-top: 100px; padding-left: 30%; padding-right: 30%;">	
+	   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="container">
+	  
+	   <div id = "formHeaderWrap"><div id="formHeader">회원가입</div></div>
+	  <div id = "btn1"><label>이메일</label></div>
+	  <div id = "btn2"><label>이름 </label></div>
+	  <div id = "btn3"><label>닉네임  </label></div>
+	  <div id = "btn4"><label>비밀번호  </label></div>
+	  <div id = "btn5"><label>비밀번호 확인 </label></div>
+	  <div id = "btn6"><label>전화번호 </label></div> 
+			<div class="form">
+			
+				<form id="contactform">
+			 <input id="user_Email" class = "signupinput" name="email" placeholder="Email"required tabindex="1" type="email">
+					<div id= "emailOverRap" ><span id="result_id_msg"></span></div>
+	     <input id="name" name="name" class = "signupinput" placeholder="Name" required tabindex="2" type="text">
+			<input id="nickname" class = "signupinput" name="username"  placeholder="NickName" required tabindex="3" type="text">
+			<input type="password" id="userPassword"  class = "signupinput" name="password" required tabindex="4" placeholder="password ">
+			<input type="password" id="repassword" class = "signupinput"  name="repassword" required tabindex="5" placeholder="confirm password" >
+			<input id="phone" name="phone" placeholder="phone number" required tabindex="8" type="text"> <br>
+					 <input class="buttom"	name="submit" id="submitMember" tabindex="8" value="이메일로 가입하기">
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</div>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+<script src="membership.js"></script>
+  <script> 
+  $(function(){
+    $("#includedContent").load("../header.html"); 
+  });
+  </script> 
+  
+  <script>
+  var password = $("#userPassword").val()
+  var repassword = $("#repassword").val()
+  if (password != repassword) {
+	  alert("비밀번호가 일치하지 않습니다.")
+  }
+  </script>
+  
+  <script type="text/javascript">
+$(document).ready(function(){
+    $('#user_Email').keyup(function(){
+        if ( $('#user_Email').val().length > 6) {
+            var email = $(this).val();
+            // ajax 실행
+            $.ajax({
+                type : 'POST',
+                dataType:"jsonp",
+                url :"http://t2.java85.com:8080/TeamProject/membership/emailCheck.json",
+                crossDomain: true,
+                data:
+                {
+                    email: email
+                },
+                success : function(obj) {
+                    //console.log(result);
+                    if (obj.jsonResult.state == "success") {
+                        $("#result_id_msg").html("사용 가능한 아이디 입니다.");
+                    } else {
+                        $("#result_id_msg").html("사용 불가능한 아이디 입니다.");
+                    }
+                }
+            }); // end ajax
+        } else {
+        	$("#result_id_msg").text("");
+        }
+    }); // end keyup
+});
+</script>
+
+<script>
+function submit_action(obj) {
+    if(!obj.subject.value) {
+        alert("전화번호를 입력하세요.");
+        obj.subject.focus();
+        return false;
+    }
+    else if (!regExp.test(obj.subject.value)) {
+        alert("잘못된 전화번호입니다. 숫자, - 를 포함한 숫자만 입력하세요. 예) 050-XXXX-XXXX");
+        obj.subject.focus();
+        obj.subject.select();
+        return false
+    }
+    return true;
+}
+</script>
+
+</body>
+</html>
