@@ -182,7 +182,7 @@ line-height: 18px;
                 <div class="modal-body" id="modalBody">
                   <div class="owner">
                     <a href="#" id="followBtn" class="button user_button">Follow</a>
-                    <a href="#" class="button user_button">Like</a> <a
+                    <a href="#" id="likeBtn" class="button user_button">Like</a> <a
                       class="owner_img" href="#"> <img alt="jibon" id="userImage"
                       src="">
                     </a>
@@ -259,8 +259,8 @@ line-height: 18px;
   <script type='text/javascript' src="../lib/js/Main.js"></script>
 	<script src="otherUserDetailPage.js"></script>
 	<script type="text/javascript" src="followList.js"></script>
-
-<script id="liTemplateText" type="text/x-handlebars-template">
+  <script type="text/javascript" src="likeList.js"></script>
+  <script id="liTemplateText" type="text/x-handlebars-template">
 
 {{#each this}}
 <li id="each_post_wrap">

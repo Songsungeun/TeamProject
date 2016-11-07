@@ -1,34 +1,6 @@
 /**
  * 
  */
-$("#submitMember").click(function(event) {
-	
-	var board = {
-			userName: $("#name").val(),
-			email: $("#user_Email").val(),
-			nickname: $("#nickname").val(),
-			phone: $("#phone").val(),
-			password: $("#userPassword").val()
-	}
-	ajaxAddMember(board)
-	event.stopImmediatePropagation();
-	}
-	);
-
-$("#unregisterBtn").click(function(event) {
-	var result = confirm("Are you sure?")
-	
-	if (result) {
-	var memberNumber = $("#memberNumber").val();
-	ajaxUnregister(memberNumber);
-	location.href = "../mainpage/Main.html"
-	}
-	else {
-		return
-	}
-	event.stopImmediatePropagation();
-});
-
 function ajaxAddMember(user) {
 	$.ajax({
 		url:serverAddr + "/membership/joinMember.json",
