@@ -1,6 +1,7 @@
 package honey.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class HoneyBoardFile implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -11,6 +12,7 @@ public class HoneyBoardFile implements Serializable {
 	protected int mb_no;
 	protected String OriginFileName;
 	protected long fileSize;
+	protected Date createdDate;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -47,6 +49,12 @@ public class HoneyBoardFile implements Serializable {
 	}
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 	
