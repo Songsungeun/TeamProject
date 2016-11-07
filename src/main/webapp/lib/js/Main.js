@@ -79,6 +79,7 @@ function ajaxLoadBoard(no) {
 		var result = obj.jsonResult
 		var fileList = '';
 		checkingFollow(result.data.board.userNo);
+		checkingLike(result.data.board.no);
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
@@ -158,10 +159,16 @@ function ajaxLoadBoard(no) {
 //		followLoderFunc(tempUserNo)
 		$("#followBtn").unbind('click');
 		$("#followBtn").on("click", function(){
-		console.log("userNo= " + result.data.board.userNo);
 		aJaxFollowUser(result.data.board.userNo)
 		
 	})
+		$("#likeBtn").unbind('click');
+		$("#likeBtn").on("click", function(){
+		aJaxLikeBoard(result.data.board.no)
+		
+	})
+	
+	
 	})
 }
 var comentInfo2 = 0;

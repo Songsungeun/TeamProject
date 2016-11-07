@@ -27,6 +27,7 @@ import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
+import honey.vo.honey_boards;
 
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
@@ -163,7 +164,6 @@ public class HoneymembersController {
 			List<HoneyMain> list = hMembersService.getBoards(honeyMember.getMemberNo());
 			List<HoneyMembers> followCollector = hMembersService.getFollowers(honeyMember.getMemberNo());
 			List<UrlInfo> urlCollect = hMembersService.userUrlCollector(honeyMember.getMemberNo());
-			
 			for (int i = 0; i < list.size(); i++) {
 				list.get(i).setUserProfilePath(memberFile.getFilename());
 			}
@@ -174,16 +174,19 @@ public class HoneymembersController {
 				System.out.println(i + "번째 image= " + OtherUserInfo.get(i).getLinkImage());
 			}
 			int totalViewCount = 0;
+			int totalLikeCount = 0;
 			for (HoneyMain count : list) {
 				totalViewCount += count.getViewCount();
+				totalLikeCount += count.getLike();
 			}
-			
+			System.out.println(totalLikeCount);
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
 			resultMap.put("userInfo", member.getIntroduce());
 			resultMap.put("boardInfo", OtherUserInfo);
-			resultMap.put("totalViewCount",totalViewCount);
-			resultMap.put("totalFollowers",followCollector.size());
+			resultMap.put("totalViewCount", totalViewCount);
+			resultMap.put("totalFollowers", followCollector.size());
+			resultMap.put("totalLikeCount", totalLikeCount);
 			return JsonResult.success(resultMap);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -275,4 +278,8 @@ public class HoneymembersController {
 		} 
 
 	}
+	
+	
+	
+	
 }

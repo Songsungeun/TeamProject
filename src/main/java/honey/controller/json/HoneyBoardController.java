@@ -2,8 +2,10 @@ package honey.controller.json;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.util.FileUploadUtil;
 import honey.vo.HoneyBoardFile;
+import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
@@ -216,5 +219,73 @@ public class HoneyBoardController {
 			return JsonResult.fail(e.getStackTrace());
 		}
 	}
+	
+	
+	@RequestMapping(path="likeBoard")
+	public Object likeBoard(honey_boards no, HttpSession session) throws Exception {
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			if(loginUser.getEmail() == null) {
+				throw new RuntimeException();
+			}
+			
+			honey_boards likeBoard = new honey_boards();
+			likeBoard.setNo(no.getNo());
+			likeBoard.setUserNo(loginUser.getMemberNo());
+			try {
+				boardService.likeBoardInsert(likeBoard);
+			}catch (Exception e) {
+				e.printStackTrace();
+				int i = 0;
+				return JsonResult.fail(i);
+			}
+			return JsonResult.success();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return JsonResult.fail();
+		} 
+	}
+	
+	
+	@RequestMapping(path="likeDisconnect")
+	public Object followDisconnect(honey_boards no, HttpSession session) throws Exception {
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			no.setUserNo(loginUser.getMemberNo());
+			boardService.likeDisconnector(no);
+			return JsonResult.success();
+		} catch (RuntimeException e) {
+			return JsonResult.fail();
+		} 
+
+	}
+	
+	
+	@RequestMapping(path="checkingLike")
+	public Object checkingFollow(honey_boards no, HttpSession session) throws Exception {
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			if(loginUser.getEmail() == null) {
+				throw new RuntimeException();
+			}
+			honey_boards boardLike = new honey_boards();
+			boardLike.setUserNo(loginUser.getMemberNo());
+			boardLike.setNo(no.getNo());
+			try {
+				List<honey_boards> checker = boardService.likeChecker(boardLike);
+				if(checker.isEmpty()) {
+					int i = 0;
+					return JsonResult.fail(i);
+				} else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				return JsonResult.success();
+			}
+		} catch (RuntimeException e) {
+			return JsonResult.fail();
+		} 
+	}
+	
 }
 

@@ -250,7 +250,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   }
   </script>
   
-  <script type="text/javascript">
+  <script>
 $(document).ready(function(){
     $('#user_Email').keyup(function(){
         if ( $('#user_Email').val().length > 6) {
@@ -258,13 +258,10 @@ $(document).ready(function(){
             // ajax 실행
             $.ajax({
                 type : 'POST',
-                dataType:"jsonp",
+                dataType:"json",
                 url :"http://localhost:8000/TeamProject/membership/emailCheck.json",
                 crossDomain: true,
-                data:
-                {
-                    email: email
-                },
+                data:{email: email},
                 success : function(obj) {
                     //console.log(result);
                     if (obj.jsonResult.state == "success") {
