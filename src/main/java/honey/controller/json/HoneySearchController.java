@@ -72,15 +72,18 @@ public class HoneySearchController {
 	public Object searchResult(
 	    @CookieValue(name = "searchInfo") String searchInfo,
 	    @RequestParam(defaultValue = "4") int memberLength, 
-	    @RequestParam(defaultValue = "6") int boardLength) throws Exception {
+	    @RequestParam(defaultValue = "6") int boardLength,
+	    @RequestParam(defaultValue = "20") int fileLength) throws Exception {
 		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8"); 		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
 
 		List<HoneySearchKeyword> searchBoardResult = searchService.searchServiceBoardResult(searchfucker, boardLength);
 		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchfucker, memberLength);
+	  List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchfucker, fileLength);
     // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 
 		List<HoneySearchKeyword> searchBoardResultListLength = searchService.boardResultTotalPage(searchfucker);
 		List<HoneySearchKeyword> searchMemberResultListLength = searchService.memberResultTotalPage(searchfucker);
+		List<HoneySearchKeyword> searchFileResultListLength = searchService.FileResultTotalPage(searchfucker);
     // 페이징 작업을 위해 만든 전체검색결과 size()용 메소드		
 		
 		try {
@@ -92,7 +95,11 @@ public class HoneySearchController {
 			searchData.put("searchBoardResult", searchBoardResult);
 			searchData.put("boardLength", boardLength);
       searchData.put("boardSearchLength", searchBoardResultListLength.size());
-	     
+      
+      searchData.put("searchFileResult",searchFileResult);
+      searchData.put("fileLength", fileLength);
+      searchData.put("searchFileResultListLength", searchFileResultListLength.size());
+      
 			searchData.put("searchValue", searchfucker); //검색어 
 			
 			return JsonResult.success(searchData);
