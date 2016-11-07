@@ -70,7 +70,7 @@ function ajaxAddBoard(formData) {
 			    alert("등록 실패입니다.")
 			    return
 			   }
-			   window.location.reload(true)
+			   window.location = "http://t2.java85.com:8080/TeamProject/mainpage/Main.html"
 			  }
 	})
 };
