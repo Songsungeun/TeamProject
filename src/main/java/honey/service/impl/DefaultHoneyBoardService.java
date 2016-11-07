@@ -10,6 +10,9 @@ import honey.dao.HoneyBoardFileDao;
 import honey.dao.tempDao;
 import honey.service.HoneyBoardService;
 import honey.vo.HoneyBoardFile;
+import honey.vo.HoneyMain;
+import honey.vo.HoneyMembers;
+import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
@@ -73,6 +76,28 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 
 	public List<HoneyBoardFile> getFileList(int memberNo) throws Exception {
 		return boardFileDao.fileList(memberNo);
+	}
+	
+	public int likeBoardInsert(honey_boards likeBoard) {
+		boardDao.insertLikeBoard(likeBoard);
+		List<honey_boards> list = boardDao.selectLikeCountByBoardNo(likeBoard.getNo());
+		likeBoard.setLike(list.size());
+		return boardDao.updateLikeNo(likeBoard);
+	}
+	public void likeDisconnector(honey_boards no) {
+		try {
+			boardDao.deleteLike(no);
+			List<honey_boards> list = boardDao.selectLikeCountByBoardNo(no.getNo());
+			no.setLike(list.size());
+			boardDao.updateLikeNo(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public List<honey_boards> likeChecker(honey_boards boardLike) {
+		List<honey_boards> checker = boardDao.selectLikeBoard(boardLike);
+		return checker;
 	}
 	
 }

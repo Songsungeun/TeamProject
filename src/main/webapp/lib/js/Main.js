@@ -79,6 +79,7 @@ function ajaxLoadBoard(no) {
 		var result = obj.jsonResult
 		var fileList = '';
 		checkingFollow(result.data.board.userNo);
+		checkingLike(result.data.board.no);
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return

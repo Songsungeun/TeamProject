@@ -19,7 +19,7 @@ public class HoneyMain implements Serializable{
 	protected int like;
 	protected int viewCount;
 	protected String email;
-	protected int userNo;
+	protected String userNo;
 	protected int categoryNo;
 	protected String category;
 	protected String linkTitle;
@@ -46,10 +46,10 @@ public class HoneyMain implements Serializable{
 	}
 
 
-	public int getUserNo() {
+	public String getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(int userNo) {
+	public void setUserNo(String userNo) {
 		this.userNo = userNo;
 	}
 

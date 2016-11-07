@@ -50,7 +50,6 @@ function ajaxFollowDisconnect(userNo) {
 	}
 
 	function aJaxFollowUser(userNo) {
-		console.log($("#writerNick").text())
 		
 		$.ajax({
 			url:serverAddr +"/mainpage/otherUserFollow.json",
