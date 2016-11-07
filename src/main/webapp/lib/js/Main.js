@@ -116,9 +116,13 @@ function ajaxLoadBoard(no) {
 			$("#fileListArea").text(result.data.fileList.originalFileName);
 			if (result.data.urlInfo.title != null) {
 				$("#linkTitle").text(result.data.urlInfo.title);
+				$("#linkTitle").attr("href",result.data.urlInfo.detailUrl);
 				$("#linkDesc").text(result.data.urlInfo.description);
+				$("#linkDesc").attr("href",result.data.urlInfo.detailUrl);
 				$("#linkURL").text(result.data.urlInfo.urlAddr);
+				$("#linkURL").attr("href",result.data.urlInfo.detailUrl);
 				$("#urlImage").html(result.data.urlInfo.image);
+				$("#urlImage").attr("href", result.data.urlInfo.detailUrl);
 				$(".linkText").css('display','block');
 			} else {
 				$(".linkText").css('display','none');
