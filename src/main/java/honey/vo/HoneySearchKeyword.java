@@ -16,12 +16,19 @@ public class HoneySearchKeyword {
     protected String email;
     protected String nickname;
     protected String filename;
-    
-    protected int no;
 
+    protected int fmno;
+    protected int fileNo;
+    protected int boardNo;
+    protected String oriFileName;
+    protected long fileSize;
+    protected String fmcreatedDate;
+    
+
+    protected int no;
     protected String writerNick;
     protected Date createdDate;   
-    protected String createdDate2;  
+    protected String createdDate2;   
     protected int like;
     protected int viewCount;
     protected String userNo;
@@ -34,6 +41,9 @@ public class HoneySearchKeyword {
     protected String linkDesc;
     protected String userProfilePath;
     protected int fileStatus;
+    
+    
+    
     
     
 	public String getSearchValue() {
@@ -188,6 +198,48 @@ public class HoneySearchKeyword {
   public void setNo(int no) {
     this.no = no;
   }
+  
+//=========================
+  //  파일 검색용 Get/Seter
+  //=========================
+  public int getFileNo() {
+    return fileNo;
+  }
+  public void setFileNo(int fileNo) {
+    this.fileNo = fileNo;
+  }
+  public int getBoardNo() {
+    return boardNo;
+  }
+  public void setBoardNo(int boardNo) {
+    this.boardNo = boardNo;
+  }
+  public String getOriFileName() {
+    return oriFileName;
+  }
+  public void setOriFileName(String oriFileName) {
+    this.oriFileName = oriFileName;
+  }
+  public long getFileSize() {
+    return fileSize;
+  }
+  public void setFileSize(long fileSize) {
+    this.fileSize = fileSize;
+  }
+  
+  public int getFmno() {
+    return fmno;
+  }
+  public void setFmno(int fmno) {
+    this.fmno = fmno;
+  }
+  public String getFmcreatedDate() {
+    return fmcreatedDate;
+  }
+  public void setFmcreatedDate(String fmcreatedDate) {
+    this.fmcreatedDate = fmcreatedDate;
+  }
+  
 }
 
 

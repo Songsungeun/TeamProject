@@ -88,14 +88,28 @@
 	-webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition:width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
 }
+#category_tab .hodstate0:hover {
+	transform: scale(1.4,1.4);
+	background-color: white;
+	border: 3px solid #5d6365;
+	color: #5d6365;
+	-webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition:width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
+}
+.category-active {
+  border: 3px solid #5d6365 !important;
+  background-color: white !important;
+  color: #5d6365 !important;
+ 
+}
 #category_tab_outside {
 /*   background-color: white; */
   margin: 0 auto 0px auto;
   padding: 0px 0 30px 0;
 /*   height: 200px; */
-heigth: 100px;
+  heigth: 100px;
 /*   width: 880px; */
-width: 1024px;
+  max-width: 1024px;
 }
 #category_tab > li:HOVER{
   cursor: pointer;
@@ -145,6 +159,4 @@ width: 1024px;
 /* .category-active { */
 /*   background-color: gray; */
 /* } */
-.category-active {
-	border: 2px solid #3CFBFF !important;
-}
+

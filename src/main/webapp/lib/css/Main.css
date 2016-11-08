@@ -115,12 +115,13 @@ body {
 }
 
 .mainpage_wrap {
-  width: 1048px;
+  max-width: 1048px;
   height: 100%;
   margin: 0 auto;
 }
 
 #mainpage_postcontainer {
+	max-width: 1048px;
   margin-top: 25px;
 }
 
@@ -138,9 +139,10 @@ body {
 
 #each_post_wrap {
 /*   width: 330px; */
-width:33.3%;
+  width:348.98px;
   height: 501px;
   float: left;
+  margin: 0 auto;
 }
 
 #each_post {

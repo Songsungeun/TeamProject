@@ -63,6 +63,16 @@ public class HoneySearchServiceImpl implements HoneySearchService {
   }
 
   @Override
+  public List<HoneySearchKeyword> searchServiceFileResult(String searchValue, int fileLength) throws Exception {
+    Map<String,Object> fMap = new HashMap<>();
+    fMap.put("searchValue", searchValue);
+    fMap.put("fileLength", fileLength);
+    List<HoneySearchKeyword> searctFromFiles = searcherDao.selectFromFiles(fMap);
+    
+    return searctFromFiles;
+  }
+  
+  @Override
   public List<HoneySearchKeyword> memberResultTotalPage(String searchValue) throws Exception {
     List<HoneySearchKeyword> searchMemberResultLengthList = searcherDao.memberResultLengthList(searchValue);
     return searchMemberResultLengthList;
@@ -73,5 +83,12 @@ public class HoneySearchServiceImpl implements HoneySearchService {
     List<HoneySearchKeyword> searchBoardResultLengthList = searcherDao.boardResultLengthList(searchValue);
     return searchBoardResultLengthList;
   }
+
+  @Override
+  public List<HoneySearchKeyword> FileResultTotalPage(String searchValue) throws Exception {
+    List<HoneySearchKeyword> searchFileResultLengthList = searcherDao.FileResultLengthList(searchValue);
+    return searchFileResultLengthList;
+  }
+
 
 }
