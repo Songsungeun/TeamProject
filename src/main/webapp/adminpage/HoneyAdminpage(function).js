@@ -38,7 +38,6 @@ function ajaxBoardList() {
 			console.log(no)
 			ajaxLoadBoard(no)
 			ajaxPostComentsList(no)
-			window.history.pushState("Changed URI", "", "TeamProject/adminpage/ContentsDetail.html?no="+no);
     })
         if (pageLength >  totalsize) {
       	$('.moreViewBtn').css("display", "none")
@@ -73,11 +72,15 @@ function ajaxDeleteBoard(no) {
 
   $(".conterDetailBtn1").click(function () {
   		   if($("#tableWrap").css("display") != "none"){   
+  			   $("#layoutBtn").attr("src", "./images/layout-2.svg")
+  			    $("#listBtn").attr("src", "./images/list-1.svg")
   		        $('#tableWrap').hide();
   		        $('#cardWrap').show();  
   }});
   
   $(".conterDetailBtn2").click(function () {
+	   $("#layoutBtn").attr("src", "./images/layout-1.svg")
+		    $("#listBtn").attr("src", "./images/list-2.svg")
           	 $('#cardWrap').hide();  
              $('#tableWrap').show();  
   });
