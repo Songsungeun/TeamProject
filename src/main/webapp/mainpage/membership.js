@@ -35,6 +35,26 @@ function ajaxAddMember(user) {
 		type: "POST",
 		dataType: "json",
 		data: user,
+		
+		success: function (obj) {
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				return
+			}
+			window.location.href = "../mainpage/Main.html"
+		},
+		error: function(result) {
+		}
+	})
+}
+
+function ajaxAddFacebookMember(user) {
+	$.ajax({
+		url:serverAddr + "/membership/joinMember.json",
+		type: "POST",
+		dataType: "json",
+		data: user,
+		
 		success: function (obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {

@@ -38,14 +38,19 @@ public class HoneymembersController {
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
+		if (members.getPassword() == null) {
+			members.setPassword(members.getEmail());
+			members.setNickname(members.getUserName());
+			members.setPhone("1");
+			hMembersService.singUpMembers(members);
+			return JsonResult.success();
+		} else {
 		try {
-			// 서비스에 있는 메서드를 호출했다.
 			hMembersService.singUpMembers(members);
 			return JsonResult.success();
 		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResult.fail(e.getMessage());
-		}
+			return JsonResult.fail();
+		} }
 	}
 
 	@RequestMapping(path="unregisteMember")

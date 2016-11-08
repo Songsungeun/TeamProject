@@ -22,8 +22,10 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	@Autowired HoneyMainUrlDao hUrnDao;
 	
 	public void singUpMembers(HoneyMembers members) throws Exception {
+		try {
 		hMembersDao.joinMember(members);
 		fileDao.defaultProfilePhotoInsert(members.getMemberNo());
+		}catch(Exception e) {}
 	}
 
 	public void unregister(int memberNo) throws Exception {

@@ -441,7 +441,8 @@ width: 100px;
       </div>
       <div id="otherLogin">
         <div id="fb-root"></div>
-        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+        <div class="fb-login-button" data-max-rows="1" data-size="xlarge"
+          data-show-faces="false" data-auto-logout-link="true"></div>
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
         <button id="myBtn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">회원가입</button>
       </div>
@@ -489,8 +490,10 @@ width: 100px;
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="../userAuthApp.js"></script>
-  <script type="text/javascript" src="../membership/membership.js"></script>
+  
+  <script type="text/javascript" src="/TeamProject/userAuthApp.js"></script>
+  <script type="text/javascript"
+    src="/TeamProject/membership/membership.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -517,7 +520,7 @@ width: 100px;
     /*span.onclick = function() {
       modal.style.display = "none";
     }
-*/
+     */
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -555,7 +558,6 @@ width: 100px;
                                 },
                                 success : function(
                                     obj) {
-                                  //console.log(result);
                                   if (obj.jsonResult.state == "success") {
                                     $(
                                         "#result_id_msg")
@@ -594,59 +596,70 @@ width: 100px;
   </script>
 
   <script>
-  $("#login_Button").click(function(event) {
+    $("#login_Button").click(function(event) {
       var user = {
-        email: $("#idWrite").val(),
-        password: $("#passWrite").val(),
+        email : $("#idWrite").val(),
+        password : $("#passWrite").val(),
       }
       ajaxLogin(user)
     });
-  
   </script>
-  
-
-<script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1108769789218956";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
 
 
-/*
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1108769789218956',  // 앱 ID
-      status     : true,          // 로그인 상태를 확인
-      cookie     : true,          // 쿠키허용
-      xfbml      : true           // parse XFBML
-    });
-}
+  <script>
+    $(document).ready(
+        function() {
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId : '1108769789218956', // 앱 ID
+              status : true, // 로그인 상태를 확인
+              cookie : true, // 쿠키허용
+              xfbml : true
+            // parse XFBML
+            });
+            FB.getLoginStatus(function(response) {
+              if (response.status === 'connected') {
+                FB.api('/me', function(fbUser) {
+                  if (fbUser) {
+                    var user = {
+                      email : fbUser.id,
+                      userName : fbUser.name
+                    }
+                    ajaxAddFacebookMember(user)
+                    var facebookUser = {
+                      email : fbUser.id,
+                      password : fbUser.id
+                    }
+                    ajaxLogin(facebookUser)
+                    //  $('#image').attr('src','http://graph.facebook.com/' + fbUser.id + '/picture');
+                    //  $('#link').html("<a href='"+fbUser.link+"'>"+fbUser.id+"</a>");
+                    //  $('#response').html( '<pre>' + JSON.stringify(response) + '</pre>' );
+                    //  $('#meResponse').html( '<pre>' + JSON.stringify(fbUser) + '</pre>' );
+                  }
+                });
+              } else if (response.status === 'not_authorized') {
+              } else {
+              }
+            });
 
-FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
-        FB.api('/me', function(fbUser) {
-          if(fbUser)
-          {
-            $('#image').attr('src','http://graph.facebook.com/' + fbUser.id + '/picture');
-            $('#name').html(fbUser.name);
-            $('#locale').html(fbUser.locale);
-            $('#link').html("<a href='"+fbUser.link+"'>"+fbUser.id+"</a>");
-            $('#response').html( '<pre>' + JSON.stringify(response) + '</pre>' );
-            $('#meResponse').html( '<pre>' + JSON.stringify(fbUser) + '</pre>' );
-          }
+            FB.Event.subscribe('auth.login', function(response) {
+              document.location.reload();
+            });
+          };
+
+          // Load the SDK Asynchronously
+          (function(d) {
+            var js, id = 'facebook-jssdk', ref = d
+                .getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+              return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/ko_KR/all.js";
+            ref.parentNode.insertBefore(js, ref);
+          }(document));
         });
-    } else if (response.status === 'not_authorized') {
-    } else {
-    }
-});
-
-*/
-
-
-</script>
-
-
-</html>
+  </script>
+  </html>
