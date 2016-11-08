@@ -5,6 +5,8 @@
 <style>
 body {
   background-image: url("mainpage_images/loginBGP6.jpg");
+  width: 100%;
+  height: 100%;
 }
 
 #login-body {
@@ -179,7 +181,6 @@ body {
 
 .form input, textarea {
     background-color: rgba(255, 255, 255, 0.4);
-    border: 1px solid #f0f0f0;
     padding: 7px;
     font-family: Keffeesatz, Arial;
     color: #4b4b4b;
@@ -187,6 +188,8 @@ body {
     margin-bottom: 37px;
     margin-top: -10px;
     margin-left: 42px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .form input:focus, textarea:focus {
@@ -252,18 +255,18 @@ body {
 }
 
 #submitMember {
-    width: 529px;
+    width: 490px;
     text-align: center;
     position: relative;
     height: 34px;
-    right: 116px;
+    right: 95px;
     border-radius: 5px;
     font-size: 14px;
     color: #666666;
     display: inline-block;
     background: white;
     font-weight: bold;
-    margin-top: -5px;
+    margin-top: 13px;
     border: 1px solid #ccc;
 }
 
@@ -302,6 +305,7 @@ body {
     font-size: 20px;
     top: 10px;
     position: relative;
+    letter-spacing: 2px;
 }
 
 #btn1 {
@@ -384,14 +388,14 @@ width: 100px;
 /* Modal Content/Box */
 .modal-content {
     width: 550px;
-    background-color: #f1f1f1;
+    background-color: white;
     padding: 20px;
     border: 1px solid #888;
     margin: auto;
-    margin-top: 150px;
-    height: 500px;
+    margin-top: 200px;
+    height: 520px;
     top: 100px;
-    position: relative;
+/*     position: relative; */
 }
 
 /* The Close Button */
@@ -479,7 +483,7 @@ width: 100px;
 
         <input id="name" name="name" class="signupinput" placeholder="Name" required="" tabindex="2" type="text"> <input id="nickname" class="signupinput" name="username" placeholder="NickName" required="" tabindex="3" type="text"> <input type="password" id="userPassword" class="signupinput" name="password" required="" tabindex="4" placeholder="password "> <input type="password" id="repassword" class="signupinput" name="repassword" required="" tabindex="5" placeholder="confirm password"> <input id="phone" name="phone" placeholder="phone number" required="" tabindex="8" type="text"> <br>
         <button class="buttom" name="submit" tabindex="8" id="submitMember">
-          이메일 가입하기</button>
+          가입하기</button>
       </div>
     </div>
   </div>
