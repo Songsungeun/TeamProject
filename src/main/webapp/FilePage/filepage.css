@@ -132,6 +132,7 @@ body {
   width: 100%;
   background-color: #f1f1f1;
   padding-top: 20px;
+  min-height: 556.5px;
 }
 .fileAddBtn {
 	margin-bottom: 10px;
