@@ -13,7 +13,8 @@
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.5",
     "jquery": "^1.12.4",
-    "jquery-form": "^3.50.0"
+    "jquery-form": "^3.50.0",
+    "jquery.cookie": "^1.4.1"
   },
   "devDependencies": {},
   "description": ""

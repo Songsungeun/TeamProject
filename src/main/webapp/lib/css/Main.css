@@ -624,6 +624,9 @@ width:33.3%;
   border-top: 1px solid #D1CDCD;
   padding-top: 5px;
   border-bottom: 1px solid #D1CDCD;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:pre-line;
 }
 
 .fileArea {
@@ -664,6 +667,7 @@ modal fade>p {
   margin: 10px 0 5px;
   overflow: hidden;
   word-wrap: break-word;
+  height: 50px;
 }
 
 .urlAddr {

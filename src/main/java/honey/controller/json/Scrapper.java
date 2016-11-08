@@ -87,7 +87,7 @@ public class Scrapper {
 		//meta Data에 property로 네이밍한 경우
 		if (!doc.select("meta[property=og:title]").isEmpty()) {
 			System.out.println("meta og:title 있음");
-			//					metaOgTitle = doc.select("meta[property=og:title]");
+			//	metaOgTitle = doc.select("meta[property=og:title]");
 			title = doc.select("meta[property=og:title]").attr("content");
 
 			// meta Data에 name으로 네이밍한 경우

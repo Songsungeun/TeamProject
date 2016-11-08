@@ -5,7 +5,7 @@ var comentInfo = 0;
 
 $(document).ready(function(){
 	$(function() {
-		$("#includedContent").load("/TeamProject/header.html");
+		$("#includedContent").load("../header.html");
 	});
 });
 function ajaxBoardList() {
@@ -23,12 +23,12 @@ function ajaxBoardList() {
 			boardNo = $(this).attr("data-no")
 			ajaxLoadBoard(boardNo);
 			ajaxPostComentsList(boardNo)
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+boardNo);
+			window.history.pushState("Changed URI", "", "../mainpage/ContentsDetail.html?no="+boardNo);
 		})
 		$(".btn-primary").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+			window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
 			event.stopImmediatePropagation();
@@ -56,12 +56,12 @@ function ajaxDetailBoardList() {
 			boardNo = $(this).attr("data-no")
 			ajaxLoadBoard(boardNo)
 			ajaxPostComentsList(boardNo)
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+boardNo2);
+			window.history.pushState("Changed URI", "", "../mainpage/ContentsDetail.html?no="+boardNo2);
 		})
 		$(".btn-primary").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+			window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
 			event.stopImmediatePropagation();
@@ -1024,6 +1024,6 @@ window.onclick = function(event) {
 	if (event.target == modal) {
 		modal.style.display = "none";
 		htmlTag.style.overflow = "auto";
-		window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+		window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 	}
 }
