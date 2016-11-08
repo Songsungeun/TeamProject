@@ -108,9 +108,10 @@ body {
   height: 40px;
   font-size: 15px;
   margin: 0 7.6px;
-  background-color: #32F1FF;
+  background-color: #4267B2;
   opacity: 0.7;
   border-radius: 10px;
+  color: white;
   font-weight: bolder;
 }
 
@@ -439,7 +440,8 @@ width: 100px;
         </div>
       </div>
       <div id="otherLogin">
-        <button id="facebook_login" href="#">페이스북으로 로그인</button>
+        <div id="fb-root"></div>
+        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
         <button id="kakao_login" href="#">카카오계정으로 로그인</button>
         <button id="myBtn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">회원가입</button>
       </div>
@@ -512,10 +514,10 @@ width: 100px;
     }
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    /*span.onclick = function() {
       modal.style.display = "none";
     }
-
+*/
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -599,8 +601,52 @@ width: 100px;
       }
       ajaxLogin(user)
     });
+  
   </script>
+  
 
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1108769789218956";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+/*
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1108769789218956',  // 앱 ID
+      status     : true,          // 로그인 상태를 확인
+      cookie     : true,          // 쿠키허용
+      xfbml      : true           // parse XFBML
+    });
+}
+
+FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        FB.api('/me', function(fbUser) {
+          if(fbUser)
+          {
+            $('#image').attr('src','http://graph.facebook.com/' + fbUser.id + '/picture');
+            $('#name').html(fbUser.name);
+            $('#locale').html(fbUser.locale);
+            $('#link').html("<a href='"+fbUser.link+"'>"+fbUser.id+"</a>");
+            $('#response').html( '<pre>' + JSON.stringify(response) + '</pre>' );
+            $('#meResponse').html( '<pre>' + JSON.stringify(fbUser) + '</pre>' );
+          }
+        });
+    } else if (response.status === 'not_authorized') {
+    } else {
+    }
+});
+
+*/
+
+
+</script>
 
 
 </html>
