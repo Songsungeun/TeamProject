@@ -58,12 +58,12 @@ function ajaxCategoryIncludeBoardList(no) {
 			console.log(no);
 			ajaxLoadBoard(no);
 			ajaxPostComentsList(no);
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
+			window.history.pushState("Changed URI", "", "../mainpage/ContentsDetail.html?no="+no);
 		})
 		$(".btn-primary").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+			window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
 			var ctgNo =$(this).attr("data-ctgNo")
@@ -135,12 +135,12 @@ function ajaxCategoryIncludeDetailBoardList(no) {
 			console.log(no);
 			ajaxLoadBoard(no);
 			ajaxPostComentsList(no);
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/ContentsDetail.html?no="+no);
+			window.history.pushState("Changed URI", "", "../mainpage/ContentsDetail.html?no="+no);
 		})
 		$(".btn-primary").click(function() {
 			$("#yourModal").css({"display":"none"});
 			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "/TeamProject/mainpage/Main.html");
+			window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 		})
 		$(".categoryLink").click(function(event){
 			var ctgNo =$(this).attr("data-ctgNo")
