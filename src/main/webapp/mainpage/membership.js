@@ -39,8 +39,10 @@ function ajaxAddMember(user) {
 		success: function (obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
+				alert("가입실패 하였습니다. 정확히 입력 후 재시도 해주세요")
 				return
 			}
+			alert("축하합니다 가입되었습니다.")
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(result) {
@@ -58,10 +60,8 @@ function ajaxAddFacebookMember(user) {
 		success: function (obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("가입실패 하였습니다. 정확히 입력 후 재시도 해주세요")
 				return
 			}
-			alert("축하합니다 가입되었습니다.")
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(result) {
