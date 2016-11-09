@@ -22,6 +22,7 @@ public class SetImage {
 					System.out.println("link있는애: " + honeyMainList.get(i).getLinkImage());
 				}
 			}
+			System.out.println("linkimage= " + honeyMainList.get(i).getLinkImage());
 			//String[] imageHref = honeyMainList.get(i).getLinkDesc().split("\"");
 			System.out.println("번호: " + i + "getLinkImage: " + honeyMainList.get(i).getLinkImage());
 			if (honeyMainList.get(i).getLinkImage() == null) {

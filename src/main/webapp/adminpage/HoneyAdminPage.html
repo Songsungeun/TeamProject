@@ -133,7 +133,7 @@
   
                   <div class="fileArea">
                   <div class="addFileTag">
-                    <div id="fileText">첨부파일:</div> 
+                    <div id="fileText">첨부파일: </div> 
                     <div id="fileListArea"></div>
                   </div>
                   
@@ -175,7 +175,7 @@
 {{#each list}}
     <tr>
       <label>
-          <td> </td>
+          <td><a href="#"><img id="thumbnailImg" src="{{linkImage}}" alt="Image File"></a></td>
           <td><a class="titleLink" href="#" data-no="{{no}}">{{title}}</a></td>
           <td>{{createdDate2}}</td> 
           <td>{{like}}</td> 
