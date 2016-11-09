@@ -44,8 +44,29 @@ public class HoneyMainController {
 				String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
 				list.get(i).setUserProfilePath(userPhoto);
 			}
+			List<HoneyMain> list1 = new ArrayList<HoneyMain>();
+			List<HoneyMain> list2 = new ArrayList<HoneyMain>();
+			List<HoneyMain> list3 = new ArrayList<HoneyMain>();
+			List<HoneyMain> list4 = new ArrayList<HoneyMain>();
 			
-			return JsonResult.success(settingUrlBoard);
+			for (int i = 0; i < settingUrlBoard.size(); i++) {
+				if (i % 4 == 0) {
+					list1.add(settingUrlBoard.get(i));
+				} else if (i % 4 == 1) {
+					list2.add(settingUrlBoard.get(i));
+				} else if (i % 4 == 2) {
+					list3.add(settingUrlBoard.get(i));
+				} else if (i % 4 == 3) {
+					list4.add(settingUrlBoard.get(i));
+				}
+			}
+			HashMap<String,Object> listMap = new HashMap<>();
+			listMap.put("list1", list1);
+			listMap.put("list2", list2);
+			listMap.put("list3", list3);
+			listMap.put("list4", list4);
+			
+			return JsonResult.success(listMap);
 		} catch (Exception e) {
 			return JsonResult.fail();
 		}
