@@ -82,6 +82,7 @@
 		<result column="MB_NO" property="userNo" />
 		<result column="CT_NO" property="categoryNo" />
 		<result column="CT_NM" property="category" />
+		<result column="YOUTUBE_URL" property="youtubeURL" />
 	</resultMap>
 
 	<insert id="insert" parameterType="honey_boards">
