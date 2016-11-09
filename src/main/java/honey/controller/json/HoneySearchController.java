@@ -80,6 +80,46 @@ public class HoneySearchController {
 		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchfucker, memberLength);
 	  List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchfucker, fileLength);
     // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
+	  
+    String extension;
+    String[] extensionArr;
+    for (int i = 0; i < searchFileResult.size(); i++) {
+      extension = searchFileResult.get(i).getOriFileName();
+      extensionArr = extension.split("\\.");
+      
+      if(extensionArr[extensionArr.length-1].equals("txt")) {
+        searchFileResult.get(i).setFileThumbnail("txt.png");
+      } else if (extensionArr[extensionArr.length-1].equals("avi")) {
+        searchFileResult.get(i).setFileThumbnail("avi.png");
+      } else if (extensionArr[extensionArr.length-1].equals("doc") || extensionArr[extensionArr.length-1].equals("docx")) {
+        searchFileResult.get(i).setFileThumbnail("doc.png");
+      } else if (extensionArr[extensionArr.length-1].equals("mp4")) {
+        searchFileResult.get(i).setFileThumbnail("mp4.png");
+      } else if (extensionArr[extensionArr.length-1].equals("mpeg")) {
+        searchFileResult.get(i).setFileThumbnail("mpeg.png");
+      } else if (extensionArr[extensionArr.length-1].equals("pdf")) {
+        searchFileResult.get(i).setFileThumbnail("pdf.png");
+      } else if (extensionArr[extensionArr.length-1].equals("ppt") || extensionArr[extensionArr.length-1].equals("pptx")) {
+        searchFileResult.get(i).setFileThumbnail("ppt.png");
+      } else if (extensionArr[extensionArr.length-1].equals("wmv")) {
+        searchFileResult.get(i).setFileThumbnail("wmv.png");
+      } else if (extensionArr[extensionArr.length-1].equals("xls") || extensionArr[extensionArr.length-1].equals("xlsx")) {
+        searchFileResult.get(i).setFileThumbnail("xls.png");
+      } else if (extensionArr[extensionArr.length-1].equals("zip") || extensionArr[extensionArr.length-1].equals("7z") || extensionArr[extensionArr.length-1].equals("egg") || extensionArr[extensionArr.length-1].equals("rar") || extensionArr[extensionArr.length-1].equals("alz")) {
+        searchFileResult.get(i).setFileThumbnail("zip.png");
+      } else if (extensionArr[extensionArr.length-1].equals("jpg") || extensionArr[extensionArr.length-1].equals("jpeg") || extensionArr[extensionArr.length-1].equals("png") || extensionArr[extensionArr.length-1].equals("svg") || extensionArr[extensionArr.length-1].equals("bmp") 
+          || extensionArr[extensionArr.length-1].equals("gif")) {
+        searchFileResult.get(i).setFileThumbnail(searchFileResult.get(i).getFilename());
+      } else {
+        searchFileResult.get(i).setFileThumbnail("java.png");
+      }
+      
+      double mb = Math.round(((searchFileResult.get(i).getFileSize() / (double)1048576) * 100d));
+      double temp = mb / 100d;
+      searchFileResult.get(i).setFileSize(temp);
+    }
+	  
+	  
 
 		List<HoneySearchKeyword> searchBoardResultListLength = searchService.boardResultTotalPage(searchfucker);
 		List<HoneySearchKeyword> searchMemberResultListLength = searchService.memberResultTotalPage(searchfucker);
