@@ -113,19 +113,90 @@ public class HoneyBoardController {
 
 	}
 
-	@RequestMapping(path="write_update")
-	public Object update(honey_boards board) throws Exception {
+	@RequestMapping(path="updateForm")
+	public Object updateForm(int no) throws Exception {
+		System.out.println("detail 메서드 실");
+		try {
+			honey_boards board = boardService.getBoard(no);
+			System.out.println("board 객체 받아옴");
+			if (board == null) 
+				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
+			return JsonResult.success(board);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+
+	}
+
+	@RequestMapping(path="writeUpdate")
+	public Object update(honey_boards board,
+			MultipartFile[] files,
+			HttpSession session) throws Exception {
 		try {
 			HashMap<String,Object> paramMap = new HashMap<>();
 			paramMap.put("no", board.getNo());
-
+			System.out.println("board= " + board);
 			if (boardService.getBoard(board.getNo()) == null) {
 				throw new Exception("해당 게시물이 없습니다.");
 			}
+			
+			int memberNo = ((HoneyMembers)session.getAttribute("member")).getMemberNo();
+			
+//			boardService.updateBoard(board);
+//			return JsonResult.success();
+			if (!board.getYoutubeURL().equals("")) {
+				String[] youtubeContents = board.getYoutubeURL().split("/");
+				System.out.println("arr[3]= " + youtubeContents[3]);
+				if (board.getYoutubeURL().contains("list")) {
+					String[] youtubeList = youtubeContents[3].split("\\?");
+					System.out.println("youtubeList: " + youtubeList[0]);
+					board.setYoutubeURL(youtubeList[0]);
+				} else {
+					board.setYoutubeURL(youtubeContents[3]);
+				}
+			} else {
+				board.setYoutubeURL(null);
+			}
+
+			if (files.length != 0) {
+				board.setFileStatus(1);
+			} else {
+				board.setFileStatus(0);
+			}
 			boardService.updateBoard(board);
+
+			if (!board.getUrl().equals("")) {
+				System.out.println("URL 있을경우 시작");
+				UrlInfo url = Scrapper.UrlForDB(board.getUrl());
+				System.out.println("멤버번호 셋 시작");
+				url.setMb_No(memberNo);
+				System.out.println("멤버번호 셋 종료");
+				//url.setBd_No(bd_No);
+				//url.setBd_No(boardService.getBoardMax().getNo());
+				//System.out.println("no= " + boardService.getBoardMax().getNo());
+				boardService.updateUrl(url);
+			}
+
+			String newFilename = null;
+			if (files.length != 0) {
+				for (int i = 0; i < files.length; i++) {
+					HoneyBoardFile boardFile = new HoneyBoardFile();
+					boardFile.setOriginFileName(files[i].getOriginalFilename());
+					newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
+					boardFile.setFileName(newFilename);
+					boardFile.setMb_no(memberNo);
+					boardFile.setFileSize(files[i].getSize());
+					files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+					System.out.println("filesize: " + files[i].getSize());
+					boardService.updateBoardFile(boardFile);
+				} 
+			}
 			return JsonResult.success();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
 

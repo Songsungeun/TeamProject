@@ -16,12 +16,12 @@ import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.FileList;
-import honey.vo.HoneyBoardFile;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
+import honey.vo.honey_boards;
 
 @Controller
 @RequestMapping("/admin/")
@@ -137,8 +137,6 @@ public class HoneyAdminController {
       return JsonResult.fail(e.getMessage());
       }
     }
-    
-    
     
     
 }

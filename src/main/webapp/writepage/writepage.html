@@ -269,7 +269,7 @@ $(document).ready(function(){
       <input type="text" id="url" class="form-control writeWidth" placeholder="URL">
       <input type="text" id="write_title" class="form-control writeWidth"
         placeholder="제목">
-      <textarea class="form-control" id="myNicEditor" rows="20"
+      <textarea class="form-control contents" id="myNicEditor" rows="20"
         style="max-width: 1024px;"></textarea>
       <input type="text" id="write_youtube" class="form-control writeWidth"
         placeholder="Youtube URL">
@@ -301,11 +301,11 @@ $(document).ready(function(){
         tabindex="8" value="등록">
       <input class="btn btn-default my-view" name="submit" id="updateBoard"
         tabindex="8" value="변경">
-      <input class="btn btn-default my-view" name="submit" id="deleteBoard"
-        tabindex="8" value="삭제">
+<!--       <input class="btn btn-default my-view" name="submit" id="deleteBoard" -->
+<!--         tabindex="8" value="삭제"> -->
       <input class="btn btn-default" name="cancel" id="cancelwrite" tabindex="8" value="취소"
         onclick="location.href='../mainpage/Main.html'">
-      <input class="btn btn-default my-new" data-toggle="modal" name="preview"
+      <input class="btn btn-default" data-toggle="modal" name="preview"
         id="preview" tabindex="8" value="미리보기" data-target="#exampleModal">
       <!--      <input class="btn btn-default my-new" -->
       <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
@@ -391,9 +391,9 @@ $(document).ready(function(){
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
 if (location.search.startsWith("?")) { // 예) ?no=xxx
     var no = location.search.split("=")[1];
-    console.log("hi")
-    ajaxLoadBoard(no)
-//     $(".my-new").css("display", "none")
+    console.log("no= " + no);
+    ajaxLoadBoardForUpdate(no);
+     $(".my-new").css("display", "none")
 } else {
     $(".my-view").css("display", "none")
 }

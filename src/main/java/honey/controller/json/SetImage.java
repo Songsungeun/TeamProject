@@ -22,12 +22,11 @@ public class SetImage {
 					System.out.println("link있는애: " + honeyMainList.get(i).getLinkImage());
 				}
 			}
-			System.out.println("linkimage= " + honeyMainList.get(i).getLinkImage());
 			//String[] imageHref = honeyMainList.get(i).getLinkDesc().split("\"");
 			System.out.println("번호: " + i + "getLinkImage: " + honeyMainList.get(i).getLinkImage());
 			if (honeyMainList.get(i).getLinkImage() == null) {
 				System.out.println(i + "getcontents= " +honeyMainList.get(i).getContents());
-				
+				System.out.println(i + " getyoutubeURL= " + honeyMainList.get(i).getYoutubeURL());
 				if (honeyMainList.get(i).getContents() != null) {
 					boolean image = honeyMainList.get(i).getContents().contains("img src");
 					System.out.println("boolean: " + image);
@@ -46,6 +45,12 @@ public class SetImage {
 					} else {
 						honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 					}
+				} else if (honeyMainList.get(i).getYoutubeURL() != null){
+					System.out.println("youtube 꽂는다.");
+					honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
+					System.out.println("꽂힌놈 바로 확인= " +honeyMainList.get(i).getLinkImage());
+				} else {
+					honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 				}
 			}
 		}

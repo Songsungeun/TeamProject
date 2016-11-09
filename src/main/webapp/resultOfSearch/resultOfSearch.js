@@ -69,19 +69,23 @@ function ajaxSearchResultList() {
 	    
 	    var nameSearch = "";
 	    var contentsSearch = "";
+	    var fileSearch = "";
 	    var photo =""
 	    var data = result.data
-
-	    var template1 = Handlebars.compile($('#searchBoardHandbars').html())
+	    
+	    var template1 = Handlebars.compile($('#searchBoardHandlebars').html())
 	    var template2 = Handlebars.compile($('#searchMemberHandlebars').html())
-	
+	    var template3 = Handlebars.compile($('#searchFileHandlebars').html())
+	    
 	    contentsSearch += template1(data)
 	    nameSearch += template2(data)
+	    fileSearch += template3(data)
 	    
-	   if  (boardSearchLength == 0  &&  memberSearchLength == 0 ) {
-	    	location.href ="/TeamProject/resultOfSearch/searchResultNull.html"
-
-	   } else  if (memberSearchLength == 0) {
+//	   if  (boardSearchLength == 0  &&  memberSearchLength == 0 ) {
+//	    	location.href ="/TeamProject/resultOfSearch/searchResultNull.html"
+//
+//	   } else 
+	    if (memberSearchLength == 0) {
 	    	$("#memberSearchResultWrap").css("display", "none")
 	   } else  if (boardSearchLength == 0) {
 	    	$("#contentsSearchWrap").css("display", "none") 
@@ -96,8 +100,10 @@ function ajaxSearchResultList() {
 	   $("#searchWord").text(data.searchValue);
 	   $(".memberSearchResult").html(nameSearch);
 	   $(".contentsSearchResult").html(contentsSearch);
+	   $("#boardTable tbody").html(fileSearch);
 	   $("#uSearchLength").text(data.memberSearchLength);
 	   $("#pSearchLength").text(data.boardSearchLength);
+	   $("#fSearchLength").text(data.searchFileResultListLength);
 	   
 	   $("#moreViewBtn1").click(function () {
 		   memberLength += Number(memberDifference);
@@ -113,6 +119,14 @@ function ajaxSearchResultList() {
 		     $("#moreViewBtn2").css("display", "none")
 	   })
 	 
-	  })
+	   $(".titleLink").click(function(event){
+		   console.log("1")
+		   $("#yourModal").modal();
+		   $("html").css({"overflow":"hidden"});
+		   var no = $(this).attr("data-no")
+		   ajaxLoadBoard(no)
+		   ajaxPostComentsList(no)
+	   })
+   })
 }
 	   

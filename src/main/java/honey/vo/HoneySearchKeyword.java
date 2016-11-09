@@ -8,7 +8,7 @@ public class HoneySearchKeyword {
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
   
 	
-  protected String searchValue;
+    protected String searchValue;
     protected String title;
     protected String url;
     protected String contents;
@@ -21,10 +21,10 @@ public class HoneySearchKeyword {
     protected int fileNo;
     protected int boardNo;
     protected String oriFileName;
-    protected long fileSize;
+    protected double fileSize;
     protected String fmcreatedDate;
+    protected String FileThumbnail;
     
-
     protected int no;
     protected String writerNick;
     protected Date createdDate;   
@@ -41,10 +41,6 @@ public class HoneySearchKeyword {
     protected String linkDesc;
     protected String userProfilePath;
     protected int fileStatus;
-    
-    
-    
-    
     
 	public String getSearchValue() {
 		return searchValue;
@@ -220,12 +216,6 @@ public class HoneySearchKeyword {
   public void setOriFileName(String oriFileName) {
     this.oriFileName = oriFileName;
   }
-  public long getFileSize() {
-    return fileSize;
-  }
-  public void setFileSize(long fileSize) {
-    this.fileSize = fileSize;
-  }
   
   public int getFmno() {
     return fmno;
@@ -238,6 +228,18 @@ public class HoneySearchKeyword {
   }
   public void setFmcreatedDate(String fmcreatedDate) {
     this.fmcreatedDate = fmcreatedDate;
+  }
+  public String getFileThumbnail() {
+    return FileThumbnail;
+  }
+  public void setFileThumbnail(String FileThumbnail) {
+    this.FileThumbnail = FileThumbnail;
+  }  
+  public double getFileSize() {
+  return fileSize;
+}
+  public void setFileSize(double fileSize) {
+    this.fileSize = fileSize;
   }
   
 }

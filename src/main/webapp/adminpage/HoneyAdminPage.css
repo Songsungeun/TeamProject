@@ -192,6 +192,36 @@ body {
 
 /*  상단 css  끝 */
 
+#memberSearchWrap{
+    width: 1024px;
+    position: relative;
+        margin: 0 auto;
+    background-color: antiquewhite;
+}
+
+ .memberSearchResult{
+    position: relative;
+    margin: 0 auto;
+    padding-top: 20px;
+    float: left;
+    width: 1024px;
+}
+
+#userResultWrap{
+  font-size: 17px;
+    border: 1px solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-color: #C9C9C9;
+    padding-bottom: 0px;
+   } 
+   
+   #userResult{
+    padding-left: 15px;
+    top: 10px;
+    position: relative;
+   } 
 
 #centerContentsWrap{
      top: 13px;

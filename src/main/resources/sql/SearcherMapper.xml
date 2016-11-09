@@ -49,7 +49,7 @@
   <select id="selectFromMembers" resultMap="searchMap" parameterType="map">
     select EMAIL,MB_NICK,MB_NM
     from honey_membs
-    where EMAIL like concat('%', #{searchValue}, '%') or MB_NICK like concat('%', #{searchValue}, '%') or MB_NM like concat('%', #{searchValue}, '%')
+    where MB_NICK like concat('%', #{searchValue}, '%') or MB_NM like concat('%', #{searchValue}, '%')
     limit #{memberLength}
   </select>
   
@@ -64,7 +64,7 @@
   <select id="memberResultLengthList" resultMap="searchMap" parameterType="String">
     select EMAIL,MB_NICK,MB_NM
     from honey_membs
-    where EMAIL like concat('%', #{value}, '%') or MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%', #{value}, '%')
+    where MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%', #{value}, '%')
    </select> 
   
   <select id="boardResultLengthList" resultMap="searchMap" parameterType="String">

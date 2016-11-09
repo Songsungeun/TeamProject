@@ -99,5 +99,13 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 		List<honey_boards> checker = boardDao.selectLikeBoard(boardLike);
 		return checker;
 	}
+
+	public void updateUrl(UrlInfo url) throws Exception {
+		boardDao.updateUrl(url);
+		
+	}
+	public void updateBoardFile(HoneyBoardFile boardFile) throws Exception {
+		boardFileDao.updateFile(boardFile);
+	}
 	
 }

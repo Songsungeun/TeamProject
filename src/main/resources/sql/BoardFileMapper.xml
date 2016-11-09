@@ -19,6 +19,16 @@
     (select max(bd_no) from honey_boards))
   </insert>
   
+  <update id="updateFile" parameterType="HoneyBoardFile">
+    update board_files set
+    File_Name=#{fileName},
+    ORI_FILENM=#{OriginFileName},
+    File_Size=#{fileSize},
+    CreDate=now()
+    where Board_no=#{boardNo}
+    
+  </update>
+  
   <select id="fileList" resultMap="boardFileMap" parameterType= "int">
     select File_No, File_Name, Board_No, ORI_FILENM, File_Size, CreDate, Member_no
        from board_files 

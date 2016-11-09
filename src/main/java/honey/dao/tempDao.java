@@ -22,5 +22,5 @@ public interface tempDao {
   int updateLikeNo(honey_boards likeBoard);
   int deleteLike(honey_boards no);
   List<honey_boards> selectLikeBoard(honey_boards boardLike);
-  
+  int updateUrl(UrlInfo urlInfo) throws Exception;
 }

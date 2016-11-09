@@ -82,6 +82,7 @@
 		<result column="MB_NO" property="userNo" />
 		<result column="CT_NO" property="categoryNo" />
 		<result column="CT_NM" property="category" />
+		<result column="YOUTUBE_URL" property="youtubeURL" />
 	</resultMap>
 
 	<insert id="insert" parameterType="honey_boards">
@@ -91,6 +92,17 @@
 		#{youtubeURL})
 	</insert>
 
+  <update id="update" parameterType="honey_boards">
+    update honey_boards set
+    BD_TITL=#{title},
+    BD_CONTS=#{contents},
+    URL=#{url},
+    YOUTUBE_URL=#{youtubeURL},
+    FILE_STATUS=#{fileStatus},
+    BD_CRE=now()
+    where BD_NO=#{no}
+  </update>
+  
 	<select id="selectList" resultMap="boardMap" parameterType="map">
 		select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL,
 		YOUTUBE_URL
@@ -119,7 +131,7 @@
 	</select>
 
 	<select id="selectOne" resultMap="boardMap" parameterType="int">
-		select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL
+		select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL,YOUTUBE_URL
 		from honey_boards
 		where BD_NO = #{value}
 	</select>
@@ -144,14 +156,6 @@
 		where BD_NO=#{value}
 	</delete>
 
-	<update id="update" parameterType="honey_boards">
-		update honey_boards set
-		BD_TITL=#{title},
-		BD_CONTS=#{contents},
-		URL=#{url}
-		where BD_NO=#{no}
-	</update>
-	
 	 <update id="updateLikeNo" parameterType="honey_boards">
     update honey_boards set
     BD_LIKE=#{like}
@@ -165,6 +169,16 @@
 		(select max(bd_no) from honey_boards)
 		)
 	</insert>
+	
+	<update id="updateUrl" parameterType="UrlInfo">
+	 update board_link set
+	 URL_Title=#{title},
+	 URL_Addr=#{urlAddr},
+	 URL_Desc=#{description},
+	 URL_Image=#{image},
+	 DetailUrl=#{detailUrl}
+	 where BD_NO=#{bd_no}
+	</update>
 
 	<insert id="insertLikeBoard" parameterType="honey_boards">
 		insert into M_TO_B(MB_NO, BD_NO)

@@ -12,6 +12,7 @@ import honey.dao.tempDao;
 import honey.service.HoneyAdminService;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
+import honey.vo.honey_boards;
 
 @Service
 public class DefaultHoneyAdminService implements HoneyAdminService {
@@ -37,5 +38,7 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
     HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
     int count = tempdao.countAll(hMember.getMemberNo());
     return count+=1;
-  }  
+  }
+
+
 }
