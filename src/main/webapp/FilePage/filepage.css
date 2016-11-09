@@ -130,7 +130,7 @@ body {
 #admin_detail {
 	margin-top: 5px;
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: white;
   padding-top: 20px;
   min-height: 556.5px;
 }
@@ -230,6 +230,10 @@ body {
   padding-top: 5px;
 }
 
+.fileThumbnail {
+	height: 50px;
+	width: 50px;
+}
 
 
 
