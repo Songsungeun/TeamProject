@@ -50,6 +50,7 @@ public class HoneyUserAuthController {
         return JsonResult.success();
       }
     } catch (Exception e) {
+    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }
@@ -85,6 +86,7 @@ public class HoneyUserAuthController {
       }
       return JsonResult.success(resultMap);
     } catch (Exception e) {
+    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }

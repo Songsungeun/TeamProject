@@ -49,6 +49,7 @@ public class HoneymembersController {
 			hMembersService.singUpMembers(members);
 			return JsonResult.success();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return JsonResult.fail();
 		} }
 	}
