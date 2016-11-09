@@ -62,58 +62,67 @@
         <div id="contents-tabs" class="all_post_wrap">
 
           <div id="category_tab-0" class="tab-content">
-            <ul id="post_wrapper allConts" class="category_tab-0">
+            <ul id="post_wrapper" class="category_tab-0 allConts1">
+
+            </ul>
+            <ul id="post_wrapper" class="category_tab-0 allConts2">
+
+            </ul>
+            <ul id="post_wrapper" class="category_tab-0 allConts3">
+
+            </ul>
+            <ul id="post_wrapper" class="category_tab-0 allConts4">
 
             </ul>
           </div>
 
           <div id="category_tab-1" class="tab-content" style="display: none">
-            <ul id="post_wrapper lifeConts" class="category_tab-1">
+            <ul id="post_wrapper" class="category_tab-1">
             </ul>
           </div>
 
           <div id="category_tab-2" class="tab-content" style="display: none">
-            <ul id="post_wrapper sportsCconts" class="category_tab-2">
+            <ul id="post_wrapper" class="category_tab-2">
             </ul>
           </div>
 
           <div id="category_tab-3" class="tab-content" style="display: none">
-            <ul id="post_wrapper car_techConts" class="category_tab-3">
+            <ul id="post_wrapper" class="category_tab-3">
             </ul>
           </div>
 
           <div id="category_tab-4" class="tab-content" style="display: none">
-            <ul id="post_wrapper fashion_beautyConts" class="category_tab-4">
+            <ul id="post_wrapper" class="category_tab-4">
             </ul>
           </div>
 
           <div id="category_tab-5" class="tab-content" style="display: none">
-            <ul id="post_wrapper gameConts" class="category_tab-5">
+            <ul id="post_wrapper" class="category_tab-5">
             </ul>
           </div>
 
           <div id="category_tab-6" class="tab-content" style="display: none">
-            <ul id="post_wrapper tv_entertainConts" class="category_tab-6">
+            <ul id="post_wrapper" class="category_tab-6">
             </ul>
           </div>
 
           <div id="category_tab-7" class="tab-content" style="display: none">
-            <ul id="post_wrapper musicConts" class="category_tab-7">
+            <ul id="post_wrapper" class="category_tab-7">
             </ul>
           </div>
 
           <div id="category_tab-8" class="tab-content" style="display: none">
-            <ul id="post_wrapper movieConts" class="category_tab-8">
+            <ul id="post_wrapper" class="category_tab-8">
             </ul>
           </div>
 
           <div id="category_tab-9" class="tab-content" style="display: none">
-            <ul id="post_wrapper book_cultureConts" class="category_tab-9">
+            <ul id="post_wrapper" class="category_tab-9">
             </ul>
           </div>
 
           <div id="category_tab-10" class="tab-content" style="display: none">
-            <ul id="post_wrapper knowledge_refinementConts"
+            <ul id="post_wrapper"
               class="category_tab-10">
             </ul>
           </div>
@@ -192,32 +201,34 @@
     </div>
   </div>
   
+<!-- <!--  -->
 
-<script id="liTemplateText" type="text/x-handlebars-template">
-{{#each data}}
+<script id="li1TemplateText" type="text/x-handlebars-template">
+{{#each data.list1}}
 <li id="each_post_wrap">
   <div id="each_post">
-    <div id="user_Nick">
-      <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
-      <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
-    </div>
  
     <div class="post_photoWrap titleLink" data-no="{{no}}" data-userNo="{{userNo}}">
       <a href="#">
-        <img src="{{linkImage}}" alt="Image File">
+        <img id="thumbImg_{{no}}" src="{{linkImage}}" alt="Image File">
       </a>
     </div>
   
-    <a class="post_contsWrap">
+    <div class="post_contsWrap">
       <span class="each_post_title titleLink" data-no="{{no}}" data-userNo="{{userNo}}">{{title}}</span>
-      <span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><span>{{{contents}}}</span></span>
-    </a>
-
-    <div class="post_ctgWrap">
+<div class="post_ctgWrap">
       <span class="categoryLink" data-ctg="{{categoryNo}}">{{category}}</span>
     </div>
+<span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><span>{{{contents}}}</span></span>
+    </div>
+
+   
 
     <div class="post_BtnWrap">
+      <div id="user_Nick">
+        <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+        <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
+      </div>
       <div class="post_leftBtn">
         <img class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
         <span>{{viewCount}}</span>
@@ -231,6 +242,124 @@
 </li>
 {{/each}}
 </script>
+<script id="li2TemplateText" type="text/x-handlebars-template">
+{{#each data.list2}}
+<li id="each_post_wrap">
+  <div id="each_post">
+ 
+    <div class="post_photoWrap titleLink" data-no="{{no}}" data-userNo="{{userNo}}">
+      <a href="#">
+        <img id="thumbImg_{{no}}" src="{{linkImage}}" alt="Image File">
+      </a>
+    </div>
+  
+    <div class="post_contsWrap">
+      <span class="each_post_title titleLink" data-no="{{no}}" data-userNo="{{userNo}}">{{title}}</span>
+<div class="post_ctgWrap">
+      <span class="categoryLink" data-ctg="{{categoryNo}}">{{category}}</span>
+    </div>      
+<span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><span>{{{contents}}}</span></span>
+    </div>
+
+    
+
+    <div class="post_BtnWrap">
+      <div id="user_Nick">
+        <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+        <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
+      </div>
+      <div class="post_leftBtn">
+        <img  class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
+        <span>{{viewCount}}</span>
+      </div>
+      <div class="post_rightBtn">
+        <img class="like_Onclick" src="/TeamProject/mainpage/mainpage_images/likeOnClick.png" alt="like">
+        <span>{{like}}</span>
+      </div>
+    <div>
+  </div>
+</li>
+{{/each}}
+</script>
+<script id="li3TemplateText" type="text/x-handlebars-template">
+{{#each data.list3}}
+<li id="each_post_wrap">
+  <div id="each_post">
+ 
+    <div class="post_photoWrap titleLink" data-no="{{no}}" data-userNo="{{userNo}}">
+      <a href="#">
+        <img id="thumbImg_{{no}}" src="{{linkImage}}" alt="Image File">
+      </a>
+    </div>
+  
+    <div class="post_contsWrap">
+      <span class="each_post_title titleLink" data-no="{{no}}" data-userNo="{{userNo}}">{{title}}</span>
+<div class="post_ctgWrap">
+      <span class="categoryLink" data-ctg="{{categoryNo}}">{{category}}</span>
+    </div>      
+<span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><span>{{{contents}}}</span></span>
+    </div>
+
+   
+
+    <div class="post_BtnWrap">
+      <div id="user_Nick">
+        <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+        <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
+      </div>
+      <div class="post_leftBtn">
+        <img class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
+        <span>{{viewCount}}</span>
+      </div>
+      <div class="post_rightBtn">
+        <img class="like_Onclick" src="/TeamProject/mainpage/mainpage_images/likeOnClick.png" alt="like">
+        <span>{{like}}</span>
+      </div>
+    <div>
+  </div>
+</li>
+{{/each}}
+</script>
+<script id="li4TemplateText" type="text/x-handlebars-template">
+{{#each data.list4}}
+<li id="each_post_wrap">
+  <div id="each_post">
+ 
+    <div class="post_photoWrap titleLink" data-no="{{no}}" data-userNo="{{userNo}}">
+      <a href="#">
+        <img id="thumbImg_{{no}}" src="{{linkImage}}" alt="Image File">
+      </a>
+    </div>
+  
+    <div class="post_contsWrap">
+      <span class="each_post_title titleLink" data-no="{{no}}" data-userNo="{{userNo}}">{{title}}</span>
+<div class="post_ctgWrap">
+      <span class="categoryLink" data-ctg="{{categoryNo}}">{{category}}</span>
+    </div>      
+<span class="each_post_contents titleLink" data-no="{{no}}" data-userNo="{{userNo}}"><span>{{{contents}}}</span></span>
+    </div>
+
+    
+
+    <div class="post_BtnWrap">
+      <div id="user_Nick">
+        <img class="user_Nonepht userInfoLink" data-userImage="{{userProfilePath}}" src="/TeamProject/upload/{{userProfilePath}}" alt="userImg" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">
+        <span class="userInfoLink" data-userNo="{{userNo}}" data-userNick="{{writerNick}}">{{writerNick}}</span>
+      </div>
+      <div class="post_leftBtn">
+        <img class="viewCount" src="/TeamProject/mainpage/mainpage_images/viewCount.png" alt="view">
+        <span>{{viewCount}}</span>
+      </div>
+      <div class="post_rightBtn">
+        <img class="like_Onclick" src="/TeamProject/mainpage/mainpage_images/likeOnClick.png" alt="like">
+        <span>{{like}}</span>
+      </div>
+    <div>
+  </div>
+</li>
+{{/each}}
+</script>
+<!--  -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>

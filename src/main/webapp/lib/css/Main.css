@@ -115,40 +115,36 @@ body {
 }
 
 .mainpage_wrap {
-  max-width: 1048px;
+  width: 1266.39px;
   height: 100%;
   margin: 0 auto;
 }
 
 #mainpage_postcontainer {
-	max-width: 1048px;
+	max-width: 1266.39px;
   margin-top: 25px;
 }
-
 .all_post_wrap {
-  width: 100%;
+  width: 1266.39px;
   background-color: white;
-  position: relative;
+/*   position: relative; */
 }
 
 #post_wrapper {
-  padding-top: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
+	float: left;
+	width: 280px;
+	margin: 0 20px 0 0;
 }
 
 #each_post_wrap {
-/*   width: 330px; */
-  width:348.98px;
-  height: 501px;
-  float: left;
-  margin: 0 auto;
+	width: 280px;
+  height: 100%;
+  margin-bottom: 20px;
 }
 
 #each_post {
-  width: 316px;
-  height: 469px;
-  margin: 0 auto 32px auto;
+  width: 280px;
+  height: 100%;
   background-color: white;
   border: 1px solid #e3e3e3;
   border-radius: 3px;
@@ -156,11 +152,12 @@ body {
   position: relative;
 }
 
-#each_post>#user_Nick {
-  width: 314px;
-  height: 52px;
-  padding: 12px 14px;
-  background-color: #f1f1f1;
+#user_Nick {
+  width: 140px;
+  height: 40px;
+/*   background-color: #f1f1f1; */
+  float: left;
+  padding: 6px 0 6px 6px;
 }
 
 #user_Nick>span {
@@ -189,25 +186,23 @@ body {
 }
 
 .post_photoWrap {
-  width: 314px;
-  height: 245px;
-  margin: 0 0 8px 0;
+  width: 280px;;
+  height: 100%;
   overflow: hidden;
-  position: relative;
   cursor: pointer;
 }
 
 
 .post_photoWrap a {
-  position: relative;
   overflow: hidden;
   display: block;
   cursor: pointer;
 }
 
 .post_contsWrap {
-  min-height: 80px;
-  margin-bottom: 1px;
+	width: 280px;
+  height: 166px;
+  padding: 7% 7% 8% 7%;
 }
 
 .post_photoWrap img {
@@ -217,14 +212,14 @@ body {
 
 .each_post_title {
   display: block;
-  max-height: 52px;
-  padding: 4px 14px 0 14px;
+  max-height: 24px;
   overflow: hidden;
   white-space: pre-line;
-  font-weight: bold;
-  font-size: 17px;
+  font-weight: 500;
+  font-size: 23px;
   line-height: 24px;
   cursor: pointer;
+  margin-bottom: 3px;
 }
 
 .each_post_title:hover {
@@ -232,18 +227,19 @@ body {
 }
 
 .each_post_contents {
+	margin: 5px 0 0 0;
   display: block;
-  font-size: 13px;
-  height: 48px;
+  font-size: 20px;
+  height: 60px;
   line-height: 22px;
-  padding: 5px 14px 3px 14px;
   cursor: pointer;
   overflow: hidden;
   white-space: pre-line;
   cursor: pointer;
+    color: #B7B5B5;
 }
-
 .each_post_contents  div, font, span {
+	font-size: 20px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -252,31 +248,30 @@ body {
 }
 
 .post_BtnWrap {
-  position: absolute;
   bottom: 0;
-  width: 314px;
+  width: 278px;
   border-top: solid 1px #f2f2f2;
   background-color: #fafafa;
   height: 41px;
-  padding: 11px 14px 12px 14px;
+/*   padding: 11px 14px 12px 14px; */
   font-size: 11px;
   font-weight: normal;
   line-height: 16px;
   cursor: pointer;
   border-radius: inherit;
+  position: relative;
 }
 
 .post_ctgWrap {
-  padding: 5px 14px 3px 14px;
-  position: absolute;
-  bottom: 43px;
+/* 	border: 1px solid black; */
+margin-top: 6px;
 }
 
 .post_ctgWrap > span {
-  border: 1px solid black;
+/*   border: 1px solid black; */
   border-radius: 3px;
   padding: 2px;
-  font-size: 10px;
+  font-size: 15px;
 }
 .like_Onclick {
   width: 14px;
@@ -285,11 +280,17 @@ body {
 }
 
 .post_rightBtn {
-  float: right !important;
-  margin-right: 15px;
+	position:absolute;
+  float: left !important;
+/*   margin-right: 15px; */
+bottom: 10px;
+left: 160px;
 }
 
 .post_leftBtn {
+	position: absolute;
+	bottom:10px;
+	left: 200px;
   float: left !important;
 }
 
@@ -432,9 +433,6 @@ body {
   display: none;
 }
 
-.each_post_title {
-  border-top: 1px solid #e8e8e8; 
-}
 
 #userDesc div, span {
   white-space: pre-line;

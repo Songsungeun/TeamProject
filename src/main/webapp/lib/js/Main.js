@@ -15,8 +15,156 @@ function ajaxBoardList() {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-		var template1 = Handlebars.compile($('#liTemplateText').html())
-		$(".tab-content > .category_tab-0").html(template1(result));
+		var template1 = Handlebars.compile($('#li1TemplateText').html())
+		$(".tab-content > .allConts1").html(template1(result));
+		var template2 = Handlebars.compile($('#li2TemplateText').html())
+		$(".tab-content > .allConts2").html(template2(result));
+		var template3 = Handlebars.compile($('#li3TemplateText').html())
+		$(".tab-content > .allConts3").html(template3(result));
+		var template4 = Handlebars.compile($('#li4TemplateText').html())
+		$(".tab-content > .allConts4").html(template4(result));
+		console.log("메인페이지 핸들바스 적용됨")
+		
+		var arr1 = result.data.list1;
+		for(var i=0; i < arr1.length; i++) {
+			var imgWidth = $("#thumbImg_"+ arr1[i].no).width();
+			var imgHeight = $("#thumbImg_"+ arr1[i].no).height();
+			console.log("width_"+ arr1[i].no +"=" + imgWidth);
+			console.log("height_" + arr1[i].no +"=" + imgHeight);
+			var heigtRate = (280 * imgHeight) / imgWidth;
+			console.log("CHANGE height_" + arr1[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr1[i].no).css({"width":"280"})
+			$("#thumbImg_"+arr1[i].no).css({"height":heigtRate})
+		};
+		var arr2 = result.data.list2;
+		for(var i=0; i < arr2.length; i++) {
+			var imgWidth = $("#thumbImg_"+ arr2[i].no).width();
+			var imgHeight = $("#thumbImg_"+ arr2[i].no).height();
+			console.log("width_"+ arr2[i].no +"=" + imgWidth);
+			console.log("height_" + arr2[i].no +"=" + imgHeight);
+			var heigtRate = (280 * imgHeight) / imgWidth;
+			console.log("CHANGE height_" + arr2[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr2[i].no).css({"width":"280"})
+			$("#thumbImg_"+arr2[i].no).css({"height":heigtRate})
+		};
+
+		var arr3 = result.data.list3;
+		for(var i=0; i < arr3.length; i++) {
+			var imgWidth = $("#thumbImg_"+ arr3[i].no).width();
+			var imgHeight = $("#thumbImg_"+ arr3[i].no).height();
+			console.log("width_"+ arr3[i].no +"=" + imgWidth);
+			console.log("height_" + arr3[i].no +"=" + imgHeight);
+			var heigtRate = (280 * imgHeight) / imgWidth;
+			console.log("CHANGE height_" + arr3[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr3[i].no).css({"width":"280"})
+			$("#thumbImg_"+arr3[i].no).css({"height":heigtRate})
+		};
+
+		var arr4 = result.data.list4;
+		for(var i=0; i < arr4.length; i++) {
+			var imgWidth = $("#thumbImg_"+ arr4[i].no).width();
+			var imgHeight = $("#thumbImg_"+ arr4[i].no).height();
+			console.log("width_"+ arr4[i].no +"=" + imgWidth);
+			console.log("height_" + arr4[i].no +"=" + imgHeight);
+			var heigtRate = (280 * imgHeight) / imgWidth;
+			console.log("CHANGE height_" + arr4[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr4[i].no).css({"width":"280"})
+			$("#thumbImg_"+arr4[i].no).css({"height":heigtRate})
+		};
+
+		
+		
+//		var contents1 = "";
+//		var arr1 = result.data.list1;
+//		
+//			for (var i=0; i < arr1.length; i++) {
+//				contents1 +=
+//					"<li id='each_post_wrap' class='posetList_"+arr1[i].no+"' data-no='"+arr1[i].no+"'>"+
+//					"<div id='each_post'><div id='user_Nick'><img class='user_Nonepht userInfoLink'"+
+//					"data-userImage='"+arr1[i].userProfilePath+"' src='../upload/"+arr1[i].userProfilePath+"' "+
+//					"alt='userImg' data-userNo='" + arr1[i].userNo + "' data-userNick='" + arr1[i].writerNick + "'>" +
+//					"<span class='userInfoLink' data-userNo='"+arr1[i].userNo+"' data-userNick='"+arr1[i].writerNick+"'>"+arr1[i].writerNick+"</span></div>" +
+//					"<div class='post_photoWrap titleLink' data-no='"+arr1[i].no+"' data-userNo='"+arr1[i].userNo+"'>"+
+//					"<a href='#'><img id='thumbImg_"+arr1[i].no+"' src='"+arr1[i].linkImage+"' alt='Image File'></a></div>"+
+//					"<a class='post_contsWrap'><span class='each_post_title titleLink' data-no='"+arr1[i].no+"' data-userNo='"+arr1[i].userNo+"'>"+arr1[i].title+"</span>"+
+//					"<span class='each_post_contents titleLink' data-no='"+arr1[i].no+"' data-userNo='"+arr1[i].userNo+"'><span>"+arr1[i].contents+"</span></span></a>"+
+//					"<div class='post_ctgWrap'><span class='categoryLink' data-ctg='"+arr1[i].categoryNo+"'>"+arr1[i].category+"'</span></div>"+
+//					"<div class='post_BtnWrap'><div class='post_leftBtn'>"+
+//					"<img class='viewCount' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+//					"<span>"+arr1[i].viewCount+"</span></div><div class='post_rightBtn'>"+
+//					"<img class='like_Onclick' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+//					"<span>"+arr1[i].like+"</span></div><div></div></li>"
+//			}
+//			$(".tab-content > .allConts1").html(contents1);
+//			var contents2 = "";
+//			var arr2 = result.data.list2;
+//			
+//			for (var i=0; i < arr2.length; i++) {
+//			contents2 +=
+//				"<li id='each_post_wrap' class='posetList_"+arr2[i].no+"' data-no='"+arr2[i].no+"'>"+
+//				"<div id='each_post'><div id='user_Nick'><img class='user_Nonepht userInfoLink'"+
+//				"data-userImage='"+arr2[i].userProfilePath+"' src='../upload/"+arr2[i].userProfilePath+"' "+
+//				"alt='userImg' data-userNo='" + arr2[i].userNo + "' data-userNick='" + arr2[i].writerNick + "'>" +
+//				"<span class='userInfoLink' data-userNo='"+arr2[i].userNo+"' data-userNick='"+arr2[i].writerNick+"'>"+arr2[i].writerNick+"</span></div>" +
+//				"<div class='post_photoWrap titleLink' data-no='"+arr2[i].no+"' data-userNo='"+arr2[i].userNo+"'>"+
+//				"<a href='#'><img id='thumbImg_"+arr2[i].no+"' src='"+arr2[i].linkImage+"' alt='Image File'></a></div>"+
+//				"<a class='post_contsWrap'><span class='each_post_title titleLink' data-no='"+arr2[i].no+"' data-userNo='"+arr2[i].userNo+"'>"+arr2[i].title+"</span>"+
+//				"<span class='each_post_contents titleLink' data-no='"+arr2[i].no+"' data-userNo='"+arr2[i].userNo+"'><span>"+arr2[i].contents+"</span></span></a>"+
+//				"<div class='post_ctgWrap'><span class='categoryLink' data-ctg='"+arr2[i].categoryNo+"'>"+arr2[i].category+"'</span></div>"+
+//				"<div class='post_BtnWrap'><div class='post_leftBtn'>"+
+//				"<img class='viewCount' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+//				"<span>"+arr2[i].viewCount+"</span></div><div class='post_rightBtn'>"+
+//				"<img class='like_Onclick' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+//				"<span>"+arr2[i].like+"</span></div><div></div></li>"
+//			}
+//			$(".tab-content > .allConts2").html(contents2);
+//			var contents3 = "";
+//			var arr3 = result.data.list3;
+//			
+//			for (var i=0; i < arr3.length; i++) {
+//			contents3 +=
+//				"<li id='each_post_wrap' class='posetList_"+arr3[i].no+"' data-no='"+arr3[i].no+"'>"+
+//				"<div id='each_post'><div id='user_Nick'><img class='user_Nonepht userInfoLink'"+
+//				"data-userImage='"+arr3[i].userProfilePath+"' src='../upload/"+arr3[i].userProfilePath+"' "+
+//				"alt='userImg' data-userNo='" + arr3[i].userNo + "' data-userNick='" + arr3[i].writerNick + "'>" +
+//				"<span class='userInfoLink' data-userNo='"+arr3[i].userNo+"' data-userNick='"+arr3[i].writerNick+"'>"+arr3[i].writerNick+"</span></div>" +
+//				"<div class='post_photoWrap titleLink' data-no='"+arr3[i].no+"' data-userNo='"+arr3[i].userNo+"'>"+
+//				"<a href='#'><img id='thumbImg_"+arr3[i].no+"' src='"+arr3[i].linkImage+"' alt='Image File'></a></div>"+
+//				"<a class='post_contsWrap'><span class='each_post_title titleLink' data-no='"+arr3[i].no+"' data-userNo='"+arr3[i].userNo+"'>"+arr3[i].title+"</span>"+
+//				"<span class='each_post_contents titleLink' data-no='"+arr3[i].no+"' data-userNo='"+arr3[i].userNo+"'><span>"+arr3[i].contents+"</span></span></a>"+
+//				"<div class='post_ctgWrap'><span class='categoryLink' data-ctg='"+arr3[i].categoryNo+"'>"+arr3[i].category+"'</span></div>"+
+//				"<div class='post_BtnWrap'><div class='post_leftBtn'>"+
+//				"<img class='viewCount' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+//				"<span>"+arr3[i].viewCount+"</span></div><div class='post_rightBtn'>"+
+//				"<img class='like_Onclick' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+//				"<span>"+arr3[i].like+"</span></div><div></div></li>"
+//			}
+//			$(".tab-content > .allConts3").html(contents3);
+//			
+//			var contents4 = "";
+//			var arr4 = result.data.list4;
+//			for (var i=0; i < arr4.length; i++) {
+//			contents4 +=
+//				"<li id='each_post_wrap' class='posetList_"+arr4[i].no+"' data-no='"+arr4[i].no+"'>"+
+//				"<div id='each_post'><div id='user_Nick'><img class='user_Nonepht userInfoLink'"+
+//				"data-userImage='"+arr4[i].userProfilePath+"' src='../upload/"+arr4[i].userProfilePath+"' "+
+//				"alt='userImg' data-userNo='" + arr4[i].userNo + "' data-userNick='" + arr4[i].writerNick + "'>" +
+//				"<span class='userInfoLink' data-userNo='"+arr4[i].userNo+"' data-userNick='"+arr4[i].writerNick+"'>"+arr4[i].writerNick+"</span></div>" +
+//				"<div class='post_photoWrap titleLink' data-no='"+arr4[i].no+"' data-userNo='"+arr4[i].userNo+"'>"+
+//				"<a href='#'><img id='thumbImg_"+arr4[i].no+"' src='"+arr4[i].linkImage+"' alt='Image File'></a></div>"+
+//				"<a class='post_contsWrap'><span class='each_post_title titleLink' data-no='"+arr4[i].no+"' data-userNo='"+arr4[i].userNo+"'>"+arr4[i].title+"</span>"+
+//				"<span class='each_post_contents titleLink' data-no='"+arr4[i].no+"' data-userNo='"+arr4[i].userNo+"'><span>"+arr4[i].contents+"</span></span></a>"+
+//				"<div class='post_ctgWrap'><span class='categoryLink' data-ctg='"+arr4[i].categoryNo+"'>"+arr4[i].category+"'</span></div>"+
+//				"<div class='post_BtnWrap'><div class='post_leftBtn'>"+
+//				"<img class='viewCount' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+//				"<span>"+arr4[i].viewCount+"</span></div><div class='post_rightBtn'>"+
+//				"<img class='like_Onclick' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+//				"<span>"+arr4[i].like+"</span></div><div></div></li>"
+//			}
+//			$(".tab-content > .allConts4").html(contents4);
+		
+		
+		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
