@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import honey.service.HoneyAdminService;
 import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
+import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.FileList;
+import honey.vo.HoneyBoardFile;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
@@ -28,6 +30,7 @@ public class HoneyAdminController {
     @Autowired HoneyAdminService honeyAdminService;
     @Autowired HoneymembersService hMembersService;
     @Autowired HoneyMainService mainService;
+    @Autowired DefaultHoneyBoardService boardService;
     
     @RequestMapping(path = "adminPostlist")
     public Object postList(
@@ -35,7 +38,7 @@ public class HoneyAdminController {
         @RequestParam(defaultValue = "1") int pageNo,
         @RequestParam(defaultValue = "6") int length)throws Exception {
       try {
-        
+      HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
       List<HoneyMain>list = honeyAdminService.adminBoardList(session, pageNo, length);
       int totalPage = honeyAdminService.getTotalPage(session, length);
       List<UrlInfo> urlList = mainService.getURLList();
@@ -45,6 +48,10 @@ public class HoneyAdminController {
         String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
         list.get(i).setUserProfilePath(userPhoto);
       }
+      
+      
+      
+      
       HashMap<String,Object> data = new HashMap<>();
       data.put("list", list);    
       data.put("totalPage", totalPage);

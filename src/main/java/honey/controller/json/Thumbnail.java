@@ -1,41 +1,47 @@
 package honey.controller.json;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.util.List;
 
-import javax.imageio.ImageIO;
+import honey.vo.HoneyBoardFile;
 
 public class Thumbnail {
-	public static void createImage(String loadFile, String saveFile, int zoom) throws IOException{
-		File save = new File(saveFile);
-		FileInputStream fis = new FileInputStream(loadFile);
-		BufferedImage im = ImageIO.read(fis);
-		
-		if (zoom<=0) zoom = 1;
-		
-		int width = 50;//im.getWidth() / zoom;
-		int height = 50;//im.getHeight() / zoom;
-		
-		BufferedImage thumb = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics2D g2 = thumb.createGraphics();
-		
-		g2.drawImage(im, 0, 0, width, height, null);
-		ImageIO.write(thumb, "jpg", save);
-		
-	}
-	
-	public static void main(String args[]){
-		String loadFile = "/Users/songsungeun/Desktop/동영상 2016. 11. 2. 오후 9.51.mov";
-		String saveFile = "/Users/songsungeun/Downloads/이미지 테스트용/dong.jpg";
-		int zoom = 5;
-		
-		try {
-			Thumbnail.createImage(loadFile, saveFile, zoom);
-		} catch (IOException e) {
-			e.printStackTrace();
+	public List<HoneyBoardFile> setThumbnail(List<HoneyBoardFile> fileList) {
+		String extension;
+		String[] extensionArr;
+		for (int i = 0; i < fileList.size(); i++) {
+			extension = fileList.get(i).getOriginFileName();
+			extensionArr = extension.split("\\.");
+
+			if(extensionArr[extensionArr.length-1].equals("txt")) {
+				fileList.get(i).setFileThumbnail("txt.png");
+			} else if (extensionArr[extensionArr.length-1].equals("avi")) {
+				fileList.get(i).setFileThumbnail("avi.png");
+			} else if (extensionArr[extensionArr.length-1].equals("doc") || extensionArr[extensionArr.length-1].equals("docx")) {
+				fileList.get(i).setFileThumbnail("doc.png");
+			} else if (extensionArr[extensionArr.length-1].equals("mp4")) {
+				fileList.get(i).setFileThumbnail("mp4.png");
+			} else if (extensionArr[extensionArr.length-1].equals("mpeg")) {
+				fileList.get(i).setFileThumbnail("mpeg.png");
+			} else if (extensionArr[extensionArr.length-1].equals("pdf")) {
+				fileList.get(i).setFileThumbnail("pdf.png");
+			} else if (extensionArr[extensionArr.length-1].equals("ppt") || extensionArr[extensionArr.length-1].equals("pptx")) {
+				fileList.get(i).setFileThumbnail("ppt.png");
+			} else if (extensionArr[extensionArr.length-1].equals("wmv")) {
+				fileList.get(i).setFileThumbnail("wmv.png");
+			} else if (extensionArr[extensionArr.length-1].equals("xls") || extensionArr[extensionArr.length-1].equals("xlsx")) {
+				fileList.get(i).setFileThumbnail("xls.png");
+			} else if (extensionArr[extensionArr.length-1].equals("zip") || extensionArr[extensionArr.length-1].equals("7z") || 
+					extensionArr[extensionArr.length-1].equals("egg") || extensionArr[extensionArr.length-1].equals("rar") || 
+					extensionArr[extensionArr.length-1].equals("alz") || extensionArr[extensionArr.length-1].equals("tar") ||
+					extensionArr[extensionArr.length-1].equals("gz")) {
+				fileList.get(i).setFileThumbnail("zip.png");
+			} else if (extensionArr[extensionArr.length-1].equals("jpg") || extensionArr[extensionArr.length-1].equals("jpeg") || extensionArr[extensionArr.length-1].equals("png") || extensionArr[extensionArr.length-1].equals("svg") || extensionArr[extensionArr.length-1].equals("bmp") 
+					|| extensionArr[extensionArr.length-1].equals("gif")) {
+				fileList.get(i).setFileThumbnail(fileList.get(i).getFileName());
+			} else {
+				fileList.get(i).setFileThumbnail("java.png");
+			}
 		}
+		return fileList;
 	}
 }

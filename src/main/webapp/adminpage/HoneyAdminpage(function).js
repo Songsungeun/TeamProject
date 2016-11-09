@@ -88,6 +88,7 @@ function ajaxDeleteBoard(no) {
   function ajaxLoadBoard(no) {
 		$.getJSON(serverAddr + "/admin/postdetail.json?no=" + no, function(obj) {
 			var result = obj.jsonResult
+			var fileList = '';
 			if (result.state == "fail" || result.state == "error") {
 				alert("조회 실패입니다.")
 				return
