@@ -104,9 +104,20 @@ body {
 	margin: 30px auto 0 auto;
 }
 
+.fb-login-btn-area {
+  margin-top: -15px;
+	float: left;
+	display: block;
+	width: 164px;
+	height: 40px;
+}
 .fb_iframe_widget iframe {
-    position: absolute !important;
-    margin-top: 14px !important;
+  /*display: none;*/
+  opacity: 0;
+  float: left !important;
+  z-index: 10;
+  bottom: 40px;
+  position: relative;
 }
 
 #kakao_login {
@@ -294,6 +305,17 @@ body {
 	margin-top: 10px;
 }
 
+#facebook_login {
+    width: 164px;
+    height: 40px;
+    font-size: 15px;
+    margin: 0 7.6px;
+    background-color: #32F1FF;
+    opacity: 0.7;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
 #formHeader {
 	text-align: center;
 	color: white;
@@ -436,8 +458,11 @@ body {
 				</div>
 			</div>
 			<div id="otherLogin">
-				<div class="fb-login-button" data-max-rows="1" data-size="xlarge"
-					data-show-faces="false" data-auto-logout-link="false"></div>
+				<div class="fb-login-btn-area">
+				<button id="facebook_login" href="#">페이스북으로 로그인</button>
+					<div class="fb-login-button" data-max-rows="1" data-size="xlarge"
+						data-show-faces="false" data-auto-logout-link="false">Facebook</div>
+				</div>
 				<button id="kakao_login" href="#">카카오계정으로 로그인</button>
 				<button id="myBtn" type="button" class="btn btn-primary btn-lg"
 					data-toggle="modal" data-target="#myModal">회원가입</button>
@@ -509,7 +534,7 @@ body {
 	<script src="membership.js"></script>
 	<script src="http://connect.facebook.net/ko_KR/all.js#xfbml=1"
 		language="JavaScript" type="text/javascript"></script>
-		
+
 	<script>
 		// Get the modal
 		var modal = document.getElementById('myModal');
@@ -606,12 +631,14 @@ body {
 
 	<script>
 		$("#login_Button").click(function(event) {
+			event.stopImmediatePropagation();
 			var user = {
 				email : $("#idWrite").val(),
 				password : $("#passWrite").val(),
 			}
 			ajaxLogin(user)
 		});
+		
 	</script>
 
 
@@ -643,7 +670,7 @@ body {
 							email : fbUser.id,
 							password : fbUser.id
 						}
-						ajaxLogin(facebookUser, fbuser)
+						ajaxFacebookLogin(facebookUser, fbuser)
 					})
 				}
 			});

@@ -12,7 +12,7 @@ $("#logoutBtn").click(function(event) {
  */
 
 
-function ajaxLogin(user, fbuser) {
+function ajaxFacebookLogin(user, fbuser) {
 	$.ajax({
 		url: serverAddr + "/mainpage/login.json",
 		method: "POST",
@@ -22,7 +22,27 @@ function ajaxLogin(user, fbuser) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
 				ajaxAddFacebookMember(fbuser)
-				ajaxLogin(user)
+				ajaxFacebookLogin(user)
+				return
+			}
+			window.location.href = "../mainpage/Main.html"
+		},
+		error: function(msg) {
+			alert(msg)
+		}
+	})
+}
+
+function ajaxLogin(user) {
+	$.ajax({
+		url: serverAddr + "/mainpage/login.json",
+		method: "POST",
+		dataType: "json",
+		data: user,
+		success: function(obj) {
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				console.log("로그인에 실패하였습니다. 이메일 또는 비밀번호를 확인해주세요")
 				return
 			}
 			window.location.href = "../mainpage/Main.html"
@@ -61,7 +81,6 @@ function ajaxLoginUser() {
 		} else {
 			$("#profilePicture").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
 		}
-		//  $('#image').attr('src','http://graph.facebook.com/' + fbUser.id + '/picture');
 	})
 
 
@@ -78,7 +97,6 @@ function ajaxLogout(user) {
 		if (result.state != "success")
 			alert("로그아웃 실패입니다.")
 	})
-	alert("메인 페이지로 이동합니다.")
 }
 
 
