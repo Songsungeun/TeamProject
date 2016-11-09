@@ -25,26 +25,28 @@ function ajaxBoardList() {
 		$(".tab-content > .allConts4").html(template4(result));
 		console.log("메인페이지 핸들바스 적용됨")
 		
+		
+		
 		var arr1 = result.data.list1;
 		for(var i=0; i < arr1.length; i++) {
 			var imgWidth = $("#thumbImg_"+ arr1[i].no).width();
 			var imgHeight = $("#thumbImg_"+ arr1[i].no).height();
-			console.log("width_"+ arr1[i].no +"=" + imgWidth);
-			console.log("height_" + arr1[i].no +"=" + imgHeight);
-			var heigtRate = (280 * imgHeight) / imgWidth;
-			console.log("CHANGE height_" + arr1[i].no +"=" + heigtRate);
-			$("#thumbImg_"+arr1[i].no).css({"width":"280"})
+//			console.log("width_"+ arr1[i].no +"=" + imgWidth);
+//			console.log("height_" + arr1[i].no +"=" + imgHeight);
+			var heigtRate = (250 * imgHeight) / imgWidth;
+//			console.log("CHANGE height_" + arr1[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr1[i].no).css({"width":"250"})
 			$("#thumbImg_"+arr1[i].no).css({"height":heigtRate})
 		};
 		var arr2 = result.data.list2;
 		for(var i=0; i < arr2.length; i++) {
 			var imgWidth = $("#thumbImg_"+ arr2[i].no).width();
 			var imgHeight = $("#thumbImg_"+ arr2[i].no).height();
-			console.log("width_"+ arr2[i].no +"=" + imgWidth);
-			console.log("height_" + arr2[i].no +"=" + imgHeight);
-			var heigtRate = (280 * imgHeight) / imgWidth;
-			console.log("CHANGE height_" + arr2[i].no +"=" + heigtRate);
-			$("#thumbImg_"+arr2[i].no).css({"width":"280"})
+//			console.log("width_"+ arr2[i].no +"=" + imgWidth);
+//			console.log("height_" + arr2[i].no +"=" + imgHeight);
+			var heigtRate = (250 * imgHeight) / imgWidth;
+//			console.log("CHANGE height_" + arr2[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr2[i].no).css({"width":"250"})
 			$("#thumbImg_"+arr2[i].no).css({"height":heigtRate})
 		};
 
@@ -52,11 +54,11 @@ function ajaxBoardList() {
 		for(var i=0; i < arr3.length; i++) {
 			var imgWidth = $("#thumbImg_"+ arr3[i].no).width();
 			var imgHeight = $("#thumbImg_"+ arr3[i].no).height();
-			console.log("width_"+ arr3[i].no +"=" + imgWidth);
-			console.log("height_" + arr3[i].no +"=" + imgHeight);
-			var heigtRate = (280 * imgHeight) / imgWidth;
-			console.log("CHANGE height_" + arr3[i].no +"=" + heigtRate);
-			$("#thumbImg_"+arr3[i].no).css({"width":"280"})
+//			console.log("width_"+ arr3[i].no +"=" + imgWidth);
+//			console.log("height_" + arr3[i].no +"=" + imgHeight);
+			var heigtRate = (250 * imgHeight) / imgWidth;
+//			console.log("CHANGE height_" + arr3[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr3[i].no).css({"width":"250"})
 			$("#thumbImg_"+arr3[i].no).css({"height":heigtRate})
 		};
 
@@ -64,11 +66,11 @@ function ajaxBoardList() {
 		for(var i=0; i < arr4.length; i++) {
 			var imgWidth = $("#thumbImg_"+ arr4[i].no).width();
 			var imgHeight = $("#thumbImg_"+ arr4[i].no).height();
-			console.log("width_"+ arr4[i].no +"=" + imgWidth);
-			console.log("height_" + arr4[i].no +"=" + imgHeight);
-			var heigtRate = (280 * imgHeight) / imgWidth;
-			console.log("CHANGE height_" + arr4[i].no +"=" + heigtRate);
-			$("#thumbImg_"+arr4[i].no).css({"width":"280"})
+//			console.log("width_"+ arr4[i].no +"=" + imgWidth);
+//			console.log("height_" + arr4[i].no +"=" + imgHeight);
+			var heigtRate = (250 * imgHeight) / imgWidth;
+//			console.log("CHANGE height_" + arr4[i].no +"=" + heigtRate);
+			$("#thumbImg_"+arr4[i].no).css({"width":"250"})
 			$("#thumbImg_"+arr4[i].no).css({"height":heigtRate})
 		};
 

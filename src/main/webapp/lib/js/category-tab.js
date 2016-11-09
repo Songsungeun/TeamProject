@@ -48,9 +48,18 @@ function ajaxCategoryIncludeBoardList(no) {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-		console.log("selectListandCategory 실행");
-		var boardTemplate = Handlebars.compile($('#liTemplateText').html())
-		$(".tab-content > .category_tab-"+no).html(boardTemplate(result));
+		console.log("selectListandCategory111 실행");
+		var template11 = Handlebars.compile($('#li1TemplateText').html())
+		$(".category_tab-1-"+no).html(template11(result));
+		var template22 = Handlebars.compile($('#li2TemplateText').html())
+		$(".category_tab-2-"+no).html(template22(result));
+		var template33 = Handlebars.compile($('#li3TemplateText').html())
+		$(".category_tab-3-"+no).html(template33(result));
+		var template44 = Handlebars.compile($('#li4TemplateText').html())
+		$(".category_tab-4-"+no).html(template44(result));
+		
+//		var boardTemplate = Handlebars.compile($('#liTemplateText').html())
+//		$(".tab-content > .category_tab-"+no && ".allConts4").html(boardTemplate(result));
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
