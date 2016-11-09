@@ -26,6 +26,7 @@ import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
+import honey.vo.Messages;
 import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
@@ -38,20 +39,38 @@ public class HoneymembersController {
 
 	@RequestMapping(path="joinMember")
 	public Object joinMember(HoneyMembers members) throws Exception {
-		if (members.getPassword() == null) {
-			members.setPassword(members.getEmail());
-			members.setNickname(members.getUserName());
-			members.setPhone("1");
-			hMembersService.singUpMembers(members);
-			return JsonResult.success();
-		} else {
 		try {
 			hMembersService.singUpMembers(members);
 			return JsonResult.success();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail();
-		} }
+		}
+	}
+
+	@RequestMapping(path="facebookLoginMember")
+	public Object facebookLoginMember(HoneyMembers members) throws Exception {
+		System.out.println("hello"+members);
+		if (members.getPassword() == null) {
+			members.setPassword(members.getEmail());
+			members.setNickname(members.getUserName());
+			members.setPhone(" ");
+			hMembersService.singUpMembers(members);
+			HoneyMembers facebookMember = hMembersService.getUserNumberByNickName(members.getNickname());
+			MemberFile profileFile = new MemberFile();
+			//  'http://graph.facebook.com/' + fbUser.id + '/picture'
+			profileFile.setFilename(members.getEmail());
+			profileFile.setMemberNo(facebookMember.getMemberNo());
+			memberFileDao.prifileFileinsert(profileFile);
+			return JsonResult.success();
+		} else {
+			try {
+				hMembersService.singUpMembers(members);
+				return JsonResult.success();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return JsonResult.fail();
+			} }
 	}
 
 	@RequestMapping(path="unregisteMember")
@@ -73,12 +92,11 @@ public class HoneymembersController {
 		// 이 메서드는 DB에서 작업할 일이 없어서 service 클래스에서 따로 구현할 필요가 없을 것 같다.
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
-			
+
 			if(hMembers == null) {
 				System.out.println("해당 회원 정보가 없습니다.");
 			}
 			HoneyMembers user = hMembersService.getUserInfo(hMembers.getMemberNo());
-			System.out.println(user);
 			return JsonResult.success(user);
 		} catch (Exception e) {
 			return JsonResult.fail(e.getMessage());
@@ -87,7 +105,7 @@ public class HoneymembersController {
 
 	@RequestMapping(path="userStatusUpdate")
 	public Object userStatusUpdate(HoneyMembers hmember, HttpSession session) throws Exception {
-		
+
 		try {
 			HoneyMembers honeymembers =(HoneyMembers)session.getAttribute("member");
 			hmember.setMemberNo(honeymembers.getMemberNo());
@@ -163,7 +181,7 @@ public class HoneymembersController {
 	@RequestMapping(path="otherUserInfoDetail")
 	public Object otherUserInfoLoder(HoneyMembers userInfo) {
 		try {
-			HoneyMembers honeyMember = hMembersService.getUserNumber(userInfo.getNickname());
+			HoneyMembers honeyMember = hMembersService.getUserNumberByNickName(userInfo.getNickname());
 			HoneyMembers member = hMembersService.getUserInfo(honeyMember.getMemberNo());
 			MemberFile memberFile = new MemberFile();
 			memberFile.setFilename(hMembersService.getProfileFileName(honeyMember.getMemberNo()));
@@ -173,11 +191,10 @@ public class HoneymembersController {
 			for (int i = 0; i < list.size(); i++) {
 				list.get(i).setUserProfilePath(memberFile.getFilename());
 			}
-			
+
 			List<HoneyMain> OtherUserInfo = SetImage.setImage(list, urlCollect);
-			
+
 			for (int i = 0; i < OtherUserInfo.size(); i++) {
-				System.out.println(i + "번째 image= " + OtherUserInfo.get(i).getLinkImage());
 			}
 			int totalViewCount = 0;
 			int totalLikeCount = 0;
@@ -185,7 +202,6 @@ public class HoneymembersController {
 				totalViewCount += count.getViewCount();
 				totalLikeCount += count.getLike();
 			}
-			System.out.println(totalLikeCount);
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("profilePhoto", memberFile.getFilename());
 			resultMap.put("userInfo", member.getIntroduce());
@@ -237,7 +253,7 @@ public class HoneymembersController {
 			}
 			HoneyMembers follower = new HoneyMembers();
 			follower.setFollowMemberNo(loginUser.getMemberNo());
-		    follower.setNickname(loginUser.getNickname());
+			follower.setNickname(loginUser.getNickname());
 			follower.setMemberNo(memberNo.getMemberNo());
 			try {
 				List<HoneyMembers> checker = hMembersService.followChecker(follower);
@@ -269,7 +285,7 @@ public class HoneymembersController {
 		} 
 
 	}
-	
+
 	@RequestMapping(path="emailCheck")
 	public Object emailCheck(String email) throws Exception {
 		try {
@@ -282,10 +298,31 @@ public class HoneymembersController {
 			e.printStackTrace();
 			return JsonResult.error();
 		} 
-
 	}
-	
-	
-	
-	
+
+	@RequestMapping("messageLode")
+	public void sendMessage(HttpSession session) throws Exception {
+		HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+		Messages messages = new Messages();
+		messages.setLoginUserNo(member.getMemberNo());
+		List<Messages> messageList = hMembersService.getMessages(messages.getLoginUserNo());
+	}
+
+
+	@RequestMapping("sendMessage")
+	public Object sendMessage(Messages messageContents, HttpSession session) throws Exception {
+
+		try {
+			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+			messageContents.setLoginUserNo(loginUser.getMemberNo());
+			HoneyMembers sendUser = hMembersService.getUserNumberByNickName(messageContents.getNickName());
+			messageContents.setMessageTargetUserNo(sendUser.getMemberNo());
+			hMembersService.insertIntoMessage(messageContents);
+			return JsonResult.success();
+		} catch (Exception e) {
+			return JsonResult.fail();
+		}
+	}
+
+
 }

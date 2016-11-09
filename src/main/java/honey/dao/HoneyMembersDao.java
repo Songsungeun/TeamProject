@@ -5,6 +5,7 @@ import java.util.Map;
 
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
+import honey.vo.Messages;
 import honey.vo.honey_boards;
 
 public interface HoneyMembersDao {
@@ -14,7 +15,7 @@ public interface HoneyMembersDao {
   HoneyMembers selectUserInfo(int no) throws Exception;
   int userInfoUpdate(HoneyMembers hmember) throws Exception;
   int changePassword(HoneyMembers hmember) throws Exception;
-  HoneyMembers selectUserNumber(String nickName) throws Exception;
+  HoneyMembers selectUserNumberByNickName(String nickName) throws Exception;
   HoneyMembers selectUserNickName(int memberNo) throws Exception;
   List<HoneyMain> selectBoards(int memberNo) throws Exception;
   int followInsert(HoneyMembers follower) throws Exception;
@@ -24,4 +25,6 @@ public interface HoneyMembersDao {
   int disconnector(HoneyMembers follower) throws Exception;
   HoneyMembers emailCheck(String email) throws Exception;
   HoneyMembers selectOneByMemberNo(int memberNo);
+  int sendMessage(Messages messageContents);
+  List<Messages> selectMessagesByLoginUserNo(int loginUserNo);
 }

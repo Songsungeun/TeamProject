@@ -40,24 +40,15 @@ public class HoneyBoardController {
 			MultipartFile[] files,
 			HttpSession session) throws Exception {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
-		System.out.println("board= " + board);
-		System.out.println("요청 받음");
 		try {
-			System.out.println("add start");
 			HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
-			System.out.println(hMember.getMemberNo());
 			// 보드 멤버 넘버 셋
 			board.setUserNo(hMember.getMemberNo());
-			System.out.println("title= " + board.getTitle());
-			System.out.println("contents= " + board.getContents());
-			System.out.println("youtubeurl= " + board.getYoutubeURL());
 
 			if (!board.getYoutubeURL().equals("")) {
 				String[] youtubeContents = board.getYoutubeURL().split("/");
-				System.out.println("arr[3]= " + youtubeContents[3]);
 				if (board.getYoutubeURL().contains("list")) {
 					String[] youtubeList = youtubeContents[3].split("\\?");
-					System.out.println("youtubeList: " + youtubeList[0]);
 					board.setYoutubeURL(youtubeList[0]);
 				} else {
 					board.setYoutubeURL(youtubeContents[3]);
@@ -74,11 +65,8 @@ public class HoneyBoardController {
 			boardService.insertBoard(board);
 
 			if (!board.getUrl().equals("")) {
-				System.out.println("URL 있을경우 시작");
 				UrlInfo url = Scrapper.UrlForDB(board.getUrl());
-				System.out.println("멤버번호 셋 시작");
 				url.setMb_No(hMember.getMemberNo());
-				System.out.println("멤버번호 셋 종료");
 				//url.setBd_No(bd_No);
 				//url.setBd_No(boardService.getBoardMax().getNo());
 				//System.out.println("no= " + boardService.getBoardMax().getNo());
@@ -110,10 +98,8 @@ public class HoneyBoardController {
 
 	@RequestMapping(path="detail")
 	public Object detail(int no) throws Exception {
-		System.out.println("detail 메서드 실");
 		try {
 			honey_boards board = boardService.getBoard(no);
-			System.out.println("board 객체 받아옴");
 			if (board == null) 
 				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
 

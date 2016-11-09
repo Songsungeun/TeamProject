@@ -52,7 +52,7 @@ function ajaxAddMember(user) {
 
 function ajaxAddFacebookMember(user) {
 	$.ajax({
-		url:serverAddr + "/membership/joinMember.json",
+		url:serverAddr + "/membership/facebookLoginMember.json",
 		type: "POST",
 		dataType: "json",
 		data: user,

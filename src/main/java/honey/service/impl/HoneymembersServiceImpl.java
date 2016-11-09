@@ -12,6 +12,7 @@ import honey.service.HoneymembersService;
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
 import honey.vo.MemberFile;
+import honey.vo.Messages;
 import honey.vo.UrlInfo;
 
 @Service
@@ -50,10 +51,10 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 		}
 	}
 
-	public HoneyMembers getUserNumber(String nickName) throws Exception {
+	public HoneyMembers getUserNumberByNickName(String nickName) throws Exception {
 		try {
 			HoneyMembers hMember = new HoneyMembers();
-			hMember = hMembersDao.selectUserNumber(nickName);
+			hMember = hMembersDao.selectUserNumberByNickName(nickName);
 			System.out.println(hMember);
 			return hMember;
 		} catch (Exception e) {
@@ -122,4 +123,17 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 		memberInfo.setProfileFileName(mf.getFilename());
 		return memberInfo;
 	}
+
+	@Override
+	public void insertIntoMessage(Messages messageContents) {
+		System.out.println(messageContents);
+		hMembersDao.sendMessage(messageContents);
+	}
+
+	@Override
+	public List<Messages> getMessages(int loginUserNo) {
+		
+		return hMembersDao.selectMessagesByLoginUserNo(loginUserNo); 
+	}
+
 }

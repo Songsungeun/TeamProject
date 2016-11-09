@@ -12,7 +12,7 @@ $("#logoutBtn").click(function(event) {
  */
 
 
-function ajaxLogin(user) {
+function ajaxLogin(user, fbuser) {
 	$.ajax({
 		url: serverAddr + "/mainpage/login.json",
 		method: "POST",
@@ -21,7 +21,8 @@ function ajaxLogin(user) {
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("로그인 실패입니다.\n이메일 또는 암호를 확인하세요.")
+				ajaxAddFacebookMember(fbuser)
+				ajaxLogin(user)
 				return
 			}
 			window.location.href = "../mainpage/Main.html"
@@ -48,7 +49,19 @@ function ajaxLoginUser() {
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
 		$("#userEmail").text(result.data.member.email);
-		$("#profilePicture").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
+		var imgSrc = result.data.profilePhoto
+		var splitImgSrc = imgSrc.split(".")
+		console.log("size" + imgSrc.length)
+		
+		for (var i = 0; i <= splitImgSrc.length; i++) {
+		console.log(i + ":" + splitImgSrc[i])
+		}
+		if(splitImgSrc.length == 2) {
+		$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+		} else {
+			$("#profilePicture").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
+		}
+		//  $('#image').attr('src','http://graph.facebook.com/' + fbUser.id + '/picture');
 	})
 
 

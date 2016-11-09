@@ -4,6 +4,7 @@ import java.util.List;
 
 import honey.vo.HoneyMain;
 import honey.vo.HoneyMembers;
+import honey.vo.Messages;
 import honey.vo.UrlInfo;
 
 public interface HoneymembersService {
@@ -12,7 +13,7 @@ public interface HoneymembersService {
 	public void memberInfoUpdate(HoneyMembers members) throws Exception;
 	public void modifyPassword(HoneyMembers members) throws Exception;
 	public String getProfileFileName(int memberNo) throws Exception;
-	public HoneyMembers getUserNumber(String nickName) throws Exception;
+	public HoneyMembers getUserNumberByNickName(String nickName) throws Exception;
 	public List<HoneyMain> getBoards(int memberNo) throws Exception;
 	public List<HoneyMembers> getFollowers(int memberNo) throws Exception;
 	public int followMemberInsert(HoneyMembers follower) throws Exception;
@@ -22,4 +23,6 @@ public interface HoneymembersService {
 	List<HoneyMembers> getGuider(int memberNo) throws Exception;
 	public HoneyMembers getEmailCheck(String member) throws Exception;
 	public HoneyMembers getUserInfo(int memberNo);
+	public void insertIntoMessage(Messages messageContents);
+	public List<Messages> getMessages(int loginUserNo);
 }

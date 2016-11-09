@@ -628,14 +628,14 @@ body {
 			});
 
 			//페이지 로드 했을시 호출 
-			var user;
+			var fbuser;
 			var facebookUser;
 
 			//로그인 되는 순간 호출
 			FB.Event.subscribe('auth.login', function(response) {
 				if (response.status == 'connected') {
 					FB.api('/me', function(fbUser) {
-						user = {
+						fbuser = {
 							email : fbUser.id,
 							userName : fbUser.name
 						}
@@ -643,8 +643,7 @@ body {
 							email : fbUser.id,
 							password : fbUser.id
 						}
-						ajaxAddFacebookMember(user)
-						ajaxLogin(facebookUser)
+						ajaxLogin(facebookUser, fbuser)
 					})
 				}
 			});
