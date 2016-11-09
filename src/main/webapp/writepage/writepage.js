@@ -37,14 +37,22 @@ var formData = new FormData();
 });
 
 $("#updateBoard").click(function(event) {
-	var board = {
-			url: $("#url").val(),
-			title: $('#title').val(),
-			contents: $("#contents").val(),
-			password: $("#password").val(),
-			no: $("#no").val()
+var formData = new FormData();
+	
+	formData.append("url", $("#url").val());
+	formData.append("title", $("#write_title").val())
+	formData.append("contents", $(".nicEdit-main").html());
+	formData.append("categoryNo", $("#category").val());
+	formData.append("no", $("#no").text());
+	
+	$($("#InputFile")[0].files).each(function(index, file) {
+		formData.append("files", file)
+	});
+	
+	if ($("#write_youtube").val() != null) {
+		formData.append("youtubeURL", $("#write_youtube").val());
 	}
-	ajaxUpdateBoard(board);
+	ajaxUpdateBoard(formData);
 })
 
 $("#deleteBoard").click(function(event) {
@@ -89,18 +97,47 @@ function ajaxLoadBoard(no) {
 		$("#title").val(result.data.title);
 		$("#contents").val(result.data.contents);
 		$("#no").val(result.data.no);
+		
 	})
 }
 
-function ajaxUpdateBoard(board) {
-	$.post(serverAddr + "/writepage/write_update.json", board, function(obj) {
+function ajaxLoadBoardForUpdate(no) {
+
+	$.getJSON(serverAddr + "/writepage/updateForm.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
+		console.log("헤헤");
+		console.log(result);
 		if (result.state != "success") {
-			alert("변경 실패입니다.")
+			alert("조회 실패입니다.")
 			return
 		}
-		window.location.href = "../mainpage/Main.html"
-	}, "json")
+		$("#url").val(result.data.url);
+		$("#write_title").val(result.data.title);
+		$(".nicEdit-main").html(result.data.contents);
+		if (result.data.youtubeURL != null) {
+			$("#write_youtube").val("https://youtu.be/" + result.data.youtubeURL);
+		}
+		$("#no").text(result.data.no);
+	})
+}
+
+function ajaxUpdateBoard(formData) {
+	$.ajax({
+		url: "writeUpdate.json",
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: "POST",
+		 success : function(obj) {
+			   var result = obj.jsonResult
+			   if (result.state != "success") {
+			    console.log(result.data)
+			    alert("등록 실패입니다.")
+			    return
+			   }
+			   window.location = "../mainpage/Main.html"
+			  }
+	})
 }
 
 function ajaxDeleteBoard(no) {

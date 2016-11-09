@@ -28,9 +28,6 @@ function ajaxBoardList() {
     $("#boardTable tbody").html(boardUiTemplate(data));			
     $("#postsCard").html(cardUiTemplate(data));
 
-//    $(".titleLink").click(function(event) {
-//    	window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
-    	
     	$(".titleLink").click(function(event){
 		$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
@@ -42,6 +39,11 @@ function ajaxBoardList() {
         if (pageLength >  totalsize) {
       	$('.moreViewBtn').css("display", "none")
       } 
+    	
+     $(document.body).on('click', '.btn-primary',  function(event) {
+    	 window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
+     });
+     
     $(document.body).on('click', '.btn-danger',  function(event) {
     	var rNumber = $(this).attr("data-no")
     	var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
