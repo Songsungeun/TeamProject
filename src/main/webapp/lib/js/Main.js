@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$(function() {
 		$("#includedContent").load("../header.html");
 	});
-});
+}); 
 function ajaxBoardList() {
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult

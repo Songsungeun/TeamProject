@@ -24,7 +24,7 @@ input, textarea, select, button, table {
   font-family: inherit;
   font-size: 100%;
   -webkit-text-size-adjust: none;
-}
+} 
 
 ul, ol, li {
   list-style: none;
