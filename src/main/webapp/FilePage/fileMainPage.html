@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/nailthumb/jquery.nailthumb.1.1.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet"
@@ -15,6 +17,7 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="filepage.css">
+<link rel="stylesheet" href="../node_modules/nailthumb/jquery.nailthumb.1.1.min.css">
 
 </head>
 
@@ -107,17 +110,16 @@
 {{#each fileList}}
     <tr>
       <label>
-          <td></td>
+          <td><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
           <td>{{originFileName}}</td>
           <td>등록</td>
-          <td>{{fileSize}}</td>
+          <td>{{fileSize}} MB</td>
           <td><button  class="btn btn-danger" id="btn" data-no=2>삭제2</button></td>
      </label>
     </tr>
 {{/each}}
 </script>
 
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -130,6 +132,7 @@
 	<script>
 		ajaxFileList()
 	</script>
+
 	<script>
 		$("#ProfileEditLink").click(function() {
 			window.location.href = "../membership/userProfileAdminPage.html"

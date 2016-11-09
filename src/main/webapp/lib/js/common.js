@@ -1,1 +1,1 @@
-var serverAddr = "52.78.7.71"
+var serverAddr = "http://t2.java85.com:8080/TeamProject"

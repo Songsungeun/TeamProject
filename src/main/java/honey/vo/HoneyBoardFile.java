@@ -11,8 +11,9 @@ public class HoneyBoardFile implements Serializable {
 	protected String fileName;
 	protected int mb_no;
 	protected String OriginFileName;
-	protected long fileSize;
+	protected double fileSize;
 	protected Date createdDate;
+	protected String fileThumbnail;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -44,10 +45,10 @@ public class HoneyBoardFile implements Serializable {
 	public void setOriginFileName(String originFileName) {
 		OriginFileName = originFileName;
 	}
-	public long getFileSize() {
+	public double getFileSize() {
 		return fileSize;
 	}
-	public void setFileSize(long fileSize) {
+	public void setFileSize(double fileSize) {
 		this.fileSize = fileSize;
 	}
 	public Date getCreatedDate() {
@@ -55,6 +56,12 @@ public class HoneyBoardFile implements Serializable {
 	}
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+	public String getFileThumbnail() {
+		return fileThumbnail;
+	}
+	public void setFileThumbnail(String fileThumbnail) {
+		this.fileThumbnail = fileThumbnail;
 	}
 	
 	

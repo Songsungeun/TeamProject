@@ -68,13 +68,16 @@ public class HoneyAdminController {
         List<HoneyMembers> followCollector = hMembersService.getFollowers(member.getMemberNo());
         HoneyMembers userInfo = hMembersService.getUserInfo(member.getMemberNo());
         int totalViewCount = 0;
+        int totalLikeCount = 0;
         for (HoneyMain count : list) {
           totalViewCount += count.getViewCount();
+          totalLikeCount += count.getLike();
         }
         
         HashMap<String,Object> resultMap = new HashMap<>();
         resultMap.put("followCollector",followCollector.size());
         resultMap.put("totalViewCount", totalViewCount);
+        resultMap.put("totalLikeCount", totalLikeCount);
         resultMap.put("member", member);
         resultMap.put("userInfo", userInfo.getIntroduce());
         resultMap.put("profilePhoto", memberFile.getFilename());
@@ -90,18 +93,15 @@ public class HoneyAdminController {
     
     @RequestMapping("postdetail")
     public Object detail(int no) throws Exception {
-  System.out.println("no 받음 : " + no);
       
       mainService.getIncreaseViewCount(no);
       HoneyMain honeyMain = mainService.getPost(no);
       HashMap<String, Object> map = new HashMap<>();
       String userPhoto = mainService.getPhoto(Integer.parseInt(honeyMain.getUserNo()));
       honeyMain.setUserProfilePath(userPhoto);
-      System.out.println("fileStatus: " + honeyMain.getFileStatus());
       
       List<FileList> fileList = new ArrayList<FileList>();
       if (honeyMain.getFileStatus() == 1) {
-        System.out.println("honeyMainNo=" + honeyMain.getNo());
         fileList = mainService.getFileList(honeyMain.getNo());
       }
     
