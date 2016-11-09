@@ -39,6 +39,7 @@ function ajaxloadNickName() {
 		$("#userNickNameInfo").text(result.data.member.nickname);
 		$("#userPhoto").attr("src", "/TeamProject/upload/" + result.data.profilePhoto);
 		$("#viewCount").text(result.data.totalViewCount);
+		$("#likeCount").text(result.data.totalLikeCount);
 		$("#followers").text(result.data.followCollector);
 		$("#user-introduce").text(result.data.userInfo)
 		
