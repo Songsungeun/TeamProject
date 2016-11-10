@@ -10,6 +10,8 @@ import honey.vo.honey_boards;
 public interface tempDao {
   List<HoneyMain> selectList(Map<String, Object> paramMap) throws Exception;
   List<HoneyMain> selectList1(Map<String, Object> paramMap) throws Exception;
+  List<honey_boards>  likePostsUserNum(int memberNo) throws Exception; // 좋아요 게시물 번호 리턴 메소드
+  List<HoneyMain> likePosts(int no) throws Exception; // 좋아요 게시물 리턴 메소드
   
   int insert(honey_boards board) throws Exception;
   honey_boards selectOne(int no) throws Exception;

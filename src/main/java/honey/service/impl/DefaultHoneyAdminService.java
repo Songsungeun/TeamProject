@@ -1,5 +1,6 @@
 package honey.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,14 +20,21 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   HttpSession session;
   
   @Autowired tempDao tempdao;
-  public List<HoneyMain> adminBoardList(HttpSession session,int pageNo, int length) throws Exception {
-    HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
-      HashMap<String, Object> map = new HashMap<>();
-      
+  public List<HoneyMain> adminBoardList(int memberNo,int pageNo, int length) throws Exception {
+    HashMap<String, Object> map = new HashMap<>();
       map.put("startIndex", (pageNo - 1) * length);
       map.put("length", length);
-      map.put("userNo",hMember.getMemberNo());
+      map.put("userNo",memberNo);
       return  tempdao.selectList1(map);
+  }
+  
+  public List<HoneyMain> adminLikeExtract(int memberNo) throws Exception {
+    List<honey_boards> extractOfLikeBoardsByUserNo = tempdao.likePostsUserNum(memberNo);
+    List<HoneyMain> temp = new ArrayList<>();
+      for (int i = 0; i < extractOfLikeBoardsByUserNo.size() ; i++) {
+        temp.addAll(tempdao.likePosts(extractOfLikeBoardsByUserNo.get(i).getNo()));
+      }
+     return   temp;
   }
   
   public void  adminBoardDelete(int no) throws Exception {
@@ -34,11 +42,8 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   }
 
   @Override
-  public int getTotalPage(HttpSession session, int length) throws Exception {
-    HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
-    int count = tempdao.countAll(hMember.getMemberNo());
+  public int getTotalPage(int memberNo, int length) throws Exception {
+    int count = tempdao.countAll(memberNo);
     return count+=1;
   }
-
-
 }

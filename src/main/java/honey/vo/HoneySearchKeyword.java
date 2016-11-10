@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 public class HoneySearchKeyword {
   
   static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-  
 	
     protected String searchValue;
     protected String title;

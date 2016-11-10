@@ -123,6 +123,22 @@
 		order by hb.BD_NO desc
 		limit #{startIndex}, #{length}
 	</select>
+	
+	 <select id="likePostsUserNum" resultMap="boardMap" parameterType="int">
+	select MB_NO, BD_NO     
+	from M_TO_B     
+	where MB_NO = #{value}
+  </select>
+  
+   <select id="likePosts" resultMap="userListMap" parameterType="int">
+    select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT,
+    hb.MB_NO, hb.CT_NO,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
+    from honey_boards hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    where hb.BD_NO = #{value}
+  </select>
 
 	<select id="countAll" resultType="int" parameterType="int">
 		select COUNT(*)
@@ -148,8 +164,6 @@
     from M_TO_B
     where MB_NO=#{userNo} and BD_NO = #{no}
   </select> 
-	
-	
 
 	<delete id="delete" parameterType="int">
 		delete from honey_boards
