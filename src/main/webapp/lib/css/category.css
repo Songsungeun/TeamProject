@@ -103,13 +103,7 @@
  
 }
 #category_tab_outside {
-/*   background-color: white; */
-  margin: 0 auto 0px auto;
-  padding: 0px 0 30px 0;
-/*   height: 200px; */
-  heigth: 100px;
-/*   width: 880px; */
-  max-width: 1024px;
+  width: 100%;
 }
 #category_tab > li:HOVER{
   cursor: pointer;
