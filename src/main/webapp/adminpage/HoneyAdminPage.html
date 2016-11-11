@@ -54,13 +54,13 @@
          <div id = "centerContentsWrap">
               <span class = "conterMenuBtn"> <a href = "../FilePage/fileMainPage.html"> Follow  List </a></span>
             &nbsp; &nbsp;  <span id ="itemDistinct">|</span>  &nbsp;&nbsp;  
-              <span class = "conterMenuBtn"> <a href = "#"> Like Posts </a></span>
-         </div> 
+              <span class = "conterMenuBtn" id = "likePostSwitch"> <a href = "#"> Like Posts </a></span>
          
 	     <div id = "contentsDetailWrap">
 	         <span class = "conterDetailBtn1"> <a  href = "#"><img id="layoutBtn" src="./images/layout-2.svg" width ="20px" height="20px"></a></span> 
 	         <span class = "conterDetailBtn2"> <a  href = "#"><img id="listBtn" src="./images/list-1.svg" width ="20px" height="20px"></a></span>
 	     </div>
+	     </div> 
      </div> 
     </div>
         
@@ -77,18 +77,7 @@
      
      <div id = "tableWrap">
        <table id="boardTable" class="table table-hover">
-         <thead>
-         <tr>
-           <th>썸네일</th>
-           <th>제목(상세보기)</th>
-           <th>등록일</th>
-           <th>좋아요</th>
-           <th>조회수</th>
-           <th>수정하기</th>
-           <th>삭제하기</th>
-         </tr>
-         </thead>
-         <tbody></tbody>
+     
       </table>
             <div id = "boardBtn">
               <a  class="moreViewBtn" href="#">더보기</a>
@@ -173,6 +162,18 @@
   </script>
  
    <script id = "boardUiTemplateText" type="text/x-handlebars-template">
+    <thead>
+         <tr>
+           <th>썸네일</th>
+           <th>제목(상세보기)</th>
+           <th>등록일</th>
+           <th>좋아요</th>
+           <th>조회수</th>
+           <th>수정하기</th>
+           <th>삭제하기</th>
+         </tr>
+         </thead>
+         <tbody></tbody>
 {{#each list}}
     <tr>
       <label>
@@ -186,7 +187,33 @@
      </label>
     </tr>
 {{/each}}
+</script> 
 
+   <script id = "boardUiTemplateText2" type="text/x-handlebars-template">
+    <thead>
+         <tr>
+           <th>썸네일</th>
+           <th>제목(상세보기)</th>
+           <th>등록일</th>
+           <th>좋아요</th>
+           <th>조회수</th>
+           <th>삭제하기</th>
+         </tr>
+         </thead>
+         <tbody></tbody>
+     <tr>
+{{#each list}}
+    <tr>
+      <label>
+          <td><a href="#"><img id="thumbnailImg" src="{{linkImage}}" alt="Image File"></a></td>
+          <td><a class="titleLink" href="#" data-no="{{no}}">{{title}}</a></td>
+          <td>{{createdDate2}}</td> 
+          <td>{{like}}</td> 
+          <td>{{viewCount}}</td>
+          <td><button  class="btn btn-danger" id="btn" data-no={{no}}>삭제</button></td>
+     </label>
+    </tr>
+{{/each}}
 </script> 
 
 

@@ -245,6 +245,7 @@ System.out.println("no 받음 : " + no);
 	@RequestMapping("delete")
 	public Object delete(int no) throws Exception {
 		try {
+		  System.out.println("delete 실행 NO="+no);
 			comentService.deleteComent(no);
 			return JsonResult.success();
 
@@ -255,6 +256,7 @@ System.out.println("no 받음 : " + no);
 	@RequestMapping("childdelete")
 	public Object childdelete(int no) throws Exception {
 		try {
+		  System.out.println("childdelete 실행 NO="+no);
 			comentService.childDeleteComent(no);
 			return JsonResult.success();
 

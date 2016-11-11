@@ -243,9 +243,11 @@ body {
 }
 
 #contentsDetailWrap{
-    top: -8px;
+	  width: 400px;
+    bottom: 25px;
     position: relative;
     text-align: right;
+    left: 550px;
 }
  #StorageTitle {
   position: relative;

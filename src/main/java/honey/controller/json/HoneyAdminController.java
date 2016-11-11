@@ -3,6 +3,7 @@ package honey.controller.json;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import honey.dao.HoneyMembersDao;
 import honey.service.HoneyAdminService;
 import honey.service.HoneyMainService;
 import honey.service.HoneymembersService;
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.FileList;
 import honey.vo.HoneyMain;
+import honey.vo.HoneyMemberPhoto;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
@@ -31,6 +34,7 @@ public class HoneyAdminController {
     @Autowired HoneymembersService hMembersService;
     @Autowired HoneyMainService mainService;
     @Autowired DefaultHoneyBoardService boardService;
+    @Autowired HoneyMembersDao hMemberDao;
     
     @RequestMapping(path = "adminPostlist")
     public Object postList(
@@ -38,9 +42,66 @@ public class HoneyAdminController {
         @RequestParam(defaultValue = "1") int pageNo,
         @RequestParam(defaultValue = "6") int length)throws Exception {
       try {
-      HoneyMembers honeyMember = (HoneyMembers)session.getAttribute("member");
-      List<HoneyMain>list = honeyAdminService.adminBoardList(session, pageNo, length);
-      int totalPage = honeyAdminService.getTotalPage(session, length);
+      HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
+      int extractUserNo = hMember.getMemberNo();
+      List<HoneyMain>list = honeyAdminService.adminBoardList(extractUserNo, pageNo, length);
+      int totalPage = honeyAdminService.myWriteTotalPage(extractUserNo);
+      List<UrlInfo> urlList = mainService.getURLList();
+      List<HoneyMain> resultList = SetImage.setImage(list, urlList);
+      
+      for (int i = 0; i < resultList.size(); i++) {
+        String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
+        list.get(i).setUserProfilePath(userPhoto);
+      }
+      
+      HashMap<String,Object> data = new HashMap<>();
+      data.put("list", list);    
+      data.put("totalPage", totalPage);
+      data.put("pageNo", pageNo);
+      data.put("length", length);
+      data.put("stateResultCode", 1);
+      
+      return JsonResult.success(data);
+      }  catch (Exception e) {
+        e.printStackTrace();
+        return JsonResult.fail(e.getMessage());
+      }
+    }
+    
+    @RequestMapping(path="adminFollowingList")
+    public Object followList(HttpSession session) throws Exception {
+      try {
+        HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+        List<HoneyMembers> guiderNumberlist = hMembersService.getGuider(member.getMemberNo());
+        List<HoneyMembers> followList = new ArrayList<>();
+        
+        for (int i = 0; i < guiderNumberlist.size(); i++) {
+          HoneyMembers temp = new HoneyMembers();
+          temp =  hMemberDao.selectUserNickName(guiderNumberlist.get(i).getMemberNo());
+          temp.setProfileFileName(hMembersService.getProfileFileName(guiderNumberlist.get(i).getMemberNo()));
+          temp.setMemberNo(guiderNumberlist.get(i).getMemberNo());
+          followList.add(temp);
+        }
+        
+        return JsonResult.success(followList);
+      } catch (Exception e) {
+        e.printStackTrace();
+        return JsonResult.error(e.getMessage());
+      }
+    }
+    
+    @RequestMapping(path = "adminLikeList")
+    public Object likeList(
+        HttpSession session,
+        @RequestParam(defaultValue = "1") int pageNo,
+        @RequestParam(defaultValue = "6") int length)throws Exception {
+      try {
+      HoneyMembers hmember = (HoneyMembers)session.getAttribute("member");
+      int extractUserNo = hmember.getMemberNo();
+      
+      List<HoneyMain> list = honeyAdminService.adminLikeExtract(extractUserNo);
+      int totalPage = honeyAdminService.likeTotalPage(extractUserNo);
+      
       List<UrlInfo> urlList = mainService.getURLList();
       List<HoneyMain> resultList = SetImage.setImage(list, urlList);
       
@@ -50,20 +111,21 @@ public class HoneyAdminController {
       }
       
       
+      HashMap<String, Object> resultLike = new HashMap<>();
+      resultLike.put("list", list);
+      resultLike.put("totalPage",totalPage);
+      resultLike.put("pageNo", pageNo);
+      resultLike.put("length", list.size());
+      resultLike.put("stateResultCode", 0);
       
-      
-      HashMap<String,Object> data = new HashMap<>();
-      data.put("list", list);    
-      data.put("totalPage", totalPage);
-      data.put("pageNo", pageNo);
-      data.put("length", length);
-      
-      return JsonResult.success(data);
+      return JsonResult.success(resultLike);
       }  catch (Exception e) {
         e.printStackTrace();
-        return JsonResult.fail(e.getMessage());
+       return JsonResult.fail(e.getMessage());
       }
+      
     }
+    
     
     @RequestMapping(path = "adminUserInfo")
     public Object loginUser(HttpSession session) throws Exception {

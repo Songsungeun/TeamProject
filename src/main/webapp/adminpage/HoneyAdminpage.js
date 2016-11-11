@@ -12,9 +12,6 @@ $(document).ready(function() {
 	$("#TipBoardLink").click(function() {
 		window.location.href = "../adminpage/HoneyAdminPage.html"
 	});
-	$("#StorageLink").click(function() {
-		window.location.href = "filepage.html"
-	});
 	$(".profileEdit_Btn").hover(function() {
 		$("#ProfileEditLinkGear").css('-webkit-animation','spin 4s infinite linear')
 		$("#ProfileEditLinkGear").css('-o-animation','spin 4s infinite linear')
@@ -37,7 +34,21 @@ function ajaxloadNickName() {
 			return
 		}
 		$("#userNickNameInfo").text(result.data.member.nickname);
-		$("#userPhoto").attr("src", "/TeamProject/upload/" + result.data.profilePhoto);
+		
+		
+		var imgSrc = result.data.profilePhoto
+		var splitImgSrc = imgSrc.split(".")
+		console.log("size" + imgSrc.length)
+		
+		for (var i = 0; i <= splitImgSrc.length; i++) {
+		console.log(i + ":" + splitImgSrc[i])
+		}
+		if(splitImgSrc.length == 2) {
+		$("#userPhoto").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+		} else {
+			$("#userPhoto").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
+		}
+		
 		$("#viewCount").text(result.data.totalViewCount);
 		$("#likeCount").text(result.data.totalLikeCount);
 		$("#followers").text(result.data.followCollector);
