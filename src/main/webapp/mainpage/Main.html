@@ -3,304 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-  href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/category.css">
 <title>HoneyTip TestPage</title>
 </head>
 <body>
-<div id="includedContent"></div>
+<header><div id="includedContent"></div></header>
   <div class="main_section">
-    <div class="mainpage_wrap">
-
+  
+    <div class="mainpage_Ctgwrap">
+      <div id="category_tab_outside">
+        <ul id="category_tab" class="categoryWrap">
+          <li id="category-bar-0" class="hodstate tempClass category-active" data-ctg="0">ALL</li>
+          <li id="category-bar-1" class="hodstate tempClass" data-ctg="1">HEALTH</li>
+          <li id="category-bar-2" class="hodstate tempClass" data-ctg="2">CAR</li>
+          <li id="category-bar-3" class="hodstate0 tempClass" data-ctg="3">BEAUTY / FASHION</li>
+          <li id="category-bar-4" class="hodstate tempClass" data-ctg="4">COOK</li>
+          <li id="category-bar-5" class="hodstate tempClass" data-ctg="5">TRAVEL</li>
+          <li id="category-bar-6" class="hodstate tempClass" data-ctg="6">LOVE</li>
+          <li id="category-bar-7" class="hodstate0 tempClass" data-ctg="7">ENTER TAINMENT</li>
+          <li id="category-bar-8" class="hodstate tempClass" data-ctg="8">NEWS</li>
+          <li id="category-bar-9" class="hodstate tempClass" data-ctg="9">IT</li>
+          <li id="category-bar-10" class="hodstate tempClass" data-ctg="10">PHOTO</li>
+        </ul>
+      </div>
+    </div>
+      
+    <div id="mainpage_Postwrap">
       <div id="mainpage_postcontainer" class="mainpage_Botcontainer">
-        <div id="category_tab_outside">
-          <ul id="category_tab" class="categoryWrap">
-            <li  id="category-bar-0" class="hodstate tempClass category-active" data-ctg="0">
-              ALL
-            </li>
-            <li id="category-bar-1" class="hodstate tempClass" data-ctg="1">
-              HEALTH
-            </li>
-            <li id="category-bar-2" class="hodstate tempClass" data-ctg="2">
-              CAR
-            </li>
-            <li id="category-bar-3" class="hodstate0 tempClass" data-ctg="3">
-							BEAUTY /
-							FASHION
-            </li>
-            <li id="category-bar-4" class="hodstate tempClass" data-ctg="4">
-              COOK
-            </li>
-            <li id="category-bar-5" class="hodstate tempClass" data-ctg="5">
-              TRAVEL
-            </li>
-            <li id="category-bar-6" class="hodstate tempClass" data-ctg="6">
-              LOVE
-            </li>
-            <li id="category-bar-7" class="hodstate0 tempClass" data-ctg="7">
-							ENTER
-							TAINMENT
-            </li>
-            <li id="category-bar-8" class="hodstate tempClass" data-ctg="8">
-              NEWS
-            </li>
-            <li id="category-bar-9" class="hodstate tempClass" data-ctg="9">
-              IT
-            </li>
-            <li id="category-bar-10" class="hodstate tempClass" data-ctg="10">
-              PHOTO
-            </li>
-          </ul>
-        </div>
-
         <div id="contents-tabs" class="all_post_wrap">
 
-          <div id="category_tab-0" class="tab-content">
-            <ul id="post_wrapper" class="category_tab-1-0 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-0 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-0 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-0 allConts4">
-
-            </ul>
+          <div id="category_tab-0" class="tab-content" style="display: block">
+            <ul id="post_wrapper" class="category_tab-1-0 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-0 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-0 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-0 allConts4"></ul>
           </div>
 
           <div id="category_tab-1" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-1 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-1 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-1 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-1 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-1 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-1 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-1 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-1 allConts4"></ul>
           </div>
 
           <div id="category_tab-2" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-2 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-2 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-2 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-2 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-2 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-2 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-2 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-2 allConts4"></ul>
           </div>
 
           <div id="category_tab-3" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-3 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-3 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-3 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-3 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-3 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-3 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-3 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-3 allConts4"></ul>
           </div>
 
           <div id="category_tab-4" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-4 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-4 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-4 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-4 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-4 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-4 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-4 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-4 allConts4"></ul>
           </div>
 
           <div id="category_tab-5" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-5 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-5 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-5 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-5 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-5 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-5 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-5 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-5 allConts4"></ul>
           </div>
 
           <div id="category_tab-6" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-6 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-6 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-6 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-6 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-6 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-6 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-6 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-6 allConts4"></ul>
           </div>
 
           <div id="category_tab-7" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-7 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-7 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-7 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-7 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-7 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-7 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-7 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-7 allConts4"></ul>
           </div>
 
           <div id="category_tab-8" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-8 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-8 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-8 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-8 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-8 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-8 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-8 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-8 allConts4"></ul>
           </div>
 
           <div id="category_tab-9" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-9 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-9 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-9 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-9 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-9 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-9 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-9 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-9 allConts4"></ul>
           </div>
 
           <div id="category_tab-10" class="tab-content" style="display: none">
-            <ul id="post_wrapper" class="category_tab-1-10 allConts1">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-2-10 allConts2">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-3-10 allConts3">
-
-            </ul>
-            <ul id="post_wrapper" class="category_tab-4-10 allConts4">
-
-            </ul>
+            <ul id="post_wrapper" class="category_tab-1-10 allConts1"></ul>
+            <ul id="post_wrapper" class="category_tab-2-10 allConts2"></ul>
+            <ul id="post_wrapper" class="category_tab-3-10 allConts3"></ul>
+            <ul id="post_wrapper" class="category_tab-4-10 allConts4"></ul>
           </div>
+          
         </div>
-
       </div>
-      
-      
-          <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" id="modalDialog">
-              <div class="modal-content">
-                <div class="modal-body" id="modalBody">
-                  <div class="owner">
-                    <a href="#" id="followBtn" class="button user_button">Follow</a>
-                    <a href="#" id="likeBtn" class="button user_button">Like</a> <a
-                      class="owner_img" href="#"> <img alt="jibon" id="userImage"
-                      src="">
-                    </a>
-                    <p class="owner_name">
-                      <a href="#" id="writerNick"></a>
-                    </p>
-                    <p class="owner_when" id="createdDate">등록일</p>
-                  </div>
-
-                  <div class="userWrite">
-                    <div class="comment" id="419">
-                      <h1 id="userTitle"
-                        style="font-size: 17px; font-weight: bold;"></h1>
-                      <div id="userDesc"></div>
-                    </div>
-                  </div>
-
-                  <div class="holder">
-                    <a class="image" id="urlImage" href="">
-                    </a>
-                  </div>
-
-                  <div class="linkText">
-                    <a id="linkTitle" class="title" id="linkTitle" 
-                      style="font-size: 15px; font-weight: bold;" href="">
-                    </a>
-                    <p><a class="desc" id="linkDesc" href=""></a></p>
-                    <p><a class="urlAddr" id="linkURL"></a></p>
-                  
-                  </div>
-                  <div class="youtubeArea">
-                  <iframe id="youtubeUrl" width="475" height="270" src="" frameborder="0" allowfullscreen></iframe>
-                  </div>
-  
-                  <div class="fileArea">
-                  <div class="addFileTag">
-                    <div id="fileText">첨부파일:</div> 
-                    <div id="fileListArea"></div>
-                  </div>
-                  
-                  
-                  </div>
-                  
-                  <form class="userComment" method="post" action="#">
-                    <textarea placeholder="Add a comment..." maxlength="255"
-                      id="pcomment"></textarea>
-                    <button id="insertCmt" type="button" class="button">Comment</button>
-                    <div class="cmts_list"></div>
-                  </form>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary"
-                    data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-
+    </div>
+    
+  </div>
+  <div class="modal fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="modalDialog">
+      <div class="modal-content">
+        <div class="modal-body" id="modalBody">
+          <div class="owner">
+            <a href="#" id="followBtn" class="button user_button">Follow</a>
+            <a href="#" id="likeBtn" class="button user_button">Like</a>
+            <a class="owner_img" href="#"> <img alt="jibon" id="userImage" src=""></a>
+            <p class="owner_name">
+              <a href="#" id="writerNick"></a>
+            </p>
+            <p class="owner_when" id="createdDate">등록일</p>
           </div>
+
+          <div class="userWrite">
+            <div class="comment" id="419">
+              <h1 id="userTitle" style="font-size: 17px; font-weight: bold;"></h1>
+              <div id="userDesc"></div>
+            </div>
+          </div>
+
+          <div class="holder">
+            <a class="image" id="urlImage" href=""></a>
+          </div>
+
+          <div class="linkText">
+            <a id="linkTitle" class="title" id="linkTitle" style="font-size: 15px; font-weight: bold;" href=""></a>
+            <p><a class="desc" id="linkDesc" href=""></a></p>
+            <p><a class="urlAddr" id="linkURL"></a></p>
+          </div>
+          <div class="youtubeArea">
+            <iframe id="youtubeUrl" width="475" height="270" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+  
+          <div class="fileArea">
+            <div class="addFileTag">
+              <div id="fileText">첨부파일:</div> 
+              <div id="fileListArea"></div>
+            </div>
+          </div>
+                  
+          <form class="userComment" method="post" action="#">
+            <textarea placeholder="Add a comment..." maxlength="255" id="pcomment"></textarea>
+            <button id="insertCmt" type="button" class="button">Comment</button>
+            <div class="cmts_list"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
-  </body>
-<!-- <!--  -->
+  
+</body>
 
 <script id="li1TemplateText" type="text/x-handlebars-template">
 {{#each data.list1}}
@@ -473,16 +345,16 @@
 </li>
 {{/each}}
 </script>
-<!--  -->
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script type='text/javascript' src="../lib/js/common.js"></script>
-  <script type='text/javascript' src="../lib/js/Main.js"></script>
-  <script type='text/javascript' src="../lib/js/category-tab.js"></script>
-  <script type="text/javascript" src="../membership/followList.js"></script>
-  <script type="text/javascript" src="../membership/likeList.js"></script>
-  <!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type='text/javascript' src="../lib/js/common.js"></script>
+<script type='text/javascript' src="../lib/js/Main.js"></script>
+<script type='text/javascript' src="../lib/js/category-tab.js"></script>
+<script type="text/javascript" src="../membership/followList.js"></script>
+<script type="text/javascript" src="../membership/likeList.js"></script>
+<!--   <script type='text/javascript' src="../lib/js/PostComent.js"></script> -->
 <script>
   ajaxBoardList()
 </script>
@@ -491,7 +363,5 @@ function Download(url) {
   document.getElementById('fileListArea1').src = url;
 }
 </script>
-
-
 
 </html>

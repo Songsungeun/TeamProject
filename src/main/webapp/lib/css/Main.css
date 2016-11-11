@@ -1,124 +1,41 @@
-/* html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, */
-/*   blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, */
-/*   q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, */
-/*   fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, */
-/*   th, td, article, aside, canvas, details, figcaption, figure, footer, */
-/*   header, hgroup, menu, nav, section, summary, time, mark, audio, video { */
-/*   margin: 0; */
-/*   padding: 0; */
-/*   border: 0; */
-/*   outline: 0; */
-/*   font-size: 100%; */
-/*   vertical-align: baseline; */
-/*   background: transparent; */
-/* } */
-
-/* article, aside, details, figcaption, figure, footer, header, hgroup, */
-/*   menu, nav, section { */
-/*   display: block; */
-/* } */
-
-/* input, textarea, select, button, table { */
-/*   font-size: inherit; */
-/*   font-family: inherit; */
-/*   font-size: 100%; */
-/*   -webkit-text-size-adjust: none; */
-/* }  */
-
-/* ul, ol, li { */
-/*   list-style: none; */
-/* } */
-
-/* a { */
-/*   text-decoration: none; */
-/*   color: inherit; */
-/* } */
-
-/* fieldset { */
-/*   margin: 0; */
-/*   padding: 0; */
-/*   border: none; */
-/* } */
-
-/* caption, legend { */
-/*   position: absolute; */
-/*   top: -5000px; */
-/*   text-indent: -5000px; */
-/*   visibility: hidden; */
-/*   width: 0; */
-/*   height: 0; */
-/*   font-size: 0; */
-/*   line-height: 0; */
-/* } */
-
-/* img { */
-/*   vertical-align: middle; */
-/* } */
-
-/* table { */
-/*   display: table; */
-/* } */
-
-/* caption { */
-/*   display: table-caption; */
-/* } */
-
-/* colgroup { */
-/*   display: table-column-group; */
-/* } */
-
-/* col { */
-/*   display: table-column; */
-/* } */
-
-/* thead { */
-/*   display: table-header-group; */
-/* } */
-
-/* tbody { */
-/*   display: table-row-group; */
-/* } */
-
-/* tfoot { */
-/*   display: table-footer-group; */
-/* } */
-
-/* tr { */
-/*   display: table-row; */
-/* } */
-
-/* td, th { */
-/*   display: table-cell; */
-/* } */
-
-/* ul:after { */
-/*   content: " "; */
-/*   display: block; */
-/*   clear: both; */
-/* } */
-
-/* body { */
-/*   font-family: "arial", sans-serif; */
-/*   font-size: 12px; */
-/* } */
-
-
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small,
+strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary, time, mark, audio, video
+{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+input, textarea, select, button, table {font-size: inherit;font-family: inherit;font-size: 100%;-webkit-text-size-adjust: none;} 
+ul, ol, li {list-style: none;}a {text-decoration: none;color: inherit;}fieldset {margin: 0;padding: 0;border: none;}
+caption, legend {position: absolute;top: -5000px;text-indent: -5000px;visibility: hidden;width: 0;height: 0;font-size: 0;line-height: 0;}
+img {vertical-align: middle;}table {display: table;}caption {display: table-caption;}colgroup {display: table-column-group;}
+col {display: table-column;}thead {display: table-header-group;}tbody {display: table-row-group;}tfoot {display: table-footer-group;}
+tr {display: table-row;}td, th {display: table-cell;}ul:after {content: " ";display: block;clear: both;}
+body {font-family: "arial", sans-serif;font-size: 12px;}
 
 .main_section {
+	width: 100%;
   margin: 0;
   padding: 0;
 }
-
-.mainpage_wrap {
+.mainpage_Ctgwrap {
   width: 1024px;
   margin: 0 auto;
 }
-
-#mainpage_postcontainer {
+#detailpage_Postwrap {
+	width: 1024px;
+	margin: 0 auto;
+	padding-top: 80px;
+}
+#mainpage_Postwrap {
+  width: 1024px;
+  margin: 0 auto;
+  display: block;
+}
+#category_tab_outside {
 	padding-top: 80px;
 }
 .all_post_wrap {
-  width: 100%;
   background-color: white;
   padding-top: 15px;
 /*   position: relative; */

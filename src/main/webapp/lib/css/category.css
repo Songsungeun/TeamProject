@@ -94,7 +94,7 @@
 	border: 3px solid #5d6365;
 	color: #5d6365;
 	-webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
-    transition:width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
+  transition:width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
 }
 .category-active {
   border: 3px solid #5d6365 !important;
