@@ -135,7 +135,7 @@ function ajaxBoardList() {
 			$('.moreViewBtn').css("display", "none")
 		} 
 
-		$(document.body).on('click', '.btn-primary',  function(event) {
+		$(document.body).on('click', '.modifyBtn',  function(event) {
 			window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
 		});
 

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign-Up/Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="../lib/css/LoginStyle.css">
+
+  
+</head>
+
+<body>
+    
+  <div id="loginWords">
+    <div class="title loginword">Honey Factory</div>
+    <div class="subtitle loginword">나만알기 아쉬운 팁</div>
+  </div>
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#login">Log In</a></li>
+        <li class="tab"><a href="#signup">회원가입</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        
+        <div id="login">   
+          <div id="facebook_login">
+          FaceBook
+          </div>
+          
+          <form action="/" method="post">
+          
+            <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email" id="emailAddr" required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input type="password" id="passwordChk" required autocomplete="off"/>
+          </div>
+          
+          <button class="button button-block" id="loginBtn" type="button">Log In</button>
+          
+          </form>
+
+        </div>
+        
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Name<span class="req">*</span>
+              </label>
+              <input type="text" id="name" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Nickname<span class="req">*</span>
+              </label>
+              <input type="text" id="nickname" required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email" id="user_Email" required autocomplete="off"/>
+          </div>
+          <div id="result_id_msg"></div>
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password" id="userPassword" required autocomplete="off"/>
+          </div>
+          
+          <button type="button" id="submitMember" class="button button-block">Get Started</button>
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../lib/js/LoginPage.js"></script>
+<script type="text/javascript" src="../userAuthApp.js"></script>
+<script type="text/javascript" src="../lib/js/common.js"></script>
+<script type="text/javascript" src="../lib/js/Main.js"></script>
+<script type="text/javascript"
+    src="../membership/membership.js"></script>
+
+<script>
+    $("#loginBtn").click(function(event) {
+      event.stopImmediatePropagation();
+      var user = {
+        email : $("#emailAddr").val(),
+        password : $("#passwordChk").val(),
+      }
+      ajaxLogin(user)
+    });
+    
+</script>
+
+<script type="text/javascript">
+    $(document)
+        .ready(
+            function() {
+              $('#user_Email')
+                  .keyup(
+                      function() {
+                        if ($('#user_Email').val().length > 6) {
+                          var email = $(this).val();
+                          // ajax 실행
+                          $
+                              .ajax({
+                                type : 'POST',
+                                dataType : "jsonp",
+                                url : "http://t2.java85.com:8080/TeamProject/membership/emailCheck.json",
+                                crossDomain : true,
+                                data : {
+                                  email : email
+                                },
+                                success : function(
+                                    obj) {
+                                  if (obj.jsonResult.state == "success") {
+                                    $(
+                                        "#result_id_msg")
+                                        .html(
+                                            "사용 가능한 아이디 입니다.");
+                                  } else {
+                                    $(
+                                        "#result_id_msg")
+                                        .html(
+                                            "사용 불가능한 아이디 입니다.");
+                                  }
+                                }
+                              }); // end ajax
+                        } else {
+                          $("#result_id_msg")
+                              .text("");
+                        }
+                      }); // end keyup
+            });
+  </script>
+  
+  
+</body>
+</html>

@@ -19,36 +19,24 @@ public class SetImage {
 					honeyMainList.get(i).setLinkImage(urlInfoList.get(j).getImage());
 					honeyMainList.get(i).setLinkURL(urlInfoList.get(j).getUrlAddr());
 					honeyMainList.get(i).setLinkDetailUrl(urlInfoList.get(j).getDetailUrl());
-					System.out.println("link있는애: " + honeyMainList.get(i).getLinkImage());
 				}
 			}
 			//String[] imageHref = honeyMainList.get(i).getLinkDesc().split("\"");
-			System.out.println("번호: " + i + "getLinkImage: " + honeyMainList.get(i).getLinkImage());
 			if (honeyMainList.get(i).getLinkImage() == null) {
-				System.out.println(i + "getcontents= " +honeyMainList.get(i).getContents());
-				System.out.println(i + " getyoutubeURL= " + honeyMainList.get(i).getYoutubeURL());
 				if (honeyMainList.get(i).getContents() != null) {
 					boolean image = honeyMainList.get(i).getContents().contains("img src");
-					System.out.println("boolean: " + image);
 					if (image) {
 						String[] temp = honeyMainList.get(i).getContents().split("src=");
 						String[] temp1 = temp[1].split(" ");
 						String[] temp2 = temp1[0].split("\"");
 						honeyMainList.get(i).setLinkImage(temp2[1]);
-						System.out.println("temp1[0] =" + temp1[0]);
-						System.out.println("temp1[0] =" + temp2[1]);
-						System.out.println("이거: " + honeyMainList.get(i).getLinkImage());
 					} else if (honeyMainList.get(i).getYoutubeURL() != null){
-						System.out.println("youtube 꽂는다.");
 						honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
-						System.out.println("꽂힌놈 바로 확인= " +honeyMainList.get(i).getLinkImage());
 					} else {
 						honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 					}
 				} else if (honeyMainList.get(i).getYoutubeURL() != null){
-					System.out.println("youtube 꽂는다.");
 					honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
-					System.out.println("꽂힌놈 바로 확인= " +honeyMainList.get(i).getLinkImage());
 				} else {
 					honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 				}
@@ -69,23 +57,17 @@ public class SetImage {
 	          honeyMainList.get(i).setLinkImage(urlInfoList.get(j).getImage());
 	          honeyMainList.get(i).setLinkURL(urlInfoList.get(j).getUrlAddr());
 	          honeyMainList.get(i).setLinkDetailUrl(urlInfoList.get(j).getDetailUrl());
-	          System.out.println("link있는애: " + honeyMainList.get(i).getLinkImage());
 	        }
 	      }
 	      //String[] imageHref = honeyMainList.get(i).getLinkDesc().split("\"");
-	      System.out.println("번호: " + i + "getLinkImage: " + honeyMainList.get(i).getLinkImage());
 	      if (honeyMainList.get(i).getLinkImage() == null) {
 	        if (honeyMainList.get(i).getContents() != null) {
 	          boolean image = honeyMainList.get(i).getContents().contains("img src");
-	          System.out.println("boolean: " + image);
 	          if (image) {
 	            String[] temp = honeyMainList.get(i).getContents().split("src=");
 	            String[] temp1 = temp[1].split(" ");
 	            String[] temp2 = temp1[0].split("\"");
 	            honeyMainList.get(i).setLinkImage(temp2[1]);
-	            System.out.println("temp1[0] =" + temp1[0]);
-	            System.out.println("temp1[0] =" + temp2[1]);
-	            System.out.println("이거: " + honeyMainList.get(i).getLinkImage());
 	          } else {
 	            honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 	          }
