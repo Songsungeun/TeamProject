@@ -140,11 +140,17 @@
     where hb.BD_NO = #{value}
   </select>
 
-	<select id="countAll" resultType="int" parameterType="int">
+	<select id="adminMyWriteCountAll" resultType="int" parameterType="int">
 		select COUNT(*)
 		from honey_boards
 		where MB_NO = #{value}
 	</select>
+	
+	 <select id="adminLikePostsCountAll" resultType="int" parameterType="int">
+    select COUNT(*)
+    from M_TO_B
+    where MB_NO = #{value}
+  </select>
 
 	<select id="selectOne" resultMap="boardMap" parameterType="int">
 		select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL,YOUTUBE_URL
