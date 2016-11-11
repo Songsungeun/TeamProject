@@ -45,7 +45,7 @@ public class HoneyAdminController {
       HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
       int extractUserNo = hMember.getMemberNo();
       List<HoneyMain>list = honeyAdminService.adminBoardList(extractUserNo, pageNo, length);
-      int totalPage = honeyAdminService.getTotalPage(extractUserNo, length);
+      int totalPage = honeyAdminService.myWriteTotalPage(extractUserNo);
       List<UrlInfo> urlList = mainService.getURLList();
       List<HoneyMain> resultList = SetImage.setImage(list, urlList);
       
@@ -59,6 +59,7 @@ public class HoneyAdminController {
       data.put("totalPage", totalPage);
       data.put("pageNo", pageNo);
       data.put("length", length);
+      data.put("stateResultCode", 1);
       
       return JsonResult.success(data);
       }  catch (Exception e) {
@@ -99,7 +100,7 @@ public class HoneyAdminController {
       int extractUserNo = hmember.getMemberNo();
       
       List<HoneyMain> list = honeyAdminService.adminLikeExtract(extractUserNo);
-      int totalPage = honeyAdminService.getTotalPage(extractUserNo, length);
+      int totalPage = honeyAdminService.likeTotalPage(extractUserNo);
       
       List<UrlInfo> urlList = mainService.getURLList();
       List<HoneyMain> resultList = SetImage.setImage(list, urlList);
@@ -114,7 +115,8 @@ public class HoneyAdminController {
       resultLike.put("list", list);
       resultLike.put("totalPage",totalPage);
       resultLike.put("pageNo", pageNo);
-      resultLike.put("length", length);
+      resultLike.put("length", list.size());
+      resultLike.put("stateResultCode", 0);
       
       return JsonResult.success(resultLike);
       }  catch (Exception e) {

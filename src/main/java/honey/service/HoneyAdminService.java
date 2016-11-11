@@ -11,5 +11,6 @@ public interface HoneyAdminService {
    List<HoneyMain> adminBoardList(int memberNo, int value1, int value2) throws Exception ;
    List<HoneyMain> adminLikeExtract(int memberNo) throws Exception ;
    void  adminBoardDelete(int value) throws Exception ;
-   int getTotalPage(int memberNo, int length) throws Exception;
+   int myWriteTotalPage(int memberNo) throws Exception;
+   int likeTotalPage(int memberNo) throws Exception;
 }

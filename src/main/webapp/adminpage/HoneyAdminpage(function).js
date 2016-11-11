@@ -2,11 +2,14 @@
 var admin = { 
 	pageNo :1,
 	pageLength : 6,
+	stateResultCode1 : 1,
+	stateResultCode2 : 0,
 	adminList : "/admin/adminPostlist.json",
 	likeList :  "/admin/adminLikeList.json"
 }
 
-var temp = admin.adminList;
+var ajaxUrl = admin.adminList;
+var stateResultCode = admin.stateResultCode1
 
 $(document.body).on('click', '.moreViewBtn', function(event){
 	admin.pageLength += 6;
@@ -14,14 +17,31 @@ $(document.body).on('click', '.moreViewBtn', function(event){
 })
 
 $("#likePostSwitch").click(function() {
-	temp= admin.likeList;
-	ajaxBoardList(temp)
+	ajaxUrl= admin.likeList;
+	stateResultCode = admin.stateResultCode2;
+	ajaxBoardList(ajaxUrl , stateResultCode)
 })
 
+$(".conterDetailBtn1").click(function () {
+	if($("#tableWrap").css("display") != "none"){   
+		$("#layoutBtn").attr("src", "./images/layout-2.svg")
+		$("#listBtn").attr("src", "./images/list-1.svg")
+		$('#tableWrap').hide();
+		$('#cardWrap').show();  
+	}});
+
+$(".conterDetailBtn2").click(function () {
+	$("#layoutBtn").attr("src", "./images/layout-1.svg")
+	$("#listBtn").attr("src", "./images/list-2.svg")
+	$('#cardWrap').hide();  
+	$('#tableWrap').show();  
+});
+
 function ajaxBoardList() {
-	$.getJSON(serverAddr + temp , {
+	$.getJSON(serverAddr + ajaxUrl , {
 		"pageNo" : admin.pageNo,
 		"length" : admin.pageLength,
+		"stateResultCode" : stateResultCode,
 	},  function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -31,13 +51,21 @@ function ajaxBoardList() {
 
 		var data = result.data
 		var totalsize = data.totalPage;
+		var resultCode = data.stateResultCode;
 		var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
+		var boardUiTemplate2 = Handlebars.compile($('#boardUiTemplateText2').html())
 		var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
 
-		$("#boardTable tbody").html(boardUiTemplate(data));			
 		$("#postsCard").html(cardUiTemplate(data));
+		
+		if (resultCode == 1) {
+			$("#boardTable").html(boardUiTemplate(data));
+		} else {
+			$("#boardTable").html(boardUiTemplate2(data));
+		}
 
 		$(".titleLink").click(function(event){
+			console.log("결과는? :"  + resultCode)
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
 			var no = $(this).attr("data-no")
@@ -46,7 +74,7 @@ function ajaxBoardList() {
 			ajaxPostComentsList(no)
 		})
 
-		if (data.pageLength >  totalsize) {
+		if (data.list.length >=  totalsize) {
 			$('.moreViewBtn').css("display", "none")
 		} 
 
@@ -81,21 +109,6 @@ function ajaxDeleteBoard(no) {
 		})
 }
 
-
-$(".conterDetailBtn1").click(function () {
-	if($("#tableWrap").css("display") != "none"){   
-		$("#layoutBtn").attr("src", "./images/layout-2.svg")
-		$("#listBtn").attr("src", "./images/list-1.svg")
-		$('#tableWrap').hide();
-		$('#cardWrap').show();  
-	}});
-
-$(".conterDetailBtn2").click(function () {
-	$("#layoutBtn").attr("src", "./images/layout-1.svg")
-	$("#listBtn").attr("src", "./images/list-2.svg")
-	$('#cardWrap').hide();  
-	$('#tableWrap').show();  
-});
 
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/admin/postdetail.json?no=" + no, function(obj) {

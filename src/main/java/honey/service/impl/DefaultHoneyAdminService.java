@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import honey.dao.tempDao;
 import honey.service.HoneyAdminService;
 import honey.vo.HoneyMain;
-import honey.vo.HoneyMembers;
 import honey.vo.honey_boards;
 
 @Service
@@ -42,8 +41,14 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   }
 
   @Override
-  public int getTotalPage(int memberNo, int length) throws Exception {
-    int count = tempdao.countAll(memberNo);
+  public int myWriteTotalPage(int memberNo) throws Exception {
+    int count = tempdao.adminMyWriteCountAll(memberNo);
     return count+=1;
+  }
+
+  @Override
+  public int likeTotalPage(int memberNo) throws Exception {
+    int count = tempdao.adminLikePostsCountAll(memberNo);
+    return count;
   }
 }
