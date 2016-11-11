@@ -71,11 +71,6 @@ function ajaxLoginUser() {
 		$("#userEmail").text(result.data.member.email);
 		var imgSrc = result.data.profilePhoto
 		var splitImgSrc = imgSrc.split(".")
-		console.log("size" + imgSrc.length)
-		
-		for (var i = 0; i <= splitImgSrc.length; i++) {
-		console.log(i + ":" + splitImgSrc[i])
-		}
 		if(splitImgSrc.length == 2) {
 		$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
 		} else {

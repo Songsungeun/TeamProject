@@ -301,7 +301,8 @@ ol {
 .message-new-textarea {
 	border: 1px solid #f5f5f5;
 	margin: 0;
-	margin-top: 2px; padding : 13px 19px 11px 0px;
+	margin-top: 2px;
+	padding: 13px 19px 11px 0px;
 	height: 200px;
 	font-size: 13px;
 	line-height: 22px;
@@ -360,34 +361,16 @@ ol {
 				<h4 class="message-history-title">
 					"메시지 " <span class="message-hide"></span>
 				</h4>
-				<ol class="message-history-list">
-					<li class="message-history-item"><a
-						class="message-history-link" href="#"> <span
-							class="message-history-image pull-left"> <img
-								id="userImage" width="43px" height="43px" src="../135.jpg">
-						</span> <span class="message-history-name"> <span
-								class="message-sending-usernick">joker10421</span>
-						</span>
-					</a></li>
-				</ol>
+        <div class="tempparea">
+				<!-- 핸들바스 영역  -->
+        </div>
 			</div>
 			<div class="mymessage-list-container">
 				<div class="mymessage-header">
 					<h4 class="mymessage-list-title">"Message List"</h4>
 				</div>
 				<div class="message-container">
-					<div class="messages">
-						<li class="message-history-item"><a
-							class="message-history-link" href="#"> <span
-								class="message-history-image pull-left"> <img
-									id="userImage" width="43px" height="43px" src="../135.jpg">
-							</span> <span class="message-history-name"> <span
-									class="message-sending-usernick">joker10421</span>
-							</span>
-						</a></li>
-
-
-					</div>
+					<div class="messages"></div>
 				</div>
 			</div>
 		</div>
@@ -409,9 +392,10 @@ ol {
 						multiple="multiple" theme="bootstrap" rest-search-input="true">
 						<div>
 							<span class="message-new-to-select-match ui-select-match"
-								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input id="userNickName" type="text"
-								autocomplete="off" autocorrect="off" autocapitalize="off"
-								spellcheck="false" class="ui-select-search input-xs"
+								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input id="userNickName"
+								type="text" autocomplete="off" autocorrect="off"
+								autocapitalize="off" spellcheck="false"
+								class="ui-select-search input-xs"
 								placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"
 								aria-label="Select box">
 						</div>
@@ -442,7 +426,29 @@ ol {
       $("#includedContent").load("../header.html");
     });
     
-    ajaxMessageLode()
+    ajaxMessageUserLode()
   </script>
+
+
+	<script id="messageUserInfoTemplate" type="text/x-handlebars-template">
+{{#each this}}
+<ol class="message-history-list">
+          <li class="message-history-item"><a id="userNick"data-memberNo="{{memberNo}}" 
+            class="message-history-link" href="#"> <span
+              class="message-history-image pull-left"> <img
+                id="userImage" width="43px" height="43px" src="/TeamProject/upload/{{profileFilePath}}">
+            </span> 
+              <span class="message-history-name"> 
+                <span class="message-sending-usernick" data-nickName="{{nickname}}">{{nickname}}</span>
+            </span>
+          </a>
+        </li>
+        </ol>
+{{/each}}
+  </script>
+
+
+
+
 </body>
 </html>

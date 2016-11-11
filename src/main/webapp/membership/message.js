@@ -15,18 +15,42 @@ $(".btn-primary").click(function(event){
 });
 
 
-function ajaxMessageLode() {
-	$.getJSON(serverAddr + "/membership/messageLode.json", function(obj) {
-		/*
+
+function ajaxMessageUserLode() {
+	$.getJSON(serverAddr + "/membership/messageUserLode.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
+		} else {
+			var source = $('#messageUserInfoTemplate').html();
+			var template = Handlebars.compile(source);
+			var data = result.data
+			data.stringify = JSON.stringify(data);
+			var messageUser = template(data);
+			$(".tempparea").append(messageUser);
 		}
-		*/
+		$(".message-history-link").click(function(event) {
+			var memberNo = $(this).attr("data-memberNo")
+			ajaxMessageContentsLode(memberNo)
+		});	
 	})
 }
 
+
+function ajaxMessageContentsLode(memberNo) {
+	console.log(memberNo)
+	$.ajax({
+		url:serverAddr + "/membership/messageContentsLode.json",
+		type:"post",
+		dataType: "json",
+		data :{memberNo:memberNo},
+		success: function(obj){
+			
+		}
+	})
+	
+}
 
 
 

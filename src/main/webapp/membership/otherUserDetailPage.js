@@ -38,7 +38,13 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				alert("조회 실패!")
 				return
 			}
-			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+result.data.profilePhoto)
+			var imgSrc = result.data.profilePhoto
+			var splitImgSrc = imgSrc.split(".")
+			if(splitImgSrc.length == 2) {
+			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+			} else {
+				$("#userProfilePhotos").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
+			}
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#likeCount").text(result.data.totalLikeCount)
 			$("#followers").text(result.data.totalFollowers)

@@ -26,5 +26,6 @@ public interface HoneyMembersDao {
   HoneyMembers emailCheck(String email) throws Exception;
   HoneyMembers selectOneByMemberNo(int memberNo);
   int sendMessage(Messages messageContents);
-  List<Messages> selectMessagesByLoginUserNo(int loginUserNo);
+  List<HoneyMembers> selectMessagesByLoginUserNo(int loginUserNo);
+  List<Messages> selectMessagesByUserNo(Messages temp);
 }

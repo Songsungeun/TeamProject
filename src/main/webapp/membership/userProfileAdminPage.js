@@ -88,7 +88,13 @@ function ajaxUserProfileFileLoder() {
 			alert("조회 실패입니다.")
 			return
 		};
-		$("#profilePhoto").attr('src',"/TeamProject/upload/"+result.data)
+		var imgSrc = result.data
+		var splitImgSrc = imgSrc.split(".")
+		if(splitImgSrc.length == 2) {
+		$("#profilePhoto").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+		} else {
+			$("#profilePhoto").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
+		}
 	})
 }
 

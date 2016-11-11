@@ -28,7 +28,6 @@ import honey.vo.JsonResult;
 import honey.vo.MemberFile;
 import honey.vo.Messages;
 import honey.vo.UrlInfo;
-import honey.vo.honey_boards;
 
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
@@ -50,7 +49,6 @@ public class HoneymembersController {
 
 	@RequestMapping(path="facebookLoginMember")
 	public Object facebookLoginMember(HoneyMembers members) throws Exception {
-		System.out.println("hello"+members);
 		if (members.getPassword() == null) {
 			members.setPassword(members.getEmail());
 			members.setNickname(members.getUserName());
@@ -58,7 +56,6 @@ public class HoneymembersController {
 			hMembersService.singUpMembers(members);
 			HoneyMembers facebookMember = hMembersService.getUserNumberByNickName(members.getNickname());
 			MemberFile profileFile = new MemberFile();
-			//  'http://graph.facebook.com/' + fbUser.id + '/picture'
 			profileFile.setFilename(members.getEmail());
 			profileFile.setMemberNo(facebookMember.getMemberNo());
 			memberFileDao.prifileFileinsert(profileFile);
@@ -191,7 +188,6 @@ public class HoneymembersController {
 			for (int i = 0; i < list.size(); i++) {
 				list.get(i).setUserProfilePath(memberFile.getFilename());
 			}
-
 			List<HoneyMain> OtherUserInfo = SetImage.setImage(list, urlCollect);
 
 			for (int i = 0; i < OtherUserInfo.size(); i++) {
@@ -300,14 +296,29 @@ public class HoneymembersController {
 		} 
 	}
 
-	@RequestMapping("messageLode")
-	public void sendMessage(HttpSession session) throws Exception {
-		HoneyMembers member = (HoneyMembers)session.getAttribute("member");
-		Messages messages = new Messages();
-		messages.setLoginUserNo(member.getMemberNo());
-		List<Messages> messageList = hMembersService.getMessages(messages.getLoginUserNo());
+	@RequestMapping("messageUserLode")
+	public Object messageUserLode(HttpSession session) throws Exception {
+		try {
+			HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+			Messages messages = new Messages();
+			messages.setLoginUserNo(member.getMemberNo());
+			List<HoneyMembers> messageUserList = hMembersService.getMessagesSendUserByLoginUserNo(messages.getLoginUserNo());
+			return JsonResult.success(messageUserList);
+		} catch (Exception e) {
+			return JsonResult.fail();
+		}
 	}
-
+	
+	@RequestMapping("messageContentsLode")
+	public Object messageContensLode(int memberNo, HttpSession session) throws Exception {
+		HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+		try {
+			List<Messages> messageList = hMembersService.getMessagesByUserNo(memberNo, loginUser.getMemberNo());
+			return JsonResult.success(messageList);
+		} catch (Exception e) {
+			return JsonResult.fail();
+		}
+	}
 
 	@RequestMapping("sendMessage")
 	public Object sendMessage(Messages messageContents, HttpSession session) throws Exception {

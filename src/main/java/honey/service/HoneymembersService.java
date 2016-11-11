@@ -24,5 +24,6 @@ public interface HoneymembersService {
 	public HoneyMembers getEmailCheck(String member) throws Exception;
 	public HoneyMembers getUserInfo(int memberNo);
 	public void insertIntoMessage(Messages messageContents);
-	public List<Messages> getMessages(int loginUserNo);
+	public List<HoneyMembers> getMessagesSendUserByLoginUserNo(int loginUserNo);
+	public List<Messages> getMessagesByUserNo(int memberNo, int i);
 }

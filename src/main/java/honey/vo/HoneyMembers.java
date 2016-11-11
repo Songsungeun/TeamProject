@@ -11,7 +11,8 @@ public class HoneyMembers {
 	protected String userBirthDay;
 	protected String profileFileName;
 	protected String introduce;
-
+	protected String profileFilePath;
+	
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -73,12 +74,20 @@ public class HoneyMembers {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+	public String getProfileFilePath() {
+		return profileFilePath;
+	}
+	public void setProfileFilePath(String profileFilePath) {
+		this.profileFilePath = profileFilePath;
+	}
 	@Override
 	public String toString() {
 		return "HoneyMembers [memberNo=" + memberNo + ", followMemberNo=" + followMemberNo + ", userName=" + userName
 				+ ", email=" + email + ", nickname=" + nickname + ", password=" + password + ", phone=" + phone
 				+ ", userBirthDay=" + userBirthDay + ", profileFileName=" + profileFileName + ", introduce=" + introduce
-				+ "]";
+				+ ", profileFilePath=" + profileFilePath + "]";
 	}
+	
+	
 	
 }
