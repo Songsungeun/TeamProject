@@ -52,9 +52,11 @@
     <div class="contentsSection">
      <div id = "centerContents">
          <div id = "centerContentsWrap">
-              <span class = "conterMenuBtn"> <a href = "../FilePage/fileMainPage.html"> Follow  List </a></span>
+              <span class = "conterMenuBtn" id = "myPostsSwitch"> <a id = "myPosts" href = "#"> My Posts </a></span>
             &nbsp; &nbsp;  <span id ="itemDistinct">|</span>  &nbsp;&nbsp;  
-              <span class = "conterMenuBtn" id = "likePostSwitch"> <a href = "#"> Like Posts </a></span>
+              <span class = "conterMenuBtn" id = "likePostSwitch"> <a id = "likePosts"href = "#"> Like Posts </a></span>
+            &nbsp; &nbsp;  <span id ="itemDistinct">|</span>  &nbsp;&nbsp;  
+              <span class = "conterMenuBtn" id = "followSwitch"> <a id = "followlist" href ="#"> Follow  List </a></span>
          
 	     <div id = "contentsDetailWrap">
 	         <span class = "conterDetailBtn1"> <a  href = "#"><img id="layoutBtn" src="./images/layout-2.svg" width ="20px" height="20px"></a></span> 
@@ -63,25 +65,26 @@
 	     </div> 
      </div> 
     </div>
+    
         
      <section id = "contentsArea">
       <div id = "cardWrap">
         <div id = "postsCard">
+        <!--  card -->
        </div>
-       <div id= "cardBtnWrap">
-          <div id = "cardBtn">
-              <a  class="moreViewBtn" href="#">더보기</a>
-              </div>
-         </div>
        </div>
      
      <div id = "tableWrap">
        <table id="boardTable" class="table table-hover">
-     
+      <!-- table -->
       </table>
             <div id = "boardBtn">
               <a  class="moreViewBtn" href="#">더보기</a>
            </div>
+     </div>
+     
+     <div id = "followList">
+        <!-- follow -->
      </div>
      
        <div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
@@ -143,7 +146,7 @@
                 </div>
               </div>
             </div>
-  
+    </div>
 </section>
     <footer>
 
@@ -187,6 +190,7 @@
      </label>
     </tr>
 {{/each}}
+  
 </script> 
 
    <script id = "boardUiTemplateText2" type="text/x-handlebars-template">
@@ -197,7 +201,7 @@
            <th>등록일</th>
            <th>좋아요</th>
            <th>조회수</th>
-           <th>삭제하기</th>
+           <th>취소하기</th>
          </tr>
          </thead>
          <tbody></tbody>
@@ -210,7 +214,7 @@
           <td>{{createdDate2}}</td> 
           <td>{{like}}</td> 
           <td>{{viewCount}}</td>
-          <td><button  class="btn btn-danger" id="btn" data-no={{no}}>삭제</button></td>
+          <td><button  class="btn btn-danger" id="btn" data-no={{no}}>취소</button></td>
      </label>
     </tr>
 {{/each}}
@@ -254,7 +258,21 @@
   </div>
 </li>
 {{/each}}
+            <div id = "cardBtn">
+                  <a  class="moreViewBtn" href="#">더보기</a>
+              </div>
+
 </script> 
+
+    <script id="guiderInfoTemplate" type="text/x-handlebars-template">
+{{#each this}}
+      <div class="sidebar-guideUserCollection">
+        <a href="#"><img class="userProfilePhoto" id="guiderPicture" data-nickName="{{nickname}}" src="/TeamProject/upload/{{profileFileName}}"></a> 
+       <div class="userID" id="userNick" data-nickName="{{nickname}}" >{{nickname}}</div></a> 
+      </div>
+{{/each}}
+  </script>
+
 
     <script>
   ajaxBoardList()

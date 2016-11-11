@@ -16,10 +16,35 @@ $(document.body).on('click', '.moreViewBtn', function(event){
 	ajaxBoardList()
 })
 
+$("#myPostsSwitch").click(function() {
+	window.location.reload();
+//	$("#likePosts").css("color", "#999999")
+//	$("#followlist").css("color", "#999999")
+//	$("#myPosts").css("color", "#db2626")
+//	$('.conterDetailBtn1').show();
+//	$('.conterDetailBtn2').show();  
+//	$("#followList").hide();
+//	$("#tableWrap").hide();
+//	
+//	ajaxUrl= admin.adminList;
+//	stateResultCode = admin.stateResultCode1;
+//	ajaxBoardList(ajaxUrl , stateResultCode)
+//	$('#cardWrap').show();  
+})
+
 $("#likePostSwitch").click(function() {
+	$('.conterDetailBtn1').show();
+	$('.conterDetailBtn2').show();  
+	$("#myPosts").css("color", "#999999")
+	$("#followlist").css("color", "#999999")
+	$("#likePosts").css("color", "#db2626")
+	$("#followList").hide();
+	$("#tableWrap").hide();
+	
 	ajaxUrl= admin.likeList;
 	stateResultCode = admin.stateResultCode2;
 	ajaxBoardList(ajaxUrl , stateResultCode)
+	$('#cardWrap').show();  
 })
 
 $(".conterDetailBtn1").click(function () {
@@ -37,6 +62,40 @@ $(".conterDetailBtn2").click(function () {
 	$('#tableWrap').show();  
 });
 
+$("#followSwitch").click(function () {
+	$("#myPosts").css("color", "#999999")
+	$("#likePosts").css("color", "#999999")
+	$("#followlist").css("color", "#db2626")
+	$('#tableWrap').hide();
+	$('#cardWrap').hide();  
+	$('.conterDetailBtn1').hide();
+	$('.conterDetailBtn2').hide();  
+	$("#followList").show();
+		$.getJSON(serverAddr + "/admin/adminFollowingList.json", 
+			function(obj) {
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				alert("서버에서 데이터를 가져오는데 실패하였습니다.")
+				return
+			}
+			var temp = $(this).attr("data-nickName");
+			var source = $('#guiderInfoTemplate').html();
+			var template = Handlebars.compile(source);
+			var data = result.data
+			var boards = template(data);
+			$("#followList").html(boards);
+			
+			$(".userProfilePhoto").click(function(event) {
+				location.href = "/TeamProject/membership/otherUserDetailPage.html?nick=" +  $(this).attr("data-nickName");
+			})
+			
+			$(".userID").click(function(event) {
+				location.href = "/TeamProject/membership/otherUserDetailPage.html?nick=" +  $(this).attr("data-nickName");
+			})
+		})
+})
+		
+		
 function ajaxBoardList() {
 	$.getJSON(serverAddr + ajaxUrl , {
 		"pageNo" : admin.pageNo,
@@ -65,11 +124,9 @@ function ajaxBoardList() {
 		}
 
 		$(".titleLink").click(function(event){
-			console.log("결과는? :"  + resultCode)
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
 			var no = $(this).attr("data-no")
-			console.log(no)
 			ajaxLoadBoard(no)
 			ajaxPostComentsList(no)
 		})
@@ -224,6 +281,5 @@ function ajaxPostComentsList(no) {
 				}
 			}
 		$(".userComment > .cmts_list").html(contents);
-		console.log(result.data.LoginInfo)
 	})
 }
