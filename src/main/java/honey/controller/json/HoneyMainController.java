@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import honey.service.HoneyComentService;
 import honey.service.HoneyMainService;
+import honey.service.HoneymembersService;
 import honey.vo.FileList;
 import honey.vo.HoneyComent;
 import honey.vo.HoneyMain;
@@ -28,6 +29,7 @@ import honey.vo.UrlInfo;
 public class HoneyMainController {
 	@Autowired HoneyMainService mainService;
 	@Autowired HoneyComentService comentService;
+	
 
 	@RequestMapping("postlist")
 	public Object list(
@@ -120,6 +122,7 @@ public class HoneyMainController {
 			@RequestParam(defaultValue="20") int length) throws Exception {
 		try {
 			List<HoneyComent> list = comentService.getComent(no, pageNo, length);
+			
 			HashMap<String, Object> map = new HashMap<>();
 			HoneyMembers member = (HoneyMembers)session.getAttribute("member");
 			Object membNo;

@@ -19,9 +19,16 @@ public class HoneyComent implements Serializable{
   protected int no;
   protected int memberNo;
   protected int not_use_no;
+  protected String commentMemberPhoto;
   
   
   
+  public String getCommentMemberPhoto() {
+    return commentMemberPhoto;
+  }
+  public void setCommentMemberPhoto(String commentMemberPhoto) {
+    this.commentMemberPhoto = commentMemberPhoto;
+  }
   public int getNot_use_no() {
     return not_use_no;
   }

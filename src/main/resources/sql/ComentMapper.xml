@@ -14,13 +14,15 @@
     <result column="CM_THRD" property="comentThread"/>
     <result column="CM_DEPTH" property="comentDepth"/>
     <result column="NOT_USE_NO" property="not_use_no"/>
+    <result column="MBP_PATH" property="commentMemberPhoto"/>
   </resultMap>
   
   <select id="comentList" resultMap="boardMap" parameterType="map">
     select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
-    hc.BD_NO,hm.MB_NICK,hm.MB_NO
+    hc.BD_NO,hm.MB_NICK,hm.MB_NO, hmp.MBP_PATH
     from honey_cmts hc
     left join honey_membs hm on hc.MB_NO = hm.MB_NO 
+    left join honey_membs_photos hmp on hmp.MB_NO = hc.MB_NO
     where BD_NO = #{boardNo}
     order by
     <choose>

@@ -23,38 +23,6 @@ function ajaxBoardList() {
 		var template4 = Handlebars.compile($('#li4TemplateText').html())
 		$(".tab-content > .allConts4").html(template4(result));
 
-		var arr1 = result.data.list1;
-		for(var i=0; i < arr1.length; i++) {
-			var imgWidth = $("#thumbImg_"+ arr1[i].no).width();
-			var imgHeight = $("#thumbImg_"+ arr1[i].no).height();
-			var heigtRate = (250 * imgHeight) / imgWidth;
-			$("#thumbImg_"+arr1[i].no).css({"width":"250"})
-			$("#thumbImg_"+arr1[i].no).css({"height":heigtRate})
-		};
-		var arr2 = result.data.list2;
-		for(var i=0; i < arr2.length; i++) {
-			var imgWidth = $("#thumbImg_"+ arr2[i].no).width();
-			var imgHeight = $("#thumbImg_"+ arr2[i].no).height();
-			var heigtRate = (250 * imgHeight) / imgWidth;
-			$("#thumbImg_"+arr2[i].no).css({"width":"250"})
-			$("#thumbImg_"+arr2[i].no).css({"height":heigtRate})
-		};
-		var arr3 = result.data.list3;
-		for(var i=0; i < arr3.length; i++) {
-			var imgWidth = $("#thumbImg_"+ arr3[i].no).width();
-			var imgHeight = $("#thumbImg_"+ arr3[i].no).height();
-			var heigtRate = (250 * imgHeight) / imgWidth;
-			$("#thumbImg_"+arr3[i].no).css({"width":"250"})
-			$("#thumbImg_"+arr3[i].no).css({"height":heigtRate})
-		};
-		var arr4 = result.data.list4;
-		for(var i=0; i < arr4.length; i++) {
-			var imgWidth = $("#thumbImg_"+ arr4[i].no).width();
-			var imgHeight = $("#thumbImg_"+ arr4[i].no).height();
-			var heigtRate = (250 * imgHeight) / imgWidth;
-			$("#thumbImg_"+arr4[i].no).css({"width":"250"})
-			$("#thumbImg_"+arr4[i].no).css({"height":heigtRate})
-		};
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
@@ -201,35 +169,35 @@ function ajaxPostComentsList(no) {
 		for (var i=0; i < arr.length; i++) {
 			if(result.data.LoginInfo == arr[i].memberNo) {
 				contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
-				"<div class='coment_info'>" +
+				"<div class='cmt-leftside'><img id='cmt_userPhoto' src='../upload/"+arr[i].commentMemberPhoto+"'></div>" +
+				"<div class='cmt-rightside'>" + "<div class='coment_info'>" +
 				"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
-				"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
+				"<div class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</div>" + "</div>" +
 				"<div class='coment_ud'>" +
-				"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
-				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
-				"<div class='cmt-btn-wrap'>" +
-				"<a class='cmt_update' type='button' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-				"<a class='cmt_delete' type='button' data-Delete='" + arr[i].cmtNo + 
-				"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
-				"<div class='replyArea'></div>" +
+				"<div id='cmt-btn-wrap-left'><span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
+				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</a></div>" +
+				"<div id='cmt-btn-wrap-right'>" +
+				"<a class='cmt_update' method='post' data-update='" + arr[i].cmtNo + "'>수정</a>" +
+				"<a class='cmt_delete' method='post' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
 				"</div>" + 
-				"</div>" + "</div>"
+				"<div class='replyArea'></div>" +
+				"</div>" + "</div>" + "</div>"
 			} 
 			if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
 				contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
-				"<div class='coment_info'>" +
+				"<img id='cmt_userPhoto' class='cmt-leftside' src='../upload/"+arr[i].commentMemberPhoto+"'>" +
+				"<div class='cmt-rightside'>" + "<div class='coment_info'>" +
 				"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
 				"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
 				"<div class='coment_ud'>" +
-				"<span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
-				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글달기</a>" +
-				"<div class='cmt-btn-wrap'>" +
-				"<a class='cmt_update' type='button' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-				"<a class='cmt_delete' type='button' style='display:none' data-Delete='" + arr[i].cmtNo +
-				"' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
-				"<div class='replyArea'></div>" +
+				"<div id='cmt-btn-wrap-left'><span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
+				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</a></div>" +
+				"<div id='cmt-btn-wrap-right'>" +
+				"<a class='cmt_update' method='post' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
+				"<a class='cmt_delete' method='post' style='display:none' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
 				"</div>" +
-				"</div>" + "</div>"
+				"<div class='replyArea'></div>" +
+				"</div>" + "</div>" + "</div>"
 			}
 		}
 		$(".userComment > .cmts_list").html(contents);
@@ -239,13 +207,17 @@ var childcomentThread = 0;
 $(document.body).on("click",".cmt_reply",function(event) {
 	childcomentThread = $(this).attr("data-no");
 	$(".coment_wrap[data-cmtNo=" + childcomentThread + "]").find(".replyArea").html(
-			"<form class='userComment' method='post' action='#'>" +
-			"<textarea placeholder='Add a comment...' maxlength='255'" +
+			"<textarea placeholder='댓글을 입력 하세요.' maxlength='255'" +
 			"id='ccomment'></textarea>" +
-			"<span type='button' class='reply-save-btn' >저장</span>" +
-			"<span type='button' class='bit-cancel-btn' >취소</span>"
+			"<div id='replyBtnWrap'>" +
+			"<a method='post' class='reply-save-btn' data-no='"+ childcomentThread +"'>댓글달기</a>" +
+			"<a method='post' class='bit-cancel-btn replycancelBtn' data-no='"+ childcomentThread +"'>취소</a></div>"
 	);
 })
+$(document.body).on("click",".bit-cancel-btn",function(event) {
+   ajaxPostComentsList(comentInfo);
+   console.log("취소버튼 누름!");
+});
 $(document.body).on("click",".reply-save-btn",function(event){
 	var honeyComent = {
 			cmtNo: childcomentThread,
@@ -278,9 +250,9 @@ function ajaxComentDetail(no) {
 		else {
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".cmt_conts").html(
 			"<textarea type='text' class='update-contents reUpdateLimit'></textarea>");
-			$(".coment_wrap[data-cmtNo=" + no + "]").find(".cmt-btn-wrap").html(
-					"<button type='button' class='bit-save-btn' data-no=" + no + ">저장</button>" +
-					"<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
+			$(".coment_wrap[data-cmtNo=" + no + "]").find("#cmt-btn-wrap-right").html(
+					"<a method='post' class='bit-save-btn' data-no=" + no + ">저장</a>" +
+					"<a method='post' class='bit-cancel-btn updatecancelBtn' data-no=" + no + ">취소</a>");
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".update-contents").val(result.data.coment);
 		}
 	})
