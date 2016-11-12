@@ -7,9 +7,9 @@ html {
 }
 
 body {
-	background-image:url("../../mainpage/mainpage_images/background.jpg");
+	background-image:url("../../mainpage/mainpage_images/whiteClover.jpg");
   font-family: 'Titillium Web', sans-serif;
-  background-repeat: no-repeat;
+/*   background-repeat: no-repeat; */
   width: 100%;
   height: 400px;
   background-size: 100%;
@@ -35,19 +35,19 @@ a:hover {
 
 #loginWords>.title {
   font-size: 50px;
-  color: #4A9AA6;
+  color: #ff6a4f;
   font-weight: bolder;
 }
 
 #loginWords>.subtitle {
   font-size: 18px;
   margin-top: 10px;
-  color: #4A9AA6;
+  color: #F2BAAE;
   font-weight: 900;
 }
 
 .form {
-  background-color: rgba(130 ,155,176, 0.6);
+  background-color: rgba(130 ,155,176, 0.5);
   padding: 40px;
   max-width: 600px;
   margin: 30px auto;
@@ -70,7 +70,7 @@ a:hover {
   text-decoration: none;
   padding: 15px;
   background: rgba(160, 179, 176, 0.25);
-  color: #a0b3b0;
+  color: white;
   font-size: 20px;
   float: left;
   width: 50%;
@@ -202,11 +202,39 @@ textarea {
   text-align: right;
 }
 
-#otherLogin>#facebook_login:hover {
-  background-color: #1EDDFF;
-  opacity: 1;
-}
-
 #checkEmail {
 	border: 1px solid red;
+}
+
+#facebook_Icon {
+	border-radius: 4px;
+	opacity: 0.7;
+}
+
+#facebook_Login {
+	margin-top: -15px;
+  float: left;
+  display: block;
+/*   width: 164px; */
+/*   height: 40px; */
+}
+/* .fb-login-button { */
+/* 	float:left; */
+/* 	z-index: 60px; */
+/* } */
+.fb_iframe_widget iframe {
+  /*display: none;*/
+  opacity: 1;
+  float: left;
+  z-index: 100;
+/*   position: relative; */
+}
+/* #facebookBtn { */
+/* 	float: left; */
+/* 	position: relative; */
+/* } */
+.fb-login-button {
+	border: 1px solid red;
+	bottom: 50px;
+  left: 25px;
 }
