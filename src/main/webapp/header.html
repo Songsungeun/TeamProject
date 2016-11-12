@@ -6,322 +6,338 @@
 <style>
 /*reset*/
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
-  blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
-  q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
-  th, td, article, aside, canvas, details, figcaption, figure, footer,
-  header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
+	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer,
+	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
-  menu, nav, section {
-  display: block;
+	menu, nav, section {
+	display: block;
 }
 
 input, textarea, select, button, table {
-  font-size: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  -webkit-text-size-adjust: none;
+	font-size: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	-webkit-text-size-adjust: none;
 }
 
 ul, ol, li {
-  list-style: none;
+	list-style: none;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 a:hover, a:focus {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
+	margin: 0;
+	padding: 0;
+	border: none;
 }
 
 caption, legend {
-  position: absolute;
-  top: -5000px;
-  text-indent: -5000px;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
+	position: absolute;
+	top: -5000px;
+	text-indent: -5000px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
 }
 
 img {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 table {
-  display: table;
+	display: table;
 }
 
 caption {
-  display: table-caption;
+	display: table-caption;
 }
 
 colgroup {
-  display: table-column-group;
+	display: table-column-group;
 }
 
 col {
-  display: table-column;
+	display: table-column;
 }
 
 thead {
-  display: table-header-group;
+	display: table-header-group;
 }
 
 tbody {
-  display: table-row-group;
+	display: table-row-group;
 }
 
 tfoot {
-  display: table-footer-group;
+	display: table-footer-group;
 }
 
 tr {
-  display: table-row;
+	display: table-row;
 }
 
 td, th {
-  display: table-cell;
+	display: table-cell;
 }
 
 ul:after {
-  content: " ";
-  display: block;
-  clear: both;
+	content: " ";
+	display: block;
+	clear: both;
 }
 
 body {
-  font-family: "arial", sans-serif;
-  font-size: 12px;
+	font-family: "arial", sans-serif;
+	font-size: 12px;
 }
 /*reset*/
 .header_Main_Background {
-  margin: 0px;
-  padding: 0;
-  background-color: #e00000;
-  height: 59px;
-  position: fixed;
-  width: 100%;
-  z-index: 9999999;
+	margin: 0px;
+	padding: 0;
+	background-color: #e00000;
+	height: 59px;
+	position: fixed;
+	width: 100%;
+	z-index: 9999999;
 }
 
 #header_Background {
-  margin: 0 auto;
-  padding: 0;
-  background-color: white;
-  height: 57px;
-  width: 100%;
-  overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	background-color: white;
+	height: 57px;
+	width: 100%;
+	overflow: hidden;
 }
 
 .header_leftSection {
-  width: 30%;
-  height: 40px;
-  overflow: hidden;
-  display: inline-block;
+	width: 30%;
+	height: 40px;
+	overflow: hidden;
+	display: inline-block;
 }
 
 .headPageShift {
-  position: fixed;
-  overflow: hidden;
+	position: fixed;
+	overflow: hidden;
 }
 
 .headlogo {
-  margin: 6px 10px 0px 30px;
-  padding: 0;
-  float: left;
-  font-size: 25px;
-  font-weight: bold;
+	margin: 6px 10px 0px 30px;
+	padding: 0;
+	float: left;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .headlogo a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .headlist {
-  margin: 18px 13px 13px 13px;
-  float: right;
-  font-size: 16px;
-  font-weight: bold;
+	margin: 18px 13px 13px 13px;
+	float: right;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .headlist>a:hover {
-  color: white;
+	color: white;
 }
 
 .headlist>a {
-  text-decoration: none;
-  color: #646464;
+	text-decoration: none;
+	color: #646464;
 }
 
 .headerRightSection {
-  margin: 16px 0px 0px 0px;
-  width: 30%;
-  height: 32px;
-  left: 50%;
-  overflow: hidden;
-  float: right;
+	width: 30%;
+	height: 32px;
+	left: 50%;
+	overflow: hidden;
+	float: right;
 }
 
 .seachBar {
-  width: 360px;
-  overflow: hidden;
-  display: inline-block;
-  margin-left: 80px;
-  position: fixed;
-  top: 15px;
+	width: 360px;
+	overflow: hidden;
+	display: inline-block;
+	margin-left: 80px;
+	position: fixed;
+	top: 15px;
 }
 
 .search {
-  position: relative;
-  margin: 0px;
+	position: relative;
+	margin: 0px;
 }
 
 #inputSearchKey {
-  width: 270px;
-  height: 27px;
-  border: none;
-  border-bottom: #e00000 1px solid;
+	width: 270px;
+	height: 27px;
+	border: none;
+	border-bottom: #e00000 1px solid;
 }
 
 .searchButton {
-  cursor: pointer;
-  position: absolute;
-  margin: 0px 0px 0px 7px;
+	cursor: pointer;
+	position: absolute;
+	margin: 0px 0px 0px 7px;
 }
 
 #newWrite {
-  padding: 0px;
-  float: left;
-  position: absolute;
-  margin: 0px 3px 0px 150px;
-  font-weight: bold;
-  overflow: hidden;
+	float: left;
+	position: absolute;
+	margin: 0px 3px 0px 150px;
+	font-weight: bold;
+	overflow: hidden;
+	height: 48px;
+}
+
+#newMessageAlert {
+	padding: 2px 4px;
+	min-width: 5px;
+	font-size: 5px !important;
+	background-color: #e00000;
+	margin-left: 3px;
+}
+
+.header-button {
+	margin-top: 13px;
 }
 
 #newWrite a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 #confirmLogin {
-  position: absolute;
-  /* float: left; */
-  float: right;
-  right: 100px;
-  height: 17px;
-  margin: 4px 0px 7px 220px;
-  overflow: hidden;
-  font-size: 13px;
-  line-height: 22px;
-  color: #666666;
+	position: absolute;
+	/* float: left; */
+	float: right;
+	right: 100px;
+	height: 17px;
+	margin: 4px 0px 7px 220px;
+	overflow: hidden;
+	font-size: 13px;
+	line-height: 22px;
+	color: #666666;
 }
 
 #header_Background a {
-  color: #646464;
+	color: #646464;
 }
 
 #message {
-  padding: 0px;
-  background-size: 20px;
-  margin-left: 25px;
+	padding: 0px;
+	background-size: 20px;
+	margin-left: 25px;
 }
 
 #cloud {
-  padding: 0px;
-  background-size: 20px;
-  margin-left: 25px;
+	padding: 0px;
+	background-size: 20px;
+	margin-left: 25px;
 }
 
 #logoutBtn {
-  padding: 0px;
-  background-size: 20px;
-  margin-left: 25px;
+	padding: 0px;
+	background-size: 20px;
+	margin-left: 25px;
 }
 
 .userProfilePicture {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: #e6e6e6 1px solid;
-  margin-left: 25px;
+	width: 30px;
+	height: 30px;
+	border-radius: 10px;
+	border: #e6e6e6 1px solid;
+	margin-left: 25px;
 }
 
 #fb-login-button {
-  position: relative;
-  float: right;
+	position: relative;
+	float: right;
 }
 </style>
 
 </head>
 
 <body>
-  <div class=header_Main_Background>
-    <div id=header_Background>
+	<div class=header_Main_Background>
+		<div id=header_Background>
 
-      <div class=header_leftSection>
-        <ul class="headPageShift">
-          <li class="headlogo"><a href="#"><img
-              src="/TeamProject/logoPic.png" width="150px" height="35px"></a></li>
-          <li class="headlist"><a href="#">내 보관소</a></li>
-          <li class="headlist"><a href="#">내 커뮤니티</a></li>
-        </ul>
-      </div>
+			<div class=header_leftSection>
+				<ul class="headPageShift">
+					<li class="headlogo"><a href="#"><img
+							src="/TeamProject/logoPic.png" width="150px" height="35px"></a></li>
+					<li class="headlist"><a href="#">내 보관소</a></li>
+					<li class="headlist"><a href="#">내 커뮤니티</a></li>
+				</ul>
+			</div>
 
-      <div class="seachBar">
-        <input id="inputSearchKey" name=search type=text
-          placeholder="검색어를 입력하세요"> <span> <a
-          class="searchButton" href="#"> <img src="../search-engine.png"
-            width="25" />
-        </a></span>
-      </div>
+			<div class="seachBar">
+				<input id="inputSearchKey" name=search type=text
+					placeholder="검색어를 입력하세요"> <span> <a
+					class="searchButton" href="#"> <img src="../search-engine.png"
+						width="25" />
+				</a></span>
+			</div>
 
-      <div class=headerRightSection>
-        <div id="newWrite">
-          <a href='#'><img id="writing" width="23px" height="23px"
-            src="../write.svg"></a> <a href='#'><img id="message"
-            width="23px" height="23px" src="../message.svg"></a> <a href='#'><img
-            id="cloud" width="23px" height="23px" src="../cloud-computing.svg"></a><a
-            href="#"><img class="userProfilePicture" id="profilePicture"
-            src=""></a> <a href='#'><img id="logoutBtn" width="21px"
-            height="21px" src="../logout.svg"></a>
-        </div>
+			<div class=headerRightSection>
+				<div id="newWrite">
+					<a href='#'><img class="header-button" id="writing"
+						width="23px" height="23px" src="../write.svg"></a> <a href='#'><img
+						class="header-button" id="message" width="23px" height="23px"
+						src="../message.svg"><span id="newMessageAlert"
+						class="badge"></span></a> <a href='#'><img class="header-button"
+						id="cloud" width="23px" height="23px" src="../cloud-computing.svg"></a><a
+						href="#"><img class="userProfilePicture header-button"
+						id="profilePicture" src=""></a> <a href='#'><img
+						id="logoutBtn" class="header-button" width="21px" height="21px"
+						src="../logout.svg"></a>
+				</div>
 
-        <div id="confirmLogin">
-          <ul>
-            <a id="login" href="#"><li>로그인 하세요</li></a>
-          </ul>
-        </div>
+				<div id="confirmLogin">
+					<ul>
+						<a id="login" href="#"><li>로그인 하세요</li></a>
+					</ul>
+				</div>
 
 
-      </div>
-      <div id="fb-root"></div>
-  </div>
+			</div>
+			<div id="fb-root"></div>
+		</div>
 
-  <script
-    src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script type="text/javascript" src="../userAuthApp.js"></script>
-  <script type="text/javascript" src="../membership/likeList.js"></script>
-  <script type="text/javascript"
-    src="../resultOfSearch/resultOfSearch.js"></script>
-  <script>
+		<script
+			src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+		<script type="text/javascript" src="../userAuthApp.js"></script>
+		<script type="text/javascript" src="../membership/likeList.js"></script>
+		<script type="text/javascript"
+			src="../resultOfSearch/resultOfSearch.js"></script>
+		<script>
+  
+  
     $(".headlogo").click(function() {
       location.href = "../mainpage/Main.html"
     })
@@ -372,7 +388,7 @@ body {
       ajaxLoginUser();
   </script>
 
-<script>
+		<script>
           window.fbAsyncInit = function() {
             FB.init({
               appId      : '1108769789218956', // 앱 ID
