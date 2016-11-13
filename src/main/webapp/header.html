@@ -114,14 +114,14 @@ body {
 }
 /*reset*/
 .header_Main_Background {
-    margin: 0px;
-    padding: 0;
-    background-color: #e00000;
-    height: 59px;
-    position: fixed;
-    width: 100%;
-    z-index: 9999999;
-    min-width: 1024px;
+	margin: 0px;
+	padding: 0;
+	background-color: #e00000;
+	height: 59px;
+	position: fixed;
+	width: 100%;
+	z-index: 9999999;
+	min-width: 1024px;
 }
 
 #header_Background {
@@ -259,7 +259,7 @@ body {
 #cloud {
 	padding: 0px;
 	background-size: 20px;
-	margin-left: 25px;
+	margin-left: 13px;
 }
 
 #logoutBtn {
@@ -337,79 +337,84 @@ body {
 		<script type="text/javascript"
 			src="../resultOfSearch/resultOfSearch.js"></script>
 		<script>
-  
-  
-    $(".headlogo").click(function() {
-      location.href = "../mainpage/Main.html"
-    })
+			$(".headlogo").click(function() {
+				location.href = "../mainpage/Main.html"
+			})
 
-    $(".headlist").click(function() {
-      location.href = "../adminpage/HoneyAdminPage.html"
-    })
+			$(".headlist").click(function() {
+				location.href = "../adminpage/HoneyAdminPage.html"
+			})
 
-    $("#writing").click(function() {
-      location.href = "../writepage/writepage.html"
-    })
+			$("#writing").click(function() {
+				location.href = "../writepage/writepage.html"
+			})
 
-    $("#message").click(function() {
-      location.href = "../membership/message.html"
-    })
+			$("#message").click(function() {
+				location.href = "../membership/message.html"
+			})
 
-    $("#cloud").click(function() {
-      location.href = "../FilePage/fileMainPage.html"
-    })
+			$("#cloud").click(function() {
+				location.href = "../FilePage/fileMainPage.html"
+			})
 
-    $("#login").click(function() {
-      location.href = "../mainpage/LoginPage.html"
-    })
+			$("#login").click(function() {
+				location.href = "../mainpage/LoginPage.html"
+			})
 
-    $("#logoutBtn").click(function(event) {
-      location.href = "../mainpage/Main.html"
-      ajaxLogout()
-      
-    });
+			$("#logoutBtn").click(function(event) {
+				location.href = "../mainpage/Main.html"
+				ajaxLogout()
 
-    $(".searchButton").click(function() {
-      var searchValue = $("#inputSearchKey").val()
-      console.log(searchValue)
-      ajaxSearchValue(searchValue)
-    })
+			});
 
-    $("#logoutBtn").click(function(event) {
-      event.stopImmediatePropagation();
-      location.href = "../mainpage/Main.html"
-      ajaxLogout()
-      FB.logout();
-    })
+			$(".searchButton").click(function() {
+				var searchValue = $("#inputSearchKey").val()
+				console.log(searchValue)
+				ajaxSearchValue(searchValue)
+			})
 
-    $("#profilePicture").click(function() {
-      location.href = "../membership/userProfileAdminPage.html"
-    })
-    
-      ajaxLoginUser();
-  </script>
+			$("#logoutBtn").click(function(event) {
+				event.stopImmediatePropagation();
+				location.href = "../mainpage/Main.html"
+				ajaxLogout()
+				FB.logout();
+			})
+
+			$("#profilePicture").click(function() {
+				location.href = "../membership/userProfileAdminPage.html"
+			})
+
+			ajaxLoginUser();
+			ajaxNewMessageAlam();
+		</script>
 
 		<script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '1108769789218956', // 앱 ID
-              status     : true,          // 로그인 상태를 확인
-              cookie     : true,          // 쿠키허용
-              xfbml      : true           // parse XFBML
-            });
-            FB.Event.subscribe('auth.logout', function(response) {
-                document.location.reload();
-            });
-   
-          };
-          (function(d){
-             var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement('script'); js.id = id; js.async = true;
-             js.src = "//connect.facebook.net/en_US/all.js";
-             ref.parentNode.insertBefore(js, ref);
-           }(document));
-        </script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId : '1108769789218956', // 앱 ID
+					status : true, // 로그인 상태를 확인
+					cookie : true, // 쿠키허용
+					xfbml : true
+				// parse XFBML
+				});
+				FB.Event.subscribe('auth.logout', function(response) {
+					document.location.reload();
+				});
+
+			};
+			(function(d) {
+				var js, id = 'facebook-jssdk', ref = d
+						.getElementsByTagName('script')[0];
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				ref.parentNode.insertBefore(js, ref);
+			}(document));
+		</script>
 </body>
 
 </html>

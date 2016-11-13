@@ -149,7 +149,7 @@ group by honey_membs_photos.mb_no
 )
 
 
-order by honey_mesgs.insertDate;
+order by honey_mesgs.insertDate desc;
 	</select>
 
 
@@ -226,7 +226,10 @@ order by honey_mesgs.insertDate;
 	</select>
 
 
-
+  <select id="selectMessageStatusZeroByUserNo" resultMap="messageMap" parameterType="int">
+    select status from honey_mesgs
+    where status=0 and MB_NO2=#{memberNo}
+  </select>
 
 </mapper>
 

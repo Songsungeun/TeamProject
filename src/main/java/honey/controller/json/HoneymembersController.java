@@ -308,12 +308,15 @@ public class HoneymembersController {
 			return JsonResult.fail();
 		}
 	}
-	
+
 	@RequestMapping("messageContentsLode")
 	public Object messageContensLode(int memberNo, HttpSession session) throws Exception {
 		HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
 		try {
 			List<Messages> messageList = hMembersService.getMessagesByUserNo(memberNo, loginUser.getMemberNo());
+			System.out.println(messageList.get(0).getInsertDate());
+			System.out.println(messageList.get(0).getInsertDate2());
+
 			return JsonResult.success(messageList);
 		} catch (Exception e) {
 			return JsonResult.fail();
@@ -334,6 +337,19 @@ public class HoneymembersController {
 			return JsonResult.fail();
 		}
 	}
+
+	@RequestMapping("newMessageAlam")
+	public Object newMessageAlam(HttpSession session) throws Exception{
+		HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
+		try {
+			int newMessageNum = hMembersService.getNewMessagesNum(loginUser.getMemberNo());
+			return JsonResult.success(newMessageNum);
+	} catch (Exception e) {
+		return JsonResult.fail();
+	}
+
+
+}
 
 
 }

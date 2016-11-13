@@ -524,8 +524,8 @@ body {
 	</div>
 
 	<script type="text/javascript" src="/TeamProject/userAuthApp.js"></script>
-	<script type="text/javascript"
-		src="/TeamProject/membership/membership.js"></script>
+	<!-- <script type="text/javascript"
+		src="/TeamProject/membership/membership.js"></script> -->
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -584,15 +584,15 @@ body {
 													$
 															.ajax({
 																type : 'POST',
-																dataType : "jsonp",
-																url : "http://t2.java85.com:8080/TeamProject/membership/emailCheck.json",
+																dataType : "json",
+																url : "http://t2.java85.com:8000/TeamProject/membership/emailCheck.json",
 																crossDomain : true,
 																data : {
 																	email : email
 																},
 																success : function(
 																		obj) {
-																	if (obj.jsonResult.state == "success") {
+																	if (obj.state == "success") {
 																		$(
 																				"#result_id_msg")
 																				.html(

@@ -1,10 +1,10 @@
 package honey.vo;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class Messages {
-	static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	protected int messageNo;
 	protected String nickName;
 	protected String message;
@@ -33,7 +33,6 @@ public class Messages {
 		return insertDate2;
 	}
 	public void setInsertDate2(String str) {
-		this.insertDate = Date.valueOf(str);
 		this.insertDate2 = str;
 	}
 	

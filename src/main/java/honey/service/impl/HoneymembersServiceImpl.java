@@ -1,5 +1,6 @@
 package honey.service.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,8 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	@Autowired HoneyMainUrlDao hUrnDao;
 
 	public void singUpMembers(HoneyMembers members) throws Exception {
-		try {
-			hMembersDao.joinMember(members);
-			fileDao.defaultProfilePhotoInsert(members.getMemberNo());
-		}catch(Exception e) {}
+		hMembersDao.joinMember(members);
+		fileDao.defaultProfilePhotoInsert(members.getMemberNo());
 	}
 
 	public void unregister(int memberNo) throws Exception {
@@ -42,36 +41,21 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	}
 
 	public String getProfileFileName(int memberNo) throws Exception {
-		try {
-			MemberFile fileInfo =  memberFileDao.getprofileFile(memberNo);
-			return fileInfo.getFilename();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return e.getMessage();
-		}
+		MemberFile fileInfo =  memberFileDao.getprofileFile(memberNo);
+		return fileInfo.getFilename();
 	}
 
 	public HoneyMembers getUserNumberByNickName(String nickName) throws Exception {
-		try {
-			HoneyMembers hMember = new HoneyMembers();
-			hMember = hMembersDao.selectUserNumberByNickName(nickName);
-			System.out.println(hMember);
-			return hMember;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		HoneyMembers hMember = new HoneyMembers();
+		hMember = hMembersDao.selectUserNumberByNickName(nickName);
+		System.out.println(hMember);
+		return hMember;
 	}
 
 	@Override
 	public List<HoneyMain> getBoards(int memberNo) throws Exception {
-		try {
-			List<HoneyMain> boards = hMembersDao.selectBoards(memberNo);
-			return boards;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		List<HoneyMain> boards = hMembersDao.selectBoards(memberNo);
+		return boards;
 	}
 
 	@Override
@@ -138,16 +122,19 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 
 	@Override
 	public List<Messages> getMessagesByUserNo(int memberNo, int loginUserNo) {
-		try {
-			Messages temp = new Messages();
-			temp.setLoginUserNo(memberNo);
-			temp.setMessageTargetUserNo(loginUserNo);
-			List<Messages> messageList = hMembersDao.selectMessagesByUserNo(temp);
-			return messageList;
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		Messages temp = new Messages();
+		temp.setLoginUserNo(memberNo);
+		temp.setMessageTargetUserNo(loginUserNo);
+		List<Messages> messageList = hMembersDao.selectMessagesByUserNo(temp);
+		return messageList;
+	}
+
+	@Override
+	public int getNewMessagesNum(int memberNo) {
+		List<Messages> newMessageNum = hMembersDao.selectMessageStatusZeroByUserNo(memberNo);
+	    int messageNum = newMessageNum.size();
+	    System.out.println("Message size: " + messageNum);
+	    return messageNum;
 	}
 
 }

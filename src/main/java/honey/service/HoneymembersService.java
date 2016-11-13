@@ -26,4 +26,5 @@ public interface HoneymembersService {
 	public void insertIntoMessage(Messages messageContents);
 	public List<HoneyMembers> getMessagesSendUserByLoginUserNo(int loginUserNo);
 	public List<Messages> getMessagesByUserNo(int memberNo, int i);
+	public int getNewMessagesNum(int memberNo);
 }
