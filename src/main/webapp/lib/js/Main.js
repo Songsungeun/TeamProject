@@ -175,10 +175,10 @@ function ajaxPostComentsList(no) {
 				"<div class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</div>" + "</div>" +
 				"<div class='coment_ud'>" +
 				"<div id='cmt-btn-wrap-left'><span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
-				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</a></div>" +
+				"<span class='cmt_reply_"+arr[i].comentDepth + "' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</span></div>" +
 				"<div id='cmt-btn-wrap-right'>" +
-				"<a class='cmt_update' method='post' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-				"<a class='cmt_delete' method='post' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
+				"<span class='cmt_update' method='post' data-update='" + arr[i].cmtNo + "' data-depth='"+arr[i].comentDepth+"'>수정</span>" +
+				"<span class='cmt_delete' method='post' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</span>" +
 				"</div>" + 
 				"<div class='replyArea'></div>" +
 				"</div>" + "</div>" + "</div>"
@@ -191,10 +191,10 @@ function ajaxPostComentsList(no) {
 				"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +
 				"<div class='coment_ud'>" +
 				"<div id='cmt-btn-wrap-left'><span class='cmt_createdDate'>" + arr[i].createdDate2 + "</span>" +
-				"<a class='cmt_reply' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</a></div>" +
+				"<span class='cmt_reply_" + arr[i].comentDepth + "' href='#' data-no='" + arr[i].cmtNo + "'>답글 달기</span></div>" +
 				"<div id='cmt-btn-wrap-right'>" +
-				"<a class='cmt_update' method='post' style='display:none' data-update='" + arr[i].cmtNo + "'>수정</a>" +
-				"<a class='cmt_delete' method='post' style='display:none' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</a>" +
+				"<span class='cmt_update' method='post' style='display:none' data-update='" + arr[i].cmtNo + "' data-depth='"+arr[i].comentDepth+"'>수정</span>" +
+				"<span class='cmt_delete' method='post' style='display:none' data-Delete='" + arr[i].cmtNo + "' data-depth='" + arr[i].comentDepth + "'>삭제</span>" +
 				"</div>" +
 				"<div class='replyArea'></div>" +
 				"</div>" + "</div>" + "</div>"
@@ -204,19 +204,18 @@ function ajaxPostComentsList(no) {
 	})
 }
 var childcomentThread = 0;
-$(document.body).on("click",".cmt_reply",function(event) {
+$(document.body).on("click",".cmt_reply_0",function(event) {
 	childcomentThread = $(this).attr("data-no");
 	$(".coment_wrap[data-cmtNo=" + childcomentThread + "]").find(".replyArea").html(
 			"<textarea placeholder='댓글을 입력 하세요.' maxlength='255'" +
 			"id='ccomment'></textarea>" +
 			"<div id='replyBtnWrap'>" +
-			"<a method='post' class='reply-save-btn' data-no='"+ childcomentThread +"'>댓글달기</a>" +
-			"<a method='post' class='bit-cancel-btn replycancelBtn' data-no='"+ childcomentThread +"'>취소</a></div>"
+			"<span method='post' class='reply-save-btn' data-no='"+childcomentThread+"'>댓글 달기</span>" +
+			"<span method='post' class='bit-cancel-btn replycancelBtn' data-no='"+childcomentThread+"'>취소</span></div>"
 	);
 })
 $(document.body).on("click",".bit-cancel-btn",function(event) {
-   ajaxPostComentsList(comentInfo);
-   console.log("취소버튼 누름!");
+    ajaxPostComentsList(comentInfo);
 });
 $(document.body).on("click",".reply-save-btn",function(event){
 	var honeyComent = {
@@ -240,27 +239,31 @@ $(document.body).on("click",".reply-save-btn",function(event){
 		}
 	})
 });
+var updateNo = 0;
+$(document.body).on("click",".cmt_update",function(event) {
+	var cno = $(this).attr("data-update");
+	updateNo = $(this).attr("data-depth");
+	ajaxComentDetail(cno)
+});
 function ajaxComentDetail(no) {
+	var upNo = updateNo;
+	console.log(upNo);
 	$.getJSON(serverAddr + "/mainpage/comentDetail.json?no=" + no, function(obj) {
-		var result = obj.jsonResult      
+		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("조회 실패입니다.")
 			return
 		} 
 		else {
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".cmt_conts").html(
-			"<textarea type='text' class='update-contents reUpdateLimit'></textarea>");
+			"<textarea type='text' class='update-contents reUpdateLimit updateDepthNo"+updateNo+"'></textarea>");
 			$(".coment_wrap[data-cmtNo=" + no + "]").find("#cmt-btn-wrap-right").html(
-					"<a method='post' class='bit-save-btn' data-no=" + no + ">저장</a>" +
-					"<a method='post' class='bit-cancel-btn updatecancelBtn' data-no=" + no + ">취소</a>");
+					"<span method='post' class='bit-save-btn' data-no=" + no + ">저장</span>" +
+					"<span method='post' class='bit-cancel-btn updatecancelBtn' data-no=" + no + ">취소</span>");
 			$(".coment_wrap[data-cmtNo=" + no + "]").find(".update-contents").val(result.data.coment);
 		}
 	})
 }
-$(document.body).on("click",".cmt_update",function(event) {
-	var cno = $(this).attr("data-update");
-	ajaxComentDetail(cno)
-});
 $(document.body).on("click",".bit-save-btn",function(event) {
 	var honeyComent = {
 			cmtNo: $(this).attr("data-no"),

@@ -710,9 +710,9 @@ modal fade>p {
 	font-size: 12px !important;
 }
 .cmt_createdDate {
-	width: 100%;
+	float: left;
   margin-right: 5px;
-  font-size: 10px !important;
+  font-size: 11px !important;
   color: #23527c;
 /*   color: #28288C; */
 }
@@ -732,12 +732,21 @@ modal fade>p {
 	height: 100%;
 	vertical-align: middle;
 }
-.cmt_reply {
-	width: 100%;
+.cmt_reply_0 {
+	float: left;
 	margin-right: 10px;
-	font-size: 10px !important;
+	font-size: 11px !important;
 /* 	color: #00008C; */
   color: #23527c;
+}
+.cmt_reply_0:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: black;
+}
+.cmt_reply_1 {
+	display: none;
+	float: left;
 }
 .update-contents {
   background-color: #FCF9F9;
@@ -748,6 +757,9 @@ modal fade>p {
   padding: 4px 3px 3px;
   resize: none;
   width: 426px;
+}
+.updateDepthNo1 {
+	width: 386px !important;
 }
 #ccomment {
 	background-color: #FCF9F9;
@@ -760,42 +772,72 @@ modal fade>p {
   width: 486px;
   height: 21px;
 }
+.cmt_update:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .cmt_update {
-	width: 100%;
+	float: left;
 	margin-right: 5px;
-	font-size: 10px !important;
+	font-size: 11px !important;
 	color: #23527c;
 }
+.cmt_delete:hover {
+	cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .cmt_delete {
-	width: 100%;
+	float: left;
 	margin-right: 5px;
-	font-size: 10px !important;
+	font-size: 11px !important;
   color: #23527c;
 }
+.updatecancelBtn:hover {
+	cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .updatecancelBtn {
-	width: 100%;
-  font-size: 10px !important;
+	float: left;
+  font-size: 11px !important;
   color: #23527c;
   margin-right: 5px;
 }
+.bit-save-btn:hover {
+	cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .bit-save-btn {
-	width: 100%;
-  font-size: 10px !important;
+	float: left;
+  font-size: 11px !important;
   color: #23527c;
   margin-right: 5px;
 }
 #replyBtnWrap {
 	float: right;
 }
+.reply-save-btn:hover {
+	cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .reply-save-btn {
-	width: 100%;
-	font-size: 10px !important;
+	float: left;
+	font-size: 11px !important;
 	color: #23527c;
 	margin-right: 5px;
 }
+.replycancelBtn:hover {
+	cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
 .replycancelBtn {
-	width: 100%;
-  font-size: 10px !important;
+	float: left;
+  font-size: 11px !important;
   color: #23527c;
   margin-right: 5px;
 }
