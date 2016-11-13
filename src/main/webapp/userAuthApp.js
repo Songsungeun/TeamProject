@@ -12,8 +12,11 @@ $("#logoutBtn").click(function(event) {
  */
 
 function ajaxNewMessageAlam() {
+	var locationPathValue = $(location).attr('pathname');
+	var locationPath = locationPathValue.split('/');
+
 	$.ajax({
-		url: serverAddr + "/mainpage/newMessageAlam.json",
+		url: serverAddr+"/" + locationPath[2] +  "/mainpage/newMessageAlam.json",
 		method:"POST",
 		dataType:"json",
 		success: function(obj) {
@@ -24,7 +27,7 @@ function ajaxNewMessageAlam() {
 			}
 			$('#newMessageAlert').text(result.data);
 		}
-		
+
 	})
 }
 
@@ -89,7 +92,7 @@ function ajaxLoginUser() {
 		var imgSrc = result.data.profilePhoto
 		var splitImgSrc = imgSrc.split(".")
 		if(splitImgSrc.length == 2) {
-		$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+			$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
 		} else {
 			$("#profilePicture").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
 		}
