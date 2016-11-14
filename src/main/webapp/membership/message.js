@@ -16,6 +16,8 @@ $(".btn-primary").click(function(event){
 
 
 
+
+
 function ajaxMessageUserLode() {
 	$.getJSON(serverAddr + "/membership/messageUserLode.json", function(obj) {
 		var result = obj.jsonResult
@@ -71,4 +73,9 @@ function ajaxSendMessage(messageContents) {
 		error: function(result) {
 		}
 	})
+}
+
+
+function ajaxUpdateMessageStatus() {
+	
 }
