@@ -51,7 +51,7 @@
 		insert into
 		honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
 		values(#{email},
-		#{nickname}, #{userName}, #{phone}, password(#{password}))
+		#{nickname}, #{userName}, 1111, password(#{password}))
 	</insert>
 
 	<insert id="followInsert" parameterType="HoneyMembers">
@@ -98,11 +98,6 @@
 		from honey_membs
 		where MB_NICK=#{nickName}
 	</select>
-
-
-
-
-
 
 
 	<select id="selectUserNickName" resultMap="memberMap"

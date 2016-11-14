@@ -14,10 +14,11 @@
 		values(#{memberNo})
 	</insert>
 
-	<insert id="prifileFileinsert" parameterType="MemberFile">
-		insert into honey_membs_photos(mb_no, mbp_path)
-		values(#{memberNo}, #{filename})
-	</insert>
+	<update id="prifileFileinsert" parameterType="MemberFile">
+		update honey_membs_photos set
+		mbp_path = #{filename}
+		where mb_no = #{memberNo}
+	</update>
 
 
 	<select id="getprofileFile" parameterType="int" resultMap="MemberFile">
