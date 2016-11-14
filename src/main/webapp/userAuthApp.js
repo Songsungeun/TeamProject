@@ -2,21 +2,12 @@
  * 
  */
 
-
-
-/*
-$("#logoutBtn").click(function(event) {
-	location.href = "../mainpage/Main.html"
-	ajaxLogout()
-});
- */
-
 function ajaxNewMessageAlam() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 
 	$.ajax({
-		url: serverAddr+"/" + locationPath[2] +  "/mainpage/newMessageAlam.json",
+		url: serverAddr+"/" + locationPath[2] +  "/newMessageAlam.json",
 		method:"POST",
 		dataType:"json",
 		success: function(obj) {
