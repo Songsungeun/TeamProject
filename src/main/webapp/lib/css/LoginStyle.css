@@ -53,6 +53,7 @@ a:hover {
   margin: 30px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  height:490px;
 }
 
 .tab-group {
@@ -212,29 +213,67 @@ textarea {
 }
 
 #facebook_Login {
-	margin-top: -15px;
-  float: left;
-  display: block;
-/*   width: 164px; */
-/*   height: 40px; */
-}
-/* .fb-login-button { */
-/* 	float:left; */
-/* 	z-index: 60px; */
-/* } */
-.fb_iframe_widget iframe {
-  /*display: none;*/
-  opacity: 1;
-  float: left;
-  z-index: 100;
-/*   position: relative; */
-}
-/* #facebookBtn { */
-/* 	float: left; */
-/* 	position: relative; */
-/* } */
+    display: inline-block;
+    position: relative;
+    width: 175px;
+    height: 51px;
+    top: -56px;
+    left: 1px;
+    opacity: 0.0;
+    z-index: 10;
+} 
+.fb_iframe_widget iframe { 
+   display: inline-block;
+    position: relative;
+ } 
 .fb-login-button {
-	border: 1px solid red;
-	bottom: 50px;
-  left: 25px;
+    left: 27px;
+    width: 171px;
+    height: 50px;
+    bottom: 4px;
+    opacity: 0.0;
+    z-index: 10;
 }
+
+#facebookBtn{
+  	position: relative;
+    width: 520px;
+    height: 54px;
+}
+
+#login{
+	    position: relative;
+    width: 520px;
+    height:52px;
+}
+
+#tab-content{
+	    position: relative;
+    width: 520px;
+    height: 317px;
+}
+
+form{
+    position: relative;
+    width: 520px;
+    height: 224px;
+    padding-top: 35px;
+}
+.tab-content{
+	    position: relative;
+    width: 520px;
+    height: 53px;
+}
+
+#formWrap{
+	  position: relative;
+    width: 520px;
+    height: 224px;
+}
+#fbloginWrap{
+	position: relative;
+    bottom: 50px;
+   width:175px;'
+}
+
+
