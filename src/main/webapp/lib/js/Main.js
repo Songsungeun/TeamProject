@@ -7,6 +7,7 @@ $(document).ready(function(){
 		$("#includedContent").load("../header.html");
 	});
 }); 
+
 function ajaxBoardList() {
 	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
 		var result = obj.jsonResult
@@ -26,6 +27,10 @@ function ajaxBoardList() {
 		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
+			$('#yourModal').on('hidden.bs.modal', function (e) {
+				  //동영상 정지 메서드호출
+				$("#youtubeUrl").attr("src","");
+			})
 			$("html").css({"overflow":"hidden"});
 			boardNo = $(this).attr("data-no")
 			ajaxLoadBoard(boardNo);

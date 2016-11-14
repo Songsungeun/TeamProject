@@ -66,7 +66,7 @@ function ajaxFileList() {
 
 		var data = result.data
 //		var totalsize = data.totalPage;
-		var cloudUiTemplate = Handlebars.compile($('#CloudUiTemplateText').html());
+		var cloudUiTemplate = Handlebars.compile($('#CloudUiTemplateText').html())
 		$("#boardTable > tbody").html(cloudUiTemplate(data));			
 
 //		$(".titleLink").click(function(event) {
