@@ -22,7 +22,8 @@ function ajaxBoardList() {
 		$(".tab-content > .allConts3").html(template3(result));
 		var template4 = Handlebars.compile($('#li4TemplateText').html())
 		$(".tab-content > .allConts4").html(template4(result));
-
+		
+		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
@@ -76,7 +77,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
-			$("#userImage").attr("src", "/TeamProject/upload/" + result.data.board.userProfilePath);
+			$("#userImage").attr("src", result.data.board.userProfilePath);
 			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);

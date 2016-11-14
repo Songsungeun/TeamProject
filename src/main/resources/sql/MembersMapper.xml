@@ -156,7 +156,7 @@ order by honey_mesgs.insertDate desc;
 
 
 <select id="selectMessagesByUserNo" resultMap="messageMap" parameterType="map">
-  select mesgs_conts, status, insertDate
+  select no, mesgs_conts, status, insertDate
   from honey_mesgs
   where mb_no=#{loginUserNo} and mb_no2=#{messageTargetUserNo} or mb_no=#{messageTargetUserNo} and mb_no2=#{loginUserNo}
   order by insertDate desc

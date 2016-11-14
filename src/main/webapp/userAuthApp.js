@@ -2,27 +2,17 @@
  * 
  */
 
-
-
-/*
-$("#logoutBtn").click(function(event) {
-	location.href = "../mainpage/Main.html"
-	ajaxLogout()
-});
- */
-
 function ajaxNewMessageAlam() {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
 
 	$.ajax({
-		url: serverAddr+"/" + locationPath[2] +  "/mainpage/newMessageAlam.json",
+		url: serverAddr+"/" + locationPath[2] +  "/newMessageAlam.json",
 		method:"POST",
 		dataType:"json",
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alere("정보를 가져오는데 실패하였습니다.")
 				return
 			}
 			$('#newMessageAlert').text(result.data);
