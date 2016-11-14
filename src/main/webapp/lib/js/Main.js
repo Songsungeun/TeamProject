@@ -166,11 +166,20 @@ function ajaxPostComentsList(no) {
 			return
 		}
 		var contents = ""
-			var arr = result.data.comentList;
+		var arr = result.data.comentList;
+		console.log("result.data.LoginInfo= "+result.data.LoginInfo)
 		for (var i=0; i < arr.length; i++) {
+//			var userPhoto = arr[i].commentMemberPhoto;
+//			var userPhotoSplit = userPhoto.split(".");
+//			if(userPhotoSplit.length == 2) {
+//				commentMemberPhotoPath = "/TeamProject/upload/"+userPhotoSplit[0]+"."+userPhotoSplit[1];
+//			} else {
+//				commentMemberPhotoPath = "http://graph.facebook.com/"+userPhotoSplit[0]+"/picture";
+//				
+//			}
 			if(result.data.LoginInfo == arr[i].memberNo) {
 				contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
-				"<div class='cmt-leftside'><img id='cmt_userPhoto' src='../upload/"+arr[i].commentMemberPhoto+"'></div>" +
+				"<div class='cmt-leftside'><img id='cmt_userPhoto' src='"+arr[i].commentMemberPhoto+"'></div>" +
 				"<div class='cmt-rightside'>" + "<div class='coment_info'>" +
 				"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
 				"<div class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</div>" + "</div>" +
@@ -186,7 +195,7 @@ function ajaxPostComentsList(no) {
 			} 
 			if(result.data.LoginInfo != arr[i].memberNo || result.data.LoginInfo == 0){
 				contents += "<div class='coment_wrap' id='depth" + arr[i].comentDepth + "' data-cmtNo='" + arr[i].cmtNo +"'>" +
-				"<img id='cmt_userPhoto' class='cmt-leftside' src='../upload/"+arr[i].commentMemberPhoto+"'>" +
+				"<div class='cmt-leftside'><img id='cmt_userPhoto' src='"+arr[i].commentMemberPhoto+"'></div>" +
 				"<div class='cmt-rightside'>" + "<div class='coment_info'>" +
 				"<a class='cmt_userNick' href='#' data-no='" + arr[i].memberNo + "'>" + arr[i].writerNick + "</a>" +
 				"<span class='cmt_conts' data-cmtarea='" + arr[i].cmtNo + "'>" + arr[i].coment + "</span>" + "</div>" +

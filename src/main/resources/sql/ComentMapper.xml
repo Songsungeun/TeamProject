@@ -30,7 +30,8 @@
     </choose>
     limit #{startIndex}, #{length}
  </select>
-
+<select id="getprofilePhotoMaxNo">
+</select>
 <select id="comentDetail" resultMap="boardMap" parameterType="int">
     select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
     hc.BD_NO,hm.MB_NICK,hm.MB_NO

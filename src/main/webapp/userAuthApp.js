@@ -2,22 +2,29 @@
  * 
  */
 
-function ajaxNewMessageAlam() {
-	var locationPathValue = $(location).attr('pathname');
-	var locationPath = locationPathValue.split('/');
 
+
+/*
+$("#logoutBtn").click(function(event) {
+	location.href = "../mainpage/Main.html"
+	ajaxLogout()
+});
+ */
+
+function ajaxNewMessageAlam() {
 	$.ajax({
-		url: serverAddr+"/" + locationPath[2] +  "/newMessageAlam.json",
+		url: serverAddr + "/mainpage/newMessageAlam.json",
 		method:"POST",
 		dataType:"json",
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
+				alere("정보를 가져오는데 실패하였습니다.")
 				return
 			}
 			$('#newMessageAlert').text(result.data);
 		}
-
+		
 	})
 }
 
@@ -82,7 +89,7 @@ function ajaxLoginUser() {
 		var imgSrc = result.data.profilePhoto
 		var splitImgSrc = imgSrc.split(".")
 		if(splitImgSrc.length == 2) {
-			$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+		$("#profilePicture").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
 		} else {
 			$("#profilePicture").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
 		}
