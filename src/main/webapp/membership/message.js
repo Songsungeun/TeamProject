@@ -74,7 +74,7 @@ function ajaxMessageContentsLode(memberNo) {
 				var messageNo = $(this).attr("data-messageNo")
 				var messageNo = $(this).attr("data-messageNo")
 				ajaxUpdateMessageStatus(messageNo, memberNo)
-
+				ajaxNewMessageAlam();
 			})
 		} 
 		 
@@ -110,7 +110,6 @@ function ajaxUpdateMessageStatus(messageNo, memberNo) {
 		data : {messageNo: messageNo},
 		success: function(obj) {
 			ajaxMessageContentsLode(memberNo)
-
 		}
 	})
 }
