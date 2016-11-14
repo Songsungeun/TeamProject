@@ -2,6 +2,7 @@
  * 
  */
 
+
 $(".message-history-new").click(function(event){
 	$("#userNickName").val("")
 	$(".message-input-textarea").val("")
@@ -15,8 +16,11 @@ $(".btn-primary").click(function(event){
 });
 
 
-
-
+$(document.body).on('click', '.messageContents',  function(event) {
+//	$(this.).css("background-color","white")
+	var no = 
+	ajaxUpdateMessageStatus($(this))
+});
 
 function ajaxMessageUserLode() {
 	$.getJSON(serverAddr + "/membership/messageUserLode.json", function(obj) {
@@ -30,7 +34,7 @@ function ajaxMessageUserLode() {
 			var data = result.data
 			data.stringify = JSON.stringify(data);
 			var messageUser = template(data);
-			$(".tempparea").append(messageUser);
+			$(".tempparea").html(messageUser);
 		}
 		$(".message-history-link").click(function(event) {
 			var memberNo = $(this).attr("data-memberNo")
@@ -48,12 +52,23 @@ function ajaxMessageContentsLode(memberNo) {
 		dataType: "json",
 		data :{memberNo:memberNo},
 		success: function(obj){
+			var result = obj.jsonResult
+			if(result.state != "success") {
+				alert("메시지 로딩에 실패하였습니다. 다시 시도해 주세요")
+				return
+			}
 			
+			var source = $('#messageUserMessageTemplate').html();
+			var template = Handlebars.compile(source);
+			
+			var data = result.data
+			var messagecontents = template(data);
+			$("#messagesArea").html(messagecontents);
 		}
+		
 	})
-	
-}
 
+}
 
 
 function ajaxSendMessage(messageContents) {

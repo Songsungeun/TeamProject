@@ -7,7 +7,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="prefetch"
 	href="https://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html">
-<link rel="cannonical" href="https://www.vingle.net">
 <link hreflang="ko" rel="alternate">
 <title>Insert title here</title>
 </head>
@@ -34,17 +33,15 @@ body {
 }
 
 .message-page-contatiner {
-	width: 1020px !important;
-	margin-right: auto;
-	margin-left: auto;
-	padding-left: 15px;
-	padding-right: 15px;
+  width: 1020px;
+  height: 540px;
+  margin: auto;
 }
 
 .message-history-container {
 	float: left;
 	width: 335px;
-	height: 100%;
+	/* height: 100%; */
 	border-left: solid 1px #ebebeb;
 	border-right: solid 1px #ebebeb;
 	border-top: solid 1px #ebebeb;
@@ -109,10 +106,11 @@ ol {
 	border-top: solid 1px #ebebeb;
 	width: 655px;
 	margin-left: 336px;
-	height: 100%;
+	/* height: 100%; */
 	background-color: white;
 	border-right: solid 1px #ebebeb;
 	border-top: solid 1px #ebebeb;
+	border-bottom: 1px solid #ebebeb;
 }
 
 .mymessage-list-title {
@@ -161,23 +159,28 @@ ol {
 	font-size: 15px;
 	font-weight: bold;
 	white-space: nowrap;
-	color: #5f8b7e;
+	color: #666666;
 	padding-top: 19px;
 	padding-bottom: 19px;
 	/** 높이 43px **/
 }
 
 .message-container {
-	display: table;
-	width: 100%;
-	height: calc(100% - 60px);
-	)
+    display: table;
+    width: 100%;
+    /* height: calc(100% - 60px); */
+    /* height: 100%; */
+    position: relative;
+    background: white;
 }
 
 .messages {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+	  position: relative;
+    background: white;
+    width: 100%;
 }
 
 .message-new-modal-dialog {
@@ -350,6 +353,25 @@ ol {
 	background-color: #e00000;
 	text-indent: 0px;
 }
+
+#messagesArea{
+    width: 653px;
+    position: relative;
+}
+
+.message-contents-list{
+  background-color: #f5ebeb;
+}
+
+.receivedTime{
+  float:right;
+  width: 127px;
+}
+
+messageContents{
+
+}
+
 </style>
 <body>
 	<div id="includedContent"></div>
@@ -372,18 +394,12 @@ ol {
 				<div class="message-container">
 					<div class="messages">
 					
-					<!-- 핸들바스로 메세지 내용 뿌려야 할 부분       
-		       <li class="message-history-item">
-             <a class="message-history-link" href="#" >
-               <span class="message-history-image pull-left">
-               </span>
-               <span class="message-history-name">
-               <span class="message-sending-usernick">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajokeasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadfdasfasdfsafr10421</span>
-               </span>
-             </a>
-           </li>
-					 -->
+					 <div id = messagesArea>
 					
+      
+          
+					
+	</div>
 					
 					</div>
 				</div>
@@ -461,6 +477,23 @@ ol {
         </ol>
 {{/each}}
   </script>
+  
+  
+    <script id="messageUserMessageTemplate" type="text/x-handlebars-template">
+{{#each this}}
+    <ol class="message-contents-list">
+          <li class="message-history-item">
+          <a id="msgContents" data-messageNo="{{messageNo}}" class="message-history-link" href="#"> 
+              <div class="message-history-name"> 
+                <div class="messageContents" data-nickName="{{nickname}}">{{message}}<div class="receivedTime">{{insertDate2}}</div>
+            </div>
+          </a>
+        </li>
+    </ol>
+{{/each}}
+  </script>
+  
+  
 
 
 
