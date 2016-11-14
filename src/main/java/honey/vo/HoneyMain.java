@@ -30,8 +30,21 @@ public class HoneyMain implements Serializable{
 	protected String userProfilePath;
 	protected int fileStatus;
 	protected String youtubeURL;
-
-
+//	protected String splituserProfilePath;
+//	
+//	
+//	public String getSplituserProfilePath() {
+//	  return splituserProfilePath;
+//	}
+//	public void setSplituserProfilePath(String userProfilePath) {
+//	  String[] splitPath = userProfilePath.split(".");
+//	  if(splitPath.length == 2) {
+//	    this.splituserProfilePath = "/TeamProject/upload/" + userProfilePath;
+//	  } else {
+//	    this.splituserProfilePath = "http://graph.facebook.com/" + userProfilePath + "/pictuer";
+//	  }
+//	}
+	
 	public String getCategory() {
 		return category;
 	}

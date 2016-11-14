@@ -39,13 +39,29 @@ public class HoneyMainController {
 			) throws Exception {
 		List<HoneyMain> list = mainService.getMainList(pageNo, length);
 		List<UrlInfo> urlList = mainService.getURLList();
-
 		try {
 			List<HoneyMain> settingUrlBoard = SetImage.setImage(list, urlList);
 			for (int i = 0; i < settingUrlBoard.size(); i++) {
 				String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
-				list.get(i).setUserProfilePath(userPhoto);
+				System.out.println("userPhoto"+i+"= "+userPhoto);
+				String[] userPhotoSplit = userPhoto.split("\\.");
+				if(userPhotoSplit.length == 2) {
+				  list.get(i).setUserProfilePath("/TeamProject/upload/" + userPhotoSplit[0] + "." + userPhotoSplit[1]);
+				} else {
+				  list.get(i).setUserProfilePath("http://graph.facebook.com/" + userPhotoSplit[0] + "/picture");
+				}
+//				list.get(i).setUserProfilePath(userPhoto);
 			}
+//			for (int i = 0; i < list.size(); i++) {
+//			  String userPhotoPath = list.get(i).getUserProfilePath();
+//			  System.out.println("userPhotoPath잘받아오는지? " + userPhotoPath);
+//			  String[] splitUserPhotoPath = userPhotoPath.split(".");
+//			  if (splitUserPhotoPath.length == 2) {
+//			    list.get(i).setUserProfilePath("/TeamProject/upload/" + splitUserPhotoPath[0] + "." + splitUserPhotoPath[1]);
+//			  } else {
+//			    list.get(i).setUserProfilePath("http://graph.facebook.com/" + splitUserPhotoPath[0] + "/picture");
+//			  }
+//			}
 			List<HoneyMain> list1 = new ArrayList<HoneyMain>();
 			List<HoneyMain> list2 = new ArrayList<HoneyMain>();
 			List<HoneyMain> list3 = new ArrayList<HoneyMain>();
@@ -70,6 +86,7 @@ public class HoneyMainController {
 			
 			return JsonResult.success(listMap);
 		} catch (Exception e) {
+		  e.printStackTrace();
 			return JsonResult.fail();
 		}
 	}
