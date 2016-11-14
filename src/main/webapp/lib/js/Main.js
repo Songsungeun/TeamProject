@@ -77,7 +77,7 @@ function ajaxLoadBoard(no) {
 			comentInfo =result.data.board.no;
 			$("#userTitle").text(result.data.board.title);
 			$("#url").text(result.data.board.url);
-			$("#userImage").attr("src", "/TeamProject/upload/" + result.data.board.userProfilePath);
+			$("#userImage").attr("src", result.data.board.userProfilePath);
 			$("#userDesc").html(result.data.board.contents);
 			$("#createdDate").text(result.data.board.createdDate2);
 			$("#writerNick").text(result.data.board.writerNick);

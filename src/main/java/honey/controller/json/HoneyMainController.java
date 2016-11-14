@@ -43,7 +43,6 @@ public class HoneyMainController {
 			List<HoneyMain> settingUrlBoard = SetImage.setImage(list, urlList);
 			for (int i = 0; i < settingUrlBoard.size(); i++) {
 				String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
-				System.out.println("userPhoto"+i+"= "+userPhoto);
 				String[] userPhotoSplit = userPhoto.split("\\.");
 				if(userPhotoSplit.length == 2) {
 				  list.get(i).setUserProfilePath("/TeamProject/upload/" + userPhotoSplit[0] + "." + userPhotoSplit[1]);
@@ -148,7 +147,6 @@ public class HoneyMainController {
 			} else {
 				membNo = member.getMemberNo();
 			}
-			System.out.println("comentList - member = " + membNo);
 			map.put("LoginInfo", membNo);
 			map.put("comentList", list);
 			return JsonResult.success(map);
@@ -166,15 +164,21 @@ public class HoneyMainController {
 		model.addAttribute("mostPost", list);
 		return JsonResult.success(list);
 	}
+	
 	@RequestMapping("postdetail")
 	public Object detail(int no) throws Exception {
-System.out.println("no 받음 : " + no);
 		
 		mainService.getIncreaseViewCount(no);
 		HoneyMain honeyMain = mainService.getPost(no);
 		HashMap<String, Object> map = new HashMap<>();
 		String userPhoto = mainService.getPhoto(Integer.parseInt(honeyMain.getUserNo()));
-		honeyMain.setUserProfilePath(userPhoto);
+    String[] userPhotoSplit = userPhoto.split("\\.");
+    if(userPhotoSplit.length == 2) {
+      honeyMain.setUserProfilePath("/TeamProject/upload/" + userPhotoSplit[0] + "." + userPhotoSplit[1]);
+    } else {
+      honeyMain.setUserProfilePath("http://graph.facebook.com/" + userPhotoSplit[0] + "/picture");
+    }
+//		honeyMain.setUserProfilePath(userPhoto);
 		System.out.println("fileStatus: " + honeyMain.getFileStatus());
 		
 		List<FileList> fileList = new ArrayList<FileList>();

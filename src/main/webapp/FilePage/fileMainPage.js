@@ -41,7 +41,13 @@ function ajaxloadNickName() {
 			return
 		}
 		$("#userNickNameInfo").text(result.data.member.nickname);
-		$("#userPhoto").attr("src", "/TeamProject/upload/" + result.data.profilePhoto);
+		var photoPath = result.data.profilePhoto;
+		var photoPathSplit = photoPath.split(".");
+		if (photoPathSplit.length == 2) {
+			$("#userPhoto").attr('src',"/TeamProject/upload/"+photoPathSplit[0] + "." + photoPathSplit[1]);
+		} else {
+			$("#userPhoto").attr('src',"http://graph.facebook.com/"+photoPathSplit[0] + "/picture");
+		}
 		$("#viewCount").text(result.data.totalViewCount);
 		$("#followers").text(result.data.followCollector);
 		$("#user-introduce").text(result.data.userInfo)
