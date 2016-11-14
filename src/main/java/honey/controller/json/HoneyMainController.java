@@ -29,7 +29,6 @@ import honey.vo.UrlInfo;
 public class HoneyMainController {
 	@Autowired HoneyMainService mainService;
 	@Autowired HoneyComentService comentService;
-	
 
 	@RequestMapping("postlist")
 	public Object list(
@@ -136,17 +135,28 @@ public class HoneyMainController {
 			int no,
 			@RequestParam(defaultValue="1") int pageNo,
 			@RequestParam(defaultValue="20") int length) throws Exception {
+
 		try {
+		  HashMap<String, Object> map = new HashMap<>();
 			List<HoneyComent> list = comentService.getComent(no, pageNo, length);
-			
-			HashMap<String, Object> map = new HashMap<>();
 			HoneyMembers member = (HoneyMembers)session.getAttribute("member");
 			Object membNo;
+//			System.out.println("로그인중인 회원번호:"+ member.getMemberNo());
+			
 			if(member == null) {
 				membNo = 0;
 			} else {
 				membNo = member.getMemberNo();
 			}
+			for(int i =0; i < list.size();i++) {
+        System.out.println("getPhoto(_"+i+"_)=" +list.get(i).getCommentMemberPhoto());
+        String[] comentPhoto = (list.get(i).getCommentMemberPhoto()).split("\\.");
+        if(comentPhoto.length == 2) {
+          list.get(i).setCommentMemberPhoto("/TeamProject/upload/" + comentPhoto[0] + "." + comentPhoto[1]);
+        } else {
+          list.get(i).setCommentMemberPhoto("http://graph.facebook.com/" + comentPhoto[0] + "/picture");
+        }
+      }
 			map.put("LoginInfo", membNo);
 			map.put("comentList", list);
 			return JsonResult.success(map);

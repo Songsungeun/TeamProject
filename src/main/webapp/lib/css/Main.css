@@ -696,7 +696,9 @@ modal fade>p {
 	float: left;
 }
 .cmt-leftside {
-	heigth: 100%;
+	heigth: 35px;
+	width: 35px;
+	overflow:hidden;
 	float: left;
 }
 .cmt-rightside {
