@@ -692,24 +692,23 @@ modal fade>p {
 #cmt_userPhoto {
 	width: 35px;
 	height: auto;
-	border-radius: 3px;
 	float: left;
+	position: absolute;
+	top: -10%;
 }
 .cmt-leftside {
-	heigth: 35px;
+	border-radius: 3px;
+	height: 35px;
 	width: 35px;
 	overflow:hidden;
 	float: left;
+	position: relative;
 }
 .cmt-rightside {
 	float: left;
 	width: 486px;
 	height: 100%;
 	margin-left: 5px;
-}
-.cmt-leftside {
-	float: left;
-  height: 100%;
 }
 .cmt_conts {
 	font-size: 12px !important;
