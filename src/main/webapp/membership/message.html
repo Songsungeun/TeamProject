@@ -483,9 +483,9 @@ messageContents{
 {{#each this}}
     <ol class="message-contents-list">
           <li class="message-history-item">
-          <a id="msgContents" data-messageNo="{{messageNo}}" class="message-history-link" href="#"> 
+          <a id="msgContents"  class="message-history-link" href="#"> 
               <div class="message-history-name"> 
-                <div class="messageContents" data-nickName="{{nickname}}">{{message}}<div class="receivedTime">{{insertDate2}}</div>
+                <div class="messageContents"data-messageNo="{{messageNo}}" data-status="{{status}}" data-nickName="{{nickname}}">{{message}}<div class="receivedTime">{{insertDate2}}</div>
             </div>
           </a>
         </li>

@@ -16,12 +16,16 @@ $(".btn-primary").click(function(event){
 });
 
 
-$(document.body).on('click', '.messageContents',  function(event) {
-//	$(this.).css("background-color","white")
-	var no = 
-	ajaxUpdateMessageStatus($(this))
-});
 
+
+
+/*
+$(document.body).on('click', '.messageContents',  function(event) {
+	
+//	$(this.).css("background-color","white")
+	ajaxUpdateMessageStatus()
+});
+*/
 function ajaxMessageUserLode() {
 	$.getJSON(serverAddr + "/membership/messageUserLode.json", function(obj) {
 		var result = obj.jsonResult
@@ -45,7 +49,6 @@ function ajaxMessageUserLode() {
 
 
 function ajaxMessageContentsLode(memberNo) {
-	console.log(memberNo)
 	$.ajax({
 		url:serverAddr + "/membership/messageContentsLode.json",
 		type:"post",
@@ -64,8 +67,12 @@ function ajaxMessageContentsLode(memberNo) {
 			var data = result.data
 			var messagecontents = template(data);
 			$("#messagesArea").html(messagecontents);
-		}
-		
+			$(".messageContents").click(function(event){
+				var messageNo = $(this).attr("data-messageNo")
+				ajaxUpdateMessageStatus(messageNo)
+			})
+		} 
+		 
 	})
 
 }
@@ -91,12 +98,12 @@ function ajaxSendMessage(messageContents) {
 
 
 function ajaxUpdateMessageStatus(messageNo) {
-	console.log(messageNo)
 	$.ajax({
 		url: serverAddr +"/membership/updateMessageStatus.json",
 		type:"POST",
 		data : {messageNo: messageNo},
 		success: function(obj) {
+			var temp = 1;
 			
 		}
 	})
