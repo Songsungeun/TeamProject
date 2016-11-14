@@ -22,7 +22,8 @@ function ajaxBoardList() {
 		$(".tab-content > .allConts3").html(template3(result));
 		var template4 = Handlebars.compile($('#li4TemplateText').html())
 		$(".tab-content > .allConts4").html(template4(result));
-
+		
+		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
