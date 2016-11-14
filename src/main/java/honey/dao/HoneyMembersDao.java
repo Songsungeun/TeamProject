@@ -29,4 +29,5 @@ public interface HoneyMembersDao {
   List<HoneyMembers> selectMessagesByLoginUserNo(int loginUserNo);
   List<Messages> selectMessagesByUserNo(Messages temp);
   List<Messages> selectMessageStatusZeroByUserNo(int memberNo);
+  void messageStatusUpdate(int messageNo);
 }

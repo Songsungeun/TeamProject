@@ -57,7 +57,6 @@ function ajaxMessageContentsLode(memberNo) {
 
 
 function ajaxSendMessage(messageContents) {
-	console.log(messageContents)
 	$.ajax({
 		url:serverAddr + "/membership/sendMessage.json",
 		type: "POST",
@@ -76,6 +75,14 @@ function ajaxSendMessage(messageContents) {
 }
 
 
-function ajaxUpdateMessageStatus() {
-	
+function ajaxUpdateMessageStatus(messageNo) {
+	console.log(messageNo)
+	$.ajax({
+		url: serverAddr +"/membership/updateMessageStatus.json",
+		type:"POST",
+		data : {messageNo: messageNo},
+		success: function(obj) {
+			
+		}
+	})
 }

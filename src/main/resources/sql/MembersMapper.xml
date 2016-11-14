@@ -219,7 +219,12 @@ order by honey_mesgs.insertDate desc;
 		where
 		MB_NO=#{memberNo}
 	</update>
-
+	<update id="messageStatusUpdate">
+	 update honey_mesgs set
+	 status = 1
+	 where no=#{messageNo}
+	</update>
+	
 	<select id="emailCheck" resultMap="memberMap" parameterType="String">
 		select EMAIL from honey_membs
 		where email= #{email}

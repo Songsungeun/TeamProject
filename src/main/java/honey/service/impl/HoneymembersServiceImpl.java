@@ -137,4 +137,11 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	    return messageNum;
 	}
 
+	@Override
+	public void updateMessageStatus(int messageNo) {
+		hMembersDao.messageStatusUpdate(messageNo);
+		
+	}
+
+
 }

@@ -344,12 +344,20 @@ public class HoneymembersController {
 		try {
 			int newMessageNum = hMembersService.getNewMessagesNum(loginUser.getMemberNo());
 			return JsonResult.success(newMessageNum);
-	} catch (Exception e) {
-		return JsonResult.fail();
+		} catch (Exception e) {
+			return JsonResult.fail();
+		}
 	}
-
-
-}
+	
+	@RequestMapping("updateMessageStatus")
+	public Object updateMessageStatus(Messages messageNo) throws Exception {
+		try {
+			hMembersService.updateMessageStatus(messageNo.getMessageNo());
+			return JsonResult.success();
+		} catch(Exception e) {
+			return JsonResult.fail();
+		}
+	}
 
 
 }
