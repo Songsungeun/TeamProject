@@ -9,7 +9,6 @@
 		<result column="EMAIL" property="email" />
 		<result column="MB_NICK" property="nickname" />
 		<result column="MB_NM" property="userName" />
-		<result column="TEL" property="phone" />
 		<result column="BIRTH" property="userBirthDay" />
 		<result column="PWD" property="password" />
 		<result column="INTRODUCE" property="introduce" />
@@ -78,7 +77,7 @@
 
 	<select id="selectOneByMemberNo" resultMap="memberMap"
 		parameterType="map">
-		select EMAIL, MB_NICK, MB_NM, TEL, PWD, INTRODUCE
+		select EMAIL, MB_NICK, MB_NM, PWD, INTRODUCE
 		from
 		honey_membs
 		where MB_NO=#{value}
@@ -86,7 +85,7 @@
 
 
 	<select id="selectUserInfo" resultMap="memberMap" parameterType="map">
-		select EMAIL, MB_NICK, MB_NM, TEL, PWD
+		select EMAIL, MB_NICK, MB_NM, PWD
 		from honey_membs
 		where
 		MB_NO=#{userNo}
@@ -206,7 +205,6 @@ order by HONEY_MESGS.insertDate desc;
 		EMAIL=#{email},
 		MB_NICK=#{nickname},
 		MB_NM=#{userName},
-		TEL=#{phone},
 		INTRODUCE=#{introduce}
 		where MB_NO=#{memberNo}
 	</update>
