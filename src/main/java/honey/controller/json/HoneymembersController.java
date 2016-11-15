@@ -305,11 +305,11 @@ public class HoneymembersController {
 			List<HoneyMembers> messageUserList = hMembersService.getMessagesSendUserByLoginUserNo(messages.getLoginUserNo());
 
 			for(int i =0; i < messageUserList.size();i++) {
-				String[] comentPhoto = (messageUserList.get(i).getProfileFilePath()).split("\\.");
-				if(comentPhoto.length == 2) {
-					messageUserList.get(i).setProfileFilePath("/TeamProject/upload/" + comentPhoto[0] + "." + comentPhoto[1]);
+				String[] messageUserPhoto = (messageUserList.get(i).getProfileFilePath()).split("\\.");
+				if(messageUserPhoto.length == 2) {
+					messageUserList.get(i).setProfileFilePath("/TeamProject/upload/" + messageUserPhoto[0] + "." + messageUserPhoto[1]);
 				} else {
-					messageUserList.get(i).setProfileFilePath("http://graph.facebook.com/" + comentPhoto[0] + "/picture");
+					messageUserList.get(i).setProfileFilePath("http://graph.facebook.com/" + messageUserPhoto[0] + "/picture");
 				}
 			}
 			return JsonResult.success(messageUserList);
