@@ -86,14 +86,14 @@
 	</resultMap>
 
 	<insert id="insert" parameterType="honey_boards">
-		insert into honey_boards(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS,
+		insert into HONEY_BOARDS(MB_NO, CT_NO, BD_TITL, BD_CONTS, URL, FILE_STATUS,
 		BD_CRE, YOUTUBE_URL)
 		values(#{userNo}, #{categoryNo}, #{title}, #{contents}, #{url}, #{fileStatus}, now(),
 		#{youtubeURL})
 	</insert>
 
   <update id="update" parameterType="honey_boards">
-    update honey_boards set
+    update HONEY_BOARDS set
     BD_TITL=#{title},
     BD_CONTS=#{contents},
     URL=#{url},
@@ -106,7 +106,7 @@
 	<select id="selectList" resultMap="boardMap" parameterType="map">
 		select BD_NO, MB_NO, BD_TITL, BD_CONTS, BD_CRE, BD_LIKE, VIEW_CT, URL,
 		YOUTUBE_URL
-		from honey_boards
+		from HONEY_BOARDS
 		where MB_NO = #{userNo}
 		order by BD_NO desc
 		limit #{startIndex}, #{length}
@@ -116,9 +116,9 @@
 		select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT,
 		hb.MB_NO, hb.CT_NO,
 		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
-		from honey_boards hb
+		from HONEY_BOARDS hb
 		left join honey_membs hm on hm.MB_NO = hb.MB_NO
-		left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+		left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
 		where hb.MB_NO = #{userNo}
 		order by hb.BD_NO desc
 		limit #{startIndex}, #{length}
@@ -134,15 +134,15 @@
     select hb.BD_NO, hb.BD_TITL, hb.BD_CRE, hb.BD_LIKE, hb.VIEW_CT,
     hb.MB_NO, hb.CT_NO,
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
-    from honey_boards hb
+    from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.BD_NO = #{value}
   </select>
 
 	<select id="adminMyWriteCountAll" resultType="int" parameterType="int">
 		select COUNT(*)
-		from honey_boards
+		from HONEY_BOARDS
 		where MB_NO = #{value}
 	</select>
 	
@@ -154,7 +154,7 @@
 
 	<select id="selectOne" resultMap="boardMap" parameterType="int">
 		select BD_NO,BD_TITL,BD_CRE,BD_CONTS,URL,YOUTUBE_URL
-		from honey_boards
+		from HONEY_BOARDS
 		where BD_NO = #{value}
 	</select>
 
@@ -172,21 +172,21 @@
   </select> 
 
 	<delete id="delete" parameterType="int">
-		delete from honey_boards
+		delete from HONEY_BOARDS
 		where BD_NO=#{value}
 	</delete>
 
 	 <update id="updateLikeNo" parameterType="honey_boards">
-    update honey_boards set
+    update HONEY_BOARDS set
     BD_LIKE=#{like}
     where BD_NO=#{no}
   </update>
 
 	<insert id="insertUrl" parameterType="UrlInfo">
-		insert into board_link(URL_Title,URL_Addr, URL_Desc, URL_Image, MB_No,
+		insert into BOARD_LINK(URL_Title,URL_Addr, URL_Desc, URL_Image, MB_No,
 		DetailUrl, bd_no) (select
 		#{title}, #{urlAddr}, #{description}, #{image}, #{mb_No}, #{detailUrl},
-		(select max(bd_no) from honey_boards)
+		(select max(bd_no) from HONEY_BOARDS)
 		)
 	</insert>
 	

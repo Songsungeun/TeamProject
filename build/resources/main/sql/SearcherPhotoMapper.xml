@@ -5,19 +5,19 @@
 <mapper namespace="honey.dao.HoneyPhotoDao">
 
   <resultMap type="HoneyMemberPhoto" id="returnMap">
-    <id column="email" property="email" />
-    <result column="mb_no" property="memberNo" />
+    <id column="EMAIL" property="email" />
+    <result column="MB_NO" property="memberNo" />
     <result column="MBP_PATH" property="photoName" />
   </resultMap>
 
     <select id="extractUserNum" resultMap="returnMap" parameterType="int">
-select MB_NO, MBP_PATH from honey_membs_photos
-where mb_no = #{mb_no}
+select MB_NO, MBP_PATH from HONEY_MEMBS_PHOTOS
+where MB_NO = #{mb_no}
   </select>
 
   <select id="extractMemberNum" resultMap="returnMap" parameterType="String">
-select email, mb_no from honey_membs
-where email = #{email}
+select EMAIL, MB_NO from honey_membs
+where EMAIL = #{email}
   </select>
 
 </mapper>

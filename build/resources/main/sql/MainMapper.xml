@@ -46,20 +46,20 @@
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS, YOUTUBE_URL
-    from honey_boards hb
+    from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     order by bd_no desc
   </select>
   
   <select id="selectListandCategory" resultMap="boardMap" parameterType="map">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
-    from honey_boards hb
+    from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.CT_NO = #{categoryNo}
-    order by bd_no desc
+    order by BD_NO desc
   </select>
   
   <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->
@@ -71,28 +71,28 @@
     select HB.BD_NO, HB.MB_NO, HB.CT_NO, HB.BD_TITL, HB.URL, HB.BD_CONTS, FILE_STATUS,
     HB.BD_CRE, HB.BD_LIKE, HB.VIEW_CT,  HM.MB_NICK, HM.EMAIL, HC.CT_NM, YOUTUBE_URL
     from
-    honey_boards HB
+    HONEY_BOARDS HB
     left join honey_membs HM on HB.MB_NO = HM.MB_NO
-    left join honey_ctg HC on HC.CT_NO = HB.CT_NO
+    left join HONEY_CTG HC on HC.CT_NO = HB.CT_NO
     where
     BD_NO = #{value}
   </select>
 
   <update id="increaseViewCount" parameterType="HoneyMain">
-    update honey_boards
+    update HONEY_BOARDS
     set VIEW_CT = VIEW_CT + 1
     where BD_NO=#{value}
   </update>
 
   <update id="increaseLike" parameterType="HoneyMain">
-    update honey_boards
+    update HONEY_BOARDS
     set
     BD_LIKE = BD_LIKE + 1
     where BD_NO = #{value}
   </update>
 
   <update id="decreaseLike" parameterType="HoneyMain">
-    update honey_boards
+    update HONEY_BOARDS
     set
     BD_LIKE = BD_LIKE - 1
     where BD_NO = #{value}
