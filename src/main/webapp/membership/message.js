@@ -4,30 +4,38 @@
 
 
 var status 
-
+var msg
+ var userNickName;
 $(".message-history-new").click(function(event){
 	$("#userNickName").val("")
 	$(".message-input-textarea").val("")
 });
 
+$("#answerMessage").click(function(event){
+	$('#message-new-popup_2').modal('show')
+	$('.temp').val(userNickName)
+});
+
+
 $(".btn-primary").click(function(event){
 	var messageContents = {
-			nickName:$("#userNickName").val(), message:$(".message-input-textarea").val()
+			nickName:$("#resendMessage").val(), message:$(".message-input-textarea").val()
 	}
 	ajaxSendMessage(messageContents)
 });
 
 
 
-
-
-/*
-$(document.body).on('click', '.messageContents',  function(event) {
+$("#resendBtn").click(function(event){
+	var messageContents = {
+			nickName:$("#userNick").val(), message:$("#msgContents").val()
+	}
 	
-//	$(this.).css("background-color","white")
-	ajaxUpdateMessageStatus()
-});
-*/
+	console.log(messageContents)
+	//ajaxSendMessage(messageContents)
+})
+
+
 var memberNo 
 function ajaxMessageUserLode() {
 	$.getJSON(serverAddr + "/membership/messageUserLode.json", function(obj) {
@@ -72,14 +80,18 @@ function ajaxMessageContentsLode(memberNo) {
 			$("#messagesArea").html(messagecontents);
 			$(".messageContents").click(function(event){
 				var messageNo = $(this).attr("data-messageNo")
-				var messageNo = $(this).attr("data-messageNo")
 				ajaxUpdateMessageStatus(messageNo, memberNo)
 				ajaxNewMessageAlam();
 			})
+			
+			$(".messageContents").click(function(event) {
+			     msg = $(this).attr("data-msg")
+			     userNickName =$(this).attr("data-nickName")
+			     $("#msgConts").text(msg)
+			});	
+			
 		} 
-		 
 	})
-
 }
 
 
@@ -101,9 +113,7 @@ function ajaxSendMessage(messageContents) {
 	})
 }
 
-
 function ajaxUpdateMessageStatus(messageNo, memberNo) {
-	console.log(memberNo)
 	$.ajax({
 		url: serverAddr +"/membership/updateMessageStatus.json",
 		type:"POST",

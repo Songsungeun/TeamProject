@@ -4,294 +4,363 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="prefetch"
-  href="https://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html">
+	href="https://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html">
 <link hreflang="ko" rel="alternate">
 <title>Insert title here</title>
 </head>
 <style>
 .honey_page {
-  padding-top: 68px;
+	padding-top: 68px;
 }
+
 .message-page-view {
-  height: 100%;
+	height: 100%;
 }
+
 div {
-  display: block;
+	display: block;
 }
+
 body {
-  background-color: #f3f4f5 !important;
-  -webkit-font-smoothing: antialiased;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #333333;
-  background-color: #fff;
+	background-color: #f3f4f5 !important;
+	-webkit-font-smoothing: antialiased;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #333333;
+	background-color: #fff;
 }
+
 .message-page-contatiner {
-  width: 1020px;
-  height: 540px;
-  margin: auto;
+	width: 1020px;
+	height: 540px;
+	margin: auto;
 }
+
 .message-history-container {
-  float: left;
-  width: 335px;
-  /* height: 100%; */
-  border-left: solid 1px #ebebeb;
-  border-right: solid 1px #ebebeb;
-  border-top: solid 1px #ebebeb;
-  background-color: white;
+	float: left;
+	width: 335px;
+	/* height: 100%; */
+	border-left: solid 1px #ebebeb;
+	border-right: solid 1px #ebebeb;
+	border-top: solid 1px #ebebeb;
+	background-color: white;
 }
+
 .pull-right {
-  float: right !important;
+	float: right !important;
 }
+
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
+
 a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
+
 .message-history-new {
-  padding: 0 15px;
-  font-size: 15px;
-  color: #e00000;
-  line-height: 59px;
+	padding: 0 15px;
+	font-size: 15px;
+	color: #e00000;
+	line-height: 59px;
 }
+
 .message-history-title {
-  margin: 0;
-  padding: 0 15px;
-  border-bottom: 1px solid #ebebeb;
-  line-height: 59px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #666666;
+	margin: 0;
+	padding: 0 15px;
+	border-bottom: 1px solid #ebebeb;
+	line-height: 59px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
 }
+
 .message-history-list {
-  margin: 0;
-  padding: 0;
-  height: calc(100% - 60px);
-  overflow-y: auto;
+	margin: 0;
+	padding: 0;
+	height: calc(100% - 60px);
+	overflow-y: auto;
 }
+
 ol {
-  display: block;
-  list-style-type: decimal;
-  -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 1em;
+	display: block;
+	list-style-type: decimal;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 1em;
 }
+
 .message-history-item {
-  display: block;
-  border-bottom: solid 1px #ebebeb;
+	display: block;
+	border-bottom: solid 1px #ebebeb;
 }
+
 .mymessage-list-container {
-  position: relative;
-  border-left: solid 1px #ebebeb;
-  border-right: solid 1px #ebebeb;
-  border-top: solid 1px #ebebeb;
-  width: 655px;
-  margin-left: 336px;
-  /* height: 100%; */
-  background-color: white;
-  border-right: solid 1px #ebebeb;
-  border-top: solid 1px #ebebeb;
-  border-bottom: 1px solid #ebebeb;
+	position: relative;
+	border-left: solid 1px #ebebeb;
+	border-right: solid 1px #ebebeb;
+	border-top: solid 1px #ebebeb;
+	width: 655px;
+	margin-left: 336px;
+	/* height: 100%; */
+	background-color: white;
+	border-right: solid 1px #ebebeb;
+	border-top: solid 1px #ebebeb;
+	border-bottom: 1px solid #ebebeb;
 }
-#message-contents-list1{
-background-color:white;
+
+#message-contents-list1 {
+	background-color: white;
 }
+
 .mymessage-list-title {
-  margin: 0px;
-  padding: 22px 40px 21px 14px;
-  border-bottom: 1px solid #ebebeb;
-  line-height: 16px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #666666;
+	margin: 0px;
+	padding: 22px 40px 21px 14px;
+	border-bottom: 1px solid #ebebeb;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
 }
+
 .message-history-link {
-  border-left-color: #e00000;
-  display: block;
-  padding: 6px 10px 7px 6px;
-  border-left: solid 4px transparent;
+	border-left-color: #e00000;
+	display: block;
+	padding: 6px 10px 7px 6px;
+	border-left: solid 4px transparent;
+	    position: relative;
+    width: 510px;
 }
+
 .message-history-item {
-  border-bottom: solid 1px #ebebeb;
+	border-bottom: solid 1px #ebebeb;
 }
+
 .message-history-image {
-  position: relateive;
-  width: 48px;
-  height: 48px;
-  margin-top: 6px;
-  margin-right: 10px;
+	position: relateive;
+	width: 48px;
+	height: 48px;
+	margin-top: 6px;
+	margin-right: 10px;
 }
+
 .pull-left {
-  float: left !important;
+	float: left !important;
 }
+
 #userImage {
-  border: 1px solid #ebebeb;
-  border-radius: 10px;
+	border: 1px solid #ebebeb;
+	border-radius: 10px;
 }
+
 .message-history-name {
-  display: block;
-  margin-top: 2px;
-  line-height: 16px;
-  font-family: "sans-serif";
-  font-size: 15px;
-  font-weight: bold;
-  white-space: nowrap;
-  color: #666666;
-  padding-top: 19px;
-  padding-bottom: 19px;
-  /** 높이 43px **/
+	display: block;
+	margin-top: 2px;
+	line-height: 16px;
+	font-family: "sans-serif";
+	font-size: 15px;
+	font-weight: bold;
+	white-space: nowrap;
+	color: #666666;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	/** 높이 43px **/
 }
+
 .message-container {
-    display: table;
-    width: 100%;
-    /* height: calc(100% - 60px); */
-    /* height: 100%; */
-    position: relative;
-    background: white;
+	display: table;
+	width: 100%;
+	/* height: calc(100% - 60px); */
+	/* height: 100%; */
+	position: relative;
+	background: white;
 }
+
 .messages {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-    position: relative;
-    background: white;
-    width: 100%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	background: white;
+	width: 100%;
 }
+
 .message-new-modal-dialog {
-  width: 480px;
+	width: 480px;
 }
+
 .modal-dialog {
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  margin: auto;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	margin: auto;
 }
+
 .message-new-modal-content {
-  border: solid 1px #ccc;
-  border-radius: 6px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+	border: solid 1px #ccc;
+	border-radius: 6px;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
 }
+
 .message-new-modal-body {
-  padding: 0;
+	padding: 0;
 }
+
 .message-new-to {
-  border-bottom: solid 1px #ebebeb;
-  padding: 13px 19px 5px 19px;
-  font-size: 13px;
-  line-height: 15px;
+	border-bottom: solid 1px #ebebeb;
+	padding: 13px 19px 5px 19px;
+	font-size: 13px;
+	line-height: 15px;
 }
+
 .close {
-  padding: 0;
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
+	padding: 0;
+	cursor: pointer;
+	background-color: transparent;
+	border: 0;
 }
+
 .message-new-close {
-  margin-top: 6px;
-  margin-bottom: 16px;
+	margin-top: 6px;
+	margin-bottom: 16px;
 }
+
 .close {
-  float: right;
-  height: 10px;
-  width: 10px;
-  opacity: 1.0;
-  text-indent: -10px;
-  color: #ebebeb;
+	float: right;
+	height: 10px;
+	width: 10px;
+	opacity: 1.0;
+	text-indent: -10px;
+	color: #ebebeb;
 }
+
 .message-new-to-label {
-  float: left;
-  margin: 4px 10px 13px 0;
-  color: #999999;
+	float: left;
+	margin: 4px 10px 13px 0;
+	color: #999999;
 }
+
 .ui-select-multiple.ui-select-bootstrap {
-  height: auto;
+	height: auto;
 }
+
 .message-new-to-select {
-  padding: 0 !important;
-  padding-top: 10px;
-  margin: 0 50px 0 60px;
-  font-size: 13px;
-  color: #333333;
+	padding: 0 !important;
+	padding-top: 10px;
+	margin: 0 50px 0 60px;
+	font-size: 13px;
+	color: #333333;
 }
+
 .form-control {
-  width: 80%;
+	width: 80%;
 }
+
 .dropdown {
-  position: relative;
+	position: relative;
 }
+
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
-  border: none;
-  outline: none;
+	border: none;
+	outline: none;
 }
+
 .message-new-to-select .ui-select-search {
-  margin: 4px 0 13px 0;
-  height: auto !important;
-  padding: 0;
-  vertical-align: top;
+	margin: 4px 0 13px 0;
+	height: auto !important;
+	padding: 0;
+	vertical-align: top;
 }
+
 .ui-select-search {
-  width: 300px;
+	width: 300px;
 }
+
 .ui-select-bootstrap>.ui-select-choices {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  overflow-x: hidden;
+	width: 100%;
+	height: auto;
+	max-height: 200px;
+	overflow-x: hidden;
 }
+
 .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  min-width: 160px;
-  list-style: none;
-  font-size: 13px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-clip: padding-box;
-  background-color: #fff;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 0 7px 0 rgba(0, 0, 0, 0.1);
-  margin: 0;
-  padding: 14px 0;
-  background-color: #fff
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	float: left;
+	min-width: 160px;
+	list-style: none;
+	font-size: 13px;
+	text-align: left;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-clip: padding-box;
+	background-color: #fff;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 0 7px 0 rgba(0, 0, 0, 0.1);
+	margin: 0;
+	padding: 14px 0;
+	background-color: #fff
 }
+
 .message-new-textarea {
-  border: 1px solid #f5f5f5;
-  margin: 0;
-  margin-top: 2px;
-  padding: 13px 19px 11px 0px;
-  height: 200px;
-  font-size: 13px;
-  line-height: 22px;
-  color: #666666;
-  padding: 13px 19px 11px 0px
+	border: 1px solid #f5f5f5;
+	margin: 0;
+	margin-top: 2px;
+	padding: 13px 19px 11px 0px;
+	height: 200px;
+	font-size: 13px;
+	line-height: 22px;
+	color: #666666;
+	padding: 13px 19px 11px 0px
 }
+
 .message-input-textarea {
-  display: block;
-  width: 100%;
-  max-height: 266px;
-  background-color: white;
+	display: block;
+	width: 100%;
+	max-height: 266px;
+	background-color: white;
 }
+
 .message-new-modal-footer {
-  padding: 9px;
+	padding: 9px;
 }
+
 .modal-footer {
-  text-align: right;
-  min-height: 30px;
-  background-color: #f5f5f5;
-  border-top: none;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-  min-height: 30px;
+	text-align: right;
+	min-height: 30px;
+	background-color: #f5f5f5;
+	border-top: none;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	min-height: 30px;
 }
+
 .btn-primary {
+	text-rendering: auto;
+	letter-spacing: nomal;
+	text-indent: 0px;
+	text-shadow: none;
+	background-color: #e00000;
+	border-color: #a90315;
+	font-weight: bold;
+	padding: 5px 14px;
+	outline: none !important;
+	color: white;
+	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 4px;
+	line-height: 1.5;
+	background-color: #e00000;
+	text-indent: 0px;
+}
+
+.btn-primarys {
   text-rendering: auto;
   letter-spacing: nomal;
   text-indent: 0px;
@@ -310,62 +379,149 @@ background-color:white;
   background-color: #e00000;
   text-indent: 0px;
 }
-#messagesArea{
-    width: 653px;
+
+#messagesArea {
+	width: 653px;
+	position: relative;
+}
+
+.message-contents-list {
+	background-color: #f5ebeb;
+}
+
+.receivedTime {
+    width: 127px;
+    bottom: 12px;
     position: relative;
+    float: right;
+    right: 23px;
 }
-.message-contents-list{
-  background-color: #f5ebeb;
-}
-.receivedTime{
-  width: 127px;
-  bottom: 16px;
-    position: relative;
-    float:right;
-   
-}
-.messageContents{
-    text-overflow: ellipsis;
+
+.messageContents {
+	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
     width: 496px;
-   
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 20px;
+    bottom: 15px;
 }
+
+.modal-body{
+    position: relative;
+    padding: 15px; 
+    height: 250px;
+    width: 150px;
+}
+
+#msgConts{
+    font-size: 14px;
+    position: relative;
+    width: 541px;
+    height: 100%;
+    word-break: break-all;
+}
+
+.modal-titleWrap{
+    margin-left: 30px;
+    font-size: 15px;
+    padding-top: 5px;
+    color: #676767;
+    border-bottom: 1px solid #f1f1f1;
+    right: 42px;
+    position: relative;
+    width: 591px;
+    height: 42px;
+    padding-left: 21px;
+    padding-right: 21px;
+}
+
+#closeModalMessage{
+    margin-top: -24px;
+    margin-right: -5px;
+    font-weight: 800;
+    font-size: 28px;
+    z-index: 300;
+    display: block;
+}
+
+#msgContents{
+    position: relative;
+    height: 0px;
+    padding-bottom: 8.5px;
+}
+
+
 </style>
 <body>
-  <div id="includedContent"></div>
-  <div class="message-page-view">
-    <div class="message-page-contatiner honey_page">
-      <div class="message-history-container">
-        <a class="message-history-new pull-right" data-toggle="modal"
-          href="#" data-target="#message-new-popup">+ 새 메시지</a>
-        <h4 class="message-history-title">
-          "메시지 " <span class="message-hide"></span>
-        </h4>
-        <div class="tempparea">
-        <!-- 핸들바스 영역  -->
-        </div>
-      </div>
-      <div class="mymessage-list-container">
-        <div class="mymessage-header">
-          <h4 class="mymessage-list-title">"Message List"</h4>
-        </div>
-        <div class="message-container">
-          <div class="messages">
-          
-           <div id = messagesArea>
-          </div>
+	<div id="includedContent"></div>
+	<div class="message-page-view">
+		<div class="message-page-contatiner honey_page">
+			<div class="message-history-container">
+				<a class="message-history-new pull-right" data-toggle="modal"
+					href="#" data-target="#message-new-popup">+ 새 메시지</a>
+				<h4 class="message-history-title">
+					"메시지 " <span class="message-hide"></span>
+				</h4>
+				<div class="tempparea">
+					<!-- 핸들바스 영역  -->
+				</div>
+			</div>
+			<div class="mymessage-list-container">
+				<div class="mymessage-header">
+					<h4 class="mymessage-list-title">"Message List"</h4>
+				</div>
+				<div class="message-container">
+					<div class="messages">
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+						<div id=messagesArea></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-  <div class="modal fade message-new-popup" id="message-new-popup"
-    role="dialog">
+	<div class="modal fade message-new-popup" id="message-new-popup"
+		role="dialog">
+		<div class="modal-dialog message-new-modal-dialog">
+			<div class="modal-content message-new-modal-content">
+				<div class="message-new-to">
+					<button type="button" class="close message-new-close"
+						data-dismiss="modal" aria-label="close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<label class="message-new-to-label">받는 사람</label>
+					<div
+						class="message-new-to-select ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control"
+						multiple="multiple" theme="bootstrap" rest-search-input="true">
+						<div>
+							<span class="message-new-to-select-match ui-select-match"
+								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input id="userNickName"
+								type="text" autocomplete="off" autocorrect="off"
+								autocapitalize="off" spellcheck="false"
+								class="ui-select-search input-xs"
+								placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"
+								aria-label="Select box">
+						</div>
+					</div>
+					<div>
+						<textarea class="message-new-textarea message-input-textarea"
+							placeholder="메시지 입력하기..."></textarea>
+					</div>
+				</div>
+				<div class="modal-footer message-new-modal-footer">
+					<button type="button" class="btn btn-primary">보내기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	 <div class="modal fade message-new-popup" id="message-new-popup_2"   role="dialog">
     <div class="modal-dialog message-new-modal-dialog">
       <div class="modal-content message-new-modal-content">
         <div class="message-new-to">
@@ -374,13 +530,12 @@ background-color:white;
             <span aria-hidden="true">x</span>
           </button>
           <label class="message-new-to-label">받는 사람</label>
-          <div
-            class="message-new-to-select ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control" 
-              multiple="multiple" theme="bootstrap" rest-search-input="true">
+          <div  class="message-new-to-select ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control" 
+           multiple="multiple" theme="bootstrap" rest-search-input="true">
             <div>
-              <span class="message-new-to-select-match ui-select-match" placeholder="누구에게 메시지를 보내시겠어요?"></span>
+              <span class="message-new-to-select-match ui-select-match"  placeholder="누구에게 메시지를 보내시겠어요?"></span> 
                <input id="userNickName" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                class="ui-select-search input-xs"   placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"   aria-label="Select box">
+                class="ui-select-search input-xs temp" placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"  aria-label="Select box">
             </div>
           </div>
           <div>
@@ -389,41 +544,45 @@ background-color:white;
           </div>
         </div>
         <div class="modal-footer message-new-modal-footer">
-          <button type="button" class="btn btn-primary">보내기</button>
+          <button type="button" id="resendBtn" class="btn btn-primary">보내기</button>
         </div>
       </div>
     </div>
   </div>
+	
+	<!-- resendMessage -->
+	
+	
+	
 
 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">메시지</h4>
-        <div class="modal-body">
-          <p></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">답장하기 </button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
 
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class= "modal-titleWrap"><h4 class="modal-title">Message</h4>
+					   <button type="button" class="close" id="closeModalMessage" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body"><div id="msgConts"></div></div>
+					<div class="modal-footer">
+						<button type="button" id = "answerMessage" class="btn btn-primarys" data-dismiss="modal">답장하기
+						</button>
+					</div>
+				</div>
 
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-  <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script type="text/javascript" src="message.js"></script>
-  <script>
+			</div>
+		</div>
+	</div>
+
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../lib/js/common.js"></script>
+	<script type="text/javascript" src="message.js"></script>
+	<script>
     $(function() {
       $("#includedContent").load("../header.html");
     });
@@ -432,7 +591,7 @@ background-color:white;
   </script>
 
 
-  <script id="messageUserInfoTemplate" type="text/x-handlebars-template">
+	<script id="messageUserInfoTemplate" type="text/x-handlebars-template">
 {{#each this}}
 <ol class="message-history-list">
           <li class="message-history-item"><a id="userNick"data-memberNo="{{memberNo}}" 
@@ -448,23 +607,24 @@ background-color:white;
         </ol>
 {{/each}}
   </script>
-  
-  
-    <script id="messageUserMessageTemplate" type="text/x-handlebars-template">
+
+
+	<script id="messageUserMessageTemplate" type="text/x-handlebars-template">
 {{#each this}}
     <ol class="message-contents-list" id="message-contents-list{{status}}">
           <li class="message-history-item">
           <a id="msgContents" data-toggle="modal" data-target="#myModal" class="message-history-link" href="#"> 
               <div class="message-history-name"> 
-                <div class="messageContents"data-messageNo="{{messageNo}}" data-status="{{status}}" data-nickName="{{nickname}}">{{message}}
+                <div class="messageContents" data-messageNo="{{messageNo}}" data-status="{{status}}" data-nickName="{{nickName}}" data-msg="{{message}}">{{message}}
                 </div>
+           </a>
                   <span class="receivedTime">{{insertDate2}}</span>
-          </a>
+            </div>
         </li>
     </ol>
 {{/each}}
   </script>
-  
+
 
 
 
