@@ -4,35 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.MemberFileDao">
 	<resultMap type="MemberFile" id="MemberFile">
-		<id column="mbp_no" property="no" />
-		<result column="mb_no" property="memberNo" />
-		<result column="mbp_path" property="filename" />
+		<id column="MBP_NO" property="no" />
+		<result column="MB_NO" property="memberNo" />
+		<result column="MBP_PATH" property="filename" />
 	</resultMap>
 
 	<insert id="defaultProfilePhotoInsert" parameterType="int">
-		insert into honey_membs_photos(mb_no)
+		insert into HONEY_MEMBS_PHOTOS(MB_NO)
 		values(#{memberNo})
 	</insert>
 
-	<insert id="prifileFileinsert" parameterType="MemberFile">
-		insert into honey_membs_photos(mb_no, mbp_path)
-		values(#{memberNo}, #{filename})
-	</insert>
+	<update id="prifileFileinsert" parameterType="MemberFile">
+		update HONEY_MEMBS_PHOTOS set
+		MBP_PATH = #{filename}
+		where MB_NO = #{memberNo}
+	</update>
 
 
 	<select id="getprofileFile" parameterType="int" resultMap="MemberFile">
-		select * from honey_membs_photos
-		where mb_no = #{memberNo} order by mbp_no desc limit 1;
+		select * from HONEY_MEMBS_PHOTOS
+		where MB_NO = #{memberNo} order by MBP_NO desc limit 1;
 	</select>
 	
 	 <select id="getprofileFileName" parameterType="int" resultMap="MemberFile">
-    select mbp_path, mbp_no, mb_no
+    select MBP_PATH, MBP_NO, MB_NO
     from 
-    honey_membs_photos
-    where mb_no=#{memberNo}
+    HONEY_MEMBS_PHOTOS
+    where MB_NO=#{memberNo}
      order by
     <choose>
-      <otherwise>mbp_no</otherwise>
+      <otherwise>MBP_NO</otherwise>
     </choose>
   </select>
 </mapper>

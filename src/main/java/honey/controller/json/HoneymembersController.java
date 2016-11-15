@@ -43,7 +43,7 @@ public class HoneymembersController {
 			return JsonResult.success();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
@@ -303,6 +303,15 @@ public class HoneymembersController {
 			Messages messages = new Messages();
 			messages.setLoginUserNo(member.getMemberNo());
 			List<HoneyMembers> messageUserList = hMembersService.getMessagesSendUserByLoginUserNo(messages.getLoginUserNo());
+
+			for(int i =0; i < messageUserList.size();i++) {
+				String[] messageUserPhoto = (messageUserList.get(i).getProfileFilePath()).split("\\.");
+				if(messageUserPhoto.length == 2) {
+					messageUserList.get(i).setProfileFilePath("/TeamProject/upload/" + messageUserPhoto[0] + "." + messageUserPhoto[1]);
+				} else {
+					messageUserList.get(i).setProfileFilePath("http://graph.facebook.com/" + messageUserPhoto[0] + "/picture");
+				}
+			}
 			return JsonResult.success(messageUserList);
 		} catch (Exception e) {
 			return JsonResult.fail();
@@ -348,7 +357,7 @@ public class HoneymembersController {
 			return JsonResult.fail();
 		}
 	}
-	
+
 	@RequestMapping("updateMessageStatus")
 	public Object updateMessageStatus(Messages messageNo) throws Exception {
 		try {

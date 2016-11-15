@@ -19,20 +19,21 @@ $("#answerMessage").click(function(event){
 
 $(".btn-primary").click(function(event){
 	var messageContents = {
-			nickName:$("#resendMessage").val(), message:$(".message-input-textarea").val()
-	}
+		    nickName:$("#userNickName").val(), message:$(".message-input-textarea").val()
+			}
 	ajaxSendMessage(messageContents)
+	$('#message-new-popup').modal('hide')
 });
 
 
 
 $("#resendBtn").click(function(event){
-	var messageContents = {
-			nickName:$("#userNick").val(), message:$("#msgContents").val()
-	}
 	
-	console.log(messageContents)
-	//ajaxSendMessage(messageContents)
+	var messageContents = {
+			nickName:$("#reSendedUsernickName").val(), message:$("#answerMessageToUser").val()
+	}
+	ajaxSendMessage(messageContents)
+	$('#message-new-popup_2').modal('hide')
 })
 
 
