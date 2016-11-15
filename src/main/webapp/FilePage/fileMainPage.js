@@ -27,6 +27,10 @@ $(document).ready(function() {
 		$("#ProfileEditLinkGear").css('-o-animation-play-state','paused')
 		$("#ProfileEditLinkGear").css('animation-play-state','paused')
 	})
+	$(".fileAddBtn").click(function (event) {
+		console.log("파일에드 클")
+		$("#yourModal").modal();
+	});
 });
 
 
