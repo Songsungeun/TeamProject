@@ -132,8 +132,7 @@ ol {
 	display: block;
 	padding: 6px 10px 7px 6px;
 	border-left: solid 4px transparent;
-	    position: relative;
-    width: 510px;
+	position: relative;
 }
 
 .message-history-item {
@@ -361,23 +360,23 @@ ol {
 }
 
 .btn-primarys {
-  text-rendering: auto;
-  letter-spacing: nomal;
-  text-indent: 0px;
-  text-shadow: none;
-  background-color: #e00000;
-  border-color: #a90315;
-  font-weight: bold;
-  padding: 5px 14px;
-  outline: none !important;
-  color: white;
-  margin-bottom: 0;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 4px;
-  line-height: 1.5;
-  background-color: #e00000;
-  text-indent: 0px;
+	text-rendering: auto;
+	letter-spacing: nomal;
+	text-indent: 0px;
+	text-shadow: none;
+	background-color: #e00000;
+	border-color: #a90315;
+	font-weight: bold;
+	padding: 5px 14px;
+	outline: none !important;
+	color: white;
+	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 4px;
+	line-height: 1.5;
+	background-color: #e00000;
+	text-indent: 0px;
 }
 
 #messagesArea {
@@ -390,70 +389,68 @@ ol {
 }
 
 .receivedTime {
-    width: 127px;
-    bottom: 12px;
-    position: relative;
-    float: right;
-    right: 23px;
+	width: 127px;
+	bottom: 12px;
+	position: relative;
+	float: right;
+	right: 23px;
 }
 
 .messageContents {
 	text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-    width: 496px;
-    text-align: left;
-    padding-left: 30px;
-    padding-right: 20px;
-    bottom: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	width: 496px;
+	text-align: left;
+	padding-left: 30px;
+	padding-right: 20px;
+	bottom: 15px;
 }
 
-.modal-body{
-    position: relative;
-    padding: 15px; 
-    height: 250px;
-    width: 150px;
+.modal-body {
+	position: relative;
+	padding: 15px;
+	height: 250px;
+	width: 150px;
 }
 
-#msgConts{
-    font-size: 14px;
-    position: relative;
-    width: 541px;
-    height: 100%;
-    word-break: break-all;
+#msgConts {
+	font-size: 14px;
+	position: relative;
+	width: 541px;
+	height: 100%;
+	word-break: break-all;
 }
 
-.modal-titleWrap{
-    margin-left: 30px;
-    font-size: 15px;
-    padding-top: 5px;
-    color: #676767;
-    border-bottom: 1px solid #f1f1f1;
-    right: 42px;
-    position: relative;
-    width: 591px;
-    height: 42px;
-    padding-left: 21px;
-    padding-right: 21px;
+.modal-titleWrap {
+	margin-left: 30px;
+	font-size: 15px;
+	padding-top: 5px;
+	color: #676767;
+	border-bottom: 1px solid #f1f1f1;
+	right: 42px;
+	position: relative;
+	width: 591px;
+	height: 42px;
+	padding-left: 21px;
+	padding-right: 21px;
 }
 
-#closeModalMessage{
-    margin-top: -24px;
-    margin-right: -5px;
-    font-weight: 800;
-    font-size: 28px;
-    z-index: 300;
-    display: block;
+#closeModalMessage {
+	margin-top: -24px;
+	margin-right: -5px;
+	font-weight: 800;
+	font-size: 28px;
+	z-index: 300;
+	display: block;
 }
 
-#msgContents{
-    position: relative;
-    height: 0px;
-    padding-bottom: 8.5px;
+#msgContents {
+	position: relative;
+	height: 0px;
+	padding-bottom: 8.5px;
 }
-
-
 </style>
 <body>
 	<div id="includedContent"></div>
@@ -519,41 +516,47 @@ ol {
 			</div>
 		</div>
 	</div>
-	
-	
-	 <div class="modal fade message-new-popup" id="message-new-popup_2"   role="dialog">
-    <div class="modal-dialog message-new-modal-dialog">
-      <div class="modal-content message-new-modal-content">
-        <div class="message-new-to">
-          <button type="button" class="close message-new-close"
-            data-dismiss="modal" aria-label="close">
-            <span aria-hidden="true">x</span>
-          </button>
-          <label class="message-new-to-label">받는 사람</label>
-          <div  class="message-new-to-select ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control" 
-           multiple="multiple" theme="bootstrap" rest-search-input="true">
-            <div>
-              <span class="message-new-to-select-match ui-select-match"  placeholder="누구에게 메시지를 보내시겠어요?"></span> 
-               <input id="userNickName" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                class="ui-select-search input-xs temp" placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"  aria-label="Select box">
-            </div>
-          </div>
-          <div>
-            <textarea class="message-new-textarea message-input-textarea"
-              placeholder="메시지 입력하기..."></textarea>
-          </div>
-        </div>
-        <div class="modal-footer message-new-modal-footer">
-          <button type="button" id="resendBtn" class="btn btn-primary">보내기</button>
-        </div>
-      </div>
-    </div>
-  </div>
-	
+
+
+	<div class="modal fade message-new-popup" id="message-new-popup_2"
+		role="dialog">
+		<div class="modal-dialog message-new-modal-dialog">
+			<div class="modal-content message-new-modal-content">
+				<div class="message-new-to">
+					<button type="button" class="close message-new-close"
+						data-dismiss="modal" aria-label="close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<label class="message-new-to-label">받는 사람</label>
+					<div
+						class="message-new-to-select ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control"
+						multiple="multiple" theme="bootstrap" rest-search-input="true">
+						<div>
+							<span class="message-new-to-select-match ui-select-match"
+								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input id="reSendedUsernickName"
+								type="text" autocomplete="off" autocorrect="off"
+								autocapitalize="off" spellcheck="false"
+								class="ui-select-search input-xs temp"
+								placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"
+								aria-label="Select box">
+						</div>
+					</div>
+					<div>
+						<textarea id="answerMessageToUser" class="message-new-textarea message-input-textarea"
+							placeholder="메시지 입력하기..."></textarea>
+					</div>
+				</div>
+				<div class="modal-footer message-new-modal-footer">
+					<button type="button" id="resendBtn" class="btn btn-primarys">보내기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- resendMessage -->
-	
-	
-	
+
+
+
 
 
 	<div class="modal fade" id="myModal" role="dialog">
@@ -561,13 +564,17 @@ ol {
 
 			<div class="modal-content">
 				<div class="modal-header">
-					<div class= "modal-titleWrap"><h4 class="modal-title">Message</h4>
-					   <button type="button" class="close" id="closeModalMessage" data-dismiss="modal">&times;</button>
+					<div class="modal-titleWrap">
+						<h4 class="modal-title">Message</h4>
+						<button type="button" class="close" id="closeModalMessage"
+							data-dismiss="modal">&times;</button>
 					</div>
-					<div class="modal-body"><div id="msgConts"></div></div>
+					<div class="modal-body">
+						<div id="msgConts"></div>
+					</div>
 					<div class="modal-footer">
-						<button type="button" id = "answerMessage" class="btn btn-primarys" data-dismiss="modal">답장하기
-						</button>
+						<button type="button" id="answerMessage" class="btn btn-primarys"
+							data-dismiss="modal">답장하기</button>
 					</div>
 				</div>
 
@@ -597,7 +604,7 @@ ol {
           <li class="message-history-item"><a id="userNick"data-memberNo="{{memberNo}}" 
             class="message-history-link" href="#"> <span
               class="message-history-image pull-left"> <img
-                id="userImage" width="43px" height="43px" src="/TeamProject/upload/{{profileFilePath}}">
+                id="userImage" width="43px" height="43px" src="{{profileFilePath}}">
             </span> 
               <span class="message-history-name"> 
                 <span class="message-sending-usernick" data-nickName="{{nickname}}">{{nickname}}</span>
@@ -609,7 +616,8 @@ ol {
   </script>
 
 
-	<script id="messageUserMessageTemplate" type="text/x-handlebars-template">
+	<script id="messageUserMessageTemplate"
+		type="text/x-handlebars-template">
 {{#each this}}
     <ol class="message-contents-list" id="message-contents-list{{status}}">
           <li class="message-history-item">
