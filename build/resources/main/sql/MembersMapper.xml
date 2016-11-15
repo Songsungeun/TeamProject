@@ -3,143 +3,237 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneyMembersDao">
-  <resultMap type="HoneyMembers" id="memberMap">
-    <id column="MB_NO" property="memberNo"/> 
-    <id column="MB_NO2" property="followMemberNo"/>
-    <result column="EMAIL" property="email"/>
-    <result column="MB_NICK" property="nickname"/>
-    <result column="MB_NM" property="userName"/>
-    <result column="TEL" property="phone"/>
-    <result column="BIRTH" property="userBirthDay"/>
-    <result column="PWD" property="password"/>
-    <result column="INTRODUCE" property="introduce"/>
-  </resultMap>
+	<resultMap type="HoneyMembers" id="memberMap">
+		<id column="MB_NO" property="memberNo" />
+		<id column="MB_NO2" property="followMemberNo" />
+		<result column="EMAIL" property="email" />
+		<result column="MB_NICK" property="nickname" />
+		<result column="MB_NM" property="userName" />
+		<result column="TEL" property="phone" />
+		<result column="BIRTH" property="userBirthDay" />
+		<result column="PWD" property="password" />
+		<result column="INTRODUCE" property="introduce" />
+		<result column="mbp_path" property="profileFilePath" />
+		
+	</resultMap>
+
+
+	<resultMap type="Messages" id="messageMap">
+		<id column="MB_NO" property="loginUserNo" />
+		<id column="MB_NO2" property="messageTargetUserNo" />
+		<result column="MESGS_CONTS" property="message" />
+		<result column="STATUS" property="status" />
+		<result column="NO" property="messageNo" />
+		<result column="MB_NICK" property="nickName" />
+	</resultMap>
+
+	<resultMap type="HoneyMain" id="boardMap">
+		<id column="BD_NO" property="no" />
+		<result column="BD_TITL" property="title" />
+		<result column="URL" property="url" />
+		<result column="MB_NICK" property="writerNick" />
+		<result column="BD_CONTS" property="contents" />
+		<result column="BD_CRE" property="createdDate" />
+		<result column="BD_LIKE" property="like" />
+		<result column="VIEW_CT" property="viewCount" />
+		<result column="EMAIL" property="email" />
+		<result column="MB_NO" property="userNo" />
+		<result column="CT_NO" property="categoryNo" />
+		<result column="CT_NM" property="category" />
+		<result column="FILE_STATUS" property="fileStatus" />
+		<result column="YOUTUBE_URL" property="youtubeURL" />
+	</resultMap>
+
+
+
+	<insert id="joinMember" parameterType="HoneyMembers"
+		useGeneratedKeys="true" keyProperty="memberNo" keyColumn="MB_NO">
+		insert into
+		honey_membs(EMAIL, MB_NICK, MB_NM, PWD)
+		values(#{email},
+		#{nickname}, #{userName}, password(#{password}))
+	</insert>
+
+	<insert id="followInsert" parameterType="HoneyMembers">
+		insert into
+		honey_flw(mb_no, mb_no2)
+		values(#{memberNo}, #{followMemberNo})
+	</insert>
+
+	<insert id="sendMessage" parameterType="Messages">
+		insert into
+		HONEY_MESGS(mb_no, mb_no2,MESGS_CONTS, insertDate)
+		values(#{loginUserNo}, #{messageTargetUserNo},#{message}, now())
+	</insert>
+
+
+
+	<select id="selectOneByEmailAndPassword" resultMap="memberMap"
+		parameterType="map">
+		select MB_NO, PWD, EMAIL, MB_NICK, MB_NM
+		from
+		honey_membs
+		where EMAIL=#{email} and PWD=password(#{password})
+	</select>
+
+	<select id="selectOneByMemberNo" resultMap="memberMap"
+		parameterType="map">
+		select EMAIL, MB_NICK, MB_NM, TEL, PWD, INTRODUCE
+		from
+		honey_membs
+		where MB_NO=#{value}
+	</select>
+
+
+	<select id="selectUserInfo" resultMap="memberMap" parameterType="map">
+		select EMAIL, MB_NICK, MB_NM, TEL, PWD
+		from honey_membs
+		where
+		MB_NO=#{userNo}
+	</select>
+
+	<select id="selectUserNumberByNickName" resultMap="memberMap"
+		parameterType="map">
+		select MB_NO
+		from honey_membs
+		where MB_NICK=#{nickName}
+	</select>
+
+
+	<select id="selectUserNickName" resultMap="memberMap"
+		parameterType="map">
+		select MB_NICK
+		from honey_membs
+		where MB_NO=#{memberNo}
+	</select>
+
+	<select id="selectFollowUser" resultMap="memberMap"
+		parameterType="map">
+		select *
+		from honey_flw
+		where MB_NO=#{memberNo} and
+		MB_NO2=#{followMemberNo}
+	</select>
+
+
+<!-- 로그인 한 사용자가 받은 메세지 -->
+	<select id="selectMessagesByLoginUserNo" resultMap="memberMap"
+		parameterType="map">
+select honey_mesgs.mb_no, honey_membs.mb_nick,mbp_path
+
+from honey_mesgs
+
+inner join honey_membs on honey_mesgs.mb_no = honey_membs.mb_no
+inner join honey_membs_photos on honey_membs.mb_no = honey_membs_photos.mb_no
+
+where honey_mesgs.no in (
+select  max(honey_mesgs.no)
+from honey_mesgs
+inner join honey_membs on honey_mesgs.mb_no = honey_membs.mb_no
+where honey_mesgs.mb_no2 = #{loginUserNo}
+group by honey_mesgs.mb_no
+)
+
+and
+mbp_no in (
+select max(mbp_no)
+from honey_membs_photos
+inner join honey_membs on honey_membs_photos.mb_no = honey_membs.mb_no
+where honey_mesgs.mb_no2= #{loginUserNo}
+group by honey_membs_photos.mb_no
+)
+
+
+order by honey_mesgs.insertDate desc;
+	</select>
+
+
+
+
+<select id="selectMessagesByUserNo" resultMap="messageMap" parameterType="map">
+  select honey_mesgs.no, honey_mesgs.mesgs_conts, honey_mesgs.status, honey_mesgs.insertDate, honey_membs.mb_nick
+  from honey_mesgs
   
-<resultMap type="HoneyMain" id="boardMap">
-    <id column="BD_NO" property="no"/>
-    <result column="BD_TITL" property="title"/>
-    <result column="URL" property="url"/>
-    <result column="MB_NICK" property="writerNick"/>
-    <result column="BD_CONTS" property="contents"/>
-    <result column="BD_CRE" property="createdDate"/>
-    <result column="BD_LIKE" property="like"/>
-    <result column="VIEW_CT" property="viewCount"/>
-    <result column="EMAIL" property="email"/>
-    <result column="MB_NO" property="userNo"/>
-    <result column="CT_NO" property="categoryNo"/>
-    <result column="CT_NM" property="category"/>
-    <result column="FILE_STATUS"  property="fileStatus"/>
-    <result column="YOUTUBE_URL"  property="youtubeURL"/>
-  </resultMap>
+  inner join honey_membs on honey_mesgs.mb_no = honey_membs.mb_no
   
-  
-  <insert id="joinMember" parameterType="HoneyMembers" useGeneratedKeys="true" keyProperty="memberNo" keyColumn="MB_NO">
-    insert into honey_membs(EMAIL, MB_NICK, MB_NM, TEL, PWD)
-    values(#{email}, #{nickname}, #{userName}, #{phone}, password(#{password}))
-  </insert>
-  
-  <insert id="followInsert" parameterType="HoneyMembers" >
-    insert into honey_flw(mb_no, mb_no2)
-    values(#{memberNo}, #{followMemberNo})
-  </insert>
-  
-  
-  
-  <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
-    select MB_NO, PWD, EMAIL,  MB_NICK, TEL, MB_NM
-    from honey_membs 
-    where EMAIL=#{email} and PWD=password(#{password}) 
+  where honey_mesgs.mb_no=#{loginUserNo} and honey_mesgs.mb_no2=#{messageTargetUserNo} 
+  order by insertDate desc
+</select>
+
+
+
+	<select id="selectBoards" parameterType="int" resultMap="boardMap">
+		select
+		hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
+		hb.BD_LIKE,
+		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS,
+		FILE_STATUS, YOUTUBE_URL
+		from honey_boards hb
+		left join honey_membs hm
+		on hm.MB_NO = hb.MB_NO
+		left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+		where hb.mb_no=#{memberNo}
+		order by BD_NO desc
+	</select>
+
+	<select id="selectFollowCount" parameterType="int" resultMap="boardMap">
+		select *
+		from
+		honey_flw
+		where mb_no=#{memberNo}
+	</select>
+
+	<select id="selectGuider" parameterType="int" resultMap="memberMap">
+		select *
+		from
+		honey_flw
+		where mb_no2=#{memberNo}
+	</select>
+
+	<delete id="disconnector" parameterType="int">
+		delete from honey_flw
+		where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
+	</delete>
+
+	<delete id="unregisteMember" parameterType="int">
+		delete from
+		honey_membs
+		where MB_NO=#{value}
+	</delete>
+
+	<update id="userInfoUpdate">
+		update honey_membs set
+		EMAIL=#{email},
+		MB_NICK=#{nickname},
+		MB_NM=#{userName},
+		TEL=#{phone},
+		INTRODUCE=#{introduce}
+		where MB_NO=#{memberNo}
+	</update>
+
+	<update id="changePassword">
+		update honey_membs set
+		PWD=password(#{password})
+		where
+		MB_NO=#{memberNo}
+	</update>
+	<update id="messageStatusUpdate">
+	 update honey_mesgs set
+	 status = 1
+	 where no=#{messageNo}
+	</update>
+	
+	<select id="emailCheck" resultMap="memberMap" parameterType="String">
+		select EMAIL from honey_membs
+		where email= #{email}
+	</select>
+
+
+  <select id="selectMessageStatusZeroByUserNo" resultMap="messageMap" parameterType="int">
+    select status from honey_mesgs
+    where status=0 and MB_NO2=#{memberNo}
   </select>
-  
-  <select id = "selectOneByMemberNo" resultMap="memberMap" parameterType="map">
-    select EMAIL, MB_NICK, MB_NM, TEL, PWD, INTRODUCE
-    from honey_membs
-    where MB_NO=#{value}
-  </select>
-  
-  
-  <select id = "selectUserInfo" resultMap="memberMap" parameterType="map">
-    select EMAIL, MB_NICK, MB_NM, TEL, PWD
-    from honey_membs
-    where MB_NO=#{userNo}
-  </select>
-  
-  <select id = "selectUserNumber" resultMap="memberMap" parameterType="map">
-    select MB_NO
-    from honey_membs
-    where MB_NICK=#{nickName}
-  </select>
-  
-    <select id = "selectUserNickName" resultMap="memberMap" parameterType="map">
-    select MB_NICK
-    from honey_membs
-    where MB_NO=#{memberNo}
-  </select>
-  
-  <select id = "selectFollowUser" resultMap="memberMap" parameterType="map">
-    select *
-    from honey_flw
-    where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
-  </select>  
-  
-  <select id="selectBoards" parameterType="int" resultMap="boardMap">
-    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO, hb.BD_LIKE,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS, YOUTUBE_URL
-    from honey_boards hb
-    left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
-    where hb.mb_no=#{memberNo}
-    order by BD_NO desc
-  </select>
-  
-  <select id="selectFollowCount" parameterType="int" resultMap="boardMap">
-    select *
-    from 
-    honey_flw
-    where mb_no=#{memberNo}
-  </select>
-  
-    <select id="selectGuider" parameterType="int" resultMap="memberMap">
-    select *
-    from 
-    honey_flw
-    where mb_no2=#{memberNo}
-  </select>
-  
-  <delete id="disconnector" parameterType="int">
-  delete from honey_flw
-  where MB_NO=#{memberNo} and MB_NO2=#{followMemberNo}
-  </delete>
-  
-  <delete id="unregisteMember" parameterType="int">
-  delete from honey_membs
-  where MB_NO=#{value}
-  </delete>
-  
-  <update id="userInfoUpdate">
-    update honey_membs set
-      EMAIL=#{email},
-      MB_NICK=#{nickname},
-      MB_NM=#{userName},
-      TEL=#{phone},
-      INTRODUCE=#{introduce}
-    where MB_NO=#{memberNo}
-  </update>
-  
-  <update id="changePassword">
-    update honey_membs set
-      PWD=password(#{password})
-    where MB_NO=#{memberNo}
-  </update>
-  
-  <select id="emailCheck" resultMap="memberMap" parameterType="String">
-    select EMAIL from honey_membs
-    where email= #{email}
-  </select>
-  
-  
-  
-  
+
 </mapper>
 
 

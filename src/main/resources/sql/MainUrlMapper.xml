@@ -19,18 +19,18 @@
   
   <select id="selectOne" resultMap="urlInfo" parameterType="int">
     select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
-    from board_link 
+    from BOARD_LINK 
     where BD_NO = #{value}
   </select>
   
     <select id="selectUserUrlList" resultMap="urlInfo" parameterType="int">
     select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
-    from board_link 
+    from BOARD_LINK 
     where MB_NO = #{value}
   </select>
 
   <select id="selectList" resultMap="urlInfo">
     select URL_Addr,URL_Desc,URL_Image,MB_No,BD_NO,DetailUrl,URL_Title
-    from board_link 
+    from BOARD_LINK 
   </select>
 </mapper>
