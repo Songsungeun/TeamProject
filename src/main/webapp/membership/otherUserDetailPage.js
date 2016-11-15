@@ -5,6 +5,25 @@ var userInfo = getParams();
 var userNick = userInfo.nick
 $("#userNick").text(userNick);
 
+
+
+$("#files").click(function(event){
+	$("#posts").css("color","#99999")
+	$("#files").css("color","#db2626")
+	$("#post_wrapper").css("display","none")
+	$("#userFilesWrap").css("display","block")
+})
+
+$("#posts").click(function(event){
+	$("#files").css("color","#99999")
+	$("#posts").css("color","#db2626")
+	$("#userFilesWrap").css("display","none")
+	$("#post_wrapper").css("display","block")
+})
+
+
+
+
 function getParams() {
 	var param = new Array();
 	var url = decodeURIComponent(location.href);
@@ -41,9 +60,9 @@ function aJaxOtherUserProfileLoder(userInfo) {
 			var imgSrc = result.data.profilePhoto
 			var splitImgSrc = imgSrc.split(".")
 			if(splitImgSrc.length == 2) {
-			$("#userProfilePhotos").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
+			$("#userPhoto").attr('src',"/TeamProject/upload/"+splitImgSrc[0] + "." + splitImgSrc[1])
 			} else {
-				$("#userProfilePhotos").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
+				$("#userPhoto").attr('src',"http://graph.facebook.com/"+splitImgSrc[0] + "/picture")
 			}
 			$("#viewCount").text(result.data.totalViewCount)
 			$("#likeCount").text(result.data.totalLikeCount)

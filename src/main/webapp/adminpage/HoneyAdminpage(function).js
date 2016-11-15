@@ -15,21 +15,30 @@ $(document.body).on('click', '.moreViewBtn', function(event){
 	admin.pageLength += 6;
 	ajaxBoardList()
 })
-
+		$(document.body).on('click', '#postBtn',  function(event) {
+			var rNumber = $(this).attr("data-no")
+			var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
+			if(result  == true) {
+				// 확인 버튼 누를시 
+				ajaxDeleteBoard(rNumber)
+			} else {
+				//취소 버튼 누를시 
+			}
+		});
+		
+		$(document.body).on('click', '#likeBtn',  function(event) {
+			var rNumber = $(this).attr("data-no")
+			var result = confirm("좋아요가 취소되요..! \n 계속 하실껀가요?");
+			if(result == true) {
+				// 확인 버튼 누를시 
+				ajaxLikeDisconnect(rNumber)
+			} else {
+				//취소 버튼 누를시 
+			}
+	});
+		
 $("#myPostsSwitch").click(function() {
 	window.location.reload();
-//	$("#likePosts").css("color", "#999999")
-//	$("#followlist").css("color", "#999999")
-//	$("#myPosts").css("color", "#db2626")
-//	$('.conterDetailBtn1').show();
-//	$('.conterDetailBtn2').show();  
-//	$("#followList").hide();
-//	$("#tableWrap").hide();
-//	
-//	ajaxUrl= admin.adminList;
-//	stateResultCode = admin.stateResultCode1;
-//	ajaxBoardList(ajaxUrl , stateResultCode)
-//	$('#cardWrap').show();  
 })
 
 $("#likePostSwitch").click(function() {
@@ -138,17 +147,7 @@ function ajaxBoardList() {
 		$(document.body).on('click', '.modifyBtn',  function(event) {
 			window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
 		});
-
-		$(document.body).on('click', '.btn-danger',  function(event) {
-			var rNumber = $(this).attr("data-no")
-			var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
-			if(result) {
-				// 확인 버튼 누를시 
-				ajaxDeleteBoard(rNumber)
-			} else {
-				//취소 버튼 누를시 
-			}
-		});
+		
 	})
 }
 

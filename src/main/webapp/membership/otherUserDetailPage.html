@@ -10,170 +10,238 @@
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
+  <link rel="stylesheet" type="text/css" href="../adminpage/HoneyAdminPage.css">
 
 <title>Insert title here</title>
 <style>
 .topSection {
-	position: absolute;
-	margin-top: 70px;
-	padding: 0px auto;
-	width: 1200px;
-	hight: 2000px;
+  padding-top: 100px;
+  width: 1048px;
+  heigth: 100%;
+  margin: 0 auto;
 }
-
 .userInfocontainer {
-	width: 990px;
-	height: 155px;
-	margin: 0 auto;
-	padding-top: 15px;
-	padding-bottom: 15px;
+  width: inherit;
+  height: 100%;
+  overflow: hidden;
 }
-
 .userProfilePhotosContainer {
-	width: 152px;
-	height: 152px;
-	float: left;
+  width: 152px;
+  float: left;
+  height: 152px;
+  overflow: hidden;
 }
-
-#userProfilePhotos {
-	border-radius: 10px;
-	border: #ebebeb 1px solid;
+#userPhoto {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  border: #ebebeb 1px solid;
 }
-
 .userNickNameContainer {
-	margin-left: 170px;
-	line-height: 40px;
+  float: left;
+  max-width: 700px;
+  min-width: 500px;
+  max-height: 152px;
+  margin-left: 20px;
+  line-height: 40px;
+  font-size: 20px;
+  font-family: "Spoqa Han Sans";
 }
-
 #userNickName {
-	margin-top: 10px;
-	font-size: 20px;
-	font-weight: bold;
-	color: #4c4c4c;
+  height: 40px;
+  margin-top: 10px;
+  color: #4c4c4c;
+  position: relative;
 }
-
+#userNickNameInfo {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+}
+#ProfileEditLinkGear {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 10px 3px 0 5px;
+}
+.profileEdit_Btn:hover {
+  cursor: pointer;
+}
+@-webkit-keyframes spin {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+ 
+@-moz-keyframes spin {
+   0%  {-moz-transform: rotate(0deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+@keyframes spin {
+    0%  {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+.profileEdit_Btn:hover {
+  cursor: pointer;
+}
 .userBoardInfoContainer {
-	float: right;
-	width: 138px;
-	color: #999;
-	height: 150px;
-	
+  width: 150px;
+  float: right;
+  height: 150px;
+  color: #999;
+  margin: 10px 10px 0 0;
 }
-
 .received {
-	font-family: "Spoqa Han Sans";
-	font-size: 13px;
-	line-height: 1.7;
-	border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
+  font-size: 13px;
+  line-height: 1.7;
+  border-bottom: #ebebeb 1px solid;
 }
 
 .views {
-	line-height: 35px;
-	border-bottom: #ebebeb 1px solid;
-	font-family: "Spoqa Han Sans";
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
 }
 
 .likes {
-	line-height: 35px;
-	border-bottom: #ebebeb 1px solid;
-	font-family: "Spoqa Han Sans";
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
 }
 
 .followers {
-	line-height: 35px;
-	border-bottom: #ebebeb 1px solid;
-	font-family: "Spoqa Han Sans";
+  line-height: 35px;
+  border-bottom: #ebebeb 1px solid;
+  font-family: "Spoqa Han Sans";
 }
 
 .text {
-	font-size: 14px;
+  font-size: 14px;
 }
 
+.contentsSections {
+    width: 1024px;
+    margin: 0 auto;
+    margin-top: 28px;
+}
 .numbering {
-	float: right;
-	font-size: 16px;
-	font-family: "Spoqa Han Sans";
+  float: right;
+  font-size: 16px;
+  font-family: "Spoqa Han Sans";
 }
 
-.etcSection {
-	position: absolute;
-	margin-top: 270px;
-	width: 100%;
-	border-bottom: #e00000 1px solid;
+.etcSection{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+    height: 46px;
+    padding-top: 12px;
 }
-.contentsSection {
-	position: absolute;
-	width: 1024px;
-	height: 100%;
-	background-color: white;
-	margin: 320px auto;
-	margin-left: 17%;
-}
+
 .modal-content {
     width: 656px;
 }
-
 #yourModal {
   margin-top: 100px;
 }
 
-#userIntroduce {
-width: 31%;
-margin: 10px 0 50px 10px;
-font-size: 14px;
-color: #808080;
-line-height: 18px;
+#userPhoto{
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    border: #ebebeb 1px solid;
 }
+
+#userNick{
+     font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#userFilesWrap{
+ position: relative;
+ width: 1024px;
+ display: none;
+}
+
+#posts{
+color: #db2626;
+}
+
 </style>
 </head>
 
 <body>
 
 	<div id="includedContent"></div>
-	<div class="topSection">
-		<div class="userInfocontainer">
-			<div class="userProfilePhotosContainer">
-				<img id="userProfilePhotos" width="150px" height="150px" src="">
-			</div>
-			<div class="userBoardInfoContainer">
-				<div class="received">
-					<p>RECEIVED</p>
-				</div>
-				<div class="views">
-					<span class="text">View</span> <span id="viewCount"
-						class="numbering"></span>
-				</div>
-				<div class="likes">
-					<span class="text">Likes</span> <span id="likeCount" class="numbering"></span>
-				</div>
-				<div class="followers">
-					<span class="text">followers</span> <span id="followers"
-						class="numbering"></span>
-				</div>
-			</div>
-			<div class="userNickNameContainer">
-				<h1 id="userNickName">
-					<span id="userNick"></span>
-				</h1>
-				<div id="userIntroduce"><p id="user-introduce"></p></div>
-			</div>
-		</div>
-
-	</div>
-	<div class="etcSection"></div>
-
-
-<div class="contentsSection_wrap">
-	<div class="contentsSection">
+	   <div class="topSection">
+      <div class="userInfocontainer">
+        <div class="userProfilePhotosContainer">
+          <img id="userPhoto" src="">
+        </div>
+        <div class="userNickNameContainer">
+          <div id="userNick">
+          </div>
+          <div id="userIntroduce">
+            <span id="user-introduce"></span>
+          </div>
+        </div>
+        <div class="userBoardInfoContainer">
+          <div class="received">
+            <p>RECEIVED</p>
+          </div>
+          <div class="views">
+            <span class="text">View</span> <span id="viewCount"
+              class="numbering"></span>
+          </div>
+          <div class="likes">
+            <span class="text">Likes</span> <span id="likeCount" 
+            class="numbering"></span>
+          </div>
+          <div class="followers">
+            <span class="text">followers</span> <span id="followers"
+              class="numbering"></span>
+          </div>
+        </div>
+      </div>
+    </div>
 	
-	
+	<div class="etcSection">
+			 <span class = "conterMenuBtn" id = "myPostsSwitch"> <a id = "posts" href = "#"> Posts </a></span>
+		            &nbsp; &nbsp;  <span id ="itemDistinct">|</span>  &nbsp;&nbsp;  
+		   <span class = "conterMenuBtn" id = "likePostSwitch"> <a id = "files"href = "#"> Files </a></span>
+   </div>
+
+	<div class="contentsSections">
 	
 		<div id="tabs" class="all_post_wrap">
 			<ul id="post_wrapper" class="tabs-1-contents">
-			
-			
 			</ul>
+			
+		<div id = "userFilesWrap">
+		      <table id = "userFiles" class= "table table-hover">
+		      <thead>
+		      <tr>
+                <th>썸네일</th>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>용량</th>
+		      </tr>
+		       </thead>
+		       
+		       <tbody>
+		       <tr>
+<!--     <td>asasdfasfa</td>
+		        <td>asdfasdfaas</td>
+		        <td>aasdfasdfs</td>
+		        <td>aasdfasdfasds</td>  -->
+		        </tr>
+		       </tbody>
+		       
+		      </table>
+     </div>
 
 			<div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -243,13 +311,6 @@ line-height: 18px;
 		</div>
 	</div>
 
-</div>
-
-
-
-
-
-
 
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -298,8 +359,19 @@ line-height: 18px;
   </div>
 </li>
 {{/each}}
+</script>
 
-
+<script id="fileTableUiTemplateText" type="text/x-handlebars-template">
+{{#each fileList}}
+    <tr>
+      <label>
+          <td><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
+          <td>{{originFileName}}</td>
+          <td>등록</td>
+          <td>{{fileSize}} MB</td>
+     </label>
+    </tr>
+{{/each}}
 </script>
 
 
