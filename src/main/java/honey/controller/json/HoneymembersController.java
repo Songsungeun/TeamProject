@@ -43,7 +43,7 @@ public class HoneymembersController {
 			return JsonResult.success();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 

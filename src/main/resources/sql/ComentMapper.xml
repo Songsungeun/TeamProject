@@ -20,9 +20,9 @@
   <select id="comentList" resultMap="boardMap" parameterType="map">
     select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
     hc.BD_NO,hm.MB_NICK,hm.MB_NO, hmp.MBP_PATH
-    from honey_cmts hc
+    from HONEY_CMTS hc
     left join honey_membs hm on hc.MB_NO = hm.MB_NO 
-    left join honey_membs_photos hmp on hmp.MB_NO = hc.MB_NO
+    left join HONEY_MEMBS_PHOTOS hmp on hmp.MB_NO = hc.MB_NO
     where BD_NO = #{boardNo}
     order by
     <choose>
@@ -35,7 +35,7 @@
 <select id="comentDetail" resultMap="boardMap" parameterType="int">
     select hc.CM_NO,hc.CM_CONTS,hc.CM_CRE,hc.MB_NO,hc.CM_THRD,hc.CM_DEPTH,
     hc.BD_NO,hm.MB_NICK,hm.MB_NO
-    from honey_cmts hc
+    from HONEY_CMTS hc
     left join honey_membs hm on hc.MB_NO = hm.MB_NO 
     where CM_NO = #{cmtNo}
   </select>
@@ -43,7 +43,7 @@
 
 <insert id="insertComent" parameterType="HoneyComent"  
           useGeneratedKeys="true" keyColumn="no" keyProperty="no">
-    insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
+    insert into HONEY_CMTS(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
     (select #{coment}, now(), 0,#{memberNo},#{no},
     (select max(save_no) from HONEY_CMTS_NUMSAVE))
 </insert>
@@ -57,23 +57,23 @@
 
 <insert id="insertChildComent" parameterType="HoneyComent" 
           useGeneratedKeys="true" keyColumn="no" keyProperty="no">
-    insert into honey_cmts(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
+    insert into HONEY_CMTS(CM_CONTS,CM_CRE,CM_DEPTH,MB_NO,BD_NO,CM_THRD)
     value (#{coment}, now(), 1,#{memberNo},#{no},#{cmtNo})
 </insert>
   
   <update id="updateComment" parameterType="HoneyComent">
-      update honey_cmts set
+      update HONEY_CMTS set
       CM_CONTS = #{coment}
-    where cm_no = #{cmtNo}
+    where CM_NO = #{cmtNo}
   </update>
   
   <delete id="delete" parameterType="int">
-    delete from honey_cmts 
+    delete from HONEY_CMTS 
     where CM_THRD = #{value}
   </delete>
   
   <delete id="childdelete" parameterType="int">
-    delete from honey_cmts 
+    delete from HONEY_CMTS 
     where CM_NO = #{value}
   </delete>
 </mapper>
