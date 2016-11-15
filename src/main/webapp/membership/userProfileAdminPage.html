@@ -83,18 +83,18 @@
 }
 
 #changPassword {
-  padding-top: 3px;
-  height: 30px;
-  width: 150px;
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  background-color: #e00000;
-  border: 1px solid;
-  margin: 0 auto;
-  margin-top: 160px;
-  border-radius: 4px;
-  text-align: center;
+	padding-top: 3px;
+	height: 30px;
+	width: 150px;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #e00000;
+	border: 1px solid;
+	margin: 0 auto;
+	margin-top: 160px;
+	border-radius: 4px;
+	text-align: center;
 }
 
 #passwordInfoPage {
@@ -111,11 +111,12 @@
 
 #userPhotoInfo {
 	float: left;
-	width: 180px;
+	width: 200px;
 	height: 250px;
 	padding-top: 0px;
 	padding-left: 0px;
 	margin: auto;
+	border: none;
 }
 
 .profileInfomer {
@@ -132,7 +133,7 @@
 #profilePhoto {
 	width: 200px;
 	height: 250px;
-	padding-right: 14px;
+	border-radius: 10px;
 }
 </style>
 </head>
@@ -189,14 +190,14 @@
 			</div>
 		</div>
 
-			<div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">소개말</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" id="userIntroduce"
-            placeholder="소개하실 글을 작성해 주세요" style="width: 300px; height: 100px"></textarea>
-        </div>
-      </div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">소개말</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" id="userIntroduce"
+					placeholder="소개하실 글을 작성해 주세요" style="width: 300px; height: 100px"></textarea>
+			</div>
 		</div>
+	</div>
 	<div class="userProfileAdmin_mainSection" id="passwordInfoPage">
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">새
@@ -233,7 +234,7 @@
 	<script type="text/javascript" src="userProfileAdminPage.js"></script>
 	<script type="text/javascript" src="../lib/js/common.js"></script>
 	<script type="text/javascript" src="../membership/membership.js"></script>
-	  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
