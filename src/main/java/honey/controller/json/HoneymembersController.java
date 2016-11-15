@@ -42,7 +42,6 @@ public class HoneymembersController {
 			hMembersService.singUpMembers(members);
 			return JsonResult.success();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
 	}
@@ -66,7 +65,7 @@ public class HoneymembersController {
 				return JsonResult.success();
 			} catch (Exception e) {
 				e.printStackTrace();
-				return JsonResult.fail();
+				return JsonResult.fail(e.getMessage());
 			} }
 	}
 
@@ -207,8 +206,7 @@ public class HoneymembersController {
 			resultMap.put("totalLikeCount", totalLikeCount);
 			return JsonResult.success(resultMap);
 		} catch(Exception e) {
-			e.printStackTrace();
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 	@RequestMapping(path="otherUserFollow")
@@ -229,14 +227,14 @@ public class HoneymembersController {
 				member = hMembersService.getUserInfo(memberNo.getMemberNo());
 			}catch (Exception e) {
 				int i = 0;
-				return JsonResult.fail(i);
+				return JsonResult.fail(i, e.getMessage());
 			}
 			// db 테이블 컬럼명이 mb_no, mb_no2 로 지어져 있는데
 			// mb_no를 게시글 작성자 번호로, mb_no2를 로그인한 회원 번호로 인서트 할 것이다.
 			memberInfo.add(member);
 			return JsonResult.success(memberInfo);
 		} catch (RuntimeException e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		} 
 	}
 
@@ -263,7 +261,7 @@ public class HoneymembersController {
 				return JsonResult.success();
 			}
 		} catch (RuntimeException e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		} 
 	}
 
@@ -277,7 +275,7 @@ public class HoneymembersController {
 			hMembersService.followDisconnector(follower);
 			return JsonResult.success();
 		} catch (RuntimeException e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		} 
 
 	}
@@ -292,7 +290,7 @@ public class HoneymembersController {
 			}
 		} catch (RuntimeException e) {
 			e.printStackTrace();
-			return JsonResult.error();
+			return JsonResult.error(e.getMessage());
 		} 
 	}
 
@@ -314,7 +312,7 @@ public class HoneymembersController {
 			}
 			return JsonResult.success(messageUserList);
 		} catch (Exception e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
@@ -328,7 +326,7 @@ public class HoneymembersController {
 
 			return JsonResult.success(messageList);
 		} catch (Exception e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
@@ -343,7 +341,7 @@ public class HoneymembersController {
 			hMembersService.insertIntoMessage(messageContents);
 			return JsonResult.success();
 		} catch (Exception e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
@@ -354,7 +352,7 @@ public class HoneymembersController {
 			int newMessageNum = hMembersService.getNewMessagesNum(loginUser.getMemberNo());
 			return JsonResult.success(newMessageNum);
 		} catch (Exception e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
@@ -364,7 +362,7 @@ public class HoneymembersController {
 			hMembersService.updateMessageStatus(messageNo.getMessageNo());
 			return JsonResult.success();
 		} catch(Exception e) {
-			return JsonResult.fail();
+			return JsonResult.fail(e.getMessage());
 		}
 	}
 
