@@ -38,11 +38,11 @@
   <select id="selectFromBoard" resultMap="searchMap" parameterType="map">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
-    from honey_boards hb
+    from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.BD_TITL like concat('%', #{searchValue}, '%') or hb.BD_CONTS like concat('%', #{searchValue}, '%')
-    order by bd_no desc
+    order by BD_NO desc
     limit #{boardLength}
   </select>
   
@@ -55,7 +55,7 @@
   
   
   <select id = "selectFromFiles" resultMap="searchMap" parameterType="map">
-  select file_No, File_Name, Board_No, ORI_FILENM, 
+  select File_No, File_Name, Board_No, ORI_FILENM, 
   Member_no, File_Size, CreDate from board_files 
   where ORI_FILENM like concat('%',#{searchValue},'%')
   limit #{fileLength}
@@ -70,14 +70,14 @@
   <select id="boardResultLengthList" resultMap="searchMap" parameterType="String">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
-    from honey_boards hb
+    from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join honey_ctg hc on hb.CT_NO = hc.CT_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like concat('%', #{value}, '%')
   </select>
   
     <select id="FileResultLengthList" resultMap="searchMap" parameterType="String">
-  select file_No, File_Name, Board_No, ORI_FILENM, 
+  select File_No, File_Name, Board_No, ORI_FILENM, 
   Member_no, File_Size, CreDate from board_files 
   where ORI_FILENM like concat('%',#{searchValue},'%')
   </select>
