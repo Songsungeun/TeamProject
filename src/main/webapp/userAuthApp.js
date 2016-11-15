@@ -19,7 +19,6 @@ function ajaxNewMessageAlam() {
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("정보를 가져오는데 실패하였습니다.")
 				return
 			}
 			$('#newMessageAlert').text(result.data);
