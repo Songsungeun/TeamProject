@@ -132,14 +132,13 @@
   
 
   <script id="searchMemberHandlebars" type="text/x-handlebars-template">
-<div id= "userResultWrap"> 회원 검색 결과 
-(<span id =  "uSearchLength"></span>건 검색되었습니다.)</div>
+<div id= "userResultWrap"> 회원 검색 결과(<span id = "uSearchLengthWrap"><span id =  "uSearchLength"></span>건 검색되었습니다.</span>)</div>
 <div id= "userResult">
  {{#each searchMemberResult}}
   <div><a href="../membership/otherUserDetailPage.html?nick={{nickname}}">
            <div class="media-body">
           <div class="media-left" >
-              <img class="media-object" src = "/TeamProject/upload/{{filename}}" height="80px" width="80px">
+              <img class="media-object" src = "{{userProfilePath}}" height="80px" width="80px">
           </div>
                <h3 class="media-heading">{{nickname}}</h3>
           </div></a> 

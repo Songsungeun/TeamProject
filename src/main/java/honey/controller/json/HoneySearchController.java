@@ -75,10 +75,22 @@ public class HoneySearchController {
 	    @RequestParam(defaultValue = "6") int boardLength,
 	    @RequestParam(defaultValue = "20") int fileLength) throws Exception {
 		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8"); 		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
-
+                    
 		List<HoneySearchKeyword> searchBoardResult = searchService.searchServiceBoardResult(searchfucker, boardLength);
 		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchfucker, memberLength);
-	  List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchfucker, fileLength);
+	 
+		for(int i =0; i < searchMemberResult.size();i++) {
+      String[] userPhoto = (searchMemberResult.get(i).getUserProfilePath()).split("\\.");
+      if(userPhoto.length == 2) {
+        searchMemberResult.get(i).setUserProfilePath("/TeamProject/upload/" + userPhoto[0] + "." + userPhoto[1]);
+      } else {
+        searchMemberResult.get(i).setUserProfilePath("http://graph.facebook.com/" + userPhoto[0] + "/picture");
+      }
+		
+		}
+		
+		
+		List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchfucker, fileLength);
     // 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 	  
     String extension;

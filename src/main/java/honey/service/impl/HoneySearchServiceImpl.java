@@ -57,7 +57,7 @@ public class HoneySearchServiceImpl implements HoneySearchService {
     for (int i = 0; i < temp2.length; i++) {
       temp2[i] = searchMemberResult.get(i).getEmail();
       memberEmailExtract.add(photoDao.extractMemberNum(temp2[i]));
-      searchMemberResult.get(i).setFilename(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
+      searchMemberResult.get(i).setUserProfilePath(honeymembersService.getProfileFileName(memberEmailExtract.get(i).getMemberNo()));
     }
     return searchMemberResult;
   }

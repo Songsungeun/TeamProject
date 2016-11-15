@@ -52,6 +52,7 @@ body {
   float: left;
   height: 152px;
   overflow: hidden;
+  border-radius: 10px;
 }
 #userPhoto {
   width: 150px;
@@ -121,10 +122,12 @@ body {
   max-width: 700px;
 }
 .contentsSection {
-    width: 100%;
+    width: 1045px;
     height: 47px;
     border-top: #f1f1f1 1px solid;
     border-bottom: #f1f1f1 1px solid;
+    margin: auto;
+    margin-top: 14px;
 }
 #centerContents{
     position: relative;
