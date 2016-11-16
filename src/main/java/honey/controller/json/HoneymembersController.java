@@ -11,6 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,8 @@ import honey.vo.UrlInfo;
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
 public class HoneymembersController {
+	private final Logger logger = Logger.getLogger(HoneymembersController.class);
+
 	@Autowired HoneymembersService hMembersService;
 	@Autowired ServletContext sc;
 	@Autowired MemberFileDao memberFileDao;
@@ -312,6 +315,12 @@ public class HoneymembersController {
 			}
 			return JsonResult.success(messageUserList);
 		} catch (Exception e) {
+			logger.error("got error",e);
+			logger.debug("[DEBUG] Hello log4j.");
+			logger.info ("[INFO] Hello log4j.");
+			logger.warn ("[WARN] Hello log4j.");
+			logger.error("[ERROR] Hello log4j.");
+			logger.fatal("[FATAL] Hello log4j.");
 			return JsonResult.fail(e.getMessage());
 		}
 	}
