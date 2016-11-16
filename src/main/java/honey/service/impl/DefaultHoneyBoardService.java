@@ -107,5 +107,8 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	public void updateBoardFile(HoneyBoardFile boardFile) throws Exception {
 		boardFileDao.updateFile(boardFile);
 	}
+	public void insertFile(HoneyBoardFile boardFile) throws Exception {
+		boardFileDao.fileInsert(boardFile);
+	}
 	
 }

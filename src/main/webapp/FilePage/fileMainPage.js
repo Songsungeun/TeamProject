@@ -72,7 +72,7 @@ $("#sendFileBtn").click(function(event) {
 });
 function ajaxAddBoard(formData) {
 	$.ajax({
-		url: "writeadd.json",
+		url: "fileadd.json",
 		data: formData,
 		processData: false,
 		contentType: false,

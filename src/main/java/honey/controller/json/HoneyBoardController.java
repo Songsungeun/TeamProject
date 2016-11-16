@@ -28,7 +28,7 @@ import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
 @Controller
-@RequestMapping({"/mainpage/", "/writepage/"})
+@RequestMapping({"/mainpage/", "/writepage/", "/FilePage/"})
 public class HoneyBoardController {
 	@Autowired DefaultHoneyBoardService boardService;
 	@Autowired ServletContext sc;
@@ -95,6 +95,36 @@ public class HoneyBoardController {
 		}
 	}
 
+	@RequestMapping(path="fileadd")
+	public Object fileAdd(
+			MultipartFile[] files,
+			HttpSession session) throws Exception {
+		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
+		try {
+			HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
+			// 보드 멤버 넘버 셋
+
+			String newFilename = null;
+			if (files.length != 0) {
+				for (int i = 0; i < files.length; i++) {
+					HoneyBoardFile boardFile = new HoneyBoardFile();
+					boardFile.setOriginFileName(files[i].getOriginalFilename());
+					newFilename = FileUploadUtil.getNewFilename(files[i].getOriginalFilename());
+					boardFile.setFileName(newFilename);
+					boardFile.setMb_no(hMember.getMemberNo());
+					boardFile.setFileSize(files[i].getSize());
+					files[i].transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+					System.out.println("filesize: " + files[i].getSize());
+					boardService.insertFile(boardFile);
+				} 
+			}
+			return JsonResult.success();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+	}
 
 	@RequestMapping(path="detail")
 	public Object detail(int no) throws Exception {
