@@ -58,7 +58,7 @@ function ajaxLogin(user) {
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("로그인에 실패하였습니다. 이메일 또는 비밀번호를 확인해주세요")
+				swal("로그인에 실패하였습니다.", "이메일 또는 비밀번호를 확인해주세요.", "error")
 				return
 			}
 			window.location.href = "../mainpage/Main.html"
@@ -79,7 +79,6 @@ function ajaxLoginUser() {
 			$('#logout').css("display","none")
 			return
 		}
-
 		loginUserNickname = result.data.member.nickname
 		$('.loginInfo').css("display", "none")
 		$('#confirmLogin').css("display", "none")
