@@ -216,9 +216,10 @@ public class HoneymembersController {
 	public Object otherUserFollow(HoneyMembers memberNo, HttpSession session) throws Exception {
 		try {
 			HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
-			if(loginUser.getEmail() == null) {
+			if(loginUser.getEmail() == null || memberNo.getMemberNo() == loginUser.getMemberNo()) {
 				throw new RuntimeException();
 			}
+			
 			HoneyMembers follower = new HoneyMembers();
 			follower.setFollowMemberNo(loginUser.getMemberNo());
 			follower.setMemberNo(memberNo.getMemberNo());
