@@ -2,8 +2,8 @@ function category() {
 	console.log("카테고리1")
 	event.stopImmediatePropagation();
 	$("#category_tab > li").click(function(event){
-		console.log("카테고리1 누름")
 		var ctgNo = $(this).attr("data-ctg");
+		console.log("카테고리"+ctgNo+"누름: "+ ctgNo)
 		boardcategoryClick(ctgNo);
 //		console.log("ctgNo: " + ctgNo)
 //		$("#category_tab > li").removeClass("active");
@@ -48,7 +48,7 @@ function ajaxCategoryIncludeBoardList(no) {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-		console.log("selectListandCategory111 실행");
+		console.log("selectListandCategory 실행");
 		var template11 = Handlebars.compile($('#li1TemplateText').html())
 		$(".category_tab-1-"+no).html(template11(result));
 		var template22 = Handlebars.compile($('#li2TemplateText').html())

@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$(".profileEdit_Btn").click(function() {
 		window.location.href = "../membership/userProfileAdminPage.html"
 	});
-	
+
 	$("#TipBoardLink").click(function() {
 		window.location.href = "../adminpage/HoneyAdminPage.html"
 	});
@@ -28,11 +28,66 @@ $(document).ready(function() {
 		$("#ProfileEditLinkGear").css('animation-play-state','paused')
 	})
 	$(".fileAddBtn").click(function (event) {
-		console.log("파일에드 클")
 		$("#yourModal").modal();
 	});
+	$("input[type=file]").change(function () {
+		console.log("파일업로드 함수 실행")
+		var fileInput = document.getElementById("fileUpload");
+		var files = fileInput.files;
+		var file;
+		var fileSelect;
+		var uploadContents = "";
+		var filemame=0;
+		var filesize=0;
+		var fileFixsize=0;
+		for (var i = 0; i < files.length; i++) {
+			filemame = $("#fileUpload")[0].files[i].name;
+			filesize = $("#fileUpload")[0].files[i].size;
+			console.log("파일사이즈= " + filesize);
+			if(filesize <= 99999) {
+				fileFixsize=(filesize*0.000977).toFixed(2);
+				uploadContents += "<div class='EachFilesWrap'>"+
+				"<div class='EachFiles' data-no='"+i+"'>"+filemame+"</div>"+
+				"<span class='fileSize'>"+fileFixsize+"KB</span>" +
+				"</div>"
+			} else {
+				fileFixsize=(filesize*0.000977*0.000977).toFixed(2);
+				uploadContents += "<div class='EachFilesWrap'>"+
+				"<div class='EachFiles' data-no='"+i+"'>"+filemame+"</div>"+
+				"<span class='fileSize'>"+fileFixsize+"MB</span>" +
+				"</div>"
+			}
+		}
+		$("#fileListWrap").html(uploadContents);
+	});
 });
+$("#sendFileBtn").click(function(event) {
 
+	var formData = new FormData();
+
+	$($("#fileUpload")[0].files).each(function(index, file) {
+		formData.append("files", file)
+	});
+	ajaxAddBoard(formData);
+});
+function ajaxAddBoard(formData) {
+	$.ajax({
+		url: "writeadd.json",
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: "POST",
+		success : function(obj) {
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				console.log(result.data)
+				alert("등록 실패입니다.")
+				return
+			}
+			window.location = "../mainpage/Main.html"
+		}
+	})
+};
 
 var pageNo = 1,
 pageLength = 6;
@@ -60,14 +115,12 @@ function ajaxloadNickName() {
 }
 
 function ajaxFileList() {
-
 	$.getJSON(serverAddr + "/FilePage/getFileList.json",  function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패하였습니다.")
 			return
 		}
-
 		var data = result.data
 //		var totalsize = data.totalPage;
 		var cloudUiTemplate = Handlebars.compile($('#CloudUiTemplateText').html())
@@ -92,5 +145,20 @@ function ajaxFileList() {
 		});
 	})
 }
+$(document.body).on("click","#cancleFileBtn",function(event) {
+	$('#yourModal').on('hidden.bs.modal', function (e) {
+		$("#fileUpload").val("");
+		$("#fileListWrap").html("");
+	})
+})
+
+//$("#submitBoard").click(function(event) {
+
+//var fileUploadData = new FormData();
+
+//$($("#InputFile")[0].files).each(function(index, file) {
+//formData.append("files", file)
+//});
+//});
 
 

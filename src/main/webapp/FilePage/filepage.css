@@ -166,52 +166,40 @@ body {
 	heigth: 100%;
 	margin: 0 auto;
 }
-
-
-
 .received {
   font-family: "Spoqa Han Sans";
   font-size: 13px;
   line-height: 1.7;
   border-bottom: #ebebeb 1px solid;
 }
-
 .views {
   line-height: 35px;
   border-bottom: #ebebeb 1px solid;
   font-family: "Spoqa Han Sans";
 }
-
 .likes {
   line-height: 35px;
   border-bottom: #ebebeb 1px solid;
   font-family: "Spoqa Han Sans";
 }
-
 .followers {
   line-height: 35px;
   border-bottom: #ebebeb 1px solid;
   font-family: "Spoqa Han Sans";
 }
-
 .text {
   font-size: 14px;
 }
-
 .numbering {
   float: right;
   font-size: 16px;
   font-family: "Spoqa Han Sans";
 }
-
-
-
 #centerContents {
   background-color: white;
   margin: auto;
   padding-top: 7px;
 }
-
 #centerContentsWrap {
   background: white;
   height: 32px;
@@ -220,29 +208,22 @@ body {
   padding-top: 7px;
   text-align: center;
 }
-
 .conterMenuBtn {
   font-size: 16px;
   font-family: "Spoqa Han Sans";
   color: #999;
   padding-top: 5px;
 }
-
 .fileThumbnail {
 	height: 50px;
 	width: 50px;
 }
-
-
-
-
-
 #modalDialog {
-  padding-top: 150px;
-  width: 660px;
+  margin-top: 150px;
+  width: 420px;
 }
 #modalBody {
-  height: 450px;
+  height: 455px;
 }
 
 
@@ -254,35 +235,49 @@ modal fade>p {
   -webkit-margin-end: 0px;
 }
 .addFileTopSection {
-	width: 100%;
-	height: 135px;
+  width: 100%;
+  height: 100px;
   position: relative;
+}
+.addFileMidSection {
+  width: 100%;
+  height: 285px;
+  border: 1px solid #e6e6e6;
+  overflow-y: scroll;
 }
 .addFileBotSection {
 	width: 100%;
-	height: 285px;
-	border: 1px solid black;
-	padding: 15px;
-	overflow-y: scroll;
+	height: 45px;
+	padding-top: 10px;
 }
 .userInfo {
-	width: 100%;
-	heigth: 60px;
+  width: 100%;
+  heigth: 60px;
 }
-.addFileImg {
-	position:absolute;
-	bottom: 0;
-	width: 100%;
-	height: 75px;
-	padding: 10px 0 10px 0;
+.addFileSection {
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  height: 43px;
+  padding: 10px 0 10px 0;
+}
+.fileUploatIconWrap {
+  width: 55px;
+  height: 55px;
+/*  border: 1px solid black; */
+/*  border-radius: 100%; */
+/*   overflow: hidden; */
 }
 .addFileIcon {
-	width: 55px;
-	height: 55px;
+  width: 55px;
+  height: 55px;
+  margin: 0;
+  padding: 0;
+  border-radius: hidden;
 }
 .addFileIcon:hover {
-	cursor: pointer;
-	position: relative;
+  cursor: pointer;
+  position: relative;
 }
 .addFileIcon:hover:after {
   content: "파일을 등록하세요!";
@@ -295,9 +290,44 @@ modal fade>p {
   color: black;
   z-index: 9999999;
 }
-#file {
-	width: 55px;
-	height: 55px;
-/*   visibility: hidden; */
+.fileUploatIcon {
+  font-size: 40px;
 }
-
+/* .fileUploatIconWrap > #file { */
+/*   visibility: hidden; */
+/* } */
+#sendFileBtn {
+	float: right;
+	margin: 0 5px;
+}
+#cancleFileBtn{
+	float: right;
+	margin: 0 5px;
+}
+.EachFilesWrap {
+	height: 40px;
+/* 	border-top: 1px solid black; */
+	border-bottom: 1px solid #e6e6e6;
+	margin: 0 5px;
+	padding: 10px 15px;
+}
+.EachFiles {
+	width: 245px;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  font-size: 15px;
+  margin-right: 10px;
+}
+.fileSize {
+  font-size: 15px;
+	float: left;
+}
+.Infotext {
+  font-size: 20px;
+}
+.dangerText {
+	margin: 5px 0 0 5px;
+	font-size: 12px;
+}

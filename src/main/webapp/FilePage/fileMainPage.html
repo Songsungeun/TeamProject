@@ -64,10 +64,6 @@
 		<div class="contentsSection">
 			<div id="centerContents">
 				<div id="centerContentsWrap">
-					<span id="TipBoardLink" class="conterMenuBtn"> <a href="#">
-							Tip </a></span> | <span id="StorageLink" class="conterMenuBtn"> <a
-						href="#"> Storage </a></span> | <span id="ProfileEditLink"
-						class="conterMenuBtn"> <a href="#"> Like Posts </a></span>
 				</div>
 			</div>
 		</div>
@@ -106,16 +102,25 @@
       <div class="modal-content">
         <div class="modal-body" id="modalBody">
           <div class="addFileTopSection">
-            <div  class="userInfo">
+            <div  class="userInfo"><span class="Infotext">파일을 선택해 올려주세요.</span><br>
+            <span class="dangerText">※ 최대 100MB까지 등록 가능합니다.</span>
             </div>
-            <div class="addFileImg">
-              <input type="file" id="file"/>
-                <img class="addFileIcon" src="plusIcon.png"/>
+            <div class="addFileSection">
+              <div class="fileUploatIconWrap">
+                <form>
+                  <input type="file" id="fileUpload" size="1000000000"
+                  name="media" multiple />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="addFileMidSection">
+            <div class="fileListWrap" id="fileListWrap">
             </div>
           </div>
           <div class="addFileBotSection">
-            <div class="fileListWrap">
-            </div>
+            <button id="cancleFileBtn" type="button" class="btn btn-default" data-dismiss="modal">취 소</button>
+            <button id="sendFileBtn" type="submit" class="btn btn-default">올리기</button>
           </div>
         </div>
       </div>
@@ -128,9 +133,9 @@
       <label>
           <td><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
           <td>{{originFileName}}</td>
-          <td>등록</td>
+          <td></td>
           <td>{{fileSize}} MB</td>
-          <td><button  class="btn btn-danger" id="btn" data-no=2>삭제2</button></td>
+          <td><button  class="btn btn-danger" id="btn" data-no=2>삭제</button></td>
      </label>
     </tr>
 {{/each}}
