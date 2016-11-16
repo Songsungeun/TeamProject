@@ -19,13 +19,12 @@ import honey.vo.UrlInfo;
 @Service
 public class HoneymembersServiceImpl implements HoneymembersService {
 	@Autowired HoneyMembersDao hMembersDao;
-	@Autowired MemberFileDao fileDao;
 	@Autowired MemberFileDao memberFileDao;
 	@Autowired HoneyMainUrlDao hUrnDao;
 
 	public void singUpMembers(HoneyMembers members) throws Exception {
 		hMembersDao.joinMember(members);
-		fileDao.defaultProfilePhotoInsert(members.getMemberNo());
+		memberFileDao.defaultProfilePhotoInsert(members.getMemberNo());
 	}
 
 	public void unregister(int memberNo) throws Exception {
