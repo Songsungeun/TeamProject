@@ -100,8 +100,15 @@ public class HoneyMainController {
       List<HoneyMain> settingUrlBoard = SetImage.setImage(categorylist, urlList);
       for (int i = 0; i < settingUrlBoard.size(); i++) {
         String userPhoto = mainService.getPhoto(Integer.parseInt(settingUrlBoard.get(i).getUserNo()));
-        categorylist.get(i).setUserProfilePath(userPhoto);
+        String[] userPhotoSplit = userPhoto.split("\\.");
+        if(userPhotoSplit.length == 2) {
+          categorylist.get(i).setUserProfilePath("/TeamProject/upload/" + userPhotoSplit[0] + "." + userPhotoSplit[1]);
+        } else {
+          categorylist.get(i).setUserProfilePath("http://graph.facebook.com/" + userPhotoSplit[0] + "/picture");
+        }
+//        categorylist.get(i).setUserProfilePath(userPhoto);
       }
+      
       List<HoneyMain> list1 = new ArrayList<HoneyMain>();
       List<HoneyMain> list2 = new ArrayList<HoneyMain>();
       List<HoneyMain> list3 = new ArrayList<HoneyMain>();
