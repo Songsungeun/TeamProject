@@ -85,7 +85,30 @@ function aJaxOtherUserProfileLoder(userInfo) {
 				ajaxPostComentsList(no)
 			})
 			
-			
+		},
+		error: function(result) {
+			console.log(result.state)
+		}
+	})
+	
+	$.ajax({
+		url:serverAddr+"/membership/getFileList2.json",
+		type: "GET",
+		dataType: "json",
+		data: {nickname:userInfo.nick},
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(obj) {
+			var result = obj.jsonResult
+			if (result.state != "success"){
+				alert("조회 실패!")
+				return
+			}
+			var listInject = result.data
+			var template = Handlebars.compile($("#fileTableUiTemplateText").html())
+			$("#fileResultList").html(template(listInject))
+			$("#testBtn").click(function(){
+				console.log(listInject)
+			})
 			
 		},
 		error: function(result) {

@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-  <link rel="stylesheet" type="text/css" href="../adminpage/HoneyAdminPage.css">
+<link rel="stylesheet" type="text/css" href="../adminpage/HoneyAdminPage.css">
 
 <title>Insert title here</title>
 <style>
@@ -173,6 +170,36 @@
 color: #db2626;
 }
 
+tbody{
+    display: table-row-group;
+}
+
+tr{
+    display: table-row;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.fileThumbnail{
+    height: 50px;
+    width: 50px;
+}
+
+img{
+    vertical-align: middle;
+}
+
+#fileListArea{
+    width : 0px;
+    float: left;
+    margin-left: 10px;
+}
+
 </style>
 </head>
 
@@ -231,18 +258,10 @@ color: #db2626;
                 <th>제목</th>
                 <th>등록일</th>
                 <th>용량</th>
+                <th style = "padding-left: 34px">다운로드</th>
 		      </tr>
 		       </thead>
-		       
-		       <tbody>
-		       <tr>
-<!--     <td>asasdfasfa</td>
-		        <td>asdfasdfaas</td>
-		        <td>aasdfasdfs</td>
-		        <td>aasdfasdfasds</td>  -->
-		        </tr>
-		       </tbody>
-		       
+		       <tbody id="fileResultList"> </tbody>
 		      </table>
      </div>
 
@@ -324,8 +343,8 @@ color: #db2626;
 	<script src="otherUserDetailPage.js"></script>
 	<script type="text/javascript" src="followList.js"></script>
   <script type="text/javascript" src="likeList.js"></script>
+  
   <script id="liTemplateText" type="text/x-handlebars-template">
-
 {{#each this}}
 <li id="each_post_wrap">
   <div id="each_post">
@@ -370,8 +389,9 @@ color: #db2626;
       <label>
           <td><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
           <td>{{originFileName}}</td>
-          <td>등록</td>
+          <td>{{createdDate}}</td>
           <td>{{fileSize}} MB</td>
+    <td style="width: 116px"><a  style="margin-top: 4px" id="fileListArea" href="http://t2.java85.com:8080/TeamProject/upload/{{fileName}}" download="{{fileName}}"><button type="button" class="btn btn-primary">다운로드</button></a></td>
      </label>
     </tr>
 {{/each}}

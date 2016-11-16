@@ -150,7 +150,7 @@ public class HoneySearchController {
 
 			searchData.put("searchFileResult",searchFileResult);
 			searchData.put("fileLength", fileLength);
-			searchData.put("searchFileResultListLength", searchFileResultListLength.size());
+			searchData.put("fileResultListLength", searchFileResultListLength.size());
 
 			searchData.put("searchValue", searchfucker); //검색어 
 

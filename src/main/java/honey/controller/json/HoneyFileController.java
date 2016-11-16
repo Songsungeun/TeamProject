@@ -12,14 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import honey.service.HoneymembersService;
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.HoneyBoardFile;
 import honey.vo.HoneyMembers;
 import honey.vo.JsonResult;
 
 @Controller
-@RequestMapping({"/FilePage/"})
+@RequestMapping({"/FilePage/", "/membership/"})
 public class HoneyFileController {
+  @Autowired HoneymembersService hMembersService;
 	@Autowired DefaultHoneyBoardService boardService;
 	@Autowired ServletContext sc;
 
@@ -49,5 +51,30 @@ public class HoneyFileController {
 			return JsonResult.fail(e.getStackTrace());
 		}
 	}
+	
+	 @RequestMapping(path="getFileList2") 
+	  public Object fileList2(HoneyMembers userInfo) throws IOException { // otherUser 출력용 메소
+	    HashMap<String,Object> map = new HashMap<>();
+	    try {
+	      HoneyMembers honeyMember = hMembersService.getUserNumberByNickName(userInfo.getNickname());
+	      int memberNo = honeyMember.getMemberNo();
+	      Thumbnail settingThumbnail = new Thumbnail();
+	      List<HoneyBoardFile>fileList = settingThumbnail.setThumbnail(boardService.getFileList(memberNo));
+	      
+	      for (int i = 0; i < fileList.size(); i++) {
+	        double mb = Math.round(((fileList.get(i).getFileSize() / (double)1048576) * 100d));
+	        double temp = mb / 100d;
+	        fileList.get(i).setFileSize(temp);
+	      }
+	      
+	      map.put("fileList", fileList);
+	      return JsonResult.success(map);
+
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	      return JsonResult.fail(e.getStackTrace());
+	    }
+	  }
+	
 }
 

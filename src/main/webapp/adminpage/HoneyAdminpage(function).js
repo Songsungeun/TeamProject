@@ -10,7 +10,7 @@ var admin = {
 
 var ajaxUrl = admin.adminList;
 var stateResultCode = admin.stateResultCode1
-			
+
 $(document.body).on('click', '.moreViewBtn', function(event){
 	admin.pageLength += 6;
 	ajaxBoardList()
@@ -28,10 +28,10 @@ $(document.body).on('click', '.moreViewBtn', function(event){
 		
 		$(document.body).on('click', '#likeBtn',  function(event) {
 			var rNumber = $(this).attr("data-no")
-			var result = confirm("좋아요가 취소되요..! \n 계속 하실껀가요?");
+			var result = confirm("좋아요가 취소되요..! 계속 하실껀가요?");
 			if(result == true) {
 				// 확인 버튼 누를시 
-				ajaxLikeDisconnect(rNumber)
+				ajaxLikeDisconnect2(rNumber)
 			} else {
 				//취소 버튼 누를시 
 			}
@@ -157,12 +157,28 @@ function ajaxDeleteBoard(no) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
 				alert("삭제 실패입니다.")
-				window.location.reload();
 				return
 			}
 			alert("삭제되었습니다.")
-			window.location.reload();
+			ajaxBoardList()
+			return
 		})
+}
+
+function ajaxLikeDisconnect2(no) {
+	$.ajax({
+		url:serverAddr +"/mainpage/likeDisconnect.json",
+		type: "POST",
+		dataType:"json",
+		data: {no:no},
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(obj) {
+			var result = obj.jsonResult
+			if (result.state == "success") {
+				ajaxBoardList() 
+			}
+		}
+	})
 }
 
 
