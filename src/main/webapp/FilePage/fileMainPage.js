@@ -1,3 +1,8 @@
+	$(document.body).on('click', '.moreViewBtn', function(event){
+		pageLength += 20;
+		ajaxFileList()
+		})
+
 $(document).ready(function() {
 	$(function() {
 		$("#includedContent").load("/TeamProject/header.html");
@@ -113,26 +118,25 @@ function ajaxloadNickName() {
 
 	})
 }
-
+var pageLength = 20
 function ajaxFileList() {
-	$.getJSON(serverAddr + "/FilePage/getFileList.json",  function(obj) {
+	$.getJSON(serverAddr + "/FilePage/getFileList.json", {
+		"pageLength" : pageLength,
+	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패하였습니다.")
 			return
 		}
-		var data = result.data;
-//		var totalsize = data.totalPage;
-		var fileSize = data.fileList.fileSize;
+		var data = result.data
+		var fileListLength = data.fileListLength;
 		var cloudUiTemplate = Handlebars.compile($('#CloudUiTemplateText').html())
 		$("#boardTable > tbody").html(cloudUiTemplate(data));			
-
-//		$(".titleLink").click(function(event) {
-//		window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
-
-//		if (pageLength >  totalsize) {
-//		$('.moreViewBtn').css("display", "none")
-//		} 
+		
+		if(pageLength > fileListLength) {
+			$(".moreViewBtn").css("display","none")
+		}
+		
 		$(document.body).on('click', '.btn-danger',  function(event) {
 			var rNumber = $(this).attr("data-no")
 			var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");

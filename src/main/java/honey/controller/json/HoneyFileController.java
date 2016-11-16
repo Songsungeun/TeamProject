@@ -27,13 +27,14 @@ public class HoneyFileController {
 
 
 	@RequestMapping(path="getFileList")
-	public Object fileList(HttpSession session) throws IOException {
+	public Object fileList(HttpSession session,
+	    @RequestParam (defaultValue = "20") int pageLength) throws IOException {
 		HashMap<String,Object> map = new HashMap<>();
 		try {
 			int memberNo =  ((HoneyMembers)session.getAttribute("member")).getMemberNo();
 			
 			Thumbnail settingThumbnail = new Thumbnail();
-			List<HoneyBoardFile>fileList = settingThumbnail.setThumbnail(boardService.getFileList(memberNo));
+			List<HoneyBoardFile>fileList = settingThumbnail.setThumbnail(boardService.getFileList(memberNo, pageLength));
 			
 //			for (int i = 0; i < fileList.size(); i++) {
 //				double mb = Math.round(((fileList.get(i).getFileSize() / (double)1048576) * 100d));
@@ -56,8 +57,9 @@ public class HoneyFileController {
           fileList.get(i).setStringFileSize(mbsize);
 			  }
 			}
-			
+			map.put("pageLength", pageLength);
 			map.put("fileList", fileList);
+			map.put("fileListLength", fileList.size());
 			return JsonResult.success(map);
 
 		} catch (Exception e) {

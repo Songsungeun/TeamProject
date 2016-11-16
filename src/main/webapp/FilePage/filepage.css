@@ -331,3 +331,11 @@ modal fade>p {
 	margin: 5px 0 0 5px;
 	font-size: 12px;
 }
+
+.moreViewBtn{
+	    float: right;
+    font-size: 15px;
+    padding-right: 13px;
+    color: #a9a9a9;
+	
+}

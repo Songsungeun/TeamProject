@@ -10,9 +10,6 @@ import honey.dao.HoneyBoardFileDao;
 import honey.dao.tempDao;
 import honey.service.HoneyBoardService;
 import honey.vo.HoneyBoardFile;
-import honey.vo.HoneyMain;
-import honey.vo.HoneyMembers;
-import honey.vo.JsonResult;
 import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
@@ -75,8 +72,16 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	}
 
 	public List<HoneyBoardFile> getFileList(int memberNo) throws Exception {
-		return boardFileDao.fileList(memberNo);
+		return boardFileDao.otherUserReturnMethod(memberNo);
 	}
+	
+	 public List<HoneyBoardFile> getFileList(int memberNo , int pageLength) throws Exception {
+	    HashMap<String,Object> map = new HashMap<>();
+	    map.put("memberNo", memberNo);
+	    map.put("pageLength", pageLength);
+	    return boardFileDao.fileList(map);
+	  }
+	
 	
 	public int likeBoardInsert(honey_boards likeBoard) {
 		boardDao.insertLikeBoard(likeBoard);
@@ -102,13 +107,18 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 
 	public void updateUrl(UrlInfo url) throws Exception {
 		boardDao.updateUrl(url);
-		
 	}
+	
 	public void updateBoardFile(HoneyBoardFile boardFile) throws Exception {
 		boardFileDao.updateFile(boardFile);
 	}
+	
 	public void insertFile(HoneyBoardFile boardFile) throws Exception {
 		boardFileDao.fileInsert(boardFile);
+	}
+	
+	public int countFiles(int memberNo) throws Exception{
+	  return boardFileDao.countAll(memberNo);
 	}
 	
 }
