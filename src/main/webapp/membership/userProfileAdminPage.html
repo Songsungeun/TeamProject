@@ -8,6 +8,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="../node_modules/sweetalert/dist/sweetalert.css">
+
 <style>
 @charset "utf-8";
 
@@ -203,7 +206,7 @@
 			<label for="inputEmail3" class="col-sm-2 control-label">새
 				비밀번호</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="changeNewPassword"
+				<input type="password"  class="form-control" id="changeNewPassword"
 					placeholder="New Password " style="width: 300px;">
 			</div>
 		</div>
@@ -211,7 +214,7 @@
 			<label for="inputEmail3" class="col-sm-2 control-label">비밀번호
 				확인</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="newPasswordConfirm"
+				<input type="password" class="form-control" id="newPasswordConfirm"
 					placeholder="Re Password" style="width: 300px;">
 			</div>
 		</div>
@@ -234,13 +237,14 @@
 	<script type="text/javascript" src="userProfileAdminPage.js"></script>
 	<script type="text/javascript" src="../lib/js/common.js"></script>
 	<script type="text/javascript" src="../membership/membership.js"></script>
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
 	<script
 		src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
 
 	<script>
   $(function(){
@@ -249,32 +253,7 @@
   });
 </script>
 	<script>
- $("#changeUserStatusInfo").click(function(event){
-    var userStatusChangeInfo = {
-        userName: $("#userNameInfo").val(),
-        email: $("#userEmailInfo").val(),
-        nickname: $("#userNickNameInfo").val(),
-        phone: $("#userTelInfo").val()
-    }
-    ajaxUserStatusUpdate(userStatusChangeInfo) 
- })
  
- $("#changPassword").click(function(event){
-  if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
-    alert("비밀번호가 일치하지 않습니다.")
-    return
-  } else {
-    var newPassword ={password: $("#changeNewPassword").val()}
-    var result = confirm("Are you sure?")
-    console.log(result)
-    if(result != true) {
-      return
-    } else {
-      ajaxPasswordChange(newPassword)
-    }
-  }
-  
-})
     $(document).ready(function() {
         $('#uploadForm').fileupload({
             url : serverAddr + "/membership/profileFileUpload.json", 
@@ -296,7 +275,6 @@
                 var code = data.result.code;
                 var msg = data.result.msg;
                 if(code == '1') {
-                    alert(msg);
                     $("#profilePhoto").attr('src',"/TeamProject/upload/"+data.result.data)
                     $("#profilePicture").attr('src',"/TeamProject/upload/"+data.result.data)
                 } else {

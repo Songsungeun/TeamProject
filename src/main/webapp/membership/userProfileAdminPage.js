@@ -18,16 +18,14 @@ $("#changeUserStatusInfo").click(function(event){
 
 $("#changPassword").click(function(event){
 	if ($("#changeNewPassword").val() != $("#newPasswordConfirm").val()) {
-		alert("비밀번호가 일치하지 않습니다.")
+		sweetAlert("웁스...", "비밀번호가 일치하지 않아요", "error");
 		return
-	} else {
+	} else if ($("#changeNewPassword").val() == "" && $("#newPasswordConfirm").val() == ""){
+		sweetAlert("웁스...", "비밀번호를 입력해 주세요", "error");
+		
+	}else {
 		var newPassword ={password: $("#changeNewPassword").val()}
-		var result = confirm("Are you sure?")
-		if(result != true) {
-			return
-		} else {
 			ajaxPasswordChange(newPassword)
-		}
 	}
 	event.stopImmediatePropagation();
 })
@@ -51,16 +49,16 @@ function ajaxUserProfileLoder() {
 }
 
 function ajaxUserStatusUpdate(userStatusChangeInfo) {
-	console.log(userStatusChangeInfo)
 	$.post("userStatusUpdate.json", userStatusChangeInfo, function(obj) {
 		var result=obj.jsonResult
 		if (result.state !="success") {
-			console.log(result.state)
 			alert("수정 실패입니다.")
 			return
 		} else {
-		alert("수정 완료! 메인페이지로 이동합니다.")
-		location.href="/TeamProject/mainpage/Main.html"
+			swal("변경 완료!", "메인 페이지로 이동합니다.", "success")
+			$(".confirm").click(function(event){
+				location.href="/TeamProject/mainpage/Main.html"
+			})
 		}
 	},"json")
 }
@@ -70,12 +68,12 @@ function ajaxPasswordChange(newPassword) {
 	$.post("changePassword.json", newPassword, function(obj) {
 		var result=obj.jsonResult;
 		if(result.state !="success") {
-			console.log(result.state)
-			alert("변경 실패입니다.")
 			return
 		}
-		alert("변경 완료! 메인 페이지로 이동합니다.")
-		location.href="/TeamProject/mainpage/Main.html"
+		swal("변경 완료!", "메인 페이지로 이동합니다.", "success")
+		$(".confirm").click(function(event){
+			location.href="/TeamProject/mainpage/Main.html"
+		})
 	},"json")
 }
 

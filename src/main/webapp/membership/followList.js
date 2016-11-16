@@ -60,7 +60,6 @@ function ajaxFollowDisconnect(userNo) {
 			success: function(obj) {
 				var result = obj.jsonResult
 				if ( $("#writerNick").text() == loginUserNickname){
-					alert("욕심쟁이 우후훗")
 					return
 				} else if (result.state != "success" && result.data == 0){
 					 var confirmResult = confirm("follow를 취소하시겠습니까?")
