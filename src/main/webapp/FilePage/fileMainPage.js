@@ -133,7 +133,9 @@ function ajaxFileList() {
 		var cloudUiTemplate = Handlebars.compile($('#CloudUiTemplateText').html())
 		$("#boardTable > tbody").html(cloudUiTemplate(data));			
 		
-		if(pageLength > fileListLength) {
+		if(pageLength < 0) {
+			$(".moreViewBtn").css("display","none")
+		} else 	if (pageLength > fileListLength) {
 			$(".moreViewBtn").css("display","none")
 		}
 		
