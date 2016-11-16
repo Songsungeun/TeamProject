@@ -47,7 +47,6 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public HoneyMembers getUserNumberByNickName(String nickName) throws Exception {
 		HoneyMembers hMember = new HoneyMembers();
 		hMember = hMembersDao.selectUserNumberByNickName(nickName);
-		System.out.println(hMember);
 		return hMember;
 	}
 
@@ -109,7 +108,6 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 
 	@Override
 	public void insertIntoMessage(Messages messageContents) {
-		System.out.println(messageContents);
 		hMembersDao.sendMessage(messageContents);
 	}
 
@@ -132,7 +130,6 @@ public class HoneymembersServiceImpl implements HoneymembersService {
 	public int getNewMessagesNum(int memberNo) {
 		List<Messages> newMessageNum = hMembersDao.selectMessageStatusZeroByUserNo(memberNo);
 	    int messageNum = newMessageNum.size();
-	    System.out.println("Message size: " + messageNum);
 	    return messageNum;
 	}
 

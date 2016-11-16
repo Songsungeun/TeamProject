@@ -33,7 +33,6 @@ import honey.vo.UrlInfo;
 @Controller
 @RequestMapping({"/mainpage/", "/writepage/", "/adminpage/","/membership/","/resultOfSearch/"})
 public class HoneymembersController {
-	private final Logger logger = Logger.getLogger(HoneymembersController.class);
 
 	@Autowired HoneymembersService hMembersService;
 	@Autowired ServletContext sc;
@@ -91,10 +90,6 @@ public class HoneymembersController {
 		// 이 메서드는 DB에서 작업할 일이 없어서 service 클래스에서 따로 구현할 필요가 없을 것 같다.
 		try {
 			HoneyMembers hMembers = (HoneyMembers)session.getAttribute("member");
-
-			if(hMembers == null) {
-				System.out.println("해당 회원 정보가 없습니다.");
-			}
 			HoneyMembers user = hMembersService.getUserInfo(hMembers.getMemberNo());
 			return JsonResult.success(user);
 		} catch (Exception e) {
@@ -316,12 +311,6 @@ public class HoneymembersController {
 			}
 			return JsonResult.success(messageUserList);
 		} catch (Exception e) {
-			logger.error("got error",e);
-			logger.debug("[DEBUG] Hello log4j.");
-			logger.info ("[INFO] Hello log4j.");
-			logger.warn ("[WARN] Hello log4j.");
-			logger.error("[ERROR] Hello log4j.");
-			logger.fatal("[FATAL] Hello log4j.");
 			return JsonResult.fail(e.getMessage());
 		}
 	}
@@ -331,9 +320,6 @@ public class HoneymembersController {
 		HoneyMembers loginUser = (HoneyMembers)session.getAttribute("member");
 		try {
 			List<Messages> messageList = hMembersService.getMessagesByUserNo(memberNo, loginUser.getMemberNo());
-			System.out.println(messageList.get(0).getInsertDate());
-			System.out.println(messageList.get(0).getInsertDate2());
-
 			return JsonResult.success(messageList);
 		} catch (Exception e) {
 			return JsonResult.fail(e.getMessage());
