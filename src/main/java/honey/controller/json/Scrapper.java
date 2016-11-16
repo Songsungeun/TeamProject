@@ -13,28 +13,34 @@ public class Scrapper {
 	public static UrlInfo parsePageHeaderInfo(String urlStr) throws Exception {
 		System.out.println("HTML parsing Start");
 		
-		
+		System.out.println("url 연결 시작");
 		Document doc = Jsoup.connect(urlStr).timeout(30000).get();
+		System.out.println("url 소스 긁어옴");
+		
 		UrlInfo urlInfo = new UrlInfo();
 
 		String title = null;
+		System.out.println("title start");
 		Elements metaOgTitle = doc.select("meta[property=og:title]");
 		if (metaOgTitle != null) {
 			title = metaOgTitle.attr("content");
 		}
-
+		
+		System.out.println("image start");
 		String image = null;
 		Elements metaOgImage = doc.select("meta[property=og:image]");
 		if (metaOgImage != null) {
 			image = metaOgImage.attr("content");
 		}
 
+		System.out.println("description start");
 		String description = null;
 		Elements metaOgDesc = doc.select("meta[property=og:description]");
 		if (metaOgDesc != null) {
 			description = metaOgDesc.attr("content");
 		}
 
+		System.out.println("urlAddr Start");
 		String urlAddr = null;
 		Elements metaOgUrlAddr = doc.select("meta[property=og:url]");
 		
@@ -61,10 +67,14 @@ public class Scrapper {
 	}
 
 	public static UrlInfo UrlForDB(String urlStr) throws Exception {
+		System.out.println("HTML parsing Start");
+		
+		System.out.println("url 연결 시작");
 		Connection con = Jsoup.connect(urlStr);
-		Document doc = con.timeout(120000).get();
+		Document doc = con.timeout(10000).get();
 		UrlInfo urlInfo = new UrlInfo();
 
+		System.out.println("title start");
 		// 제목 파싱 시작!!
 		String title = null;
 		//meta Data에 property로 네이밍한 경우
@@ -81,6 +91,7 @@ public class Scrapper {
 			title = doc.title();
 		}
 
+		System.out.println("image start");
 		String image = null;
 		Elements metaOgImage = doc.select("meta[property=og:image]");
 		if (!doc.select("meta[property=og:image]").isEmpty()) {
@@ -90,6 +101,7 @@ public class Scrapper {
 			image = doc.select("meta[name=og:image]").attr("content");
 		} 
 
+		System.out.println("description start");
 		String description = null;
 		//meta Data에 property로 네이밍한 경우
 		if (!doc.select("meta[property=og:description]").isEmpty()) {
@@ -104,6 +116,8 @@ public class Scrapper {
 			String cutString = description.substring(0, 1000);
 			description = cutString;
 		}
+		
+		System.out.println("url Parsing start");
 		// url Parsing 시작!!
 		String urlAddr = null;
 		Elements metaOgUrlAddr = doc.select("meta[property=og:url]");
