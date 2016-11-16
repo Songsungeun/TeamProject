@@ -1,16 +1,6 @@
 /**
  * 
  */
-
-
-
-/*
-$("#logoutBtn").click(function(event) {
-	location.href = "../mainpage/Main.html"
-	ajaxLogout()
-});
- */
-
 function ajaxNewMessageAlam() {
 	$.ajax({
 		url: serverAddr + "/mainpage/newMessageAlam.json",
@@ -44,7 +34,6 @@ function ajaxFacebookLogin(user, fbuser) {
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(msg) {
-			alert(msg)
 		}
 	})
 }
@@ -64,7 +53,6 @@ function ajaxLogin(user) {
 			window.location.href = "../mainpage/Main.html"
 		},
 		error: function(msg) {
-			alert(msg)
 		}
 	})
 }

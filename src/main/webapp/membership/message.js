@@ -69,7 +69,7 @@ function ajaxMessageContentsLode(memberNo) {
 		success: function(obj){
 			var result = obj.jsonResult
 			if(result.state != "success") {
-				alert("메시지 로딩에 실패하였습니다. 다시 시도해 주세요")
+				swal("메시지 로딩에 실패하였습니다.", "다시 시도해 주세요.", "error")
 				return
 			}
 			
@@ -105,7 +105,7 @@ function ajaxSendMessage(messageContents) {
 		success: function (obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("메세지 전송을 실패하였습니다. 이름이나 닉네임을 확인해주세요")
+				swal("메세지 전송을 실패하였습니다.", "이름이나 닉네임을 확인해주세요.", "error")
 				return
 			}
 		},

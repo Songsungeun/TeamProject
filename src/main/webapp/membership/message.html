@@ -10,6 +10,8 @@
 <link rel="prefetch"
 	href="https://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html">
 <link hreflang="ko" rel="alternate">
+<link rel="stylesheet"
+	href="../node_modules/sweetalert/dist/sweetalert.css">
 <title>Insert title here</title>
 </head>
 <style>
@@ -454,6 +456,7 @@ ol {
 	padding-bottom: 8.5px;
 }
 </style>
+
 <body>
 	<div id="includedContent"></div>
 	<div class="message-page-view">
@@ -482,7 +485,6 @@ ol {
 			</div>
 		</div>
 	</div>
-
 
 	<div class="modal fade message-new-popup" id="message-new-popup"
 		role="dialog">
@@ -535,16 +537,17 @@ ol {
 						multiple="multiple" theme="bootstrap" rest-search-input="true">
 						<div>
 							<span class="message-new-to-select-match ui-select-match"
-								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input id="reSendedUsernickName"
-								type="text" autocomplete="off" autocorrect="off"
-								autocapitalize="off" spellcheck="false"
+								placeholder="누구에게 메시지를 보내시겠어요?"></span> <input
+								id="reSendedUsernickName" type="text" autocomplete="off"
+								autocorrect="off" autocapitalize="off" spellcheck="false"
 								class="ui-select-search input-xs temp"
 								placeholder="누구에게 메시지를 보내시겠어요?" role="combobox"
 								aria-label="Select box">
 						</div>
 					</div>
 					<div>
-						<textarea id="answerMessageToUser" class="message-new-textarea message-input-textarea"
+						<textarea id="answerMessageToUser"
+							class="message-new-textarea message-input-textarea"
 							placeholder="메시지 입력하기..."></textarea>
 					</div>
 				</div>
@@ -591,13 +594,14 @@ ol {
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../lib/js/common.js"></script>
 	<script type="text/javascript" src="message.js"></script>
+	<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-    $(function() {
-      $("#includedContent").load("../header.html");
-    });
-    
-    ajaxMessageUserLode()
-  </script>
+		$(function() {
+			$("#includedContent").load("../header.html");
+		});
+
+		ajaxMessageUserLode()
+	</script>
 
 
 	<script id="messageUserInfoTemplate" type="text/x-handlebars-template">
