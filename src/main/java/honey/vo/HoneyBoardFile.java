@@ -14,8 +14,16 @@ public class HoneyBoardFile implements Serializable {
 	protected double fileSize;
 	protected Date createdDate;
 	protected String fileThumbnail;
+	protected String stringFileSize;
 	
-	public int getFileNo() {
+	
+	public String getStringFileSize() {
+    return stringFileSize;
+  }
+  public void setStringFileSize(String stringFileSize) {
+    this.stringFileSize = stringFileSize;
+  }
+  public int getFileNo() {
 		return fileNo;
 	}
 	public void setFileNo(int fileNo) {
