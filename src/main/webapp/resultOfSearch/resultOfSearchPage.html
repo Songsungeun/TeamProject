@@ -3,131 +3,147 @@
 <head>
 <title>Demo Beautiful Registration Form with HTML5 and CSS3</title>
 <meta http-equiv="X-UA-Compatible"
-  content="IE=EmulateIE7; IE=EmulateIE9">
+	content="IE=EmulateIE7; IE=EmulateIE9">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
-  content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="resultOfSearchPage.css">
-  
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="resultOfSearchPage.css">
+<link rel="stylesheet"
+	href="../node_modules/sweetalert/dist/sweetalert.css">
 </head>
 <body style=>
-  <div id="includeHeader"></div> 
+	<div id="includeHeader"></div>
 
-<section id= "searchwrap">
-	  <div class="userProfileAdmin_topSection">
-	   검색어 : <span id="searchWord"></span>
+	<section id="searchwrap">
+		<div class="userProfileAdmin_topSection">
+			검색어 : <span id="searchWord"></span>
 		</div>
-		    <article id = "resultArea">
-				    <div id = memberSearchWrap>
-						   <div id = "memberSearchResultWrap">    
-								   <div class="memberSearchResult">
-											<!-- member 출력영역 -->
-						       </div>
-						       <div>
-						           <a id="moreViewBtn1" href="#">더보기</a>
-						        </div>
-					     </div>
-			     </div>
-					 <div id = contentsSearchWrap>
-					  <div class="contentsSearchResult">
-					   <!-- contents 출력영역 -->
-				      </div>
-				    <div>
-				        <a  id="moreViewBtn2" href="#">더보기</a>
-				    </div>
-			  </div>
-	    </article>
-	  
-      <article id="fileSearchResult">
-         <div id= "fileResultWrap"> 파일 검색 결과 (<span id="fSearchLength"></span>건 검색되었습니다.)</div>
-              <div id= "fileResult">
-                   <table id="boardTable" class="table table-hover">
-                   <thead>
-                   <tr>
-                     <th>미리보기</th>
-                     <th>파일제목</th>
-                     <th>등록일</th>
-                     <th>용량</th>
-                     <th  style = "padding-left: 28px">다운로드</th>
-                   </tr>
-                   </thead>
-                   <tbody></tbody>
-                </table>
-                 <div>
-                <a  id="moreViewBtn3" href="#">더보기</a>
-                </div>
-          </div>
-      </article>
-	  
-	  <div class="modal fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" id="modalDialog">
-      <div class="modal-content">
-        <div class="modal-body" id="modalBody">
-          <div class="owner">
-            <a href="#" id="followBtn" class="button user_button">Follow</a>
-            <a href="#" id="likeBtn" class="button user_button">Like</a>
-            <a class="owner_img" href="#"> <img alt="jibon" id="userImage" src=""></a>
-            <p class="owner_name">
-              <a href="#" id="writerNick"></a>
-            </p>
-            <p class="owner_when" id="createdDate">등록일</p>
-          </div>
+		<article id="resultArea">
+			<div id=memberSearchWrap>
+				<div id="memberSearchResultWrap">
+					<div class="memberSearchResult">
+						<!-- member 출력영역 -->
+					</div>
+					<div>
+						<a id="moreViewBtn1" href="#">더보기</a>
+					</div>
+				</div>
+			</div>
+			<div id=contentsSearchWrap>
+				<div class="contentsSearchResult">
+					<!-- contents 출력영역 -->
+				</div>
+				<div>
+					<a id="moreViewBtn2" href="#">더보기</a>
+				</div>
+			</div>
+		</article>
 
-          <div class="userWrite">
-            <div class="comment" id="419">
-              <h1 id="userTitle" style="font-size: 17px; font-weight: bold;"></h1>
-              <div id="userDesc"></div>
-            </div>
-          </div>
+		<article id="fileSearchResult">
+			<div id="fileResultWrap">
+				파일 검색 결과 (<span id="fSearchLength"></span>건 검색되었습니다.)
+			</div>
+			<div id="fileResult">
+				<table id="boardTable" class="table table-hover">
+					<thead>
+						<tr>
+							<th>미리보기</th>
+							<th>파일제목</th>
+							<th>등록일</th>
+							<th>용량</th>
+							<th style="padding-left: 28px">다운로드</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<div>
+					<a id="moreViewBtn3" href="#">더보기</a>
+				</div>
+			</div>
+		</article>
 
-          <div class="holder">
-            <a class="image" id="urlImage" href=""></a>
-          </div>
+		<div class="modal fade" id="yourModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" id="modalDialog">
+				<div class="modal-content">
+					<div class="modal-body" id="modalBody">
+						<div class="owner">
+							<a href="#" id="followBtn" class="button user_button">Follow</a>
+							<a href="#" id="likeBtn" class="button user_button">Like</a> <a
+								class="owner_img" href="#"> <img alt="jibon" id="userImage"
+								src=""></a>
+							<p class="owner_name">
+								<a href="#" id="writerNick"></a>
+							</p>
+							<p class="owner_when" id="createdDate">등록일</p>
+						</div>
 
-          <div class="linkText">
-            <a id="linkTitle" class="title" id="linkTitle" style="font-size: 15px; font-weight: bold;" href=""></a>
-            <p><a class="desc" id="linkDesc" href=""></a></p>
-            <p><a class="urlAddr" id="linkURL"></a></p>
-          </div>
-          <div class="youtubeArea">
-            <iframe id="youtubeUrl" width="475" height="270" src="" frameborder="0" allowfullscreen></iframe>
-          </div>
-  
-          <div class="fileArea">
-            <div class="addFileTag">
-              <div id="fileText">첨부파일:</div> 
-              <div id="fileListArea"></div>
-            </div>
-          </div>
-                  
-          <form class="userComment" method="post" action="#">
-            <textarea placeholder=" 댓글을 입력 하세요." maxlength="255" id="pcomment"></textarea>
-            <button id="insertCmt" type="button" class="button">Comment</button>
-            <div class="cmts_list"></div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
- </section> 
+						<div class="userWrite">
+							<div class="comment" id="419">
+								<h1 id="userTitle" style="font-size: 17px; font-weight: bold;"></h1>
+								<div id="userDesc"></div>
+							</div>
+						</div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script type="text/javascript" src="resultOfSearch.js"></script>
-  <script type="text/javascript" src="../lib/js/Main.js"></script>
-  <script type="text/javascript" src="../membership/followList.js"></script>
-<script type="text/javascript" src="../membership/likeList.js"></script>
-  
-  
+						<div class="holder">
+							<a class="image" id="urlImage" href=""></a>
+						</div>
 
-  <script id="searchMemberHandlebars" type="text/x-handlebars-template">
+						<div class="linkText">
+							<a id="linkTitle" class="title" id="linkTitle"
+								style="font-size: 15px; font-weight: bold;" href=""></a>
+							<p>
+								<a class="desc" id="linkDesc" href=""></a>
+							</p>
+							<p>
+								<a class="urlAddr" id="linkURL"></a>
+							</p>
+						</div>
+						<div class="youtubeArea">
+							<iframe id="youtubeUrl" width="475" height="270" src=""
+								frameborder="0" allowfullscreen></iframe>
+						</div>
+
+						<div class="fileArea">
+							<div class="addFileTag">
+								<div id="fileText">첨부파일:</div>
+								<div id="fileListArea"></div>
+							</div>
+						</div>
+
+						<form class="userComment" method="post" action="#">
+							<textarea placeholder=" 댓글을 입력 하세요." maxlength="255"
+								id="pcomment"></textarea>
+							<button id="insertCmt" type="button" class="button">Comment</button>
+							<div class="cmts_list"></div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../lib/js/common.js"></script>
+	<script type="text/javascript" src="resultOfSearch.js"></script>
+	<script type="text/javascript" src="../lib/js/Main.js"></script>
+	<script type="text/javascript" src="../membership/followList.js"></script>
+	<script type="text/javascript" src="../membership/likeList.js"></script>
+	<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+
+	<script id="searchMemberHandlebars" type="text/x-handlebars-template">
 <div id= "userResultWrap"> 회원 검색 결과(<span id = "uSearchLengthWrap"><span id =  "uSearchLength"></span>건 검색되었습니다.</span>)</div>
 <div id= "userResult">
  {{#each searchMemberResult}}
@@ -144,7 +160,7 @@
 </div>
 </script>
 
-<script id = "searchFileHandlebars" type="text/x-handlebars-template">
+	<script id="searchFileHandlebars" type="text/x-handlebars-template">
 {{#each searchFileResult}}
     <tr>
       <label>
@@ -156,9 +172,9 @@
      </label>
     </tr>
 {{/each}}
-</script> 
+</script>
 
- <script id="searchBoardHandlebars" type="text/x-handlebars-template">
+	<script id="searchBoardHandlebars" type="text/x-handlebars-template">
 <div id= "postResultWrap"> 게시물 검색 결과
 (<span id="pSearchLength"></span>건 검색되었습니다.)</div>
 <div id= "postResult">
@@ -203,13 +219,13 @@
 </script>
 
 
-  <script>
+	<script>
     $(function() {
       $("#includeHeader").load("../header.html");
     });
   </script>
 
-  <script>
+	<script>
   ajaxSearchResultList()
   </script>
 

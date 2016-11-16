@@ -10,11 +10,11 @@ function ajaxSearchValue(searchValue) {
 	var searchInfo = {searchValue: searchValue}
 	
 	if (searchInfo.searchValue == "") {
-		alert("검색어를 입력하세요")
+		swal("검색어를 입력해 주세요.", "", "error")
 		//location.href ="/TeamProject/mainpage/Main.html"
 		return
 	} else if (searchInfo.searchValue.length <= 1 ) {
-		alert("검색어가 너무 짧습니다.")
+		swal("검색어가 너무 짧아요.", "", "error")
 		return
 	} else {
 		location.href ="/TeamProject/resultOfSearch/resultOfSearchPage.html"
@@ -59,7 +59,6 @@ function ajaxSearchResultList() {
 	      return
 	    }
 	    if (result.data == "") {
-	    	alert("검색 결과가 없습니다.")
 	    }
 	    
 		var boardSearchLength = result.data.boardSearchLength //  게시물 총 페이지 수 
@@ -81,10 +80,6 @@ function ajaxSearchResultList() {
 	    nameSearch += template2(data)
 	    fileSearch += template3(data)
 	    
-//	   if  (boardSearchLength == 0  &&  memberSearchLength == 0 ) {
-//	    	location.href ="/TeamProject/resultOfSearch/searchResultNull.html"
-//
-//	   } else 
 	    if (memberSearchLength == 0) {
 	    	$("#memberSearchResultWrap").css("display", "none")
 	   } else  if (boardSearchLength == 0) {
