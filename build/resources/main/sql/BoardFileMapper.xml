@@ -19,6 +19,11 @@
     (select max(BD_NO) from HONEY_BOARDS))
   </insert>
   
+  <insert id="fileInsert" parameterType="HoneyBoardFile">
+    insert into board_files(File_Name, ORI_FILENM, Member_No, File_Size, CreDate)
+    values(#{fileName}, #{OriginFileName}, #{mb_no}, #{fileSize}, now())
+  </insert>
+  
   <update id="updateFile" parameterType="HoneyBoardFile">
     update board_files set
     File_Name=#{fileName},
