@@ -887,5 +887,12 @@ div.best-area div.best-tit {
   border-bottom: 1px solid #D1CDCD;
   padding-bottom: 10px;
   padding-top: 20px;
-  
 }
+
+div#viewLoading {
+		text-align: center;
+		padding-top: 70px;
+		background: #FFFFF0;
+		filter: alpha(opacity=60);
+		opacity: alpha*0.6;
+	}

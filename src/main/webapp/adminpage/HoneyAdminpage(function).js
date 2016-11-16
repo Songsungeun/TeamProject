@@ -10,7 +10,7 @@ var admin = {
 
 var ajaxUrl = admin.adminList;
 var stateResultCode = admin.stateResultCode1
-
+			
 $(document.body).on('click', '.moreViewBtn', function(event){
 	admin.pageLength += 6;
 	ajaxBoardList()

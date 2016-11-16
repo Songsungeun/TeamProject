@@ -237,6 +237,15 @@ label {
 #resetBtn:hover {
   cursor: pointer;
 }
+
+div#viewLoading {
+		text-align: center;
+		padding-top: 70px;
+		background: #FFFFF0;
+		filter: alpha(opacity=60);
+		opacity: alpha*0.6;
+	}
+
 </style>
 
 <link rel="stylesheet"
@@ -249,6 +258,29 @@ $(document).ready(function(){
     $.get("../header.html", function(data) {
       $("#headerInclude").html(data);
     });
+    
+    $('#viewLoading').hide();
+
+	// ajax 실행 및 완료시 'Loading 이미지'의 동작을 컨트롤하자.
+	$('#viewLoading')
+	.ajaxStart(function()
+	{
+		// 로딩이미지의 위치 및 크기조절	
+		$('#viewLoading').css('position', 'absolute');
+		$('#viewLoading').css('left', $('#loadData').offset().left);
+		$('#viewLoading').css('top', $('#loadData').offset().top);
+		$('#viewLoading').css('width', $('#loadData').css('width'));
+		$('#viewLoading').css('height', $('#loadData').css('height'));
+
+		//$(this).show();
+		$(this).fadeIn(500);
+	})
+	.ajaxStop(function()
+	{
+		//$(this).hide();
+		$(this).fadeOut(500);
+	});
+
   }); 
 </script>
 <script>
@@ -352,6 +384,10 @@ $(document).ready(function(){
       </div>
 
     </div>
+	<!-- 로딩 이미지 -->
+	<div id="viewLoading">
+		<img src="images/viewLoading.gif" />
+	</div>
 
     <!-- <div class="modal-footer"> -->
     <!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
@@ -361,6 +397,9 @@ $(document).ready(function(){
 
     <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
   </div>
+  <div id="viewLoading">
+		<img src="images/viewLoading.gif" />
+	</div>
   </div>
   <!-- div: #write_container -->
 

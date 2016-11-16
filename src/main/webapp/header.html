@@ -282,6 +282,15 @@ float: left;
 	position: relative;
 	float: right;
 }
+
+div#viewLoading {
+		text-align: center;
+		padding-top: 70px;
+		background: #FFFFF0;
+		filter: alpha(opacity=60);
+		opacity: alpha*0.6;
+}
+
 </style>
 
 </head>
@@ -329,6 +338,7 @@ float: left;
 
 			</div>
 			<div id="fb-root"></div>
+			 
 		</div>
 
 		<script
@@ -338,11 +348,18 @@ float: left;
 		<script type="text/javascript"
 			src="../resultOfSearch/resultOfSearch.js"></script>
 		<script>
+		$(document).ready(function($)
+				{
+					// 페이지가 로딩될 때 'Loading 이미지'를 숨긴다.
+					$('#viewLoading').hide();
+				});
+		
 			$(".headlogo").click(function() {
 				location.href = "../mainpage/Main.html"
 			})
 
 			$(".headlist").click(function() {
+
 				location.href = "../adminpage/HoneyAdminPage.html"
 			})
 

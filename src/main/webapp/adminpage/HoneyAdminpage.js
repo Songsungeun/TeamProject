@@ -1,4 +1,26 @@
 $(document).ready(function() {
+	$('#viewLoading').hide();
+
+	// ajax 실행 및 완료시 'Loading 이미지'의 동작을 컨트롤하자.
+	$('#viewLoading')
+	.ajaxStart(function()
+	{
+		// 로딩이미지의 위치 및 크기조절	
+		$('#viewLoading').css('position', 'absolute');
+		$('#viewLoading').css('left', $('#loadData').offset().left);
+		$('#viewLoading').css('top', $('#loadData').offset().top);
+		$('#viewLoading').css('width', $('#loadData').css('width'));
+		$('#viewLoading').css('height', $('#loadData').css('height'));
+
+		//$(this).show();
+		$(this).fadeIn(500);
+	})
+	.ajaxStop(function()
+	{
+		//$(this).hide();
+		$(this).fadeOut(500);
+	});
+	
 	$(function() {
 		$("#includedContent").load("/TeamProject/header.html");
 	});

@@ -128,7 +128,7 @@ inner join HONEY_MEMBS_PHOTOS on honey_membs.MB_NO = HONEY_MEMBS_PHOTOS.MB_NO
 where HONEY_MESGS.NO in (
 select  max(HONEY_MESGS.NO)
 from HONEY_MESGS
-inner join honey_membs on honey_mesgs.MB_NO = honey_membs.MB_NO
+inner join honey_membs on HONEY_MESGS.MB_NO = honey_membs.MB_NO
 where HONEY_MESGS.MB_NO2 = #{loginUserNo}
 group by HONEY_MESGS.MB_NO
 )
