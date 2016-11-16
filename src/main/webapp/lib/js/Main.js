@@ -40,13 +40,13 @@ function ajaxBoardList() {
 			return
 		}
 		var template1 = Handlebars.compile($('#li1TemplateText').html())
-		$(".tab-content > .allConts1").html(template1(result));
+		$(".category_tab-1-0").html(template1(result));
 		var template2 = Handlebars.compile($('#li2TemplateText').html())
-		$(".tab-content > .allConts2").html(template2(result));
+		$(".category_tab-2-0").html(template2(result));
 		var template3 = Handlebars.compile($('#li3TemplateText').html())
-		$(".tab-content > .allConts3").html(template3(result));
+		$(".category_tab-3-0").html(template3(result));
 		var template4 = Handlebars.compile($('#li4TemplateText').html())
-		$(".tab-content > .allConts4").html(template4(result));
+		$(".category_tab-4-0").html(template4(result));
 		
 		
 		$(".titleLink").click(function(event){

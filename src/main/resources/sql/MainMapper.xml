@@ -54,7 +54,7 @@
   
   <select id="selectListandCategory" resultMap="boardMap" parameterType="map">
     select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, YOUTUBE_URL
     from HONEY_BOARDS hb
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
