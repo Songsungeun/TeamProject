@@ -1,206 +1,216 @@
 *, *:before, *:after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 body {
-	background-image:url("../../mainpage/mainpage_images/whiteClover.jpg");
-  font-family: 'Titillium Web', sans-serif;
-/*   background-repeat: no-repeat; */
-  width: 100%;
-  height: 400px;
-  background-size: 100%;
-  /*opacity: 1.0;*/
-/*   background-color: rgba(38 ,40,53, 0.8); */
-  
+	background-image: url("../../mainpage/mainpage_images/whiteClover.jpg");
+	font-family: 'Titillium Web', sans-serif;
+	/*   background-repeat: no-repeat; */
+	width: 100%;
+	height: 400px;
+	background-size: 100%;
+	/*opacity: 1.0;*/
+	/*   background-color: rgba(38 ,40,53, 0.8); */
 }
 
 a {
-  text-decoration: none;
-  color: #1ab188;
-  -webkit-transition: .5s ease;
-  transition: .5s ease;
+	text-decoration: none;
+	color: #1ab188;
+	-webkit-transition: .5s ease;
+	transition: .5s ease;
 }
+
 a:hover {
-  color: #179b77;
+	color: #179b77;
 }
 
 #loginWords {
 	margin-top: 50px;
-  text-align: center;
+	text-align: center;
 }
 
 #loginWords>.title {
-  font-size: 50px;
-  color: #ff6a4f;
-  font-weight: bolder;
+	font-size: 50px;
+	color: #ff6a4f;
+	font-weight: bolder;
 }
 
 #loginWords>.subtitle {
-  font-size: 18px;
-  margin-top: 10px;
-  color: #F2BAAE;
-  font-weight: 900;
+	font-size: 18px;
+	margin-top: 10px;
+	color: #F2BAAE;
+	font-weight: 900;
 }
 
 .form {
-  background-color: rgba(130 ,155,176, 0.5);
-  padding: 40px;
-  max-width: 600px;
-  margin: 30px auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-  height:490px;
+	background-color: rgba(130, 155, 176, 0.5);
+	padding: 40px;
+	max-width: 600px;
+	margin: 30px auto;
+	border-radius: 4px;
+	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+	height: 490px;
 }
 
 .tab-group {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 40px 0;
-}
-.tab-group:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.tab-group li a {
-  display: block;
-  text-decoration: none;
-  padding: 15px;
-  background: rgba(160, 179, 176, 0.25);
-  color: white;
-  font-size: 20px;
-  float: left;
-  width: 50%;
-  text-align: center;
-  cursor: pointer;
-  -webkit-transition: .5s ease;
-  transition: .5s ease;
-}
-.tab-group li a:hover {
-  background: #179b77;
-  color: #ffffff;
-}
-.tab-group .active a {
-  background: #1ab188;
-  color: #ffffff;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 40px 0;
 }
 
-.tab-content > div:last-child {
-  display: none;
+.tab-group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.tab-group li a {
+	display: block;
+	text-decoration: none;
+	padding: 15px;
+	background: rgba(160, 179, 176, 0.25);
+	color: white;
+	font-size: 20px;
+	float: left;
+	width: 50%;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: .5s ease;
+	transition: .5s ease;
+}
+
+.tab-group li a:hover {
+	background: #179b77;
+	color: #ffffff;
+}
+
+.tab-group .active a {
+	background: #1ab188;
+	color: #ffffff;
+}
+
+.tab-content>div:last-child {
+	display: none;
 }
 
 h1 {
-  text-align: center;
-  color: #ffffff;
-  font-weight: 300;
-  margin: 0 0 40px;
+	text-align: center;
+	color: #ffffff;
+	font-weight: 300;
+	margin: 0 0 40px;
 }
 
 label {
-  position: absolute;
-  -webkit-transform: translateY(6px);
-          transform: translateY(6px);
-  left: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-  font-size: 22px;
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	transform: translateY(6px);
+	left: 13px;
+	color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+	font-size: 22px;
 }
+
 label .req {
-  margin: 2px;
-  color: #1ab188;
+	margin: 2px;
+	color: #1ab188;
 }
 
 label.active {
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
-  left: 2px;
-  font-size: 14px;
+	-webkit-transform: translateY(50px);
+	transform: translateY(50px);
+	left: 2px;
+	font-size: 14px;
 }
+
 label.active .req {
-  opacity: 0;
+	opacity: 0;
 }
 
 label.highlight {
-  color: #ffffff;
+	color: #ffffff;
 }
 
 input, textarea {
-  font-size: 22px;
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 5px 10px;
-  background: none;
-  background-image: none;
-  border: 1px solid #a0b3b0;
-  color: #ffffff;
-  border-radius: 0;
-  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
-  transition: border-color .25s ease, box-shadow .25s ease;
+	font-size: 22px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px 10px;
+	background: none;
+	background-image: none;
+	border: 1px solid #a0b3b0;
+	color: #ffffff;
+	border-radius: 0;
+	-webkit-transition: border-color .25s ease, box-shadow .25s ease;
+	transition: border-color .25s ease, box-shadow .25s ease;
 }
+
 input:focus, textarea:focus {
-  outline: 0;
-  border-color: #1ab188;
+	outline: 0;
+	border-color: #1ab188;
 }
 
 textarea {
-  border: 2px solid #a0b3b0;
-  resize: vertical;
+	border: 2px solid #a0b3b0;
+	resize: vertical;
 }
 
 .field-wrap {
-  position: relative;
-  margin-bottom: 40px;
+	position: relative;
+	margin-bottom: 40px;
 }
 
 .top-row:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
-.top-row > div {
-  float: left;
-  width: 48%;
-  margin-right: 4%;
+
+.top-row>div {
+	float: left;
+	width: 48%;
+	margin-right: 4%;
 }
-.top-row > div:last-child {
-  margin: 0;
+
+.top-row>div:last-child {
+	margin: 0;
 }
 
 .button {
-  border: 0;
-  outline: none;
-  border-radius: 0;
-  padding: 15px 0;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  background: #1ab188;
-  color: #ffffff;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -webkit-appearance: none;
+	border: 0;
+	outline: none;
+	border-radius: 0;
+	padding: 15px 0;
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	background: #1ab188;
+	color: #ffffff;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	-webkit-appearance: none;
 }
+
 .button:hover, .button:focus {
-  background: #179b77;
+	background: #179b77;
 }
 
 .button-block {
-  display: block;
-  width: 100%;
+	display: block;
+	width: 100%;
 }
 
 .forgot {
-  margin-top: -20px;
-  text-align: right;
+	margin-top: -20px;
+	text-align: right;
 }
 
 #checkEmail {
@@ -213,67 +223,104 @@ textarea {
 }
 
 #facebook_Login {
-    display: inline-block;
-    position: relative;
-    width: 175px;
-    height: 51px;
-    top: -56px;
-    left: 1px;
-    opacity: 0.0;
-    z-index: 10;
-} 
-.fb_iframe_widget iframe { 
-   display: inline-block;
-    position: relative;
- } 
-.fb-login-button {
-    left: 27px;
-    width: 171px;
-    height: 50px;
-    bottom: 4px;
-    opacity: 0.0;
-    z-index: 10;
-}
-
-#facebookBtn{
-  	position: relative;
-    width: 520px;
-    height: 54px;
-}
-
-#login{
-	    position: relative;
-    width: 520px;
-    height:52px;
-}
-
-#tab-content{
-	    position: relative;
-    width: 520px;
-    height: 317px;
-}
-
-form{
-    position: relative;
-    width: 520px;
-    height: 224px;
-    padding-top: 35px;
-}
-.tab-content{
-	    position: relative;
-    width: 520px;
-    height: 53px;
-}
-
-#formWrap{
-	  position: relative;
-    width: 520px;
-    height: 224px;
-}
-#fbloginWrap{
+	display: inline-block;
 	position: relative;
-    bottom: 50px;
-   width:175px;'
+	width: 175px;
+	height: 51px;
+	top: -56px;
+	left: 1px;
+	opacity: 0.0;
+	z-index: 10;
 }
 
+.fb_iframe_widget iframe {
+	display: inline-block;
+	position: relative;
+}
 
+.fb-login-button {
+	left: 27px;
+	width: 171px;
+	height: 50px;
+	bottom: 4px;
+	opacity: 0.0;
+	z-index: 10;
+}
+
+#facebookBtn {
+	position: relative;
+	width: 520px;
+	height: 54px;
+}
+
+#login {
+	position: relative;
+	width: 520px;
+	height: 52px;
+}
+
+#tab-content {
+	position: relative;
+	width: 520px;
+	height: 317px;
+}
+
+#signUpForm {
+	position: relative;
+	width: 520px;
+	height: 224px;
+}
+
+#loginForm {
+	position: relative;
+	width: 520px;
+	height: 224px;
+	padding-top: 35px;
+}
+
+#password-Wrap {
+	position: relative;
+	margin-bottom: 40px;
+	bottom: 19px;
+}
+
+.tab-content {
+	position: relative;
+	width: 520px;
+	height: 53px;
+}
+
+#formWrap {
+	position: relative;
+	width: 520px;
+	height: 224px;
+}
+
+#fbloginWrap {
+	position: relative;
+	bottom: 50px;
+	width: 175px;
+	'
+}
+
+#result_nick_msg {
+	position: relative;
+	width: 40% !important;
+	float: right;
+	bottom: 30px;
+	left: 35px;
+	height: 18px;
+}
+
+#result_email_msg {
+	position: relative;
+	width: 40% !important;
+	bottom: 42px;
+	left: 100px;
+	height: 18px;
+}
+
+#email-wrap {
+	padding-top: 20px;
+	bottom: 13px;
+}
