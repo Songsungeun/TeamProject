@@ -45,7 +45,7 @@ public class HoneyFileController {
 //			}
 			for (int i = 0; i < fileList.size(); i++) {
 //			  double fileSizes = fileList.get(i).getFileSize();
-			  if(fileList.get(i).getFileSize() <= 99999) {
+			  if(fileList.get(i).getFileSize() <= 999999) {
 			    double kb = fileList.get(i).getFileSize()*0.000977;
 			    String kbSize = String.format("%.2f", (float)kb)+" KB";
 			    System.out.println("mb size= " + kbSize);
