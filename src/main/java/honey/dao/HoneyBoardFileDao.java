@@ -13,4 +13,5 @@ public interface HoneyBoardFileDao {
 	int updateFile(HoneyBoardFile boardFile);
 	int fileInsert(HoneyBoardFile boardFile);
 	int countAll(int memberNo);
+  int fileDelete(int fileNo);
 }

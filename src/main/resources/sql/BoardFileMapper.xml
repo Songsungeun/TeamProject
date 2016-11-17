@@ -47,11 +47,16 @@
    limit  #{pageLength}
   </select>
   
-  
   <select id="countAll" parameterType="int" resultType="int">
     select count(*) from board_files 
     where Member_no = #{value}
   </select>
+  
+  <delete id="fileDelete" parameterType="int">
+   delete from board_files  
+   where File_No = #{value}
+  </delete>
+  
   
 </mapper>
 

@@ -68,6 +68,7 @@ public class HoneyFileController {
 		}
 	}
 	
+	
 	 @RequestMapping(path="getFileList2") 
 	  public Object fileList2(HoneyMembers userInfo) throws IOException { // otherUser 출력용 메소
 	    HashMap<String,Object> map = new HashMap<>();
@@ -91,6 +92,21 @@ public class HoneyFileController {
 	      return JsonResult.fail(e.getStackTrace());
 	    }
 	  }
-	
+	 
+	 @RequestMapping(path="fileDelete")
+	 public Object fileDelete(int no) throws Exception {
+	   try{
+	    boardService.deleteFile(no);
+	   
+	    return JsonResult.success();
+	  }  catch (Exception e) {
+	    return JsonResult.fail(e.getStackTrace());
+	 }
 }
+	 
+}
+
+
+
+
 
