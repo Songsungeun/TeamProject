@@ -49,7 +49,7 @@ $(document).ready(function() {
 			filemame = $("#fileUpload")[0].files[i].name;
 			filesize = $("#fileUpload")[0].files[i].size;
 			console.log("파일사이즈= " + filesize);
-			if(filesize <= 99999) {
+			if(filesize <= 999999) {
 				fileFixsize=(filesize*0.000977).toFixed(2);
 				uploadContents += "<div class='EachFilesWrap'>"+
 				"<div class='EachFiles' data-no='"+i+"'>"+filemame+"</div>"+

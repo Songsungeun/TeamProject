@@ -201,9 +201,9 @@ label {
   margin: 0 auto;
 }
 #resetBtn {
-  position: absolute;
-  bottom: 14%;
-  right: -30px;
+  position: fixed;
+  bottom: 135px;
+  margin-left: 630px;
   width: 30px;
   height: 30px;
   background-color: #c8c8c8;
@@ -217,9 +217,9 @@ label {
   height: auto;
 }
 #topMoveBtn {
-  position: absolute;
-  right: -30px;
-  bottom: 14%;
+  position: fixed;
+  bottom: 100px;
+  margin-left: 630px;
   width: 30px;
   height: 30px;
   background-color: #c8c8c8;
@@ -354,10 +354,8 @@ $(document).ready(function(){
       <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
       <input style="display: none;" type="text" id="no"
         class="form-control" placeholder="URL">
-        <div id='WrightBtnWrap'>
 				  <div id="resetBtn"><img src="images/reset.png"></div>
 				  <div id="topMoveBtn"><img src="images/topMove.png"></div>
-        </div>
     </form>
   </div>
 
@@ -398,9 +396,6 @@ $(document).ready(function(){
 
     </div>
 	<!-- 로딩 이미지 -->
-	<div id="viewLoading">
-		<img src="images/viewLoading.gif" />
-	</div>
 
     <!-- <div class="modal-footer"> -->
     <!--     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
@@ -410,9 +405,6 @@ $(document).ready(function(){
 
     <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
   </div>
-  <div id="viewLoading">
-		<img src="images/viewLoading.gif" />
-	</div>
   </div>
   <!-- div: #write_container -->
 
