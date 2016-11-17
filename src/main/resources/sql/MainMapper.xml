@@ -50,6 +50,7 @@
     left join honey_membs hm on hm.MB_NO = hb.MB_NO
     left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     order by bd_no desc
+    limit #{length}
   </select>
   
   <select id="selectListandCategory" resultMap="boardMap" parameterType="map">
@@ -60,6 +61,7 @@
     left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.CT_NO = #{categoryNo}
     order by BD_NO desc
+    limit #{length}
   </select>
   
   <!-- <select id="selectOne" resultMap="boardMap" parameterType="int"> -->

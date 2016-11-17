@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/nailthumb/jquery.nailthumb.1.1.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="filepage.css">
 <link rel="stylesheet" href="../node_modules/nailthumb/jquery.nailthumb.1.1.min.css">
 
@@ -48,7 +46,8 @@
 							class="numbering"></span>
 					</div>
 					<div class="likes">
-						<span class="text">Likes</span> <span class="numbering"></span>
+						<span class="text">Likes</span> <span id="likeCount" 
+						class="numbering"></span>
 					</div>
 					<div class="followers">
 						<span class="text">followers</span> <span id="followers"
@@ -75,19 +74,17 @@
 					<table id="boardTable" class="table table-hover">
 						<thead>
 							<tr>
-								<th>썸네일</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>용량</th>
-								<th>삭제하기</th>
+								<th style="padding-left: 35px;">썸네일</th>
+								<th style="padding-left: 8px;">제목</th>
+								<th style="padding-left: 18px;">등록일</th>
+								<th style="padding-left: 18px;">용량</th>
+								<th style="padding-left: 11px;">삭제하기</th>
 							</tr>
 						</thead>
 						<tbody>
 
 						</tbody>
 					</table>
-
-
 
           <div id="boardBtn">
             <span class="moreViewBtn">+ 더보기</span>
@@ -131,11 +128,11 @@
 {{#each fileList}}
     <tr>
       <label>
-          <td><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
+          <td style="padding-left: 25px; width:170px;"><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
           <td>{{originFileName}}</td>
-          <td>{{createdDate}}</td>
-          <td>{{stringFileSize}}</td>
-          <td><button  class="btn btn-danger" id="btn" data-no=2>삭제</button></td>
+          <td style="width: 136px;">{{createdDate}}</td>
+          <td style="width: 166px;">{{stringFileSize}}</td>
+          <td style="width: 96px;"><button  class="btn btn-danger" id="btn" data-no={{fileNo}}>삭제</button></td>
      </label>
     </tr>
 {{/each}}
@@ -144,6 +141,7 @@
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
  	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script> 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script type='text/javascript' src="../lib/js/common.js"></script>
 	<script type="text/javascript" src="fileMainPage.js"></script>
 

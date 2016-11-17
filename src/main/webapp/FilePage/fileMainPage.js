@@ -4,9 +4,10 @@
 		})
 
 $(document).ready(function() {
-	$(function() {
+	//s$(function() {
 		$("#includedContent").load("/TeamProject/header.html");
 	});
+	
 	$("#ProfileEditLink").click(function() {
 		window.location.href = "../membership/userProfileAdminPage.html"
 	});
@@ -65,7 +66,7 @@ $(document).ready(function() {
 		}
 		$("#fileListWrap").html(uploadContents);
 	});
-});
+	
 $("#sendFileBtn").click(function(event) {
 
 	var formData = new FormData();
@@ -115,6 +116,7 @@ function ajaxloadNickName() {
 		$("#viewCount").text(result.data.totalViewCount);
 		$("#followers").text(result.data.followCollector);
 		$("#user-introduce").text(result.data.userInfo)
+		$("#likeCount").text(result.data.totalLikeCount)
 
 	})
 }
@@ -141,17 +143,43 @@ function ajaxFileList() {
 		
 		$(document.body).on('click', '.btn-danger',  function(event) {
 			var rNumber = $(this).attr("data-no")
-			var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
-			if(result) {
-				// 확인 버튼 누를시 
-				//ajaxDeleteBoard(rNumber)
-				alert("확인버튼");
-			} else {
-				//취소 버튼 누를시 
-			}
-		});
+						
+				swal({
+				  title: "파일 삭제",
+				  text: "파일이 삭제됩니다 계속 진행하실껀가요?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "삭제하기",
+				  cancelButtonText: "취소하기",
+				  closeOnConfirm: false,
+				  closeOnCancel: false
+				},
+				function(isConfirm){
+				  if (isConfirm) {
+						event.stopImmediatePropagation();
+						ajaxDeleteFile(rNumber)
+				  } else {
+				    swal("삭제취소", "삭제가 취소되었어요", "error");
+				  }
+		 	 })
+		})
 	})
 }
+
+function ajaxDeleteFile(no) {
+	$.getJSON(serverAddr + "/FilePage/fileDelete.json", {
+	no:no}, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			sweetAlert("삭제실패!", "삭제 실패했어요 ㅠㅠ", "error");
+		   return
+		}
+		sweetAlert("삭제성공!", "파일이 삭제되었어요", "success");
+		ajaxFileList()
+	})
+}
+
 $(document.body).on("click","#cancleFileBtn",function(event) {
 	$('#yourModal').on('hidden.bs.modal', function (e) {
 		$("#fileUpload").val("");
@@ -159,13 +187,7 @@ $(document.body).on("click","#cancleFileBtn",function(event) {
 	})
 })
 
-//$("#submitBoard").click(function(event) {
 
-//var fileUploadData = new FormData();
 
-//$($("#InputFile")[0].files).each(function(index, file) {
-//formData.append("files", file)
-//});
-//});
 
 

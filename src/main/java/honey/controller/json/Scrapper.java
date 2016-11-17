@@ -14,6 +14,17 @@ public class Scrapper {
 		System.out.println("HTML parsing Start");
 		
 		System.out.println("url 연결 시작");
+		
+		System.out.println("naver Blog check");
+		String[] checkUrl = urlStr.split("/");
+		
+		for (int i = 0; i < checkUrl.length; i++) {
+			System.out.println("checkUrl= " + checkUrl[i]);
+		}
+		
+		if (checkUrl[2].equals("blog.naver.com")) {
+			urlStr = checkUrl[0] + "//" + checkUrl[2] + "PostView.nhn?blogId=" + checkUrl[3] + "&logNo=" + checkUrl[4];
+		}
 		Document doc = Jsoup.connect(urlStr).timeout(30000).get();
 		System.out.println("url 소스 긁어옴");
 		
@@ -70,6 +81,17 @@ public class Scrapper {
 		System.out.println("HTML parsing Start");
 		
 		System.out.println("url 연결 시작");
+		System.out.println("naver Blog check");
+		String[] checkUrl = urlStr.split("/");
+		
+		for (int i = 0; i < checkUrl.length; i++) {
+			System.out.println("checkUrl= " + checkUrl[i]);
+		}
+		
+		if (checkUrl[2].equals("blog.naver.com")) {
+			urlStr = checkUrl[0] + "//" + checkUrl[2] + "/PostView.nhn?blogId=" + checkUrl[3] + "&logNo=" + checkUrl[4];
+		}
+		System.out.println("urlStr= " + urlStr);
 		Connection con = Jsoup.connect(urlStr);
 		Document doc = con.timeout(10000).get();
 		UrlInfo urlInfo = new UrlInfo();

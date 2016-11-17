@@ -33,12 +33,12 @@ public class SetImage {
 					} else if (honeyMainList.get(i).getYoutubeURL() != null){
 						honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
 					} else {
-						honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
+						honeyMainList.get(i).setLinkImage("null");
 					}
 				} else if (honeyMainList.get(i).getYoutubeURL() != null){
 					honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYoutubeURL() + "/mqdefault.jpg");
 				} else {
-					honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
+					honeyMainList.get(i).setLinkImage("null");
 				}
 			}
 		}

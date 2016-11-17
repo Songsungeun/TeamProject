@@ -2,10 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript"
-  src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link rel="stylesheet"
   href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>Insert title here</title>
@@ -264,41 +261,6 @@ div#viewLoading {
 <link rel="stylesheet"
   href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 
-<script>
-$(document).ready(function(){ 
-    $.get("../header.html", function(data) {
-      $("#headerInclude").html(data);
-    });
-    
-    $('#viewLoading').hide();
-
-	// ajax 실행 및 완료시 'Loading 이미지'의 동작을 컨트롤하자.
-	$('#viewLoading')
-	.ajaxStart(function()
-	{
-		// 로딩이미지의 위치 및 크기조절	
-		$('#viewLoading').css('position', 'absolute');
-		$('#viewLoading').css('left', $('#loadData').offset().left);
-		$('#viewLoading').css('top', $('#loadData').offset().top);
-		$('#viewLoading').css('width', $('#loadData').css('width'));
-		$('#viewLoading').css('height', $('#loadData').css('height'));
-
-		//$(this).show();
-		$(this).fadeIn(500);
-	})
-	.ajaxStop(function()
-	{
-		//$(this).hide();
-		$(this).fadeOut(500);
-	});
-
-  }); 
-</script>
-<script>
-  $( function() {
-    $( "#category" ).selectmenu();
-  });
-  </script>
 
 </head>
 
@@ -327,16 +289,16 @@ $(document).ready(function(){
       <fieldset id="category_select" class="writeWidth">
         <label for="category">Category
         <select name="category" id="category" class="form-control">
-         <option selected="selected" value=1>HEALTH</option>
-          <option value=2>CAR</option>
-          <option value=3>BEAUTY/FASHION</option>
-          <option value=4>COOK</option>
-          <option value=5>TRAVEL</option>
-          <option value=6>LOVE</option>
-          <option value=7>ENTERTAINMENT</option>
-          <option value=8>NEWS</option>
-          <option value=9>IT</option>
-          <option value=10>PHOTO</option>
+          <option id="category1" value=1>HEALTH</option>
+          <option id="category2"  value=2>CAR</option>
+          <option id="category3"  value=3>BEAUTY/FASHION</option>
+          <option id="category4"  value=4>COOK</option>
+          <option id="category5"  value=5>TRAVEL</option>
+          <option id="category6"  value=6>LOVE</option>
+          <option id="category7"  value=7>ENTERTAINMENT</option>
+          <option id="category8"  value=8>NEWS</option>
+          <option id="category9"  value=9>IT</option>
+          <option id="category10"  value=10>PHOTO</option>
         </select>
         </label>
       </fieldset>
@@ -408,18 +370,50 @@ $(document).ready(function(){
   </div>
   <!-- div: #write_container -->
 
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="../lib/js/common.js"></script>
-  <script
-    src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-  <script src="../node_modules/jquery-form/jquery.form.js"></script>
-  <script src="../lib/js/NicEdit-Korean/nicEdit.js"
-    type="text/javascript"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script type="text/javascript" src="writepage.js"></script>
-  <script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../lib/js/common.js"></script>
+<script
+  src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../node_modules/jquery-form/jquery.form.js"></script>
+<script src="../lib/js/NicEdit-Korean/nicEdit.js"
+  type="text/javascript"></script>
+<script type="text/javascript" src="writepage.js"></script>
+<script>
+ $.get("../header.html", function(data) {
+   $("#headerInclude").html(data);
+ });
+ 
+ $('#viewLoading').hide();
+
+// ajax 실행 및 완료시 'Loading 이미지'의 동작을 컨트롤하자.
+$('#viewLoading')
+.ajaxStart(function()
+{
+	// 로딩이미지의 위치 및 크기조절	
+	$('#viewLoading').css('position', 'absolute');
+	$('#viewLoading').css('left', $('#loadData').offset().left);
+	$('#viewLoading').css('top', $('#loadData').offset().top);
+	$('#viewLoading').css('width', $('#loadData').css('width'));
+	$('#viewLoading').css('height', $('#loadData').css('height'));
+
+	//$(this).show();
+	$(this).fadeIn(500);
+})
+.ajaxStop(function()
+{
+	//$(this).hide();
+	$(this).fadeOut(500);
+});
+
+$( function() {
+  $( "#category" ).selectmenu();
+});
+</script>
+  
+<script>
   /*
   bkLib.onDomLoaded(function(){
     new nicEditor({fullPanel : true, onSave : function(content, "myedit", instance) {

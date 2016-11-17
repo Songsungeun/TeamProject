@@ -36,14 +36,7 @@ ul, ol, li {
 	list-style: none;
 }
 
-a {
-	text-decoration: none;
-	color: inherit;
-}
 
-a:hover, a:focus {
-	text-decoration: underline;
-}
 
 fieldset {
 	margin: 0;
@@ -213,6 +206,11 @@ body {
 	font-size: 16px;
 }
 
+#inputSearchKey:focus{
+  boder:none;
+  border-bottom: #e00000 1px solid;
+}
+
 .searchButton {
 	cursor: pointer;
 	position: absolute;
@@ -316,11 +314,8 @@ div#viewLoading {
 			</div>
 
 			<div class="seachBar">
-				<input id="inputSearchKey" name="search" type="text"
-					placeholder="검색어를 입력하세요"> <span> <a
-					class="searchButton" href="#"> <img src="../search-engine.png"
-						width="25" />
-				</a></span>
+				<input id="inputSearchKey" name=search type=text placeholder="검색어를 입력하세요"  onkeydown="javascript:if(event.keyCode==13){searchRun()}"> 
+				<span class="searchButton"> <img src="../search-engine.png"	width="25" /> </span>
 			</div>
 
 			<div class=headerRightSection>
@@ -348,8 +343,7 @@ div#viewLoading {
 			<div id="fb-root"></div>
 
 		</div>
-		<script
-			src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+
 		<script type="text/javascript" src="/TeamProject/userAuthApp.js"></script>
 		<script type="text/javascript" src="../membership/likeList.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -367,7 +361,6 @@ div#viewLoading {
 			})
 
 			$(".headlist").click(function() {
-
 				location.href = "../adminpage/HoneyAdminPage.html"
 			})
 
@@ -390,9 +383,8 @@ div#viewLoading {
 			$("#logoutBtn").click(function(event) {
 				location.href = "../mainpage/Main.html"
 				ajaxLogout()
-
 			});
-
+			
 			$(".searchButton").click(function() {
 				var searchValue = $("#inputSearchKey").val()
 				console.log(searchValue)
@@ -412,7 +404,16 @@ div#viewLoading {
 
 			ajaxLoginUser();
 			ajaxNewMessageAlam();
+			
+
+    function searchRun(){
+       setTimeout(function()
+       {      var searchValue = $("#inputSearchKey").val()
+              ajaxSearchValue(searchValue) }, 400)
+       }
+
 		</script>
+
 
 		<script>
 			window.fbAsyncInit = function() {

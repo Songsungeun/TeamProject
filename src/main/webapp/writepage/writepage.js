@@ -118,6 +118,11 @@ function ajaxLoadBoardForUpdate(no) {
 			$("#write_youtube").val("https://youtu.be/" + result.data.youtubeURL);
 		}
 		$("#no").text(result.data.no);
+		$("#category").val(result.data.categoryNo)
+		$( "#category" ).selectmenu('refresh');
+		
+		
+		
 	})
 }
 

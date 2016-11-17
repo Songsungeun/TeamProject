@@ -18,4 +18,5 @@ public interface HoneyBoardService {
 	void updateUrl(UrlInfo url) throws Exception;
 	void updateBoardFile(HoneyBoardFile boardFile) throws Exception;
 	void insertFile(HoneyBoardFile boardFile) throws Exception;
+	void deleteFile(int fileNo)  throws Exception;
 }

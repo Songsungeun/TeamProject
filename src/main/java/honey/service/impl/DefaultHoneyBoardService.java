@@ -121,4 +121,8 @@ public class DefaultHoneyBoardService implements HoneyBoardService {
 	  return boardFileDao.countAll(memberNo);
 	}
 	
+  public void deleteFile(int fileNo) throws Exception {
+    boardFileDao.fileDelete(fileNo);
+  }
+	
 }
