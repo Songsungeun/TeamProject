@@ -36,15 +36,22 @@ function ajaxBoardList() {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-		var template1 = Handlebars.compile($('#li1TemplateText').html())
-		$(".category_tab-1-0").html(template1(result));
-		var template2 = Handlebars.compile($('#li2TemplateText').html())
-		$(".category_tab-2-0").html(template2(result));
-		var template3 = Handlebars.compile($('#li3TemplateText').html())
-		$(".category_tab-3-0").html(template3(result));
-		var template4 = Handlebars.compile($('#li4TemplateText').html())
-		$(".category_tab-4-0").html(template4(result));
-		
+//		var template1 = Handlebars.compile($('#li1TemplateText').html())
+//		$(".category_tab-1-0").html(template1(result));
+//		var template2 = Handlebars.compile($('#li2TemplateText').html())
+//		$(".category_tab-2-0").html(template2(result));
+//		var template3 = Handlebars.compile($('#li3TemplateText').html())
+//		$(".category_tab-3-0").html(template3(result));
+//		var template4 = Handlebars.compile($('#li4TemplateText').html())
+//		$(".category_tab-4-0").html(template4(result));
+		var list1 = result.data.list1;
+		boardLists(list1, 1);
+		var list2 = result.data.list2;
+		boardLists(list2, 2);
+		var list3 = result.data.list3;
+		boardLists(list3, 3);
+		var list4 = result.data.list4;
+		boardLists(list4, 4);
 		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
@@ -73,6 +80,83 @@ function ajaxBoardList() {
 		})
 		category();
 	})
+}
+function boardLists(list, no) {
+	var boards = "";
+	for(var i = 0; i<list.length; i++ ) {
+		if(list[i].linkImage != "null"){
+		boards +=  "<li id='each_post_wrap'>" +
+		  "<div id='each_post'>" +
+		    "<div class='post_photoWrap titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
+		        "<img id='thumbImg' src='"+list[i].linkImage+"' alt='Image File'>"+
+		    "</div>"+
+		    "<div class='post_contsWrap'>"+
+		      "<div class='each_post_title titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+list[i].title+
+		      "</div>"+
+		      "<div class='post_ctgWrap'>"+
+		        "<img id='ctg_Img' src='/TeamProject/mainpage/mainpage_images/category.png'>"+
+		        "<span class='categoryLink' data-ctg='"+list[i].categoryNo+"'>"+list[i].category+"</span>"+
+		      "</div>"+
+		      "<div class='each_post_contents titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
+		        "<span>"+list[i].contents+"</span>"+
+		      "</div>"+
+		    "</div>"+
+		    "<div class='post_BtnWrap'>"+
+		      "<div id='user_Nick'>"+
+		        "<img id='profilePicture' class='user_Nonepht userInfoLink' data-userImage='"+list[i].userProfilePath+"' src='"+list[i].userProfilePath+"' alt='userImg' data-userNo='"+list[i].userNo+"' data-userNick='"+list[i].writerNick+"'>"+
+		        "<span class='userInfoLink' data-userNo='"+list[i].userNo+"' data-userNick='"+list[i].writerNick+"'>"+list[i].writerNick+"</span>"+
+		      "</div>"+
+		      "<div class='post_rightBtn'>"+
+		        "<div class='vw_ctHover'>"+
+		          "<img class='viewCountImg' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+		          "<div class='viewCount'>"+list[i].viewCount+"</div>"+
+		        "</div>"+
+		        "<div class='likeHover'>"+
+		          "<img class='like_OnclickImg' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+		          "<div class='like_Onclick'>"+list[i].like+"</div>"+
+		        "</div>"+
+		      "</div>"+
+		    "</div>"+
+		  "</div>"+
+		"</li>"
+		}
+		if(list[i].linkImage == "null"){
+			boards +=  "<li id='each_post_wrap'>" +
+			  "<div id='each_post'>" +
+			    "<div class='post_photoWrap titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
+			    "</div>"+
+			    "<div class='post_contsWrap'>"+
+			      "<div class='each_post_title titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+list[i].title+
+			      "</div>"+
+			      "<div class='post_ctgWrap'>"+
+			        "<img id='ctg_Img' src='/TeamProject/mainpage/mainpage_images/category.png'>"+
+			        "<span class='categoryLink' data-ctg='"+list[i].categoryNo+"'>"+list[i].category+"</span>"+
+			      "</div>"+
+			      "<div class='each_post_contents titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
+			        "<span>"+list[i].contents+"</span>"+
+			      "</div>"+
+			    "</div>"+
+			    "<div class='post_BtnWrap'>"+
+			      "<div id='user_Nick'>"+
+			        "<img id='profilePicture' class='user_Nonepht userInfoLink' data-userImage='"+list[i].userProfilePath+"' src='"+list[i].userProfilePath+"' alt='userImg' data-userNo='"+list[i].userNo+"' data-userNick='"+list[i].writerNick+"'>"+
+			        "<span class='userInfoLink' data-userNo='"+list[i].userNo+"' data-userNick='"+list[i].writerNick+"'>"+list[i].writerNick+"</span>"+
+			      "</div>"+
+			      "<div class='post_rightBtn'>"+
+			        "<div class='vw_ctHover'>"+
+			          "<img class='viewCountImg' src='/TeamProject/mainpage/mainpage_images/viewCount.png' alt='view'>"+
+			          "<div class='viewCount'>"+list[i].viewCount+"</div>"+
+			        "</div>"+
+			        "<div class='likeHover'>"+
+			          "<img class='like_OnclickImg' src='/TeamProject/mainpage/mainpage_images/likeOnClick.png' alt='like'>"+
+			          "<div class='like_Onclick'>"+list[i].like+"</div>"+
+			        "</div>"+
+			      "</div>"+
+			    "</div>"+
+			  "</div>"+
+			"</li>"
+			}
+	}
+	$(".category_tab-"+no+"-0").html(boards);
 }
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
