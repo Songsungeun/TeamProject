@@ -50,7 +50,6 @@ public class HoneyUserAuthController {
         return JsonResult.success();
       }
     } catch (Exception e) {
-    	e.printStackTrace();
       return JsonResult.error(e.getMessage());
     }
   }
@@ -61,6 +60,7 @@ public class HoneyUserAuthController {
   public Object loginUser(HttpSession session) throws Exception {
     try {
       HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+      member.setPassword("");
       MemberFile memberFile = new MemberFile();
       memberFile.setFilename(hMembersService.getProfileFileName(member.getMemberNo()));
       List<HoneyMembers> guiderNumberlist = hMembersService.getGuider(member.getMemberNo());
