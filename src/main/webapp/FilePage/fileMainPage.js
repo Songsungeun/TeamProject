@@ -4,7 +4,7 @@
 		})
 
 $(document).ready(function() {
-	//$(function() {
+	//s$(function() {
 		$("#includedContent").load("/TeamProject/header.html");
 	});
 	
