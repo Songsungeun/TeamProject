@@ -52,15 +52,18 @@ form {
 /*  padding-left: 200px; */
 /*  padding-right: 200px; */
   background-color: transparent;
+/*   position: relative; */
 }
 #writeArea {
   padding: 0 0 30px 0;
   height: 100%;
+  position: relative;
 }
 #category_select {
   margin: 1.5px 0;
   padding: 5px 12px;
   border: 0;
+  width: 622px
 }
 
 label {
@@ -89,7 +92,6 @@ label {
   padding: 4px 12px;
 }
 .writeWidth {
-  width: 622.76px !important;
   height: 43px !important;
   background-color: white;
   border-radius: 4px;
@@ -199,9 +201,9 @@ label {
   margin: 0 auto;
 }
 #resetBtn {
-  position: fixed;
-  bottom: 10%;
-  right: 30.3%;
+  position: absolute;
+  bottom: 14%;
+  right: -30px;
   width: 30px;
   height: 30px;
   background-color: #c8c8c8;
@@ -215,9 +217,9 @@ label {
   height: auto;
 }
 #topMoveBtn {
-  position: fixed;
+  position: absolute;
+  right: -30px;
   bottom: 14%;
-  right: 30.3%;
   width: 30px;
   height: 30px;
   background-color: #c8c8c8;
@@ -245,6 +247,15 @@ div#viewLoading {
 		filter: alpha(opacity=60);
 		opacity: alpha*0.6;
 	}
+#WrightBtnWrap {
+  position: absolute;
+  right: -30px;
+  bottom: 14%;
+  width: 30px;
+  height: 30px;
+  background-color: #c8c8c8;
+  overflow: hidden;
+}
 
 </style>
 
@@ -343,10 +354,12 @@ $(document).ready(function(){
       <!--          name="preview" id="preview" tabindex="8" value="미리보기"> -->
       <input style="display: none;" type="text" id="no"
         class="form-control" placeholder="URL">
+        <div id='WrightBtnWrap'>
+				  <div id="resetBtn"><img src="images/reset.png"></div>
+				  <div id="topMoveBtn"><img src="images/topMove.png"></div>
+        </div>
     </form>
   </div>
-  <div id="resetBtn"><img src="images/reset.png"></div>
-  <div id="topMoveBtn"><img src="images/topMove.png"></div>
 
   <!-- Modal Start -->
   <div>
