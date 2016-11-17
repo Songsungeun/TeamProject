@@ -120,8 +120,16 @@ body {
 	height: 60px;
 	position: fixed;
 	width: 100%;
-	z-index: 9999999;
+	z-index: 100;
 	min-width: 1024px;
+}
+
+.ui-menu-item {
+	background: #ffffff;
+	color: #333333;
+	font-size: 15px;
+	height: 35px;
+	padding-top: 3px;
 }
 
 #header_Background {
@@ -134,10 +142,10 @@ body {
 }
 
 .header_leftSection {
-    width: 20%;
-    height: 40px;
-    overflow: hidden;
-    display: inline-block;
+	width: 20%;
+	height: 40px;
+	overflow: hidden;
+	display: inline-block;
 }
 
 .headPageShift {
@@ -174,20 +182,21 @@ body {
 }
 
 .headerRightSection {
-width: 20%;
-    height: 32px;
-    left: 50%;
-    overflow: hidden;
-    float: right;
+	width: 20%;
+	height: 32px;
+	left: 50%;
+	overflow: hidden;
+	float: right;
 }
 
 .seachBar {
-    width: 400px;
-    overflow: hidden;
-    display: inline-block;
-    margin-left: 15%;
-    position: fixed;
-    top: 15px;
+	width: 400px;
+	overflow: hidden;
+	display: inline-block;
+	margin-left: 15%;
+	position: fixed;
+	top: 15px;
+	z-index: 10000;
 }
 
 .search {
@@ -196,12 +205,12 @@ width: 20%;
 }
 
 #inputSearchKey {
-    width: 362px;
-    height: 27px;
-    border: none;
-    border-bottom: #e00000 1px solid;
-    text-align: center;
-    font-size: 16px;
+	width: 362px;
+	height: 27px;
+	border: none;
+	border-bottom: #e00000 1px solid;
+	text-align: center;
+	font-size: 16px;
 }
 
 .searchButton {
@@ -211,12 +220,12 @@ width: 20%;
 }
 
 #newWrite {
-float: left;
-    position: absolute;
-    margin: 0px 3px 0px -33px;
-    font-weight: bold;
-    overflow: hidden;
-    height: 48px;
+	float: left;
+	position: absolute;
+	margin: 0px 3px 0px -33px;
+	font-weight: bold;
+	overflow: hidden;
+	height: 48px;
 }
 
 #newMessageAlert {
@@ -284,13 +293,12 @@ float: left;
 }
 
 div#viewLoading {
-		text-align: center;
-		padding-top: 70px;
-		background: #FFFFF0;
-		filter: alpha(opacity=60);
-		opacity: alpha*0.6;
+	text-align: center;
+	padding-top: 70px;
+	background: #FFFFF0;
+	filter: alpha(opacity = 60);
+	opacity: alpha*0.6;
 }
-
 </style>
 
 </head>
@@ -308,7 +316,7 @@ div#viewLoading {
 			</div>
 
 			<div class="seachBar">
-				<input id="inputSearchKey" name=search type=text
+				<input id="inputSearchKey" name="search" type="text"
 					placeholder="검색어를 입력하세요"> <span> <a
 					class="searchButton" href="#"> <img src="../search-engine.png"
 						width="25" />
@@ -338,22 +346,22 @@ div#viewLoading {
 
 			</div>
 			<div id="fb-root"></div>
-			 
-		</div>
 
+		</div>
 		<script
 			src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
 		<script type="text/javascript" src="/TeamProject/userAuthApp.js"></script>
 		<script type="text/javascript" src="../membership/likeList.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script type="text/javascript"
 			src="../resultOfSearch/resultOfSearch.js"></script>
+
 		<script>
-		$(document).ready(function($)
-				{
-					// 페이지가 로딩될 때 'Loading 이미지'를 숨긴다.
-					$('#viewLoading').hide();
-				});
-		
+			$(document).ready(function($) {
+				// 페이지가 로딩될 때 'Loading 이미지'를 숨긴다.
+				$('#viewLoading').hide();
+			});
+
 			$(".headlogo").click(function() {
 				location.href = "../mainpage/Main.html"
 			})

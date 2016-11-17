@@ -90,5 +90,11 @@ public class HoneySearchServiceImpl implements HoneySearchService {
     return searchFileResultLengthList;
   }
 
+@Override
+public List<HoneySearchKeyword> autoSearchValue() throws Exception {
+	 List<HoneySearchKeyword> boardTitle = searcherDao.getBoardTitle();
+	return boardTitle;
+}
+
 
 }

@@ -16,6 +16,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -159,6 +161,24 @@ public class HoneySearchController {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
+	}
+	
+	@RequestMapping("autoSearcher")
+	public Object autoSearcher(){
+		try {
+			List<HoneySearchKeyword> list = searchService.autoSearchValue();
+			List<String> values = new ArrayList<>();
+			for (int i = 0; i < list.size(); i++) {
+				values.add(list.get(i).getTitle());
+			}
+			HashMap<String, Object> autoSearchData = new HashMap<>();
+			autoSearchData.put("searchValues", values);
+			return JsonResult.success(autoSearchData);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+
 	}
 
 }

@@ -4,83 +4,100 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honey.dao.HoneySearcherDao">
 
-  <resultMap type="HoneySearchKeyword" id="searchMap">
-    <result column="BD_TITL" property="title" />
-    <result column="BD_CONTS" property="contents" />
-    <result column="URL" property="url"/>
-    <result column="EMAIL" property="email"/>
-    <result column="MB_NICK" property="nickname"/>
-    <result column="MB_NM" property="userName"/>
-    
-    <result column="fileNo" property="File_No"/>
-    <result column="File_Name" property="filename"/>
-    <result column="Board_No" property="boardNo"/>
-    <result column="ORI_FILENM" property="oriFileName"/>
-    <result column="Member_no" property="fmno"/>
-    <result column="File_Size" property="fileSize"/>
-    <result column="CreDate" property="fmcreatedDate"/>
-    
-    <result column="BD_NO" property="no"/>
-    <result column="BD_TITL" property="title"/>
-    <result column="URL" property="url"/>
-    <result column="MB_NICK" property="writerNick"/>
-    <result column="BD_CONTS" property="contents"/>
-    <result column="BD_CRE" property="createdDate"/>
-    <result column="BD_LIKE" property="like"/>
-    <result column="VIEW_CT" property="viewCount"/>
-    <result column="EMAIL" property="email"/>
-    <result column="MB_NO" property="userNo"/>
-    <result column="CT_NO" property="categoryNo"/>
-    <result column="CT_NM" property="category"/>
-    <result column="FILE_STATUS"  property="fileStatus"/>
-  </resultMap>
+	<resultMap type="HoneySearchKeyword" id="searchMap">
+		<result column="BD_TITL" property="title" />
+		<result column="BD_CONTS" property="contents" />
+		<result column="URL" property="url" />
+		<result column="EMAIL" property="email" />
+		<result column="MB_NICK" property="nickname" />
+		<result column="MB_NM" property="userName" />
 
-  <select id="selectFromBoard" resultMap="searchMap" parameterType="map">
-    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
-    from HONEY_BOARDS hb
-    left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
-    where hb.BD_TITL like concat('%', #{searchValue}, '%') or hb.BD_CONTS like concat('%', #{searchValue}, '%')
-    order by BD_NO desc
-    limit #{boardLength}
-  </select>
-  
-  <select id="selectFromMembers" resultMap="searchMap" parameterType="map">
-    select EMAIL,MB_NICK,MB_NM
-    from honey_membs
-    where MB_NICK like concat('%', #{searchValue}, '%') or MB_NM like concat('%', #{searchValue}, '%')
-    limit #{memberLength}
-  </select>
-  
-  
-  <select id = "selectFromFiles" resultMap="searchMap" parameterType="map">
-  select File_No, File_Name, Board_No, ORI_FILENM, 
-  Member_no, File_Size, CreDate from board_files 
-  where ORI_FILENM like concat('%',#{searchValue},'%')
-  limit #{fileLength}
-  </select>
-  
-  <select id="memberResultLengthList" resultMap="searchMap" parameterType="String">
-    select EMAIL,MB_NICK,MB_NM
-    from honey_membs
-    where MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%', #{value}, '%')
-   </select> 
-  
-  <select id="boardResultLengthList" resultMap="searchMap" parameterType="String">
-    select hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
-    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
-    from HONEY_BOARDS hb
-    left join honey_membs hm on hm.MB_NO = hb.MB_NO
-    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
-    where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like concat('%', #{value}, '%')
-  </select>
-  
-    <select id="FileResultLengthList" resultMap="searchMap" parameterType="String">
-  select File_No, File_Name, Board_No, ORI_FILENM, 
-  Member_no, File_Size, CreDate from board_files 
-  where ORI_FILENM like concat('%',#{searchValue},'%')
-  </select>
-  
-  
+		<result column="fileNo" property="File_No" />
+		<result column="File_Name" property="filename" />
+		<result column="Board_No" property="boardNo" />
+		<result column="ORI_FILENM" property="oriFileName" />
+		<result column="Member_no" property="fmno" />
+		<result column="File_Size" property="fileSize" />
+		<result column="CreDate" property="fmcreatedDate" />
+
+		<result column="BD_NO" property="no" />
+		<result column="BD_TITL" property="title" />
+		<result column="URL" property="url" />
+		<result column="MB_NICK" property="writerNick" />
+		<result column="BD_CONTS" property="contents" />
+		<result column="BD_CRE" property="createdDate" />
+		<result column="BD_LIKE" property="like" />
+		<result column="VIEW_CT" property="viewCount" />
+		<result column="EMAIL" property="email" />
+		<result column="MB_NO" property="userNo" />
+		<result column="CT_NO" property="categoryNo" />
+		<result column="CT_NM" property="category" />
+		<result column="FILE_STATUS" property="fileStatus" />
+	</resultMap>
+
+	<select id="selectFromBoard" resultMap="searchMap"
+		parameterType="map">
+		select
+		hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
+		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+		from HONEY_BOARDS hb
+		left join honey_membs hm on hm.MB_NO = hb.MB_NO
+		left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
+		where hb.BD_TITL like concat('%', #{searchValue}, '%') or hb.BD_CONTS like
+		concat('%', #{searchValue}, '%')
+		order by BD_NO desc
+		limit #{boardLength}
+	</select>
+
+	<select id="selectFromMembers" resultMap="searchMap"
+		parameterType="map">
+		select EMAIL,MB_NICK,MB_NM
+		from honey_membs
+		where MB_NICK like concat('%', #{searchValue}, '%') or MB_NM like
+		concat('%', #{searchValue}, '%')
+		limit #{memberLength}
+	</select>
+
+
+	<select id="selectFromFiles" resultMap="searchMap"
+		parameterType="map">
+		select File_No, File_Name, Board_No, ORI_FILENM,
+		Member_no, File_Size, CreDate from board_files
+		where ORI_FILENM like concat('%',#{searchValue},'%')
+		limit #{fileLength}
+	</select>
+
+	<select id="memberResultLengthList" resultMap="searchMap"
+		parameterType="String">
+		select EMAIL,MB_NICK,MB_NM
+		from honey_membs
+		where MB_NICK like concat('%', #{value}, '%') or MB_NM like concat('%',
+		#{value}, '%')
+	</select>
+
+	<select id="boardResultLengthList" resultMap="searchMap"
+		parameterType="String">
+		select
+		hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
+		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+		from HONEY_BOARDS hb
+		left join honey_membs hm on hm.MB_NO = hb.MB_NO
+		left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
+		where hb.BD_TITL like concat('%', #{value}, '%') or hb.BD_CONTS like
+		concat('%', #{value}, '%')
+	</select>
+
+	<select id="FileResultLengthList" resultMap="searchMap"
+		parameterType="String">
+		select File_No, File_Name, Board_No, ORI_FILENM,
+		Member_no, File_Size, CreDate from board_files
+		where ORI_FILENM like concat('%',#{searchValue},'%')
+	</select>
+
+	<select id="getBoardTitle" resultMap="searchMap">
+		select distinct(BD_TITL)
+		from HONEY_BOARDS
+	</select>
+
+
 </mapper>

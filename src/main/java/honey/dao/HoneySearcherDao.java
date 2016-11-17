@@ -9,7 +9,8 @@ public interface HoneySearcherDao {
 	List<HoneySearchKeyword> selectFromBoard(Map<String, Object> paramMap) throws Exception;
 	List<HoneySearchKeyword> selectFromMembers(Map<String, Object> paramMap) throws Exception;
 	List<HoneySearchKeyword> selectFromFiles(Map<String, Object> paramMap) throws Exception;
-  List<HoneySearchKeyword> memberResultLengthList(String value) throws Exception;
-  List<HoneySearchKeyword> boardResultLengthList(String value) throws Exception;
-  List<HoneySearchKeyword> FileResultLengthList(String value) throws Exception;
+	List<HoneySearchKeyword> memberResultLengthList(String value) throws Exception;
+	List<HoneySearchKeyword> boardResultLengthList(String value) throws Exception;
+	List<HoneySearchKeyword> FileResultLengthList(String value) throws Exception;
+	List<HoneySearchKeyword> getBoardTitle() throws Exception;
 }
