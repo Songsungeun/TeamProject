@@ -34,11 +34,25 @@
     
   </update>
   
-  <select id="fileList" resultMap="boardFileMap" parameterType= "int">
+  <select id="otherUserReturnMethod" resultMap="boardFileMap" parameterType= "int">
     select File_No, File_Name, Board_No, ORI_FILENM, File_Size, CreDate, Member_no
        from board_files 
    where Member_no = #{memberNo}
   </select>
+  
+    <select id="fileList" resultMap="boardFileMap" parameterType= "map">
+  select File_No, File_Name, Board_No, ORI_FILENM, File_Size, CreDate, Member_no
+  from board_files 
+  where Member_no = #{memberNo}
+   limit  #{pageLength}
+  </select>
+  
+  
+  <select id="countAll" parameterType="int" resultType="int">
+    select count(*) from board_files 
+    where Member_no = #{value}
+  </select>
+  
 </mapper>
 
 

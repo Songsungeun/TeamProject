@@ -65,6 +65,7 @@ public class HoneyBoardController {
 			boardService.insertBoard(board);
 
 			if (!board.getUrl().equals("")) {
+				System.out.println("url start!!!!");
 				UrlInfo url = Scrapper.UrlForDB(board.getUrl());
 				url.setMb_No(hMember.getMemberNo());
 				//url.setBd_No(bd_No);

@@ -2,6 +2,7 @@ var tempUserNo = 0;
 var boardNo = 0;
 var comentInfo = 0;
 var detailBoardNo = 0;
+var length = 12;
 $(document).ready(function(){
 	$(function() {
 		$("#includedContent").load("../header.html");
@@ -27,10 +28,24 @@ $(document).ready(function(){
 		//$(this).hide();
 		$(this).fadeOut(500);
 	});
+	
+	ajaxBoardList(length);
+	
+	$(document).scroll(function() {
+		var maxHeight = $(document).height();
+		var currentScroll = $(window).scrollTop() + $(window).height();
+
+		if (maxHeight <= currentScroll) {
+			length += 12;
+		ajaxBoardList(length);
+		}
+		})
 }); 
 
-function ajaxBoardList() {
-	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
+function ajaxBoardList(length) {
+	$.getJSON(serverAddr + "/mainpage/postlist.json", 
+			{"length" : length
+		},function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
