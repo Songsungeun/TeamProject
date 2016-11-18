@@ -96,6 +96,7 @@
     update HONEY_BOARDS set
     BD_TITL=#{title},
     BD_CONTS=#{contents},
+    CT_NO=#{categoryNo},
     URL=#{url},
     YOUTUBE_URL=#{youtubeURL},
     FILE_STATUS=#{fileStatus},

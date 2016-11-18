@@ -55,7 +55,19 @@ function ajaxFollowDisconnect(userNo) {
 					 }
 					return
 				} else if (result.state != "success" && result.data == null){
-					alert("로그인후 이용해 주세요!")
+					swal({
+						  title:"로그인 되지 않았습니다.",
+						  text: "로그인후 이용해 주세요",
+						  type: "warning",
+						  confirmButtonColor: "#DD6B55",
+						  confirmButtonText: "로그인",
+						  closeOnConfirm: false,
+						},
+						function(isConfirm){
+						  if (isConfirm) {
+							  window.location = "../mainpage/LoginPage.html"
+						  } 
+				 	 })
 					return
 				} else {
 					$('#followBtn').css("color", "red")

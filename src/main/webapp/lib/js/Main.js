@@ -60,13 +60,13 @@ function ajaxBoardList(length) {
 //		var template4 = Handlebars.compile($('#li4TemplateText').html())
 //		$(".category_tab-4-0").html(template4(result));
 		var list1 = result.data.list1;
-		boardLists(list1, 1);
+		boardLists(list1, 1, 0);
 		var list2 = result.data.list2;
-		boardLists(list2, 2);
+		boardLists(list2, 2, 0);
 		var list3 = result.data.list3;
-		boardLists(list3, 3);
+		boardLists(list3, 3, 0);
 		var list4 = result.data.list4;
-		boardLists(list4, 4);
+		boardLists(list4, 4, 0);
 		
 		$(".titleLink").click(function(event){
 			$("#yourModal").modal();
@@ -96,7 +96,7 @@ function ajaxBoardList(length) {
 		category();
 	})
 }
-function boardLists(list, no) {
+function boardLists(list, no, ctgno) {
 	var boards = "";
 	for(var i = 0; i<list.length; i++ ) {
 		if(list[i].linkImage != "/TeamProject/upload/MainDefault.jpg"){
@@ -171,7 +171,7 @@ function boardLists(list, no) {
 			"</li>"
 			}
 	}
-	$(".category_tab-"+no+"-0").html(boards);
+	$(".category_tab-"+no+"-"+ctgno).html(boards);
 }
 function ajaxLoadBoard(no) {
 	$.getJSON(serverAddr + "/mainpage/postdetail.json?no=" + no, function(obj) {
