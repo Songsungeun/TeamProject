@@ -183,13 +183,31 @@ color:	#6a6a6a;
     float: left;
     width: 1024px;
 }
+#mbMoreBtn{
+  width:100%;
+  height:100%;
+  margin-bottom: 100px;
+}
+
+#moreViewBtn1{
+  font-size: 15px;
+  padding-right:13px;
+  color: #a9a9a9;
+  padding-left:  950px;
+}
+
+#moreViewBtn1:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .contentsSearchResult {
     position: relative;
     margin: 0 auto;
-    padding-top:30px;
+    padding-top:80px;
     float: left;
     width: 1024px;
+    bottom:80px;
 }
 
 #memberSearchWrap{
@@ -197,20 +215,13 @@ color:	#6a6a6a;
     position: relative;
         margin: 0 auto;
     background-color: antiquewhite;
+        bottom: 100px;
 }
 
 #moreViewBtn1{
     float: right;
     font-size: 15px;
-    padding-right: 13px;
-    padding-top: 30px;
-    color: #a9a9a9;
-}
-
-#moreViewBtn2{
-    float: right;
-    font-size: 15px;
-    padding-right: 24px;
+    padding-right: 2px;
     padding-top: 30px;
     color: #a9a9a9;
 }
@@ -221,6 +232,23 @@ color:	#6a6a6a;
 /*         margin: 0 auto; */
     background-color: antiquewhite;
 }
+
+#moreViewBtn2{
+	    float: right;
+  font-size: 15px;
+  padding-right:4px;
+  color: #a9a9a9;
+  padding-left:  950px;
+  position: relative;
+  bottom: 50px;
+}
+
+#moreViewBtn2:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 
 /* 파일검색 css*/
 #fileResultWrap{
@@ -241,7 +269,6 @@ font-size: 17px;
     padding-top: 50px;
     float: left;
     width: 100%;
-    top: 35px;
 }
 
 #fileResult{
@@ -250,10 +277,29 @@ font-size: 17px;
     margin: auto;
 }
 
- 
-
 #boardTable{
 background-color: white;
+}
+
+#fileMoreBtn{
+  width:100%;
+  height:100%;
+  margin-bottom: 100px;
+}
+
+#moreViewBtn3{
+	font-size: 15px;
+	padding-right:13px;
+	color: #a9a9a9;
+	padding-left:  950px;
+	position: relative;
+    top: 18px;
+    left: 20px;
+}
+
+#moreViewBtn3:hover{
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .fileThumbnail{

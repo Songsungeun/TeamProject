@@ -13,7 +13,6 @@ $(document).ready(function(){
 		})
 	}
 })
-console.log(autosearchValues)
 
 $(function() {
 	$("#inputSearchKey").autocomplete({source: autosearchValues, minlength:2});
@@ -58,6 +57,7 @@ var searchBoardResult;
 var memberPhotoExtract;
 var  boardLength = 6;
 var  memberLength = 4;
+var  fileLength = 20;
 
 function ajaxSearchResultList() {
 	var locationPathValue = $(location).attr('pathname');
@@ -65,7 +65,8 @@ function ajaxSearchResultList() {
 
 	$.getJSON(serverAddr+"/" + locationPath[2] + "/searcher.json",  {
 		"boardLength" : boardLength,
-		"memberLength":memberLength
+		"memberLength":memberLength,
+		"fileLength":fileLength,
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -78,6 +79,8 @@ function ajaxSearchResultList() {
 
 		var boardSearchLength = result.data.boardSearchLength //  게시물 총 페이지 수 
 		var memberSearchLength = result.data.memberSearchLength // 회원 페이지 수 
+		var allFileResult = result.data.allsearchFileResultListLength // 파일 총 갯수
+		
 		var boardDifference  =  boardSearchLength -  boardLength
 		var memberDifference = memberSearchLength -  memberLength
 
@@ -85,7 +88,7 @@ function ajaxSearchResultList() {
 		var contentsSearch = "";
 		var fileSearch = "";
 		var photo =""
-			var data = result.data
+	    var data = result.data
 
 			var template1 = Handlebars.compile($('#searchBoardHandlebars').html())
 			var template2 = Handlebars.compile($('#searchMemberHandlebars').html())
@@ -95,11 +98,17 @@ function ajaxSearchResultList() {
 			nameSearch += template2(data)
 			fileSearch += template3(data)
 
-			if (memberSearchLength == 0) {
-				$("#memberSearchResultWrap").css("display", "none")
-			} else  if (boardSearchLength == 0) {
-				$("#contentsSearchWrap").css("display", "none") 
-			}
+		if (memberSearchLength == 0 &&  boardSearchLength == 0 && allFileResult == 0) {
+			location.href = "./searchResultNull.html"
+		} else if (memberSearchLength == 0) {
+			$("#memberSearchResultWrap").css("display", "none")
+		} else  if (boardSearchLength == 0) {
+			$("#contentsSearchWrap").css("display", "none") 
+		} 
+		
+		if (allFileResult == 0) {
+			$("#fileSearchResult").css("display","none")
+		}
 
 		if  (boardSearchLength > 0 &&  boardSearchLength < boardLength) {
 			$("#moreViewBtn2").css("display", "none")
@@ -113,7 +122,7 @@ function ajaxSearchResultList() {
 		$("#boardTable tbody").html(fileSearch);
 		$("#uSearchLength").text(data.memberSearchLength);
 		$("#pSearchLength").text(data.boardSearchLength);
-		$("#fSearchLength").text(data.searchFileResultListLength);
+		$("#fSearchLength").text(data.allsearchFileResultListLength);
 
 		$("#moreViewBtn1").click(function () {
 			memberLength += Number(memberDifference);
@@ -129,6 +138,16 @@ function ajaxSearchResultList() {
 				$("#moreViewBtn2").css("display", "none")
 		})
 
+		
+		$("#moreViewBtn3").click(function () {
+		fileLength += 20;
+		ajaxSearchResultList()
+			if(fileLength >= allFileResult) {
+				$("#moreViewBtn3").css("display", "none")
+			}
+		})
+
+		
 		$(".titleLink").click(function(event){
 			console.log("1")
 			$("#yourModal").modal();

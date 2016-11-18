@@ -152,9 +152,10 @@ public class HoneySearchController {
 
 			searchData.put("searchFileResult",searchFileResult);
 			searchData.put("fileLength", fileLength);
-			searchData.put("fileResultListLength", searchFileResultListLength.size());
+			searchData.put("allsearchFileResultListLength", searchFileResultListLength.size());
 
 			searchData.put("searchValue", searchfucker); //검색어 
+			
 
 			return JsonResult.success(searchData);
 		} catch (Exception e) {
