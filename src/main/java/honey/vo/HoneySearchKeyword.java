@@ -22,7 +22,8 @@ public class HoneySearchKeyword {
     protected Date fmcreatedDate;
     protected String FileThumbnail;
     protected String youTubeURL;
-    
+    protected String userPhotoPath;
+   
     protected int no;
     protected String writerNick;
     protected Date createdDate;   
@@ -87,7 +88,13 @@ public class HoneySearchKeyword {
   public void setFilename(String filename) {
     this.filename = filename;
   }
- 
+  public String getUserPhotoPath() {
+    return userPhotoPath;
+  }
+  public void setUserPhotoPath(String userPhotoPath) {
+    this.userPhotoPath = userPhotoPath;
+  }
+  
   //=========================
   //  카드 UI용 Get/Seter
   //=========================

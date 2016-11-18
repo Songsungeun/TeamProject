@@ -68,14 +68,6 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
     searchMap.put("memberNo",memberNo);
     
     List<HoneySearchKeyword> adminPostResult = searchDao.adminPostSearch(searchMap);
-    List<UrlInfo> urlList = mainService.getURLList();
-    List<HoneySearchKeyword> resultList = SetImage.setImage2(adminPostResult, urlList);
-
-    for (int i = 0; i < resultList.size(); i++) {
-      String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
-      adminPostResult.get(i).setUserProfilePath(userPhoto);
-    }
-     
     return adminPostResult;
   }
 }

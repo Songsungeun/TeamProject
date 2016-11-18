@@ -202,13 +202,28 @@ public class HoneyAdminController {
     public Object adminPostSearch(
       String searchValue,
       HttpSession session,
+      @RequestParam(defaultValue = "1") int pageNo,
       @RequestParam (defaultValue = "6") int boardLength) throws Exception {
         try{
            HoneyMembers member = (HoneyMembers)session.getAttribute("member");
-           List<HoneySearchKeyword> adminPostSearch =  honeyAdminService.adminPostSearch(boardLength, searchValue, member.getMemberNo());
-        
-           return JsonResult.success(adminPostSearch); 
+           List<HoneySearchKeyword> list =  honeyAdminService.adminPostSearch(boardLength, searchValue, member.getMemberNo());
+           List<UrlInfo> urlList = mainService.getURLList();
+           List<HoneySearchKeyword> resultList = SetImage.setImage2(list, urlList);
+           
+           for (int i = 0; i < resultList.size(); i++) {
+             String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
+             list.get(i).setUserProfilePath(userPhoto);
+           }
+           HashMap<String,Object> data = new HashMap<>();
+           
+           data.put("list", list);
+           data.put("pageNo", pageNo);
+           data.put("boardLength", boardLength);
+           data.put("stateResultCode", 1);
+           
+           return JsonResult.success(data); 
          } catch (Exception e) {
+             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
          }
     

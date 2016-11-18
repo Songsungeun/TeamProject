@@ -11,8 +11,10 @@ var ajaxUrl = admin.adminList;
 var stateResultCode = admin.stateResultCode1
 $(document.body).on('click', '.moreViewBtn', function(event){
 	admin.pageLength += 6;
-	ajaxBoardList()
+	ajaxAdminBoardList()
 })
+
+
 $(document.body).on('click', '#postBtn',  function(event) {
 	var rNumber = $(this).attr("data-no")
 	var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
@@ -47,7 +49,7 @@ $("#likePostSwitch").click(function() {
 
 	ajaxUrl= admin.likeList;
 	stateResultCode = admin.stateResultCode2;
-	ajaxBoardList(ajaxUrl , stateResultCode)
+	ajaxAdminBoardList(ajaxUrl , stateResultCode)
 	$('#cardWrap').show();  
 })
 $(".conterDetailBtn1").click(function () {
@@ -97,7 +99,7 @@ $("#followSwitch").click(function () {
 	})
 })
 var adminBoardNo = 0;
-function ajaxAdimBoardList() {
+function ajaxAdminBoardList() {
 	$.getJSON(serverAddr + ajaxUrl , {
 		"pageNo" : admin.pageNo,
 		"length" : admin.pageLength,
@@ -139,6 +141,62 @@ function ajaxAdimBoardList() {
 		});
 	})
 }
+
+
+$("#testBtn").click(function(){
+	var searchValue = $("#testInput").val()
+	var stateResultCode = admin.stateResultCode1
+	ajaxAdminBoardSearch(searchValue, stateResultCode)
+})
+
+function adminPostsSearch(){
+	var searchValue = $("#testInput").val()
+	var stateResultCode = admin.stateResultCode1
+	ajaxAdminBoardSearch(searchValue, stateResultCode)
+}
+
+function ajaxAdminBoardSearch(searchValue , stateResultCode) {
+	$.getJSON(serverAddr + "/admin/adminPostSearch.json", {
+		"searchValue":searchValue,
+		"stateResultCode":stateResultCode,
+		}, function(obj) {
+			var result = obj.jsonResult
+			if(result.state != "success") {
+				alert("조회 실패입니다.")
+				return
+			}
+			var data = result.data
+			var totalsize = data.totalPage;
+			var resultCode = data.stateResultCode;
+			var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
+			var boardUiTemplate2 = Handlebars.compile($('#boardUiTemplateText2').html())
+			var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
+			$("#postsCard").html(cardUiTemplate(data));
+			if (resultCode == 1) {
+				$("#boardTable").html(boardUiTemplate(data));
+			} else {
+				$("#boardTable").html(boardUiTemplate2(data));
+			}
+			$(".titleLink").click(function(event){
+				$("#yourModal").modal();
+				$('#yourModal').on('hidden.bs.modal', function (e) {
+					  //동영상 정지 메서드호출
+					$("#youtubeUrl").attr("src","");
+				})
+				$("html").css({"overflow":"hidden"});
+				adminBoardNo = $(this).attr("data-no")
+				ajaxAdminLoadBoard(adminBoardNo)
+				ajaxAdminPostComentsList(adminBoardNo)
+			})
+			if (data.list.length >=  totalsize) {
+				$('.moreViewBtn').css("display", "none")
+			} 
+			$(document.body).on('click', '.modifyBtn',  function(event) {
+				window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
+			});
+	})
+}
+
 function ajaxDeleteBoard(no) {
 	$.getJSON(serverAddr + "/admin/admindelete.json", {
 		no: no}, function(obj) {
@@ -148,7 +206,7 @@ function ajaxDeleteBoard(no) {
 				return
 			}
 			alert("삭제되었습니다.")
-			ajaxBoardList()
+			ajaxAdminBoardList()
 			return
 		})
 }
@@ -162,7 +220,7 @@ function ajaxLikeDisconnect2(no) {
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state == "success") {
-				ajaxBoardList() 
+				ajaxAdminBoardList() 
 			}
 		}
 	})
@@ -431,12 +489,12 @@ $(document.body).on("click",".cmt_delete",function(event) {
 	}
 });
 
-window.onclick = function(event) {
-	var adminhtmlTag = document.getElementById('super_HTML_Admin');
-	var adminmodal = document.getElementById('yourModal');
-	if (event.target == adminmodal) {
-		adminmodal.style.display = "none";
-		adminhtmlTag.style.overflow = "auto";
-		window.history.pushState("Changed URI", "", "../adminpage/HoneyAdminpage.html");
-	}
-}
+//window.onclick = function(event) {
+//	var adminhtmlTag = document.getElementById('super_HTML_Admin');
+//	var adminmodal = document.getElementById('yourModal');
+//	if (event.target == adminmodal) {
+//		adminmodal.style.display = "none";
+//		adminhtmlTag.style.overflow = "auto";
+//		window.history.pushState("Changed URI", "", "../adminpage/HoneyAdminpage.html");
+//	}
+//}

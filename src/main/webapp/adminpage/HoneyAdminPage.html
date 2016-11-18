@@ -58,7 +58,7 @@
         <span class = "conterMenuBtn" id = "likePostSwitch"> <a id = "likePosts"href = "#"> Like Posts </a></span>
         &nbsp; &nbsp;  <span id ="itemDistinct">|</span>  &nbsp;&nbsp;  
         <span class = "conterMenuBtn" id = "followSwitch"> <a id = "followlist" href ="#"> Follow  List </a></span>
-          &nbsp; &nbsp;   <span id="adminSearchBtn"><input><button id ="testBtn">검색</button></span> 
+          &nbsp; &nbsp;   <span id="adminSearchBtn"><input id = "testInput" onkeydown="javascript:if(event.keyCode==13){adminPostsSearch()}"><button id ="testBtn" >검색</button></span> 
 	      <div id = "contentsDetailWrap">
 	        <span class = "conterDetailBtn1"> <a  href = "#"><img id="layoutBtn" src="./images/layout-2.svg" width ="20px" height="20px"></a></span> 
 	        <span class = "conterDetailBtn2"> <a  href = "#"><img id="listBtn" src="./images/list-1.svg" width ="20px" height="20px"></a></span>
@@ -87,7 +87,7 @@
       <!-- follow -->
   </div>
      
-  <div class="modal fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade yourModal123" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" id="modalDialog">
       <div class="modal-content">
         <div class="modal-body" id="modalBody">
@@ -256,7 +256,13 @@
 <script type="text/javascript" src="HoneyAdminpage(function).js"></script>
 <script >
   ajaxloadNickName()
-  ajaxAdimBoardList()
+  ajaxAdminBoardList()
+  
+  $(document.body).on("click",".yourModal123",function(event) {
+   console.log("클리끄")
+   $('#yourModal').on('hidden.bs.modal', function (e) {
+   })
+})
 </script>  
  
  

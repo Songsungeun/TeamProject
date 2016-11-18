@@ -240,6 +240,16 @@ body {
     padding-top: 5px;
 }
 
+#adminSearchBtn{
+	  position: relative;
+    bottom: 2px;
+    left: 10px;
+}
+
+#testInput{
+	  position: relative;
+    width: 200px;
+}
 
 #myPosts{
 	color:#db2626;

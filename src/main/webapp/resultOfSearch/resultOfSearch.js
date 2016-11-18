@@ -1,8 +1,3 @@
-/**
- * 
- */
-
-
 var autosearchValue;
 var autosearchValues=[];
 $(document).ready(function(){
@@ -145,15 +140,6 @@ function ajaxSearchResultList() {
 	})
 }
 
-window.onclick = function(event) {
-	var htmlTag = document.getElementById('super_HTML');
-	var modal = document.getElementById('yourModal');
-	if (event.target == modal) {
-		modal.style.display = "none";
-		htmlTag.style.overflow = "auto";
-		window.history.pushState("Changed URI", "", "../mainpage/Main.html");
-	}
-}
 
 
 
