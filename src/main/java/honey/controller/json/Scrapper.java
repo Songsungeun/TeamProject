@@ -134,8 +134,8 @@ public class Scrapper {
 		}
 		
 		// description 너무 많이 넣어놓은 나쁜 사이트들 때문에...
-		if (description.length() > 1000) {
-			String cutString = description.substring(0, 1000);
+		if (description.length() > 254) {
+			String cutString = description.substring(0, 254);
 			description = cutString;
 		}
 		
