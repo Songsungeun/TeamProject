@@ -1,33 +1,31 @@
 package honey.vo;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 public class HoneySearchKeyword {
-  
-  static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
     protected String searchValue;
+    
     protected String title;
     protected String url;
     protected String contents;
     protected String userName;
     protected String email;
     protected String nickname;
-    protected String filename;
 
-    protected int fmno;
-    protected int fileNo;
+    protected String filename;
     protected int boardNo;
     protected String oriFileName;
+    protected int fmno;
+    protected int fileNo;
     protected double fileSize;
-    protected String fmcreatedDate;
+    protected Date fmcreatedDate;
     protected String FileThumbnail;
+    protected String youTubeURL;
     
     protected int no;
     protected String writerNick;
     protected Date createdDate;   
-    protected String createdDate2;   
     protected int like;
     protected int viewCount;
     protected String userNo;
@@ -178,14 +176,6 @@ public class HoneySearchKeyword {
   }
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
-    this.createdDate2 = format.format(createdDate);
-  }
-  public String getCreatedDate2() {
-    return createdDate2;
-  }
-  public void setCreatedDate2(String str) {
-    this.createdDate = Date.valueOf(str);
-    this.createdDate2 = str;
   }
   public int getNo() {
     return no;
@@ -193,6 +183,13 @@ public class HoneySearchKeyword {
   public void setNo(int no) {
     this.no = no;
   }
+  public String getYouTubeURL() {
+    return youTubeURL;
+  }
+  public void setYouTubeURL(String youTubeUrl) {
+    this.youTubeURL = youTubeUrl;
+  }
+  
   
 //=========================
   //  파일 검색용 Get/Seter
@@ -222,10 +219,10 @@ public class HoneySearchKeyword {
   public void setFmno(int fmno) {
     this.fmno = fmno;
   }
-  public String getFmcreatedDate() {
+  public Date getFmcreatedDate() {
     return fmcreatedDate;
   }
-  public void setFmcreatedDate(String fmcreatedDate) {
+  public void setFmcreatedDate(Date fmcreatedDate) {
     this.fmcreatedDate = fmcreatedDate;
   }
   public String getFileThumbnail() {

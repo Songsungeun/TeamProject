@@ -12,23 +12,20 @@
 		<result column="MB_NICK" property="nickname" />
 		<result column="MB_NM" property="userName" />
 
-		<result column="fileNo" property="File_No" />
 		<result column="File_Name" property="filename" />
 		<result column="Board_No" property="boardNo" />
 		<result column="ORI_FILENM" property="oriFileName" />
 		<result column="Member_no" property="fmno" />
+		<result column="File_No" property="fileNo" />
 		<result column="File_Size" property="fileSize" />
 		<result column="CreDate" property="fmcreatedDate" />
+    <result column="YOUTUBE_URL" property="youTubeURL" />  
 
 		<result column="BD_NO" property="no" />
-		<result column="BD_TITL" property="title" />
-		<result column="URL" property="url" />
 		<result column="MB_NICK" property="writerNick" />
-		<result column="BD_CONTS" property="contents" />
 		<result column="BD_CRE" property="createdDate" />
 		<result column="BD_LIKE" property="like" />
 		<result column="VIEW_CT" property="viewCount" />
-		<result column="EMAIL" property="email" />
 		<result column="MB_NO" property="userNo" />
 		<result column="CT_NO" property="categoryNo" />
 		<result column="CT_NM" property="category" />
@@ -39,7 +36,7 @@
 		parameterType="map">
 		select
 		hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
-		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, FILE_STATUS
+		hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, hb.FILE_STATUS, hb.YOUTUBE_URL
 		from HONEY_BOARDS hb
 		left join honey_membs hm on hm.MB_NO = hb.MB_NO
 		left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
@@ -57,7 +54,6 @@
 		concat('%', #{searchValue}, '%')
 		limit #{memberLength}
 	</select>
-
 
 	<select id="selectFromFiles" resultMap="searchMap"
 		parameterType="map">
@@ -98,6 +94,21 @@
 		select distinct(BD_TITL)
 		from HONEY_BOARDS
 	</select>
+
+
+
+  <select id="adminPostSearch" resultMap="searchMap"  parameterType="map">
+    select
+    hb.BD_NO,hb.BD_TITL,hb.BD_CRE,hb.BD_LIKE,hb.VIEW_CT,hb.MB_NO,hb.CT_NO,hb.BD_CONTS,
+    hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, hb.FILE_STATUS, hb.YOUTUBE_URL
+    from HONEY_BOARDS hb
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO
+    left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
+    where hb.BD_TITL like concat('%', #{searchValue}, '%') or hb.BD_CONTS like concat('%', #{searchValue}, '%')  AND hb.MB_NO = #{memberNo}
+    order by BD_NO desc
+    limit #{boardLength}
+  </select>
+
 
 
 </mapper>

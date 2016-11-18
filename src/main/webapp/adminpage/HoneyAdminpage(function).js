@@ -4,7 +4,8 @@ var admin = {
 		stateResultCode1 : 1,
 		stateResultCode2 : 0,
 		adminList : "/admin/adminPostlist.json",
-		likeList :  "/admin/adminLikeList.json"
+		likeList :  "/admin/adminLikeList.json",
+	    adminPostResult :"/admin/adminPostSearch.json"
 }
 var ajaxUrl = admin.adminList;
 var stateResultCode = admin.stateResultCode1

@@ -3,7 +3,6 @@ package honey.controller.json;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +18,11 @@ import honey.service.HoneymembersService;
 import honey.service.impl.DefaultHoneyBoardService;
 import honey.vo.FileList;
 import honey.vo.HoneyMain;
-import honey.vo.HoneyMemberPhoto;
 import honey.vo.HoneyMembers;
+import honey.vo.HoneySearchKeyword;
 import honey.vo.JsonResult;
 import honey.vo.MemberFile;
 import honey.vo.UrlInfo;
-import honey.vo.honey_boards;
 
 @Controller
 @RequestMapping("/admin/")
@@ -178,7 +176,7 @@ public class HoneyAdminController {
       if (mainService.getUrl(no) != null) {
         urlInfo = mainService.getUrl(no);
         String temp = urlInfo.getImage();
-        temp = "<img alt='photo' src='" + temp + "'>";
+        temp = "<img alt='photo' src='" + temp +  "'>";
         urlInfo.setImage(temp);
       } 
 
@@ -199,6 +197,22 @@ public class HoneyAdminController {
       return JsonResult.fail(e.getMessage());
       }
     }
+    
+    @RequestMapping(path = "adminPostSearch")
+    public Object adminPostSearch(
+      String searchValue,
+      HttpSession session,
+      @RequestParam (defaultValue = "6") int boardLength) throws Exception {
+        try{
+           HoneyMembers member = (HoneyMembers)session.getAttribute("member");
+           List<HoneySearchKeyword> adminPostSearch =  honeyAdminService.adminPostSearch(boardLength, searchValue, member.getMemberNo());
+        
+           return JsonResult.success(adminPostSearch); 
+         } catch (Exception e) {
+            return JsonResult.fail(e.getMessage());
+         }
+    
+      }
     
     
 }

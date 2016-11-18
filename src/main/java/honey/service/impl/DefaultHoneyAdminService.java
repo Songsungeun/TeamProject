@@ -9,9 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import honey.controller.json.SetImage;
+import honey.dao.HoneySearcherDao;
 import honey.dao.tempDao;
 import honey.service.HoneyAdminService;
+import honey.service.HoneyMainService;
 import honey.vo.HoneyMain;
+import honey.vo.HoneySearchKeyword;
+import honey.vo.UrlInfo;
 import honey.vo.honey_boards;
 
 @Service
@@ -19,6 +24,9 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   HttpSession session;
   
   @Autowired tempDao tempdao;
+  @Autowired  HoneySearcherDao searchDao;
+  @Autowired HoneyMainService mainService;
+  
   public List<HoneyMain> adminBoardList(int memberNo,int pageNo, int length) throws Exception {
     HashMap<String, Object> map = new HashMap<>();
       map.put("startIndex", (pageNo - 1) * length);
@@ -50,5 +58,24 @@ public class DefaultHoneyAdminService implements HoneyAdminService {
   public int likeTotalPage(int memberNo) throws Exception {
     int count = tempdao.adminLikePostsCountAll(memberNo);
     return count;
+  }
+
+  @Override
+  public List<HoneySearchKeyword> adminPostSearch(int boardLength,  String SearchValue, int memberNo) throws Exception {
+    HashMap <String,Object> searchMap = new HashMap<>();
+    searchMap.put("boardLength",boardLength);
+    searchMap.put("SearchValue",SearchValue);
+    searchMap.put("memberNo",memberNo);
+    
+    List<HoneySearchKeyword> adminPostResult = searchDao.adminPostSearch(searchMap);
+    List<UrlInfo> urlList = mainService.getURLList();
+    List<HoneySearchKeyword> resultList = SetImage.setImage2(adminPostResult, urlList);
+
+    for (int i = 0; i < resultList.size(); i++) {
+      String userPhoto = mainService.getPhoto(Integer.parseInt(resultList.get(i).getUserNo()));
+      adminPostResult.get(i).setUserProfilePath(userPhoto);
+    }
+     
+    return adminPostResult;
   }
 }

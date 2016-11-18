@@ -2,10 +2,8 @@ package honey.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import honey.vo.HoneyMain;
-import honey.vo.honey_boards;
+import honey.vo.HoneySearchKeyword;
 
 public interface HoneyAdminService {
    List<HoneyMain> adminBoardList(int memberNo, int value1, int value2) throws Exception ;
@@ -13,4 +11,5 @@ public interface HoneyAdminService {
    void  adminBoardDelete(int value) throws Exception ;
    int myWriteTotalPage(int memberNo) throws Exception;
    int likeTotalPage(int memberNo) throws Exception;
+   List<HoneySearchKeyword> adminPostSearch(int boardLength, String SearchValue, int memberNo ) throws Exception;
 }

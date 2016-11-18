@@ -13,4 +13,5 @@ public interface HoneySearcherDao {
 	List<HoneySearchKeyword> boardResultLengthList(String value) throws Exception;
 	List<HoneySearchKeyword> FileResultLengthList(String value) throws Exception;
 	List<HoneySearchKeyword> getBoardTitle() throws Exception;
+	List<HoneySearchKeyword> adminPostSearch(Map<String,Object> paramMap) throws Exception;
 }

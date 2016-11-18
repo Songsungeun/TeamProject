@@ -68,9 +68,15 @@ public class SetImage {
 	            String[] temp1 = temp[1].split(" ");
 	            String[] temp2 = temp1[0].split("\"");
 	            honeyMainList.get(i).setLinkImage(temp2[1]);
+	          } else if (honeyMainList.get(i).getYouTubeURL() != null){
+	            honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYouTubeURL() + "/mqdefault.jpg");
 	          } else {
 	            honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 	          }
+	        } else if (honeyMainList.get(i).getYouTubeURL() != null){
+	          honeyMainList.get(i).setLinkImage("https://img.youtube.com/vi/" + honeyMainList.get(i).getYouTubeURL() + "/mqdefault.jpg");
+	        } else {
+	          honeyMainList.get(i).setLinkImage("/TeamProject/upload/MainDefault.jpg");
 	        }
 	      }
 	    }
