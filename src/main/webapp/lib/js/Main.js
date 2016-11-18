@@ -99,7 +99,7 @@ function ajaxBoardList(length) {
 function boardLists(list, no) {
 	var boards = "";
 	for(var i = 0; i<list.length; i++ ) {
-		if(list[i].linkImage != "null"){
+		if(list[i].linkImage != "/TeamProject/upload/MainDefault.jpg"){
 		boards +=  "<li id='each_post_wrap'>" +
 		  "<div id='each_post'>" +
 		    "<div class='post_photoWrap titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
@@ -135,7 +135,7 @@ function boardLists(list, no) {
 		  "</div>"+
 		"</li>"
 		}
-		if(list[i].linkImage == "null"){
+		if(list[i].linkImage == "/TeamProject/upload/MainDefault.jpg"){
 			boards +=  "<li id='each_post_wrap'>" +
 			  "<div id='each_post'>" +
 			    "<div class='post_photoWrap titleLink' data-no='"+list[i].no+"' data-userNo='"+list[i].userNo+"'>"+
@@ -478,47 +478,4 @@ window.onclick = function(event) {
 		htmlTag.style.overflow = "auto";
 		window.history.pushState("Changed URI", "", "../mainpage/Main.html");
 	}
-	$.getJSON(serverAddr + "/mainpage/postlist.json", function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패했습니다.")
-			return
-		}
-		var template1 = Handlebars.compile($('#li1TemplateText').html())
-		$(".category_tab-1-0").html(template1(result));
-		var template2 = Handlebars.compile($('#li2TemplateText').html())
-		$(".category_tab-2-0").html(template2(result));
-		var template3 = Handlebars.compile($('#li3TemplateText').html())
-		$(".category_tab-3-0").html(template3(result));
-		var template4 = Handlebars.compile($('#li4TemplateText').html())
-		$(".category_tab-4-0").html(template4(result));
-		
-		
-		$(".titleLink").click(function(event){
-			$("#yourModal").modal();
-			$('#yourModal').on('hidden.bs.modal', function (e) {
-				  //동영상 정지 메서드호출
-				$("#youtubeUrl").attr("src","");
-			})
-			$("html").css({"overflow":"hidden"});
-			boardNo = $(this).attr("data-no")
-			ajaxLoadBoard(boardNo);
-			ajaxPostComentsList(boardNo);
-			window.history.pushState("Changed URI", "", "../mainpage/ContentsDetail.html?no="+boardNo);
-		})
-		$(".btn-primary").click(function() {
-			$("#yourModal").css({"display":"none"});
-			$("#super_HTML").css({"overflow":"auto"});
-			window.history.pushState("Changed URI", "", "../mainpage/Main.html");
-		})
-		$(".categoryLink").click(function(event){
-			event.stopImmediatePropagation();
-			var ctgNo =$(this).attr("data-ctg")
-			boardcategoryClick(ctgNo);
-		})
-		$(".userInfoLink").click(function(event) {
-			window.location.href = "../membership/otherUserDetailPage.html?nick=" + $(this).attr("data-userNick");
-		})
-		category();
-	})
 }
