@@ -198,7 +198,7 @@
 	 URL_Desc=#{description},
 	 URL_Image=#{image},
 	 DetailUrl=#{detailUrl}
-	 where BD_NO=#{bd_no}
+	 where BD_NO=#{bd_No}
 	</update>
 
 	<insert id="insertLikeBoard" parameterType="honey_boards">

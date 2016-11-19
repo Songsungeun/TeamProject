@@ -44,7 +44,7 @@ public class HoneyBoardController {
 			HoneyMembers hMember = (HoneyMembers)session.getAttribute("member");
 			// 보드 멤버 넘버 셋
 			board.setUserNo(hMember.getMemberNo());
-
+			System.out.println("인코딩 확인용: " + board.getTitle());
 			if (!board.getYoutubeURL().equals("")) {
 				String[] youtubeContents = board.getYoutubeURL().split("/");
 				if (board.getYoutubeURL().contains("list")) {
@@ -168,10 +168,6 @@ public class HoneyBoardController {
 		try {
 			HashMap<String,Object> paramMap = new HashMap<>();
 			paramMap.put("no", board.getNo());
-			System.out.println("board= " + board);
-			if (boardService.getBoard(board.getNo()) == null) {
-				throw new Exception("해당 게시물이 없습니다.");
-			}
 			
 			int memberNo = ((HoneyMembers)session.getAttribute("member")).getMemberNo();
 			

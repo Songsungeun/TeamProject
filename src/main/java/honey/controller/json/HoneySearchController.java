@@ -16,24 +16,16 @@ import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import honey.dao.HoneyPhotoDao;
 import honey.dao.HoneySearcherDao;
-import honey.service.HoneyMainService;
 import honey.service.HoneySearchService;
-import honey.service.HoneymembersService;
-import honey.vo.HoneyMain;
-import honey.vo.HoneyMemberPhoto;
 import honey.vo.HoneySearchKeyword;
 import honey.vo.JsonResult;
-import honey.vo.UrlInfo;
 
 // 이 컨트롤러의 목적은 어느 페이지든지 검색을 하면 이 컨트롤러는 검색어 키워드를 쿠키에 저장하는 역할을 한다. 
 @Controller
@@ -44,26 +36,29 @@ import honey.vo.UrlInfo;
 public class HoneySearchController {
 	@Autowired HoneySearchService searchService;
 	@Autowired HoneySearcherDao searcherDao;
-
+	String searchKeyword;
 	@RequestMapping("searchInfo")
-	public Object searchInfo(HoneySearchKeyword searchInfo, HttpServletResponse response)
+	public Object searchInfo(String searchValue, HttpServletResponse response)
 			throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		String searchValue = URLEncoder.encode(searchInfo.getSearchValue(), "UTF-8");
+		//String searchValue = URLEncoder.encode(searchInfo.getSearchValue(), "UTF-8");
 		// java에서 제공하는 url 인코더를 사용하여 문자열을 인코딩하여 쿠키에 저장한다.
 
 		try {
-			Cookie searchInfoCookie = new Cookie("searchInfo", searchValue);
+			//Cookie searchInfoCookie = new Cookie("searchInfo", searchValue);
 			// 쿠키의 생명주기?? 살아있는 시간?? 설정하는부분
-			if (searchValue == null) {
-				searchInfoCookie.setMaxAge(0);
-			} else {
-				searchInfoCookie.setMaxAge(60 * 60 * 24 * 7);
-				// 모든 경로에서 접근 가능
-				searchInfoCookie.setPath("/");
+//			if (searchValue == null) {
+//				searchInfoCookie.setMaxAge(0);
+//			} else {
+//				searchInfoCookie.setMaxAge(60 * 60 * 24 * 7);
+//				// 모든 경로에서 접근 가능
+//				searchInfoCookie.setPath("/");
+//			}
+			//response.addCookie(searchInfoCookie);
+			if (searchValue.equals("") || searchValue != null) {
+				searchKeyword = searchValue;
 			}
-			response.addCookie(searchInfoCookie);
-			return JsonResult.success(searchInfoCookie);
+			return JsonResult.success();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.error(e.getMessage());
@@ -72,14 +67,14 @@ public class HoneySearchController {
 
 	@RequestMapping("searcher")
 	public Object searchResult(
-			@CookieValue(name = "searchInfo") String searchInfo,
+//			@CookieValue(name = "searchInfo") String searchInfo,
 			@RequestParam(defaultValue = "4") int memberLength, 
 			@RequestParam(defaultValue = "6") int boardLength,
 			@RequestParam(defaultValue = "20") int fileLength) throws Exception {
-		String searchfucker = URLDecoder.decode(searchInfo, "UTF-8"); 		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
-
-		List<HoneySearchKeyword> searchBoardResult = searchService.searchServiceBoardResult(searchfucker, boardLength);
-		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchfucker, memberLength);
+		//String searchfucker = URLDecoder.decode(searchInfo, "UTF-8"); 		// url 인코딩하여 쿠키에 저장한 값을 디코딩 하여 꺼낸 후 변수에 값을 저장했다.
+		
+		List<HoneySearchKeyword> searchBoardResult = searchService.searchServiceBoardResult(searchKeyword, boardLength);
+		List<HoneySearchKeyword> searchMemberResult = searchService.searchServiceMemberResult(searchKeyword, memberLength);
 
 		for(int i =0; i < searchMemberResult.size();i++) {
 			String[] userPhoto = (searchMemberResult.get(i).getUserProfilePath()).split("\\.");
@@ -92,7 +87,7 @@ public class HoneySearchController {
 		}
 
 
-		List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchfucker, fileLength);
+		List<HoneySearchKeyword> searchFileResult = searchService.searchServiceFileResult(searchKeyword, fileLength);
 		// 우선 게시물과 회원 정보 둘 모두 뒤져서 일치하는 값이 있는지 확인 한다.
 
 		String extension;
@@ -135,9 +130,9 @@ public class HoneySearchController {
 
 
 
-		List<HoneySearchKeyword> searchBoardResultListLength = searchService.boardResultTotalPage(searchfucker);
-		List<HoneySearchKeyword> searchMemberResultListLength = searchService.memberResultTotalPage(searchfucker);
-		List<HoneySearchKeyword> searchFileResultListLength = searchService.FileResultTotalPage(searchfucker);
+		List<HoneySearchKeyword> searchBoardResultListLength = searchService.boardResultTotalPage(searchKeyword);
+		List<HoneySearchKeyword> searchMemberResultListLength = searchService.memberResultTotalPage(searchKeyword);
+		List<HoneySearchKeyword> searchFileResultListLength = searchService.FileResultTotalPage(searchKeyword);
 		// 페이징 작업을 위해 만든 전체검색결과 size()용 메소드		
 
 		try {
@@ -154,12 +149,14 @@ public class HoneySearchController {
 			searchData.put("fileLength", fileLength);
 			searchData.put("allsearchFileResultListLength", searchFileResultListLength.size());
 
-			searchData.put("searchValue", searchfucker); //검색어 
+			searchData.put("searchValue", searchKeyword); //검색어 
 			
+			searchKeyword = "";
 
 			return JsonResult.success(searchData);
 		} catch (Exception e) {
 			e.printStackTrace();
+			searchKeyword = "";
 			return JsonResult.fail(e.getMessage());
 		}
 	}

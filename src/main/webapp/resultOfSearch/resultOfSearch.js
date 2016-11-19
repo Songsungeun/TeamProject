@@ -21,13 +21,13 @@ $(function() {
 function ajaxSearchValue(searchValue) {
 	var locationPathValue = $(location).attr('pathname');
 	var locationPath = locationPathValue.split('/');
-	var searchInfo = {searchValue: searchValue}
+	//var searchInfo = {searchValue: searchValue}
 
-	if (searchInfo.searchValue == "") {
+	if (searchValue == "") {
 		swal("검색어를 입력해 주세요.", "", "error")
 		//location.href ="/TeamProject/mainpage/Main.html"
 		return
-	} else if (searchInfo.searchValue.length <= 1 ) {
+	} else if (searchValue.length <= 1 ) {
 		swal("검색어가 너무 짧아요.", "", "error")
 		return
 	} else {
@@ -36,8 +36,8 @@ function ajaxSearchValue(searchValue) {
 				url:serverAddr+"/" + locationPath[2] + "/searchInfo.json",
 				type: "GET",
 				dataType: "json",
-				data: searchInfo, 
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data: {searchValue : searchValue}, 
+				//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success: function(obj) {
 					var result = obj.jsonResult
 					if (result.state != "success"){
