@@ -4,9 +4,9 @@ var comentInfo = 0;
 var detailBoardNo = 0;
 var length = 12;
 $(document).ready(function(){
-	$(function() {
-		$("#includedContent").load("../header.html");
-	});
+//	$(function() {
+//		$("#includedContent").load("../header.html");
+//	});
 	// 페이지가 로딩될 때 'Loading 이미지'를 숨긴다.
 	$('#viewLoading').hide();
 	// ajax 실행 및 완료시 'Loading 이미지'의 동작을 컨트롤하자.

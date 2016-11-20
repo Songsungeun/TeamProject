@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" type="text/css" href="../lib/css/Main.css">
-
+<link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
 <title>HoneyTip ContentDetail</title>
 </head>
 <body>
@@ -71,6 +71,7 @@
 </div>
 </body>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type='text/javascript' src="../lib/js/common.js"></script>
@@ -78,6 +79,10 @@
 <script type='text/javascript' src="../lib/js/category-tab.js"></script>
 <script type="text/javascript" src="../membership/followList.js"></script>
 <script type="text/javascript" src="../membership/likeList.js"></script>
+<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$("#includedContent").load("../header.html");
+</script>
 <script>
   if (location.search.startsWith("?")) { // 예) ?no=xxx
     var no = location.search.split("=")[1];

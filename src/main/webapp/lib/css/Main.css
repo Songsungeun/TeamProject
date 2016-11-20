@@ -23,9 +23,8 @@ body {font-family: "arial", sans-serif;font-size: 12px;}
   margin: 0 auto;
 }
 #detailpage_Postwrap {
-	width: 1024px;
-	margin: 0 auto;
-	padding-top: 50px;
+	width: 100%;
+	padding-top: 60px;
 }
 #mainpage_Postwrap {
   width: 1024px;
