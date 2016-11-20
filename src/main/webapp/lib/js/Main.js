@@ -180,7 +180,7 @@ function ajaxLoadBoard(no) {
 		checkingFollow(result.data.board.userNo);
 		checkingLike(result.data.board.no);
 		if (result.state != "success") {
-			alert("조회 실패입니다.")
+			swal("조회 실패입니다.")
 			return
 		} else {
 			// 기존 영역 초기화 시작
@@ -274,7 +274,19 @@ $("#insertCmt").click(function(event){
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("로그인 후 사용해 주세요.")
+				swal({
+					  title:"로그인 되지 않았습니다.",
+					  text: "로그인후 이용해 주세요",
+					  type: "warning",
+					  confirmButtonColor: "#DD6B55",
+					  confirmButtonText: "로그인",
+					  closeOnConfirm: false,
+					},
+					function(isConfirm){
+					  if (isConfirm) {
+						  window.location = "../mainpage/LoginPage.html"
+					  } 
+			 	 })
 				return
 			}
 			var no = honeyComent.no;
@@ -287,7 +299,7 @@ function ajaxPostComentsList(no) {
 	$.getJSON(serverAddr + "/mainpage/comentList.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			swal("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
 		var contents = ""
@@ -366,7 +378,19 @@ $(document.body).on("click",".reply-save-btn",function(event){
 		success: function(obj) {
 			var result = obj.jsonResult
 			if (result.state != "success") {
-				alert("로그인 후 사용해 주세요.")
+				swal({
+					  title:"로그인 되지 않았습니다.",
+					  text: "로그인후 이용해 주세요",
+					  type: "warning",
+					  confirmButtonColor: "#DD6B55",
+					  confirmButtonText: "로그인",
+					  closeOnConfirm: false,
+					},
+					function(isConfirm){
+					  if (isConfirm) {
+						  window.location = "../mainpage/LoginPage.html"
+					  } 
+			 	 })
 				return
 			}
 			var no = honeyComent.no;
@@ -386,7 +410,7 @@ function ajaxComentDetail(no) {
 	$.getJSON(serverAddr + "/mainpage/comentDetail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("조회 실패입니다.")
+			swal("조회 실패입니다.")
 			return
 		} 
 		else {
@@ -404,70 +428,120 @@ $(document.body).on("click",".bit-save-btn",function(event) {
 			cmtNo: $(this).attr("data-no"),
 			coment: $(".update-contents").val()
 	}
-	if (confirm("정말 변경하시겠습니까?") == true) {
-		$.ajax({
-			url:serverAddr +"/mainpage/updateComment.json",
-			type: "POST",
-			dataType:"json",
-			data: honeyComent,
-			success: function(obj) {
-				var result = obj.jsonResult
-				if (result.state != "success") {
-					return
-				}
-				var no = boardNo;
-				ajaxPostComentsList(no);
+	swal({
+		  title: "댓글 변경",
+		  text: "정말 변경하시겠습니까?",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "변경하기",
+		  cancelButtonText: "취소하기",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+	function(isConfirm) {
+			if (isConfirm) {
+				event.stopImmediatePropagation();
+				$.ajax({
+					url:serverAddr +"/mainpage/updateComment.json",
+					type: "POST",
+					dataType:"json",
+					data: honeyComent,
+					success: function(obj) {
+						var result = obj.jsonResult
+						if (result.state != "success") {
+							sweetAlert("변경실패!", "변경 실패했어요.", "error");
+							return
+						}
+						sweetAlert("변경성공!", "댓글이 변경되었어요.", "success");
+						var no = boardNo;
+						ajaxPostComentsList(no);
+					}
+				})
+			} else {
+				return;
+				
 			}
 		})
-	} else {
-		return;
-	}
+	
+	
 });
 $(document.body).on("click",".cmt_delete",function(event) {
 	var depth = $(this).attr("data-depth")
 	var no = $(this).attr("data-Delete");
-	console.log("deleteNo: " + no)
+	
 	if(depth == 0) {
-		if (confirm("정말 삭제하시겠습니까?") == true) {
-			$.ajax({
-				url:serverAddr +"/mainpage/delete.json",
-				type: "GET",
-				dataType:"json",
-				data: {no: no},
-				success: function(obj) {
-					var result = obj.jsonResult
-					if (result.state != "success") {
-						alert("삭제 실패입니다.")
-						return
-					}
-					var no = boardNo;
-					ajaxPostComentsList(no);
+		swal({
+			  title: "댓글 삭제",
+			  text: "정말 삭제하시겠습니까?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "삭제하기",
+			  cancelButtonText: "취소하기",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			},
+		function(isComfirm) {
+				if (isComfirm) {
+					event.stopImmediatePropagation();
+					$.ajax({
+						url:serverAddr +"/mainpage/delete.json",
+						type: "GET",
+						dataType:"json",
+						data: {no: no},
+						success: function(obj) {
+							var result = obj.jsonResult
+							if (result.state != "success") {
+								sweetAlert("삭제실패!", "삭제 실패했어요.", "error");
+								return
+							}
+							sweetAlert("삭제성공!", "댓글이 삭제되었어요.", "success");
+							var no = boardNo;
+							ajaxPostComentsList(no);
+						}
+					})
+				} else {
+					return;
 				}
 			})
-		} else {
-			return;
-		}
 	} 
 	if(depth == 1){
-		if (confirm("정말 삭제하시겠습니까?") == true) {
-			$.ajax({
-				url:serverAddr +"/mainpage/childdelete.json",
-				type: "GET",
-				dataType:"json",
-				data: {no: no},
-				success: function(obj) {
-					var result = obj.jsonResult
-					if (result.state != "success") {
-						alert("삭제 실패입니다.")
-						return
-					}
-					var no = boardNo;
-					ajaxPostComentsList(no);
+		swal({
+			  title: "댓글 삭제",
+			  text: "정말 삭제하시겠습니까?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "삭제하기",
+			  cancelButtonText: "취소하기",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			},
+			function(isConfirm) {
+				
+				if (isConfirm) {
+					event.stopImmediatePropagation();
+					$.ajax({
+						url:serverAddr +"/mainpage/childdelete.json",
+						type: "GET",
+						dataType:"json",
+						data: {no: no},
+						success: function(obj) {
+							var result = obj.jsonResult
+							if (result.state != "success") {
+								sweetAlert("삭제실패!", "삭제 실패했어요.", "error");
+								return
+							}
+							sweetAlert("삭제성공!", "댓글이 삭제되었어요.", "success");
+							var no = boardNo;
+							ajaxPostComentsList(no);
+						}
+					})
+				} else {
+					return;
 				}
 			})
-		} else {
-			return;
-		}
 	}
 });
 window.onclick = function(event) {
