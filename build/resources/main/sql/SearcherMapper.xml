@@ -101,7 +101,7 @@
     hm.MB_NO, hm.MB_NICK, hc.CT_NO, hc.CT_NM,hb.BD_CONTS, hb.FILE_STATUS, hb.YOUTUBE_URL,
     hmp.MBP_PATH
     from HONEY_BOARDS hb
-    left join Honey_MEMBS hm on hm.MB_NO = hb.MB_NO 
+    left join honey_membs hm on hm.MB_NO = hb.MB_NO 
     left join HONEY_MEMBS_PHOTOS hmp on hb.MB_NO = hmp.MB_NO
     left join HONEY_CTG hc on hb.CT_NO = hc.CT_NO
     where hb.BD_TITL like concat('%', #{SearchValue}, '%') or hb.BD_CONTS like concat('%', #{SearchValue}, '%')  AND hb.MB_NO = #{memberNo}
