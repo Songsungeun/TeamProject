@@ -85,9 +85,9 @@ $("#includedContent").load("../header.html");
 </script>
 <script>
   if (location.search.startsWith("?")) { // 예) ?no=xxx
-    var no = location.search.split("=")[1];
-    ajaxLoadBoard(no);
-    ajaxPostComentsList(no);
+    var boardNo = location.search.split("=")[1];
+    ajaxLoadBoard(boardNo);
+    ajaxPostComentsList(boardNo);
   } else {
     alert("해당게시물이 없습니다.")
     location.href = "../mainpage/Main.html"
