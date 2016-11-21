@@ -100,9 +100,13 @@ function ajaxSearchResultList() {
 
 		if (memberSearchLength == 0 &&  boardSearchLength == 0 && allFileResult == 0) {
 			location.href = "./searchResultNull.html"
-		} else if (memberSearchLength == 0) {
+		} 
+		
+		if (memberSearchLength == 0) {
 			$("#memberSearchResultWrap").css("display", "none")
-		} else  if (boardSearchLength == 0) {
+		} 
+		
+		if (boardSearchLength == 0) {
 			$("#contentsSearchWrap").css("display", "none") 
 		} 
 		
@@ -146,10 +150,8 @@ function ajaxSearchResultList() {
 				$("#moreViewBtn3").css("display", "none")
 			}
 		})
-
 		
 		$(".titleLink").click(function(event){
-			console.log("1")
 			$("#yourModal").modal();
 			$("html").css({"overflow":"hidden"});
 			var no = $(this).attr("data-no")
