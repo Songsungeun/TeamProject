@@ -118,6 +118,8 @@ function ajaxSearchResultList() {
 			$("#moreViewBtn2").css("display", "none")
 		} else if  (memberSearchLength > 0 &&  memberSearchLength < memberLength) {
 			$("#moreViewBtn1").css("display", "none")
+		} else if (allFileResult > 0 && allFileResult < fileLength) {
+		    $("#moreViewBtn3").css("display", "none")
 		}
 
 		$("#searchWord").text(data.searchValue);
