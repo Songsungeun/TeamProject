@@ -15,6 +15,9 @@ $(document.body).on('click', '.moreViewBtn', function(event){
 })
 
 
+
+
+
 $(document.body).on('click', '#postBtn',  function(event) {
 	var rNumber = $(this).attr("data-no")
 	var result = confirm("게시물을 삭제하시겠습니까?\n삭제한 게시물은 복구 불가능합니다.");
@@ -111,11 +114,19 @@ function ajaxAdminBoardList() {
 			return
 		}
 		var data = result.data
-		var totalsize = data.totalPage;
 		var resultCode = data.stateResultCode;
 		var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
 		var boardUiTemplate2 = Handlebars.compile($('#boardUiTemplateText2').html())
 		var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
+		
+		
+		    if (data.listLength <  data.totalPage) {
+		    	console.log("222")
+				$("#cardBtn").css("display","none")
+				$("#boardBtn").css("display","none")
+			} 
+		
+		
 		$("#postsCard").html(cardUiTemplate(data));
 		if (resultCode == 1) {
 			$("#boardTable").html(boardUiTemplate(data));
@@ -128,12 +139,16 @@ function ajaxAdminBoardList() {
 				  //동영상 정지 메서드호출
 				$("#youtubeUrl").attr("src","");
 			})
+			
 			$("html").css({"overflow":"hidden"});
 			adminBoardNo = $(this).attr("data-no")
 			ajaxAdminLoadBoard(adminBoardNo)
 			ajaxAdminPostComentsList(adminBoardNo)
 		})
-		if (data.list.length >=  totalsize) {
+		
+		
+		
+		if (data.list.length >=  data.totalPage) {
 			$('.moreViewBtn').css("display", "none")
 		} 
 		$(document.body).on('click', '.modifyBtn',  function(event) {
@@ -166,11 +181,12 @@ function ajaxAdminBoardSearch(searchValue , stateResultCode) {
 				return
 			}
 			var data = result.data
-			var totalsize = data.totalPage;
 			var resultCode = data.stateResultCode;
+			
 			var boardUiTemplate = Handlebars.compile($('#boardUiTemplateText').html())
 			var boardUiTemplate2 = Handlebars.compile($('#boardUiTemplateText2').html())
 			var cardUiTemplate = Handlebars.compile($('#cardUiTemplateText').html())
+			
 			$("#postsCard").html(cardUiTemplate(data));
 			if (resultCode == 1) {
 				$("#boardTable").html(boardUiTemplate(data));
@@ -188,9 +204,10 @@ function ajaxAdminBoardSearch(searchValue , stateResultCode) {
 				ajaxAdminLoadBoard(adminBoardNo)
 				ajaxAdminPostComentsList(adminBoardNo)
 			})
-			if (data.list.length >=  totalsize) {
-				$('.moreViewBtn').css("display", "none")
-			} 
+			
+		
+			
+			
 			$(document.body).on('click', '.modifyBtn',  function(event) {
 				window.location.href = "../writepage/writepage.html?no=" + $(this).attr("data-no") 
 			});
@@ -489,12 +506,12 @@ $(document.body).on("click",".cmt_delete",function(event) {
 	}
 });
 
-//window.onclick = function(event) {
-//	var adminhtmlTag = document.getElementById('super_HTML_Admin');
-//	var adminmodal = document.getElementById('yourModal');
-//	if (event.target == adminmodal) {
-//		adminmodal.style.display = "none";
-//		adminhtmlTag.style.overflow = "auto";
-//		window.history.pushState("Changed URI", "", "../adminpage/HoneyAdminpage.html");
-//	}
-//}
+ window.onclick = function(event) {
+	var adminhtmlTag = document.getElementById('super_HTML_Admin');
+	var adminmodal = document.getElementById('yourModal');
+	if (event.target == adminmodal) {
+		adminmodal.style.display = "none";
+		adminhtmlTag.style.overflow = "auto";
+		window.history.pushState("Changed URI", "", "../adminpage/HoneyAdminPage.html");
+	}
+}

@@ -79,14 +79,14 @@
     <!-- table -->
     </table>
     <div id = "boardBtn">
-      <a  class="moreViewBtn" href="#">더보기</a>
+      <span  class="moreViewBtn">더보기</span>
     </div>
   </div>
      
   <div id = "followList">
       <!-- follow -->
   </div>
-     
+     </section>
   <div class="modal fade yourModal123" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" id="modalDialog">
       <div class="modal-content">
@@ -144,7 +144,7 @@
   <img src="mainpage_images/ajax-loader.gif" />
 </div>
 </div>
-</section>
+
 <footer>
 </footer>
 <script id = "boardUiTemplateText" type="text/x-handlebars-template">
@@ -235,10 +235,10 @@
 </li>
 {{/each}}
 <div id = "cardBtn">
-  <span  class="moreViewBtn" href="#">더보기</span>
+  <div class="moreViewBtn" >더보기</div>
 </div>
-
-</script> 
+</script>
+ 
 <script id="guiderInfoTemplate" type="text/x-handlebars-template">
 {{#each this}}
   <div class="sidebar-guideUserCollection">
@@ -247,6 +247,7 @@
   </div>
 {{/each}}
 </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -254,15 +255,10 @@
 <script type="text/javascript" src="../lib/js/common.js"></script>
 <script type="text/javascript" src="HoneyAdminpage.js"></script>
 <script type="text/javascript" src="HoneyAdminpage(function).js"></script>
+
 <script >
   ajaxloadNickName()
   ajaxAdminBoardList()
-  
-  $(document.body).on("click",".yourModal123",function(event) {
-   console.log("클리끄")
-   $('#yourModal').on('hidden.bs.modal', function (e) {
-   })
-})
 </script>  
  
  

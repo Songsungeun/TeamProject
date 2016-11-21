@@ -53,7 +53,8 @@ public class HoneyAdminController {
       }
       
       HashMap<String,Object> data = new HashMap<>();
-      data.put("list", list);    
+     data.put("list", list);
+     data.put("listLength", list.size());
       data.put("totalPage", totalPage);
       data.put("pageNo", pageNo);
       data.put("length", length);
