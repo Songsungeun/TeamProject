@@ -2,7 +2,7 @@ var tempUserNo = 0;
 var boardNo = 0;
 var comentInfo = 0;
 var detailBoardNo = 0;
-var length = 12;
+var length = 20;
 $(document).ready(function(){
 //	$(function() {
 //		$("#includedContent").load("../header.html");
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		var currentScroll = $(window).scrollTop() + $(window).height();
 
 		if (maxHeight <= currentScroll) {
-			length += 12;
+			length += 20;
 		ajaxBoardList(length);
 		}
 		})

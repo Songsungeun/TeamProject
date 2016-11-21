@@ -34,7 +34,7 @@ public class HoneyMainController {
 	public Object list(
 			HttpSession session,
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="12") int length
+			@RequestParam(defaultValue="20") int length
 			) throws Exception {
 		List<HoneyMain> list = mainService.getMainList(pageNo, length);
 		List<UrlInfo> urlList = mainService.getURLList();
