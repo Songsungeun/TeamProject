@@ -356,3 +356,7 @@ modal fade>p {
     margin-bottom: 20px;
 }
 
+#filenameLink {
+	color: black !important;
+} 
+
