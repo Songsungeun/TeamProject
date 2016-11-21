@@ -226,7 +226,7 @@ function ajaxLoadBoard(no) {
 			}
 			if (result.data.fileList.length > 0) {
 				for (var i = 0; i < result.data.fileList.length; i++) {
-					fileList += "<a id='fileListArea'" +"href='http://t2.java85.com:8080/TeamProject/upload/" 
+					fileList += "<a id='fileListArea'" +"href='http://52.78.179.146:8080/TeamProject/upload/" 
 					+ result.data.fileList[i].fileName + "' download='" + result.data.fileList[i].originalFileName + "'>"
 					+ (i+1) + "." + result.data.fileList[i].originalFileName + "</div>"
 				}
