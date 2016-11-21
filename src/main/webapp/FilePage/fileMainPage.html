@@ -128,8 +128,9 @@
 {{#each fileList}}
     <tr>
       <label>
-          <td style="padding-left: 25px; width:170px;"><div><img class="fileThumbnail" src="http://t2.java85.com:8080/TeamProject/upload/{{fileThumbnail}}"></div></td>
-          <td>{{originFileName}}</td>
+          <td style="padding-left: 25px; width:170px;"><div><a href="http://52.78.179.146:8080/TeamProject/upload/{{fileThumbnail}}" download>
+		  	<img class="fileThumbnail" src="http://52.78.179.146:8080/TeamProject/upload/{{fileThumbnail}}"></a></div></td>
+          <td><a id="filenameLink" href="http://52.78.179.146:8080/TeamProject/upload/{{fileThumbnail}}" download>{{originFileName}}</a></td>
           <td style="width: 136px;">{{createdDate}}</td>
           <td style="width: 166px;">{{stringFileSize}}</td>
           <td style="width: 96px;"><button  class="btn btn-danger" id="btn" data-no={{fileNo}}>삭제</button></td>
