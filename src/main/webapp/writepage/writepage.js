@@ -137,7 +137,7 @@ function ajaxUpdateBoard(formData) {
 			   var result = obj.jsonResult
 			   if (result.state != "success") {
 			    console.log(result.data)
-			    alert("등록 실패입니다.")
+			    //alert("등록 실패입니다.")
 			    return
 			   }
 			   window.location = "../mainpage/Main.html"

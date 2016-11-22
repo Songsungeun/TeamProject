@@ -87,8 +87,10 @@ public class Scrapper {
 		for (int i = 0; i < checkUrl.length; i++) {
 			System.out.println("checkUrl= " + checkUrl[i]);
 		}
-		if (checkUrl[2].equals("blog.naver.com") && (!checkUrl[3].substring(0, 8).equals("PostView"))) {
-			urlStr = checkUrl[0] + "//" + checkUrl[2] + "/PostView.nhn?blogId=" + checkUrl[3] + "&logNo=" + checkUrl[4];
+		if (checkUrl[2].equals("blog.naver.com")) {
+			if(!urlStr.contains("PostView")) {
+				urlStr = checkUrl[0] + "//" + checkUrl[2] + "/PostView.nhn?blogId=" + checkUrl[3] + "&logNo=" + checkUrl[4];
+			}
 		} 
 		
 			System.out.println("urlStr= " + urlStr);
@@ -115,8 +117,15 @@ public class Scrapper {
 				// meta Data에 name으로 네이밍한 경우
 			} else if (!doc.select("meta[name=og:title]").isEmpty()) {
 				title = doc.select("meta[name=og:title]").attr("content");
-
-				// meta Data에 정보 등록 하지 않은 경우
+			
+			} else if (!doc.select("meta[name=twitter:title]").isEmpty()) {
+				title = doc.select("meta[name=twitter:title]").attr("content");
+			} else if (!doc.select("meta[itemprop=headline]").isEmpty()) {
+				title = doc.select("meta[itemprop=headline]").attr("content");
+			} else if (doc.select("meta[name=title]").isEmpty()) {
+				title = doc.select("meta[name=title]").attr("content");
+			
+			// meta Data에 정보 등록 하지 않은 경우
 			} else if (!doc.title().isEmpty()) {
 				title = doc.title();
 			}
@@ -129,7 +138,13 @@ public class Scrapper {
 
 			} else if (!doc.select("meta[name=og:image]").isEmpty()) {
 				image = doc.select("meta[name=og:image]").attr("content");
-			} 
+			} else if (!doc.select("meta[itemprop=image]").isEmpty()) {
+				image = doc.select("meta[itemprop=image]").attr("content");
+			} else if (!doc.select("meta[name=twitter:image]").isEmpty()) {
+				image = doc.select("meta[name=twitter:image]").attr("content");
+			} else if (!doc.select("link[rel=image_src]").isEmpty()) {
+				image = doc.select("link[rel=image_src]").attr("href");
+			}
 
 			System.out.println("description start");
 			String description = null;
@@ -139,13 +154,21 @@ public class Scrapper {
 
 			} else if (!doc.select("meta[name=og:description]").isEmpty()) {
 				description = doc.select("meta[name=og:description]").attr("content");
-			}
-			System.out.println("description= " + description);
-			// description 너무 많이 넣어놓은 나쁜 사이트들 때문에...
-			if (description.length() > 254) {
+			} else if (!doc.select("meta[itemprop=description]").isEmpty()){
+				description = doc.select("meta[itemprop=description]").attr("content");
+			} else if (!doc.select("meta[name=twitter:description]").isEmpty()) {
+				description = doc.select("meta[name=twitter:description]").attr("conetent");
+			} else if (!doc.select("meta[name=description]").isEmpty()) {
+				description = doc.select("meta[name=description]").attr("content");
+			} 
+			
+			if (description == null) {
+				description = "";
+			} else if (description.length() > 254) {
 				String cutString = description.substring(0, 254);
 				description = cutString;
-			}
+			} //description 너무 많이 넣어놓은 나쁜 사이트들 때문에...
+			 
 
 			System.out.println("url Parsing start");
 			// url Parsing 시작!!
@@ -169,6 +192,11 @@ public class Scrapper {
 
 				urlAddr = urlAddr.toUpperCase();
 				System.out.println("어퍼서브: " + urlAddr);
+			} else if (!doc.select("meta[itemprop=url]").isEmpty()) {
+				String transString = doc.select("meta[itemprop=url]").attr("content");
+				String temp[]  = transString.split("/");
+				urlAddr = temp[2];
+				urlAddr = urlAddr.toUpperCase();
 			} else {
 				System.out.println("og:url 이 읍어");
 			}

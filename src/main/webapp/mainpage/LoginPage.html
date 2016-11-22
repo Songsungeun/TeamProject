@@ -147,15 +147,11 @@
 																success : function(
 																		obj) {
 																	if (obj.state == "success") {
-																		$(
-																				"#result_nick_msg")
-																				.html(
-																						"사용 가능한 닉네임 입니다.");
+																		$("#result_nick_msg").html("사용 가능한 닉네임 입니다.");
+																		$("#result_nick_msg").css("color", "blue");
 																	} else {
-																		$(
-																				"#result_nick_msg")
-																				.html(
-																						"이미 등록된 닉네임 입니다.");
+																		$("#result_nick_msg").html("이미 등록된 닉네임 입니다.");
+																		$("#result_nick_msg").css("color", "red");
 																	}
 																}
 															}); // end ajax
@@ -190,15 +186,11 @@
 																success : function(
 																		obj) {
 																	if (obj.state == "success") {
-																		$(
-																				"#result_email_msg")
-																				.html(
-																						"사용 가능한 이메일 입니다.");
+																		$("#result_email_msg").html("사용 가능한 이메일 입니다.");
+																		$("#result_email_msg").css("color","blue");
 																	} else {
-																		$(
-																				"#result_email_msg")
-																				.html(
-																						"이미 등록된 이메일 입니다.");
+																		$("#result_email_msg").html("이미 등록된 이메일 입니다.");
+																		$("#result_email_msg").css("color","red");
 																	}
 																}
 															}); // end ajax
