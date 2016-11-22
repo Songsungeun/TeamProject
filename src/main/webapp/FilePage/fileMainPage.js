@@ -90,7 +90,7 @@ function ajaxAddBoard(formData) {
 				alert("등록 실패입니다.")
 				return
 			}
-			window.location = "../mainpage/Main.html"
+			window.location = "fileMainPage.html"
 		}
 	})
 };
